@@ -5,6 +5,7 @@ import { mkdir, readdir, writeFile } from 'fs/promises';
 import _ from 'lodash';
 import Utils from '../../utils';
 import BaseTranslateConfig from '../BaseTranslateConfig';
+import DataParser from '../../DataParser';
 
 export default class Xlsx2Ts extends BaseTranslateConfig {
 
@@ -29,17 +30,14 @@ export default class Xlsx2Ts extends BaseTranslateConfig {
         if (this.isDir) {
             let files = await readdir(pathStr);
             for (let i in files) {
-                let data = xlsx.parse(path.join(pathStr, files[i]));
+                let data = DataParser.parse(path.join(pathStr, files[i]));
                 for (let i = 0; i < data.length; ++i) {
                     this.xlsxData[data[i].name] = data[i].data;
                 }
                 await this.TransferTable(files[i].replace(path.extname(files[i]), ''));
             }
         } else {
-            let parsedPath = path.parse(pathStr);
-            parsedPath.base += '.xlsx';
-            parsedPath.ext = '.xlsx';
-            let data = xlsx.parse(path.format(parsedPath));
+            let data = DataParser.parseWithOptionalExtension(pathStr);
             for (let i = 0; i < data.length; ++i) {
                 this.xlsxData[data[i].name] = data[i].data;
             }
@@ -79,7 +77,7 @@ export default class Xlsx2Ts extends BaseTranslateConfig {
         let keys = dataArr[0] || [];
         let types = dataArr[1] || [];
 
-        // Default layerNum: the first data layer may contain nested fields
+        // 默认的层级结构是第一层，即key的位置
         let layerNum = 1;
 
         for (let rowIndex = 3; rowIndex < dataArr.length; ++rowIndex) {
@@ -106,7 +104,7 @@ export default class Xlsx2Ts extends BaseTranslateConfig {
                 }
                 let type = types[colIndex] || 'string';
                 let value = _arrLine[colIndex];
-                if (_.isNil(value) || typeof (value) == 'undefined') {
+                if (_.isNil(value) || typeof (value) == "undefined") {
                     continue;
                 }
 

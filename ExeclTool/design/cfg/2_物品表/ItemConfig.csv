@@ -1,0 +1,6 @@
+id,name,price,into=attr.name,into=attr.value,into=attr.coeff
+int,string,int,string,int,float
+物品ID,物品名称,价格,属性名,属性值,系数
+1001,剑,100,攻击,10,1.5
+1002,盾,80,防御,15,1.2
+1003,药水,10,回复,50,0

@@ -5,10 +5,27 @@ import { mkdir, readdir, writeFile } from "fs/promises";
 import _ from 'lodash';
 import Utils from '../../utils';
 import BaseTranslateConfig from '../BaseTranslateConfig';
+import CsvParser from '../../CsvParser';
 
 export default class Xlsx2Json extends BaseTranslateConfig {
 
     private outputPathJsonStr: string = '';
+
+    private parseDataFile(filePath: string): any[] {
+        let data: any[] = [];
+        
+        // Try CSV first, then fall back to xlsx
+        if (CsvParser.canParseAsCsv(filePath)) {
+            data = CsvParser.parse(filePath);
+        }
+        
+        // If no CSV data found, try xlsx
+        if (data.length === 0 && fs.existsSync(filePath)) {
+            data = xlsx.parse(filePath);
+        }
+        
+        return data;
+    }
 
     public async TranslateExcel(pathStr: string, outputPathStr: string, translate: any, params: any): Promise<void> {
 
@@ -30,7 +47,7 @@ export default class Xlsx2Json extends BaseTranslateConfig {
         if (this.isDir) {
             let files = await readdir(pathStr);
             for (let i in files) {
-                let data = xlsx.parse(path.join(pathStr, files[i]));
+                let data = this.parseDataFile(path.join(pathStr, files[i]));
                 for (let j = 0; j < data.length; ++j) {
                     this.xlsxData[data[j].name] = data[j].data;
                 }
@@ -38,9 +55,16 @@ export default class Xlsx2Json extends BaseTranslateConfig {
             }
         } else {
             let parsedPath = path.parse(pathStr);
-            parsedPath.base += '.xlsx';
-            parsedPath.ext = '.xlsx';
-            let data = xlsx.parse(path.format(parsedPath));
+            // Try both with and without .xlsx extension for CSV directories
+            let data = this.parseDataFile(pathStr);
+            
+            // If not found, try with xlsx extension
+            if (data.length === 0) {
+                parsedPath.base += '.xlsx';
+                parsedPath.ext = '.xlsx';
+                data = this.parseDataFile(path.format(parsedPath));
+            }
+            
             for (let i = 0; i < data.length; ++i) {
                 this.xlsxData[data[i].name] = data[i].data;
             }
@@ -83,7 +107,7 @@ export default class Xlsx2Json extends BaseTranslateConfig {
         let keys = dataArr[0] || [];
         let types = dataArr[1] || [];
 
-        // 默锟较碉拷锟姐级锟斤拷锟斤拷锟斤拷锟揭伙拷锟斤拷锟斤拷莅锟斤拷锟角讹拷锟斤拷侄危锟斤拷锟斤拷锟斤拷锟街讹拷锟斤拷锟斤拷锟斤拷锟斤拷锟皆讹拷锟斤拷锟斤拷
+        // 默认的层级结构是第一层，即key的位置
         let layerNum = 1;
 
         for (let rowIndex = 3; rowIndex < dataArr.length; ++rowIndex) {

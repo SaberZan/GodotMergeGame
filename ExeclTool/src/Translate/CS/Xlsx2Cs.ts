@@ -1,4 +1,5 @@
 ﻿import xlsx from 'node-xlsx';
+import DataParser from '../../DataParser';
 import path from 'path';
 import fs from "fs";
 import { mkdir, readdir, writeFile } from "fs/promises";
@@ -42,7 +43,7 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
         if (this.isDir) { 
             let files = await readdir(pathStr);
             for(let i in files) {
-                let data = xlsx.parse(path.join(pathStr, files[i]));
+                let data = DataParser.parse(path.join(pathStr, files[i]));
                 for (let i = 0; i < data.length; ++i) {
                     this.xlsxData[data[i].name] = data[i].data;
                 }
@@ -52,7 +53,7 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
                 }
             }
         } else {
-            let data = xlsx.parse(pathStr + ".xlsx");
+            let data = DataParser.parseWithOptionalExtension(pathStr);
             for (let i = 0; i < data.length; ++i) {
                 this.xlsxData[data[i].name] = data[i].data;
             }
