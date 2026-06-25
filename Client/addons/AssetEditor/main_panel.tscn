@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://jx578k6bayf6"]
+
+[ext_resource type="Script" uid="uid://c2brpxxib8pay" path="res://addons/AssetEditor/main_panel.ts" id="1_bn5e5"]
+
+[node name="AssetEditorMain" type="VBoxContainer" unique_id=492655270]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bn5e5")

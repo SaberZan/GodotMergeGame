@@ -1,0 +1,1 @@
+export { TestProxy as TestService } from "./TestProxy";

@@ -1,0 +1,31 @@
+{
+	"packages": {
+		"NewPackage": {
+			"groups": {
+				"NewGroup": {
+					"items": {
+						"res://Assets/UI/": {
+							"type": "folder",
+							"keys": []
+						}
+					},
+					"isEncrypt": false
+				}
+			},
+			"isEncrypt": false,
+			"downloadPriority": 0
+		},
+		"NewPackage121": {
+			"groups": {
+				"NewGroup11": {
+					"items": {},
+					"isEncrypt": false
+				}
+			},
+			"isEncrypt": false,
+			"downloadPriority": 0
+		}
+	},
+	"version": 1782042976298,
+	"versionCode": 0
+}

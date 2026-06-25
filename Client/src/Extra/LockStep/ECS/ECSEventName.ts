@@ -1,0 +1,16 @@
+﻿/**
+ * created by SaberZan
+ * 帧同步基础事件名字
+ */
+
+export let ECSEventName = {
+    ENTITY_CREATE: "ENTITY_CREATE",
+
+    ENTITY_START: "ENTITY_START",
+
+    ENTITY_DESTROY: "ENTITY_DESTROY",
+
+    ENTITY_COMPONENT_ADD: "ENTITY_COMPONENT_ADD",
+
+    ENTITY_COMPONENT_REMOVE: "ENTITY_COMPONENT_REMOVE",
+}

@@ -1,0 +1,7 @@
+{
+	"hotUpdate": false,
+	"forceHotUpdate": false,
+	"maxDownloadNum": 5,
+	"requestVersionUrl": "",
+	"instanceOverTime": 3000
+}

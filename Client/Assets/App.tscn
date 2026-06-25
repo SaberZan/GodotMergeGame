@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bqfc18rxt184x"]
+
+[ext_resource type="Script" uid="uid://b36842rfj24by" path="res://src/App.ts" id="1_cenbn"]
+
+[node name="App" type="Control" unique_id=75112325]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cenbn")

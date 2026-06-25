@@ -1,0 +1,45 @@
+import { Behavior } from "./Behavior";
+
+/**
+ * 用来控制BehaviorTree的根类
+ */
+export class BehaviorTree<T> {
+    /**
+     * 行为树应该多久更新一次。updatePeriod为0.2将使行为树每秒更新5次
+     */
+    public updatePeriod: number;
+    /**
+     * 上下文应包含运行树所需的所有数据
+     */
+    private _context: T;
+    /**
+     * 树的根节点
+     */
+    private _root: Behavior<T>;
+    private _elapsedTime: number;
+
+    constructor(context: T, rootNode: Behavior<T>, updatePeriod: number = 0.2) {
+        this._context = context;
+        this._root = rootNode;
+
+        this.updatePeriod = updatePeriod;
+        this._elapsedTime = Date.now();
+    }
+
+    public tick() {
+        // updatePeriod小于或等于0，将每一帧都执行
+        if (this.updatePeriod > 0) {
+            let interval = Date.now() - this._elapsedTime;
+            if (interval >= this.updatePeriod) {
+                while (interval > 0) {
+                    interval -= this.updatePeriod;
+                    this._elapsedTime += this.updatePeriod;
+                    this._root.tick(this._context);
+                }
+            }
+        }
+        else {
+            this._root.tick(this._context);
+        }
+    }
+}

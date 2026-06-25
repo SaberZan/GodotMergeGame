@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dncgceecfg001"]
+
+[ext_resource type="Script" path="res://addons/EasyConfigEditor/easy_config_editor.ts" id="1_cfg"]
+
+[node name="EasyConfigEditor" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cfg")

@@ -1,0 +1,74 @@
+{
+	"version": 1782176702538,
+	"versionCode": 0,
+	"packages": {
+		"NewPackage": {},
+		"NewPackage121": {}
+	},
+	"allEasyAssetBundleInfos": {
+		"NewGroup": {
+			"easyAssetBundleType": 0,
+			"abName": "NewGroup",
+			"md5": "42c5469fc73c02fac4352b4b21d66d20",
+			"size": 1152,
+			"crc": 4248637018,
+			"packages": [
+				"NewPackage"
+			],
+			"location": 0,
+			"isEncrypt": false,
+			"abDownloadPriority": 0
+		},
+		"NewGroup11": {
+			"easyAssetBundleType": 0,
+			"abName": "NewGroup11",
+			"md5": "0fd0d938d8f56338815f6620cfcd5a4d",
+			"size": 132,
+			"crc": 392645154,
+			"packages": [
+				"NewPackage121"
+			],
+			"location": 0,
+			"isEncrypt": false,
+			"abDownloadPriority": 0
+		}
+	},
+	"allActiveEasyAssetInfos": {
+		"res://Assets/UI/CommonDialog.tscn": {
+			"deps": [],
+			"needGroup": [
+				"NewGroup"
+			],
+			"keys": [],
+			"typeIndex": 0
+		},
+		"res://Assets/UI/Dialog.tscn": {
+			"deps": [],
+			"needGroup": [
+				"NewGroup"
+			],
+			"keys": [],
+			"typeIndex": 0
+		},
+		"res://Assets/UI/Layer.tscn": {
+			"deps": [],
+			"needGroup": [
+				"NewGroup"
+			],
+			"keys": [],
+			"typeIndex": 0
+		},
+		"res://Assets/UI/UIRoot.tscn": {
+			"deps": [],
+			"needGroup": [
+				"NewGroup"
+			],
+			"keys": [],
+			"typeIndex": 0
+		}
+	},
+	"allPassiveEasyAssetInfos": {},
+	"assemblyQualifiedNames": [
+		"PackedScene"
+	]
+}
