@@ -90,7 +90,10 @@ export default class Xlsx2FlatBuffers extends BaseTranslateConfig {
                 let sheetName = this.translateSheets[i][0];
                 let translateName = this.translateSheets[i][1];
                 let jsonData = this.CreateJson(this.xlsxData[sheetName], translateName);
-                all[translateName] = jsonData;
+                // Use lowercase field name to match FBS field names
+                let fieldName = translateName.charAt(0).toLowerCase() + translateName.slice(1);
+                // Wrap in records to match _Array table structure
+                all[fieldName] = { records: jsonData };
             }
             await this.SaveJsonToFile(all, path.join(this.outputPathJsonStr, this.mergeName + file));
         } else {
@@ -112,6 +115,23 @@ export default class Xlsx2FlatBuffers extends BaseTranslateConfig {
                 let translateName = this.translateSheets[i][1];
                 fbsContent += this.CreateFbs(this.xlsxData[sheetName], translateName);
             }
+            // Generate merge wrapper table
+            fbsContent += FbsDefine.tableStart.replace('{0}', this.mergeName);
+            for (let i = 0; i < this.translateSheets.length; ++i) {
+                let sheetName = this.translateSheets[i][0];
+                let translateName = this.translateSheets[i][1];
+                let data = this.xlsxData[sheetName];
+                let rootType = translateName + '_Array';
+                if (data && data.length > 0 && data[0] && data[0].length > 0 && typeof data[0][0] === 'string' && data[0][0].startsWith('@')) {
+                    let atFieldName = data[0][0].substring(1);
+                    let subTableName = this.getSubTableName(translateName, atFieldName);
+                    rootType = subTableName + '_Array';
+                }
+                // Use lowercase field name to avoid conflict with table names
+                let fieldName = translateName.charAt(0).toLowerCase() + translateName.slice(1);
+                fbsContent += FbsDefine.fieldStr.replace('{0}', fieldName).replace('{1}', rootType);
+            }
+            fbsContent += FbsDefine.tableEnd;
             fbsContent += FbsDefine.rootType.replace('{0}', this.mergeName);
             fs.writeFileSync(path.join(this.outputPathFbsStr, this.mergeName + '.fbs'), fbsContent, 'utf8');
         } else {
