@@ -44,14 +44,17 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
             let files = await readdir(pathStr);
             for(let i in files) {
                 let data = DataParser.parse(path.join(pathStr, files[i]));
-                for (let i = 0; i < data.length; ++i) {
-                    this.xlsxData[data[i].name] = data[i].data;
+                for (let j = 0; j < data.length; ++j) {
+                    this.xlsxData[data[j].name] = data[j].data;
                 }
-                await this.TransferTableJson(files[i].replace(path.extname(files[i]),""));
-                if(i == "0") {
-                    await this.TransferTableCs();
+                if (this.merge) {
+                    await this.TransferTableJson(files[i].replace(path.extname(files[i]),""));
                 }
             }
+            if (!this.merge) {
+                await this.TransferTableJson();
+            }
+            await this.TransferTableCs();
         } else {
             let data = DataParser.parseWithOptionalExtension(pathStr);
             for (let i = 0; i < data.length; ++i) {
@@ -137,19 +140,32 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
         }
 
         let dataArr = data;
-        let keys = dataArr[0] || [];
-        let types = dataArr[1] || [];
-        
+        // Copy keys so stripping the @ prefix does not mutate the shared sheet data.
+        let keys = (dataArr[0] || []).slice();
+        let typeRowIndex = this.FindTypeRowIndex(dataArr);
+        let types = typeRowIndex >= 0 ? (dataArr[typeRowIndex] || []) : [];
+
         if (keys.length === 0) {
             console.warn('No keys found for CS generation:', className);
             return '';
         }
 
         let key = keys[0];
+        // Array mode: first column key starts with @, e.g. @ItemSeries.
+        // The table becomes Dictionary<key, List<Record>> instead of Dictionary<key, Record>.
+        let isArrayMode = false;
+        if (typeof key === 'string' && key.startsWith('@')) {
+            isArrayMode = true;
+            key = key.substring(1);
+            keys[0] = key;
+        }
         let keyUpperAndLower = Utils.GetFristUpperAndLowerStr(key);
         let keyUpper = keyUpperAndLower[0];
+        let valueType = isArrayMode
+            ? 'System.Collections.Generic.List<' + className + '>'
+            : className;
         let type = this.TransformType(types[0]);
-        let classContent = Utils.FormatStr(CSDefine.classDictionaryStart, className, type, className);
+        let classContent = Utils.FormatStr(CSDefine.classDictionaryStart, className, type, valueType);
 
         // Generate nested struct class definitions INSIDE the main class
         if (nestedFieldDefs) {
@@ -165,7 +181,7 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
         classContent += Utils.FormatStr(CSDefine.privateStr, "int", "_id", "id");
         classContent += Utils.FormatStr(CSDefine.publicStr, "int", "id", "_id");
 
-        // ???????????????
+        // Collect struct fields for nested struct support.
         let structFields: { [fieldName: string]: { type: string; isArray: boolean } } = {};
 
         for (let colIndex = 1; colIndex < keys.length; ++colIndex) {
@@ -224,10 +240,11 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
             return nestedFields;
         }
         
-        let keys = data[0] || [];
-        let types = data[1] || [];
-        
-        for (let colIndex = 0; colIndex < keys.length; ++colIndex) {
+       let keys = data[0] || [];
+        let typeRowIndex = this.FindTypeRowIndex(data);
+        let types = typeRowIndex >= 0 ? (data[typeRowIndex] || []) : [];
+       
+       for (let colIndex = 0; colIndex < keys.length; ++colIndex) {
             let key = keys[colIndex];
             let type = types[colIndex];
             if (_.isNil(key) || _.isEmpty(key) || key.startsWith('#')) {
@@ -310,21 +327,26 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
         }
 
         let dataArr = data;
-        let keys = dataArr[0] || [];
-        let types = dataArr[1] || [];
+        // Copy keys so stripping the '@' prefix does not mutate the shared sheet data.
+        let keys = (dataArr[0] || []).slice();
+        let typeRowIndex = this.FindTypeRowIndex(dataArr);
+        let types = typeRowIndex >= 0 ? (dataArr[typeRowIndex] || []) : [];
 
         let layerNum = 1;
 
-        // 检查是否是数组模式（第一列以@开头）
+        // Array mode: first column key starts with '@', e.g. @ItemSeries.
+        // Rows are grouped into arrays keyed by the first column value.
         let isArrayMode = false;
         let arrayKey = '';
         if (keys.length > 0 && keys[0] && keys[0].startsWith('@')) {
             isArrayMode = true;
             arrayKey = keys[0].substring(1);
-            keys[0] = arrayKey; // 去掉@前缀
+            keys[0] = arrayKey;
         }
 
-        for (let rowIndex = 3; rowIndex < dataArr.length; ++rowIndex) {
+        // Both header layouts (keys/types/desc and keys/desc/types) keep data at row 3.
+        let dataStartRow = 3;
+        for (let rowIndex = dataStartRow; rowIndex < dataArr.length; ++rowIndex) {
             let _arrLine = dataArr[rowIndex];
 
             if (_.isNil(_arrLine) || _.isNil(_arrLine[0]) || _arrLine[0] == '') {
@@ -371,7 +393,7 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
             subTmp["$type"] = className + ", Assembly-CSharp";
 
             if (isArrayMode) {
-                // 数组模式：按第一列的值分组，相同值的行放在数组中
+                //                                                 
                 let groupKey = _arrLine[layerNum - 1].toString();
                 if (!tmp[groupKey]) {
                     tmp[groupKey] = [];

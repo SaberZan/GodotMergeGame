@@ -205,12 +205,17 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
         let dataArr = data;
         let keys = dataArr[0] || [];
         let types = dataArr[1] || [];
+        
+        // 处理@开头的数组模式列名
+        if (keys.length > 0 && keys[0] && keys[0].startsWith('@')) {
+            keys[0] = keys[0].substring(1);
+        }
         let nestedMap: { [parent: string]: { fields: { [name: string]: string }; isArray: boolean; structName: string } } = {};
         let simpleKeys: { key: string; type: string }[] = [];
         for (let i = 0; i < keys.length; ++i) {
             let key = keys[i];
             let type = types[i];
-            if (_.isNil(key) || _.isEmpty(key)) continue;
+            if (_.isNil(key) || _.isEmpty(key) || key.startsWith('#')) continue;
             let fieldInfo = this.structHelper.AnalyzeField(key, type);
             if (fieldInfo.isStruct && fieldInfo.fieldPath.length > 0) {
                 let parentName = fieldInfo.name;

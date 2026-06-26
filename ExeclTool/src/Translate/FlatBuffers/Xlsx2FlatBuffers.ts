@@ -224,6 +224,11 @@ export default class Xlsx2FlatBuffers extends BaseTranslateConfig {
 
         let keys: string[] = data[0] || [];
         let types: string[] = data[1] || [];
+        
+        // 处理@开头的数组模式列名
+        if (keys.length > 0 && keys[0] && keys[0].startsWith('@')) {
+            keys[0] = keys[0].substring(1);
+        }
 
         // Group nested fields by their top-level parent name.
         // e.g. 'attrs[0].value1' -> parentName='attrs', subField='value1'
