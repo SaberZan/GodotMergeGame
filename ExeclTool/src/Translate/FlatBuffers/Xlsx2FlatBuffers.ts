@@ -54,9 +54,6 @@ export default class Xlsx2FlatBuffers extends BaseTranslateConfig {
                 await this.TransferTableJson(fileName);
             }
             await this.TransferTableFbs();
-            if(this.toCode == "csharp") {
-                await this.TransferTableCs();
-            }
             await this.GenCode(path.join(this.outputPathFbsStr, (this.merge ? this.mergeName : this.translateSheets[0][1]) + '.fbs'), this.toCode, this.outputPathCodeStr);
             for (let i in files) {
                 let fileName = files[i].replace(path.extname(files[i]), '');
@@ -77,9 +74,6 @@ export default class Xlsx2FlatBuffers extends BaseTranslateConfig {
             }
             await this.TransferTableJson();
             await this.TransferTableFbs();
-            if(this.toCode == "csharp") { 
-                await this.TransferTableCs();
-            }
             for (let i = 0; i < this.translateSheets.length; ++i) {
                 let sheetName = this.translateSheets[i][0];
                 let translateName = this.translateSheets[i][1];
@@ -135,33 +129,6 @@ export default class Xlsx2FlatBuffers extends BaseTranslateConfig {
                 }
                 fbsContent += FbsDefine.rootType.replace('{0}', rootType);
                 fs.writeFileSync(path.join(this.outputPathFbsStr, translateName + '.fbs'), fbsContent, 'utf8');
-            }
-        }
-    }
-
-    private async TransferTableCs(): Promise<void> {
-        if (this.merge) {
-            let content = '';
-            for (let i = 0; i < this.translateSheets.length; ++i) {
-                let sheetName = this.translateSheets[i][0];
-                let translateName = this.translateSheets[i][1];
-                content += this.CreateCs(this.xlsxData[sheetName], translateName, this.mergeName);
-            }
-            content += Utils.FormatStr(FbsDefine.csNotes, this.mergeName);
-            if (!this.isDir) content += Utils.FormatStr(FbsDefine.csConfigHead, this.mergeName);
-            content += Utils.FormatStr(FbsDefine.csClassDictionaryStart, this.mergeName, 'int', this.mergeName);
-            content += Utils.FormatStr(FbsDefine.csPrivateStr, 'int', 'id');
-            content += Utils.FormatStr(FbsDefine.csPublicStr, 'int', 'id');
-            content += FbsDefine.csClassEnd;
-            this.SaveCsToFile(content, path.join(this.outputPathCsStr, this.mergeName));
-        } else {
-            for (let i = 0; i < this.translateSheets.length; ++i) {
-                let sheetName = this.translateSheets[i][0];
-                let translateName = this.translateSheets[i][1];
-                let content = Utils.FormatStr(FbsDefine.csNotes, translateName);
-                content += Utils.FormatStr(FbsDefine.csConfigHead, translateName);
-                content += this.CreateCs(this.xlsxData[sheetName], translateName, '');
-                this.SaveCsToFile(content, path.join(this.outputPathCsStr, translateName));
             }
         }
     }
@@ -421,77 +388,6 @@ export default class Xlsx2FlatBuffers extends BaseTranslateConfig {
             content += FbsDefine.tableEnd;
         }
 
-        return content;
-    }
-
-    private CreateCs(data: any, className: string, mergeName: string): string {
-        if (!data || data.length < 2) {
-            console.warn('Invalid data for FlatBuffers CS', className);
-            return '';
-        }
-
-        let dataArr = data;
-        let keys = (dataArr[0] || []).slice();
-        let typeRowIndex = this.FindTypeRowIndex(dataArr);
-        let types = typeRowIndex >= 0 ? (dataArr[typeRowIndex] || []) : [];
-        let content = '';
-
-        if (mergeName !== className) {
-            content += Utils.FormatStr(FbsDefine.csNotes, className);
-        }
-        
-        // Check if array mode (first key starts with @)
-        let firstKey = keys.length > 0 ? keys[0] : '';
-        let isArrayMode = false;
-        if (typeof firstKey === 'string' && firstKey.startsWith('@')) {
-            isArrayMode = true;
-            keys[0] = firstKey.substring(1);
-        }
-        content += Utils.FormatStr(FbsDefine.csClassDictionaryStart, className, this.TransformType(types[0]), isArrayMode ? 'System.Collections.Generic.List<' + className + '>' : className);
-
-        let structFields: { [fieldName: string]: { typeName: string; isArray: boolean } } = {};
-
-        for (let colIndex = 0; colIndex < keys.length; ++colIndex) {
-            let key = keys[colIndex];
-            let type = types[colIndex];
-            if (_.isNil(key) || _.isEmpty(key) || key.startsWith('#')) continue;
-
-            let fieldInfo = this.structHelper.AnalyzeField(key, type);
-            if (fieldInfo.isStruct && fieldInfo.fieldPath.length > 0) {
-                let parentName = fieldInfo.name;
-                if (!structFields[parentName]) {
-                    let structName = fieldInfo.structName || (parentName.charAt(0).toUpperCase() + parentName.slice(1));
-                    let isArray = fieldInfo.isArray;
-                    let typeName = this.structHelper.IsStructType(structName)
-                        ? 'CfgSpace.' + structName
-                        : 'CfgSpace.' + className + '_' + structName;
-                    structFields[parentName] = { typeName, isArray };
-                }
-                continue;
-            }
-
-            let csType = this.TransformCsType(type);
-            let keyUpperLower = Utils.GetFristUpperAndLowerStr(key);
-            let keyUpper = keyUpperLower[0];
-            let keyLower = keyUpperLower[1];
-
-            content += Utils.FormatStr(FbsDefine.csPrivateStr, csType, keyLower);
-            content += Utils.FormatStr(FbsDefine.csPublicStr, csType, keyUpper, keyLower);
-        }
-
-        // Add struct field references
-        for (let fieldName in structFields) {
-            let info = structFields[fieldName];
-            let keyUpperLower = Utils.GetFristUpperAndLowerStr(fieldName);
-            let keyUpper = keyUpperLower[0];
-            let keyLower = keyUpperLower[1];
-            let fieldType = info.isArray ? info.typeName + "[]" : info.typeName;
-
-            content += Utils.FormatStr(FbsDefine.csPrivateStr, fieldType, keyLower);
-            content += Utils.FormatStr(FbsDefine.csPublicStr, fieldType, keyUpper, keyLower);
-        }
-
-        content += FbsDefine.csClassEnd;
         return content;
     }
 

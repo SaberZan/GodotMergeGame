@@ -99,13 +99,9 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
                 
                 let nestedFields = this.CollectNestedFields(this.xlsxData[sheetName]);
                 
-                
                 let classContent = CSDefine.namespaceStart;
-                classContent += CSDefine.notes.replace('{0}', translateName);
-                if(!this.isDir) {
-                    classContent += CSDefine.configHead.replace('{0}', translateName);
-                }
                 let csData = this.CreateCs(this.xlsxData[sheetName], translateName, nestedFields);
+                
                 classContent += csData;
                 classContent += CSDefine.namespaceEnd;
                 await this.SaveCsToFile(classContent, path.join(this.outputPathCsStr, translateName));
@@ -159,15 +155,14 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
             key = key.substring(1);
             keys[0] = key;
         }
-        let keyUpperAndLower = Utils.GetFristUpperAndLowerStr(key);
-        let keyUpper = keyUpperAndLower[0];
+        let keyType = this.TransformType(types[0]);
         let valueType = isArrayMode
             ? 'System.Collections.Generic.List<' + className + '>'
             : className;
-        let type = this.TransformType(types[0]);
-        let classContent = Utils.FormatStr(CSDefine.classDictionaryStart, className, type, valueType);
 
-        // Generate nested struct class definitions INSIDE the main class
+        let classContent = '';
+
+        // Generate nested struct class definitions BEFORE the main class
         if (nestedFieldDefs) {
             for (let fieldName in nestedFieldDefs) {
                 let capitalized = fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
@@ -178,13 +173,14 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
             }
         }
 
-        classContent += Utils.FormatStr(CSDefine.privateStr, "int", "_id", "id");
-        classContent += Utils.FormatStr(CSDefine.publicStr, "int", "id", "_id");
+        // Record class: plain data class (not a Dictionary)
+        classContent += CSDefine.notes.replace('{0}', className);
+        classContent += CSDefine.classStart.replace('{0}', className);
 
         // Collect struct fields for nested struct support.
         let structFields: { [fieldName: string]: { type: string; isArray: boolean } } = {};
 
-        for (let colIndex = 1; colIndex < keys.length; ++colIndex) {
+        for (let colIndex = 0; colIndex < keys.length; ++colIndex) {
             let key = keys[colIndex];
             let type = types[colIndex];
             if (_.isNil(key) || _.isEmpty(key) || key.startsWith('#')) {
@@ -230,6 +226,18 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
         }
 
         classContent += CSDefine.classEnd;
+
+        // Array mode: create List wrapper class (e.g., MergeUpgradeDataItemSeries : List<MergeUpgradeData>)
+        let listClassName = '';
+        if (isArrayMode) {
+            listClassName = className + key;
+            classContent += "\t[System.Serializable]\r\n\tpublic class " + listClassName + " : System.Collections.Generic.List<" + className + ">\r\n\t{\r\n\t}\r\n\r\n";
+        }
+
+        // Dictionary class: Dictionary<int, className> or Dictionary<int, ListClassName>
+        let dictValueType = isArrayMode ? listClassName : className;
+        classContent += Utils.FormatStr(CSDefine.classDictionaryStartWithConfig, className, keyType, dictValueType);
+
         return classContent;
     }
 
@@ -349,13 +357,13 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
         for (let rowIndex = dataStartRow; rowIndex < dataArr.length; ++rowIndex) {
             let _arrLine = dataArr[rowIndex];
 
-            if (_.isNil(_arrLine) || _.isNil(_arrLine[0]) || _arrLine[0] == '') {
+            if (_.isNil(_arrLine) || _.isNil(_arrLine[0]) || _arrLine[0] === '') {
                 continue;
             }
 
             let tmp = jsonOut;
             for (let layIndex = 0; layIndex < layerNum - 1; ++layIndex) {
-                if (!tmp[_arrLine[layIndex]]) {
+                if (!(_arrLine[layIndex] in tmp)) {
                     tmp[_arrLine[layIndex]] = {};
                 }
                 tmp = tmp[_arrLine[layIndex]];
@@ -395,7 +403,7 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
             if (isArrayMode) {
                 //                                                 
                 let groupKey = _arrLine[layerNum - 1].toString();
-                if (!tmp[groupKey]) {
+                if (!(groupKey in tmp)) {
                     tmp[groupKey] = [];
                 }
                 tmp[groupKey].push(subTmp);

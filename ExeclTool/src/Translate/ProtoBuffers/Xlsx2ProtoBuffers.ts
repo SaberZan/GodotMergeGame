@@ -319,7 +319,7 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
         for (let rowIndex = 3; rowIndex < dataArr.length; ++rowIndex) {
             let _arrLine = dataArr[rowIndex];
 
-            if (_.isNil(_arrLine) || _.isNil(_arrLine[0]) || _arrLine[0] == '') {
+            if (_.isNil(_arrLine) || _.isNil(_arrLine[0]) || _arrLine[0] === '') {
                 continue;
             }
 
@@ -365,7 +365,7 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
             if (isArrayMode) {
                 // 数组模式：按第一列的值分组，相同值的行放在数组中
                 let groupKey = _arrLine[layerNum - 1].toString();
-                if (!tmp[groupKey]) {
+                if (!(groupKey in tmp)) {
                     tmp[groupKey] = [];
                 }
                 tmp[groupKey].push(subTmp);
