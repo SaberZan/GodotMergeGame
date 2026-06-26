@@ -1,1408 +1,6 @@
 // AUTO-GENERATED
 declare module "godot" {
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapContainer extends __RPCMapControl {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapContainer extends __NameMapControl {
-    }
-    /** Base class for all GUI containers.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_container.html  
-     */
-    class Container<Map extends NodePathMap = any> extends Control<Map> {
-        /** Notification just before children are going to be sorted, in case there's something to process beforehand. */
-        static readonly NOTIFICATION_PRE_SORT_CHILDREN = 50
-        
-        /** Notification for when sorting the children, it must be obeyed immediately. */
-        static readonly NOTIFICATION_SORT_CHILDREN = 51
-        constructor(identifier?: any)
-        
-        /** Implement to return a list of allowed horizontal [enum Control.SizeFlags] for child nodes. This doesn't technically prevent the usages of any other size flags, if your implementation requires that. This only limits the options available to the user in the Inspector dock.  
-         *      
-         *  **Note:** Having no size flags is equal to having [constant Control.SIZE_SHRINK_BEGIN]. As such, this value is always implicitly allowed.  
-         */
-        /* gdvirtual */ _get_allowed_size_flags_horizontal(): PackedInt32Array
-        
-        /** Implement to return a list of allowed vertical [enum Control.SizeFlags] for child nodes. This doesn't technically prevent the usages of any other size flags, if your implementation requires that. This only limits the options available to the user in the Inspector dock.  
-         *      
-         *  **Note:** Having no size flags is equal to having [constant Control.SIZE_SHRINK_BEGIN]. As such, this value is always implicitly allowed.  
-         */
-        /* gdvirtual */ _get_allowed_size_flags_vertical(): PackedInt32Array
-        
-        /** Queue resort of the contained children. This is called automatically anyway, but can be called upon request. */
-        queue_sort(): void
-        
-        /** Fit a child control in a given rect. This is mainly a helper for creating custom container classes. */
-        fit_child_in_rect(child: Control, rect: Rect2): void
-        
-        /** Emitted when children are going to be sorted. */
-        readonly pre_sort_children: Signal<() => void>
-        
-        /** Emitted when sorting the children is needed. */
-        readonly sort_children: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapContainer;
-    }
-    namespace Control {
-        enum FocusMode {
-            /** The node cannot grab focus. Use with [member focus_mode]. */
-            FOCUS_NONE = 0,
-            
-            /** The node can only grab focus on mouse clicks. Use with [member focus_mode]. */
-            FOCUS_CLICK = 1,
-            
-            /** The node can grab focus on mouse click, using the arrows and the Tab keys on the keyboard, or using the D-pad buttons on a gamepad. Use with [member focus_mode]. */
-            FOCUS_ALL = 2,
-            
-            /** The node can grab focus only when screen reader is active. Use with [member focus_mode]. */
-            FOCUS_ACCESSIBILITY = 3,
-        }
-        enum FocusBehaviorRecursive {
-            /** Inherits the [member focus_behavior_recursive] from the parent control. If there is no parent control, this is the same as [constant FOCUS_BEHAVIOR_ENABLED]. */
-            FOCUS_BEHAVIOR_INHERITED = 0,
-            
-            /** Prevents the control from getting focused. [method get_focus_mode_with_override] will return [constant FOCUS_NONE]. */
-            FOCUS_BEHAVIOR_DISABLED = 1,
-            
-            /** Allows the control to be focused, depending on the [member focus_mode]. This can be used to ignore the parent's [member focus_behavior_recursive]. [method get_focus_mode_with_override] will return the [member focus_mode]. */
-            FOCUS_BEHAVIOR_ENABLED = 2,
-        }
-        enum MouseBehaviorRecursive {
-            /** Inherits the [member mouse_behavior_recursive] from the parent control. If there is no parent control, this is the same as [constant MOUSE_BEHAVIOR_ENABLED]. */
-            MOUSE_BEHAVIOR_INHERITED = 0,
-            
-            /** Prevents the control from receiving mouse input. [method get_mouse_filter_with_override] will return [constant MOUSE_FILTER_IGNORE]. */
-            MOUSE_BEHAVIOR_DISABLED = 1,
-            
-            /** Allows the control to receive mouse input, depending on the [member mouse_filter]. This can be used to ignore the parent's [member mouse_behavior_recursive]. [method get_mouse_filter_with_override] will return the [member mouse_filter]. */
-            MOUSE_BEHAVIOR_ENABLED = 2,
-        }
-        enum CursorShape {
-            /** Show the system's arrow mouse cursor when the user hovers the node. Use with [member mouse_default_cursor_shape]. */
-            CURSOR_ARROW = 0,
-            
-            /** Show the system's I-beam mouse cursor when the user hovers the node. The I-beam pointer has a shape similar to "I". It tells the user they can highlight or insert text. */
-            CURSOR_IBEAM = 1,
-            
-            /** Show the system's pointing hand mouse cursor when the user hovers the node. */
-            CURSOR_POINTING_HAND = 2,
-            
-            /** Show the system's cross mouse cursor when the user hovers the node. */
-            CURSOR_CROSS = 3,
-            
-            /** Show the system's wait mouse cursor when the user hovers the node. Often an hourglass. */
-            CURSOR_WAIT = 4,
-            
-            /** Show the system's busy mouse cursor when the user hovers the node. Often an arrow with a small hourglass. */
-            CURSOR_BUSY = 5,
-            
-            /** Show the system's drag mouse cursor, often a closed fist or a cross symbol, when the user hovers the node. It tells the user they're currently dragging an item, like a node in the Scene dock. */
-            CURSOR_DRAG = 6,
-            
-            /** Show the system's drop mouse cursor when the user hovers the node. It can be an open hand. It tells the user they can drop an item they're currently grabbing, like a node in the Scene dock. */
-            CURSOR_CAN_DROP = 7,
-            
-            /** Show the system's forbidden mouse cursor when the user hovers the node. Often a crossed circle. */
-            CURSOR_FORBIDDEN = 8,
-            
-            /** Show the system's vertical resize mouse cursor when the user hovers the node. A double-headed vertical arrow. It tells the user they can resize the window or the panel vertically. */
-            CURSOR_VSIZE = 9,
-            
-            /** Show the system's horizontal resize mouse cursor when the user hovers the node. A double-headed horizontal arrow. It tells the user they can resize the window or the panel horizontally. */
-            CURSOR_HSIZE = 10,
-            
-            /** Show the system's window resize mouse cursor when the user hovers the node. The cursor is a double-headed arrow that goes from the bottom left to the top right. It tells the user they can resize the window or the panel both horizontally and vertically. */
-            CURSOR_BDIAGSIZE = 11,
-            
-            /** Show the system's window resize mouse cursor when the user hovers the node. The cursor is a double-headed arrow that goes from the top left to the bottom right, the opposite of [constant CURSOR_BDIAGSIZE]. It tells the user they can resize the window or the panel both horizontally and vertically. */
-            CURSOR_FDIAGSIZE = 12,
-            
-            /** Show the system's move mouse cursor when the user hovers the node. It shows 2 double-headed arrows at a 90 degree angle. It tells the user they can move a UI element freely. */
-            CURSOR_MOVE = 13,
-            
-            /** Show the system's vertical split mouse cursor when the user hovers the node. On Windows, it's the same as [constant CURSOR_VSIZE]. */
-            CURSOR_VSPLIT = 14,
-            
-            /** Show the system's horizontal split mouse cursor when the user hovers the node. On Windows, it's the same as [constant CURSOR_HSIZE]. */
-            CURSOR_HSPLIT = 15,
-            
-            /** Show the system's help mouse cursor when the user hovers the node, a question mark. */
-            CURSOR_HELP = 16,
-        }
-        enum LayoutPreset {
-            /** Snap all 4 anchors to the top-left of the parent control's bounds. Use with [method set_anchors_preset]. */
-            PRESET_TOP_LEFT = 0,
-            
-            /** Snap all 4 anchors to the top-right of the parent control's bounds. Use with [method set_anchors_preset]. */
-            PRESET_TOP_RIGHT = 1,
-            
-            /** Snap all 4 anchors to the bottom-left of the parent control's bounds. Use with [method set_anchors_preset]. */
-            PRESET_BOTTOM_LEFT = 2,
-            
-            /** Snap all 4 anchors to the bottom-right of the parent control's bounds. Use with [method set_anchors_preset]. */
-            PRESET_BOTTOM_RIGHT = 3,
-            
-            /** Snap all 4 anchors to the center of the left edge of the parent control's bounds. Use with [method set_anchors_preset]. */
-            PRESET_CENTER_LEFT = 4,
-            
-            /** Snap all 4 anchors to the center of the top edge of the parent control's bounds. Use with [method set_anchors_preset]. */
-            PRESET_CENTER_TOP = 5,
-            
-            /** Snap all 4 anchors to the center of the right edge of the parent control's bounds. Use with [method set_anchors_preset]. */
-            PRESET_CENTER_RIGHT = 6,
-            
-            /** Snap all 4 anchors to the center of the bottom edge of the parent control's bounds. Use with [method set_anchors_preset]. */
-            PRESET_CENTER_BOTTOM = 7,
-            
-            /** Snap all 4 anchors to the center of the parent control's bounds. Use with [method set_anchors_preset]. */
-            PRESET_CENTER = 8,
-            
-            /** Snap all 4 anchors to the left edge of the parent control. The left offset becomes relative to the left edge and the top offset relative to the top left corner of the node's parent. Use with [method set_anchors_preset]. */
-            PRESET_LEFT_WIDE = 9,
-            
-            /** Snap all 4 anchors to the top edge of the parent control. The left offset becomes relative to the top left corner, the top offset relative to the top edge, and the right offset relative to the top right corner of the node's parent. Use with [method set_anchors_preset]. */
-            PRESET_TOP_WIDE = 10,
-            
-            /** Snap all 4 anchors to the right edge of the parent control. The right offset becomes relative to the right edge and the top offset relative to the top right corner of the node's parent. Use with [method set_anchors_preset]. */
-            PRESET_RIGHT_WIDE = 11,
-            
-            /** Snap all 4 anchors to the bottom edge of the parent control. The left offset becomes relative to the bottom left corner, the bottom offset relative to the bottom edge, and the right offset relative to the bottom right corner of the node's parent. Use with [method set_anchors_preset]. */
-            PRESET_BOTTOM_WIDE = 12,
-            
-            /** Snap all 4 anchors to a vertical line that cuts the parent control in half. Use with [method set_anchors_preset]. */
-            PRESET_VCENTER_WIDE = 13,
-            
-            /** Snap all 4 anchors to a horizontal line that cuts the parent control in half. Use with [method set_anchors_preset]. */
-            PRESET_HCENTER_WIDE = 14,
-            
-            /** Snap all 4 anchors to the respective corners of the parent control. Set all 4 offsets to 0 after you applied this preset and the [Control] will fit its parent control. Use with [method set_anchors_preset]. */
-            PRESET_FULL_RECT = 15,
-        }
-        enum LayoutPresetMode {
-            /** The control will be resized to its minimum size. */
-            PRESET_MODE_MINSIZE = 0,
-            
-            /** The control's width will not change. */
-            PRESET_MODE_KEEP_WIDTH = 1,
-            
-            /** The control's height will not change. */
-            PRESET_MODE_KEEP_HEIGHT = 2,
-            
-            /** The control's size will not change. */
-            PRESET_MODE_KEEP_SIZE = 3,
-        }
-        enum SizeFlags {
-            /** Tells the parent [Container] to align the node with its start, either the top or the left edge. It is mutually exclusive with [constant SIZE_FILL] and other shrink size flags, but can be used with [constant SIZE_EXPAND] in some containers. Use with [member size_flags_horizontal] and [member size_flags_vertical].  
-             *      
-             *  **Note:** Setting this flag is equal to not having any size flags.  
-             */
-            SIZE_SHRINK_BEGIN = 0,
-            
-            /** Tells the parent [Container] to expand the bounds of this node to fill all the available space without pushing any other node. It is mutually exclusive with shrink size flags. Use with [member size_flags_horizontal] and [member size_flags_vertical]. */
-            SIZE_FILL = 1,
-            
-            /** Tells the parent [Container] to let this node take all the available space on the axis you flag. If multiple neighboring nodes are set to expand, they'll share the space based on their stretch ratio. See [member size_flags_stretch_ratio]. Use with [member size_flags_horizontal] and [member size_flags_vertical]. */
-            SIZE_EXPAND = 2,
-            
-            /** Sets the node's size flags to both fill and expand. See [constant SIZE_FILL] and [constant SIZE_EXPAND] for more information. */
-            SIZE_EXPAND_FILL = 3,
-            
-            /** Tells the parent [Container] to center the node in the available space. It is mutually exclusive with [constant SIZE_FILL] and other shrink size flags, but can be used with [constant SIZE_EXPAND] in some containers. Use with [member size_flags_horizontal] and [member size_flags_vertical]. */
-            SIZE_SHRINK_CENTER = 4,
-            
-            /** Tells the parent [Container] to align the node with its end, either the bottom or the right edge. It is mutually exclusive with [constant SIZE_FILL] and other shrink size flags, but can be used with [constant SIZE_EXPAND] in some containers. Use with [member size_flags_horizontal] and [member size_flags_vertical]. */
-            SIZE_SHRINK_END = 8,
-        }
-        enum MouseFilter {
-            /** The control will receive mouse movement input events and mouse button input events if clicked on through [method _gui_input]. The control will also receive the [signal mouse_entered] and [signal mouse_exited] signals. These events are automatically marked as handled, and they will not propagate further to other controls. This also results in blocking signals in other controls. */
-            MOUSE_FILTER_STOP = 0,
-            
-            /** The control will receive mouse movement input events and mouse button input events if clicked on through [method _gui_input]. The control will also receive the [signal mouse_entered] and [signal mouse_exited] signals.  
-             *  If this control does not handle the event, the event will propagate up to its parent control if it has one. The event is bubbled up the node hierarchy until it reaches a non-[CanvasItem], a control with [constant MOUSE_FILTER_STOP], or a [CanvasItem] with [member CanvasItem.top_level] enabled. This will allow signals to fire in all controls it reaches. If no control handled it, the event will be passed to [method Node._shortcut_input] for further processing.  
-             */
-            MOUSE_FILTER_PASS = 1,
-            
-            /** The control will not receive any mouse movement input events nor mouse button input events through [method _gui_input]. The control will also not receive the [signal mouse_entered] nor [signal mouse_exited] signals. This will not block other controls from receiving these events or firing the signals. Ignored events will not be handled automatically. If a child has [constant MOUSE_FILTER_PASS] and an event was passed to this control, the event will further propagate up to the control's parent.  
-             *      
-             *  **Note:** If the control has received [signal mouse_entered] but not [signal mouse_exited], changing the [member mouse_filter] to [constant MOUSE_FILTER_IGNORE] will cause [signal mouse_exited] to be emitted.  
-             */
-            MOUSE_FILTER_IGNORE = 2,
-        }
-        enum GrowDirection {
-            /** The control will grow to the left or top to make up if its minimum size is changed to be greater than its current size on the respective axis. */
-            GROW_DIRECTION_BEGIN = 0,
-            
-            /** The control will grow to the right or bottom to make up if its minimum size is changed to be greater than its current size on the respective axis. */
-            GROW_DIRECTION_END = 1,
-            
-            /** The control will grow in both directions equally to make up if its minimum size is changed to be greater than its current size. */
-            GROW_DIRECTION_BOTH = 2,
-        }
-        enum Anchor {
-            /** Snaps one of the 4 anchor's sides to the origin of the node's `Rect`, in the top left. Use it with one of the `anchor_*` member variables, like [member anchor_left]. To change all 4 anchors at once, use [method set_anchors_preset]. */
-            ANCHOR_BEGIN = 0,
-            
-            /** Snaps one of the 4 anchor's sides to the end of the node's `Rect`, in the bottom right. Use it with one of the `anchor_*` member variables, like [member anchor_left]. To change all 4 anchors at once, use [method set_anchors_preset]. */
-            ANCHOR_END = 1,
-        }
-        enum LayoutDirection {
-            /** Automatic layout direction, determined from the parent control layout direction. */
-            LAYOUT_DIRECTION_INHERITED = 0,
-            
-            /** Automatic layout direction, determined from the current locale. Right-to-left layout direction is automatically used for languages that require it such as Arabic and Hebrew, but only if a valid translation file is loaded for the given language (unless said language is configured as a fallback in [member ProjectSettings.internationalization/locale/fallback]). For all other languages (or if no valid translation file is found by Godot), left-to-right layout direction is used. If using [TextServerFallback] ([member ProjectSettings.internationalization/rendering/text_driver]), left-to-right layout direction is always used regardless of the language. Right-to-left layout direction can also be forced using [member ProjectSettings.internationalization/rendering/force_right_to_left_layout_direction]. */
-            LAYOUT_DIRECTION_APPLICATION_LOCALE = 1,
-            
-            /** Left-to-right layout direction. */
-            LAYOUT_DIRECTION_LTR = 2,
-            
-            /** Right-to-left layout direction. */
-            LAYOUT_DIRECTION_RTL = 3,
-            
-            /** Automatic layout direction, determined from the system locale. Right-to-left layout direction is automatically used for languages that require it such as Arabic and Hebrew, but only if a valid translation file is loaded for the given language. For all other languages (or if no valid translation file is found by Godot), left-to-right layout direction is used. If using [TextServerFallback] ([member ProjectSettings.internationalization/rendering/text_driver]), left-to-right layout direction is always used regardless of the language. */
-            LAYOUT_DIRECTION_SYSTEM_LOCALE = 4,
-            
-            /** Represents the size of the [enum LayoutDirection] enum. */
-            LAYOUT_DIRECTION_MAX = 5,
-            LAYOUT_DIRECTION_LOCALE = 1,
-        }
-        enum TextDirection {
-            /** Text writing direction is the same as layout direction. */
-            TEXT_DIRECTION_INHERITED = 3,
-            
-            /** Automatic text writing direction, determined from the current locale and text content. */
-            TEXT_DIRECTION_AUTO = 0,
-            
-            /** Left-to-right text writing direction. */
-            TEXT_DIRECTION_LTR = 1,
-            
-            /** Right-to-left text writing direction. */
-            TEXT_DIRECTION_RTL = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapControl extends __RPCMapCanvasItem {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapControl extends __NameMapCanvasItem {
-    }
-    /** Base class for all GUI controls. Adapts its position and size based on its parent control.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_control.html  
-     */
-    class Control<Map extends NodePathMap = any> extends CanvasItem<Map> {
-        /** Sent when the node changes size. Use [member size] to get the new size. */
-        static readonly NOTIFICATION_RESIZED = 40
-        
-        /** Sent when the mouse cursor enters the control's (or any child control's) visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
-         *      
-         *  **Note:** [member CanvasItem.z_index] doesn't affect which Control receives the notification.  
-         *  See also [constant NOTIFICATION_MOUSE_ENTER_SELF].  
-         */
-        static readonly NOTIFICATION_MOUSE_ENTER = 41
-        
-        /** Sent when the mouse cursor leaves the control's (and all child control's) visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
-         *      
-         *  **Note:** [member CanvasItem.z_index] doesn't affect which Control receives the notification.  
-         *  See also [constant NOTIFICATION_MOUSE_EXIT_SELF].  
-         */
-        static readonly NOTIFICATION_MOUSE_EXIT = 42
-        
-        /** Sent when the mouse cursor enters the control's visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
-         *      
-         *  **Note:** [member CanvasItem.z_index] doesn't affect which Control receives the notification.  
-         *  See also [constant NOTIFICATION_MOUSE_ENTER].  
-         */
-        static readonly NOTIFICATION_MOUSE_ENTER_SELF = 60
-        
-        /** Sent when the mouse cursor leaves the control's visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
-         *      
-         *  **Note:** [member CanvasItem.z_index] doesn't affect which Control receives the notification.  
-         *  See also [constant NOTIFICATION_MOUSE_EXIT].  
-         */
-        static readonly NOTIFICATION_MOUSE_EXIT_SELF = 61
-        
-        /** Sent when the node grabs focus. */
-        static readonly NOTIFICATION_FOCUS_ENTER = 43
-        
-        /** Sent when the node loses focus.  
-         *  This notification is sent in reversed order.  
-         */
-        static readonly NOTIFICATION_FOCUS_EXIT = 44
-        
-        /** Sent when the node needs to refresh its theme items. This happens in one of the following cases:  
-         *  - The [member theme] property is changed on this node or any of its ancestors.  
-         *  - The [member theme_type_variation] property is changed on this node.  
-         *  - One of the node's theme property overrides is changed.  
-         *  - The node enters the scene tree.  
-         *      
-         *  **Note:** As an optimization, this notification won't be sent from changes that occur while this node is outside of the scene tree. Instead, all of the theme item updates can be applied at once when the node enters the scene tree.  
-         *      
-         *  **Note:** This notification is received alongside [constant Node.NOTIFICATION_ENTER_TREE], so if you are instantiating a scene, the child nodes will not be initialized yet. You can use it to setup theming for this node, child nodes created from script, or if you want to access child nodes added in the editor, make sure the node is ready using [method Node.is_node_ready].  
-         *    
-         */
-        static readonly NOTIFICATION_THEME_CHANGED = 45
-        
-        /** Sent when this node is inside a [ScrollContainer] which has begun being scrolled when dragging the scrollable area  *with a touch event* . This notification is  *not*  sent when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.  
-         *      
-         *  **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when [member ProjectSettings.input_devices/pointing/emulate_touch_from_mouse] is enabled.  
-         */
-        static readonly NOTIFICATION_SCROLL_BEGIN = 47
-        
-        /** Sent when this node is inside a [ScrollContainer] which has stopped being scrolled when dragging the scrollable area  *with a touch event* . This notification is  *not*  sent when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.  
-         *      
-         *  **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when [member ProjectSettings.input_devices/pointing/emulate_touch_from_mouse] is enabled.  
-         */
-        static readonly NOTIFICATION_SCROLL_END = 48
-        
-        /** Sent when the control layout direction is changed from LTR or RTL or vice versa. This notification is propagated to child Control nodes as result of a change to [member layout_direction]. */
-        static readonly NOTIFICATION_LAYOUT_DIRECTION_CHANGED = 49
-        constructor(identifier?: any)
-        
-        /** Virtual method to be implemented by the user. Returns whether the given [param point] is inside this control.  
-         *  If not overridden, default behavior is checking if the point is within control's Rect.  
-         *      
-         *  **Note:** If you want to check if a point is inside the control, you can use `Rect2(Vector2.ZERO, size).has_point(point)`.  
-         */
-        /* gdvirtual */ _has_point(point: Vector2): boolean
-        
-        /** User defined BiDi algorithm override function.  
-         *  Returns an [Array] of [Vector3i] text ranges and text base directions, in the left-to-right order. Ranges should cover full source [param text] without overlaps. BiDi algorithm will be used on each range separately.  
-         */
-        /* gdvirtual */ _structured_text_parser(args: GArray, text: string): GArray<Vector3i>
-        
-        /** Virtual method to be implemented by the user. Returns the minimum size for this control. Alternative to [member custom_minimum_size] for controlling minimum size via code. The actual minimum size will be the max value of these two (in each axis separately).  
-         *  If not overridden, defaults to [constant Vector2.ZERO].  
-         *      
-         *  **Note:** This method will not be called when the script is attached to a [Control] node that already overrides its minimum size (e.g. [Label], [Button], [PanelContainer] etc.). It can only be used with most basic GUI nodes, like [Control], [Container], [Panel] etc.  
-         */
-        /* gdvirtual */ _get_minimum_size(): Vector2
-        
-        /** Virtual method to be implemented by the user. Returns the tooltip text for the position [param at_position] in control's local coordinates, which will typically appear when the cursor is resting over this control. See [method get_tooltip].  
-         *      
-         *  **Note:** If this method returns an empty [String] and [method _make_custom_tooltip] is not overridden, no tooltip is displayed.  
-         */
-        /* gdvirtual */ _get_tooltip(at_position: Vector2): string
-        
-        /** Godot calls this method to get data that can be dragged and dropped onto controls that expect drop data. Returns `null` if there is no data to drag. Controls that want to receive drop data should implement [method _can_drop_data] and [method _drop_data]. [param at_position] is local to this control. Drag may be forced with [method force_drag].  
-         *  A preview that will follow the mouse that should represent the data can be set with [method set_drag_preview]. A good time to set the preview is in this method.  
-         *      
-         *  **Note:** If the drag was initiated by a keyboard shortcut or [method accessibility_drag], [param at_position] is set to [constant Vector2.INF], and the currently selected item/text position should be used as the drag position.  
-         *    
-         */
-        /* gdvirtual */ _get_drag_data(at_position: Vector2): any
-        
-        /** Godot calls this method to test if [param data] from a control's [method _get_drag_data] can be dropped at [param at_position]. [param at_position] is local to this control.  
-         *  This method should only be used to test the data. Process the data in [method _drop_data].  
-         *      
-         *  **Note:** If the drag was initiated by a keyboard shortcut or [method accessibility_drag], [param at_position] is set to [constant Vector2.INF], and the currently selected item/text position should be used as the drop position.  
-         *    
-         */
-        /* gdvirtual */ _can_drop_data(at_position: Vector2, data: any): boolean
-        
-        /** Godot calls this method to pass you the [param data] from a control's [method _get_drag_data] result. Godot first calls [method _can_drop_data] to test if [param data] is allowed to drop at [param at_position] where [param at_position] is local to this control.  
-         *      
-         *  **Note:** If the drag was initiated by a keyboard shortcut or [method accessibility_drag], [param at_position] is set to [constant Vector2.INF], and the currently selected item/text position should be used as the drop position.  
-         *    
-         */
-        /* gdvirtual */ _drop_data(at_position: Vector2, data: any): void
-        
-        /** Virtual method to be implemented by the user. Returns a [Control] node that should be used as a tooltip instead of the default one. [param for_text] is the return value of [method get_tooltip].  
-         *  The returned node must be of type [Control] or Control-derived. It can have child nodes of any type. It is freed when the tooltip disappears, so make sure you always provide a new instance (if you want to use a pre-existing node from your scene tree, you can duplicate it and pass the duplicated instance). When `null` or a non-Control node is returned, the default tooltip will be used instead.  
-         *  The returned node will be added as child to a [PopupPanel], so you should only provide the contents of that panel. That [PopupPanel] can be themed using [method Theme.set_stylebox] for the type `"TooltipPanel"` (see [member tooltip_text] for an example).  
-         *      
-         *  **Note:** The tooltip is shrunk to minimal size. If you want to ensure it's fully visible, you might want to set its [member custom_minimum_size] to some non-zero value.  
-         *      
-         *  **Note:** The node (and any relevant children) should have their [member CanvasItem.visible] set to `true` when returned, otherwise, the viewport that instantiates it will not be able to calculate its minimum size reliably.  
-         *      
-         *  **Note:** If overridden, this method is called even if [method get_tooltip] returns an empty string. When this happens with the default tooltip, it is not displayed. To copy this behavior, return `null` in this method when [param for_text] is empty.  
-         *  **Example:** Use a constructed node as a tooltip:  
-         *    
-         *  **Example:** Use a scene instance as a tooltip:  
-         *    
-         */
-        /* gdvirtual */ _make_custom_tooltip(for_text: string): null | Object
-        
-        /** Return the description of the keyboard shortcuts and other contextual help for this control. */
-        /* gdvirtual */ _accessibility_get_contextual_info(): string
-        
-        /** Override this method to return a human-readable description of the position of the child [param node] in the custom container, added to the [member accessibility_name]. */
-        /* gdvirtual */ _get_accessibility_container_name(node: Node): string
-        
-        /** Virtual method to be implemented by the user. Override this method to handle and accept inputs on UI elements. See also [method accept_event].  
-         *  **Example:** Click on the control to print a message:  
-         *    
-         *  If the [param event] inherits [InputEventMouse], this method will **not** be called when:  
-         *  - the control's [member mouse_filter] is set to [constant MOUSE_FILTER_IGNORE];  
-         *  - the control is obstructed by another control on top, that doesn't have [member mouse_filter] set to [constant MOUSE_FILTER_IGNORE];  
-         *  - the control's parent has [member mouse_filter] set to [constant MOUSE_FILTER_STOP] or has accepted the event;  
-         *  - the control's parent has [member clip_contents] enabled and the [param event]'s position is outside the parent's rectangle;  
-         *  - the [param event]'s position is outside the control (see [method _has_point]).  
-         *      
-         *  **Note:** The [param event]'s position is relative to this control's origin.  
-         */
-        /* gdvirtual */ _gui_input(event: InputEvent): void
-        
-        /** Marks an input event as handled. Once you accept an input event, it stops propagating, even to nodes listening to [method Node._unhandled_input] or [method Node._unhandled_key_input].  
-         *      
-         *  **Note:** This does not affect the methods in [Input], only the way events are propagated.  
-         */
-        accept_event(): void
-        
-        /** Returns the minimum size for this control. See [member custom_minimum_size]. */
-        get_minimum_size(): Vector2
-        
-        /** Returns combined minimum size from [member custom_minimum_size] and [method get_minimum_size]. */
-        get_combined_minimum_size(): Vector2
-        
-        /** Sets the anchors to a [param preset] from [enum Control.LayoutPreset] enum. This is the code equivalent to using the Layout menu in the 2D editor.  
-         *  If [param keep_offsets] is `true`, control's position will also be updated.  
-         */
-        set_anchors_preset(preset: Control.LayoutPreset, keep_offsets?: boolean /* = false */): void
-        
-        /** Sets the offsets to a [param preset] from [enum Control.LayoutPreset] enum. This is the code equivalent to using the Layout menu in the 2D editor.  
-         *  Use parameter [param resize_mode] with constants from [enum Control.LayoutPresetMode] to better determine the resulting size of the [Control]. Constant size will be ignored if used with presets that change size, e.g. [constant PRESET_LEFT_WIDE].  
-         *  Use parameter [param margin] to determine the gap between the [Control] and the edges.  
-         */
-        set_offsets_preset(preset: Control.LayoutPreset, resize_mode?: Control.LayoutPresetMode /* = 0 */, margin?: int64 /* = 0 */): void
-        
-        /** Sets both anchor preset and offset preset. See [method set_anchors_preset] and [method set_offsets_preset]. */
-        set_anchors_and_offsets_preset(preset: Control.LayoutPreset, resize_mode?: Control.LayoutPresetMode /* = 0 */, margin?: int64 /* = 0 */): void
-        _set_anchor(side: Side, anchor: float64): void
-        
-        /** Sets the anchor for the specified [enum Side] to [param anchor]. A setter method for [member anchor_bottom], [member anchor_left], [member anchor_right] and [member anchor_top].  
-         *  If [param keep_offset] is `true`, offsets aren't updated after this operation.  
-         *  If [param push_opposite_anchor] is `true` and the opposite anchor overlaps this anchor, the opposite one will have its value overridden. For example, when setting left anchor to 1 and the right anchor has value of 0.5, the right anchor will also get value of 1. If [param push_opposite_anchor] was `false`, the left anchor would get value 0.5.  
-         */
-        set_anchor(side: Side, anchor: float64, keep_offset?: boolean /* = false */, push_opposite_anchor?: boolean /* = true */): void
-        
-        /** Returns the anchor for the specified [enum Side]. A getter method for [member anchor_bottom], [member anchor_left], [member anchor_right] and [member anchor_top]. */
-        get_anchor(side: Side): float64
-        
-        /** Sets the offset for the specified [enum Side] to [param offset]. A setter method for [member offset_bottom], [member offset_left], [member offset_right] and [member offset_top]. */
-        set_offset(side: Side, offset: float64): void
-        
-        /** Returns the offset for the specified [enum Side]. A getter method for [member offset_bottom], [member offset_left], [member offset_right] and [member offset_top]. */
-        get_offset(offset: Side): float64
-        
-        /** Works the same as [method set_anchor], but instead of `keep_offset` argument and automatic update of offset, it allows to set the offset yourself (see [method set_offset]). */
-        set_anchor_and_offset(side: Side, anchor: float64, offset: float64, push_opposite_anchor?: boolean /* = false */): void
-        
-        /** Sets [member offset_left] and [member offset_top] at the same time. Equivalent of changing [member position]. */
-        set_begin(position: Vector2): void
-        
-        /** Sets [member offset_right] and [member offset_bottom] at the same time. */
-        set_end(position: Vector2): void
-        
-        /** Sets the [member position] to given [param position].  
-         *  If [param keep_offsets] is `true`, control's anchors will be updated instead of offsets.  
-         */
-        set_position(position: Vector2, keep_offsets?: boolean /* = false */): void
-        
-        /** Sets the size (see [member size]).  
-         *  If [param keep_offsets] is `true`, control's anchors will be updated instead of offsets.  
-         */
-        set_size(size: Vector2, keep_offsets?: boolean /* = false */): void
-        
-        /** Resets the size to [method get_combined_minimum_size]. This is equivalent to calling `set_size(Vector2())` (or any size below the minimum). */
-        reset_size(): void
-        
-        /** Sets the [member global_position] to given [param position].  
-         *  If [param keep_offsets] is `true`, control's anchors will be updated instead of offsets.  
-         */
-        set_global_position(position: Vector2, keep_offsets?: boolean /* = false */): void
-        
-        /** Returns [member offset_left] and [member offset_top]. See also [member position]. */
-        get_begin(): Vector2
-        
-        /** Returns [member offset_right] and [member offset_bottom]. */
-        get_end(): Vector2
-        
-        /** Returns the combined value of [member pivot_offset] and [member pivot_offset_ratio], in pixels. The ratio is multiplied by the control's size. */
-        get_combined_pivot_offset(): Vector2
-        
-        /** Returns the width/height occupied in the parent control. */
-        get_parent_area_size(): Vector2
-        
-        /** Returns the position of this [Control] in global screen coordinates (i.e. taking window position into account). Mostly useful for editor plugins.  
-         *  Equivalent to `get_screen_transform().origin` (see [method CanvasItem.get_screen_transform]).  
-         *  **Example:** Show a popup at the mouse position:  
-         *    
-         */
-        get_screen_position(): Vector2
-        
-        /** Returns the position and size of the control in the coordinate system of the containing node. See [member position], [member scale] and [member size].  
-         *      
-         *  **Note:** If [member rotation] is not the default rotation, the resulting size is not meaningful.  
-         *      
-         *  **Note:** Setting [member Viewport.gui_snap_controls_to_pixels] to `true` can lead to rounding inaccuracies between the displayed control and the returned [Rect2].  
-         */
-        get_rect(): Rect2
-        
-        /** Returns the position and size of the control relative to the containing canvas. See [member global_position] and [member size].  
-         *      
-         *  **Note:** If the node itself or any parent [CanvasItem] between the node and the canvas have a non default rotation or skew, the resulting size is likely not meaningful.  
-         *      
-         *  **Note:** Setting [member Viewport.gui_snap_controls_to_pixels] to `true` can lead to rounding inaccuracies between the displayed control and the returned [Rect2].  
-         */
-        get_global_rect(): Rect2
-        
-        /** Returns the [member focus_mode], but takes the [member focus_behavior_recursive] into account. If [member focus_behavior_recursive] is set to [constant FOCUS_BEHAVIOR_DISABLED], or it is set to [constant FOCUS_BEHAVIOR_INHERITED] and its ancestor is set to [constant FOCUS_BEHAVIOR_DISABLED], then this returns [constant FOCUS_NONE]. */
-        get_focus_mode_with_override(): Control.FocusMode
-        
-        /** Returns `true` if this is the current focused control. See [member focus_mode].  
-         *  If [param ignore_hidden_focus] is `true`, controls that have their focus hidden will always return `false`. Hidden focus happens automatically when controls gain focus via mouse input, or manually using [method grab_focus] with `hide_focus` set to `true`.  
-         */
-        has_focus(ignore_hidden_focus?: boolean /* = false */): boolean
-        
-        /** Steal the focus from another control and become the focused control (see [member focus_mode]).  
-         *  If [param hide_focus] is `true`, the control will not visually show its focused state. Has no effect for [LineEdit] and [TextEdit] when [member ProjectSettings.gui/common/show_focus_state_on_pointer_event] is set to `Control Supports Keyboard Input`, or for any control when it is set to `Always`.  
-         *      
-         *  **Note:** Using this method together with [method Callable.call_deferred] makes it more reliable, especially when called inside [method Node._ready].  
-         */
-        grab_focus(hide_focus?: boolean /* = false */): void
-        
-        /** Give up the focus. No other control will be able to receive input. */
-        release_focus(): void
-        
-        /** Finds the previous (above in the tree) [Control] that can receive the focus. */
-        find_prev_valid_focus(): null | Control
-        
-        /** Finds the next (below in the tree) [Control] that can receive the focus. */
-        find_next_valid_focus(): null | Control
-        
-        /** Finds the next [Control] that can receive the focus on the specified [enum Side].  
-         *      
-         *  **Note:** This is different from [method get_focus_neighbor], which returns the path of a specified focus neighbor.  
-         */
-        find_valid_focus_neighbor(side: Side): null | Control
-        
-        /** Prevents `*_theme_*_override` methods from emitting [constant NOTIFICATION_THEME_CHANGED] until [method end_bulk_theme_override] is called. */
-        begin_bulk_theme_override(): void
-        
-        /** Ends a bulk theme override update. See [method begin_bulk_theme_override]. */
-        end_bulk_theme_override(): void
-        
-        /** Creates a local override for a theme icon with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_icon_override].  
-         *  See also [method get_theme_icon].  
-         */
-        add_theme_icon_override(name: StringName, texture: Texture2D): void
-        
-        /** Creates a local override for a theme [StyleBox] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_stylebox_override].  
-         *  See also [method get_theme_stylebox].  
-         *  **Example:** Modify a property in a [StyleBox] by duplicating it:  
-         *    
-         */
-        add_theme_stylebox_override(name: StringName, stylebox: StyleBox): void
-        
-        /** Creates a local override for a theme [Font] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_font_override].  
-         *  See also [method get_theme_font].  
-         */
-        add_theme_font_override(name: StringName, font: Font): void
-        
-        /** Creates a local override for a theme font size with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_font_size_override].  
-         *  See also [method get_theme_font_size].  
-         */
-        add_theme_font_size_override(name: StringName, font_size: int64): void
-        
-        /** Creates a local override for a theme [Color] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_color_override].  
-         *  See also [method get_theme_color].  
-         *  **Example:** Override a [Label]'s color and reset it later:  
-         *    
-         */
-        add_theme_color_override(name: StringName, color: Color): void
-        
-        /** Creates a local override for a theme constant with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_constant_override].  
-         *  See also [method get_theme_constant].  
-         */
-        add_theme_constant_override(name: StringName, constant: int64): void
-        
-        /** Removes a local override for a theme icon with the specified [param name] previously added by [method add_theme_icon_override] or via the Inspector dock. */
-        remove_theme_icon_override(name: StringName): void
-        
-        /** Removes a local override for a theme [StyleBox] with the specified [param name] previously added by [method add_theme_stylebox_override] or via the Inspector dock. */
-        remove_theme_stylebox_override(name: StringName): void
-        
-        /** Removes a local override for a theme [Font] with the specified [param name] previously added by [method add_theme_font_override] or via the Inspector dock. */
-        remove_theme_font_override(name: StringName): void
-        
-        /** Removes a local override for a theme font size with the specified [param name] previously added by [method add_theme_font_size_override] or via the Inspector dock. */
-        remove_theme_font_size_override(name: StringName): void
-        
-        /** Removes a local override for a theme [Color] with the specified [param name] previously added by [method add_theme_color_override] or via the Inspector dock. */
-        remove_theme_color_override(name: StringName): void
-        
-        /** Removes a local override for a theme constant with the specified [param name] previously added by [method add_theme_constant_override] or via the Inspector dock. */
-        remove_theme_constant_override(name: StringName): void
-        
-        /** Returns an icon from the first matching [Theme] in the tree if that [Theme] has an icon item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        get_theme_icon(name: StringName, theme_type?: StringName /* = '' */): null | Texture2D
-        
-        /** Returns a [StyleBox] from the first matching [Theme] in the tree if that [Theme] has a stylebox item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        get_theme_stylebox(name: StringName, theme_type?: StringName /* = '' */): null | StyleBox
-        
-        /** Returns a [Font] from the first matching [Theme] in the tree if that [Theme] has a font item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        get_theme_font(name: StringName, theme_type?: StringName /* = '' */): null | Font
-        
-        /** Returns a font size from the first matching [Theme] in the tree if that [Theme] has a font size item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        get_theme_font_size(name: StringName, theme_type?: StringName /* = '' */): int64
-        
-        /** Returns a [Color] from the first matching [Theme] in the tree if that [Theme] has a color item with the specified [param name] and [param theme_type]. If [param theme_type] is omitted the class name of the current control is used as the type, or [member theme_type_variation] if it is defined. If the type is a class name its parent classes are also checked, in order of inheritance. If the type is a variation its base types are checked, in order of dependency, then the control's class name and its parent classes are checked.  
-         *  For the current control its local overrides are considered first (see [method add_theme_color_override]), then its assigned [member theme]. After the current control, each parent control and its assigned [member theme] are considered; controls without a [member theme] assigned are skipped. If no matching [Theme] is found in the tree, the custom project [Theme] (see [member ProjectSettings.gui/theme/custom]) and the default [Theme] are used (see [ThemeDB]).  
-         *    
-         */
-        get_theme_color(name: StringName, theme_type?: StringName /* = '' */): Color
-        
-        /** Returns a constant from the first matching [Theme] in the tree if that [Theme] has a constant item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        get_theme_constant(name: StringName, theme_type?: StringName /* = '' */): int64
-        
-        /** Returns `true` if there is a local override for a theme icon with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_icon_override].  
-         */
-        has_theme_icon_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme [StyleBox] with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_stylebox_override].  
-         */
-        has_theme_stylebox_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme [Font] with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_font_override].  
-         */
-        has_theme_font_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme font size with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_font_size_override].  
-         */
-        has_theme_font_size_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme [Color] with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_color_override].  
-         */
-        has_theme_color_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme constant with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_constant_override].  
-         */
-        has_theme_constant_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has an icon item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        has_theme_icon(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a stylebox item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        has_theme_stylebox(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a font item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        has_theme_font(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a font size item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        has_theme_font_size(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a color item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        has_theme_color(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a constant item with the specified [param name] and [param theme_type].  
-         *  See [method get_theme_color] for details.  
-         */
-        has_theme_constant(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns the default base scale value from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_base_scale] value.  
-         *  See [method get_theme_color] for details.  
-         */
-        get_theme_default_base_scale(): float64
-        
-        /** Returns the default font from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_font] value.  
-         *  See [method get_theme_color] for details.  
-         */
-        get_theme_default_font(): null | Font
-        
-        /** Returns the default font size value from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_font_size] value.  
-         *  See [method get_theme_color] for details.  
-         */
-        get_theme_default_font_size(): int64
-        
-        /** Returns the parent control node. */
-        get_parent_control(): null | Control
-        
-        /** Returns the tooltip text for the position [param at_position] in control's local coordinates, which will typically appear when the cursor is resting over this control. By default, it returns [member tooltip_text].  
-         *  This method can be overridden to customize its behavior. See [method _get_tooltip].  
-         *      
-         *  **Note:** If this method returns an empty [String] and [method _make_custom_tooltip] is not overridden, no tooltip is displayed.  
-         */
-        get_tooltip(at_position?: Vector2 /* = Vector2.ZERO */): string
-        
-        /** Returns the mouse cursor shape for this control when hovered over [param position] in local coordinates. For most controls, this is the same as [member mouse_default_cursor_shape], but some built-in controls implement more complex logic. */
-        get_cursor_shape(position?: Vector2 /* = Vector2.ZERO */): Control.CursorShape
-        
-        /** Sets the focus neighbor for the specified [enum Side] to the [Control] at [param neighbor] node path. A setter method for [member focus_neighbor_bottom], [member focus_neighbor_left], [member focus_neighbor_right] and [member focus_neighbor_top]. */
-        set_focus_neighbor(side: Side, neighbor: NodePath | string): void
-        
-        /** Returns the focus neighbor for the specified [enum Side]. A getter method for [member focus_neighbor_bottom], [member focus_neighbor_left], [member focus_neighbor_right] and [member focus_neighbor_top].  
-         *      
-         *  **Note:** To find the next [Control] on the specific [enum Side], even if a neighbor is not assigned, use [method find_valid_focus_neighbor].  
-         */
-        get_focus_neighbor(side: Side): NodePath
-        
-        /** Forces drag and bypasses [method _get_drag_data] and [method set_drag_preview] by passing [param data] and [param preview]. Drag will start even if the mouse is neither over nor pressed on this control.  
-         *  The methods [method _can_drop_data] and [method _drop_data] must be implemented on controls that want to receive drop data.  
-         */
-        force_drag(data: any, preview: Control): void
-        
-        /** Starts drag-and-drop operation without using a mouse. */
-        accessibility_drag(): void
-        
-        /** Ends drag-and-drop operation without using a mouse. */
-        accessibility_drop(): void
-        
-        /** Returns the [member mouse_filter], but takes the [member mouse_behavior_recursive] into account. If [member mouse_behavior_recursive] is set to [constant MOUSE_BEHAVIOR_DISABLED], or it is set to [constant MOUSE_BEHAVIOR_INHERITED] and its ancestor is set to [constant MOUSE_BEHAVIOR_DISABLED], then this returns [constant MOUSE_FILTER_IGNORE]. */
-        get_mouse_filter_with_override(): Control.MouseFilter
-        
-        /** Creates an [InputEventMouseButton] that attempts to click the control. If the event is received, the control gains focus.  
-         *    
-         */
-        grab_click_focus(): void
-        
-        /** Sets the given callables to be used instead of the control's own drag-and-drop virtual methods. If a callable is empty, its respective virtual method is used as normal.  
-         *  The arguments for each callable should be exactly the same as their respective virtual methods, which would be:  
-         *  - [param drag_func] corresponds to [method _get_drag_data] and requires a [Vector2];  
-         *  - [param can_drop_func] corresponds to [method _can_drop_data] and requires both a [Vector2] and a [Variant];  
-         *  - [param drop_func] corresponds to [method _drop_data] and requires both a [Vector2] and a [Variant].  
-         */
-        set_drag_forwarding(drag_func: Callable, can_drop_func: Callable, drop_func: Callable): void
-        
-        /** Shows the given control at the mouse pointer. A good time to call this method is in [method _get_drag_data]. The control must not be in the scene tree. You should not free the control, and you should not keep a reference to the control beyond the duration of the drag. It will be deleted automatically after the drag has ended.  
-         *    
-         */
-        set_drag_preview(control: Control): void
-        
-        /** Returns `true` if a drag operation is successful. Alternative to [method Viewport.gui_is_drag_successful].  
-         *  Best used with [constant Node.NOTIFICATION_DRAG_END].  
-         */
-        is_drag_successful(): boolean
-        
-        /** Moves the mouse cursor to [param position], relative to [member position] of this [Control].  
-         *      
-         *  **Note:** [method warp_mouse] is only supported on Windows, macOS and Linux. It has no effect on Android, iOS and Web.  
-         */
-        warp_mouse(position: Vector2): void
-        
-        /** Invalidates the size cache in this node and in parent nodes up to top level. Intended to be used with [method get_minimum_size] when the return value is changed. Setting [member custom_minimum_size] directly calls this method automatically. */
-        update_minimum_size(): void
-        
-        /** Returns `true` if the layout is right-to-left. See also [member layout_direction]. */
-        is_layout_rtl(): boolean
-        
-        /** Enables whether rendering of [CanvasItem] based children should be clipped to this control's rectangle. If `true`, parts of a child which would be visibly outside of this control's rectangle will not be rendered and won't receive input. */
-        get clip_contents(): boolean
-        set clip_contents(value: boolean)
-        
-        /** The minimum size of the node's bounding rectangle. If you set it to a value greater than `(0, 0)`, the node's bounding rectangle will always have at least this size. Note that [Control] nodes have their internal minimum size returned by [method get_minimum_size]. It depends on the control's contents, like text, textures, or style boxes. The actual minimum size is the maximum value of this property and the internal minimum size (see [method get_combined_minimum_size]). */
-        get custom_minimum_size(): Vector2
-        set custom_minimum_size(value: Vector2)
-        
-        /** Controls layout direction and text writing direction. Right-to-left layouts are necessary for certain languages (e.g. Arabic and Hebrew). See also [method is_layout_rtl]. */
-        get layout_direction(): int64
-        set layout_direction(value: int64)
-        get layout_mode(): int64
-        set layout_mode(value: int64)
-        get anchors_preset(): int64
-        set anchors_preset(value: int64)
-        
-        /** Anchors the left edge of the node to the origin, the center or the end of its parent control. It changes how the left offset updates when the node moves or changes size. You can use one of the [enum Anchor] constants for convenience. */
-        get anchor_left(): float64
-        set anchor_left(value: float64)
-        
-        /** Anchors the top edge of the node to the origin, the center or the end of its parent control. It changes how the top offset updates when the node moves or changes size. You can use one of the [enum Anchor] constants for convenience. */
-        get anchor_top(): float64
-        set anchor_top(value: float64)
-        
-        /** Anchors the right edge of the node to the origin, the center or the end of its parent control. It changes how the right offset updates when the node moves or changes size. You can use one of the [enum Anchor] constants for convenience. */
-        get anchor_right(): float64
-        set anchor_right(value: float64)
-        
-        /** Anchors the bottom edge of the node to the origin, the center, or the end of its parent control. It changes how the bottom offset updates when the node moves or changes size. You can use one of the [enum Anchor] constants for convenience. */
-        get anchor_bottom(): float64
-        set anchor_bottom(value: float64)
-        
-        /** Distance between the node's left edge and its parent control, based on [member anchor_left].  
-         *  Offsets are often controlled by one or multiple parent [Container] nodes, so you should not modify them manually if your node is a direct child of a [Container]. Offsets update automatically when you move or resize the node.  
-         */
-        get offset_left(): float64
-        set offset_left(value: float64)
-        
-        /** Distance between the node's top edge and its parent control, based on [member anchor_top].  
-         *  Offsets are often controlled by one or multiple parent [Container] nodes, so you should not modify them manually if your node is a direct child of a [Container]. Offsets update automatically when you move or resize the node.  
-         */
-        get offset_top(): float64
-        set offset_top(value: float64)
-        
-        /** Distance between the node's right edge and its parent control, based on [member anchor_right].  
-         *  Offsets are often controlled by one or multiple parent [Container] nodes, so you should not modify them manually if your node is a direct child of a [Container]. Offsets update automatically when you move or resize the node.  
-         */
-        get offset_right(): float64
-        set offset_right(value: float64)
-        
-        /** Distance between the node's bottom edge and its parent control, based on [member anchor_bottom].  
-         *  Offsets are often controlled by one or multiple parent [Container] nodes, so you should not modify them manually if your node is a direct child of a [Container]. Offsets update automatically when you move or resize the node.  
-         */
-        get offset_bottom(): float64
-        set offset_bottom(value: float64)
-        
-        /** Controls the direction on the horizontal axis in which the control should grow if its horizontal minimum size is changed to be greater than its current size, as the control always has to be at least the minimum size. */
-        get grow_horizontal(): int64
-        set grow_horizontal(value: int64)
-        
-        /** Controls the direction on the vertical axis in which the control should grow if its vertical minimum size is changed to be greater than its current size, as the control always has to be at least the minimum size. */
-        get grow_vertical(): int64
-        set grow_vertical(value: int64)
-        
-        /** The size of the node's bounding rectangle, in the node's coordinate system. [Container] nodes update this property automatically. */
-        get size(): Vector2
-        set size(value: Vector2)
-        
-        /** The node's position, relative to its containing node. It corresponds to the rectangle's top-left corner. The property is not affected by [member pivot_offset]. */
-        get position(): Vector2
-        set position(value: Vector2)
-        
-        /** The node's global position, relative to the world (usually to the [CanvasLayer]). */
-        get global_position(): Vector2
-        set global_position(value: Vector2)
-        
-        /** The node's rotation around its pivot, in radians. See [member pivot_offset] to change the pivot's position.  
-         *      
-         *  **Note:** This property is edited in the inspector in degrees. If you want to use degrees in a script, use [member rotation_degrees].  
-         */
-        get rotation(): float64
-        set rotation(value: float64)
-        
-        /** Helper property to access [member rotation] in degrees instead of radians. */
-        get rotation_degrees(): float64
-        set rotation_degrees(value: float64)
-        
-        /** The node's scale, relative to its [member size]. Change this property to scale the node around its [member pivot_offset]. The Control's tooltip will also scale according to this value.  
-         *      
-         *  **Note:** This property is mainly intended to be used for animation purposes. To support multiple resolutions in your project, use an appropriate viewport stretch mode as described in the [url=https://docs.godotengine.org/en/4.6/tutorials/rendering/multiple_resolutions.html]documentation[/url] instead of scaling Controls individually.  
-         *      
-         *  **Note:** [member FontFile.oversampling] does  *not*  take [Control] [member scale] into account. This means that scaling up/down will cause bitmap fonts and rasterized (non-MSDF) dynamic fonts to appear blurry or pixelated. To ensure text remains crisp regardless of scale, you can enable MSDF font rendering by enabling [member ProjectSettings.gui/theme/default_font_multichannel_signed_distance_field] (applies to the default project font only), or enabling **Multichannel Signed Distance Field** in the import options of a DynamicFont for custom fonts. On system fonts, [member SystemFont.multichannel_signed_distance_field] can be enabled in the inspector.  
-         *      
-         *  **Note:** If the Control node is a child of a [Container] node, the scale will be reset to `Vector2(1, 1)` when the scene is instantiated. To set the Control's scale when it's instantiated, wait for one frame using `await get_tree().process_frame` then set its [member scale] property.  
-         */
-        get scale(): Vector2
-        set scale(value: Vector2)
-        
-        /** By default, the node's pivot is its top-left corner. When you change its [member rotation] or [member scale], it will rotate or scale around this pivot.  
-         *  The actual offset is the combined value of this property and [member pivot_offset_ratio].  
-         */
-        get pivot_offset(): Vector2
-        set pivot_offset(value: Vector2)
-        
-        /** Same as [member pivot_offset], but expressed as uniform vector, where `Vector2(0, 0)` is the top-left corner of this control, and `Vector2(1, 1)` is its bottom-right corner. Set this property to `Vector2(0.5, 0.5)` to pivot around this control's center.  
-         *  The actual offset is the combined value of this property and [member pivot_offset].  
-         */
-        get pivot_offset_ratio(): Vector2
-        set pivot_offset_ratio(value: Vector2)
-        
-        /** Tells the parent [Container] nodes how they should resize and place the node on the X axis. Use a combination of the [enum SizeFlags] constants to change the flags. See the constants to learn what each does. */
-        get size_flags_horizontal(): int64
-        set size_flags_horizontal(value: int64)
-        
-        /** Tells the parent [Container] nodes how they should resize and place the node on the Y axis. Use a combination of the [enum SizeFlags] constants to change the flags. See the constants to learn what each does. */
-        get size_flags_vertical(): int64
-        set size_flags_vertical(value: int64)
-        
-        /** If the node and at least one of its neighbors uses the [constant SIZE_EXPAND] size flag, the parent [Container] will let it take more or less space depending on this property. If this node has a stretch ratio of 2 and its neighbor a ratio of 1, this node will take two thirds of the available space. */
-        get size_flags_stretch_ratio(): float64
-        set size_flags_stretch_ratio(value: float64)
-        
-        /** If `true`, automatically converts code line numbers, list indices, [SpinBox] and [ProgressBar] values from the Western Arabic (0..9) to the numeral systems used in current locale.  
-         *      
-         *  **Note:** Numbers within the text are not automatically converted, it can be done manually, using [method TextServer.format_number].  
-         */
-        get localize_numeral_system(): boolean
-        set localize_numeral_system(value: boolean)
-        
-        /** Toggles if any text should automatically change to its translated version depending on the current locale. */
-        get auto_translate(): boolean
-        set auto_translate(value: boolean)
-        
-        /** The default tooltip text. The tooltip appears when the user's mouse cursor stays idle over this control for a few moments, provided that the [member mouse_filter] property is not [constant MOUSE_FILTER_IGNORE]. The time required for the tooltip to appear can be changed with the [member ProjectSettings.gui/timers/tooltip_delay_sec] setting.  
-         *  This string is the default return value of [method get_tooltip]. Override [method _get_tooltip] to generate tooltip text dynamically. Override [method _make_custom_tooltip] to customize the tooltip interface and behavior.  
-         *  The tooltip popup will use either a default implementation, or a custom one that you can provide by overriding [method _make_custom_tooltip]. The default tooltip includes a [PopupPanel] and [Label] whose theme properties can be customized using [Theme] methods with the `"TooltipPanel"` and `"TooltipLabel"` respectively. For example:  
-         *    
-         */
-        get tooltip_text(): string
-        set tooltip_text(value: string)
-        
-        /** Defines if tooltip text should automatically change to its translated version depending on the current locale. Uses the same auto translate mode as this control when set to [constant Node.AUTO_TRANSLATE_MODE_INHERIT].  
-         *      
-         *  **Note:** Tooltips customized using [method _make_custom_tooltip] do not use this auto translate mode automatically.  
-         */
-        get tooltip_auto_translate_mode(): int64
-        set tooltip_auto_translate_mode(value: int64)
-        
-        /** Tells Godot which node it should give focus to if the user presses the left arrow on the keyboard or left on a gamepad by default. You can change the key by editing the [member ProjectSettings.input/ui_left] input action. The node must be a [Control]. If this property is not set, Godot will give focus to the closest [Control] to the left of this one. */
-        get focus_neighbor_left(): NodePath
-        set focus_neighbor_left(value: NodePath | string)
-        
-        /** Tells Godot which node it should give focus to if the user presses the top arrow on the keyboard or top on a gamepad by default. You can change the key by editing the [member ProjectSettings.input/ui_up] input action. The node must be a [Control]. If this property is not set, Godot will give focus to the closest [Control] to the top of this one. */
-        get focus_neighbor_top(): NodePath
-        set focus_neighbor_top(value: NodePath | string)
-        
-        /** Tells Godot which node it should give focus to if the user presses the right arrow on the keyboard or right on a gamepad by default. You can change the key by editing the [member ProjectSettings.input/ui_right] input action. The node must be a [Control]. If this property is not set, Godot will give focus to the closest [Control] to the right of this one. */
-        get focus_neighbor_right(): NodePath
-        set focus_neighbor_right(value: NodePath | string)
-        
-        /** Tells Godot which node it should give focus to if the user presses the down arrow on the keyboard or down on a gamepad by default. You can change the key by editing the [member ProjectSettings.input/ui_down] input action. The node must be a [Control]. If this property is not set, Godot will give focus to the closest [Control] to the bottom of this one. */
-        get focus_neighbor_bottom(): NodePath
-        set focus_neighbor_bottom(value: NodePath | string)
-        
-        /** Tells Godot which node it should give focus to if the user presses [kbd]Tab[/kbd] on a keyboard by default. You can change the key by editing the [member ProjectSettings.input/ui_focus_next] input action.  
-         *  If this property is not set, Godot will select a "best guess" based on surrounding nodes in the scene tree.  
-         */
-        get focus_next(): NodePath
-        set focus_next(value: NodePath | string)
-        
-        /** Tells Godot which node it should give focus to if the user presses [kbd]Shift + Tab[/kbd] on a keyboard by default. You can change the key by editing the [member ProjectSettings.input/ui_focus_prev] input action.  
-         *  If this property is not set, Godot will select a "best guess" based on surrounding nodes in the scene tree.  
-         */
-        get focus_previous(): NodePath
-        set focus_previous(value: NodePath | string)
-        
-        /** Determines which controls can be focused. Only one control can be focused at a time, and the focused control will receive keyboard, gamepad, and mouse events in [method _gui_input]. Use [method get_focus_mode_with_override] to determine if a control can grab focus, since [member focus_behavior_recursive] also affects it. See also [method grab_focus]. */
-        get focus_mode(): int64
-        set focus_mode(value: int64)
-        
-        /** Determines which controls can be focused together with [member focus_mode]. See [method get_focus_mode_with_override]. Since the default behavior is [constant FOCUS_BEHAVIOR_INHERITED], this can be used to prevent all children controls from getting focused. */
-        get focus_behavior_recursive(): int64
-        set focus_behavior_recursive(value: int64)
-        
-        /** Determines which controls will be able to receive mouse button input events through [method _gui_input] and the [signal mouse_entered], and [signal mouse_exited] signals. Also determines how these events should be propagated. See the constants to learn what each does. Use [method get_mouse_filter_with_override] to determine if a control can receive mouse input, since [member mouse_behavior_recursive] also affects it. */
-        get mouse_filter(): int64
-        set mouse_filter(value: int64)
-        
-        /** Determines which controls can receive mouse input together with [member mouse_filter]. See [method get_mouse_filter_with_override]. Since the default behavior is [constant MOUSE_BEHAVIOR_INHERITED], this can be used to prevent all children controls from receiving mouse input. */
-        get mouse_behavior_recursive(): int64
-        set mouse_behavior_recursive(value: int64)
-        
-        /** When enabled, scroll wheel events processed by [method _gui_input] will be passed to the parent control even if [member mouse_filter] is set to [constant MOUSE_FILTER_STOP].  
-         *  You should disable it on the root of your UI if you do not want scroll events to go to the [method Node._unhandled_input] processing.  
-         *      
-         *  **Note:** Because this property defaults to `true`, this allows nested scrollable containers to work out of the box.  
-         */
-        get mouse_force_pass_scroll_events(): boolean
-        set mouse_force_pass_scroll_events(value: boolean)
-        
-        /** The default cursor shape for this control. Useful for Godot plugins and applications or games that use the system's mouse cursors.  
-         *      
-         *  **Note:** On Linux, shapes may vary depending on the cursor theme of the system.  
-         */
-        get mouse_default_cursor_shape(): int64
-        set mouse_default_cursor_shape(value: int64)
-        
-        /** The [Node] which must be a parent of the focused [Control] for the shortcut to be activated. If `null`, the shortcut can be activated when any control is focused (a global shortcut). This allows shortcuts to be accepted only when the user has a certain area of the GUI focused. */
-        get shortcut_context(): null | Object
-        set shortcut_context(value: null | Object)
-        
-        /** The human-readable node name that is reported to assistive apps. */
-        get accessibility_name(): string
-        set accessibility_name(value: string)
-        
-        /** The human-readable node description that is reported to assistive apps. */
-        get accessibility_description(): string
-        set accessibility_description(value: string)
-        
-        /** The mode with which a live region updates. A live region is a [Node] that is updated as a result of an external event when the user's focus may be elsewhere. */
-        get accessibility_live(): int64
-        set accessibility_live(value: int64)
-        
-        /** The paths to the nodes which are controlled by this node. */
-        get accessibility_controls_nodes(): GArray<NodePath>
-        set accessibility_controls_nodes(value: GArray<NodePath>)
-        
-        /** The paths to the nodes which are describing this node. */
-        get accessibility_described_by_nodes(): GArray<NodePath>
-        set accessibility_described_by_nodes(value: GArray<NodePath>)
-        
-        /** The paths to the nodes which label this node. */
-        get accessibility_labeled_by_nodes(): GArray<NodePath>
-        set accessibility_labeled_by_nodes(value: GArray<NodePath>)
-        
-        /** The paths to the nodes which this node flows into. */
-        get accessibility_flow_to_nodes(): GArray<NodePath>
-        set accessibility_flow_to_nodes(value: GArray<NodePath>)
-        
-        /** The [Theme] resource this node and all its [Control] and [Window] children use. If a child node has its own [Theme] resource set, theme items are merged with child's definitions having higher priority.  
-         *      
-         *  **Note:** [Window] styles will have no effect unless the window is embedded.  
-         */
-        get theme(): null | Theme
-        set theme(value: null | Theme)
-        
-        /** The name of a theme type variation used by this [Control] to look up its own theme items. When empty, the class name of the node is used (e.g. [code skip-lint]Button` for the [Button] control), as well as the class names of all parent classes (in order of inheritance).  
-         *  When set, this property gives the highest priority to the type of the specified name. This type can in turn extend another type, forming a dependency chain. See [method Theme.set_type_variation]. If the theme item cannot be found using this type or its base types, lookup falls back on the class names.  
-         *      
-         *  **Note:** To look up [Control]'s own items use various `get_theme_*` methods without specifying `theme_type`.  
-         *      
-         *  **Note:** Theme items are looked for in the tree order, from branch to root, where each [Control] node is checked for its [member theme] property. The earliest match against any type/class name is returned. The project-level Theme and the default Theme are checked last.  
-         */
-        get theme_type_variation(): string
-        set theme_type_variation(value: string)
-        
-        /** Emitted when the control changes size. */
-        readonly resized: Signal<() => void>
-        
-        /** Emitted when the node receives an [InputEvent]. */
-        readonly gui_input: Signal<(event: InputEvent) => void>
-        
-        /** Emitted when the mouse cursor enters the control's (or any child control's) visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
-         *      
-         *  **Note:** [member CanvasItem.z_index] doesn't affect, which Control receives the signal.  
-         */
-        readonly mouse_entered: Signal<() => void>
-        
-        /** Emitted when the mouse cursor leaves the control's (and all child control's) visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
-         *      
-         *  **Note:** [member CanvasItem.z_index] doesn't affect, which Control receives the signal.  
-         *      
-         *  **Note:** If you want to check whether the mouse truly left the area, ignoring any top nodes, you can use code like this:  
-         *    
-         */
-        readonly mouse_exited: Signal<() => void>
-        
-        /** Emitted when the node gains focus. */
-        readonly focus_entered: Signal<() => void>
-        
-        /** Emitted when the node loses focus. */
-        readonly focus_exited: Signal<() => void>
-        
-        /** Emitted when one of the size flags changes. See [member size_flags_horizontal] and [member size_flags_vertical]. */
-        readonly size_flags_changed: Signal<() => void>
-        
-        /** Emitted when the node's minimum size changes. */
-        readonly minimum_size_changed: Signal<() => void>
-        
-        /** Emitted when the [constant NOTIFICATION_THEME_CHANGED] notification is sent. */
-        readonly theme_changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapControl;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapControl;
-    }
-    namespace ConvertTransformModifier3D {
-        enum TransformMode {
-            /** Convert with position. Transfer the difference. */
-            TRANSFORM_MODE_POSITION = 0,
-            
-            /** Convert with rotation. The angle is the roll for the specified axis. */
-            TRANSFORM_MODE_ROTATION = 1,
-            
-            /** Convert with scale. Transfers the ratio, not the difference. */
-            TRANSFORM_MODE_SCALE = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapConvertTransformModifier3D extends __RPCMapBoneConstraint3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapConvertTransformModifier3D extends __NameMapBoneConstraint3D {
-    }
-    /** A [SkeletonModifier3D] that apply transform to the bone which converted from reference.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_converttransformmodifier3d.html  
-     */
-    class ConvertTransformModifier3D<Map extends NodePathMap = any> extends BoneConstraint3D<Map> {
-        constructor(identifier?: any)
-        /** Sets the operation of the remapping destination transform. */
-        set_apply_transform_mode(index: int64, transform_mode: ConvertTransformModifier3D.TransformMode): void
-        
-        /** Returns the operation of the remapping destination transform. */
-        get_apply_transform_mode(index: int64): ConvertTransformModifier3D.TransformMode
-        
-        /** Sets the axis of the remapping destination transform. */
-        set_apply_axis(index: int64, axis: Vector3.Axis): void
-        
-        /** Returns the axis of the remapping destination transform. */
-        get_apply_axis(index: int64): Vector3.Axis
-        
-        /** Sets the minimum value of the remapping destination range. */
-        set_apply_range_min(index: int64, range_min: float64): void
-        
-        /** Returns the minimum value of the remapping destination range. */
-        get_apply_range_min(index: int64): float64
-        
-        /** Sets the maximum value of the remapping destination range. */
-        set_apply_range_max(index: int64, range_max: float64): void
-        
-        /** Returns the maximum value of the remapping destination range. */
-        get_apply_range_max(index: int64): float64
-        
-        /** Sets the operation of the remapping source transform. */
-        set_reference_transform_mode(index: int64, transform_mode: ConvertTransformModifier3D.TransformMode): void
-        
-        /** Returns the operation of the remapping source transform. */
-        get_reference_transform_mode(index: int64): ConvertTransformModifier3D.TransformMode
-        
-        /** Sets the axis of the remapping source transform. */
-        set_reference_axis(index: int64, axis: Vector3.Axis): void
-        
-        /** Returns the axis of the remapping source transform. */
-        get_reference_axis(index: int64): Vector3.Axis
-        
-        /** Sets the minimum value of the remapping source range. */
-        set_reference_range_min(index: int64, range_min: float64): void
-        
-        /** Returns the minimum value of the remapping source range. */
-        get_reference_range_min(index: int64): float64
-        
-        /** Sets the maximum value of the remapping source range. */
-        set_reference_range_max(index: int64, range_max: float64): void
-        
-        /** Returns the maximum value of the remapping source range. */
-        get_reference_range_max(index: int64): float64
-        
-        /** Sets relative option in the setting at [param index] to [param enabled].  
-         *  If sets [param enabled] to `true`, the extracted and applying transform is relative to the rest.  
-         *  If sets [param enabled] to `false`, the extracted transform is absolute.  
-         */
-        set_relative(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the relative option is enabled in the setting at [param index]. */
-        is_relative(index: int64): boolean
-        
-        /** Sets additive option in the setting at [param index] to [param enabled]. This mainly affects the process of applying transform to the [method BoneConstraint3D.set_apply_bone].  
-         *  If sets [param enabled] to `true`, the processed transform is added to the pose of the current apply bone.  
-         *  If sets [param enabled] to `false`, the pose of the current apply bone is replaced with the processed transform. However, if set [method set_relative] to `true`, the transform is relative to rest.  
-         */
-        set_additive(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the additive option is enabled in the setting at [param index]. */
-        is_additive(index: int64): boolean
-        
-        /** The number of settings in the modifier. */
-        get setting_count(): int64
-        set setting_count(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapConvertTransformModifier3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapConvertTransformModifier3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapConvexPolygonShape2D extends __RPCMapShape2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapConvexPolygonShape2D extends __NameMapShape2D {
-    }
-    /** A 2D convex polygon shape used for physics collision.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_convexpolygonshape2d.html  
-     */
-    class ConvexPolygonShape2D extends Shape2D {
-        constructor(identifier?: any)
-        /** Based on the set of points provided, this assigns the [member points] property using the convex hull algorithm, removing all unneeded points. See [method Geometry2D.convex_hull] for details. */
-        set_point_cloud(point_cloud: PackedVector2Array | Vector2[]): void
-        
-        /** The polygon's list of vertices that form a convex hull. Can be in either clockwise or counterclockwise order.  
-         *  **Warning:** Only set this property to a list of points that actually form a convex hull. Use [method set_point_cloud] to generate the convex hull of an arbitrary set of points.  
-         */
-        get points(): PackedVector2Array
-        set points(value: PackedVector2Array | Vector2[])
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapConvexPolygonShape2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapConvexPolygonShape2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapConvexPolygonShape3D extends __RPCMapShape3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapConvexPolygonShape3D extends __NameMapShape3D {
-    }
-    /** A 3D convex polyhedron shape used for physics collision.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_convexpolygonshape3d.html  
-     */
-    class ConvexPolygonShape3D extends Shape3D {
-        constructor(identifier?: any)
-        /** The list of 3D points forming the convex polygon shape. */
-        get points(): GArray
-        set points(value: GArray)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapConvexPolygonShape3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapConvexPolygonShape3D;
-    }
-    namespace CopyTransformModifier3D {
-        enum TransformFlag {
-            /** If set, allows to copy the position. */
-            TRANSFORM_FLAG_POSITION = 1,
-            
-            /** If set, allows to copy the rotation. */
-            TRANSFORM_FLAG_ROTATION = 2,
-            
-            /** If set, allows to copy the scale. */
-            TRANSFORM_FLAG_SCALE = 4,
-            
-            /** If set, allows to copy the position/rotation/scale. */
-            TRANSFORM_FLAG_ALL = 7,
-        }
-        enum AxisFlag {
-            /** If set, allows to process the X-axis. */
-            AXIS_FLAG_X = 1,
-            
-            /** If set, allows to process the Y-axis. */
-            AXIS_FLAG_Y = 2,
-            
-            /** If set, allows to process the Z-axis. */
-            AXIS_FLAG_Z = 4,
-            
-            /** If set, allows to process the all axes. */
-            AXIS_FLAG_ALL = 7,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCopyTransformModifier3D extends __RPCMapBoneConstraint3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapCopyTransformModifier3D extends __NameMapBoneConstraint3D {
-    }
-    /** A [SkeletonModifier3D] that apply transform to the bone which copied from reference.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_copytransformmodifier3d.html  
-     */
-    class CopyTransformModifier3D<Map extends NodePathMap = any> extends BoneConstraint3D<Map> {
-        constructor(identifier?: any)
-        /** Sets the flags to process the transform operations. If the flag is valid, the transform operation is processed.  
-         *      
-         *  **Note:** If the rotation is valid for only one axis, it respects the roll of the valid axis. If the rotation is valid for two axes, it discards the roll of the invalid axis.  
-         */
-        set_copy_flags(index: int64, copy_flags: CopyTransformModifier3D.TransformFlag): void
-        
-        /** Returns the copy flags of the setting at [param index]. */
-        get_copy_flags(index: int64): CopyTransformModifier3D.TransformFlag
-        
-        /** Sets the flags to copy axes. If the flag is valid, the axis is copied. */
-        set_axis_flags(index: int64, axis_flags: CopyTransformModifier3D.AxisFlag): void
-        
-        /** Returns the axis flags of the setting at [param index]. */
-        get_axis_flags(index: int64): CopyTransformModifier3D.AxisFlag
-        
-        /** Sets the flags to inverte axes. If the flag is valid, the axis is copied.  
-         *      
-         *  **Note:** An inverted scale means an inverse number, not a negative scale. For example, inverting `2.0` means `0.5`.  
-         *      
-         *  **Note:** An inverted rotation flips the elements of the quaternion. For example, a two-axis inversion will flip the roll of each axis, and a three-axis inversion will flip the final orientation. However, be aware that flipping only one axis may cause unintended rotation by the unflipped axes, due to the characteristics of the quaternion.  
-         */
-        set_invert_flags(index: int64, axis_flags: CopyTransformModifier3D.AxisFlag): void
-        
-        /** Returns the invert flags of the setting at [param index]. */
-        get_invert_flags(index: int64): CopyTransformModifier3D.AxisFlag
-        
-        /** If sets [param enabled] to `true`, the position will be copied. */
-        set_copy_position(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the copy flags has the flag for the position in the setting at [param index]. See also [method set_copy_flags]. */
-        is_position_copying(index: int64): boolean
-        
-        /** If sets [param enabled] to `true`, the rotation will be copied. */
-        set_copy_rotation(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the copy flags has the flag for the rotation in the setting at [param index]. See also [method set_copy_flags]. */
-        is_rotation_copying(index: int64): boolean
-        
-        /** If sets [param enabled] to `true`, the scale will be copied. */
-        set_copy_scale(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the copy flags has the flag for the scale in the setting at [param index]. See also [method set_copy_flags]. */
-        is_scale_copying(index: int64): boolean
-        
-        /** If sets [param enabled] to `true`, the X-axis will be copied. */
-        set_axis_x_enabled(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the enable flags has the flag for the X-axis in the setting at [param index]. See also [method set_axis_flags]. */
-        is_axis_x_enabled(index: int64): boolean
-        
-        /** If sets [param enabled] to `true`, the Y-axis will be copied. */
-        set_axis_y_enabled(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the enable flags has the flag for the Y-axis in the setting at [param index]. See also [method set_axis_flags]. */
-        is_axis_y_enabled(index: int64): boolean
-        
-        /** If sets [param enabled] to `true`, the Z-axis will be copied. */
-        set_axis_z_enabled(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the enable flags has the flag for the Z-axis in the setting at [param index]. See also [method set_axis_flags]. */
-        is_axis_z_enabled(index: int64): boolean
-        
-        /** If sets [param enabled] to `true`, the X-axis will be inverted. */
-        set_axis_x_inverted(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the invert flags has the flag for the X-axis in the setting at [param index]. See also [method set_invert_flags]. */
-        is_axis_x_inverted(index: int64): boolean
-        
-        /** If sets [param enabled] to `true`, the Y-axis will be inverted. */
-        set_axis_y_inverted(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the invert flags has the flag for the Y-axis in the setting at [param index]. See also [method set_invert_flags]. */
-        is_axis_y_inverted(index: int64): boolean
-        
-        /** If sets [param enabled] to `true`, the Z-axis will be inverted. */
-        set_axis_z_inverted(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the invert flags has the flag for the Z-axis in the setting at [param index]. See also [method set_invert_flags]. */
-        is_axis_z_inverted(index: int64): boolean
-        
-        /** Sets relative option in the setting at [param index] to [param enabled].  
-         *  If sets [param enabled] to `true`, the extracted and applying transform is relative to the rest.  
-         *  If sets [param enabled] to `false`, the extracted transform is absolute.  
-         */
-        set_relative(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the relative option is enabled in the setting at [param index]. */
-        is_relative(index: int64): boolean
-        
-        /** Sets additive option in the setting at [param index] to [param enabled]. This mainly affects the process of applying transform to the [method BoneConstraint3D.set_apply_bone].  
-         *  If sets [param enabled] to `true`, the processed transform is added to the pose of the current apply bone.  
-         *  If sets [param enabled] to `false`, the pose of the current apply bone is replaced with the processed transform. However, if set [method set_relative] to `true`, the transform is relative to rest.  
-         */
-        set_additive(index: int64, enabled: boolean): void
-        
-        /** Returns `true` if the additive option is enabled in the setting at [param index]. */
-        is_additive(index: int64): boolean
-        
-        /** The number of settings in the modifier. */
-        get setting_count(): int64
-        set setting_count(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCopyTransformModifier3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapCopyTransformModifier3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCrypto extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCrypto extends __NameMapRefCounted {
     }
     /** Provides access to advanced cryptographic functionalities.  
@@ -1451,12 +49,7 @@ declare module "godot" {
          */
         constant_time_compare(trusted: PackedByteArray | byte[] | ArrayBuffer, received: PackedByteArray | byte[] | ArrayBuffer): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCrypto;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCrypto;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCryptoKey extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCryptoKey extends __NameMapResource {
@@ -1488,12 +81,7 @@ declare module "godot" {
         /** Loads a key from the given [param string_key]. If [param public_only] is `true`, only the public key will be loaded. */
         load_from_string(string_key: string, public_only?: boolean /* = false */): Error
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCryptoKey;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCryptoKey;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCubemap extends __RPCMapImageTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCubemap extends __NameMapImageTextureLayered {
@@ -1507,12 +95,7 @@ declare module "godot" {
         /** Creates a placeholder version of this resource ([PlaceholderCubemap]). */
         create_placeholder(): Resource
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCubemap;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCubemap;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCubemapArray extends __RPCMapImageTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCubemapArray extends __NameMapImageTextureLayered {
@@ -1525,8 +108,6 @@ declare module "godot" {
         constructor(identifier?: any)
         /** Creates a placeholder version of this resource ([PlaceholderCubemapArray]). */
         create_placeholder(): Resource
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCubemapArray;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCubemapArray;
     }
@@ -1541,9 +122,6 @@ declare module "godot" {
             /** The total number of available tangent modes. */
             TANGENT_MODE_COUNT = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCurve extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCurve extends __NameMapResource {
@@ -1648,12 +226,7 @@ declare module "godot" {
         /** Emitted when [member max_domain] or [member min_domain] is changed. */
         readonly domain_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCurve;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCurve;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCurve2D extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCurve2D extends __NameMapResource {
@@ -1750,12 +323,7 @@ declare module "godot" {
         get point_count(): int64
         set point_count(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCurve2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCurve2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCurve3D extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCurve3D extends __NameMapResource {
@@ -1878,8 +446,6 @@ declare module "godot" {
         get up_vector_enabled(): boolean
         set up_vector_enabled(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCurve3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCurve3D;
     }
     namespace CurveTexture {
@@ -1890,9 +456,6 @@ declare module "godot" {
             /** Store the curve only in the red channel. This saves video memory, but some custom shaders may not be able to work with this. */
             TEXTURE_MODE_RED = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCurveTexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCurveTexture extends __NameMapTexture2D {
@@ -1915,12 +478,7 @@ declare module "godot" {
         get curve(): null | Curve
         set curve(value: null | Curve)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCurveTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCurveTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCurveXYZTexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCurveXYZTexture extends __NameMapTexture2D {
@@ -1947,12 +505,7 @@ declare module "godot" {
         get curve_z(): null | Curve
         set curve_z(value: null | Curve)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCurveXYZTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCurveXYZTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCylinderMesh extends __RPCMapPrimitiveMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCylinderMesh extends __NameMapPrimitiveMesh {
@@ -1997,12 +550,7 @@ declare module "godot" {
         get cap_bottom(): boolean
         set cap_bottom(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCylinderMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCylinderMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCylinderShape3D extends __RPCMapShape3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCylinderShape3D extends __NameMapShape3D {
@@ -2021,12 +569,7 @@ declare module "godot" {
         get radius(): float64
         set radius(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCylinderShape3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCylinderShape3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapDPITexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapDPITexture extends __NameMapTexture2D {
@@ -2060,12 +603,7 @@ declare module "godot" {
         get color_map(): GDictionary
         set color_map(value: GDictionary)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapDPITexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapDPITexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapDTLSServer extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapDTLSServer extends __NameMapRefCounted {
@@ -2085,12 +623,7 @@ declare module "godot" {
          */
         take_connection(udp_peer: PacketPeerUDP): null | PacketPeerDTLS
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapDTLSServer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapDTLSServer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapDampedSpringJoint2D extends __RPCMapJoint2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapDampedSpringJoint2D extends __NameMapJoint2D {
@@ -2117,8 +650,6 @@ declare module "godot" {
         get damping(): float64
         set damping(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapDampedSpringJoint2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapDampedSpringJoint2D;
     }
     namespace Decal {
@@ -2138,9 +669,6 @@ declare module "godot" {
             /** Max size of [enum DecalTexture] enum. */
             TEXTURE_MAX = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapDecal extends __RPCMapVisualInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapDecal extends __NameMapVisualInstance3D {
@@ -2247,12 +775,7 @@ declare module "godot" {
         get cull_mask(): int64
         set cull_mask(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapDecal;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapDecal;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapDirAccess extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapDirAccess extends __NameMapRefCounted {
@@ -2469,12 +992,7 @@ declare module "godot" {
         get include_hidden(): boolean
         set include_hidden(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapDirAccess;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapDirAccess;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapDirectionalLight2D extends __RPCMapLight2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapDirectionalLight2D extends __NameMapLight2D {
@@ -2492,8 +1010,6 @@ declare module "godot" {
         /** The maximum distance from the camera center objects can be before their shadows are culled (in pixels). Decreasing this value can prevent objects located outside the camera from casting shadows (while also improving performance). [member Camera2D.zoom] is not taken into account by [member max_distance], which means that at higher zoom values, shadows will appear to fade out sooner when zooming onto a given point. */
         get max_distance(): float64
         set max_distance(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapDirectionalLight2D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapDirectionalLight2D;
     }
@@ -2518,9 +1034,6 @@ declare module "godot" {
             /** Makes the light visible to sky shaders only. When using this mode the light will not cast light into the scene (either through direct lighting or through global illumination), but can be accessed through sky shaders. This can be useful, for example, when you want to control sky effects without illuminating the scene (during a night cycle, for example). */
             SKY_MODE_SKY_ONLY = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapDirectionalLight3D extends __RPCMapLight3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapDirectionalLight3D extends __NameMapLight3D {
@@ -2566,8 +1079,6 @@ declare module "godot" {
         /** Whether this [DirectionalLight3D] is visible in the sky, in the scene, or both in the sky and in the scene. */
         get sky_mode(): int64
         set sky_mode(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapDirectionalLight3D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapDirectionalLight3D;
     }
@@ -2617,9 +1128,6 @@ declare module "godot" {
             /** Total UDP packets received. */
             HOST_TOTAL_RECEIVED_PACKETS = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapENetConnection extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapENetConnection extends __NameMapRefCounted {
@@ -2683,7 +1191,7 @@ declare module "godot" {
         dtls_server_setup(server_options: TLSOptions): Error
         
         /** Configure this ENetHost to use the custom Godot extension allowing DTLS encryption for ENet clients. Call this before [method connect_to_host] to have ENet connect using DTLS validating the server certificate against [param hostname]. You can pass the optional [param client_options] parameter to customize the trusted certification authorities, or disable the common name verification. See [method TLSOptions.client] and [method TLSOptions.client_unsafe]. */
-        dtls_client_setup(hostname: string, client_options?: TLSOptions): Error
+        dtls_client_setup(hostname: string, client_options?: TLSOptions /* = undefined */): Error
         
         /** Configures the DTLS server to automatically drop new connections.  
          *      
@@ -2712,12 +1220,7 @@ declare module "godot" {
          */
         socket_send(destination_address: string, destination_port: int64, packet: PackedByteArray | byte[] | ArrayBuffer): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapENetConnection;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapENetConnection;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapENetMultiplayerPeer extends __RPCMapMultiplayerPeer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapENetMultiplayerPeer extends __NameMapMultiplayerPeer {
@@ -2751,8 +1254,6 @@ declare module "godot" {
         
         /** The underlying [ENetConnection] created after [method create_client] and [method create_server]. */
         get host(): null | ENetConnection
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapENetMultiplayerPeer;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapENetMultiplayerPeer;
     }
@@ -2833,9 +1334,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapENetPacketPeer extends __RPCMapPacketPeer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapENetPacketPeer extends __NameMapPacketPeer {
     }
     /** A wrapper class for an [url=http://enet.bespin.org/group__peer.html]ENetPeer[/url].  
@@ -2914,12 +1412,7 @@ declare module "godot" {
         /** Returns `true` if the peer is currently active (i.e. the associated [ENetConnection] is still valid). */
         is_active(): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapENetPacketPeer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapENetPacketPeer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorCommandPalette extends __RPCMapConfirmationDialog {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorCommandPalette extends __NameMapConfirmationDialog {
@@ -2942,8 +1435,6 @@ declare module "godot" {
          *  - [param key_name]: [String] (Name of the key for a particular **Command**.)  
          */
         remove_command(key_name: string): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorCommandPalette;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorCommandPalette;
     }
@@ -2980,9 +1471,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorContextMenuPlugin extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorContextMenuPlugin extends __NameMapRefCounted {
     }
     /** Plugin for adding custom context menus in the editor.  
@@ -3003,24 +1491,19 @@ declare module "godot" {
          *    
          *  If you want to assign shortcut to the menu item, use [method add_context_menu_item_from_shortcut] instead.  
          */
-        add_context_menu_item(name: string, callback: Callable, icon?: Texture2D): void
+        add_context_menu_item(name: string, callback: Callable, icon?: Texture2D /* = undefined */): void
         
         /** Add custom option to the context menu of the plugin's specified slot. The option will have the [param shortcut] assigned and reuse its callback. The shortcut has to be registered beforehand with [method add_menu_shortcut].  
          *    
          */
-        add_context_menu_item_from_shortcut(name: string, shortcut: Shortcut, icon?: Texture2D): void
+        add_context_menu_item_from_shortcut(name: string, shortcut: Shortcut, icon?: Texture2D /* = undefined */): void
         
         /** Add a submenu to the context menu of the plugin's specified slot. The submenu is not automatically handled, you need to connect to its signals yourself. Also the submenu is freed on every popup, so provide a new [PopupMenu] every time.  
          *    
          */
-        add_context_submenu_item(name: string, menu: PopupMenu, icon?: Texture2D): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorContextMenuPlugin;
+        add_context_submenu_item(name: string, menu: PopupMenu, icon?: Texture2D /* = undefined */): void
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorContextMenuPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorDebuggerPlugin extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorDebuggerPlugin extends __NameMapRefCounted {
@@ -3058,12 +1541,7 @@ declare module "godot" {
          */
         get_sessions(): GArray
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorDebuggerPlugin;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorDebuggerPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorDebuggerSession extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorDebuggerSession extends __NameMapRefCounted {
@@ -3075,10 +1553,10 @@ declare module "godot" {
     class EditorDebuggerSession extends RefCounted {
         constructor(identifier?: any)
         /** Sends the given [param message] to the attached remote instance, optionally passing additionally [param data]. See [EngineDebugger] for how to retrieve those messages. */
-        send_message(message: string, data?: GArray): void
+        send_message(message: string, data?: GArray /* = [] */): void
         
         /** Toggle the given [param profiler] on the attached remote instance, optionally passing additionally [param data]. See [EngineProfiler] for more details. */
-        toggle_profiler(profiler: string, enable: boolean, data?: GArray): void
+        toggle_profiler(profiler: string, enable: boolean, data?: GArray /* = [] */): void
         
         /** Returns `true` if the attached remote instance is currently in the debug loop. */
         is_breaked(): boolean
@@ -3109,8 +1587,6 @@ declare module "godot" {
         
         /** Emitted when the attached remote instance exits a break state. */
         readonly continued: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorDebuggerSession;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorDebuggerSession;
     }
@@ -3162,9 +1638,6 @@ declare module "godot" {
             /** Represents the size of the [enum DockSlot] enum. */
             DOCK_SLOT_MAX = 9,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorDock extends __RPCMapMarginContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorDock extends __NameMapMarginContainer {
@@ -3252,8 +1725,6 @@ declare module "godot" {
         readonly closed: Signal<() => void>
         readonly _tab_style_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorDock;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorDock;
     }
     namespace EditorExportPlatform {
@@ -3286,9 +1757,6 @@ declare module "godot" {
             /** Flag is set if the "Visible Navigation" remote debug option is enabled. If set, [method gen_export_flags] will append the `--debug-navigation` command line argument to the returned list. */
             DEBUG_FLAG_VIEW_NAVIGATION = 16,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatform extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatform extends __NameMapRefCounted {
@@ -3379,7 +1847,7 @@ declare module "godot" {
         get_worst_message_type(): EditorExportPlatform.ExportMessageType
         
         /** Executes specified command on the remote host via SSH protocol and returns command output in the [param output]. */
-        ssh_run_on_remote(host: string, port: string, ssh_arg: PackedStringArray | string[], cmd_args: string, output?: GArray, port_fwd?: int64 /* = -1 */): Error
+        ssh_run_on_remote(host: string, port: string, ssh_arg: PackedStringArray | string[], cmd_args: string, output?: GArray /* = [] */, port_fwd?: int64 /* = -1 */): Error
         
         /** Executes specified command on the remote host via SSH protocol and returns process ID (on the remote host) without waiting for command to finish. */
         ssh_run_on_remote_no_wait(host: string, port: string, ssh_args: PackedStringArray | string[], cmd_args: string, port_fwd?: int64 /* = -1 */): int64
@@ -3391,14 +1859,9 @@ declare module "godot" {
         get_internal_export_files(preset: EditorExportPreset, debug: boolean): GDictionary
         
         /** Returns array of core file names that always should be exported regardless of preset config. */
-        static get_forced_export_files(preset?: EditorExportPreset): PackedStringArray
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatform;
+        static get_forced_export_files(preset?: EditorExportPreset /* = undefined */): PackedStringArray
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatform;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformAndroid extends __RPCMapEditorExportPlatform {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformAndroid extends __NameMapEditorExportPlatform {
@@ -3410,12 +1873,7 @@ declare module "godot" {
     class EditorExportPlatformAndroid extends EditorExportPlatform {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformAndroid;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformAndroid;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformAppleEmbedded extends __RPCMapEditorExportPlatform {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformAppleEmbedded extends __NameMapEditorExportPlatform {
@@ -3427,12 +1885,7 @@ declare module "godot" {
     class EditorExportPlatformAppleEmbedded extends EditorExportPlatform {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformAppleEmbedded;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformAppleEmbedded;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformExtension extends __RPCMapEditorExportPlatform {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformExtension extends __NameMapEditorExportPlatform {
@@ -3577,12 +2030,7 @@ declare module "godot" {
         /** Returns `true` is export templates are missing from the current configuration. This method should be called only from the [method _can_export], [method _has_valid_export_configuration], or [method _has_valid_project_configuration] implementations. */
         get_config_missing_templates(): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformIOS extends __RPCMapEditorExportPlatformAppleEmbedded {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformIOS extends __NameMapEditorExportPlatformAppleEmbedded {
@@ -3594,12 +2042,7 @@ declare module "godot" {
     class EditorExportPlatformIOS extends EditorExportPlatformAppleEmbedded {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformIOS;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformIOS;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformLinuxBSD extends __RPCMapEditorExportPlatformPC {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformLinuxBSD extends __NameMapEditorExportPlatformPC {
@@ -3611,12 +2054,7 @@ declare module "godot" {
     class EditorExportPlatformLinuxBSD extends EditorExportPlatformPC {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformLinuxBSD;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformLinuxBSD;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformMacOS extends __RPCMapEditorExportPlatform {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformMacOS extends __NameMapEditorExportPlatform {
@@ -3628,12 +2066,7 @@ declare module "godot" {
     class EditorExportPlatformMacOS extends EditorExportPlatform {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformMacOS;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformMacOS;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformPC extends __RPCMapEditorExportPlatform {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformPC extends __NameMapEditorExportPlatform {
@@ -3645,12 +2078,7 @@ declare module "godot" {
     class EditorExportPlatformPC extends EditorExportPlatform {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformPC;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformPC;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformVisionOS extends __RPCMapEditorExportPlatformAppleEmbedded {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformVisionOS extends __NameMapEditorExportPlatformAppleEmbedded {
@@ -3662,12 +2090,7 @@ declare module "godot" {
     class EditorExportPlatformVisionOS extends EditorExportPlatformAppleEmbedded {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformVisionOS;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformVisionOS;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformWeb extends __RPCMapEditorExportPlatform {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformWeb extends __NameMapEditorExportPlatform {
@@ -3679,12 +2102,7 @@ declare module "godot" {
     class EditorExportPlatformWeb extends EditorExportPlatform {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformWeb;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformWeb;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlatformWindows extends __RPCMapEditorExportPlatformPC {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlatformWindows extends __NameMapEditorExportPlatformPC {
@@ -3696,12 +2114,7 @@ declare module "godot" {
     class EditorExportPlatformWindows extends EditorExportPlatformPC {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlatformWindows;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlatformWindows;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPlugin extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPlugin extends __NameMapRefCounted {
@@ -3932,8 +2345,6 @@ declare module "godot" {
         /** Returns currently used export platform. */
         get_export_platform(): null | EditorExportPlatform
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPlugin;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPlugin;
     }
     namespace EditorExportPreset {
@@ -3955,9 +2366,6 @@ declare module "godot" {
             MODE_SCRIPT_BINARY_TOKENS = 1,
             MODE_SCRIPT_BINARY_TOKENS_COMPRESSED = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorExportPreset extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorExportPreset extends __NameMapRefCounted {
@@ -4047,8 +2455,6 @@ declare module "godot" {
          */
         get_version(name: StringName, windows_version: boolean): string
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorExportPreset;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorExportPreset;
     }
     namespace EditorFeatureProfile {
@@ -4089,9 +2495,6 @@ declare module "godot" {
             /** Represents the size of the [enum Feature] enum. */
             FEATURE_MAX = 11,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorFeatureProfile extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorFeatureProfile extends __NameMapRefCounted {
@@ -4141,12 +2544,7 @@ declare module "godot" {
          */
         load_from_file(path: string): Error
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorFeatureProfile;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorFeatureProfile;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorFileDialog extends __RPCMapFileDialog {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorFileDialog extends __NameMapFileDialog {
@@ -4164,12 +2562,7 @@ declare module "godot" {
         get disable_overwrite_warning(): boolean
         set disable_overwrite_warning(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorFileDialog;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorFileDialog;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorFileSystem extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorFileSystem extends __NameMapNode {
@@ -4231,12 +2624,7 @@ declare module "godot" {
         /** Emitted if at least one resource is reloaded when the filesystem is scanned. */
         readonly resources_reload: Signal<(resources: PackedStringArray) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorFileSystem;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorFileSystem;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorFileSystemDirectory extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorFileSystemDirectory extends __NameMapObject {
@@ -4289,12 +2677,7 @@ declare module "godot" {
         /** Returns the index of the directory with name [param name] or `-1` if not found. */
         find_dir_index(name: string): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorFileSystemDirectory;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorFileSystemDirectory;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorFileSystemImportFormatSupportQuery extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorFileSystemImportFormatSupportQuery extends __NameMapRefCounted {
@@ -4314,12 +2697,7 @@ declare module "godot" {
         /** Query support. Return `false` if import must not continue. */
         /* gdvirtual */ _query(): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorFileSystemImportFormatSupportQuery;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorFileSystemImportFormatSupportQuery;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorImportPlugin extends __RPCMapResourceImporter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorImportPlugin extends __NameMapResourceImporter {
@@ -4386,14 +2764,9 @@ declare module "godot" {
         /* gdvirtual */ _can_import_threaded(): boolean
         
         /** This function can only be called during the [method _import] callback and it allows manually importing resources from it. This is useful when the imported file generates external resources that require importing (as example, images). Custom parameters for the ".import" file can be passed via the [param custom_options]. Additionally, in cases where multiple importers can handle a file, the [param custom_importer] can be specified to force a specific one. This function performs a resource import and returns immediately with a success or error code. [param generator_parameters] defines optional extra metadata which will be stored as [code skip-lint]generator_parameters` in the `remap` section of the `.import` file, for example to store a md5 hash of the source data. */
-        append_import_external_resource(path: string, custom_options?: GDictionary /* = new GDictionary() */, custom_importer?: string /* = '' */, generator_parameters?: any /* = {} */): Error
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorImportPlugin;
+        append_import_external_resource(path: string, custom_options?: GDictionary /* = new GDictionary() */, custom_importer?: string /* = '' */, generator_parameters?: any /* = <any> {} */): Error
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorImportPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorInspector extends __RPCMapScrollContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorInspector extends __NameMapScrollContainer {
@@ -4450,12 +2823,7 @@ declare module "godot" {
         /** Emitted when a property that requires a restart to be applied is edited in the inspector. This is only used in the Project Settings and Editor Settings. */
         readonly restart_requested: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorInspector;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorInspector;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorInspectorPlugin extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorInspectorPlugin extends __NameMapRefCounted {
@@ -4496,12 +2864,7 @@ declare module "godot" {
         /** Adds an editor that allows modifying multiple properties. The [param editor] control must extend [EditorProperty]. */
         add_property_editor_for_multiple_properties(label: string, properties: PackedStringArray | string[], editor: Control): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorInspectorPlugin;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorInspectorPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorNode3DGizmo extends __RPCMapNode3DGizmo {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorNode3DGizmo extends __NameMapNode3DGizmo {
@@ -4563,7 +2926,7 @@ declare module "godot" {
         add_lines(lines: PackedVector3Array | Vector3[], material: Material, billboard?: boolean /* = false */, modulate?: Color /* = new Color(1, 1, 1, 1) */): void
         
         /** Adds a mesh to the gizmo with the specified [param material], local [param transform] and [param skeleton]. Call this method during [method _redraw]. */
-        add_mesh(mesh: Mesh, material?: Material, transform?: Transform3D /* = new Transform3D() */, skeleton?: SkinReference): void
+        add_mesh(mesh: Mesh, material?: Material /* = undefined */, transform?: Transform3D /* = new Transform3D() */, skeleton?: SkinReference /* = undefined */): void
         
         /** Adds the specified [param segments] to the gizmo's collision shape for picking. Call this method during [method _redraw]. */
         add_collision_segments(segments: PackedVector3Array | Vector3[]): void
@@ -4601,12 +2964,7 @@ declare module "godot" {
         /** Returns a list of the currently selected subgizmos. Can be used to highlight selected elements during [method _redraw]. */
         get_subgizmo_selection(): PackedInt32Array
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorNode3DGizmo;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorNode3DGizmo;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorNode3DGizmoPlugin extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorNode3DGizmoPlugin extends __NameMapResource {
@@ -4692,20 +3050,15 @@ declare module "godot" {
         /** Creates a handle material with its variants (selected and/or editable) and adds them to the internal material list. They can then be accessed with [method get_material] and used in [method EditorNode3DGizmo.add_handles]. Should not be overridden.  
          *  You can optionally provide a texture to use instead of the default icon.  
          */
-        create_handle_material(name: string, billboard?: boolean /* = false */, texture?: Texture2D): void
+        create_handle_material(name: string, billboard?: boolean /* = false */, texture?: Texture2D /* = undefined */): void
         
         /** Adds a new material to the internal material list for the plugin. It can then be accessed with [method get_material]. Should not be overridden. */
         add_material(name: string, material: StandardMaterial3D): void
         
         /** Gets material from the internal list of materials. If an [EditorNode3DGizmo] is provided, it will try to get the corresponding variant (selected and/or editable). */
-        get_material(name: string, gizmo?: EditorNode3DGizmo): null | StandardMaterial3D
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorNode3DGizmoPlugin;
+        get_material(name: string, gizmo?: EditorNode3DGizmo /* = undefined */): null | StandardMaterial3D
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorNode3DGizmoPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorPaths extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorPaths extends __NameMapObject {
@@ -4762,8 +3115,6 @@ declare module "godot" {
         
         /** Returns the relative path to the editor settings for this project. This is usually `"res://.godot/editor"`. Projects all have a unique subdirectory inside the settings path where project-specific editor settings are saved. */
         get_project_settings_dir(): string
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorPaths;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorPaths;
     }
@@ -4849,9 +3200,6 @@ declare module "godot" {
             /** Pass the [InputEvent] to other editor plugins except the main [Node3D] one. This can be used to prevent node selection changes and work with sub-gizmos instead. */
             AFTER_GUI_INPUT_CUSTOM = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorPlugin extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorPlugin extends __NameMapNode {
@@ -5048,7 +3396,7 @@ declare module "godot" {
          *  When your plugin is deactivated, make sure to remove your custom control with [method remove_control_from_docks] and free it with [method Node.queue_free].  
          *  Optionally, you can specify a shortcut parameter. When pressed, this shortcut will open and focus the dock.  
          */
-        add_control_to_dock(slot: EditorPlugin.DockSlot, control: Control, shortcut?: Shortcut): void
+        add_control_to_dock(slot: EditorPlugin.DockSlot, control: Control, shortcut?: Shortcut /* = undefined */): void
         
         /** Removes the control from the dock. You have to manually [method Node.queue_free] the control. */
         remove_control_from_docks(control: Control): void
@@ -5060,7 +3408,7 @@ declare module "godot" {
          *  [param shortcut] is a shortcut that, when activated, will toggle the bottom panel's visibility. The shortcut object is only set when this control is added to the bottom panel.  
          *  **Note** See the default editor bottom panel shortcuts in the Editor Settings for inspiration. By convention, they all use [kbd]Alt[/kbd] modifier.  
          */
-        add_control_to_bottom_panel(control: Control, title: string, shortcut?: Shortcut): null | Button
+        add_control_to_bottom_panel(control: Control, title: string, shortcut?: Shortcut /* = undefined */): null | Button
         
         /** Removes the control from the bottom panel. You have to manually [method Node.queue_free] the control. */
         remove_control_from_bottom_panel(control: Control): void
@@ -5219,12 +3567,7 @@ declare module "godot" {
         /** Emitted when any project setting has changed. */
         readonly project_settings_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorPlugin;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorProperty extends __RPCMapContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorProperty extends __NameMapContainer {
@@ -5370,12 +3713,7 @@ declare module "godot" {
         /** Emitted when selected. Used internally. */
         readonly selected: Signal<(path: string, focusable_idx: int64) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorProperty;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorProperty;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorResourceConversionPlugin extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorResourceConversionPlugin extends __NameMapRefCounted {
@@ -5395,12 +3733,7 @@ declare module "godot" {
         /** Takes an input [Resource] and converts it to the type given in [method _converts_to]. The returned [Resource] is the result of the conversion, and the input [Resource] remains unchanged. */
         /* gdvirtual */ _convert(resource: Resource): null | Resource
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorResourceConversionPlugin;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorResourceConversionPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorResourcePicker extends __RPCMapHBoxContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorResourcePicker extends __NameMapHBoxContainer {
@@ -5448,12 +3781,7 @@ declare module "godot" {
         /** Emitted when the value of the edited resource was changed. */
         readonly resource_changed: Signal<(resource: Resource) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorResourcePicker;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorResourcePicker;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorResourcePreview extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorResourcePreview extends __NameMapNode {
@@ -5488,12 +3816,7 @@ declare module "godot" {
         /** Emitted if a preview was invalidated (changed). [param path] corresponds to the path of the preview. */
         readonly preview_invalidated: Signal<(path: string) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorResourcePreview;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorResourcePreview;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorResourcePreviewGenerator extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorResourcePreviewGenerator extends __NameMapRefCounted {
@@ -5534,12 +3857,7 @@ declare module "godot" {
         /** Call from within [method _generate] to request the rendering server draw to the [param viewport]. */
         request_draw_and_wait(viewport: RID): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorResourcePreviewGenerator;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorResourcePreviewGenerator;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorResourceTooltipPlugin extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorResourceTooltipPlugin extends __NameMapRefCounted {
@@ -5567,12 +3885,7 @@ declare module "godot" {
         /** Requests a thumbnail for the given [TextureRect]. The thumbnail is created asynchronously by [EditorResourcePreview] and automatically set when available. */
         request_thumbnail(path: string, control: TextureRect): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorResourceTooltipPlugin;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorResourceTooltipPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorSceneFormatImporter extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorSceneFormatImporter extends __NameMapRefCounted {
@@ -5613,12 +3926,7 @@ declare module "godot" {
         /** Add a specific import option. This function can only be called from [method _get_import_options]. */
         add_import_option_advanced(type: Variant.Type, name: string, default_value: any, hint?: PropertyHint /* = 0 */, hint_string?: string /* = '' */, usage_flags?: int64 /* = 6 */): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorSceneFormatImporter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorSceneFormatImporter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorSceneFormatImporterBlend extends __RPCMapEditorSceneFormatImporter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorSceneFormatImporterBlend extends __NameMapEditorSceneFormatImporter {
@@ -5630,12 +3938,7 @@ declare module "godot" {
     class EditorSceneFormatImporterBlend extends EditorSceneFormatImporter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorSceneFormatImporterBlend;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorSceneFormatImporterBlend;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorSceneFormatImporterFBX2GLTF extends __RPCMapEditorSceneFormatImporter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorSceneFormatImporterFBX2GLTF extends __NameMapEditorSceneFormatImporter {
@@ -5647,12 +3950,7 @@ declare module "godot" {
     class EditorSceneFormatImporterFBX2GLTF extends EditorSceneFormatImporter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorSceneFormatImporterFBX2GLTF;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorSceneFormatImporterFBX2GLTF;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorSceneFormatImporterGLTF extends __RPCMapEditorSceneFormatImporter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorSceneFormatImporterGLTF extends __NameMapEditorSceneFormatImporter {
@@ -5661,12 +3959,7 @@ declare module "godot" {
     class EditorSceneFormatImporterGLTF extends EditorSceneFormatImporter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorSceneFormatImporterGLTF;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorSceneFormatImporterGLTF;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorSceneFormatImporterUFBX extends __RPCMapEditorSceneFormatImporter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorSceneFormatImporterUFBX extends __NameMapEditorSceneFormatImporter {
@@ -5678,12 +3971,7 @@ declare module "godot" {
     class EditorSceneFormatImporterUFBX extends EditorSceneFormatImporter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorSceneFormatImporterUFBX;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorSceneFormatImporterUFBX;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorScenePostImport extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorScenePostImport extends __NameMapRefCounted {
@@ -5700,8 +3988,6 @@ declare module "godot" {
         /** Returns the source file path which got imported (e.g. `res://scene.dae`). */
         get_source_file(): string
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorScenePostImport;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorScenePostImport;
     }
     namespace EditorScenePostImportPlugin {
@@ -5715,9 +4001,6 @@ declare module "godot" {
             INTERNAL_IMPORT_CATEGORY_SKELETON_3D_NODE = 6,
             INTERNAL_IMPORT_CATEGORY_MAX = 7,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorScenePostImportPlugin extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorScenePostImportPlugin extends __NameMapRefCounted {
@@ -5763,12 +4046,7 @@ declare module "godot" {
         /** Add a specific import option. This function can only be called from [method _get_import_options] and [method _get_internal_import_options]. */
         add_import_option_advanced(type: Variant.Type, name: string, default_value: any, hint?: PropertyHint /* = 0 */, hint_string?: string /* = '' */, usage_flags?: int64 /* = 6 */): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorScenePostImportPlugin;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorScenePostImportPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorScript extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorScript extends __NameMapRefCounted {
@@ -5791,12 +4069,7 @@ declare module "godot" {
         /** Returns the [EditorInterface] singleton instance. */
         get_editor_interface(): null | EditorInterface
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorScript;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorScript;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorScriptPicker extends __RPCMapEditorResourcePicker {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorScriptPicker extends __NameMapEditorResourcePicker {
@@ -5811,12 +4084,7 @@ declare module "godot" {
         get script_owner(): null | Node
         set script_owner(value: null | Node)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorScriptPicker;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorScriptPicker;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorSelection extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorSelection extends __NameMapObject {
@@ -5853,12 +4121,7 @@ declare module "godot" {
         /** Emitted when the selection changes. */
         readonly selection_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorSelection;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorSelection;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorSettings extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorSettings extends __NameMapResource {
@@ -5899,7 +4162,7 @@ declare module "godot" {
         set_project_metadata(section: string, key: string, data: any): void
         
         /** Returns project-specific metadata for the [param section] and [param key] specified. If the metadata doesn't exist, [param default] will be returned instead. See also [method set_project_metadata]. */
-        get_project_metadata(section: string, key: string, default_?: any /* = {} */): any
+        get_project_metadata(section: string, key: string, default_?: any /* = <any> {} */): any
         
         /** Sets the list of favorite files and directories for this project. */
         set_favorites(dirs: PackedStringArray | string[]): void
@@ -5955,8 +4218,6 @@ declare module "godot" {
         readonly settings_changed: Signal<() => void>
         readonly _favorites_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorSettings;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorSettings;
     }
     namespace EditorSpinSlider {
@@ -5970,9 +4231,6 @@ declare module "godot" {
             /** Neither the up-down arrows nor the slider will be shown. */
             CONTROL_STATE_HIDE = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorSpinSlider extends __RPCMapRange {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorSpinSlider extends __NameMapRange {
@@ -6026,12 +4284,7 @@ declare module "godot" {
         /** Emitted when the value form loses focus. */
         readonly value_focus_exited: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorSpinSlider;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorSpinSlider;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorSyntaxHighlighter extends __RPCMapSyntaxHighlighter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorSyntaxHighlighter extends __NameMapSyntaxHighlighter {
@@ -6052,8 +4305,6 @@ declare module "godot" {
         /* gdvirtual */ _create(): null | EditorSyntaxHighlighter
         _get_edited_resource(): null | RefCounted
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorSyntaxHighlighter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorSyntaxHighlighter;
     }
     namespace EditorToaster {
@@ -6069,9 +4320,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorToaster extends __RPCMapHBoxContainer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorToaster extends __NameMapHBoxContainer {
     }
     /** Manages toast notifications within the editor.  
@@ -6083,12 +4331,7 @@ declare module "godot" {
         /** Pushes a toast notification to the editor for display. */
         push_toast(message: string, severity?: EditorToaster.Severity /* = 0 */, tooltip?: string /* = '' */): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorToaster;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorToaster;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorTranslationParserPlugin extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorTranslationParserPlugin extends __NameMapRefCounted {
@@ -6105,8 +4348,6 @@ declare module "godot" {
         /** Gets the list of file extensions to associate with this parser, e.g. `["csv"]`. */
         /* gdvirtual */ _get_recognized_extensions(): PackedStringArray
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorTranslationParserPlugin;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorTranslationParserPlugin;
     }
     namespace EditorUndoRedoManager {
@@ -6120,9 +4361,6 @@ declare module "godot" {
             /** Invalid "null" history. It's a special value, not associated with any object. */
             INVALID_HISTORY = -99,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorUndoRedoManager extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorUndoRedoManager extends __NameMapObject {
@@ -6139,7 +4377,7 @@ declare module "godot" {
          *  The way undo operation are ordered in actions is dictated by [param backward_undo_ops]. When [param backward_undo_ops] is `false` undo option are ordered in the same order they were added. Which means the first operation to be added will be the first to be undone.  
          *  If [param mark_unsaved] is `false`, the action will not mark the history as unsaved. This is useful for example for actions that change a selection, or a setting that will be saved automatically. Otherwise, this should be left to `true` if the action requires saving by the user or if it can cause data loss when left unsaved.  
          */
-        create_action(name: string, merge_mode?: UndoRedo.MergeMode /* = 0 */, custom_context?: Object, backward_undo_ops?: boolean /* = false */, mark_unsaved?: boolean /* = true */): void
+        create_action(name: string, merge_mode?: UndoRedo.MergeMode /* = 0 */, custom_context?: Object /* = undefined */, backward_undo_ops?: boolean /* = false */, mark_unsaved?: boolean /* = true */): void
         
         /** Commits the action. If [param execute] is `true` (default), all "do" methods/properties are called/set when this function is called. */
         commit_action(execute?: boolean /* = true */): void
@@ -6155,22 +4393,22 @@ declare module "godot" {
         /** Register a method that will be called when the action is committed (i.e. the "do" action).  
          *  If this is the first operation, the [param object] will be used to deduce target undo history.  
          */
-        add_do_method<T extends Object, M extends GodotNames<T>>(object: T, method: M, ...args: ResolveGodotNameParameters<T, M>): void
+        add_do_method<T extends GObject, M extends GodotNames<T>>(object: T, method: M, ...args: ResolveGodotNameParameters<T, M>): void
         
         /** Register a method that will be called when the action is undone (i.e. the "undo" action).  
          *  If this is the first operation, the [param object] will be used to deduce target undo history.  
          */
-        add_undo_method<T extends Object, M extends GodotNames<T>>(object: T, method: M, ...args: ResolveGodotNameParameters<T, M>): void
+        add_undo_method<T extends GObject, M extends GodotNames<T>>(object: T, method: M, ...args: ResolveGodotNameParameters<T, M>): void
         
         /** Register a property value change for "do".  
          *  If this is the first operation, the [param object] will be used to deduce target undo history.  
          */
-        add_do_property<T extends Object, P extends GodotNames<T>>(object: T, property: P, value: ResolveGodotNameValue<T, P>): void
+        add_do_property<T extends GObject, P extends GodotNames<T>>(object: T, property: P, value: ResolveGodotNameValue<T, P>): void
         
         /** Register a property value change for "undo".  
          *  If this is the first operation, the [param object] will be used to deduce target undo history.  
          */
-        add_undo_property<T extends Object, P extends GodotNames<T>>(object: T, property: P, value: ResolveGodotNameValue<T, P>): void
+        add_undo_property<T extends GObject, P extends GodotNames<T>>(object: T, property: P, value: ResolveGodotNameValue<T, P>): void
         
         /** Register a reference for "do" that will be erased if the "do" history is lost. This is useful mostly for new nodes created for the "do" call. Do not use for resources. */
         add_do_reference(object: Object): void
@@ -6200,8 +4438,6 @@ declare module "godot" {
         
         /** Emitted when the version of any history has changed as a result of undo or redo call. */
         readonly version_changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorUndoRedoManager;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorUndoRedoManager;
     }
@@ -6235,9 +4471,6 @@ declare module "godot" {
             /** A file is encountered from the unstaged area. */
             TREE_AREA_UNSTAGED = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorVCSInterface extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorVCSInterface extends __NameMapObject {
@@ -6341,12 +4574,7 @@ declare module "godot" {
         /** Pops up an error message in the editor which is shown as coming from the underlying VCS. Use this to show VCS specific error messages. */
         popup_error(msg: string): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorVCSInterface;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorVCSInterface;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEncodedObjectAsID extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEncodedObjectAsID extends __NameMapRefCounted {
@@ -6361,12 +4589,7 @@ declare module "godot" {
         get object_id(): int64
         set object_id(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEncodedObjectAsID;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEncodedObjectAsID;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEngineProfiler extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEngineProfiler extends __NameMapRefCounted {
@@ -6385,8 +4608,6 @@ declare module "godot" {
         
         /** Called once every engine iteration when the profiler is active with information about the current frame. All time values are in seconds. Lower values represent faster processing times and are therefore considered better. */
         /* gdvirtual */ _tick(frame_time: float64, process_time: float64, physics_time: float64, physics_frame_time: float64): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEngineProfiler;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEngineProfiler;
     }
@@ -6491,9 +4712,6 @@ declare module "godot" {
             /** Use 100% scale for SDFGI on the Y (vertical) axis. SDFGI cells will be as tall as they are wide. This is usually the best choice for highly vertical scenes. The downside is that light leaking may become more noticeable with thin floors and ceilings. */
             SDFGI_Y_SCALE_100_PERCENT = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEnvironment extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEnvironment extends __NameMapResource {
@@ -7026,12 +5244,7 @@ declare module "godot" {
         get adjustment_color_correction(): null | Texture2D | Texture3D
         set adjustment_color_correction(value: null | Texture2D | Texture3D)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEnvironment;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEnvironment;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapExpression extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapExpression extends __NameMapRefCounted {
@@ -7050,7 +5263,7 @@ declare module "godot" {
         /** Executes the expression that was previously parsed by [method parse] and returns the result. Before you use the returned object, you should check if the method failed by calling [method has_execute_failed].  
          *  If you defined input variables in [method parse], you can specify their values in the inputs array, in the same order.  
          */
-        execute(inputs?: GArray, base_instance?: Object, show_error?: boolean /* = true */, const_calls_only?: boolean /* = false */): any
+        execute(inputs?: GArray /* = [] */, base_instance?: Object /* = undefined */, show_error?: boolean /* = true */, const_calls_only?: boolean /* = false */): any
         
         /** Returns `true` if [method execute] has failed. */
         has_execute_failed(): boolean
@@ -7058,12 +5271,7 @@ declare module "godot" {
         /** Returns the error text if [method parse] or [method execute] has failed. */
         get_error_text(): string
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapExpression;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapExpression;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapExternalTexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapExternalTexture extends __NameMapTexture2D {
@@ -7088,12 +5296,7 @@ declare module "godot" {
         get size(): Vector2
         set size(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapExternalTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapExternalTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFABRIK3D extends __RPCMapIterateIK3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFABRIK3D extends __NameMapIterateIK3D {
@@ -7105,12 +5308,7 @@ declare module "godot" {
     class FABRIK3D<Map extends NodePathMap = any> extends IterateIK3D<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFABRIK3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFABRIK3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFBXDocument extends __RPCMapGLTFDocument {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFBXDocument extends __NameMapGLTFDocument {
@@ -7122,12 +5320,7 @@ declare module "godot" {
     class FBXDocument extends GLTFDocument {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFBXDocument;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFBXDocument;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFBXState extends __RPCMapGLTFState {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFBXState extends __NameMapGLTFState {
@@ -7138,8 +5331,6 @@ declare module "godot" {
         /** If `true`, the import process used auxiliary nodes called geometry helper nodes. These nodes help preserve the pivots and transformations of the original 3D model during import. */
         get allow_geometry_helper_nodes(): boolean
         set allow_geometry_helper_nodes(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFBXState;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFBXState;
     }
@@ -7233,9 +5424,6 @@ declare module "godot" {
             /** Warping the space independently for each octave, resulting in a more chaotic distortion. */
             DOMAIN_WARP_FRACTAL_INDEPENDENT = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFastNoiseLite extends __RPCMapNoise {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFastNoiseLite extends __NameMapNoise {
@@ -7336,8 +5524,6 @@ declare module "godot" {
         get domain_warp_fractal_gain(): float64
         set domain_warp_fractal_gain(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFastNoiseLite;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFastNoiseLite;
     }
     namespace FileAccess {
@@ -7413,9 +5599,6 @@ declare module "godot" {
             /** Restricted deletion (sticky) bit. */
             UNIX_RESTRICTED_DELETE = 512,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFileAccess extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFileAccess extends __NameMapRefCounted {
@@ -7820,8 +6003,6 @@ declare module "godot" {
         get big_endian(): boolean
         set big_endian(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFileAccess;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFileAccess;
     }
     namespace FileDialog {
@@ -7904,9 +6085,6 @@ declare module "godot" {
              */
             CUSTOMIZATION_DELETE = 8,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFileDialog extends __RPCMapConfirmationDialog {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFileDialog extends __NameMapConfirmationDialog {
@@ -8143,12 +6321,7 @@ declare module "godot" {
         /** Emitted when the filter for file names changes. */
         readonly filename_filter_changed: Signal<(filter: string) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFileDialog;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFileDialog;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFileSystemDock extends __RPCMapEditorDock {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFileSystemDock extends __NameMapEditorDock {
@@ -8198,8 +6371,6 @@ declare module "godot" {
         /** Emitted when the user switches file display mode or split mode. */
         readonly display_mode_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFileSystemDock;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFileSystemDock;
     }
     namespace FlowContainer {
@@ -8226,9 +6397,6 @@ declare module "godot" {
             /** The last partially filled row or column will wrap aligned to the end of the previous row or column. */
             LAST_WRAP_ALIGNMENT_END = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFlowContainer extends __RPCMapContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFlowContainer extends __NameMapContainer {
@@ -8262,12 +6430,7 @@ declare module "godot" {
         get reverse_fill(): boolean
         set reverse_fill(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFlowContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFlowContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFogMaterial extends __RPCMapMaterial {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFogMaterial extends __NameMapMaterial {
@@ -8305,12 +6468,7 @@ declare module "godot" {
         get density_texture(): null | Texture3D
         set density_texture(value: null | Texture3D)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFogMaterial;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFogMaterial;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFogVolume extends __RPCMapVisualInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFogVolume extends __NameMapVisualInstance3D {
@@ -8338,8 +6496,6 @@ declare module "godot" {
         get material(): null | FogMaterial | ShaderMaterial
         set material(value: null | FogMaterial | ShaderMaterial)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFogVolume;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFogVolume;
     }
     namespace FoldableContainer {
@@ -8350,9 +6506,6 @@ declare module "godot" {
             /** Makes the title appear at the bottom of the container. Also makes all StyleBoxes flipped vertically. */
             POSITION_BOTTOM = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFoldableContainer extends __RPCMapContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFoldableContainer extends __NameMapContainer {
@@ -8412,12 +6565,7 @@ declare module "godot" {
         /** Emitted when the container is folded/expanded. */
         readonly folding_changed: Signal<(is_folded: boolean) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFoldableContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFoldableContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFoldableGroup extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFoldableGroup extends __NameMapResource {
@@ -8441,12 +6589,7 @@ declare module "godot" {
         /** Emitted when one of the containers of the group is expanded. */
         readonly expanded: Signal<(container: FoldableContainer) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFoldableGroup;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFoldableGroup;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFont extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFont extends __NameMapResource {
@@ -8608,12 +6751,7 @@ declare module "godot" {
         get fallbacks(): GArray<Font>
         set fallbacks(value: GArray<Font>)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFont;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFont;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFontFile extends __RPCMapFont {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFontFile extends __NameMapFont {
@@ -8940,12 +7078,7 @@ declare module "godot" {
         get oversampling(): float64
         set oversampling(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFontFile;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFontFile;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFontVariation extends __RPCMapFont {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFontVariation extends __NameMapFont {
@@ -9013,12 +7146,7 @@ declare module "godot" {
         get baseline_offset(): float64
         set baseline_offset(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFontVariation;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFontVariation;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapFramebufferCacheRD extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapFramebufferCacheRD extends __NameMapObject {
@@ -9031,8 +7159,6 @@ declare module "godot" {
         constructor(identifier?: any)
         /** Creates, or obtains a cached, framebuffer. [param textures] lists textures accessed. [param passes] defines the subpasses and texture allocation, if left empty a single pass is created and textures are allocated depending on their usage flags. [param views] defines the number of views used when rendering. */
         static get_cache_multipass(textures: GArray<RID>, passes: GArray<RDFramebufferPass>, views: int64): RID
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapFramebufferCacheRD;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapFramebufferCacheRD;
     }
@@ -9052,9 +7178,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGDExtension extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGDExtension extends __NameMapResource {
     }
     /** A native library for GDExtension.  
@@ -9068,8 +7191,6 @@ declare module "godot" {
         
         /** Returns the lowest level required for this extension to be properly initialized (see the [enum InitializationLevel] enum). */
         get_minimum_library_initialization_level(): GDExtension.InitializationLevel
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGDExtension;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGDExtension;
     }
@@ -9133,9 +7254,6 @@ declare module "godot" {
             /** Component type "UNSIGNED_LONG". The value is `0x140F` which comes from OpenGL. This indicates data is stored in 8-byte or 64-bit unsigned integers. This is NOT a core part of the glTF specification, and may not be supported by all glTF importers. May be used by some extensions including `KHR_interactivity`. */
             COMPONENT_TYPE_UNSIGNED_LONG = 5135,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFAccessor extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGLTFAccessor extends __NameMapResource {
@@ -9212,8 +7330,2160 @@ declare module "godot" {
         get sparse_values_byte_offset(): int64
         set sparse_values_byte_offset(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFAccessor;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGLTFAccessor;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFAnimation extends __NameMapResource {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_gltfanimation.html */
+    class GLTFAnimation extends Resource {
+        constructor(identifier?: any)
+        /** Gets additional arbitrary data in this [GLTFAnimation] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
+         *  The argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is `null`.  
+         */
+        get_additional_data(extension_name: StringName): any
+        
+        /** Sets additional arbitrary data in this [GLTFAnimation] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
+         *  The first argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.  
+         */
+        set_additional_data(extension_name: StringName, additional_data: any): void
+        
+        /** The original name of the animation. */
+        get original_name(): string
+        set original_name(value: string)
+        get loop(): boolean
+        set loop(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFAnimation;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFBufferView extends __NameMapResource {
+    }
+    /** Represents a glTF buffer view.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfbufferview.html  
+     */
+    class GLTFBufferView extends Resource {
+        constructor(identifier?: any)
+        /** Loads the buffer view data from the buffer referenced by this buffer view in the given [GLTFState]. Interleaved data with a byte stride is not yet supported by this method. The data is returned as a [PackedByteArray]. */
+        load_buffer_view_data(state: GLTFState): PackedByteArray
+        
+        /** Creates a new GLTFBufferView instance by parsing the given [Dictionary]. */
+        static from_dictionary(dictionary: GDictionary): null | GLTFBufferView
+        
+        /** Serializes this GLTFBufferView instance into a [Dictionary]. */
+        to_dictionary(): GDictionary
+        
+        /** The index of the buffer this buffer view is referencing. If `-1`, this buffer view is not referencing any buffer. */
+        get buffer(): int64
+        set buffer(value: int64)
+        
+        /** The offset, in bytes, from the start of the buffer to the start of this buffer view. */
+        get byte_offset(): int64
+        set byte_offset(value: int64)
+        
+        /** The length, in bytes, of this buffer view. If `0`, this buffer view is empty. */
+        get byte_length(): int64
+        set byte_length(value: int64)
+        
+        /** The stride, in bytes, between interleaved data. If `-1`, this buffer view is not interleaved. */
+        get byte_stride(): int64
+        set byte_stride(value: int64)
+        
+        /** `true` if the GLTFBufferView's OpenGL GPU buffer type is an `ELEMENT_ARRAY_BUFFER` used for vertex indices (integer constant `34963`). `false` if the buffer type is any other value. See [url=https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md]Buffers, BufferViews, and Accessors[/url] for possible values. This property is set on import and used on export. */
+        get indices(): boolean
+        set indices(value: boolean)
+        
+        /** `true` if the GLTFBufferView's OpenGL GPU buffer type is an `ARRAY_BUFFER` used for vertex attributes (integer constant `34962`). `false` if the buffer type is any other value. See [url=https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md]Buffers, BufferViews, and Accessors[/url] for possible values. This property is set on import and used on export. */
+        get vertex_attributes(): boolean
+        set vertex_attributes(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFBufferView;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFCamera extends __NameMapResource {
+    }
+    /** Represents a glTF camera.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfcamera.html  
+     */
+    class GLTFCamera extends Resource {
+        constructor(identifier?: any)
+        /** Create a new GLTFCamera instance from the given Godot [Camera3D] node. */
+        static from_node(camera_node: Camera3D): null | GLTFCamera
+        
+        /** Converts this GLTFCamera instance into a Godot [Camera3D] node. */
+        to_node(): null | Camera3D
+        
+        /** Creates a new GLTFCamera instance by parsing the given [Dictionary]. */
+        static from_dictionary(dictionary: GDictionary): null | GLTFCamera
+        
+        /** Serializes this GLTFCamera instance into a [Dictionary]. */
+        to_dictionary(): GDictionary
+        
+        /** If `true`, the camera is in perspective mode. Otherwise, the camera is in orthographic/orthogonal mode. This maps to glTF's camera `type` property. See [member Camera3D.projection] and the glTF spec for more information. */
+        get perspective(): boolean
+        set perspective(value: boolean)
+        
+        /** The FOV of the camera. This class and glTF define the camera FOV in radians, while Godot uses degrees. This maps to glTF's `yfov` property. This value is only used for perspective cameras, when [member perspective] is `true`. */
+        get fov(): float64
+        set fov(value: float64)
+        
+        /** The size of the camera. This class and glTF define the camera size magnitude as a radius in meters, while Godot defines it as a diameter in meters. This maps to glTF's `ymag` property. This value is only used for orthographic/orthogonal cameras, when [member perspective] is `false`. */
+        get size_mag(): float64
+        set size_mag(value: float64)
+        
+        /** The distance to the far culling boundary for this camera relative to its local Z axis, in meters. This maps to glTF's `zfar` property. */
+        get depth_far(): float64
+        set depth_far(value: float64)
+        
+        /** The distance to the near culling boundary for this camera relative to its local Z axis, in meters. This maps to glTF's `znear` property. */
+        get depth_near(): float64
+        set depth_near(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFCamera;
+    }
+    namespace GLTFDocument {
+        enum RootNodeMode {
+            /** Treat the Godot scene's root node as the root node of the glTF file, and mark it as the single root node via the `GODOT_single_root` glTF extension. This will be parsed the same as [constant ROOT_NODE_MODE_KEEP_ROOT] if the implementation does not support `GODOT_single_root`. */
+            ROOT_NODE_MODE_SINGLE_ROOT = 0,
+            
+            /** Treat the Godot scene's root node as the root node of the glTF file, but do not mark it as anything special. An extra root node will be generated when importing into Godot. This uses only vanilla glTF features. This is equivalent to the behavior in Godot 4.1 and earlier. */
+            ROOT_NODE_MODE_KEEP_ROOT = 1,
+            
+            /** Treat the Godot scene's root node as the name of the glTF scene, and add all of its children as root nodes of the glTF file. This uses only vanilla glTF features. This avoids an extra root node, but only the name of the Godot scene's root node will be preserved, as it will not be saved as a node. */
+            ROOT_NODE_MODE_MULTI_ROOT = 2,
+        }
+        enum VisibilityMode {
+            /** If the scene contains any non-visible nodes, include them, mark them as non-visible with `KHR_node_visibility`, and require that importers respect their non-visibility. Downside: If the importer does not support `KHR_node_visibility`, the file cannot be imported. */
+            VISIBILITY_MODE_INCLUDE_REQUIRED = 0,
+            
+            /** If the scene contains any non-visible nodes, include them, mark them as non-visible with `KHR_node_visibility`, and do not impose any requirements on importers. Downside: If the importer does not support `KHR_node_visibility`, invisible objects will be visible. */
+            VISIBILITY_MODE_INCLUDE_OPTIONAL = 1,
+            
+            /** If the scene contains any non-visible nodes, do not include them in the export. This is the same as the behavior in Godot 4.4 and earlier. Downside: Invisible nodes will not exist in the exported file. */
+            VISIBILITY_MODE_EXCLUDE = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFDocument extends __NameMapResource {
+    }
+    /** Class for importing and exporting glTF files in and out of Godot.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfdocument.html  
+     */
+    class GLTFDocument extends Resource {
+        constructor(identifier?: any)
+        /** Takes a path to a glTF file and imports the data at that file path to the given [GLTFState] object through the [param state] parameter.  
+         *      
+         *  **Note:** The [param base_path] tells [method append_from_file] where to find dependencies and can be empty.  
+         */
+        append_from_file(path: string, state: GLTFState, flags?: int64 /* = 0 */, base_path?: string /* = '' */): Error
+        
+        /** Takes a [PackedByteArray] defining a glTF and imports the data to the given [GLTFState] object through the [param state] parameter.  
+         *      
+         *  **Note:** The [param base_path] tells [method append_from_buffer] where to find dependencies and can be empty.  
+         */
+        append_from_buffer(bytes: PackedByteArray | byte[] | ArrayBuffer, base_path: string, state: GLTFState, flags?: int64 /* = 0 */): Error
+        
+        /** Takes a Godot Engine scene node and exports it and its descendants to the given [GLTFState] object through the [param state] parameter. */
+        append_from_scene(node: Node, state: GLTFState, flags?: int64 /* = 0 */): Error
+        
+        /** Takes a [GLTFState] object through the [param state] parameter and returns a Godot Engine scene node.  
+         *  The [param bake_fps] parameter overrides the bake_fps in [param state].  
+         */
+        generate_scene(state: GLTFState, bake_fps?: float64 /* = 30 */, trimming?: boolean /* = false */, remove_immutable_tracks?: boolean /* = true */): null | Node
+        
+        /** Takes a [GLTFState] object through the [param state] parameter and returns a glTF [PackedByteArray]. */
+        generate_buffer(state: GLTFState): PackedByteArray
+        
+        /** Takes a [GLTFState] object through the [param state] parameter and writes a glTF file to the filesystem.  
+         *      
+         *  **Note:** The extension of the glTF file determines if it is a .glb binary file or a .gltf text file.  
+         */
+        write_to_filesystem(state: GLTFState, path: string): Error
+        
+        /** Determines a mapping between the given glTF Object Model [param json_pointer] and the corresponding Godot node path(s) in the generated Godot scene. The details of this mapping are returned in a [GLTFObjectModelProperty] object. Additional mappings can be supplied via the [method GLTFDocumentExtension._export_object_model_property] callback method. */
+        static import_object_model_property(state: GLTFState, json_pointer: string): null | GLTFObjectModelProperty
+        
+        /** Determines a mapping between the given Godot [param node_path] and the corresponding glTF Object Model JSON pointer(s) in the generated glTF file. The details of this mapping are returned in a [GLTFObjectModelProperty] object. Additional mappings can be supplied via the [method GLTFDocumentExtension._import_object_model_property] callback method. */
+        static export_object_model_property(state: GLTFState, node_path: NodePath | string, godot_node: Node, gltf_node_index: int64): null | GLTFObjectModelProperty
+        
+        /** Registers the given [GLTFDocumentExtension] instance with GLTFDocument. If [param first_priority] is `true`, this extension will be run first. Otherwise, it will be run last.  
+         *      
+         *  **Note:** Like GLTFDocument itself, all GLTFDocumentExtension classes must be stateless in order to function properly. If you need to store data, use the `set_additional_data` and `get_additional_data` methods in [GLTFState] or [GLTFNode].  
+         */
+        static register_gltf_document_extension(extension: GLTFDocumentExtension, first_priority?: boolean /* = false */): void
+        
+        /** Unregisters the given [GLTFDocumentExtension] instance. */
+        static unregister_gltf_document_extension(extension: GLTFDocumentExtension): void
+        
+        /** Returns a list of all support glTF extensions, including extensions supported directly by the engine, and extensions supported by user plugins registering [GLTFDocumentExtension] classes.  
+         *      
+         *  **Note:** If this method is run before a GLTFDocumentExtension is registered, its extensions won't be included in the list. Be sure to only run this method after all extensions are registered. If you run this when the engine starts, consider waiting a frame before calling this method to ensure all extensions are registered.  
+         */
+        static get_supported_gltf_extensions(): PackedStringArray
+        
+        /** The user-friendly name of the export image format. This is used when exporting the glTF file, including writing to a file and writing to a byte array.  
+         *  By default, Godot allows the following options: "None", "PNG", "JPEG", "Lossless WebP", and "Lossy WebP". Support for more image formats can be added in [GLTFDocumentExtension] classes. A single extension class can provide multiple options for the specific format to use, or even an option that uses multiple formats at once.  
+         */
+        get image_format(): string
+        set image_format(value: string)
+        
+        /** If [member image_format] is a lossy image format, this determines the lossy quality of the image. On a range of `0.0` to `1.0`, where `0.0` is the lowest quality and `1.0` is the highest quality. A lossy quality of `1.0` is not the same as lossless. */
+        get lossy_quality(): float64
+        set lossy_quality(value: float64)
+        
+        /** The user-friendly name of the fallback image format. This is used when exporting the glTF file, including writing to a file and writing to a byte array.  
+         *  This property may only be one of "None", "PNG", or "JPEG", and is only used when the [member image_format] is not one of "None", "PNG", or "JPEG". If having multiple extension image formats is desired, that can be done using a [GLTFDocumentExtension] class - this property only covers the use case of providing a base glTF fallback image when using a custom image format.  
+         */
+        get fallback_image_format(): string
+        set fallback_image_format(value: string)
+        
+        /** The quality of the fallback image, if any. For PNG files, this downscales the image on both dimensions by this factor. For JPEG files, this is the lossy quality of the image. A low value is recommended, since including multiple high quality images in a glTF file defeats the file size gains of using a more efficient image format. */
+        get fallback_image_quality(): float64
+        set fallback_image_quality(value: float64)
+        
+        /** How to process the root node during export. The default and recommended value is [constant ROOT_NODE_MODE_SINGLE_ROOT].  
+         *      
+         *  **Note:** Regardless of how the glTF file is exported, when importing, the root node type and name can be overridden in the scene import settings tab.  
+         */
+        get root_node_mode(): int64
+        set root_node_mode(value: int64)
+        
+        /** How to deal with node visibility during export. This setting does nothing if all nodes are visible. The default and recommended value is [constant VISIBILITY_MODE_INCLUDE_REQUIRED], which uses the `KHR_node_visibility` extension. */
+        get visibility_mode(): int64
+        set visibility_mode(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFDocument;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFDocumentExtension extends __NameMapResource {
+    }
+    /** [GLTFDocument] extension class.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfdocumentextension.html  
+     */
+    class GLTFDocumentExtension extends Resource {
+        constructor(identifier?: any)
+        /** Part of the import process. This method is run first, before all other parts of the import process.  
+         *  The return value is used to determine if this [GLTFDocumentExtension] instance should be used for importing a given glTF file. If [constant OK], the import will use this [GLTFDocumentExtension] instance. If not overridden, [constant OK] is returned.  
+         */
+        /* gdvirtual */ _import_preflight(state: GLTFState, extensions: PackedStringArray | string[]): Error
+        
+        /** Part of the import process. This method is run after [method _import_preflight] and before [method _parse_node_extensions].  
+         *  Returns an array of the glTF extensions supported by this GLTFDocumentExtension class. This is used to validate if a glTF file with required extensions can be loaded.  
+         */
+        /* gdvirtual */ _get_supported_extensions(): PackedStringArray
+        
+        /** Part of the import process. This method is run after [method _get_supported_extensions] and before [method _import_post_parse].  
+         *  Runs when parsing the node extensions of a GLTFNode. This method can be used to process the extension JSON data into a format that can be used by [method _generate_scene_node]. The return value should be a member of the [enum Error] enum.  
+         */
+        /* gdvirtual */ _parse_node_extensions(state: GLTFState, gltf_node: GLTFNode, extensions: GDictionary): Error
+        
+        /** Part of the import process. This method is run after [method _parse_node_extensions] and before [method _parse_texture_json].  
+         *  Runs when parsing image data from a glTF file. The data could be sourced from a separate file, a URI, or a buffer, and then is passed as a byte array.  
+         */
+        /* gdvirtual */ _parse_image_data(state: GLTFState, image_data: PackedByteArray | byte[] | ArrayBuffer, mime_type: string, ret_image: Image): Error
+        
+        /** Returns the file extension to use for saving image data into, for example, `".png"`. If defined, when this extension is used to handle images, and the images are saved to a separate file, the image bytes will be copied to a file with this extension. If this is set, there should be a [ResourceImporter] class able to import the file. If not defined or empty, Godot will save the image into a PNG file. */
+        /* gdvirtual */ _get_image_file_extension(): string
+        
+        /** Part of the import process. This method is run after [method _parse_image_data] and before [method _generate_scene_node].  
+         *  Runs when parsing the texture JSON from the glTF textures array. This can be used to set the source image index to use as the texture.  
+         */
+        /* gdvirtual */ _parse_texture_json(state: GLTFState, texture_json: GDictionary, ret_gltf_texture: GLTFTexture): Error
+        
+        /** Part of the import process. Allows GLTFDocumentExtension classes to provide mappings for JSON pointers to glTF properties, as defined by the glTF object model, to properties of nodes in the Godot scene tree.  
+         *  Returns a [GLTFObjectModelProperty] instance that defines how the property should be mapped. If your extension can't handle the property, return `null` or an instance without any NodePaths (see [method GLTFObjectModelProperty.has_node_paths]). You should use [method GLTFObjectModelProperty.set_types] to set the types, and [method GLTFObjectModelProperty.append_path_to_property] function is useful for most simple cases.  
+         *  In many cases, [param partial_paths] will contain the start of a path, allowing the extension to complete the path. For example, for `/nodes/3/extensions/MY_ext/prop`, Godot will pass you a NodePath that leads to node 3, so the GLTFDocumentExtension class only needs to resolve the last `MY_ext/prop` part of the path. In this example, the extension should check `split.size() > 4 and split[0] == "nodes" and split[2] == "extensions" and split[3] == "MY_ext"` at the start of the function to check if this JSON pointer applies to it, then it can use [param partial_paths] and handle `split[4]`.  
+         */
+        /* gdvirtual */ _import_object_model_property(state: GLTFState, split_json_pointer: PackedStringArray | string[], partial_paths: GArray<NodePath>): null | GLTFObjectModelProperty
+        
+        /** Part of the import process. This method is run after [method _parse_node_extensions] and before [method _import_pre_generate].  
+         *  This method can be used to modify any of the data imported so far after parsing each node, but before generating the scene or any of its nodes.  
+         */
+        /* gdvirtual */ _import_post_parse(state: GLTFState): Error
+        
+        /** Part of the import process. This method is run after [method _import_post_parse] and before [method _generate_scene_node].  
+         *  This method can be used to modify or read from any of the processed data structures, before generating the nodes and then running the final per-node import step.  
+         */
+        /* gdvirtual */ _import_pre_generate(state: GLTFState): Error
+        
+        /** Part of the import process. This method is run after [method _import_pre_generate] and before [method _import_node].  
+         *  Runs when generating a Godot scene node from a GLTFNode. The returned node will be added to the scene tree. Multiple nodes can be generated in this step if they are added as a child of the returned node.  
+         *      
+         *  **Note:** The [param scene_parent] parameter may be `null` if this is the single root node.  
+         */
+        /* gdvirtual */ _generate_scene_node(state: GLTFState, gltf_node: GLTFNode, scene_parent: Node): null | Node3D
+        
+        /** Part of the import process. This method is run after [method _generate_scene_node] and before [method _import_post].  
+         *  This method can be used to make modifications to each of the generated Godot scene nodes.  
+         */
+        /* gdvirtual */ _import_node(state: GLTFState, gltf_node: GLTFNode, json: GDictionary, node: Node): Error
+        
+        /** Part of the import process. This method is run last, after all other parts of the import process.  
+         *  This method can be used to modify the final Godot scene generated by the import process.  
+         */
+        /* gdvirtual */ _import_post(state: GLTFState, root: Node): Error
+        
+        /** Part of the export process. This method is run first, before all other parts of the export process.  
+         *  The return value is used to determine if this [GLTFDocumentExtension] instance should be used for exporting a given glTF file. If [constant OK], the export will use this [GLTFDocumentExtension] instance. If not overridden, [constant OK] is returned.  
+         */
+        /* gdvirtual */ _export_preflight(state: GLTFState, root: Node): Error
+        
+        /** Part of the export process. This method is run after [method _export_preflight] and before [method _export_post_convert].  
+         *  Runs when converting the data from a Godot scene node. This method can be used to process the Godot scene node data into a format that can be used by [method _export_node].  
+         */
+        /* gdvirtual */ _convert_scene_node(state: GLTFState, gltf_node: GLTFNode, scene_node: Node): void
+        
+        /** Part of the export process. This method is run after [method _convert_scene_node] and before [method _export_preserialize].  
+         *  This method can be used to modify the converted node data structures before serialization with any additional data from the scene tree.  
+         */
+        /* gdvirtual */ _export_post_convert(state: GLTFState, root: Node): Error
+        
+        /** Part of the export process. This method is run after [method _export_post_convert] and before [method _get_saveable_image_formats].  
+         *  This method can be used to alter the state before performing serialization. It runs every time when generating a buffer with [method GLTFDocument.generate_buffer] or writing to the file system with [method GLTFDocument.write_to_filesystem].  
+         */
+        /* gdvirtual */ _export_preserialize(state: GLTFState): Error
+        
+        /** Part of the export process. Allows GLTFDocumentExtension classes to provide mappings for properties of nodes in the Godot scene tree, to JSON pointers to glTF properties, as defined by the glTF object model.  
+         *  Returns a [GLTFObjectModelProperty] instance that defines how the property should be mapped. If your extension can't handle the property, return `null` or an instance without any JSON pointers (see [method GLTFObjectModelProperty.has_json_pointers]). You should use [method GLTFObjectModelProperty.set_types] to set the types, and set the JSON pointer(s) using the [member GLTFObjectModelProperty.json_pointers] property.  
+         *  The parameters provide context for the property, including the NodePath, the Godot node, the GLTF node index, and the target object. The [param target_object] will be equal to [param godot_node] if no sub-object can be found, otherwise it will point to a sub-object. For example, if the path is `^"A/B/C/MeshInstance3D:mesh:surface_0/material:emission_intensity"`, it will get the node, then the mesh, and then the material, so [param target_object] will be the [Material] resource, and [param target_depth] will be 2 because 2 levels were traversed to get to the target.  
+         */
+        /* gdvirtual */ _export_object_model_property(state: GLTFState, node_path: NodePath | string, godot_node: Node, gltf_node_index: int64, target_object: Object, target_depth: int64): null | GLTFObjectModelProperty
+        
+        /** Part of the export process. This method is run after [method _convert_scene_node] and before [method _export_node].  
+         *  Returns an array of the image formats that can be saved/exported by this extension. This extension will only be selected as the image exporter if the [GLTFDocument]'s [member GLTFDocument.image_format] is in this array. If this [GLTFDocumentExtension] is selected as the image exporter, one of the [method _save_image_at_path] or [method _serialize_image_to_bytes] methods will run next, otherwise [method _export_node] will run next. If the format name contains `"Lossy"`, the lossy quality slider will be displayed.  
+         */
+        /* gdvirtual */ _get_saveable_image_formats(): PackedStringArray
+        
+        /** Part of the export process. This method is run after [method _get_saveable_image_formats] and before [method _serialize_texture_json].  
+         *  This method is run when embedding images in the glTF file. When images are saved separately, [method _save_image_at_path] runs instead. Note that these methods only run when this [GLTFDocumentExtension] is selected as the image exporter.  
+         *  This method must set the image MIME type in the [param image_dict] with the `"mimeType"` key. For example, for a PNG image, it would be set to `"image/png"`. The return value must be a [PackedByteArray] containing the image data.  
+         */
+        /* gdvirtual */ _serialize_image_to_bytes(state: GLTFState, image: Image, image_dict: GDictionary, image_format: string, lossy_quality: float64): PackedByteArray
+        
+        /** Part of the export process. This method is run after [method _get_saveable_image_formats] and before [method _serialize_texture_json].  
+         *  This method is run when saving images separately from the glTF file. When images are embedded, [method _serialize_image_to_bytes] runs instead. Note that these methods only run when this [GLTFDocumentExtension] is selected as the image exporter.  
+         */
+        /* gdvirtual */ _save_image_at_path(state: GLTFState, image: Image, file_path: string, image_format: string, lossy_quality: float64): Error
+        
+        /** Part of the export process. This method is run after [method _save_image_at_path] or [method _serialize_image_to_bytes], and before [method _export_node]. Note that this method only runs when this [GLTFDocumentExtension] is selected as the image exporter.  
+         *  This method can be used to set up the extensions for the texture JSON by editing [param texture_json]. The extension must also be added as used extension with [method GLTFState.add_used_extension], be sure to set `required` to `true` if you are not providing a fallback.  
+         */
+        /* gdvirtual */ _serialize_texture_json(state: GLTFState, texture_json: GDictionary, gltf_texture: GLTFTexture, image_format: string): Error
+        
+        /** Part of the export process. This method is run after [method _get_saveable_image_formats] and before [method _export_post]. If this [GLTFDocumentExtension] is used for exporting images, this runs after [method _serialize_texture_json].  
+         *  This method can be used to modify the final JSON of each node. Data should be primarily stored in [param gltf_node] prior to serializing the JSON, but the original Godot [Node] is also provided if available. [param node] may be `null` if not available, such as when exporting glTF data not generated from a Godot scene.  
+         */
+        /* gdvirtual */ _export_node(state: GLTFState, gltf_node: GLTFNode, json: GDictionary, node: Node): Error
+        
+        /** Part of the export process. This method is run last, after all other parts of the export process.  
+         *  This method can be used to modify the final JSON of the generated glTF file.  
+         */
+        /* gdvirtual */ _export_post(state: GLTFState): Error
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFDocumentExtension;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFDocumentExtensionConvertImporterMesh extends __NameMapGLTFDocumentExtension {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_gltfdocumentextensionconvertimportermesh.html */
+    class GLTFDocumentExtensionConvertImporterMesh extends GLTFDocumentExtension {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFDocumentExtensionConvertImporterMesh;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFLight extends __NameMapResource {
+    }
+    /** Represents a glTF light.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltflight.html  
+     */
+    class GLTFLight extends Resource {
+        constructor(identifier?: any)
+        /** Create a new GLTFLight instance from the given Godot [Light3D] node. */
+        static from_node(light_node: Light3D): null | GLTFLight
+        
+        /** Converts this GLTFLight instance into a Godot [Light3D] node. */
+        to_node(): null | Light3D
+        
+        /** Creates a new GLTFLight instance by parsing the given [Dictionary]. */
+        static from_dictionary(dictionary: GDictionary): null | GLTFLight
+        
+        /** Serializes this GLTFLight instance into a [Dictionary]. */
+        to_dictionary(): GDictionary
+        get_additional_data(extension_name: StringName): any
+        set_additional_data(extension_name: StringName, additional_data: any): void
+        
+        /** The [Color] of the light in linear space. Defaults to white. A black color causes the light to have no effect.  
+         *  This value is linear to match glTF, but will be converted to nonlinear sRGB when creating a Godot [Light3D] node upon import, or converted to linear when exporting a Godot [Light3D] to glTF.  
+         */
+        get color(): Color
+        set color(value: Color)
+        
+        /** The intensity of the light. This is expressed in candelas (lumens per steradian) for point and spot lights, and lux (lumens per m²) for directional lights. When creating a Godot light, this value is converted to a unitless multiplier. */
+        get intensity(): float64
+        set intensity(value: float64)
+        
+        /** The type of the light. The values accepted by Godot are "point", "spot", and "directional", which correspond to Godot's [OmniLight3D], [SpotLight3D], and [DirectionalLight3D] respectively. */
+        get light_type(): string
+        set light_type(value: string)
+        
+        /** The range of the light, beyond which the light has no effect. glTF lights with no range defined behave like physical lights (which have infinite range). When creating a Godot light, the range is clamped to `4096.0`. */
+        get range(): float64
+        set range(value: float64)
+        
+        /** The inner angle of the cone in a spotlight. Must be less than or equal to the outer cone angle.  
+         *  Within this angle, the light is at full brightness. Between the inner and outer cone angles, there is a transition from full brightness to zero brightness. When creating a Godot [SpotLight3D], the ratio between the inner and outer cone angles is used to calculate the attenuation of the light.  
+         */
+        get inner_cone_angle(): float64
+        set inner_cone_angle(value: float64)
+        
+        /** The outer angle of the cone in a spotlight. Must be greater than or equal to the inner angle.  
+         *  At this angle, the light drops off to zero brightness. Between the inner and outer cone angles, there is a transition from full brightness to zero brightness. If this angle is a half turn, then the spotlight emits in all directions. When creating a Godot [SpotLight3D], the outer cone angle is used as the angle of the spotlight.  
+         */
+        get outer_cone_angle(): float64
+        set outer_cone_angle(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFLight;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFMesh extends __NameMapResource {
+    }
+    /** GLTFMesh represents a glTF mesh.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfmesh.html  
+     */
+    class GLTFMesh extends Resource {
+        constructor(identifier?: any)
+        /** Gets additional arbitrary data in this [GLTFMesh] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
+         *  The argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is `null`.  
+         */
+        get_additional_data(extension_name: StringName): any
+        
+        /** Sets additional arbitrary data in this [GLTFMesh] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
+         *  The first argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.  
+         */
+        set_additional_data(extension_name: StringName, additional_data: any): void
+        
+        /** The original name of the mesh. */
+        get original_name(): string
+        set original_name(value: string)
+        
+        /** The [ImporterMesh] object representing the mesh itself. */
+        get mesh(): null | Object
+        set mesh(value: null | Object)
+        
+        /** An array of floats representing the blend weights of the mesh. */
+        get blend_weights(): PackedFloat32Array
+        set blend_weights(value: PackedFloat32Array | float32[])
+        
+        /** An array of Material objects representing the materials used in the mesh. */
+        get instance_materials(): GArray
+        set instance_materials(value: GArray)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFMesh;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFNode extends __NameMapResource {
+    }
+    /** glTF node class.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfnode.html  
+     */
+    class GLTFNode extends Resource {
+        constructor(identifier?: any)
+        /** Appends the given child node index to the [member children] array. */
+        append_child_index(child_index: int64): void
+        
+        /** Gets additional arbitrary data in this [GLTFNode] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
+         *  The argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is `null`.  
+         */
+        get_additional_data(extension_name: StringName): any
+        
+        /** Sets additional arbitrary data in this [GLTFNode] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
+         *  The first argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.  
+         */
+        set_additional_data(extension_name: StringName, additional_data: any): void
+        
+        /** Returns the [NodePath] that this GLTF node will have in the Godot scene tree after being imported. This is useful when importing glTF object model pointers with [GLTFObjectModelProperty], for handling extensions such as `KHR_animation_pointer` or `KHR_interactivity`.  
+         *  If [param handle_skeletons] is `true`, paths to skeleton bone glTF nodes will be resolved properly. For example, a path that would be `^"A/B/C/Bone1/Bone2/Bone3"` if `false` will become `^"A/B/C/Skeleton3D:Bone3"`.  
+         */
+        get_scene_node_path(gltf_state: GLTFState, handle_skeletons?: boolean /* = true */): NodePath
+        
+        /** The original name of the node. */
+        get original_name(): string
+        set original_name(value: string)
+        
+        /** The index of the parent node in the [GLTFState]. If -1, this node is a root node. */
+        get parent(): int64
+        set parent(value: int64)
+        
+        /** How deep into the node hierarchy this node is. A root node will have a height of 0, its children will have a height of 1, and so on. If -1, the height has not been calculated. */
+        get height(): int64
+        set height(value: int64)
+        
+        /** The transform of the glTF node relative to its parent. This property is usually unused since the position, rotation, and scale properties are preferred. */
+        get xform(): Transform3D
+        set xform(value: Transform3D)
+        
+        /** If this glTF node is a mesh, the index of the [GLTFMesh] in the [GLTFState] that describes the mesh's properties. If -1, this node is not a mesh. */
+        get mesh(): int64
+        set mesh(value: int64)
+        
+        /** If this glTF node is a camera, the index of the [GLTFCamera] in the [GLTFState] that describes the camera's properties. If `-1`, this node is not a camera. */
+        get camera(): int64
+        set camera(value: int64)
+        
+        /** If this glTF node has a skin, the index of the [GLTFSkin] in the [GLTFState] that describes the skin's properties. If -1, this node does not have a skin. */
+        get skin(): int64
+        set skin(value: int64)
+        
+        /** If this glTF node has a skeleton, the index of the [GLTFSkeleton] in the [GLTFState] that describes the skeleton's properties. If -1, this node does not have a skeleton. */
+        get skeleton(): int64
+        set skeleton(value: int64)
+        
+        /** The position of the glTF node relative to its parent. */
+        get position(): Vector3
+        set position(value: Vector3)
+        
+        /** The rotation of the glTF node relative to its parent. */
+        get rotation(): Quaternion
+        set rotation(value: Quaternion)
+        
+        /** The scale of the glTF node relative to its parent. */
+        get scale(): Vector3
+        set scale(value: Vector3)
+        
+        /** The indices of the child nodes in the [GLTFState]. If this glTF node has no children, this will be an empty array. */
+        get children(): PackedInt32Array
+        set children(value: PackedInt32Array | int32[])
+        
+        /** If this glTF node is a light, the index of the [GLTFLight] in the [GLTFState] that describes the light's properties. If -1, this node is not a light. */
+        get light(): int64
+        set light(value: int64)
+        
+        /** If `true`, the GLTF node is visible. If `false`, the GLTF node is not visible. This is converted to the [member Node3D.visible] property in the Godot scene, and is exported to `KHR_node_visibility` when `false`. */
+        get visible(): boolean
+        set visible(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFNode;
+    }
+    namespace GLTFObjectModelProperty {
+        enum GLTFObjectModelType {
+            /** Unknown or not set object model type. If the object model type is set to this value, the real type still needs to be determined. */
+            GLTF_OBJECT_MODEL_TYPE_UNKNOWN = 0,
+            
+            /** Object model type "bool". Represented in the glTF JSON as a boolean, and encoded in a [GLTFAccessor] as "SCALAR". When encoded in an accessor, a value of `0` is `false`, and any other value is `true`. */
+            GLTF_OBJECT_MODEL_TYPE_BOOL = 1,
+            
+            /** Object model type "float". Represented in the glTF JSON as a number, and encoded in a [GLTFAccessor] as "SCALAR". */
+            GLTF_OBJECT_MODEL_TYPE_FLOAT = 2,
+            
+            /** Object model type "float[lb][rb]". Represented in the glTF JSON as an array of numbers, and encoded in a [GLTFAccessor] as "SCALAR". */
+            GLTF_OBJECT_MODEL_TYPE_FLOAT_ARRAY = 3,
+            
+            /** Object model type "float2". Represented in the glTF JSON as an array of two numbers, and encoded in a [GLTFAccessor] as "VEC2". */
+            GLTF_OBJECT_MODEL_TYPE_FLOAT2 = 4,
+            
+            /** Object model type "float3". Represented in the glTF JSON as an array of three numbers, and encoded in a [GLTFAccessor] as "VEC3". */
+            GLTF_OBJECT_MODEL_TYPE_FLOAT3 = 5,
+            
+            /** Object model type "float4". Represented in the glTF JSON as an array of four numbers, and encoded in a [GLTFAccessor] as "VEC4". */
+            GLTF_OBJECT_MODEL_TYPE_FLOAT4 = 6,
+            
+            /** Object model type "float2x2". Represented in the glTF JSON as an array of four numbers, and encoded in a [GLTFAccessor] as "MAT2". */
+            GLTF_OBJECT_MODEL_TYPE_FLOAT2X2 = 7,
+            
+            /** Object model type "float3x3". Represented in the glTF JSON as an array of nine numbers, and encoded in a [GLTFAccessor] as "MAT3". */
+            GLTF_OBJECT_MODEL_TYPE_FLOAT3X3 = 8,
+            
+            /** Object model type "float4x4". Represented in the glTF JSON as an array of sixteen numbers, and encoded in a [GLTFAccessor] as "MAT4". */
+            GLTF_OBJECT_MODEL_TYPE_FLOAT4X4 = 9,
+            
+            /** Object model type "int". Represented in the glTF JSON as a number, and encoded in a [GLTFAccessor] as "SCALAR". The range of values is limited to signed integers. For `KHR_interactivity`, only 32-bit integers are supported. */
+            GLTF_OBJECT_MODEL_TYPE_INT = 10,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFObjectModelProperty extends __NameMapRefCounted {
+    }
+    /** Describes how to access a property as defined in the glTF object model.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfobjectmodelproperty.html  
+     */
+    class GLTFObjectModelProperty extends RefCounted {
+        constructor(identifier?: any)
+        /** Appends a [NodePath] to [member node_paths]. This can be used by [GLTFDocumentExtension] classes to define how a glTF object model property maps to a Godot property, or multiple Godot properties. Prefer using [method append_path_to_property] for simple cases. Be sure to also call [method set_types] once (the order does not matter). */
+        append_node_path(node_path: NodePath | string): void
+        
+        /** High-level wrapper over [method append_node_path] that handles the most common cases. It constructs a new [NodePath] using [param node_path] as a base and appends [param prop_name] to the subpath. Be sure to also call [method set_types] once (the order does not matter). */
+        append_path_to_property(node_path: NodePath | string, prop_name: StringName): void
+        
+        /** The GLTF accessor type associated with this property's [member object_model_type]. See [member GLTFAccessor.accessor_type] for possible values, and see [enum GLTFObjectModelType] for how the object model type maps to accessor types. */
+        get_accessor_type(): GLTFAccessor.GLTFAccessorType
+        
+        /** Returns `true` if [member node_paths] is not empty. This is used during import to determine if a [GLTFObjectModelProperty] can handle converting a glTF object model property to a Godot property. */
+        has_node_paths(): boolean
+        
+        /** Returns `true` if [member json_pointers] is not empty. This is used during export to determine if a [GLTFObjectModelProperty] can handle converting a Godot property to a glTF object model property. */
+        has_json_pointers(): boolean
+        
+        /** Sets the [member variant_type] and [member object_model_type] properties. This is a convenience method to set both properties at once, since they are almost always known at the same time. This method should be called once. Calling it again with the same values will have no effect. */
+        set_types(variant_type: Variant.Type, obj_model_type: GLTFObjectModelProperty.GLTFObjectModelType): void
+        
+        /** If set, this [Expression] will be used to convert the property value from the glTF object model to the value expected by the Godot property. This is useful when the glTF object model uses a different unit system, or when the data needs to be transformed in some way. If `null`, the value will be copied as-is. */
+        get gltf_to_godot_expression(): null | Expression
+        set gltf_to_godot_expression(value: null | Expression)
+        
+        /** If set, this [Expression] will be used to convert the property value from the Godot property to the value expected by the glTF object model. This is useful when the glTF object model uses a different unit system, or when the data needs to be transformed in some way. If `null`, the value will be copied as-is. */
+        get godot_to_gltf_expression(): null | Expression
+        set godot_to_gltf_expression(value: null | Expression)
+        
+        /** An array of [NodePath]s that point to a property, or multiple properties, in the Godot scene tree. On import, this will either be set by [GLTFDocument], or by a [GLTFDocumentExtension] class. For simple cases, use [method append_path_to_property] to add properties to this array.  
+         *  In most cases [member node_paths] will only have one item, but in some cases a single glTF JSON pointer will map to multiple Godot properties. For example, a [GLTFCamera] or [GLTFLight] used on multiple glTF nodes will be represented by multiple Godot nodes.  
+         */
+        get node_paths(): GArray
+        set node_paths(value: GArray)
+        
+        /** The type of data stored in the glTF file as defined by the object model. This is a superset of the available accessor types, and determines the accessor type. */
+        get object_model_type(): int64
+        set object_model_type(value: int64)
+        
+        /** The glTF object model JSON pointers used to identify the property in the glTF object model. In most cases, there will be only one item in this array, but specific cases may require multiple pointers. The items are themselves arrays which represent the JSON pointer split into its components. */
+        get json_pointers(): PackedStringArray
+        set json_pointers(value: PackedStringArray | string[])
+        
+        /** The type of data stored in the Godot property. This is the type of the property that the [member node_paths] point to. */
+        get variant_type(): int64
+        set variant_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFObjectModelProperty;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFPhysicsBody extends __NameMapResource {
+    }
+    /** Represents a glTF physics body.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfphysicsbody.html  
+     */
+    class GLTFPhysicsBody extends Resource {
+        constructor(identifier?: any)
+        /** Creates a new GLTFPhysicsBody instance from the given Godot [CollisionObject3D] node. */
+        static from_node(body_node: CollisionObject3D): null | GLTFPhysicsBody
+        
+        /** Converts this GLTFPhysicsBody instance into a Godot [CollisionObject3D] node. */
+        to_node(): null | CollisionObject3D
+        
+        /** Creates a new GLTFPhysicsBody instance by parsing the given [Dictionary] in the `OMI_physics_body` glTF extension format. */
+        static from_dictionary(dictionary: GDictionary): null | GLTFPhysicsBody
+        
+        /** Serializes this GLTFPhysicsBody instance into a [Dictionary]. It will be in the format expected by the `OMI_physics_body` glTF extension. */
+        to_dictionary(): GDictionary
+        
+        /** The type of the body.  
+         *  When importing, this controls what type of [CollisionObject3D] node Godot should generate. Valid values are `"static"`, `"animatable"`, `"character"`, `"rigid"`, `"vehicle"`, and `"trigger"`.  
+         *  When exporting, this will be squashed down to one of `"static"`, `"kinematic"`, or `"dynamic"` motion types, or the `"trigger"` property.  
+         */
+        get body_type(): string
+        set body_type(value: string)
+        
+        /** The mass of the physics body, in kilograms. This is only used when the body type is "rigid" or "vehicle". */
+        get mass(): float64
+        set mass(value: float64)
+        
+        /** The linear velocity of the physics body, in meters per second. This is only used when the body type is "rigid" or "vehicle". */
+        get linear_velocity(): Vector3
+        set linear_velocity(value: Vector3)
+        
+        /** The angular velocity of the physics body, in radians per second. This is only used when the body type is "rigid" or "vehicle". */
+        get angular_velocity(): Vector3
+        set angular_velocity(value: Vector3)
+        
+        /** The center of mass of the body, in meters. This is in local space relative to the body. By default, the center of the mass is the body's origin. */
+        get center_of_mass(): Vector3
+        set center_of_mass(value: Vector3)
+        
+        /** The inertia strength of the physics body, in kilogram meter squared (kg⋅m²). This represents the inertia around the principle axes, the diagonal of the inertia tensor matrix. This is only used when the body type is "rigid" or "vehicle".  
+         *  When converted to a Godot [RigidBody3D] node, if this value is zero, then the inertia will be calculated automatically.  
+         */
+        get inertia_diagonal(): Vector3
+        set inertia_diagonal(value: Vector3)
+        
+        /** The inertia orientation of the physics body. This defines the rotation of the inertia's principle axes relative to the object's local axes. This is only used when the body type is "rigid" or "vehicle" and [member inertia_diagonal] is set to a non-zero value. */
+        get inertia_orientation(): Quaternion
+        set inertia_orientation(value: Quaternion)
+        
+        /** The inertia tensor of the physics body, in kilogram meter squared (kg⋅m²). This is only used when the body type is "rigid" or "vehicle".  
+         *  When converted to a Godot [RigidBody3D] node, if this value is zero, then the inertia will be calculated automatically.  
+         */
+        get inertia_tensor(): Basis
+        set inertia_tensor(value: Basis)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFPhysicsBody;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFPhysicsShape extends __NameMapResource {
+    }
+    /** Represents a glTF physics shape.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfphysicsshape.html  
+     */
+    class GLTFPhysicsShape extends Resource {
+        constructor(identifier?: any)
+        /** Creates a new GLTFPhysicsShape instance from the given Godot [CollisionShape3D] node. */
+        static from_node(shape_node: CollisionShape3D): null | GLTFPhysicsShape
+        
+        /** Converts this GLTFPhysicsShape instance into a Godot [CollisionShape3D] node. */
+        to_node(cache_shapes?: boolean /* = false */): null | CollisionShape3D
+        
+        /** Creates a new GLTFPhysicsShape instance from the given Godot [Shape3D] resource. */
+        static from_resource(shape_resource: Shape3D): null | GLTFPhysicsShape
+        
+        /** Converts this GLTFPhysicsShape instance into a Godot [Shape3D] resource. */
+        to_resource(cache_shapes?: boolean /* = false */): null | Shape3D
+        
+        /** Creates a new GLTFPhysicsShape instance by parsing the given [Dictionary]. */
+        static from_dictionary(dictionary: GDictionary): null | GLTFPhysicsShape
+        
+        /** Serializes this GLTFPhysicsShape instance into a [Dictionary] in the format defined by `OMI_physics_shape`. */
+        to_dictionary(): GDictionary
+        
+        /** The type of shape this shape represents. Valid values are `"box"`, `"capsule"`, `"cylinder"`, `"sphere"`, `"hull"`, and `"trimesh"`. */
+        get shape_type(): string
+        set shape_type(value: string)
+        
+        /** The size of the shape, in meters. This is only used when the shape type is `"box"`, and it represents the `"diameter"` of the box. This value should not be negative. */
+        get size(): Vector3
+        set size(value: Vector3)
+        
+        /** The radius of the shape, in meters. This is only used when the shape type is `"capsule"`, `"cylinder"`, or `"sphere"`. This value should not be negative. */
+        get radius(): float64
+        set radius(value: float64)
+        
+        /** The height of the shape, in meters. This is only used when the shape type is `"capsule"` or `"cylinder"`. This value should not be negative, and for `"capsule"` it should be at least twice the radius. */
+        get height(): float64
+        set height(value: float64)
+        
+        /** If `true`, indicates that this shape is a trigger. For Godot, this means that the shape should be a child of an [Area3D] node.  
+         *  This is the only variable not used in the [method to_node] method, it's intended to be used alongside when deciding where to add the generated node as a child.  
+         */
+        get is_trigger(): boolean
+        set is_trigger(value: boolean)
+        
+        /** The index of the shape's mesh in the glTF file. This is only used when the shape type is `"hull"` (convex hull) or `"trimesh"` (concave trimesh). */
+        get mesh_index(): int64
+        set mesh_index(value: int64)
+        
+        /** The [ImporterMesh] resource of the shape. This is only used when the shape type is `"hull"` (convex hull) or `"trimesh"` (concave trimesh). */
+        get importer_mesh(): null | ImporterMesh
+        set importer_mesh(value: null | ImporterMesh)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFPhysicsShape;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFSkeleton extends __NameMapResource {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_gltfskeleton.html */
+    class GLTFSkeleton extends Resource {
+        constructor(identifier?: any)
+        get_godot_skeleton(): null | Skeleton3D
+        get_bone_attachment_count(): int64
+        get_bone_attachment(idx: int64): null | BoneAttachment3D
+        get joints(): PackedInt32Array
+        set joints(value: PackedInt32Array | int32[])
+        get roots(): PackedInt32Array
+        set roots(value: PackedInt32Array | int32[])
+        get unique_names(): GArray
+        set unique_names(value: GArray)
+        get godot_bone_node(): GDictionary
+        set godot_bone_node(value: GDictionary)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFSkeleton;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFSkin extends __NameMapResource {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_gltfskin.html */
+    class GLTFSkin extends Resource {
+        constructor(identifier?: any)
+        get skin_root(): int64
+        set skin_root(value: int64)
+        get joints_original(): PackedInt32Array
+        set joints_original(value: PackedInt32Array | int32[])
+        get inverse_binds(): GArray
+        set inverse_binds(value: GArray)
+        get joints(): PackedInt32Array
+        set joints(value: PackedInt32Array | int32[])
+        get non_joints(): PackedInt32Array
+        set non_joints(value: PackedInt32Array | int32[])
+        get roots(): PackedInt32Array
+        set roots(value: PackedInt32Array | int32[])
+        get skeleton(): int64
+        set skeleton(value: int64)
+        get joint_i_to_bone_i(): GDictionary
+        set joint_i_to_bone_i(value: GDictionary)
+        get joint_i_to_name(): GDictionary
+        set joint_i_to_name(value: GDictionary)
+        get godot_skin(): null | Skin
+        set godot_skin(value: null | Skin)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFSkin;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFSpecGloss extends __NameMapResource {
+    }
+    /** Archived glTF extension for specular/glossy materials.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfspecgloss.html  
+     */
+    class GLTFSpecGloss extends Resource {
+        constructor(identifier?: any)
+        /** The diffuse texture. */
+        get diffuse_img(): null | Object
+        set diffuse_img(value: null | Object)
+        
+        /** The reflected diffuse factor of the material. */
+        get diffuse_factor(): Color
+        set diffuse_factor(value: Color)
+        
+        /** The glossiness or smoothness of the material. */
+        get gloss_factor(): float64
+        set gloss_factor(value: float64)
+        
+        /** The specular RGB color of the material. The alpha channel is unused. */
+        get specular_factor(): Color
+        set specular_factor(value: Color)
+        
+        /** The specular-glossiness texture. */
+        get spec_gloss_img(): null | Object
+        set spec_gloss_img(value: null | Object)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFSpecGloss;
+    }
+    namespace GLTFState {
+        enum HandleBinaryImageMode {
+            /** When importing a glTF file with embedded binary images, discards all images and uses untextured materials in their place. Images stored as separate files in the `res://` folder are not affected by this; those will be used as Godot imported them. */
+            HANDLE_BINARY_IMAGE_MODE_DISCARD_TEXTURES = 0,
+            
+            /** When importing a glTF file with embedded binary images, extracts them and saves them to their own files. This allows the image to be imported by Godot's image importer, which can then have their import options customized by the user, including optionally compressing the image to VRAM texture formats.  
+             *  This will save the images's bytes exactly as-is, without recompression. For image formats supplied by glTF extensions, the file will have a filename ending with the file extension supplied by [method GLTFDocumentExtension._get_image_file_extension] of the extension class.  
+             *      
+             *  **Note:** This option is editor-only. At runtime, this acts the same as [constant HANDLE_BINARY_IMAGE_MODE_EMBED_AS_UNCOMPRESSED].  
+             */
+            HANDLE_BINARY_IMAGE_MODE_EXTRACT_TEXTURES = 1,
+            
+            /** When importing a glTF file with embedded binary images, embeds textures VRAM compressed with Basis Universal into the generated scene. Images stored as separate files in the `res://` folder are not affected by this; those will be used as Godot imported them. */
+            HANDLE_BINARY_IMAGE_MODE_EMBED_AS_BASISU = 2,
+            
+            /** When importing a glTF file with embedded binary images, embeds textures compressed losslessly into the generated scene. Images stored as separate files in the `res://` folder are not affected by this; those will be used as Godot imported them. */
+            HANDLE_BINARY_IMAGE_MODE_EMBED_AS_UNCOMPRESSED = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFState extends __NameMapResource {
+    }
+    /** Represents all data of a glTF file.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfstate.html  
+     */
+    class GLTFState extends Resource {
+        /** Discards all embedded textures and uses untextured materials. */
+        static readonly HANDLE_BINARY_DISCARD_TEXTURES = 0
+        
+        /** Extracts embedded textures to be reimported and compressed. Editor only. Acts as uncompressed at runtime. */
+        static readonly HANDLE_BINARY_EXTRACT_TEXTURES = 1
+        
+        /** Embeds textures VRAM compressed with Basis Universal into the generated scene. */
+        static readonly HANDLE_BINARY_EMBED_AS_BASISU = 2
+        
+        /** Embeds textures compressed losslessly into the generated scene, matching old behavior. */
+        static readonly HANDLE_BINARY_EMBED_AS_UNCOMPRESSED = 3
+        constructor(identifier?: any)
+        
+        /** Appends an extension to the list of extensions used by this glTF file during serialization. If [param required] is `true`, the extension will also be added to the list of required extensions. Do not run this in [method GLTFDocumentExtension._export_post], as that stage is too late to add extensions. The final list is sorted alphabetically. */
+        add_used_extension(extension_name: string, required: boolean): void
+        
+        /** Appends the given byte array [param data] to the buffers and creates a [GLTFBufferView] for it. The index of the destination [GLTFBufferView] is returned. If [param deduplication] is `true`, the buffers are first searched for duplicate data, otherwise new bytes are always appended. */
+        append_data_to_buffers(data: PackedByteArray | byte[] | ArrayBuffer, deduplication: boolean): int64
+        
+        /** Appends the given [GLTFNode] to the state, and returns its new index. This can be used to export one Godot node as multiple glTF nodes, or inject new glTF nodes at import time. On import, this must be called before [method GLTFDocumentExtension._generate_scene_node] finishes for the parent node. On export, this must be called before [method GLTFDocumentExtension._export_node] runs for the parent node.  
+         *  The [param godot_scene_node] parameter is the Godot scene node that corresponds to this glTF node. This is highly recommended to be set to a valid node, but may be `null` if there is no corresponding Godot scene node. One Godot scene node may be used for multiple glTF nodes, so if exporting multiple glTF nodes for one Godot scene node, use the same Godot scene node for each.  
+         *  The [param parent_node_index] parameter is the index of the parent [GLTFNode] in the state. If `-1`, the node will be a root node, otherwise the new node will be added to the parent's list of children. The index will also be written to the [member GLTFNode.parent] property of the new node.  
+         */
+        append_gltf_node(gltf_node: GLTFNode, godot_scene_node: Node, parent_node_index: int64): int64
+        
+        /** Returns the number of [AnimationPlayer] nodes in this [GLTFState]. These nodes are only used during the export process when converting Godot [AnimationPlayer] nodes to glTF animations. */
+        get_animation_players_count(anim_player_index: int64): int64
+        
+        /** Returns the [AnimationPlayer] node with the given index. These nodes are only used during the export process when converting Godot [AnimationPlayer] nodes to glTF animations. */
+        get_animation_player(anim_player_index: int64): null | AnimationPlayer
+        
+        /** Returns the Godot scene node that corresponds to the same index as the [GLTFNode] it was generated from. This is the inverse of [method get_node_index]. Useful during the import process.  
+         *      
+         *  **Note:** Not every [GLTFNode] will have a scene node generated, and not every generated scene node will have a corresponding [GLTFNode]. If there is no scene node for this [GLTFNode] index, `null` is returned.  
+         */
+        get_scene_node(gltf_node_index: int64): null | Node
+        
+        /** Returns the index of the [GLTFNode] corresponding to this Godot scene node. This is the inverse of [method get_scene_node]. Useful during the export process.  
+         *      
+         *  **Note:** Not every Godot scene node will have a corresponding [GLTFNode], and not every [GLTFNode] will have a scene node generated. If there is no [GLTFNode] index for this scene node, `-1` is returned.  
+         */
+        get_node_index(scene_node: Node): int64
+        
+        /** Gets additional arbitrary data in this [GLTFState] instance. This can be used to keep per-file state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
+         *  The argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is `null`.  
+         */
+        get_additional_data(extension_name: StringName): any
+        
+        /** Sets additional arbitrary data in this [GLTFState] instance. This can be used to keep per-file state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
+         *  The first argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.  
+         */
+        set_additional_data(extension_name: StringName, additional_data: any): void
+        
+        /** The original raw JSON document corresponding to this GLTFState. */
+        get json(): GDictionary
+        set json(value: GDictionary)
+        get major_version(): int64
+        set major_version(value: int64)
+        get minor_version(): int64
+        set minor_version(value: int64)
+        
+        /** The copyright string in the asset header of the glTF file. This is set during import if present and export if non-empty. See the glTF asset header documentation for more information. */
+        get copyright(): string
+        set copyright(value: string)
+        
+        /** The binary buffer attached to a .glb file. */
+        get glb_data(): PackedByteArray
+        set glb_data(value: PackedByteArray | byte[] | ArrayBuffer)
+        get use_named_skin_binds(): boolean
+        set use_named_skin_binds(value: boolean)
+        get nodes(): GArray
+        set nodes(value: GArray)
+        get buffers(): GArray
+        set buffers(value: GArray)
+        get buffer_views(): GArray
+        set buffer_views(value: GArray)
+        get accessors(): GArray
+        set accessors(value: GArray)
+        get meshes(): GArray
+        set meshes(value: GArray)
+        get materials(): GArray
+        set materials(value: GArray)
+        
+        /** The name of the scene. When importing, if not specified, this will be the file name. When exporting, if specified, the scene name will be saved to the glTF file. */
+        get scene_name(): string
+        set scene_name(value: string)
+        
+        /** The folder path associated with this glTF data. This is used to find other files the glTF file references, like images or binary buffers. This will be set during import when appending from a file, and will be set during export when writing to a file. */
+        get base_path(): string
+        set base_path(value: string)
+        
+        /** The file name associated with this glTF data. If it ends with `.gltf`, this is text-based glTF, otherwise this is binary GLB. This will be set during import when appending from a file, and will be set during export when writing to a file. If writing to a buffer, this will be an empty string. */
+        get filename(): string
+        set filename(value: string)
+        
+        /** The root nodes of the glTF file. Typically, a glTF file will only have one scene, and therefore one root node. However, a glTF file may have multiple scenes and therefore multiple root nodes, which will be generated as siblings of each other and as children of the root node of the generated Godot scene. */
+        get root_nodes(): PackedInt32Array
+        set root_nodes(value: PackedInt32Array | int32[])
+        get textures(): GArray
+        set textures(value: GArray)
+        get texture_samplers(): GArray
+        set texture_samplers(value: GArray)
+        get images(): GArray
+        set images(value: GArray)
+        get skins(): GArray
+        set skins(value: GArray)
+        get cameras(): GArray
+        set cameras(value: GArray)
+        get lights(): GArray
+        set lights(value: GArray)
+        get unique_names(): GArray
+        set unique_names(value: GArray)
+        get unique_animation_names(): GArray
+        set unique_animation_names(value: GArray)
+        get skeletons(): GArray
+        set skeletons(value: GArray)
+        get create_animations(): boolean
+        set create_animations(value: boolean)
+        
+        /** If `true`, forces all GLTFNodes in the document to be bones of a single [Skeleton3D] Godot node. */
+        get import_as_skeleton_bones(): boolean
+        set import_as_skeleton_bones(value: boolean)
+        get animations(): GArray
+        set animations(value: GArray)
+        
+        /** When importing a glTF file with unimported raw binary images embedded inside of binary blob buffers, in data URIs, or separate files not imported by Godot, this controls how the images are handled. Images can be discarded, saved as separate files, or embedded in the scene lossily or losslessly. See [enum HandleBinaryImageMode] for options.  
+         *  This property does nothing for image files in the `res://` folder imported by Godot, as those are handled by Godot's image importer directly, and then the Godot scene generated from the glTF file will use the images as Godot imported them.  
+         */
+        get handle_binary_image_mode(): int64
+        set handle_binary_image_mode(value: int64)
+        
+        /** The baking fps of the animation for either import or export. */
+        get bake_fps(): float64
+        set bake_fps(value: float64)
+        get handle_binary_image(): int64
+        set handle_binary_image(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFState;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFTexture extends __NameMapResource {
+    }
+    /** GLTFTexture represents a texture in a glTF file.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltftexture.html  
+     */
+    class GLTFTexture extends Resource {
+        constructor(identifier?: any)
+        /** The index of the image associated with this texture, see [method GLTFState.get_images]. If -1, then this texture does not have an image assigned. */
+        get src_image(): int64
+        set src_image(value: int64)
+        
+        /** ID of the texture sampler to use when sampling the image. If -1, then the default texture sampler is used (linear filtering, and repeat wrapping in both axes). */
+        get sampler(): int64
+        set sampler(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFTexture;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGLTFTextureSampler extends __NameMapResource {
+    }
+    /** Represents a glTF texture sampler  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltftexturesampler.html  
+     */
+    class GLTFTextureSampler extends Resource {
+        constructor(identifier?: any)
+        /** Texture's magnification filter, used when texture appears larger on screen than the source image. */
+        get mag_filter(): int64
+        set mag_filter(value: int64)
+        
+        /** Texture's minification filter, used when the texture appears smaller on screen than the source image. */
+        get min_filter(): int64
+        set min_filter(value: int64)
+        
+        /** Wrapping mode to use for S-axis (horizontal) texture coordinates. */
+        get wrap_s(): int64
+        set wrap_s(value: int64)
+        
+        /** Wrapping mode to use for T-axis (vertical) texture coordinates. */
+        get wrap_t(): int64
+        set wrap_t(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGLTFTextureSampler;
+    }
+    namespace GPUParticles2D {
+        enum DrawOrder {
+            /** Particles are drawn in the order emitted. */
+            DRAW_ORDER_INDEX = 0,
+            
+            /** Particles are drawn in order of remaining lifetime. In other words, the particle with the highest lifetime is drawn at the front. */
+            DRAW_ORDER_LIFETIME = 1,
+            
+            /** Particles are drawn in reverse order of remaining lifetime. In other words, the particle with the lowest lifetime is drawn at the front. */
+            DRAW_ORDER_REVERSE_LIFETIME = 2,
+        }
+        enum EmitFlags {
+            /** Particle starts at the specified position. */
+            EMIT_FLAG_POSITION = 1,
+            
+            /** Particle starts with specified rotation and scale. */
+            EMIT_FLAG_ROTATION_SCALE = 2,
+            
+            /** Particle starts with the specified velocity vector, which defines the emission direction and speed. */
+            EMIT_FLAG_VELOCITY = 4,
+            
+            /** Particle starts with specified color. */
+            EMIT_FLAG_COLOR = 8,
+            
+            /** Particle starts with specified `CUSTOM` data. */
+            EMIT_FLAG_CUSTOM = 16,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticles2D extends __NameMapNode2D {
+    }
+    /** A 2D particle emitter.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticles2d.html  
+     */
+    class GPUParticles2D<Map extends NodePathMap = any> extends Node2D<Map> {
+        constructor(identifier?: any)
+        /** Requests the particles to process for extra process time during a single frame.  
+         *  Useful for particle playback, if used in combination with [member use_fixed_seed] or by calling [method restart] with parameter `keep_seed` set to `true`.  
+         */
+        request_particles_process(process_time: float64): void
+        
+        /** Returns a rectangle containing the positions of all existing particles.  
+         *      
+         *  **Note:** When using threaded rendering this method synchronizes the rendering thread. Calling it often may have a negative impact on performance.  
+         */
+        capture_rect(): Rect2
+        
+        /** Restarts the particle emission cycle, clearing existing particles. To avoid particles vanishing from the viewport, wait for the [signal finished] signal before calling.  
+         *      
+         *  **Note:** The [signal finished] signal is only emitted by [member one_shot] emitters.  
+         *  If [param keep_seed] is `true`, the current random seed will be preserved. Useful for seeking and playback.  
+         */
+        restart(keep_seed?: boolean /* = false */): void
+        
+        /** Emits a single particle. Whether [param xform], [param velocity], [param color] and [param custom] are applied depends on the value of [param flags]. See [enum EmitFlags].  
+         *  The default ParticleProcessMaterial will overwrite [param color] and use the contents of [param custom] as `(rotation, age, animation, lifetime)`.  
+         *      
+         *  **Note:** [method emit_particle] is only supported on the Forward+ and Mobile rendering methods, not Compatibility.  
+         */
+        emit_particle(xform: Transform2D, velocity: Vector2, color: Color, custom: Color, flags: int64): void
+        
+        /** Sets this node's properties to match a given [CPUParticles2D] node. */
+        convert_from_particles(particles: Node): void
+        
+        /** If `true`, particles are being emitted. [member emitting] can be used to start and stop particles from emitting. However, if [member one_shot] is `true` setting [member emitting] to `true` will not restart the emission cycle unless all active particles have finished processing. Use the [signal finished] signal to be notified once all active particles finish processing.  
+         *      
+         *  **Note:** For [member one_shot] emitters, due to the particles being computed on the GPU, there may be a short period after receiving the [signal finished] signal during which setting this to `true` will not restart the emission cycle.  
+         *  **Tip:** If your [member one_shot] emitter needs to immediately restart emitting particles once [signal finished] signal is received, consider calling [method restart] instead of setting [member emitting].  
+         */
+        get emitting(): boolean
+        set emitting(value: boolean)
+        
+        /** The number of particles to emit in one emission cycle. The effective emission rate is `(amount * amount_ratio) / lifetime` particles per second. Higher values will increase GPU requirements, even if not all particles are visible at a given time or if [member amount_ratio] is decreased.  
+         *      
+         *  **Note:** Changing this value will cause the particle system to restart. To avoid this, change [member amount_ratio] instead.  
+         */
+        get amount(): int64
+        set amount(value: int64)
+        
+        /** The ratio of particles that should actually be emitted. If set to a value lower than `1.0`, this will set the amount of emitted particles throughout the lifetime to `amount * amount_ratio`. Unlike changing [member amount], changing [member amount_ratio] while emitting does not affect already-emitted particles and doesn't cause the particle system to restart. [member amount_ratio] can be used to create effects that make the number of emitted particles vary over time.  
+         *      
+         *  **Note:** Reducing the [member amount_ratio] has no performance benefit, since resources need to be allocated and processed for the total [member amount] of particles regardless of the [member amount_ratio]. If you don't intend to change the number of particles emitted while the particles are emitting, make sure [member amount_ratio] is set to `1` and change [member amount] to your liking instead.  
+         */
+        get amount_ratio(): float64
+        set amount_ratio(value: float64)
+        
+        /** Path to another [GPUParticles2D] node that will be used as a subemitter (see [member ParticleProcessMaterial.sub_emitter_mode]). Subemitters can be used to achieve effects such as fireworks, sparks on collision, bubbles popping into water drops, and more.  
+         *      
+         *  **Note:** When [member sub_emitter] is set, the target [GPUParticles2D] node will no longer emit particles on its own.  
+         */
+        get sub_emitter(): NodePath
+        set sub_emitter(value: NodePath | string)
+        
+        /** Particle texture. If `null`, particles will be squares with a size of 1×1 pixels.  
+         *      
+         *  **Note:** To use a flipbook texture, assign a new [CanvasItemMaterial] to the [GPUParticles2D]'s [member CanvasItem.material] property, then enable [member CanvasItemMaterial.particles_animation] and set [member CanvasItemMaterial.particles_anim_h_frames], [member CanvasItemMaterial.particles_anim_v_frames], and [member CanvasItemMaterial.particles_anim_loop] to match the flipbook texture.  
+         */
+        get texture(): null | Texture2D
+        set texture(value: null | Texture2D)
+        
+        /** The amount of time each particle will exist (in seconds). The effective emission rate is `(amount * amount_ratio) / lifetime` particles per second. */
+        get lifetime(): float64
+        set lifetime(value: float64)
+        
+        /** Causes all the particles in this node to interpolate towards the end of their lifetime.  
+         *      
+         *  **Note:** This only works when used with a [ParticleProcessMaterial]. It needs to be manually implemented for custom process shaders.  
+         */
+        get interp_to_end(): float64
+        set interp_to_end(value: float64)
+        
+        /** If `true`, only one emission cycle occurs. If set `true` during a cycle, emission will stop at the cycle's end. */
+        get one_shot(): boolean
+        set one_shot(value: boolean)
+        
+        /** Particle system starts as if it had already run for this many seconds.  
+         *      
+         *  **Note:** This can be very expensive if set to a high number as it requires running the particle shader a number of times equal to the [member fixed_fps] (or 30, if [member fixed_fps] is 0) for every second. In extreme cases it can even lead to a GPU crash due to the volume of work done in a single frame.  
+         */
+        get preprocess(): float64
+        set preprocess(value: float64)
+        
+        /** Particle system's running speed scaling ratio. A value of `0` can be used to pause the particles. */
+        get speed_scale(): float64
+        set speed_scale(value: float64)
+        
+        /** How rapidly particles in an emission cycle are emitted. If greater than `0`, there will be a gap in emissions before the next cycle begins. */
+        get explosiveness(): float64
+        set explosiveness(value: float64)
+        
+        /** Emission lifetime randomness ratio. */
+        get randomness(): float64
+        set randomness(value: float64)
+        
+        /** If `true`, particles will use the same seed for every simulation using the seed defined in [member seed]. This is useful for situations where the visual outcome should be consistent across replays, for example when using Movie Maker mode. */
+        get use_fixed_seed(): boolean
+        set use_fixed_seed(value: boolean)
+        
+        /** Sets the random seed used by the particle system. Only effective if [member use_fixed_seed] is `true`. */
+        get seed(): int64
+        set seed(value: int64)
+        
+        /** The particle system's frame rate is fixed to a value. For example, changing the value to 2 will make the particles render at 2 frames per second. Note this does not slow down the simulation of the particle system itself. */
+        get fixed_fps(): int64
+        set fixed_fps(value: int64)
+        
+        /** Enables particle interpolation, which makes the particle movement smoother when their [member fixed_fps] is lower than the screen refresh rate. */
+        get interpolate(): boolean
+        set interpolate(value: boolean)
+        
+        /** If `true`, results in fractional delta calculation which has a smoother particles display effect. */
+        get fract_delta(): boolean
+        set fract_delta(value: boolean)
+        
+        /** Multiplier for particle's collision radius. `1.0` corresponds to the size of the sprite. If particles appear to sink into the ground when colliding, increase this value. If particles appear to float when colliding, decrease this value. Only effective if [member ParticleProcessMaterial.collision_mode] is [constant ParticleProcessMaterial.COLLISION_RIGID] or [constant ParticleProcessMaterial.COLLISION_HIDE_ON_CONTACT].  
+         *      
+         *  **Note:** Particles always have a spherical collision shape.  
+         */
+        get collision_base_size(): float64
+        set collision_base_size(value: float64)
+        
+        /** The [Rect2] that determines the node's region which needs to be visible on screen for the particle system to be active.  
+         *  Grow the rect if particles suddenly appear/disappear when the node enters/exits the screen. The [Rect2] can be grown via code or with the **Particles → Generate Visibility Rect** editor tool.  
+         */
+        get visibility_rect(): Rect2
+        set visibility_rect(value: Rect2)
+        
+        /** If `true`, particles use the parent node's coordinate space (known as local coordinates). This will cause particles to move and rotate along the [GPUParticles2D] node (and its parents) when it is moved or rotated. If `false`, particles use global coordinates; they will not move or rotate along the [GPUParticles2D] node (and its parents) when it is moved or rotated. */
+        get local_coords(): boolean
+        set local_coords(value: boolean)
+        
+        /** Particle draw order. */
+        get draw_order(): int64
+        set draw_order(value: int64)
+        
+        /** If `true`, enables particle trails using a mesh skinning system.  
+         *      
+         *  **Note:** Unlike [GPUParticles3D], the number of trail sections and subdivisions is set with the [member trail_sections] and [member trail_section_subdivisions] properties.  
+         */
+        get trail_enabled(): boolean
+        set trail_enabled(value: boolean)
+        
+        /** The amount of time the particle's trail should represent (in seconds). Only effective if [member trail_enabled] is `true`. */
+        get trail_lifetime(): float64
+        set trail_lifetime(value: float64)
+        
+        /** The number of sections to use for the particle trail rendering. Higher values can result in smoother trail curves, at the cost of performance due to increased mesh complexity. See also [member trail_section_subdivisions]. Only effective if [member trail_enabled] is `true`. */
+        get trail_sections(): int64
+        set trail_sections(value: int64)
+        
+        /** The number of subdivisions to use for the particle trail rendering. Higher values can result in smoother trail curves, at the cost of performance due to increased mesh complexity. See also [member trail_sections]. Only effective if [member trail_enabled] is `true`. */
+        get trail_section_subdivisions(): int64
+        set trail_section_subdivisions(value: int64)
+        
+        /** [Material] for processing particles. Can be a [ParticleProcessMaterial] or a [ShaderMaterial]. */
+        get process_material(): null | ParticleProcessMaterial | ShaderMaterial
+        set process_material(value: null | ParticleProcessMaterial | ShaderMaterial)
+        
+        /** Emitted when all active particles have finished processing. To immediately restart the emission cycle, call [method restart].  
+         *  This signal is never emitted when [member one_shot] is disabled, as particles will be emitted and processed continuously.  
+         *      
+         *  **Note:** For [member one_shot] emitters, due to the particles being computed on the GPU, there may be a short period after receiving the signal during which setting [member emitting] to `true` will not restart the emission cycle. This delay is avoided by instead calling [method restart].  
+         */
+        readonly finished: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticles2D;
+    }
+    namespace GPUParticles3D {
+        enum DrawOrder {
+            /** Particles are drawn in the order emitted. */
+            DRAW_ORDER_INDEX = 0,
+            
+            /** Particles are drawn in order of remaining lifetime. In other words, the particle with the highest lifetime is drawn at the front. */
+            DRAW_ORDER_LIFETIME = 1,
+            
+            /** Particles are drawn in reverse order of remaining lifetime. In other words, the particle with the lowest lifetime is drawn at the front. */
+            DRAW_ORDER_REVERSE_LIFETIME = 2,
+            
+            /** Particles are drawn in order of depth. */
+            DRAW_ORDER_VIEW_DEPTH = 3,
+        }
+        enum EmitFlags {
+            /** Particle starts at the specified position. */
+            EMIT_FLAG_POSITION = 1,
+            
+            /** Particle starts with specified rotation and scale. */
+            EMIT_FLAG_ROTATION_SCALE = 2,
+            
+            /** Particle starts with the specified velocity vector, which defines the emission direction and speed. */
+            EMIT_FLAG_VELOCITY = 4,
+            
+            /** Particle starts with specified color. */
+            EMIT_FLAG_COLOR = 8,
+            
+            /** Particle starts with specified `CUSTOM` data. */
+            EMIT_FLAG_CUSTOM = 16,
+        }
+        enum TransformAlign {
+            TRANSFORM_ALIGN_DISABLED = 0,
+            TRANSFORM_ALIGN_Z_BILLBOARD = 1,
+            TRANSFORM_ALIGN_Y_TO_VELOCITY = 2,
+            TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticles3D extends __NameMapGeometryInstance3D {
+    }
+    /** A 3D particle emitter.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticles3d.html  
+     */
+    class GPUParticles3D<Map extends NodePathMap = any> extends GeometryInstance3D<Map> {
+        /** Maximum number of draw passes supported. */
+        static readonly MAX_DRAW_PASSES = 4
+        constructor(identifier?: any)
+        
+        /** Sets the [Mesh] that is drawn at index [param pass]. */
+        set_draw_pass_mesh(pass: int64, mesh: Mesh): void
+        
+        /** Returns the [Mesh] that is drawn at index [param pass]. */
+        get_draw_pass_mesh(pass: int64): null | Mesh
+        
+        /** Restarts the particle emission cycle, clearing existing particles. To avoid particles vanishing from the viewport, wait for the [signal finished] signal before calling.  
+         *      
+         *  **Note:** The [signal finished] signal is only emitted by [member one_shot] emitters.  
+         *  If [param keep_seed] is `true`, the current random seed will be preserved. Useful for seeking and playback.  
+         */
+        restart(keep_seed?: boolean /* = false */): void
+        
+        /** Returns the axis-aligned bounding box that contains all the particles that are active in the current frame. */
+        capture_aabb(): AABB
+        
+        /** Emits a single particle. Whether [param xform], [param velocity], [param color] and [param custom] are applied depends on the value of [param flags]. See [enum EmitFlags].  
+         *  The default ParticleProcessMaterial will overwrite [param color] and use the contents of [param custom] as `(rotation, age, animation, lifetime)`.  
+         *      
+         *  **Note:** [method emit_particle] is only supported on the Forward+ and Mobile rendering methods, not Compatibility.  
+         */
+        emit_particle(xform: Transform3D, velocity: Vector3, color: Color, custom: Color, flags: int64): void
+        
+        /** Sets this node's properties to match a given [CPUParticles3D] node. */
+        convert_from_particles(particles: Node): void
+        
+        /** Requests the particles to process for extra process time during a single frame.  
+         *  Useful for particle playback, if used in combination with [member use_fixed_seed] or by calling [method restart] with parameter `keep_seed` set to `true`.  
+         */
+        request_particles_process(process_time: float64): void
+        
+        /** If `true`, particles are being emitted. [member emitting] can be used to start and stop particles from emitting. However, if [member one_shot] is `true` setting [member emitting] to `true` will not restart the emission cycle unless all active particles have finished processing. Use the [signal finished] signal to be notified once all active particles finish processing.  
+         *      
+         *  **Note:** For [member one_shot] emitters, due to the particles being computed on the GPU, there may be a short period after receiving the [signal finished] signal during which setting this to `true` will not restart the emission cycle.  
+         *  **Tip:** If your [member one_shot] emitter needs to immediately restart emitting particles once [signal finished] signal is received, consider calling [method restart] instead of setting [member emitting].  
+         */
+        get emitting(): boolean
+        set emitting(value: boolean)
+        
+        /** The number of particles to emit in one emission cycle. The effective emission rate is `(amount * amount_ratio) / lifetime` particles per second. Higher values will increase GPU requirements, even if not all particles are visible at a given time or if [member amount_ratio] is decreased.  
+         *      
+         *  **Note:** Changing this value will cause the particle system to restart. To avoid this, change [member amount_ratio] instead.  
+         */
+        get amount(): int64
+        set amount(value: int64)
+        
+        /** The ratio of particles that should actually be emitted. If set to a value lower than `1.0`, this will set the amount of emitted particles throughout the lifetime to `amount * amount_ratio`. Unlike changing [member amount], changing [member amount_ratio] while emitting does not affect already-emitted particles and doesn't cause the particle system to restart. [member amount_ratio] can be used to create effects that make the number of emitted particles vary over time.  
+         *      
+         *  **Note:** Reducing the [member amount_ratio] has no performance benefit, since resources need to be allocated and processed for the total [member amount] of particles regardless of the [member amount_ratio]. If you don't intend to change the number of particles emitted while the particles are emitting, make sure [member amount_ratio] is set to `1` and change [member amount] to your liking instead.  
+         */
+        get amount_ratio(): float64
+        set amount_ratio(value: float64)
+        
+        /** Path to another [GPUParticles3D] node that will be used as a subemitter (see [member ParticleProcessMaterial.sub_emitter_mode]). Subemitters can be used to achieve effects such as fireworks, sparks on collision, bubbles popping into water drops, and more.  
+         *      
+         *  **Note:** When [member sub_emitter] is set, the target [GPUParticles3D] node will no longer emit particles on its own.  
+         */
+        get sub_emitter(): NodePath
+        set sub_emitter(value: NodePath | string)
+        
+        /** The amount of time each particle will exist (in seconds). The effective emission rate is `(amount * amount_ratio) / lifetime` particles per second. */
+        get lifetime(): float64
+        set lifetime(value: float64)
+        
+        /** Causes all the particles in this node to interpolate towards the end of their lifetime.  
+         *      
+         *  **Note:** This only works when used with a [ParticleProcessMaterial]. It needs to be manually implemented for custom process shaders.  
+         */
+        get interp_to_end(): float64
+        set interp_to_end(value: float64)
+        
+        /** If `true`, only the number of particles equal to [member amount] will be emitted. */
+        get one_shot(): boolean
+        set one_shot(value: boolean)
+        
+        /** Amount of time to preprocess the particles before animation starts. Lets you start the animation some time after particles have started emitting.  
+         *      
+         *  **Note:** This can be very expensive if set to a high number as it requires running the particle shader a number of times equal to the [member fixed_fps] (or 30, if [member fixed_fps] is 0) for every second. In extreme cases it can even lead to a GPU crash due to the volume of work done in a single frame.  
+         */
+        get preprocess(): float64
+        set preprocess(value: float64)
+        
+        /** Speed scaling ratio. A value of `0` can be used to pause the particles. */
+        get speed_scale(): float64
+        set speed_scale(value: float64)
+        
+        /** Time ratio between each emission. If `0`, particles are emitted continuously. If `1`, all particles are emitted simultaneously. */
+        get explosiveness(): float64
+        set explosiveness(value: float64)
+        
+        /** Emission randomness ratio. */
+        get randomness(): float64
+        set randomness(value: float64)
+        
+        /** If `true`, particles will use the same seed for every simulation using the seed defined in [member seed]. This is useful for situations where the visual outcome should be consistent across replays, for example when using Movie Maker mode. */
+        get use_fixed_seed(): boolean
+        set use_fixed_seed(value: boolean)
+        
+        /** Sets the random seed used by the particle system. Only effective if [member use_fixed_seed] is `true`. */
+        get seed(): int64
+        set seed(value: int64)
+        
+        /** The particle system's frame rate is fixed to a value. For example, changing the value to 2 will make the particles render at 2 frames per second. Note this does not slow down the simulation of the particle system itself. */
+        get fixed_fps(): int64
+        set fixed_fps(value: int64)
+        
+        /** Enables particle interpolation, which makes the particle movement smoother when their [member fixed_fps] is lower than the screen refresh rate. */
+        get interpolate(): boolean
+        set interpolate(value: boolean)
+        
+        /** If `true`, results in fractional delta calculation which has a smoother particles display effect. */
+        get fract_delta(): boolean
+        set fract_delta(value: boolean)
+        
+        /** The base diameter for particle collision in meters. If particles appear to sink into the ground when colliding, increase this value. If particles appear to float when colliding, decrease this value. Only effective if [member ParticleProcessMaterial.collision_mode] is [constant ParticleProcessMaterial.COLLISION_RIGID] or [constant ParticleProcessMaterial.COLLISION_HIDE_ON_CONTACT].  
+         *      
+         *  **Note:** Particles always have a spherical collision shape.  
+         */
+        get collision_base_size(): float64
+        set collision_base_size(value: float64)
+        
+        /** The [AABB] that determines the node's region which needs to be visible on screen for the particle system to be active. [member GeometryInstance3D.extra_cull_margin] is added on each of the AABB's axes. Particle collisions and attraction will only occur within this area.  
+         *  Grow the box if particles suddenly appear/disappear when the node enters/exits the screen. The [AABB] can be grown via code or with the **Particles → Generate AABB** editor tool.  
+         *      
+         *  **Note:** [member visibility_aabb] is overridden by [member GeometryInstance3D.custom_aabb] if that property is set to a non-default value.  
+         */
+        get visibility_aabb(): AABB
+        set visibility_aabb(value: AABB)
+        
+        /** If `true`, particles use the parent node's coordinate space (known as local coordinates). This will cause particles to move and rotate along the [GPUParticles3D] node (and its parents) when it is moved or rotated. If `false`, particles use global coordinates; they will not move or rotate along the [GPUParticles3D] node (and its parents) when it is moved or rotated. */
+        get local_coords(): boolean
+        set local_coords(value: boolean)
+        
+        /** Particle draw order.  
+         *      
+         *  **Note:** [constant DRAW_ORDER_INDEX] is the only option that supports motion vectors for effects like TAA. It is suggested to use this draw order if the particles are opaque to fix ghosting artifacts.  
+         */
+        get draw_order(): int64
+        set draw_order(value: int64)
+        get transform_align(): int64
+        set transform_align(value: int64)
+        
+        /** If `true`, enables particle trails using a mesh skinning system. Designed to work with [RibbonTrailMesh] and [TubeTrailMesh].  
+         *      
+         *  **Note:** [member BaseMaterial3D.use_particle_trails] must also be enabled on the particle mesh's material. Otherwise, setting [member trail_enabled] to `true` will have no effect.  
+         *      
+         *  **Note:** Unlike [GPUParticles2D], the number of trail sections and subdivisions is set in the [RibbonTrailMesh] or the [TubeTrailMesh]'s properties.  
+         */
+        get trail_enabled(): boolean
+        set trail_enabled(value: boolean)
+        
+        /** The amount of time the particle's trail should represent (in seconds). Only effective if [member trail_enabled] is `true`. */
+        get trail_lifetime(): float64
+        set trail_lifetime(value: float64)
+        
+        /** [Material] for processing particles. Can be a [ParticleProcessMaterial] or a [ShaderMaterial]. */
+        get process_material(): null | ParticleProcessMaterial | ShaderMaterial
+        set process_material(value: null | ParticleProcessMaterial | ShaderMaterial)
+        
+        /** The number of draw passes when rendering particles. */
+        get draw_passes(): int64
+        set draw_passes(value: int64)
+        
+        /** [Mesh] that is drawn for the first draw pass. */
+        get draw_pass_1(): null | Mesh
+        set draw_pass_1(value: null | Mesh)
+        
+        /** [Mesh] that is drawn for the second draw pass. */
+        get draw_pass_2(): null | Mesh
+        set draw_pass_2(value: null | Mesh)
+        
+        /** [Mesh] that is drawn for the third draw pass. */
+        get draw_pass_3(): null | Mesh
+        set draw_pass_3(value: null | Mesh)
+        
+        /** [Mesh] that is drawn for the fourth draw pass. */
+        get draw_pass_4(): null | Mesh
+        set draw_pass_4(value: null | Mesh)
+        get draw_skin(): null | Skin
+        set draw_skin(value: null | Skin)
+        
+        /** Emitted when all active particles have finished processing. To immediately restart the emission cycle, call [method restart].  
+         *  This signal is never emitted when [member one_shot] is disabled, as particles will be emitted and processed continuously.  
+         *      
+         *  **Note:** For [member one_shot] emitters, due to the particles being computed on the GPU, there may be a short period after receiving the signal during which setting [member emitting] to `true` will not restart the emission cycle. This delay is avoided by instead calling [method restart].  
+         */
+        readonly finished: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticles3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticlesAttractor3D extends __NameMapVisualInstance3D {
+    }
+    /** Abstract base class for 3D particle attractors.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlesattractor3d.html  
+     */
+    class GPUParticlesAttractor3D<Map extends NodePathMap = any> extends VisualInstance3D<Map> {
+        constructor(identifier?: any)
+        /** Adjusts the strength of the attractor. If [member strength] is negative, particles will be pushed in the opposite direction. Particles will be pushed  *away*  from the attractor's origin if [member directionality] is `0.0`, or towards local +Z if [member directionality] is greater than `0.0`. */
+        get strength(): float64
+        set strength(value: float64)
+        
+        /** The particle attractor's attenuation. Higher values result in more gradual pushing of particles as they come closer to the attractor's origin. Zero or negative values will cause particles to be pushed very fast as soon as the touch the attractor's edges. */
+        get attenuation(): float64
+        set attenuation(value: float64)
+        
+        /** Adjusts how directional the attractor is. At `0.0`, the attractor is not directional at all: it will attract particles towards its center. At `1.0`, the attractor is fully directional: particles will always be pushed towards local -Z (or +Z if [member strength] is negative).  
+         *      
+         *  **Note:** If [member directionality] is greater than `0.0`, the direction in which particles are pushed can be changed by rotating the [GPUParticlesAttractor3D] node.  
+         */
+        get directionality(): float64
+        set directionality(value: float64)
+        
+        /** The particle rendering layers ([member VisualInstance3D.layers]) that will be affected by the attractor. By default, all particles are affected by an attractor.  
+         *  After configuring particle nodes accordingly, specific layers can be unchecked to prevent certain particles from being affected by attractors. For example, this can be used if you're using an attractor as part of a spell effect but don't want the attractor to affect unrelated weather particles at the same position.  
+         *  Particle attraction can also be disabled on a per-process material basis by setting [member ParticleProcessMaterial.attractor_interaction_enabled] on the [GPUParticles3D] node.  
+         */
+        get cull_mask(): int64
+        set cull_mask(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticlesAttractor3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticlesAttractorBox3D extends __NameMapGPUParticlesAttractor3D {
+    }
+    /** A box-shaped attractor that influences particles from [GPUParticles3D] nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlesattractorbox3d.html  
+     */
+    class GPUParticlesAttractorBox3D<Map extends NodePathMap = any> extends GPUParticlesAttractor3D<Map> {
+        constructor(identifier?: any)
+        /** The attractor box's size in 3D units. */
+        get size(): Vector3
+        set size(value: Vector3)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticlesAttractorBox3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticlesAttractorSphere3D extends __NameMapGPUParticlesAttractor3D {
+    }
+    /** A spheroid-shaped attractor that influences particles from [GPUParticles3D] nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlesattractorsphere3d.html  
+     */
+    class GPUParticlesAttractorSphere3D<Map extends NodePathMap = any> extends GPUParticlesAttractor3D<Map> {
+        constructor(identifier?: any)
+        /** The attractor sphere's radius in 3D units.  
+         *      
+         *  **Note:** Stretched ellipses can be obtained by using non-uniform scaling on the [GPUParticlesAttractorSphere3D] node.  
+         */
+        get radius(): float64
+        set radius(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticlesAttractorSphere3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticlesAttractorVectorField3D extends __NameMapGPUParticlesAttractor3D {
+    }
+    /** A box-shaped attractor with varying directions and strengths defined in it that influences particles from [GPUParticles3D] nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlesattractorvectorfield3d.html  
+     */
+    class GPUParticlesAttractorVectorField3D<Map extends NodePathMap = any> extends GPUParticlesAttractor3D<Map> {
+        constructor(identifier?: any)
+        /** The size of the vector field box in 3D units. */
+        get size(): Vector3
+        set size(value: Vector3)
+        
+        /** The 3D texture to be used. Values are linearly interpolated between the texture's pixels.  
+         *      
+         *  **Note:** To get better performance, the 3D texture's resolution should reflect the [member size] of the attractor. Since particle attraction is usually low-frequency data, the texture can be kept at a low resolution such as 64×64×64.  
+         */
+        get texture(): null | Texture3D
+        set texture(value: null | Texture3D)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticlesAttractorVectorField3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticlesCollision3D extends __NameMapVisualInstance3D {
+    }
+    /** Abstract base class for 3D particle collision shapes affecting [GPUParticles3D] nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollision3d.html  
+     */
+    class GPUParticlesCollision3D<Map extends NodePathMap = any> extends VisualInstance3D<Map> {
+        constructor(identifier?: any)
+        /** The particle rendering layers ([member VisualInstance3D.layers]) that will be affected by the collision shape. By default, all particles that have [member ParticleProcessMaterial.collision_mode] set to [constant ParticleProcessMaterial.COLLISION_RIGID] or [constant ParticleProcessMaterial.COLLISION_HIDE_ON_CONTACT] will be affected by a collision shape.  
+         *  After configuring particle nodes accordingly, specific layers can be unchecked to prevent certain particles from being affected by colliders. For example, this can be used if you're using a collider as part of a spell effect but don't want the collider to affect unrelated weather particles at the same position.  
+         *  Particle collision can also be disabled on a per-process material basis by setting [member ParticleProcessMaterial.collision_mode] on the [GPUParticles3D] node.  
+         */
+        get cull_mask(): int64
+        set cull_mask(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticlesCollision3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticlesCollisionBox3D extends __NameMapGPUParticlesCollision3D {
+    }
+    /** A box-shaped 3D particle collision shape affecting [GPUParticles3D] nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollisionbox3d.html  
+     */
+    class GPUParticlesCollisionBox3D<Map extends NodePathMap = any> extends GPUParticlesCollision3D<Map> {
+        constructor(identifier?: any)
+        /** The collision box's size in 3D units. */
+        get size(): Vector3
+        set size(value: Vector3)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticlesCollisionBox3D;
+    }
+    namespace GPUParticlesCollisionHeightField3D {
+        enum Resolution {
+            /** Generate a 256×256 heightmap. Intended for small-scale scenes, or larger scenes with no distant particles. */
+            RESOLUTION_256 = 0,
+            
+            /** Generate a 512×512 heightmap. Intended for medium-scale scenes, or larger scenes with no distant particles. */
+            RESOLUTION_512 = 1,
+            
+            /** Generate a 1024×1024 heightmap. Intended for large scenes with distant particles. */
+            RESOLUTION_1024 = 2,
+            
+            /** Generate a 2048×2048 heightmap. Intended for very large scenes with distant particles. */
+            RESOLUTION_2048 = 3,
+            
+            /** Generate a 4096×4096 heightmap. Intended for huge scenes with distant particles. */
+            RESOLUTION_4096 = 4,
+            
+            /** Generate a 8192×8192 heightmap. Intended for gigantic scenes with distant particles. */
+            RESOLUTION_8192 = 5,
+            
+            /** Represents the size of the [enum Resolution] enum. */
+            RESOLUTION_MAX = 6,
+        }
+        enum UpdateMode {
+            /** Only update the heightmap when the [GPUParticlesCollisionHeightField3D] node is moved, or when the camera moves if [member follow_camera_enabled] is `true`. An update can be forced by slightly moving the [GPUParticlesCollisionHeightField3D] in any direction, or by calling [method RenderingServer.particles_collision_height_field_update]. */
+            UPDATE_MODE_WHEN_MOVED = 0,
+            
+            /** Update the heightmap every frame. This has a significant performance cost. This update should only be used when geometry that particles can collide with changes significantly during gameplay. */
+            UPDATE_MODE_ALWAYS = 1,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticlesCollisionHeightField3D extends __NameMapGPUParticlesCollision3D {
+    }
+    /** A real-time heightmap-shaped 3D particle collision shape affecting [GPUParticles3D] nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollisionheightfield3d.html  
+     */
+    class GPUParticlesCollisionHeightField3D<Map extends NodePathMap = any> extends GPUParticlesCollision3D<Map> {
+        constructor(identifier?: any)
+        /** Based on [param value], enables or disables the specified layer in the [member heightfield_mask], given a [param layer_number] between `1` and `20`, inclusive. */
+        set_heightfield_mask_value(layer_number: int64, value: boolean): void
+        
+        /** Returns `true` if the specified layer of the [member heightfield_mask] is enabled, given a [param layer_number] between `1` and `20`, inclusive. */
+        get_heightfield_mask_value(layer_number: int64): boolean
+        
+        /** The collision heightmap's size in 3D units. To improve heightmap quality, [member size] should be set as small as possible while covering the parts of the scene you need. */
+        get size(): Vector3
+        set size(value: Vector3)
+        
+        /** Higher resolutions can represent small details more accurately in large scenes, at the cost of lower performance. If [member update_mode] is [constant UPDATE_MODE_ALWAYS], consider using the lowest resolution possible. */
+        get resolution(): int64
+        set resolution(value: int64)
+        
+        /** The update policy to use for the generated heightmap. */
+        get update_mode(): int64
+        set update_mode(value: int64)
+        
+        /** If `true`, the [GPUParticlesCollisionHeightField3D] will follow the current camera in global space. The [GPUParticlesCollisionHeightField3D] does not need to be a child of the [Camera3D] node for this to work.  
+         *  Following the camera has a performance cost, as it will force the heightmap to update whenever the camera moves. Consider lowering [member resolution] to improve performance if [member follow_camera_enabled] is `true`.  
+         */
+        get follow_camera_enabled(): boolean
+        set follow_camera_enabled(value: boolean)
+        
+        /** The visual layers to account for when updating the heightmap. Only [MeshInstance3D]s whose [member VisualInstance3D.layers] match with this [member heightfield_mask] will be included in the heightmap collision update. By default, all 20 user-visible layers are taken into account for updating the heightmap collision.  
+         *      
+         *  **Note:** Since the [member heightfield_mask] allows for 32 layers to be stored in total, there are an additional 12 layers that are only used internally by the engine and aren't exposed in the editor. Setting [member heightfield_mask] using a script allows you to toggle those reserved layers, which can be useful for editor plugins.  
+         *  To adjust [member heightfield_mask] more easily using a script, use [method get_heightfield_mask_value] and [method set_heightfield_mask_value].  
+         */
+        get heightfield_mask(): int64
+        set heightfield_mask(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticlesCollisionHeightField3D;
+    }
+    namespace GPUParticlesCollisionSDF3D {
+        enum Resolution {
+            /** Bake a 16×16×16 signed distance field. This is the fastest option, but also the least precise. */
+            RESOLUTION_16 = 0,
+            
+            /** Bake a 32×32×32 signed distance field. */
+            RESOLUTION_32 = 1,
+            
+            /** Bake a 64×64×64 signed distance field. */
+            RESOLUTION_64 = 2,
+            
+            /** Bake a 128×128×128 signed distance field. */
+            RESOLUTION_128 = 3,
+            
+            /** Bake a 256×256×256 signed distance field. */
+            RESOLUTION_256 = 4,
+            
+            /** Bake a 512×512×512 signed distance field. This is the slowest option, but also the most precise. */
+            RESOLUTION_512 = 5,
+            
+            /** Represents the size of the [enum Resolution] enum. */
+            RESOLUTION_MAX = 6,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticlesCollisionSDF3D extends __NameMapGPUParticlesCollision3D {
+    }
+    /** A baked signed distance field 3D particle collision shape affecting [GPUParticles3D] nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollisionsdf3d.html  
+     */
+    class GPUParticlesCollisionSDF3D<Map extends NodePathMap = any> extends GPUParticlesCollision3D<Map> {
+        constructor(identifier?: any)
+        /** Based on [param value], enables or disables the specified layer in the [member bake_mask], given a [param layer_number] between 1 and 32. */
+        set_bake_mask_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member bake_mask] is enabled, given a [param layer_number] between 1 and 32. */
+        get_bake_mask_value(layer_number: int64): boolean
+        
+        /** The collision SDF's size in 3D units. To improve SDF quality, the [member size] should be set as small as possible while covering the parts of the scene you need. */
+        get size(): Vector3
+        set size(value: Vector3)
+        
+        /** The bake resolution to use for the signed distance field [member texture]. The texture must be baked again for changes to the [member resolution] property to be effective. Higher resolutions have a greater performance cost and take more time to bake. Higher resolutions also result in larger baked textures, leading to increased VRAM and storage space requirements. To improve performance and reduce bake times, use the lowest resolution possible for the object you're representing the collision of. */
+        get resolution(): int64
+        set resolution(value: int64)
+        
+        /** The collision shape's thickness. Unlike other particle colliders, [GPUParticlesCollisionSDF3D] is actually hollow on the inside. [member thickness] can be increased to prevent particles from tunneling through the collision shape at high speeds, or when the [GPUParticlesCollisionSDF3D] is moved. */
+        get thickness(): float64
+        set thickness(value: float64)
+        
+        /** The visual layers to account for when baking the particle collision SDF. Only [MeshInstance3D]s whose [member VisualInstance3D.layers] match with this [member bake_mask] will be included in the generated particle collision SDF. By default, all objects are taken into account for the particle collision SDF baking. */
+        get bake_mask(): int64
+        set bake_mask(value: int64)
+        
+        /** The 3D texture representing the signed distance field. */
+        get texture(): null | Texture3D
+        set texture(value: null | Texture3D)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticlesCollisionSDF3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGPUParticlesCollisionSphere3D extends __NameMapGPUParticlesCollision3D {
+    }
+    /** A sphere-shaped 3D particle collision shape affecting [GPUParticles3D] nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollisionsphere3d.html  
+     */
+    class GPUParticlesCollisionSphere3D<Map extends NodePathMap = any> extends GPUParticlesCollision3D<Map> {
+        constructor(identifier?: any)
+        /** The collision sphere's radius in 3D units. */
+        get radius(): float64
+        set radius(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGPUParticlesCollisionSphere3D;
+    }
+    namespace Generic6DOFJoint3D {
+        enum Param {
+            /** The minimum difference between the pivot points' axes. */
+            PARAM_LINEAR_LOWER_LIMIT = 0,
+            
+            /** The maximum difference between the pivot points' axes. */
+            PARAM_LINEAR_UPPER_LIMIT = 1,
+            
+            /** A factor applied to the movement across the axes. The lower, the slower the movement. */
+            PARAM_LINEAR_LIMIT_SOFTNESS = 2,
+            
+            /** The amount of restitution on the axes' movement. The lower, the more momentum gets lost. */
+            PARAM_LINEAR_RESTITUTION = 3,
+            
+            /** The amount of damping that happens at the linear motion across the axes. */
+            PARAM_LINEAR_DAMPING = 4,
+            
+            /** The velocity the linear motor will try to reach. */
+            PARAM_LINEAR_MOTOR_TARGET_VELOCITY = 5,
+            
+            /** The maximum force the linear motor will apply while trying to reach the velocity target. */
+            PARAM_LINEAR_MOTOR_FORCE_LIMIT = 6,
+            PARAM_LINEAR_SPRING_STIFFNESS = 7,
+            PARAM_LINEAR_SPRING_DAMPING = 8,
+            PARAM_LINEAR_SPRING_EQUILIBRIUM_POINT = 9,
+            
+            /** The minimum rotation in negative direction to break loose and rotate around the axes. */
+            PARAM_ANGULAR_LOWER_LIMIT = 10,
+            
+            /** The minimum rotation in positive direction to break loose and rotate around the axes. */
+            PARAM_ANGULAR_UPPER_LIMIT = 11,
+            
+            /** The speed of all rotations across the axes. */
+            PARAM_ANGULAR_LIMIT_SOFTNESS = 12,
+            
+            /** The amount of rotational damping across the axes. The lower, the more damping occurs. */
+            PARAM_ANGULAR_DAMPING = 13,
+            
+            /** The amount of rotational restitution across the axes. The lower, the more restitution occurs. */
+            PARAM_ANGULAR_RESTITUTION = 14,
+            
+            /** The maximum amount of force that can occur, when rotating around the axes. */
+            PARAM_ANGULAR_FORCE_LIMIT = 15,
+            
+            /** When rotating across the axes, this error tolerance factor defines how much the correction gets slowed down. The lower, the slower. */
+            PARAM_ANGULAR_ERP = 16,
+            
+            /** Target speed for the motor at the axes. */
+            PARAM_ANGULAR_MOTOR_TARGET_VELOCITY = 17,
+            
+            /** Maximum acceleration for the motor at the axes. */
+            PARAM_ANGULAR_MOTOR_FORCE_LIMIT = 18,
+            PARAM_ANGULAR_SPRING_STIFFNESS = 19,
+            PARAM_ANGULAR_SPRING_DAMPING = 20,
+            PARAM_ANGULAR_SPRING_EQUILIBRIUM_POINT = 21,
+            
+            /** Represents the size of the [enum Param] enum. */
+            PARAM_MAX = 22,
+        }
+        enum Flag {
+            /** If enabled, linear motion is possible within the given limits. */
+            FLAG_ENABLE_LINEAR_LIMIT = 0,
+            
+            /** If enabled, rotational motion is possible within the given limits. */
+            FLAG_ENABLE_ANGULAR_LIMIT = 1,
+            FLAG_ENABLE_LINEAR_SPRING = 3,
+            FLAG_ENABLE_ANGULAR_SPRING = 2,
+            
+            /** If enabled, there is a rotational motor across these axes. */
+            FLAG_ENABLE_MOTOR = 4,
+            
+            /** If enabled, there is a linear motor across these axes. */
+            FLAG_ENABLE_LINEAR_MOTOR = 5,
+            
+            /** Represents the size of the [enum Flag] enum. */
+            FLAG_MAX = 6,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapGeneric6DOFJoint3D extends __NameMapJoint3D {
+    }
+    /** A physics joint that allows for complex movement and rotation between two 3D physics bodies.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_generic6dofjoint3d.html  
+     */
+    class Generic6DOFJoint3D<Map extends NodePathMap = any> extends Joint3D<Map> {
+        constructor(identifier?: any)
+        set_param_x(param: Generic6DOFJoint3D.Param, value: float64): void
+        get_param_x(param: Generic6DOFJoint3D.Param): float64
+        set_param_y(param: Generic6DOFJoint3D.Param, value: float64): void
+        get_param_y(param: Generic6DOFJoint3D.Param): float64
+        set_param_z(param: Generic6DOFJoint3D.Param, value: float64): void
+        get_param_z(param: Generic6DOFJoint3D.Param): float64
+        set_flag_x(flag: Generic6DOFJoint3D.Flag, value: boolean): void
+        get_flag_x(flag: Generic6DOFJoint3D.Flag): boolean
+        set_flag_y(flag: Generic6DOFJoint3D.Flag, value: boolean): void
+        get_flag_y(flag: Generic6DOFJoint3D.Flag): boolean
+        set_flag_z(flag: Generic6DOFJoint3D.Flag, value: boolean): void
+        get_flag_z(flag: Generic6DOFJoint3D.Flag): boolean
+        
+        /** If `true`, the linear motion across the X axis is limited. */
+        get "linear_limit_x/enabled"(): boolean
+        set "linear_limit_x/enabled"(value: boolean)
+        
+        /** The maximum difference between the pivot points' X axis. */
+        get "linear_limit_x/upper_distance"(): float64
+        set "linear_limit_x/upper_distance"(value: float64)
+        
+        /** The minimum difference between the pivot points' X axis. */
+        get "linear_limit_x/lower_distance"(): float64
+        set "linear_limit_x/lower_distance"(value: float64)
+        
+        /** A factor applied to the movement across the X axis. The lower, the slower the movement. */
+        get "linear_limit_x/softness"(): float64
+        set "linear_limit_x/softness"(value: float64)
+        
+        /** The amount of restitution on the X axis movement. The lower, the more momentum gets lost. */
+        get "linear_limit_x/restitution"(): float64
+        set "linear_limit_x/restitution"(value: float64)
+        
+        /** The amount of damping that happens at the X motion. */
+        get "linear_limit_x/damping"(): float64
+        set "linear_limit_x/damping"(value: float64)
+        
+        /** If `true`, the linear motion across the Y axis is limited. */
+        get "linear_limit_y/enabled"(): boolean
+        set "linear_limit_y/enabled"(value: boolean)
+        
+        /** The maximum difference between the pivot points' Y axis. */
+        get "linear_limit_y/upper_distance"(): float64
+        set "linear_limit_y/upper_distance"(value: float64)
+        
+        /** The minimum difference between the pivot points' Y axis. */
+        get "linear_limit_y/lower_distance"(): float64
+        set "linear_limit_y/lower_distance"(value: float64)
+        
+        /** A factor applied to the movement across the Y axis. The lower, the slower the movement. */
+        get "linear_limit_y/softness"(): float64
+        set "linear_limit_y/softness"(value: float64)
+        
+        /** The amount of restitution on the Y axis movement. The lower, the more momentum gets lost. */
+        get "linear_limit_y/restitution"(): float64
+        set "linear_limit_y/restitution"(value: float64)
+        
+        /** The amount of damping that happens at the Y motion. */
+        get "linear_limit_y/damping"(): float64
+        set "linear_limit_y/damping"(value: float64)
+        
+        /** If `true`, the linear motion across the Z axis is limited. */
+        get "linear_limit_z/enabled"(): boolean
+        set "linear_limit_z/enabled"(value: boolean)
+        
+        /** The maximum difference between the pivot points' Z axis. */
+        get "linear_limit_z/upper_distance"(): float64
+        set "linear_limit_z/upper_distance"(value: float64)
+        
+        /** The minimum difference between the pivot points' Z axis. */
+        get "linear_limit_z/lower_distance"(): float64
+        set "linear_limit_z/lower_distance"(value: float64)
+        
+        /** A factor applied to the movement across the Z axis. The lower, the slower the movement. */
+        get "linear_limit_z/softness"(): float64
+        set "linear_limit_z/softness"(value: float64)
+        
+        /** The amount of restitution on the Z axis movement. The lower, the more momentum gets lost. */
+        get "linear_limit_z/restitution"(): float64
+        set "linear_limit_z/restitution"(value: float64)
+        
+        /** The amount of damping that happens at the Z motion. */
+        get "linear_limit_z/damping"(): float64
+        set "linear_limit_z/damping"(value: float64)
+        
+        /** If `true`, then there is a linear motor on the X axis. It will attempt to reach the target velocity while staying within the force limits. */
+        get "linear_motor_x/enabled"(): boolean
+        set "linear_motor_x/enabled"(value: boolean)
+        
+        /** The speed that the linear motor will attempt to reach on the X axis. */
+        get "linear_motor_x/target_velocity"(): float64
+        set "linear_motor_x/target_velocity"(value: float64)
+        
+        /** The maximum force the linear motor can apply on the X axis while trying to reach the target velocity. */
+        get "linear_motor_x/force_limit"(): float64
+        set "linear_motor_x/force_limit"(value: float64)
+        
+        /** If `true`, then there is a linear motor on the Y axis. It will attempt to reach the target velocity while staying within the force limits. */
+        get "linear_motor_y/enabled"(): boolean
+        set "linear_motor_y/enabled"(value: boolean)
+        
+        /** The speed that the linear motor will attempt to reach on the Y axis. */
+        get "linear_motor_y/target_velocity"(): float64
+        set "linear_motor_y/target_velocity"(value: float64)
+        
+        /** The maximum force the linear motor can apply on the Y axis while trying to reach the target velocity. */
+        get "linear_motor_y/force_limit"(): float64
+        set "linear_motor_y/force_limit"(value: float64)
+        
+        /** If `true`, then there is a linear motor on the Z axis. It will attempt to reach the target velocity while staying within the force limits. */
+        get "linear_motor_z/enabled"(): boolean
+        set "linear_motor_z/enabled"(value: boolean)
+        
+        /** The speed that the linear motor will attempt to reach on the Z axis. */
+        get "linear_motor_z/target_velocity"(): float64
+        set "linear_motor_z/target_velocity"(value: float64)
+        
+        /** The maximum force the linear motor can apply on the Z axis while trying to reach the target velocity. */
+        get "linear_motor_z/force_limit"(): float64
+        set "linear_motor_z/force_limit"(value: float64)
+        get "linear_spring_x/enabled"(): boolean
+        set "linear_spring_x/enabled"(value: boolean)
+        get "linear_spring_x/stiffness"(): float64
+        set "linear_spring_x/stiffness"(value: float64)
+        get "linear_spring_x/damping"(): float64
+        set "linear_spring_x/damping"(value: float64)
+        get "linear_spring_x/equilibrium_point"(): float64
+        set "linear_spring_x/equilibrium_point"(value: float64)
+        get "linear_spring_y/enabled"(): boolean
+        set "linear_spring_y/enabled"(value: boolean)
+        get "linear_spring_y/stiffness"(): float64
+        set "linear_spring_y/stiffness"(value: float64)
+        get "linear_spring_y/damping"(): float64
+        set "linear_spring_y/damping"(value: float64)
+        get "linear_spring_y/equilibrium_point"(): float64
+        set "linear_spring_y/equilibrium_point"(value: float64)
+        get "linear_spring_z/enabled"(): boolean
+        set "linear_spring_z/enabled"(value: boolean)
+        get "linear_spring_z/stiffness"(): float64
+        set "linear_spring_z/stiffness"(value: float64)
+        get "linear_spring_z/damping"(): float64
+        set "linear_spring_z/damping"(value: float64)
+        get "linear_spring_z/equilibrium_point"(): float64
+        set "linear_spring_z/equilibrium_point"(value: float64)
+        
+        /** If `true`, rotation across the X axis is limited. */
+        get "angular_limit_x/enabled"(): boolean
+        set "angular_limit_x/enabled"(value: boolean)
+        
+        /** The minimum rotation in positive direction to break loose and rotate around the X axis. */
+        get "angular_limit_x/upper_angle"(): float64
+        set "angular_limit_x/upper_angle"(value: float64)
+        
+        /** The minimum rotation in negative direction to break loose and rotate around the X axis. */
+        get "angular_limit_x/lower_angle"(): float64
+        set "angular_limit_x/lower_angle"(value: float64)
+        
+        /** The speed of all rotations across the X axis. */
+        get "angular_limit_x/softness"(): float64
+        set "angular_limit_x/softness"(value: float64)
+        
+        /** The amount of rotational restitution across the X axis. The lower, the more restitution occurs. */
+        get "angular_limit_x/restitution"(): float64
+        set "angular_limit_x/restitution"(value: float64)
+        
+        /** The amount of rotational damping across the X axis.  
+         *  The lower, the longer an impulse from one side takes to travel to the other side.  
+         */
+        get "angular_limit_x/damping"(): float64
+        set "angular_limit_x/damping"(value: float64)
+        
+        /** The maximum amount of force that can occur, when rotating around the X axis. */
+        get "angular_limit_x/force_limit"(): float64
+        set "angular_limit_x/force_limit"(value: float64)
+        
+        /** When rotating across the X axis, this error tolerance factor defines how much the correction gets slowed down. The lower, the slower. */
+        get "angular_limit_x/erp"(): float64
+        set "angular_limit_x/erp"(value: float64)
+        
+        /** If `true`, rotation across the Y axis is limited. */
+        get "angular_limit_y/enabled"(): boolean
+        set "angular_limit_y/enabled"(value: boolean)
+        
+        /** The minimum rotation in positive direction to break loose and rotate around the Y axis. */
+        get "angular_limit_y/upper_angle"(): float64
+        set "angular_limit_y/upper_angle"(value: float64)
+        
+        /** The minimum rotation in negative direction to break loose and rotate around the Y axis. */
+        get "angular_limit_y/lower_angle"(): float64
+        set "angular_limit_y/lower_angle"(value: float64)
+        
+        /** The speed of all rotations across the Y axis. */
+        get "angular_limit_y/softness"(): float64
+        set "angular_limit_y/softness"(value: float64)
+        
+        /** The amount of rotational restitution across the Y axis. The lower, the more restitution occurs. */
+        get "angular_limit_y/restitution"(): float64
+        set "angular_limit_y/restitution"(value: float64)
+        
+        /** The amount of rotational damping across the Y axis. The lower, the more damping occurs. */
+        get "angular_limit_y/damping"(): float64
+        set "angular_limit_y/damping"(value: float64)
+        
+        /** The maximum amount of force that can occur, when rotating around the Y axis. */
+        get "angular_limit_y/force_limit"(): float64
+        set "angular_limit_y/force_limit"(value: float64)
+        
+        /** When rotating across the Y axis, this error tolerance factor defines how much the correction gets slowed down. The lower, the slower. */
+        get "angular_limit_y/erp"(): float64
+        set "angular_limit_y/erp"(value: float64)
+        
+        /** If `true`, rotation across the Z axis is limited. */
+        get "angular_limit_z/enabled"(): boolean
+        set "angular_limit_z/enabled"(value: boolean)
+        
+        /** The minimum rotation in positive direction to break loose and rotate around the Z axis. */
+        get "angular_limit_z/upper_angle"(): float64
+        set "angular_limit_z/upper_angle"(value: float64)
+        
+        /** The minimum rotation in negative direction to break loose and rotate around the Z axis. */
+        get "angular_limit_z/lower_angle"(): float64
+        set "angular_limit_z/lower_angle"(value: float64)
+        
+        /** The speed of all rotations across the Z axis. */
+        get "angular_limit_z/softness"(): float64
+        set "angular_limit_z/softness"(value: float64)
+        
+        /** The amount of rotational restitution across the Z axis. The lower, the more restitution occurs. */
+        get "angular_limit_z/restitution"(): float64
+        set "angular_limit_z/restitution"(value: float64)
+        
+        /** The amount of rotational damping across the Z axis. The lower, the more damping occurs. */
+        get "angular_limit_z/damping"(): float64
+        set "angular_limit_z/damping"(value: float64)
+        
+        /** The maximum amount of force that can occur, when rotating around the Z axis. */
+        get "angular_limit_z/force_limit"(): float64
+        set "angular_limit_z/force_limit"(value: float64)
+        
+        /** When rotating across the Z axis, this error tolerance factor defines how much the correction gets slowed down. The lower, the slower. */
+        get "angular_limit_z/erp"(): float64
+        set "angular_limit_z/erp"(value: float64)
+        
+        /** If `true`, a rotating motor at the X axis is enabled. */
+        get "angular_motor_x/enabled"(): boolean
+        set "angular_motor_x/enabled"(value: boolean)
+        
+        /** Target speed for the motor at the X axis. */
+        get "angular_motor_x/target_velocity"(): float64
+        set "angular_motor_x/target_velocity"(value: float64)
+        
+        /** Maximum acceleration for the motor at the X axis. */
+        get "angular_motor_x/force_limit"(): float64
+        set "angular_motor_x/force_limit"(value: float64)
+        
+        /** If `true`, a rotating motor at the Y axis is enabled. */
+        get "angular_motor_y/enabled"(): boolean
+        set "angular_motor_y/enabled"(value: boolean)
+        
+        /** Target speed for the motor at the Y axis. */
+        get "angular_motor_y/target_velocity"(): float64
+        set "angular_motor_y/target_velocity"(value: float64)
+        
+        /** Maximum acceleration for the motor at the Y axis. */
+        get "angular_motor_y/force_limit"(): float64
+        set "angular_motor_y/force_limit"(value: float64)
+        
+        /** If `true`, a rotating motor at the Z axis is enabled. */
+        get "angular_motor_z/enabled"(): boolean
+        set "angular_motor_z/enabled"(value: boolean)
+        
+        /** Target speed for the motor at the Z axis. */
+        get "angular_motor_z/target_velocity"(): float64
+        set "angular_motor_z/target_velocity"(value: float64)
+        
+        /** Maximum acceleration for the motor at the Z axis. */
+        get "angular_motor_z/force_limit"(): float64
+        set "angular_motor_z/force_limit"(value: float64)
+        get "angular_spring_x/enabled"(): boolean
+        set "angular_spring_x/enabled"(value: boolean)
+        get "angular_spring_x/stiffness"(): float64
+        set "angular_spring_x/stiffness"(value: float64)
+        get "angular_spring_x/damping"(): float64
+        set "angular_spring_x/damping"(value: float64)
+        get "angular_spring_x/equilibrium_point"(): float64
+        set "angular_spring_x/equilibrium_point"(value: float64)
+        get "angular_spring_y/enabled"(): boolean
+        set "angular_spring_y/enabled"(value: boolean)
+        get "angular_spring_y/stiffness"(): float64
+        set "angular_spring_y/stiffness"(value: float64)
+        get "angular_spring_y/damping"(): float64
+        set "angular_spring_y/damping"(value: float64)
+        get "angular_spring_y/equilibrium_point"(): float64
+        set "angular_spring_y/equilibrium_point"(value: float64)
+        get "angular_spring_z/enabled"(): boolean
+        set "angular_spring_z/enabled"(value: boolean)
+        get "angular_spring_z/stiffness"(): float64
+        set "angular_spring_z/stiffness"(value: float64)
+        get "angular_spring_z/damping"(): float64
+        set "angular_spring_z/damping"(value: float64)
+        get "angular_spring_z/equilibrium_point"(): float64
+        set "angular_spring_z/equilibrium_point"(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapGeneric6DOFJoint3D;
     }
 }

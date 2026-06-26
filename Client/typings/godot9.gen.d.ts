@@ -1,5808 +1,5 @@
 // AUTO-GENERATED
 declare module "godot" {
-    namespace VisualShaderNodeDerivativeFunc {
-        enum OpType {
-            /** A floating-point scalar. */
-            OP_TYPE_SCALAR = 0,
-            
-            /** A 2D vector type. */
-            OP_TYPE_VECTOR_2D = 1,
-            
-            /** A 3D vector type. */
-            OP_TYPE_VECTOR_3D = 2,
-            
-            /** A 4D vector type. */
-            OP_TYPE_VECTOR_4D = 3,
-            
-            /** Represents the size of the [enum OpType] enum. */
-            OP_TYPE_MAX = 4,
-        }
-        enum Function {
-            /** Sum of absolute derivative in `x` and `y`. */
-            FUNC_SUM = 0,
-            
-            /** Derivative in `x` using local differencing. */
-            FUNC_X = 1,
-            
-            /** Derivative in `y` using local differencing. */
-            FUNC_Y = 2,
-            
-            /** Represents the size of the [enum Function] enum. */
-            FUNC_MAX = 3,
-        }
-        enum Precision {
-            /** No precision is specified, the GPU driver is allowed to use whatever level of precision it chooses. This is the default option and is equivalent to using `dFdx()` or `dFdy()` in text shaders. */
-            PRECISION_NONE = 0,
-            
-            /** The derivative will be calculated using the current fragment's neighbors (which may not include the current fragment). This tends to be faster than using [constant PRECISION_FINE], but may not be suitable when more precision is needed. This is equivalent to using `dFdxCoarse()` or `dFdyCoarse()` in text shaders. */
-            PRECISION_COARSE = 1,
-            
-            /** The derivative will be calculated using the current fragment and its immediate neighbors. This tends to be slower than using [constant PRECISION_COARSE], but may be necessary when more precision is needed. This is equivalent to using `dFdxFine()` or `dFdyFine()` in text shaders. */
-            PRECISION_FINE = 2,
-            
-            /** Represents the size of the [enum Precision] enum. */
-            PRECISION_MAX = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeDerivativeFunc extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeDerivativeFunc extends __NameMapVisualShaderNode {
-    }
-    /** Calculates a derivative within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodederivativefunc.html  
-     */
-    class VisualShaderNodeDerivativeFunc extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A type of operands and returned value. */
-        get op_type(): int64
-        set op_type(value: int64)
-        
-        /** A derivative function type. */
-        get "function"(): int64
-        set "function"(value: int64)
-        
-        /** Sets the level of precision to use for the derivative function. When using the Compatibility renderer, this setting has no effect. */
-        get precision(): int64
-        set precision(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeDerivativeFunc;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeDerivativeFunc;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeDeterminant extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeDeterminant extends __NameMapVisualShaderNode {
-    }
-    /** Calculates the determinant of a [Transform3D] within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodedeterminant.html  
-     */
-    class VisualShaderNodeDeterminant extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeDeterminant;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeDeterminant;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeDistanceFade extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeDistanceFade extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node representing distance fade effect.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodedistancefade.html  
-     */
-    class VisualShaderNodeDistanceFade extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeDistanceFade;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeDistanceFade;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeDotProduct extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeDotProduct extends __NameMapVisualShaderNode {
-    }
-    /** Calculates a dot product of two vectors within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodedotproduct.html  
-     */
-    class VisualShaderNodeDotProduct extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeDotProduct;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeDotProduct;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeExpression extends __RPCMapVisualShaderNodeGroupBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeExpression extends __NameMapVisualShaderNodeGroupBase {
-    }
-    /** A custom visual shader graph expression written in Godot Shading Language.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeexpression.html  
-     */
-    class VisualShaderNodeExpression extends VisualShaderNodeGroupBase {
-        constructor(identifier?: any)
-        /** An expression in Godot Shading Language, which will be injected at the start of the graph's matching shader function (`vertex`, `fragment`, or `light`), and thus cannot be used to declare functions, varyings, uniforms, or global constants. */
-        get expression(): string
-        set expression(value: string)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeExpression;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeExpression;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeFaceForward extends __RPCMapVisualShaderNodeVectorBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeFaceForward extends __NameMapVisualShaderNodeVectorBase {
-    }
-    /** Returns the vector that points in the same direction as a reference vector within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefaceforward.html  
-     */
-    class VisualShaderNodeFaceForward extends VisualShaderNodeVectorBase {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeFaceForward;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeFaceForward;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeFloatConstant extends __RPCMapVisualShaderNodeConstant {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeFloatConstant extends __NameMapVisualShaderNodeConstant {
-    }
-    /** A scalar floating-point constant to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefloatconstant.html  
-     */
-    class VisualShaderNodeFloatConstant extends VisualShaderNodeConstant {
-        constructor(identifier?: any)
-        /** A floating-point constant which represents a state of this node. */
-        get constant(): float64
-        set constant(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeFloatConstant;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeFloatConstant;
-    }
-    namespace VisualShaderNodeFloatFunc {
-        enum Function {
-            /** Returns the sine of the parameter. Translates to `sin(x)` in the Godot Shader Language. */
-            FUNC_SIN = 0,
-            
-            /** Returns the cosine of the parameter. Translates to `cos(x)` in the Godot Shader Language. */
-            FUNC_COS = 1,
-            
-            /** Returns the tangent of the parameter. Translates to `tan(x)` in the Godot Shader Language. */
-            FUNC_TAN = 2,
-            
-            /** Returns the arc-sine of the parameter. Translates to `asin(x)` in the Godot Shader Language. */
-            FUNC_ASIN = 3,
-            
-            /** Returns the arc-cosine of the parameter. Translates to `acos(x)` in the Godot Shader Language. */
-            FUNC_ACOS = 4,
-            
-            /** Returns the arc-tangent of the parameter. Translates to `atan(x)` in the Godot Shader Language. */
-            FUNC_ATAN = 5,
-            
-            /** Returns the hyperbolic sine of the parameter. Translates to `sinh(x)` in the Godot Shader Language. */
-            FUNC_SINH = 6,
-            
-            /** Returns the hyperbolic cosine of the parameter. Translates to `cosh(x)` in the Godot Shader Language. */
-            FUNC_COSH = 7,
-            
-            /** Returns the hyperbolic tangent of the parameter. Translates to `tanh(x)` in the Godot Shader Language. */
-            FUNC_TANH = 8,
-            
-            /** Returns the natural logarithm of the parameter. Translates to `log(x)` in the Godot Shader Language. */
-            FUNC_LOG = 9,
-            
-            /** Returns the natural exponentiation of the parameter. Translates to `exp(x)` in the Godot Shader Language. */
-            FUNC_EXP = 10,
-            
-            /** Returns the square root of the parameter. Translates to `sqrt(x)` in the Godot Shader Language. */
-            FUNC_SQRT = 11,
-            
-            /** Returns the absolute value of the parameter. Translates to `abs(x)` in the Godot Shader Language. */
-            FUNC_ABS = 12,
-            
-            /** Extracts the sign of the parameter. Translates to `sign(x)` in the Godot Shader Language. */
-            FUNC_SIGN = 13,
-            
-            /** Finds the nearest integer less than or equal to the parameter. Translates to `floor(x)` in the Godot Shader Language. */
-            FUNC_FLOOR = 14,
-            
-            /** Finds the nearest integer to the parameter. Translates to `round(x)` in the Godot Shader Language. */
-            FUNC_ROUND = 15,
-            
-            /** Finds the nearest integer that is greater than or equal to the parameter. Translates to `ceil(x)` in the Godot Shader Language. */
-            FUNC_CEIL = 16,
-            
-            /** Computes the fractional part of the argument. Translates to `fract(x)` in the Godot Shader Language. */
-            FUNC_FRACT = 17,
-            
-            /** Clamps the value between `0.0` and `1.0` using `min(max(x, 0.0), 1.0)`. */
-            FUNC_SATURATE = 18,
-            
-            /** Negates the `x` using `-(x)`. */
-            FUNC_NEGATE = 19,
-            
-            /** Returns the arc-hyperbolic-cosine of the parameter. Translates to `acosh(x)` in the Godot Shader Language. */
-            FUNC_ACOSH = 20,
-            
-            /** Returns the arc-hyperbolic-sine of the parameter. Translates to `asinh(x)` in the Godot Shader Language. */
-            FUNC_ASINH = 21,
-            
-            /** Returns the arc-hyperbolic-tangent of the parameter. Translates to `atanh(x)` in the Godot Shader Language. */
-            FUNC_ATANH = 22,
-            
-            /** Convert a quantity in radians to degrees. Translates to `degrees(x)` in the Godot Shader Language. */
-            FUNC_DEGREES = 23,
-            
-            /** Returns 2 raised by the power of the parameter. Translates to `exp2(x)` in the Godot Shader Language. */
-            FUNC_EXP2 = 24,
-            
-            /** Returns the inverse of the square root of the parameter. Translates to `inversesqrt(x)` in the Godot Shader Language. */
-            FUNC_INVERSE_SQRT = 25,
-            
-            /** Returns the base 2 logarithm of the parameter. Translates to `log2(x)` in the Godot Shader Language. */
-            FUNC_LOG2 = 26,
-            
-            /** Convert a quantity in degrees to radians. Translates to `radians(x)` in the Godot Shader Language. */
-            FUNC_RADIANS = 27,
-            
-            /** Finds reciprocal value of dividing 1 by `x` (i.e. `1 / x`). */
-            FUNC_RECIPROCAL = 28,
-            
-            /** Finds the nearest even integer to the parameter. Translates to `roundEven(x)` in the Godot Shader Language. */
-            FUNC_ROUNDEVEN = 29,
-            
-            /** Returns a value equal to the nearest integer to `x` whose absolute value is not larger than the absolute value of `x`. Translates to `trunc(x)` in the Godot Shader Language. */
-            FUNC_TRUNC = 30,
-            
-            /** Subtracts scalar `x` from 1 (i.e. `1 - x`). */
-            FUNC_ONEMINUS = 31,
-            
-            /** Represents the size of the [enum Function] enum. */
-            FUNC_MAX = 32,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeFloatFunc extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeFloatFunc extends __NameMapVisualShaderNode {
-    }
-    /** A scalar floating-point function to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefloatfunc.html  
-     */
-    class VisualShaderNodeFloatFunc extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A function to be applied to the scalar. */
-        get "function"(): int64
-        set "function"(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeFloatFunc;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeFloatFunc;
-    }
-    namespace VisualShaderNodeFloatOp {
-        enum Operator {
-            /** Sums two numbers using `a + b`. */
-            OP_ADD = 0,
-            
-            /** Subtracts two numbers using `a - b`. */
-            OP_SUB = 1,
-            
-            /** Multiplies two numbers using `a * b`. */
-            OP_MUL = 2,
-            
-            /** Divides two numbers using `a / b`. */
-            OP_DIV = 3,
-            
-            /** Calculates the remainder of two numbers. Translates to `mod(a, b)` in the Godot Shader Language. */
-            OP_MOD = 4,
-            
-            /** Raises the `a` to the power of `b`. Translates to `pow(a, b)` in the Godot Shader Language. */
-            OP_POW = 5,
-            
-            /** Returns the greater of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
-            OP_MAX = 6,
-            
-            /** Returns the lesser of two numbers. Translates to `min(a, b)` in the Godot Shader Language. */
-            OP_MIN = 7,
-            
-            /** Returns the arc-tangent of the parameters. Translates to `atan(a, b)` in the Godot Shader Language. */
-            OP_ATAN2 = 8,
-            
-            /** Generates a step function by comparing `b`(x) to `a`(edge). Returns 0.0 if `x` is smaller than `edge` and otherwise 1.0. Translates to `step(a, b)` in the Godot Shader Language. */
-            OP_STEP = 9,
-            
-            /** Represents the size of the [enum Operator] enum. */
-            OP_ENUM_SIZE = 10,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeFloatOp extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeFloatOp extends __NameMapVisualShaderNode {
-    }
-    /** A floating-point scalar operator to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefloatop.html  
-     */
-    class VisualShaderNodeFloatOp extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** An operator to be applied to the inputs. */
-        get operator(): int64
-        set operator(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeFloatOp;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeFloatOp;
-    }
-    namespace VisualShaderNodeFloatParameter {
-        enum Hint {
-            /** No hint used. */
-            HINT_NONE = 0,
-            
-            /** A range hint for scalar value, which limits possible input values between [member min] and [member max]. Translated to `hint_range(min, max)` in shader code. */
-            HINT_RANGE = 1,
-            
-            /** A range hint for scalar value with step, which limits possible input values between [member min] and [member max], with a step (increment) of [member step]). Translated to `hint_range(min, max, step)` in shader code. */
-            HINT_RANGE_STEP = 2,
-            
-            /** Represents the size of the [enum Hint] enum. */
-            HINT_MAX = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeFloatParameter extends __RPCMapVisualShaderNodeParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeFloatParameter extends __NameMapVisualShaderNodeParameter {
-    }
-    /** A scalar float parameter to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefloatparameter.html  
-     */
-    class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter {
-        constructor(identifier?: any)
-        /** A hint applied to the uniform, which controls the values it can take when set through the Inspector. */
-        get hint(): int64
-        set hint(value: int64)
-        
-        /** Maximum value for range hints. Used if [member hint] is set to [constant HINT_RANGE] or [constant HINT_RANGE_STEP]. */
-        get min(): float64
-        set min(value: float64)
-        
-        /** Minimum value for range hints. Used if [member hint] is set to [constant HINT_RANGE] or [constant HINT_RANGE_STEP]. */
-        get max(): float64
-        set max(value: float64)
-        
-        /** Step (increment) value for the range hint with step. Used if [member hint] is set to [constant HINT_RANGE_STEP]. */
-        get step(): float64
-        set step(value: float64)
-        
-        /** Enables usage of the [member default_value]. */
-        get default_value_enabled(): boolean
-        set default_value_enabled(value: boolean)
-        
-        /** A default value to be assigned within the shader. */
-        get default_value(): float64
-        set default_value(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeFloatParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeFloatParameter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeFrame extends __RPCMapVisualShaderNodeResizableBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeFrame extends __NameMapVisualShaderNodeResizableBase {
-    }
-    /** A frame other visual shader nodes can be attached to for better organization.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeframe.html  
-     */
-    class VisualShaderNodeFrame extends VisualShaderNodeResizableBase {
-        constructor(identifier?: any)
-        /** Adds a node to the list of nodes attached to the frame. Should not be called directly, use the [method VisualShader.attach_node_to_frame] method instead. */
-        add_attached_node(node: int64): void
-        
-        /** Removes a node from the list of nodes attached to the frame. Should not be called directly, use the [method VisualShader.detach_node_from_frame] method instead. */
-        remove_attached_node(node: int64): void
-        
-        /** The title of the node. */
-        get title(): string
-        set title(value: string)
-        
-        /** If `true`, the frame will be tinted with the color specified in [member tint_color]. */
-        get tint_color_enabled(): boolean
-        set tint_color_enabled(value: boolean)
-        
-        /** The color of the frame when [member tint_color_enabled] is `true`. */
-        get tint_color(): Color
-        set tint_color(value: Color)
-        
-        /** If `true`, the frame will automatically resize to enclose all attached nodes. */
-        get autoshrink(): boolean
-        set autoshrink(value: boolean)
-        
-        /** The list of nodes attached to the frame. */
-        get attached_nodes(): PackedInt32Array
-        set attached_nodes(value: PackedInt32Array | int32[])
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeFrame;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeFrame;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeFresnel extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeFresnel extends __NameMapVisualShaderNode {
-    }
-    /** A Fresnel effect to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefresnel.html  
-     */
-    class VisualShaderNodeFresnel extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeFresnel;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeFresnel;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeGlobalExpression extends __RPCMapVisualShaderNodeExpression {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeGlobalExpression extends __NameMapVisualShaderNodeExpression {
-    }
-    /** A custom global visual shader graph expression written in Godot Shading Language.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeglobalexpression.html  
-     */
-    class VisualShaderNodeGlobalExpression extends VisualShaderNodeExpression {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeGlobalExpression;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeGlobalExpression;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeGroupBase extends __RPCMapVisualShaderNodeResizableBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeGroupBase extends __NameMapVisualShaderNodeResizableBase {
-    }
-    /** Base class for a family of nodes with variable number of input and output ports within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodegroupbase.html  
-     */
-    class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase {
-        constructor(identifier?: any)
-        /** Defines all input ports using a [String] formatted as a colon-separated list: `id,type,name;` (see [method add_input_port]). */
-        set_inputs(inputs: string): void
-        
-        /** Returns a [String] description of the input ports as a colon-separated list using the format `id,type,name;` (see [method add_input_port]). */
-        get_inputs(): string
-        
-        /** Defines all output ports using a [String] formatted as a colon-separated list: `id,type,name;` (see [method add_output_port]). */
-        set_outputs(outputs: string): void
-        
-        /** Returns a [String] description of the output ports as a colon-separated list using the format `id,type,name;` (see [method add_output_port]). */
-        get_outputs(): string
-        
-        /** Returns `true` if the specified port name does not override an existed port name and is valid within the shader. */
-        is_valid_port_name(name: string): boolean
-        
-        /** Adds an input port with the specified [param type] (see [enum VisualShaderNode.PortType]) and [param name]. */
-        add_input_port(id: int64, type: int64, name: string): void
-        
-        /** Removes the specified input port. */
-        remove_input_port(id: int64): void
-        
-        /** Returns the number of input ports in use. Alternative for [method get_free_input_port_id]. */
-        get_input_port_count(): int64
-        
-        /** Returns `true` if the specified input port exists. */
-        has_input_port(id: int64): boolean
-        
-        /** Removes all previously specified input ports. */
-        clear_input_ports(): void
-        
-        /** Adds an output port with the specified [param type] (see [enum VisualShaderNode.PortType]) and [param name]. */
-        add_output_port(id: int64, type: int64, name: string): void
-        
-        /** Removes the specified output port. */
-        remove_output_port(id: int64): void
-        
-        /** Returns the number of output ports in use. Alternative for [method get_free_output_port_id]. */
-        get_output_port_count(): int64
-        
-        /** Returns `true` if the specified output port exists. */
-        has_output_port(id: int64): boolean
-        
-        /** Removes all previously specified output ports. */
-        clear_output_ports(): void
-        
-        /** Renames the specified input port. */
-        set_input_port_name(id: int64, name: string): void
-        
-        /** Sets the specified input port's type (see [enum VisualShaderNode.PortType]). */
-        set_input_port_type(id: int64, type: int64): void
-        
-        /** Renames the specified output port. */
-        set_output_port_name(id: int64, name: string): void
-        
-        /** Sets the specified output port's type (see [enum VisualShaderNode.PortType]). */
-        set_output_port_type(id: int64, type: int64): void
-        
-        /** Returns a free input port ID which can be used in [method add_input_port]. */
-        get_free_input_port_id(): int64
-        
-        /** Returns a free output port ID which can be used in [method add_output_port]. */
-        get_free_output_port_id(): int64
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeGroupBase;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeGroupBase;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeIf extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeIf extends __NameMapVisualShaderNode {
-    }
-    /** Outputs a 3D vector based on the result of a floating-point comparison within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeif.html  
-     */
-    class VisualShaderNodeIf extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeIf;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeIf;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeInput extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeInput extends __NameMapVisualShaderNode {
-    }
-    /** Represents the input shader parameter within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeinput.html  
-     */
-    class VisualShaderNodeInput extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** Returns a translated name of the current constant in the Godot Shader Language. E.g. `"ALBEDO"` if the [member input_name] equal to `"albedo"`. */
-        get_input_real_name(): string
-        
-        /** One of the several input constants in lower-case style like: "vertex" (`VERTEX`) or "point_size" (`POINT_SIZE`). */
-        get input_name(): StringName
-        set input_name(value: StringName)
-        
-        /** Emitted when input is changed via [member input_name]. */
-        readonly input_type_changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeInput;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeInput;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeIntConstant extends __RPCMapVisualShaderNodeConstant {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeIntConstant extends __NameMapVisualShaderNodeConstant {
-    }
-    /** A scalar integer constant to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeintconstant.html  
-     */
-    class VisualShaderNodeIntConstant extends VisualShaderNodeConstant {
-        constructor(identifier?: any)
-        /** An integer constant which represents a state of this node. */
-        get constant(): int64
-        set constant(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeIntConstant;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeIntConstant;
-    }
-    namespace VisualShaderNodeIntFunc {
-        enum Function {
-            /** Returns the absolute value of the parameter. Translates to `abs(x)` in the Godot Shader Language. */
-            FUNC_ABS = 0,
-            
-            /** Negates the `x` using `-(x)`. */
-            FUNC_NEGATE = 1,
-            
-            /** Extracts the sign of the parameter. Translates to `sign(x)` in the Godot Shader Language. */
-            FUNC_SIGN = 2,
-            
-            /** Returns the result of bitwise `NOT` operation on the integer. Translates to `~a` in the Godot Shader Language. */
-            FUNC_BITWISE_NOT = 3,
-            
-            /** Represents the size of the [enum Function] enum. */
-            FUNC_MAX = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeIntFunc extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeIntFunc extends __NameMapVisualShaderNode {
-    }
-    /** A scalar integer function to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeintfunc.html  
-     */
-    class VisualShaderNodeIntFunc extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A function to be applied to the scalar. */
-        get "function"(): int64
-        set "function"(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeIntFunc;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeIntFunc;
-    }
-    namespace VisualShaderNodeIntOp {
-        enum Operator {
-            /** Sums two numbers using `a + b`. */
-            OP_ADD = 0,
-            
-            /** Subtracts two numbers using `a - b`. */
-            OP_SUB = 1,
-            
-            /** Multiplies two numbers using `a * b`. */
-            OP_MUL = 2,
-            
-            /** Divides two numbers using `a / b`. */
-            OP_DIV = 3,
-            
-            /** Calculates the remainder of two numbers using `a % b`. */
-            OP_MOD = 4,
-            
-            /** Returns the greater of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
-            OP_MAX = 5,
-            
-            /** Returns the lesser of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
-            OP_MIN = 6,
-            
-            /** Returns the result of bitwise `AND` operation on the integer. Translates to `a & b` in the Godot Shader Language. */
-            OP_BITWISE_AND = 7,
-            
-            /** Returns the result of bitwise `OR` operation for two integers. Translates to `a | b` in the Godot Shader Language. */
-            OP_BITWISE_OR = 8,
-            
-            /** Returns the result of bitwise `XOR` operation for two integers. Translates to `a ^ b` in the Godot Shader Language. */
-            OP_BITWISE_XOR = 9,
-            
-            /** Returns the result of bitwise left shift operation on the integer. Translates to `a << b` in the Godot Shader Language. */
-            OP_BITWISE_LEFT_SHIFT = 10,
-            
-            /** Returns the result of bitwise right shift operation on the integer. Translates to `a >> b` in the Godot Shader Language. */
-            OP_BITWISE_RIGHT_SHIFT = 11,
-            
-            /** Represents the size of the [enum Operator] enum. */
-            OP_ENUM_SIZE = 12,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeIntOp extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeIntOp extends __NameMapVisualShaderNode {
-    }
-    /** An integer scalar operator to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeintop.html  
-     */
-    class VisualShaderNodeIntOp extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** An operator to be applied to the inputs. */
-        get operator(): int64
-        set operator(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeIntOp;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeIntOp;
-    }
-    namespace VisualShaderNodeIntParameter {
-        enum Hint {
-            /** The parameter will not constrain its value. */
-            HINT_NONE = 0,
-            
-            /** The parameter's value must be within the specified [member min]/[member max] range. */
-            HINT_RANGE = 1,
-            
-            /** The parameter's value must be within the specified range, with the given [member step] between values. */
-            HINT_RANGE_STEP = 2,
-            
-            /** The parameter uses an enum to associate preset values to names in the editor. */
-            HINT_ENUM = 3,
-            
-            /** Represents the size of the [enum Hint] enum. */
-            HINT_MAX = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeIntParameter extends __RPCMapVisualShaderNodeParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeIntParameter extends __NameMapVisualShaderNodeParameter {
-    }
-    /** A visual shader node for shader parameter (uniform) of type [int].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeintparameter.html  
-     */
-    class VisualShaderNodeIntParameter extends VisualShaderNodeParameter {
-        constructor(identifier?: any)
-        /** Range hint of this node. Use it to customize valid parameter range. */
-        get hint(): int64
-        set hint(value: int64)
-        
-        /** The minimum value this parameter can take. [member hint] must be either [constant HINT_RANGE] or [constant HINT_RANGE_STEP] for this to take effect. */
-        get min(): int64
-        set min(value: int64)
-        
-        /** The maximum value this parameter can take. [member hint] must be either [constant HINT_RANGE] or [constant HINT_RANGE_STEP] for this to take effect. */
-        get max(): int64
-        set max(value: int64)
-        
-        /** The step between parameter's values. Forces the parameter to be a multiple of the given value. [member hint] must be [constant HINT_RANGE_STEP] for this to take effect. */
-        get step(): int64
-        set step(value: int64)
-        
-        /** The names used for the enum select in the editor. [member hint] must be [constant HINT_ENUM] for this to take effect. */
-        get enum_names(): PackedStringArray
-        set enum_names(value: PackedStringArray | string[])
-        
-        /** If `true`, the node will have a custom default value. */
-        get default_value_enabled(): boolean
-        set default_value_enabled(value: boolean)
-        
-        /** Default value of this parameter, which will be used if not set externally. [member default_value_enabled] must be enabled; defaults to `0` otherwise. */
-        get default_value(): int64
-        set default_value(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeIntParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeIntParameter;
-    }
-    namespace VisualShaderNodeIs {
-        enum Function {
-            /** Comparison with `INF` (Infinity). */
-            FUNC_IS_INF = 0,
-            
-            /** Comparison with `NaN` (Not a Number; indicates invalid numeric results, such as division by zero). */
-            FUNC_IS_NAN = 1,
-            
-            /** Represents the size of the [enum Function] enum. */
-            FUNC_MAX = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeIs extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeIs extends __NameMapVisualShaderNode {
-    }
-    /** A boolean comparison operator to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeis.html  
-     */
-    class VisualShaderNodeIs extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** The comparison function. */
-        get "function"(): int64
-        set "function"(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeIs;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeIs;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeLinearSceneDepth extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeLinearSceneDepth extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that returns the depth value of the DEPTH_TEXTURE node in a linear space.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodelinearscenedepth.html  
-     */
-    class VisualShaderNodeLinearSceneDepth extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeLinearSceneDepth;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeLinearSceneDepth;
-    }
-    namespace VisualShaderNodeMix {
-        enum OpType {
-            /** A floating-point scalar. */
-            OP_TYPE_SCALAR = 0,
-            
-            /** A 2D vector type. */
-            OP_TYPE_VECTOR_2D = 1,
-            
-            /** The `a` and `b` ports use a 2D vector type. The `weight` port uses a scalar type. */
-            OP_TYPE_VECTOR_2D_SCALAR = 2,
-            
-            /** A 3D vector type. */
-            OP_TYPE_VECTOR_3D = 3,
-            
-            /** The `a` and `b` ports use a 3D vector type. The `weight` port uses a scalar type. */
-            OP_TYPE_VECTOR_3D_SCALAR = 4,
-            
-            /** A 4D vector type. */
-            OP_TYPE_VECTOR_4D = 5,
-            
-            /** The `a` and `b` ports use a 4D vector type. The `weight` port uses a scalar type. */
-            OP_TYPE_VECTOR_4D_SCALAR = 6,
-            
-            /** Represents the size of the [enum OpType] enum. */
-            OP_TYPE_MAX = 7,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeMix extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeMix extends __NameMapVisualShaderNode {
-    }
-    /** Linearly interpolates between two values within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodemix.html  
-     */
-    class VisualShaderNodeMix extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A type of operands and returned value. */
-        get op_type(): int64
-        set op_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeMix;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeMix;
-    }
-    namespace VisualShaderNodeMultiplyAdd {
-        enum OpType {
-            /** A floating-point scalar type. */
-            OP_TYPE_SCALAR = 0,
-            
-            /** A 2D vector type. */
-            OP_TYPE_VECTOR_2D = 1,
-            
-            /** A 3D vector type. */
-            OP_TYPE_VECTOR_3D = 2,
-            
-            /** A 4D vector type. */
-            OP_TYPE_VECTOR_4D = 3,
-            
-            /** Represents the size of the [enum OpType] enum. */
-            OP_TYPE_MAX = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeMultiplyAdd extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeMultiplyAdd extends __NameMapVisualShaderNode {
-    }
-    /** Performs a fused multiply-add operation within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodemultiplyadd.html  
-     */
-    class VisualShaderNodeMultiplyAdd extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A type of operands and returned value. */
-        get op_type(): int64
-        set op_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeMultiplyAdd;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeMultiplyAdd;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeOuterProduct extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeOuterProduct extends __NameMapVisualShaderNode {
-    }
-    /** Calculates an outer product of two vectors within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeouterproduct.html  
-     */
-    class VisualShaderNodeOuterProduct extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeOuterProduct;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeOuterProduct;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeOutput extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeOutput extends __NameMapVisualShaderNode {
-    }
-    /** Represents the output shader parameters within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeoutput.html  
-     */
-    class VisualShaderNodeOutput extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeOutput;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeOutput;
-    }
-    namespace VisualShaderNodeParameter {
-        enum Qualifier {
-            /** The parameter will be tied to the [ShaderMaterial] using this shader. */
-            QUAL_NONE = 0,
-            
-            /** The parameter will use a global value, defined in Project Settings. */
-            QUAL_GLOBAL = 1,
-            
-            /** The parameter will be tied to the node with attached [ShaderMaterial] using this shader. */
-            QUAL_INSTANCE = 2,
-            
-            /** The parameter will be tied to the node with attached [ShaderMaterial] using this shader. Enables setting a [member instance_index] property. */
-            QUAL_INSTANCE_INDEX = 3,
-            
-            /** Represents the size of the [enum Qualifier] enum. */
-            QUAL_MAX = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParameter extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParameter extends __NameMapVisualShaderNode {
-    }
-    /** A base type for the parameters within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparameter.html  
-     */
-    class VisualShaderNodeParameter extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** Name of the parameter, by which it can be accessed through the [ShaderMaterial] properties. */
-        get parameter_name(): StringName
-        set parameter_name(value: StringName)
-        
-        /** Defines the scope of the parameter. */
-        get qualifier(): int64
-        set qualifier(value: int64)
-        
-        /** The index within 0-15 range, which is used to avoid clashes when shader used on multiple materials. */
-        get instance_index(): int64
-        set instance_index(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParameter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParameterRef extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParameterRef extends __NameMapVisualShaderNode {
-    }
-    /** A reference to an existing [VisualShaderNodeParameter].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparameterref.html  
-     */
-    class VisualShaderNodeParameterRef extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** The name of the parameter which this reference points to. */
-        get parameter_name(): StringName
-        set parameter_name(value: StringName)
-        get param_type(): int64
-        set param_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParameterRef;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParameterRef;
-    }
-    namespace VisualShaderNodeParticleAccelerator {
-        enum Mode {
-            /** The particles will be accelerated based on their velocity. */
-            MODE_LINEAR = 0,
-            
-            /** The particles will be accelerated towards or away from the center. */
-            MODE_RADIAL = 1,
-            
-            /** The particles will be accelerated tangentially to the radius vector from center to their position. */
-            MODE_TANGENTIAL = 2,
-            
-            /** Represents the size of the [enum Mode] enum. */
-            MODE_MAX = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleAccelerator extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleAccelerator extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that accelerates particles.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleaccelerator.html  
-     */
-    class VisualShaderNodeParticleAccelerator extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** Defines in what manner the particles will be accelerated. */
-        get mode(): int64
-        set mode(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleAccelerator;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleAccelerator;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleBoxEmitter extends __RPCMapVisualShaderNodeParticleEmitter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleBoxEmitter extends __NameMapVisualShaderNodeParticleEmitter {
-    }
-    /** A visual shader node that makes particles emitted in a box shape.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleboxemitter.html  
-     */
-    class VisualShaderNodeParticleBoxEmitter extends VisualShaderNodeParticleEmitter {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleBoxEmitter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleBoxEmitter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleConeVelocity extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleConeVelocity extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that makes particles move in a cone shape.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleconevelocity.html  
-     */
-    class VisualShaderNodeParticleConeVelocity extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleConeVelocity;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleConeVelocity;
-    }
-    namespace VisualShaderNodeParticleEmit {
-        enum EmitFlags {
-            /** If enabled, the particle starts with the position defined by this node. */
-            EMIT_FLAG_POSITION = 1,
-            
-            /** If enabled, the particle starts with the rotation and scale defined by this node. */
-            EMIT_FLAG_ROT_SCALE = 2,
-            
-            /** If enabled,the particle starts with the velocity defined by this node. */
-            EMIT_FLAG_VELOCITY = 4,
-            
-            /** If enabled, the particle starts with the color defined by this node. */
-            EMIT_FLAG_COLOR = 8,
-            
-            /** If enabled, the particle starts with the `CUSTOM` data defined by this node. */
-            EMIT_FLAG_CUSTOM = 16,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleEmit extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleEmit extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that forces to emit a particle from a sub-emitter.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleemit.html  
-     */
-    class VisualShaderNodeParticleEmit extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** Flags used to override the properties defined in the sub-emitter's process material. */
-        get flags(): int64
-        set flags(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleEmit;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleEmit;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleEmitter extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleEmitter extends __NameMapVisualShaderNode {
-    }
-    /** A base class for particle emitters.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleemitter.html  
-     */
-    class VisualShaderNodeParticleEmitter extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** If `true`, the result of this emitter is projected to 2D space. By default it is `false` and meant for use in 3D space. */
-        get mode_2d(): boolean
-        set mode_2d(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleEmitter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleEmitter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleMeshEmitter extends __RPCMapVisualShaderNodeParticleEmitter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleMeshEmitter extends __NameMapVisualShaderNodeParticleEmitter {
-    }
-    /** A visual shader node that makes particles emitted in a shape defined by a [Mesh].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticlemeshemitter.html  
-     */
-    class VisualShaderNodeParticleMeshEmitter extends VisualShaderNodeParticleEmitter {
-        constructor(identifier?: any)
-        /** The [Mesh] that defines emission shape. */
-        get mesh(): null | Mesh
-        set mesh(value: null | Mesh)
-        
-        /** If `true`, the particles will emit from all surfaces of the mesh. */
-        get use_all_surfaces(): boolean
-        set use_all_surfaces(value: boolean)
-        
-        /** Index of the surface that emits particles. [member use_all_surfaces] must be `false` for this to take effect. */
-        get surface_index(): int64
-        set surface_index(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleMeshEmitter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleMeshEmitter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleMultiplyByAxisAngle extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleMultiplyByAxisAngle extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader helper node for multiplying position and rotation of particles.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticlemultiplybyaxisangle.html  
-     */
-    class VisualShaderNodeParticleMultiplyByAxisAngle extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** If `true`, the angle will be interpreted in degrees instead of radians. */
-        get degrees_mode(): boolean
-        set degrees_mode(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleMultiplyByAxisAngle;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleMultiplyByAxisAngle;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleOutput extends __RPCMapVisualShaderNodeOutput {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleOutput extends __NameMapVisualShaderNodeOutput {
-    }
-    /** Visual shader node that defines output values for particle emitting.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleoutput.html  
-     */
-    class VisualShaderNodeParticleOutput extends VisualShaderNodeOutput {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleOutput;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleOutput;
-    }
-    namespace VisualShaderNodeParticleRandomness {
-        enum OpType {
-            /** A floating-point scalar. */
-            OP_TYPE_SCALAR = 0,
-            
-            /** A 2D vector type. */
-            OP_TYPE_VECTOR_2D = 1,
-            
-            /** A 3D vector type. */
-            OP_TYPE_VECTOR_3D = 2,
-            
-            /** A 4D vector type. */
-            OP_TYPE_VECTOR_4D = 3,
-            
-            /** Represents the size of the [enum OpType] enum. */
-            OP_TYPE_MAX = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleRandomness extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleRandomness extends __NameMapVisualShaderNode {
-    }
-    /** Visual shader node for randomizing particle values.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticlerandomness.html  
-     */
-    class VisualShaderNodeParticleRandomness extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A type of operands and returned value. */
-        get op_type(): int64
-        set op_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleRandomness;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleRandomness;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleRingEmitter extends __RPCMapVisualShaderNodeParticleEmitter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleRingEmitter extends __NameMapVisualShaderNodeParticleEmitter {
-    }
-    /** A visual shader node that makes particles emitted in a ring shape.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleringemitter.html  
-     */
-    class VisualShaderNodeParticleRingEmitter extends VisualShaderNodeParticleEmitter {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleRingEmitter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleRingEmitter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeParticleSphereEmitter extends __RPCMapVisualShaderNodeParticleEmitter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeParticleSphereEmitter extends __NameMapVisualShaderNodeParticleEmitter {
-    }
-    /** A visual shader node that makes particles emitted in a sphere shape.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticlesphereemitter.html  
-     */
-    class VisualShaderNodeParticleSphereEmitter extends VisualShaderNodeParticleEmitter {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeParticleSphereEmitter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeParticleSphereEmitter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeProximityFade extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeProximityFade extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node representing proximity fade effect.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeproximityfade.html  
-     */
-    class VisualShaderNodeProximityFade extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeProximityFade;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeProximityFade;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeRandomRange extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeRandomRange extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that generates a pseudo-random scalar.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernoderandomrange.html  
-     */
-    class VisualShaderNodeRandomRange extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeRandomRange;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeRandomRange;
-    }
-    namespace VisualShaderNodeRemap {
-        enum OpType {
-            /** A floating-point scalar type. */
-            OP_TYPE_SCALAR = 0,
-            
-            /** A 2D vector type. */
-            OP_TYPE_VECTOR_2D = 1,
-            
-            /** The `value` port uses a 2D vector type, while the `input min`, `input max`, `output min`, and `output max` ports use a floating-point scalar type. */
-            OP_TYPE_VECTOR_2D_SCALAR = 2,
-            
-            /** A 3D vector type. */
-            OP_TYPE_VECTOR_3D = 3,
-            
-            /** The `value` port uses a 3D vector type, while the `input min`, `input max`, `output min`, and `output max` ports use a floating-point scalar type. */
-            OP_TYPE_VECTOR_3D_SCALAR = 4,
-            
-            /** A 4D vector type. */
-            OP_TYPE_VECTOR_4D = 5,
-            
-            /** The `value` port uses a 4D vector type, while the `input min`, `input max`, `output min`, and `output max` ports use a floating-point scalar type. */
-            OP_TYPE_VECTOR_4D_SCALAR = 6,
-            
-            /** Represents the size of the [enum OpType] enum. */
-            OP_TYPE_MAX = 7,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeRemap extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeRemap extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node for remap function.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernoderemap.html  
-     */
-    class VisualShaderNodeRemap extends VisualShaderNode {
-        constructor(identifier?: any)
-        get op_type(): int64
-        set op_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeRemap;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeRemap;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeReroute extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeReroute extends __NameMapVisualShaderNode {
-    }
-    /** A node that allows rerouting a connection within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodereroute.html  
-     */
-    class VisualShaderNodeReroute extends VisualShaderNode {
-        constructor(identifier?: any)
-        get port_type(): int64
-        set port_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeReroute;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeReroute;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeResizableBase extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeResizableBase extends __NameMapVisualShaderNode {
-    }
-    /** Base class for resizable nodes in a visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernoderesizablebase.html  
-     */
-    class VisualShaderNodeResizableBase extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** The size of the node in the visual shader graph. */
-        get size(): Vector2
-        set size(value: Vector2)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeResizableBase;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeResizableBase;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeRotationByAxis extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeRotationByAxis extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that modifies the rotation of the object using a rotation matrix.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernoderotationbyaxis.html  
-     */
-    class VisualShaderNodeRotationByAxis extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeRotationByAxis;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeRotationByAxis;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeSDFRaymarch extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeSDFRaymarch extends __NameMapVisualShaderNode {
-    }
-    /** SDF raymarching algorithm to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodesdfraymarch.html  
-     */
-    class VisualShaderNodeSDFRaymarch extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeSDFRaymarch;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeSDFRaymarch;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeSDFToScreenUV extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeSDFToScreenUV extends __NameMapVisualShaderNode {
-    }
-    /** A function to convert an SDF (signed-distance field) to screen UV, to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodesdftoscreenuv.html  
-     */
-    class VisualShaderNodeSDFToScreenUV extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeSDFToScreenUV;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeSDFToScreenUV;
-    }
-    namespace VisualShaderNodeSample3D {
-        enum Source {
-            /** Creates internal uniform and provides a way to assign it within node. */
-            SOURCE_TEXTURE = 0,
-            
-            /** Use the uniform texture from sampler port. */
-            SOURCE_PORT = 1,
-            
-            /** Represents the size of the [enum Source] enum. */
-            SOURCE_MAX = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeSample3D extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeSample3D extends __NameMapVisualShaderNode {
-    }
-    /** A base node for nodes which samples 3D textures in the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodesample3d.html  
-     */
-    class VisualShaderNodeSample3D extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** An input source type. */
-        get source(): int64
-        set source(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeSample3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeSample3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeScreenNormalWorldSpace extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeScreenNormalWorldSpace extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that unpacks the screen normal texture in World Space.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodescreennormalworldspace.html  
-     */
-    class VisualShaderNodeScreenNormalWorldSpace extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeScreenNormalWorldSpace;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeScreenNormalWorldSpace;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeScreenUVToSDF extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeScreenUVToSDF extends __NameMapVisualShaderNode {
-    }
-    /** A function to convert screen UV to an SDF (signed-distance field), to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodescreenuvtosdf.html  
-     */
-    class VisualShaderNodeScreenUVToSDF extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeScreenUVToSDF;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeScreenUVToSDF;
-    }
-    namespace VisualShaderNodeSmoothStep {
-        enum OpType {
-            /** A floating-point scalar type. */
-            OP_TYPE_SCALAR = 0,
-            
-            /** A 2D vector type. */
-            OP_TYPE_VECTOR_2D = 1,
-            
-            /** The `x` port uses a 2D vector type. The first two ports use a floating-point scalar type. */
-            OP_TYPE_VECTOR_2D_SCALAR = 2,
-            
-            /** A 3D vector type. */
-            OP_TYPE_VECTOR_3D = 3,
-            
-            /** The `x` port uses a 3D vector type. The first two ports use a floating-point scalar type. */
-            OP_TYPE_VECTOR_3D_SCALAR = 4,
-            
-            /** A 4D vector type. */
-            OP_TYPE_VECTOR_4D = 5,
-            
-            /** The `a` and `b` ports use a 4D vector type. The `weight` port uses a scalar type. */
-            OP_TYPE_VECTOR_4D_SCALAR = 6,
-            
-            /** Represents the size of the [enum OpType] enum. */
-            OP_TYPE_MAX = 7,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeSmoothStep extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeSmoothStep extends __NameMapVisualShaderNode {
-    }
-    /** Calculates a SmoothStep function within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodesmoothstep.html  
-     */
-    class VisualShaderNodeSmoothStep extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A type of operands and returned value. */
-        get op_type(): int64
-        set op_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeSmoothStep;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeSmoothStep;
-    }
-    namespace VisualShaderNodeStep {
-        enum OpType {
-            /** A floating-point scalar type. */
-            OP_TYPE_SCALAR = 0,
-            
-            /** A 2D vector type. */
-            OP_TYPE_VECTOR_2D = 1,
-            
-            /** The `x` port uses a 2D vector type, while the `edge` port uses a floating-point scalar type. */
-            OP_TYPE_VECTOR_2D_SCALAR = 2,
-            
-            /** A 3D vector type. */
-            OP_TYPE_VECTOR_3D = 3,
-            
-            /** The `x` port uses a 3D vector type, while the `edge` port uses a floating-point scalar type. */
-            OP_TYPE_VECTOR_3D_SCALAR = 4,
-            
-            /** A 4D vector type. */
-            OP_TYPE_VECTOR_4D = 5,
-            
-            /** The `a` and `b` ports use a 4D vector type. The `weight` port uses a scalar type. */
-            OP_TYPE_VECTOR_4D_SCALAR = 6,
-            
-            /** Represents the size of the [enum OpType] enum. */
-            OP_TYPE_MAX = 7,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeStep extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeStep extends __NameMapVisualShaderNode {
-    }
-    /** Calculates a Step function within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodestep.html  
-     */
-    class VisualShaderNodeStep extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A type of operands and returned value. */
-        get op_type(): int64
-        set op_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeStep;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeStep;
-    }
-    namespace VisualShaderNodeSwitch {
-        enum OpType {
-            /** A floating-point scalar. */
-            OP_TYPE_FLOAT = 0,
-            
-            /** An integer scalar. */
-            OP_TYPE_INT = 1,
-            
-            /** An unsigned integer scalar. */
-            OP_TYPE_UINT = 2,
-            
-            /** A 2D vector type. */
-            OP_TYPE_VECTOR_2D = 3,
-            
-            /** A 3D vector type. */
-            OP_TYPE_VECTOR_3D = 4,
-            
-            /** A 4D vector type. */
-            OP_TYPE_VECTOR_4D = 5,
-            
-            /** A boolean type. */
-            OP_TYPE_BOOLEAN = 6,
-            
-            /** A transform type. */
-            OP_TYPE_TRANSFORM = 7,
-            
-            /** Represents the size of the [enum OpType] enum. */
-            OP_TYPE_MAX = 8,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeSwitch extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeSwitch extends __NameMapVisualShaderNode {
-    }
-    /** A selector function for use within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeswitch.html  
-     */
-    class VisualShaderNodeSwitch extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A type of operands and returned value. */
-        get op_type(): int64
-        set op_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeSwitch;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeSwitch;
-    }
-    namespace VisualShaderNodeTexture {
-        enum Source {
-            /** Use the texture given as an argument for this function. */
-            SOURCE_TEXTURE = 0,
-            
-            /** Use the current viewport's texture as the source. */
-            SOURCE_SCREEN = 1,
-            
-            /** Use the texture from this shader's texture built-in (e.g. a texture of a [Sprite2D]). */
-            SOURCE_2D_TEXTURE = 2,
-            
-            /** Use the texture from this shader's normal map built-in. */
-            SOURCE_2D_NORMAL = 3,
-            
-            /** Use the depth texture captured during the depth prepass. Only available when the depth prepass is used (i.e. in spatial shaders and in the forward_plus or gl_compatibility renderers). */
-            SOURCE_DEPTH = 4,
-            
-            /** Use the texture provided in the input port for this function. */
-            SOURCE_PORT = 5,
-            
-            /** Use the normal buffer captured during the depth prepass. Only available when the normal-roughness buffer is available (i.e. in spatial shaders and in the forward_plus renderer). */
-            SOURCE_3D_NORMAL = 6,
-            
-            /** Use the roughness buffer captured during the depth prepass. Only available when the normal-roughness buffer is available (i.e. in spatial shaders and in the forward_plus renderer). */
-            SOURCE_ROUGHNESS = 7,
-            
-            /** Represents the size of the [enum Source] enum. */
-            SOURCE_MAX = 8,
-        }
-        enum TextureType {
-            /** No hints are added to the uniform declaration. */
-            TYPE_DATA = 0,
-            
-            /** Adds `source_color` as hint to the uniform declaration for proper conversion from nonlinear sRGB encoding to linear encoding. */
-            TYPE_COLOR = 1,
-            
-            /** Adds `hint_normal` as hint to the uniform declaration, which internally converts the texture for proper usage as normal map. */
-            TYPE_NORMAL_MAP = 2,
-            
-            /** Represents the size of the [enum TextureType] enum. */
-            TYPE_MAX = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTexture extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTexture extends __NameMapVisualShaderNode {
-    }
-    /** Performs a 2D texture lookup within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture.html  
-     */
-    class VisualShaderNodeTexture extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** Determines the source for the lookup. */
-        get source(): int64
-        set source(value: int64)
-        
-        /** The source texture, if needed for the selected [member source]. */
-        get texture(): null | Texture2D
-        set texture(value: null | Texture2D)
-        
-        /** Specifies the type of the texture if [member source] is set to [constant SOURCE_TEXTURE]. */
-        get texture_type(): int64
-        set texture_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTexture2DArray extends __RPCMapVisualShaderNodeSample3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTexture2DArray extends __NameMapVisualShaderNodeSample3D {
-    }
-    /** A 2D texture uniform array to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture2darray.html  
-     */
-    class VisualShaderNodeTexture2DArray extends VisualShaderNodeSample3D {
-        constructor(identifier?: any)
-        /** A source texture array. Used if [member VisualShaderNodeSample3D.source] is set to [constant VisualShaderNodeSample3D.SOURCE_TEXTURE]. */
-        get texture_array(): null | Texture2DArray | CompressedTexture2DArray | PlaceholderTexture2DArray | Texture2DArrayRD
-        set texture_array(value: null | Texture2DArray | CompressedTexture2DArray | PlaceholderTexture2DArray | Texture2DArrayRD)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTexture2DArray;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTexture2DArray;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTexture2DArrayParameter extends __RPCMapVisualShaderNodeTextureParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTexture2DArrayParameter extends __NameMapVisualShaderNodeTextureParameter {
-    }
-    /** A visual shader node for shader parameter (uniform) of type [Texture2DArray].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture2darrayparameter.html  
-     */
-    class VisualShaderNodeTexture2DArrayParameter extends VisualShaderNodeTextureParameter {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTexture2DArrayParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTexture2DArrayParameter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTexture2DParameter extends __RPCMapVisualShaderNodeTextureParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTexture2DParameter extends __NameMapVisualShaderNodeTextureParameter {
-    }
-    /** Provides a 2D texture parameter within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture2dparameter.html  
-     */
-    class VisualShaderNodeTexture2DParameter extends VisualShaderNodeTextureParameter {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTexture2DParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTexture2DParameter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTexture3D extends __RPCMapVisualShaderNodeSample3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTexture3D extends __NameMapVisualShaderNodeSample3D {
-    }
-    /** Performs a 3D texture lookup within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture3d.html  
-     */
-    class VisualShaderNodeTexture3D extends VisualShaderNodeSample3D {
-        constructor(identifier?: any)
-        /** A source texture. Used if [member VisualShaderNodeSample3D.source] is set to [constant VisualShaderNodeSample3D.SOURCE_TEXTURE]. */
-        get texture(): null | Texture3D
-        set texture(value: null | Texture3D)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTexture3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTexture3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTexture3DParameter extends __RPCMapVisualShaderNodeTextureParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTexture3DParameter extends __NameMapVisualShaderNodeTextureParameter {
-    }
-    /** Provides a 3D texture parameter within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture3dparameter.html  
-     */
-    class VisualShaderNodeTexture3DParameter extends VisualShaderNodeTextureParameter {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTexture3DParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTexture3DParameter;
-    }
-    namespace VisualShaderNodeTextureParameter {
-        enum TextureType {
-            /** No hints are added to the uniform declaration. */
-            TYPE_DATA = 0,
-            
-            /** Adds `source_color` as hint to the uniform declaration for proper conversion from nonlinear sRGB encoding to linear encoding. */
-            TYPE_COLOR = 1,
-            
-            /** Adds `hint_normal` as hint to the uniform declaration, which internally converts the texture for proper usage as normal map. */
-            TYPE_NORMAL_MAP = 2,
-            
-            /** Adds `hint_anisotropy` as hint to the uniform declaration to use for a flowmap. */
-            TYPE_ANISOTROPY = 3,
-            
-            /** Represents the size of the [enum TextureType] enum. */
-            TYPE_MAX = 4,
-        }
-        enum ColorDefault {
-            /** Defaults to fully opaque white color. */
-            COLOR_DEFAULT_WHITE = 0,
-            
-            /** Defaults to fully opaque black color. */
-            COLOR_DEFAULT_BLACK = 1,
-            
-            /** Defaults to fully transparent black color. */
-            COLOR_DEFAULT_TRANSPARENT = 2,
-            
-            /** Represents the size of the [enum ColorDefault] enum. */
-            COLOR_DEFAULT_MAX = 3,
-        }
-        enum TextureFilter {
-            /** Sample the texture using the filter determined by the node this shader is attached to. */
-            FILTER_DEFAULT = 0,
-            
-            /** The texture filter reads from the nearest pixel only. This makes the texture look pixelated from up close, and grainy from a distance (due to mipmaps not being sampled). */
-            FILTER_NEAREST = 1,
-            
-            /** The texture filter blends between the nearest 4 pixels. This makes the texture look smooth from up close, and grainy from a distance (due to mipmaps not being sampled). */
-            FILTER_LINEAR = 2,
-            
-            /** The texture filter reads from the nearest pixel and blends between the nearest 2 mipmaps (or uses the nearest mipmap if [member ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter] is `true`). This makes the texture look pixelated from up close, and smooth from a distance.  
-             *  Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to [Camera2D] zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.  
-             */
-            FILTER_NEAREST_MIPMAP = 3,
-            
-            /** The texture filter blends between the nearest 4 pixels and between the nearest 2 mipmaps (or uses the nearest mipmap if [member ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter] is `true`). This makes the texture look smooth from up close, and smooth from a distance.  
-             *  Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to [Camera2D] zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.  
-             */
-            FILTER_LINEAR_MIPMAP = 4,
-            
-            /** The texture filter reads from the nearest pixel and blends between 2 mipmaps (or uses the nearest mipmap if [member ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter] is `true`) based on the angle between the surface and the camera view. This makes the texture look pixelated from up close, and smooth from a distance. Anisotropic filtering improves texture quality on surfaces that are almost in line with the camera, but is slightly slower. The anisotropic filtering level can be changed by adjusting [member ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level].  
-             *      
-             *  **Note:** This texture filter is rarely useful in 2D projects. [constant FILTER_NEAREST_MIPMAP] is usually more appropriate in this case.  
-             */
-            FILTER_NEAREST_MIPMAP_ANISOTROPIC = 5,
-            
-            /** The texture filter blends between the nearest 4 pixels and blends between 2 mipmaps (or uses the nearest mipmap if [member ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter] is `true`) based on the angle between the surface and the camera view. This makes the texture look smooth from up close, and smooth from a distance. Anisotropic filtering improves texture quality on surfaces that are almost in line with the camera, but is slightly slower. The anisotropic filtering level can be changed by adjusting [member ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level].  
-             *      
-             *  **Note:** This texture filter is rarely useful in 2D projects. [constant FILTER_LINEAR_MIPMAP] is usually more appropriate in this case.  
-             */
-            FILTER_LINEAR_MIPMAP_ANISOTROPIC = 6,
-            
-            /** Represents the size of the [enum TextureFilter] enum. */
-            FILTER_MAX = 7,
-        }
-        enum TextureRepeat {
-            /** Sample the texture using the repeat mode determined by the node this shader is attached to. */
-            REPEAT_DEFAULT = 0,
-            
-            /** Texture will repeat normally. */
-            REPEAT_ENABLED = 1,
-            
-            /** Texture will not repeat. */
-            REPEAT_DISABLED = 2,
-            
-            /** Represents the size of the [enum TextureRepeat] enum. */
-            REPEAT_MAX = 3,
-        }
-        enum TextureSource {
-            /** The texture source is not specified in the shader. */
-            SOURCE_NONE = 0,
-            
-            /** The texture source is the screen texture which captures all opaque objects drawn this frame. */
-            SOURCE_SCREEN = 1,
-            
-            /** The texture source is the depth texture from the depth prepass. */
-            SOURCE_DEPTH = 2,
-            
-            /** The texture source is the normal-roughness buffer from the depth prepass. */
-            SOURCE_NORMAL_ROUGHNESS = 3,
-            
-            /** Represents the size of the [enum TextureSource] enum. */
-            SOURCE_MAX = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTextureParameter extends __RPCMapVisualShaderNodeParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTextureParameter extends __NameMapVisualShaderNodeParameter {
-    }
-    /** Performs a uniform texture lookup within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetextureparameter.html  
-     */
-    class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter {
-        constructor(identifier?: any)
-        /** Defines the type of data provided by the source texture. */
-        get texture_type(): int64
-        set texture_type(value: int64)
-        
-        /** Sets the default color if no texture is assigned to the uniform. */
-        get color_default(): int64
-        set color_default(value: int64)
-        
-        /** Sets the texture filtering mode. */
-        get texture_filter(): int64
-        set texture_filter(value: int64)
-        
-        /** Sets the texture repeating mode. */
-        get texture_repeat(): int64
-        set texture_repeat(value: int64)
-        
-        /** Sets the texture source mode. Used for reading from the screen, depth, or normal_roughness texture. */
-        get texture_source(): int64
-        set texture_source(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTextureParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTextureParameter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTextureParameterTriplanar extends __RPCMapVisualShaderNodeTextureParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTextureParameterTriplanar extends __NameMapVisualShaderNodeTextureParameter {
-    }
-    /** Performs a uniform texture lookup with triplanar within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetextureparametertriplanar.html  
-     */
-    class VisualShaderNodeTextureParameterTriplanar extends VisualShaderNodeTextureParameter {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTextureParameterTriplanar;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTextureParameterTriplanar;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTextureSDF extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTextureSDF extends __NameMapVisualShaderNode {
-    }
-    /** Performs an SDF (signed-distance field) texture lookup within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexturesdf.html  
-     */
-    class VisualShaderNodeTextureSDF extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTextureSDF;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTextureSDF;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTextureSDFNormal extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTextureSDFNormal extends __NameMapVisualShaderNode {
-    }
-    /** Performs an SDF (signed-distance field) normal texture lookup within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexturesdfnormal.html  
-     */
-    class VisualShaderNodeTextureSDFNormal extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTextureSDFNormal;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTextureSDFNormal;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTransformCompose extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTransformCompose extends __NameMapVisualShaderNode {
-    }
-    /** Composes a [Transform3D] from four [Vector3]s within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformcompose.html  
-     */
-    class VisualShaderNodeTransformCompose extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTransformCompose;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTransformCompose;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTransformConstant extends __RPCMapVisualShaderNodeConstant {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTransformConstant extends __NameMapVisualShaderNodeConstant {
-    }
-    /** A [Transform3D] constant for use within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformconstant.html  
-     */
-    class VisualShaderNodeTransformConstant extends VisualShaderNodeConstant {
-        constructor(identifier?: any)
-        /** A [Transform3D] constant which represents the state of this node. */
-        get constant(): Transform3D
-        set constant(value: Transform3D)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTransformConstant;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTransformConstant;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTransformDecompose extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTransformDecompose extends __NameMapVisualShaderNode {
-    }
-    /** Decomposes a [Transform3D] into four [Vector3]s within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformdecompose.html  
-     */
-    class VisualShaderNodeTransformDecompose extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTransformDecompose;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTransformDecompose;
-    }
-    namespace VisualShaderNodeTransformFunc {
-        enum Function {
-            /** Perform the inverse operation on the [Transform3D] matrix. */
-            FUNC_INVERSE = 0,
-            
-            /** Perform the transpose operation on the [Transform3D] matrix. */
-            FUNC_TRANSPOSE = 1,
-            
-            /** Represents the size of the [enum Function] enum. */
-            FUNC_MAX = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTransformFunc extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTransformFunc extends __NameMapVisualShaderNode {
-    }
-    /** Computes a [Transform3D] function within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformfunc.html  
-     */
-    class VisualShaderNodeTransformFunc extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** The function to be computed. */
-        get "function"(): int64
-        set "function"(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTransformFunc;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTransformFunc;
-    }
-    namespace VisualShaderNodeTransformOp {
-        enum Operator {
-            /** Multiplies transform `a` by the transform `b`. */
-            OP_AxB = 0,
-            
-            /** Multiplies transform `b` by the transform `a`. */
-            OP_BxA = 1,
-            
-            /** Performs a component-wise multiplication of transform `a` by the transform `b`. */
-            OP_AxB_COMP = 2,
-            
-            /** Performs a component-wise multiplication of transform `b` by the transform `a`. */
-            OP_BxA_COMP = 3,
-            
-            /** Adds two transforms. */
-            OP_ADD = 4,
-            
-            /** Subtracts the transform `a` from the transform `b`. */
-            OP_A_MINUS_B = 5,
-            
-            /** Subtracts the transform `b` from the transform `a`. */
-            OP_B_MINUS_A = 6,
-            
-            /** Divides the transform `a` by the transform `b`. */
-            OP_A_DIV_B = 7,
-            
-            /** Divides the transform `b` by the transform `a`. */
-            OP_B_DIV_A = 8,
-            
-            /** Represents the size of the [enum Operator] enum. */
-            OP_MAX = 9,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTransformOp extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTransformOp extends __NameMapVisualShaderNode {
-    }
-    /** A [Transform3D] operator to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformop.html  
-     */
-    class VisualShaderNodeTransformOp extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** The type of the operation to be performed on the transforms. */
-        get operator(): int64
-        set operator(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTransformOp;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTransformOp;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTransformParameter extends __RPCMapVisualShaderNodeParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTransformParameter extends __NameMapVisualShaderNodeParameter {
-    }
-    /** A [Transform3D] parameter for use within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformparameter.html  
-     */
-    class VisualShaderNodeTransformParameter extends VisualShaderNodeParameter {
-        constructor(identifier?: any)
-        /** Enables usage of the [member default_value]. */
-        get default_value_enabled(): boolean
-        set default_value_enabled(value: boolean)
-        
-        /** A default value to be assigned within the shader. */
-        get default_value(): Transform3D
-        set default_value(value: Transform3D)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTransformParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTransformParameter;
-    }
-    namespace VisualShaderNodeTransformVecMult {
-        enum Operator {
-            /** Multiplies transform `a` by the vector `b`. */
-            OP_AxB = 0,
-            
-            /** Multiplies vector `b` by the transform `a`. */
-            OP_BxA = 1,
-            
-            /** Multiplies transform `a` by the vector `b`, skipping the last row and column of the transform. */
-            OP_3x3_AxB = 2,
-            
-            /** Multiplies vector `b` by the transform `a`, skipping the last row and column of the transform. */
-            OP_3x3_BxA = 3,
-            
-            /** Represents the size of the [enum Operator] enum. */
-            OP_MAX = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeTransformVecMult extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeTransformVecMult extends __NameMapVisualShaderNode {
-    }
-    /** Multiplies a [Transform3D] and a [Vector3] within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformvecmult.html  
-     */
-    class VisualShaderNodeTransformVecMult extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** The multiplication type to be performed. */
-        get operator(): int64
-        set operator(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeTransformVecMult;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeTransformVecMult;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeUIntConstant extends __RPCMapVisualShaderNodeConstant {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeUIntConstant extends __NameMapVisualShaderNodeConstant {
-    }
-    /** An unsigned scalar integer constant to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuintconstant.html  
-     */
-    class VisualShaderNodeUIntConstant extends VisualShaderNodeConstant {
-        constructor(identifier?: any)
-        /** An unsigned integer constant which represents a state of this node. */
-        get constant(): int64
-        set constant(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeUIntConstant;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeUIntConstant;
-    }
-    namespace VisualShaderNodeUIntFunc {
-        enum Function {
-            /** Negates the `x` using `-(x)`. */
-            FUNC_NEGATE = 0,
-            
-            /** Returns the result of bitwise `NOT` operation on the integer. Translates to `~a` in the Godot Shader Language. */
-            FUNC_BITWISE_NOT = 1,
-            
-            /** Represents the size of the [enum Function] enum. */
-            FUNC_MAX = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeUIntFunc extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeUIntFunc extends __NameMapVisualShaderNode {
-    }
-    /** An unsigned scalar integer function to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuintfunc.html  
-     */
-    class VisualShaderNodeUIntFunc extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A function to be applied to the scalar. */
-        get "function"(): int64
-        set "function"(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeUIntFunc;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeUIntFunc;
-    }
-    namespace VisualShaderNodeUIntOp {
-        enum Operator {
-            /** Sums two numbers using `a + b`. */
-            OP_ADD = 0,
-            
-            /** Subtracts two numbers using `a - b`. */
-            OP_SUB = 1,
-            
-            /** Multiplies two numbers using `a * b`. */
-            OP_MUL = 2,
-            
-            /** Divides two numbers using `a / b`. */
-            OP_DIV = 3,
-            
-            /** Calculates the remainder of two numbers using `a % b`. */
-            OP_MOD = 4,
-            
-            /** Returns the greater of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
-            OP_MAX = 5,
-            
-            /** Returns the lesser of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
-            OP_MIN = 6,
-            
-            /** Returns the result of bitwise `AND` operation on the integer. Translates to `a & b` in the Godot Shader Language. */
-            OP_BITWISE_AND = 7,
-            
-            /** Returns the result of bitwise `OR` operation for two integers. Translates to `a | b` in the Godot Shader Language. */
-            OP_BITWISE_OR = 8,
-            
-            /** Returns the result of bitwise `XOR` operation for two integers. Translates to `a ^ b` in the Godot Shader Language. */
-            OP_BITWISE_XOR = 9,
-            
-            /** Returns the result of bitwise left shift operation on the integer. Translates to `a << b` in the Godot Shader Language. */
-            OP_BITWISE_LEFT_SHIFT = 10,
-            
-            /** Returns the result of bitwise right shift operation on the integer. Translates to `a >> b` in the Godot Shader Language. */
-            OP_BITWISE_RIGHT_SHIFT = 11,
-            
-            /** Represents the size of the [enum Operator] enum. */
-            OP_ENUM_SIZE = 12,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeUIntOp extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeUIntOp extends __NameMapVisualShaderNode {
-    }
-    /** An unsigned integer scalar operator to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuintop.html  
-     */
-    class VisualShaderNodeUIntOp extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** An operator to be applied to the inputs. */
-        get operator(): int64
-        set operator(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeUIntOp;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeUIntOp;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeUIntParameter extends __RPCMapVisualShaderNodeParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeUIntParameter extends __NameMapVisualShaderNodeParameter {
-    }
-    /** A visual shader node for shader parameter (uniform) of type unsigned [int].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuintparameter.html  
-     */
-    class VisualShaderNodeUIntParameter extends VisualShaderNodeParameter {
-        constructor(identifier?: any)
-        /** If `true`, the node will have a custom default value. */
-        get default_value_enabled(): boolean
-        set default_value_enabled(value: boolean)
-        
-        /** Default value of this parameter, which will be used if not set externally. [member default_value_enabled] must be enabled; defaults to `0` otherwise. */
-        get default_value(): int64
-        set default_value(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeUIntParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeUIntParameter;
-    }
-    namespace VisualShaderNodeUVFunc {
-        enum Function {
-            /** Translates `uv` by using `scale` and `offset` values using the following formula: `uv = uv + offset * scale`. `uv` port is connected to `UV` built-in by default. */
-            FUNC_PANNING = 0,
-            
-            /** Scales `uv` by using `scale` and `pivot` values using the following formula: `uv = (uv - pivot) * scale + pivot`. `uv` port is connected to `UV` built-in by default. */
-            FUNC_SCALING = 1,
-            
-            /** Represents the size of the [enum Function] enum. */
-            FUNC_MAX = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeUVFunc extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeUVFunc extends __NameMapVisualShaderNode {
-    }
-    /** Contains functions to modify texture coordinates (`uv`) to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuvfunc.html  
-     */
-    class VisualShaderNodeUVFunc extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A function to be applied to the texture coordinates. */
-        get "function"(): int64
-        set "function"(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeUVFunc;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeUVFunc;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeUVPolarCoord extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeUVPolarCoord extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that modifies the texture UV using polar coordinates.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuvpolarcoord.html  
-     */
-    class VisualShaderNodeUVPolarCoord extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeUVPolarCoord;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeUVPolarCoord;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVarying extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVarying extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that represents a "varying" shader value.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevarying.html  
-     */
-    class VisualShaderNodeVarying extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** Name of the variable. Must be unique. */
-        get varying_name(): StringName
-        set varying_name(value: StringName)
-        
-        /** Type of the variable. Determines where the variable can be accessed. */
-        get varying_type(): int64
-        set varying_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVarying;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVarying;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVaryingGetter extends __RPCMapVisualShaderNodeVarying {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVaryingGetter extends __NameMapVisualShaderNodeVarying {
-    }
-    /** A visual shader node that gets a value of a varying.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevaryinggetter.html  
-     */
-    class VisualShaderNodeVaryingGetter extends VisualShaderNodeVarying {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVaryingGetter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVaryingGetter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVaryingSetter extends __RPCMapVisualShaderNodeVarying {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVaryingSetter extends __NameMapVisualShaderNodeVarying {
-    }
-    /** A visual shader node that sets a value of a varying.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevaryingsetter.html  
-     */
-    class VisualShaderNodeVaryingSetter extends VisualShaderNodeVarying {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVaryingSetter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVaryingSetter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVec2Constant extends __RPCMapVisualShaderNodeConstant {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVec2Constant extends __NameMapVisualShaderNodeConstant {
-    }
-    /** A [Vector2] constant to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec2constant.html  
-     */
-    class VisualShaderNodeVec2Constant extends VisualShaderNodeConstant {
-        constructor(identifier?: any)
-        /** A [Vector2] constant which represents the state of this node. */
-        get constant(): Vector2
-        set constant(value: Vector2)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVec2Constant;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVec2Constant;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVec2Parameter extends __RPCMapVisualShaderNodeParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVec2Parameter extends __NameMapVisualShaderNodeParameter {
-    }
-    /** A [Vector2] parameter to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec2parameter.html  
-     */
-    class VisualShaderNodeVec2Parameter extends VisualShaderNodeParameter {
-        constructor(identifier?: any)
-        /** Enables usage of the [member default_value]. */
-        get default_value_enabled(): boolean
-        set default_value_enabled(value: boolean)
-        
-        /** A default value to be assigned within the shader. */
-        get default_value(): Vector2
-        set default_value(value: Vector2)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVec2Parameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVec2Parameter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVec3Constant extends __RPCMapVisualShaderNodeConstant {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVec3Constant extends __NameMapVisualShaderNodeConstant {
-    }
-    /** A [Vector3] constant to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec3constant.html  
-     */
-    class VisualShaderNodeVec3Constant extends VisualShaderNodeConstant {
-        constructor(identifier?: any)
-        /** A [Vector3] constant which represents the state of this node. */
-        get constant(): Vector3
-        set constant(value: Vector3)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVec3Constant;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVec3Constant;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVec3Parameter extends __RPCMapVisualShaderNodeParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVec3Parameter extends __NameMapVisualShaderNodeParameter {
-    }
-    /** A [Vector3] parameter to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec3parameter.html  
-     */
-    class VisualShaderNodeVec3Parameter extends VisualShaderNodeParameter {
-        constructor(identifier?: any)
-        /** Enables usage of the [member default_value]. */
-        get default_value_enabled(): boolean
-        set default_value_enabled(value: boolean)
-        
-        /** A default value to be assigned within the shader. */
-        get default_value(): Vector3
-        set default_value(value: Vector3)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVec3Parameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVec3Parameter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVec4Constant extends __RPCMapVisualShaderNodeConstant {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVec4Constant extends __NameMapVisualShaderNodeConstant {
-    }
-    /** A 4D vector constant to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec4constant.html  
-     */
-    class VisualShaderNodeVec4Constant extends VisualShaderNodeConstant {
-        constructor(identifier?: any)
-        /** A 4D vector (represented as a [Quaternion]) constant which represents the state of this node. */
-        get constant(): Quaternion
-        set constant(value: Quaternion)
-        get constant_v4(): Vector4
-        set constant_v4(value: Vector4)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVec4Constant;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVec4Constant;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVec4Parameter extends __RPCMapVisualShaderNodeParameter {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVec4Parameter extends __NameMapVisualShaderNodeParameter {
-    }
-    /** A 4D vector parameter to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec4parameter.html  
-     */
-    class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter {
-        constructor(identifier?: any)
-        /** Enables usage of the [member default_value]. */
-        get default_value_enabled(): boolean
-        set default_value_enabled(value: boolean)
-        
-        /** A default value to be assigned within the shader. */
-        get default_value(): Vector4
-        set default_value(value: Vector4)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVec4Parameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVec4Parameter;
-    }
-    namespace VisualShaderNodeVectorBase {
-        enum OpType {
-            /** A 2D vector type. */
-            OP_TYPE_VECTOR_2D = 0,
-            
-            /** A 3D vector type. */
-            OP_TYPE_VECTOR_3D = 1,
-            
-            /** A 4D vector type. */
-            OP_TYPE_VECTOR_4D = 2,
-            
-            /** Represents the size of the [enum OpType] enum. */
-            OP_TYPE_MAX = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVectorBase extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVectorBase extends __NameMapVisualShaderNode {
-    }
-    /** A base type for the nodes that perform vector operations within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorbase.html  
-     */
-    class VisualShaderNodeVectorBase extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** A vector type that this operation is performed on. */
-        get op_type(): int64
-        set op_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVectorBase;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVectorBase;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVectorCompose extends __RPCMapVisualShaderNodeVectorBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVectorCompose extends __NameMapVisualShaderNodeVectorBase {
-    }
-    /** Composes a [Vector2], [Vector3] or 4D vector (represented as a [Quaternion]) from scalars within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorcompose.html  
-     */
-    class VisualShaderNodeVectorCompose extends VisualShaderNodeVectorBase {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVectorCompose;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVectorCompose;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVectorDecompose extends __RPCMapVisualShaderNodeVectorBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVectorDecompose extends __NameMapVisualShaderNodeVectorBase {
-    }
-    /** Decomposes a [Vector2], [Vector3] or 4D vector (represented as a [Quaternion]) into scalars within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectordecompose.html  
-     */
-    class VisualShaderNodeVectorDecompose extends VisualShaderNodeVectorBase {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVectorDecompose;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVectorDecompose;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVectorDistance extends __RPCMapVisualShaderNodeVectorBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVectorDistance extends __NameMapVisualShaderNodeVectorBase {
-    }
-    /** Returns the distance between two points. To be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectordistance.html  
-     */
-    class VisualShaderNodeVectorDistance extends VisualShaderNodeVectorBase {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVectorDistance;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVectorDistance;
-    }
-    namespace VisualShaderNodeVectorFunc {
-        enum Function {
-            /** Normalizes the vector so that it has a length of `1` but points in the same direction. */
-            FUNC_NORMALIZE = 0,
-            
-            /** Clamps the value between `0.0` and `1.0`. */
-            FUNC_SATURATE = 1,
-            
-            /** Returns the opposite value of the parameter. */
-            FUNC_NEGATE = 2,
-            
-            /** Returns `1/vector`. */
-            FUNC_RECIPROCAL = 3,
-            
-            /** Returns the absolute value of the parameter. */
-            FUNC_ABS = 4,
-            
-            /** Returns the arc-cosine of the parameter. */
-            FUNC_ACOS = 5,
-            
-            /** Returns the inverse hyperbolic cosine of the parameter. */
-            FUNC_ACOSH = 6,
-            
-            /** Returns the arc-sine of the parameter. */
-            FUNC_ASIN = 7,
-            
-            /** Returns the inverse hyperbolic sine of the parameter. */
-            FUNC_ASINH = 8,
-            
-            /** Returns the arc-tangent of the parameter. */
-            FUNC_ATAN = 9,
-            
-            /** Returns the inverse hyperbolic tangent of the parameter. */
-            FUNC_ATANH = 10,
-            
-            /** Finds the nearest integer that is greater than or equal to the parameter. */
-            FUNC_CEIL = 11,
-            
-            /** Returns the cosine of the parameter. */
-            FUNC_COS = 12,
-            
-            /** Returns the hyperbolic cosine of the parameter. */
-            FUNC_COSH = 13,
-            
-            /** Converts a quantity in radians to degrees. */
-            FUNC_DEGREES = 14,
-            
-            /** Base-e Exponential. */
-            FUNC_EXP = 15,
-            
-            /** Base-2 Exponential. */
-            FUNC_EXP2 = 16,
-            
-            /** Finds the nearest integer less than or equal to the parameter. */
-            FUNC_FLOOR = 17,
-            
-            /** Computes the fractional part of the argument. */
-            FUNC_FRACT = 18,
-            
-            /** Returns the inverse of the square root of the parameter. */
-            FUNC_INVERSE_SQRT = 19,
-            
-            /** Natural logarithm. */
-            FUNC_LOG = 20,
-            
-            /** Base-2 logarithm. */
-            FUNC_LOG2 = 21,
-            
-            /** Converts a quantity in degrees to radians. */
-            FUNC_RADIANS = 22,
-            
-            /** Finds the nearest integer to the parameter. */
-            FUNC_ROUND = 23,
-            
-            /** Finds the nearest even integer to the parameter. */
-            FUNC_ROUNDEVEN = 24,
-            
-            /** Extracts the sign of the parameter, i.e. returns `-1` if the parameter is negative, `1` if it's positive and `0` otherwise. */
-            FUNC_SIGN = 25,
-            
-            /** Returns the sine of the parameter. */
-            FUNC_SIN = 26,
-            
-            /** Returns the hyperbolic sine of the parameter. */
-            FUNC_SINH = 27,
-            
-            /** Returns the square root of the parameter. */
-            FUNC_SQRT = 28,
-            
-            /** Returns the tangent of the parameter. */
-            FUNC_TAN = 29,
-            
-            /** Returns the hyperbolic tangent of the parameter. */
-            FUNC_TANH = 30,
-            
-            /** Returns a value equal to the nearest integer to the parameter whose absolute value is not larger than the absolute value of the parameter. */
-            FUNC_TRUNC = 31,
-            
-            /** Returns `1.0 - vector`. */
-            FUNC_ONEMINUS = 32,
-            
-            /** Represents the size of the [enum Function] enum. */
-            FUNC_MAX = 33,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVectorFunc extends __RPCMapVisualShaderNodeVectorBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVectorFunc extends __NameMapVisualShaderNodeVectorBase {
-    }
-    /** A vector function to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorfunc.html  
-     */
-    class VisualShaderNodeVectorFunc extends VisualShaderNodeVectorBase {
-        constructor(identifier?: any)
-        /** The function to be performed. */
-        get "function"(): int64
-        set "function"(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVectorFunc;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVectorFunc;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVectorLen extends __RPCMapVisualShaderNodeVectorBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVectorLen extends __NameMapVisualShaderNodeVectorBase {
-    }
-    /** Returns the length of a [Vector3] within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorlen.html  
-     */
-    class VisualShaderNodeVectorLen extends VisualShaderNodeVectorBase {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVectorLen;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVectorLen;
-    }
-    namespace VisualShaderNodeVectorOp {
-        enum Operator {
-            /** Adds two vectors. */
-            OP_ADD = 0,
-            
-            /** Subtracts a vector from a vector. */
-            OP_SUB = 1,
-            
-            /** Multiplies two vectors. */
-            OP_MUL = 2,
-            
-            /** Divides vector by vector. */
-            OP_DIV = 3,
-            
-            /** Returns the remainder of the two vectors. */
-            OP_MOD = 4,
-            
-            /** Returns the value of the first parameter raised to the power of the second, for each component of the vectors. */
-            OP_POW = 5,
-            
-            /** Returns the greater of two values, for each component of the vectors. */
-            OP_MAX = 6,
-            
-            /** Returns the lesser of two values, for each component of the vectors. */
-            OP_MIN = 7,
-            
-            /** Calculates the cross product of two vectors. */
-            OP_CROSS = 8,
-            
-            /** Returns the arc-tangent of the parameters. */
-            OP_ATAN2 = 9,
-            
-            /** Returns the vector that points in the direction of reflection. `a` is incident vector and `b` is the normal vector. */
-            OP_REFLECT = 10,
-            
-            /** Vector step operator. Returns `0.0` if `a` is smaller than `b` and `1.0` otherwise. */
-            OP_STEP = 11,
-            
-            /** Represents the size of the [enum Operator] enum. */
-            OP_ENUM_SIZE = 12,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVectorOp extends __RPCMapVisualShaderNodeVectorBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVectorOp extends __NameMapVisualShaderNodeVectorBase {
-    }
-    /** A vector operator to be used within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorop.html  
-     */
-    class VisualShaderNodeVectorOp extends VisualShaderNodeVectorBase {
-        constructor(identifier?: any)
-        /** The operator to be used. */
-        get operator(): int64
-        set operator(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVectorOp;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVectorOp;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeVectorRefract extends __RPCMapVisualShaderNodeVectorBase {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeVectorRefract extends __NameMapVisualShaderNodeVectorBase {
-    }
-    /** Returns the vector that points in the direction of refraction. For use within the visual shader graph.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorrefract.html  
-     */
-    class VisualShaderNodeVectorRefract extends VisualShaderNodeVectorBase {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeVectorRefract;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeVectorRefract;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeWorldPositionFromDepth extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVisualShaderNodeWorldPositionFromDepth extends __NameMapVisualShaderNode {
-    }
-    /** A visual shader node that calculates the position of the pixel in world space using the depth texture.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeworldpositionfromdepth.html  
-     */
-    class VisualShaderNodeWorldPositionFromDepth extends VisualShaderNode {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeWorldPositionFromDepth;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVisualShaderNodeWorldPositionFromDepth;
-    }
-    namespace VoxelGI {
-        enum Subdiv {
-            /** Use 64 subdivisions. This is the lowest quality setting, but the fastest. Use it if you can, but especially use it on lower-end hardware. */
-            SUBDIV_64 = 0,
-            
-            /** Use 128 subdivisions. This is the default quality setting. */
-            SUBDIV_128 = 1,
-            
-            /** Use 256 subdivisions. */
-            SUBDIV_256 = 2,
-            
-            /** Use 512 subdivisions. This is the highest quality setting, but the slowest. On lower-end hardware, this could cause the GPU to stall. */
-            SUBDIV_512 = 3,
-            
-            /** Represents the size of the [enum Subdiv] enum. */
-            SUBDIV_MAX = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVoxelGI extends __RPCMapVisualInstance3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVoxelGI extends __NameMapVisualInstance3D {
-    }
-    /** Real-time global illumination (GI) probe.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_voxelgi.html  
-     */
-    class VoxelGI<Map extends NodePathMap = any> extends VisualInstance3D<Map> {
-        constructor(identifier?: any)
-        /** Bakes the effect from all [GeometryInstance3D]s marked with [constant GeometryInstance3D.GI_MODE_STATIC] and [Light3D]s marked with either [constant Light3D.BAKE_STATIC] or [constant Light3D.BAKE_DYNAMIC]. If [param create_visual_debug] is `true`, after baking the light, this will generate a [MultiMesh] that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the [VoxelGI]'s data and debug any issues that may be occurring.  
-         *      
-         *  **Note:** [method bake] works from the editor and in exported projects. This makes it suitable for procedurally generated or user-built levels. Baking a [VoxelGI] node generally takes from 5 to 20 seconds in most scenes. Reducing [member subdiv] can speed up baking.  
-         *      
-         *  **Note:** [GeometryInstance3D]s and [Light3D]s must be fully ready before [method bake] is called. If you are procedurally creating those and some meshes or lights are missing from your baked [VoxelGI], use `call_deferred("bake")` instead of calling [method bake] directly.  
-         */
-        bake(from_node?: Node, create_visual_debug?: boolean /* = false */): void
-        
-        /** Calls [method bake] with `create_visual_debug` enabled. */
-        debug_bake(): void
-        
-        /** Number of times to subdivide the grid that the [VoxelGI] operates on. A higher number results in finer detail and thus higher visual quality, while lower numbers result in better performance. */
-        get subdiv(): int64
-        set subdiv(value: int64)
-        
-        /** The size of the area covered by the [VoxelGI]. This must be `1.0` or greater on each axis.  
-         *      
-         *  **Note:** If you make the size larger without increasing the number of subdivisions with [member subdiv], the size of each cell will increase and result in less detailed lighting.  
-         */
-        get size(): Vector3
-        set size(value: Vector3)
-        
-        /** The [CameraAttributes] resource that specifies exposure levels to bake at. Auto-exposure and non exposure properties will be ignored. Exposure settings should be used to reduce the dynamic range present when baking. If exposure is too high, the [VoxelGI] will have banding artifacts or may have over-exposure artifacts. */
-        get camera_attributes(): null | CameraAttributesPractical | CameraAttributesPhysical
-        set camera_attributes(value: null | CameraAttributesPractical | CameraAttributesPhysical)
-        
-        /** The [VoxelGIData] resource that holds the data for this [VoxelGI]. */
-        get data(): null | VoxelGIData
-        set data(value: null | VoxelGIData)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVoxelGI;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVoxelGI;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVoxelGIData extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapVoxelGIData extends __NameMapResource {
-    }
-    /** Contains baked voxel global illumination data for use in a [VoxelGI] node.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_voxelgidata.html  
-     */
-    class VoxelGIData extends Resource {
-        constructor(identifier?: any)
-        allocate(to_cell_xform: Transform3D, aabb: AABB, octree_size: Vector3, octree_cells: PackedByteArray | byte[] | ArrayBuffer, data_cells: PackedByteArray | byte[] | ArrayBuffer, distance_field: PackedByteArray | byte[] | ArrayBuffer, level_counts: PackedInt32Array | int32[]): void
-        
-        /** Returns the bounds of the baked voxel data as an [AABB], which should match [member VoxelGI.size] after being baked (which only contains the size as a [Vector3]).  
-         *      
-         *  **Note:** If the size was modified without baking the VoxelGI data, then the value of [method get_bounds] and [member VoxelGI.size] will not match.  
-         */
-        get_bounds(): AABB
-        get_octree_size(): Vector3
-        get_to_cell_xform(): Transform3D
-        get_octree_cells(): PackedByteArray
-        get_data_cells(): PackedByteArray
-        get_level_counts(): PackedInt32Array
-        get _data(): GDictionary
-        set _data(value: GDictionary)
-        
-        /** The dynamic range to use (`1.0` represents a low dynamic range scene brightness). Higher values can be used to provide brighter indirect lighting, at the cost of more visible color banding in dark areas (both in indirect lighting and reflections). To avoid color banding, it's recommended to use the lowest value that does not result in visible light clipping. */
-        get dynamic_range(): float64
-        set dynamic_range(value: float64)
-        
-        /** The energy of the indirect lighting and reflections produced by the [VoxelGI] node. Higher values result in brighter indirect lighting. If indirect lighting looks too flat, try decreasing [member propagation] while increasing [member energy] at the same time. See also [member use_two_bounces] which influences the indirect lighting's effective brightness. */
-        get energy(): float64
-        set energy(value: float64)
-        
-        /** The normal bias to use for indirect lighting and reflections. Higher values reduce self-reflections visible in non-rough materials, at the cost of more visible light leaking and flatter-looking indirect lighting. To prioritize hiding self-reflections over lighting quality, set [member bias] to `0.0` and [member normal_bias] to a value between `1.0` and `2.0`. */
-        get bias(): float64
-        set bias(value: float64)
-        
-        /** The normal bias to use for indirect lighting and reflections. Higher values reduce self-reflections visible in non-rough materials, at the cost of more visible light leaking and flatter-looking indirect lighting. See also [member bias]. To prioritize hiding self-reflections over lighting quality, set [member bias] to `0.0` and [member normal_bias] to a value between `1.0` and `2.0`. */
-        get normal_bias(): float64
-        set normal_bias(value: float64)
-        
-        /** The multiplier to use when light bounces off a surface. Higher values result in brighter indirect lighting. If indirect lighting looks too flat, try decreasing [member propagation] while increasing [member energy] at the same time. See also [member use_two_bounces] which influences the indirect lighting's effective brightness. */
-        get propagation(): float64
-        set propagation(value: float64)
-        
-        /** If `true`, performs two bounces of indirect lighting instead of one. This makes indirect lighting look more natural and brighter at a small performance cost. The second bounce is also visible in reflections. If the scene appears too bright after enabling [member use_two_bounces], adjust [member propagation] and [member energy]. */
-        get use_two_bounces(): boolean
-        set use_two_bounces(value: boolean)
-        
-        /** If `true`, [Environment] lighting is ignored by the [VoxelGI] node. If `false`, [Environment] lighting is taken into account by the [VoxelGI] node. [Environment] lighting updates in real-time, which means it can be changed without having to bake the [VoxelGI] node again. */
-        get interior(): boolean
-        set interior(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVoxelGIData;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapVoxelGIData;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWeakRef extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWeakRef extends __NameMapRefCounted {
-    }
-    /** Holds an [Object]. If the object is [RefCounted], it doesn't update the reference count.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_weakref.html  
-     */
-    class WeakRef extends RefCounted {
-        constructor(identifier?: any)
-        /** Returns the [Object] this weakref is referring to. Returns `null` if that object no longer exists. */
-        get_ref(): any
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWeakRef;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWeakRef;
-    }
-    namespace WebRTCDataChannel {
-        enum WriteMode {
-            /** Tells the channel to send data over this channel as text. An external peer (non-Godot) would receive this as a string. */
-            WRITE_MODE_TEXT = 0,
-            
-            /** Tells the channel to send data over this channel as binary. An external peer (non-Godot) would receive this as array buffer or blob. */
-            WRITE_MODE_BINARY = 1,
-        }
-        enum ChannelState {
-            /** The channel was created, but it's still trying to connect. */
-            STATE_CONNECTING = 0,
-            
-            /** The channel is currently open, and data can flow over it. */
-            STATE_OPEN = 1,
-            
-            /** The channel is being closed, no new messages will be accepted, but those already in queue will be flushed. */
-            STATE_CLOSING = 2,
-            
-            /** The channel was closed, or connection failed. */
-            STATE_CLOSED = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWebRTCDataChannel extends __RPCMapPacketPeer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWebRTCDataChannel extends __NameMapPacketPeer {
-    }
-    /** @link https://docs.godotengine.org/en/4.6/classes/class_webrtcdatachannel.html */
-    class WebRTCDataChannel extends PacketPeer {
-        constructor(identifier?: any)
-        /** Reserved, but not used for now. */
-        poll(): Error
-        
-        /** Closes this data channel, notifying the other peer. */
-        close(): void
-        
-        /** Returns `true` if the last received packet was transferred as text. See [member write_mode]. */
-        was_string_packet(): boolean
-        
-        /** Returns the current state of this channel. */
-        get_ready_state(): WebRTCDataChannel.ChannelState
-        
-        /** Returns the label assigned to this channel during creation. */
-        get_label(): string
-        
-        /** Returns `true` if this channel was created with ordering enabled (default). */
-        is_ordered(): boolean
-        
-        /** Returns the ID assigned to this channel during creation (or auto-assigned during negotiation).  
-         *  If the channel is not negotiated out-of-band the ID will only be available after the connection is established (will return `65535` until then).  
-         */
-        get_id(): int64
-        
-        /** Returns the `maxPacketLifeTime` value assigned to this channel during creation.  
-         *  Will be `65535` if not specified.  
-         */
-        get_max_packet_life_time(): int64
-        
-        /** Returns the `maxRetransmits` value assigned to this channel during creation.  
-         *  Will be `65535` if not specified.  
-         */
-        get_max_retransmits(): int64
-        
-        /** Returns the sub-protocol assigned to this channel during creation. An empty string if not specified. */
-        get_protocol(): string
-        
-        /** Returns `true` if this channel was created with out-of-band configuration. */
-        is_negotiated(): boolean
-        
-        /** Returns the number of bytes currently queued to be sent over this channel. */
-        get_buffered_amount(): int64
-        
-        /** The transfer mode to use when sending outgoing packet. Either text or binary. */
-        get write_mode(): int64
-        set write_mode(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWebRTCDataChannel;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWebRTCDataChannel;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWebRTCDataChannelExtension extends __RPCMapWebRTCDataChannel {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWebRTCDataChannelExtension extends __NameMapWebRTCDataChannel {
-    }
-    /** @link https://docs.godotengine.org/en/4.6/classes/class_webrtcdatachannelextension.html */
-    class WebRTCDataChannelExtension extends WebRTCDataChannel {
-        constructor(identifier?: any)
-        /* gdvirtual */ _get_packet(r_buffer: int64, r_buffer_size: int64): Error
-        /* gdvirtual */ _put_packet(p_buffer: int64, p_buffer_size: int64): Error
-        /* gdvirtual */ _get_available_packet_count(): int64
-        /* gdvirtual */ _get_max_packet_size(): int64
-        /* gdvirtual */ _poll(): Error
-        /* gdvirtual */ _close(): void
-        /* gdvirtual */ _set_write_mode(p_write_mode: WebRTCDataChannel.WriteMode): void
-        /* gdvirtual */ _get_write_mode(): WebRTCDataChannel.WriteMode
-        /* gdvirtual */ _was_string_packet(): boolean
-        /* gdvirtual */ _get_ready_state(): WebRTCDataChannel.ChannelState
-        /* gdvirtual */ _get_label(): string
-        /* gdvirtual */ _is_ordered(): boolean
-        /* gdvirtual */ _get_id(): int64
-        /* gdvirtual */ _get_max_packet_life_time(): int64
-        /* gdvirtual */ _get_max_retransmits(): int64
-        /* gdvirtual */ _get_protocol(): string
-        /* gdvirtual */ _is_negotiated(): boolean
-        /* gdvirtual */ _get_buffered_amount(): int64
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWebRTCDataChannelExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWebRTCDataChannelExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWebRTCMultiplayerPeer extends __RPCMapMultiplayerPeer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWebRTCMultiplayerPeer extends __NameMapMultiplayerPeer {
-    }
-    /** A simple interface to create a peer-to-peer mesh network composed of [WebRTCPeerConnection] that is compatible with the [MultiplayerAPI].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_webrtcmultiplayerpeer.html  
-     */
-    class WebRTCMultiplayerPeer extends MultiplayerPeer {
-        constructor(identifier?: any)
-        /** Initialize the multiplayer peer as a server (with unique ID of `1`). This mode enables [method MultiplayerPeer.is_server_relay_supported], allowing the upper [MultiplayerAPI] layer to perform peer exchange and packet relaying.  
-         *  You can optionally specify a [param channels_config] array of [enum MultiplayerPeer.TransferMode] which will be used to create extra channels (WebRTC only supports one transfer mode per channel).  
-         */
-        create_server(channels_config?: GArray): Error
-        
-        /** Initialize the multiplayer peer as a client with the given [param peer_id] (must be between 2 and 2147483647). In this mode, you should only call [method add_peer] once and with [param peer_id] of `1`. This mode enables [method MultiplayerPeer.is_server_relay_supported], allowing the upper [MultiplayerAPI] layer to perform peer exchange and packet relaying.  
-         *  You can optionally specify a [param channels_config] array of [enum MultiplayerPeer.TransferMode] which will be used to create extra channels (WebRTC only supports one transfer mode per channel).  
-         */
-        create_client(peer_id: int64, channels_config?: GArray): Error
-        
-        /** Initialize the multiplayer peer as a mesh (i.e. all peers connect to each other) with the given [param peer_id] (must be between 1 and 2147483647). */
-        create_mesh(peer_id: int64, channels_config?: GArray): Error
-        
-        /** Add a new peer to the mesh with the given [param peer_id]. The [WebRTCPeerConnection] must be in state [constant WebRTCPeerConnection.STATE_NEW].  
-         *  Three channels will be created for reliable, unreliable, and ordered transport. The value of [param unreliable_lifetime] will be passed to the `"maxPacketLifetime"` option when creating unreliable and ordered channels (see [method WebRTCPeerConnection.create_data_channel]).  
-         */
-        add_peer(peer: WebRTCPeerConnection, peer_id: int64, unreliable_lifetime?: int64 /* = 1 */): Error
-        
-        /** Remove the peer with given [param peer_id] from the mesh. If the peer was connected, and [signal MultiplayerPeer.peer_connected] was emitted for it, then [signal MultiplayerPeer.peer_disconnected] will be emitted. */
-        remove_peer(peer_id: int64): void
-        
-        /** Returns `true` if the given [param peer_id] is in the peers map (it might not be connected though). */
-        has_peer(peer_id: int64): boolean
-        
-        /** Returns a dictionary representation of the peer with given [param peer_id] with three keys. `"connection"` containing the [WebRTCPeerConnection] to this peer, `"channels"` an array of three [WebRTCDataChannel], and `"connected"` a boolean representing if the peer connection is currently connected (all three channels are open). */
-        get_peer(peer_id: int64): GDictionary
-        
-        /** Returns a dictionary which keys are the peer ids and values the peer representation as in [method get_peer]. */
-        get_peers(): GDictionary
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWebRTCMultiplayerPeer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWebRTCMultiplayerPeer;
-    }
-    namespace WebRTCPeerConnection {
-        enum ConnectionState {
-            /** The connection is new, data channels and an offer can be created in this state. */
-            STATE_NEW = 0,
-            
-            /** The peer is connecting, ICE is in progress, none of the transports has failed. */
-            STATE_CONNECTING = 1,
-            
-            /** The peer is connected, all ICE transports are connected. */
-            STATE_CONNECTED = 2,
-            
-            /** At least one ICE transport is disconnected. */
-            STATE_DISCONNECTED = 3,
-            
-            /** One or more of the ICE transports failed. */
-            STATE_FAILED = 4,
-            
-            /** The peer connection is closed (after calling [method close] for example). */
-            STATE_CLOSED = 5,
-        }
-        enum GatheringState {
-            /** The peer connection was just created and hasn't done any networking yet. */
-            GATHERING_STATE_NEW = 0,
-            
-            /** The ICE agent is in the process of gathering candidates for the connection. */
-            GATHERING_STATE_GATHERING = 1,
-            
-            /** The ICE agent has finished gathering candidates. If something happens that requires collecting new candidates, such as a new interface being added or the addition of a new ICE server, the state will revert to gathering to gather those candidates. */
-            GATHERING_STATE_COMPLETE = 2,
-        }
-        enum SignalingState {
-            /** There is no ongoing exchange of offer and answer underway. This may mean that the [WebRTCPeerConnection] is new ([constant STATE_NEW]) or that negotiation is complete and a connection has been established ([constant STATE_CONNECTED]). */
-            SIGNALING_STATE_STABLE = 0,
-            
-            /** The local peer has called [method set_local_description], passing in SDP representing an offer (usually created by calling [method create_offer]), and the offer has been applied successfully. */
-            SIGNALING_STATE_HAVE_LOCAL_OFFER = 1,
-            
-            /** The remote peer has created an offer and used the signaling server to deliver it to the local peer, which has set the offer as the remote description by calling [method set_remote_description]. */
-            SIGNALING_STATE_HAVE_REMOTE_OFFER = 2,
-            
-            /** The offer sent by the remote peer has been applied and an answer has been created and applied by calling [method set_local_description]. This provisional answer describes the supported media formats and so forth, but may not have a complete set of ICE candidates included. Further candidates will be delivered separately later. */
-            SIGNALING_STATE_HAVE_LOCAL_PRANSWER = 3,
-            
-            /** A provisional answer has been received and successfully applied in response to an offer previously sent and established by calling [method set_local_description]. */
-            SIGNALING_STATE_HAVE_REMOTE_PRANSWER = 4,
-            
-            /** The [WebRTCPeerConnection] has been closed. */
-            SIGNALING_STATE_CLOSED = 5,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWebRTCPeerConnection extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWebRTCPeerConnection extends __NameMapRefCounted {
-    }
-    /** Interface to a WebRTC peer connection.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_webrtcpeerconnection.html  
-     */
-    class WebRTCPeerConnection extends RefCounted {
-        constructor(identifier?: any)
-        /** Sets the [param extension_class] as the default [WebRTCPeerConnectionExtension] returned when creating a new [WebRTCPeerConnection]. */
-        static set_default_extension(extension_class: StringName): void
-        
-        /** Re-initialize this peer connection, closing any previously active connection, and going back to state [constant STATE_NEW]. A dictionary of [param configuration] options can be passed to configure the peer connection.  
-         *  Valid [param configuration] options are:  
-         *    
-         */
-        initialize(configuration?: GDictionary /* = new GDictionary() */): Error
-        
-        /** Returns a new [WebRTCDataChannel] (or `null` on failure) with given [param label] and optionally configured via the [param options] dictionary. This method can only be called when the connection is in state [constant STATE_NEW].  
-         *  There are two ways to create a working data channel: either call [method create_data_channel] on only one of the peer and listen to [signal data_channel_received] on the other, or call [method create_data_channel] on both peers, with the same values, and the `"negotiated"` option set to `true`.  
-         *  Valid [param options] are:  
-         *    
-         *      
-         *  **Note:** You must keep a reference to channels created this way, or it will be closed.  
-         */
-        create_data_channel(label: string, options?: GDictionary /* = new GDictionary() */): WebRTCDataChannel
-        
-        /** Creates a new SDP offer to start a WebRTC connection with a remote peer. At least one [WebRTCDataChannel] must have been created before calling this method.  
-         *  If this functions returns [constant OK], [signal session_description_created] will be called when the session is ready to be sent.  
-         */
-        create_offer(): Error
-        
-        /** Sets the SDP description of the local peer. This should be called in response to [signal session_description_created].  
-         *  After calling this function the peer will start emitting [signal ice_candidate_created] (unless an [enum Error] different from [constant OK] is returned).  
-         */
-        set_local_description(type: string, sdp: string): Error
-        
-        /** Sets the SDP description of the remote peer. This should be called with the values generated by a remote peer and received over the signaling server.  
-         *  If [param type] is `"offer"` the peer will emit [signal session_description_created] with the appropriate answer.  
-         *  If [param type] is `"answer"` the peer will start emitting [signal ice_candidate_created].  
-         */
-        set_remote_description(type: string, sdp: string): Error
-        
-        /** Add an ice candidate generated by a remote peer (and received over the signaling server). See [signal ice_candidate_created]. */
-        add_ice_candidate(media: string, index: int64, name: string): Error
-        
-        /** Call this method frequently (e.g. in [method Node._process] or [method Node._physics_process]) to properly receive signals. */
-        poll(): Error
-        
-        /** Close the peer connection and all data channels associated with it.  
-         *      
-         *  **Note:** You cannot reuse this object for a new connection unless you call [method initialize].  
-         */
-        close(): void
-        
-        /** Returns the connection state. */
-        get_connection_state(): WebRTCPeerConnection.ConnectionState
-        
-        /** Returns the ICE [enum GatheringState] of the connection. This lets you detect, for example, when collection of ICE candidates has finished. */
-        get_gathering_state(): WebRTCPeerConnection.GatheringState
-        
-        /** Returns the signaling state on the local end of the connection while connecting or reconnecting to another peer. */
-        get_signaling_state(): WebRTCPeerConnection.SignalingState
-        
-        /** Emitted after a successful call to [method create_offer] or [method set_remote_description] (when it generates an answer). The parameters are meant to be passed to [method set_local_description] on this object, and sent to the remote peer over the signaling server. */
-        readonly session_description_created: Signal<(type: string, sdp: string) => void>
-        
-        /** Emitted when a new ICE candidate has been created. The three parameters are meant to be passed to the remote peer over the signaling server. */
-        readonly ice_candidate_created: Signal<(media: string, index: int64, name: string) => void>
-        
-        /** Emitted when a new in-band channel is received, i.e. when the channel was created with `negotiated: false` (default).  
-         *  The object will be an instance of [WebRTCDataChannel]. You must keep a reference of it or it will be closed automatically. See [method create_data_channel].  
-         */
-        readonly data_channel_received: Signal<(channel: WebRTCDataChannel) => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWebRTCPeerConnection;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWebRTCPeerConnection;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWebRTCPeerConnectionExtension extends __RPCMapWebRTCPeerConnection {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWebRTCPeerConnectionExtension extends __NameMapWebRTCPeerConnection {
-    }
-    /** @link https://docs.godotengine.org/en/4.6/classes/class_webrtcpeerconnectionextension.html */
-    class WebRTCPeerConnectionExtension extends WebRTCPeerConnection {
-        constructor(identifier?: any)
-        /* gdvirtual */ _get_connection_state(): WebRTCPeerConnection.ConnectionState
-        /* gdvirtual */ _get_gathering_state(): WebRTCPeerConnection.GatheringState
-        /* gdvirtual */ _get_signaling_state(): WebRTCPeerConnection.SignalingState
-        /* gdvirtual */ _initialize(p_config: GDictionary): Error
-        /* gdvirtual */ _create_data_channel(p_label: string, p_config: GDictionary): null | WebRTCDataChannel
-        /* gdvirtual */ _create_offer(): Error
-        /* gdvirtual */ _set_remote_description(p_type: string, p_sdp: string): Error
-        /* gdvirtual */ _set_local_description(p_type: string, p_sdp: string): Error
-        /* gdvirtual */ _add_ice_candidate(p_sdp_mid_name: string, p_sdp_mline_index: int64, p_sdp_name: string): Error
-        /* gdvirtual */ _poll(): Error
-        /* gdvirtual */ _close(): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWebRTCPeerConnectionExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWebRTCPeerConnectionExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWebSocketMultiplayerPeer extends __RPCMapMultiplayerPeer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWebSocketMultiplayerPeer extends __NameMapMultiplayerPeer {
-    }
-    /** Base class for WebSocket server and client.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_websocketmultiplayerpeer.html  
-     */
-    class WebSocketMultiplayerPeer extends MultiplayerPeer {
-        constructor(identifier?: any)
-        /** Starts a new multiplayer client connecting to the given [param url]. TLS certificates will be verified against the hostname when connecting using the `wss://` protocol. You can pass the optional [param tls_client_options] parameter to customize the trusted certification authorities, or disable the common name verification. See [method TLSOptions.client] and [method TLSOptions.client_unsafe].  
-         *      
-         *  **Note:** It is recommended to specify the scheme part of the URL, i.e. the [param url] should start with either `ws://` or `wss://`.  
-         */
-        create_client(url: string, tls_client_options?: TLSOptions): Error
-        
-        /** Starts a new multiplayer server listening on the given [param port]. You can optionally specify a [param bind_address], and provide valid [param tls_server_options] to use TLS. See [method TLSOptions.server]. */
-        create_server(port: int64, bind_address?: string /* = '*' */, tls_server_options?: TLSOptions): Error
-        
-        /** Returns the [WebSocketPeer] associated to the given [param peer_id]. */
-        get_peer(peer_id: int64): null | WebSocketPeer
-        
-        /** Returns the IP address of the given peer. */
-        get_peer_address(id: int64): string
-        
-        /** Returns the remote port of the given peer. */
-        get_peer_port(id: int64): int64
-        
-        /** The supported WebSocket sub-protocols. See [member WebSocketPeer.supported_protocols] for more details. */
-        get supported_protocols(): PackedStringArray
-        set supported_protocols(value: PackedStringArray | string[])
-        
-        /** The extra headers to use during handshake. See [member WebSocketPeer.handshake_headers] for more details. */
-        get handshake_headers(): PackedStringArray
-        set handshake_headers(value: PackedStringArray | string[])
-        
-        /** The inbound buffer size for connected peers. See [member WebSocketPeer.inbound_buffer_size] for more details. */
-        get inbound_buffer_size(): int64
-        set inbound_buffer_size(value: int64)
-        
-        /** The outbound buffer size for connected peers. See [member WebSocketPeer.outbound_buffer_size] for more details. */
-        get outbound_buffer_size(): int64
-        set outbound_buffer_size(value: int64)
-        
-        /** The maximum time each peer can stay in a connecting state before being dropped. */
-        get handshake_timeout(): float64
-        set handshake_timeout(value: float64)
-        
-        /** The maximum number of queued packets for connected peers. See [member WebSocketPeer.max_queued_packets] for more details. */
-        get max_queued_packets(): int64
-        set max_queued_packets(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWebSocketMultiplayerPeer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWebSocketMultiplayerPeer;
-    }
-    namespace WebSocketPeer {
-        enum WriteMode {
-            /** Specifies that WebSockets messages should be transferred as text payload (only valid UTF-8 is allowed). */
-            WRITE_MODE_TEXT = 0,
-            
-            /** Specifies that WebSockets messages should be transferred as binary payload (any byte combination is allowed). */
-            WRITE_MODE_BINARY = 1,
-        }
-        enum State {
-            /** Socket has been created. The connection is not yet open. */
-            STATE_CONNECTING = 0,
-            
-            /** The connection is open and ready to communicate. */
-            STATE_OPEN = 1,
-            
-            /** The connection is in the process of closing. This means a close request has been sent to the remote peer but confirmation has not been received. */
-            STATE_CLOSING = 2,
-            
-            /** The connection is closed or couldn't be opened. */
-            STATE_CLOSED = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWebSocketPeer extends __RPCMapPacketPeer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWebSocketPeer extends __NameMapPacketPeer {
-    }
-    /** A WebSocket connection.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_websocketpeer.html  
-     */
-    class WebSocketPeer extends PacketPeer {
-        constructor(identifier?: any)
-        /** Connects to the given URL. TLS certificates will be verified against the hostname when connecting using the `wss://` protocol. You can pass the optional [param tls_client_options] parameter to customize the trusted certification authorities, or disable the common name verification. See [method TLSOptions.client] and [method TLSOptions.client_unsafe].  
-         *      
-         *  **Note:** This method is non-blocking, and will return [constant OK] before the connection is established as long as the provided parameters are valid and the peer is not in an invalid state (e.g. already connected). Regularly call [method poll] (e.g. during [Node] process) and check the result of [method get_ready_state] to know whether the connection succeeds or fails.  
-         *      
-         *  **Note:** To avoid mixed content warnings or errors in Web, you may have to use a [param url] that starts with `wss://` (secure) instead of `ws://`. When doing so, make sure to use the fully qualified domain name that matches the one defined in the server's TLS certificate. Do not connect directly via the IP address for `wss://` connections, as it won't match with the TLS certificate.  
-         */
-        connect_to_url(url: string, tls_client_options?: TLSOptions): Error
-        
-        /** Accepts a peer connection performing the HTTP handshake as a WebSocket server. The [param stream] must be a valid TCP stream retrieved via [method TCPServer.take_connection], or a TLS stream accepted via [method StreamPeerTLS.accept_stream].  
-         *      
-         *  **Note:** Not supported in Web exports due to browsers' restrictions.  
-         */
-        accept_stream(stream: StreamPeer): Error
-        
-        /** Sends the given [param message] using the desired [param write_mode]. When sending a [String], prefer using [method send_text]. */
-        send(message: PackedByteArray | byte[] | ArrayBuffer, write_mode?: WebSocketPeer.WriteMode /* = 1 */): Error
-        
-        /** Sends the given [param message] using WebSocket text mode. Prefer this method over [method PacketPeer.put_packet] when interacting with third-party text-based API (e.g. when using [JSON] formatted messages). */
-        send_text(message: string): Error
-        
-        /** Returns `true` if the last received packet was sent as a text payload. See [enum WriteMode]. */
-        was_string_packet(): boolean
-        
-        /** Updates the connection state and receive incoming packets. Call this function regularly to keep it in a clean state. */
-        poll(): void
-        
-        /** Closes this WebSocket connection.  
-         *  [param code] is the status code for the closure (see [url=https://datatracker.ietf.org/doc/html/rfc6455#section-7.4.1]RFC 6455 section 7.4[/url] for a list of valid status codes). If [param code] is negative, the connection will be closed immediately without notifying the remote peer.  
-         *  [param reason] is the human-readable reason for closing the connection. It can be any UTF-8 string that's smaller than 123 bytes.  
-         *      
-         *  **Note:** To achieve a clean closure, you will need to keep polling until [constant STATE_CLOSED] is reached.  
-         *      
-         *  **Note:** The Web export might not support all status codes. Please refer to browser-specific documentation for more details.  
-         */
-        close(code?: int64 /* = 1000 */, reason?: string /* = '' */): void
-        
-        /** Returns the IP address of the connected peer.  
-         *      
-         *  **Note:** Not available in the Web export.  
-         */
-        get_connected_host(): string
-        
-        /** Returns the remote port of the connected peer.  
-         *      
-         *  **Note:** Not available in the Web export.  
-         */
-        get_connected_port(): int64
-        
-        /** Returns the selected WebSocket sub-protocol for this connection or an empty string if the sub-protocol has not been selected yet. */
-        get_selected_protocol(): string
-        
-        /** Returns the URL requested by this peer. The URL is derived from the `url` passed to [method connect_to_url] or from the HTTP headers when acting as server (i.e. when using [method accept_stream]). */
-        get_requested_url(): string
-        
-        /** Disable Nagle's algorithm on the underlying TCP socket (default). See [method StreamPeerTCP.set_no_delay] for more information.  
-         *      
-         *  **Note:** Not available in the Web export.  
-         */
-        set_no_delay(enabled: boolean): void
-        
-        /** Returns the current amount of data in the outbound websocket buffer.     
-         *  **Note:** Web exports use WebSocket.bufferedAmount, while other platforms use an internal buffer.  
-         */
-        get_current_outbound_buffered_amount(): int64
-        
-        /** Returns the ready state of the connection. */
-        get_ready_state(): WebSocketPeer.State
-        
-        /** Returns the received WebSocket close frame status code, or `-1` when the connection was not cleanly closed. Only call this method when [method get_ready_state] returns [constant STATE_CLOSED]. */
-        get_close_code(): int64
-        
-        /** Returns the received WebSocket close frame status reason string. Only call this method when [method get_ready_state] returns [constant STATE_CLOSED]. */
-        get_close_reason(): string
-        
-        /** The WebSocket sub-protocols allowed during the WebSocket handshake. */
-        get supported_protocols(): PackedStringArray
-        set supported_protocols(value: PackedStringArray | string[])
-        
-        /** The extra HTTP headers to be sent during the WebSocket handshake.  
-         *      
-         *  **Note:** Not supported in Web exports due to browsers' restrictions.  
-         */
-        get handshake_headers(): PackedStringArray
-        set handshake_headers(value: PackedStringArray | string[])
-        
-        /** The size of the input buffer in bytes (roughly the maximum amount of memory that will be allocated for the inbound packets). */
-        get inbound_buffer_size(): int64
-        set inbound_buffer_size(value: int64)
-        
-        /** The size of the input buffer in bytes (roughly the maximum amount of memory that will be allocated for the outbound packets). */
-        get outbound_buffer_size(): int64
-        set outbound_buffer_size(value: int64)
-        
-        /** The maximum amount of packets that will be allowed in the queues (both inbound and outbound). */
-        get max_queued_packets(): int64
-        set max_queued_packets(value: int64)
-        
-        /** The interval (in seconds) at which the peer will automatically send WebSocket "ping" control frames. When set to `0`, no "ping" control frames will be sent.  
-         *      
-         *  **Note:** Has no effect in Web exports due to browser restrictions.  
-         */
-        get heartbeat_interval(): int64
-        set heartbeat_interval(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWebSocketPeer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWebSocketPeer;
-    }
-    namespace WebXRInterface {
-        enum TargetRayMode {
-            /** We don't know the target ray mode. */
-            TARGET_RAY_MODE_UNKNOWN = 0,
-            
-            /** Target ray originates at the viewer's eyes and points in the direction they are looking. */
-            TARGET_RAY_MODE_GAZE = 1,
-            
-            /** Target ray from a handheld pointer, most likely a VR touch controller. */
-            TARGET_RAY_MODE_TRACKED_POINTER = 2,
-            
-            /** Target ray from touch screen, mouse or other tactile input device. */
-            TARGET_RAY_MODE_SCREEN = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWebXRInterface extends __RPCMapXRInterface {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWebXRInterface extends __NameMapXRInterface {
-    }
-    /** XR interface using WebXR.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_webxrinterface.html  
-     */
-    class WebXRInterface extends XRInterface {
-        constructor(identifier?: any)
-        /** Checks if the given [param session_mode] is supported by the user's browser.  
-         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRSessionMode]WebXR's XRSessionMode[/url], including: `"immersive-vr"`, `"immersive-ar"`, and `"inline"`.  
-         *  This method returns nothing, instead it emits the [signal session_supported] signal with the result.  
-         */
-        is_session_supported(session_mode: string): void
-        
-        /** Returns `true` if there is an active input source with the given [param input_source_id]. */
-        is_input_source_active(input_source_id: int64): boolean
-        
-        /** Gets an [XRControllerTracker] for the given [param input_source_id].  
-         *  In the context of WebXR, an input source can be an advanced VR controller like the Oculus Touch or Index controllers, or even a tap on the screen, a spoken voice command or a button press on the device itself. When a non-traditional input source is used, interpret the position and orientation of the [XRPositionalTracker] as a ray pointing at the object the user wishes to interact with.  
-         *  Use this method to get information about the input source that triggered one of these signals:  
-         *  - [signal selectstart]  
-         *  - [signal select]  
-         *  - [signal selectend]  
-         *  - [signal squeezestart]  
-         *  - [signal squeeze]  
-         *  - [signal squeezestart]  
-         */
-        get_input_source_tracker(input_source_id: int64): null | XRControllerTracker
-        
-        /** Returns the target ray mode for the given [param input_source_id].  
-         *  This can help interpret the input coming from that input source. See [url=https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource/targetRayMode]XRInputSource.targetRayMode[/url] for more information.  
-         */
-        get_input_source_target_ray_mode(input_source_id: int64): WebXRInterface.TargetRayMode
-        
-        /** Returns the display refresh rate for the current HMD. Not supported on all HMDs and browsers. It may not report an accurate value until after using [method set_display_refresh_rate]. */
-        get_display_refresh_rate(): float64
-        
-        /** Sets the display refresh rate for the current HMD. Not supported on all HMDs and browsers. It won't take effect right away until after [signal display_refresh_rate_changed] is emitted. */
-        set_display_refresh_rate(refresh_rate: float64): void
-        
-        /** Returns display refresh rates supported by the current HMD. Only returned if this feature is supported by the web browser and after the interface has been initialized. */
-        get_available_display_refresh_rates(): GArray
-        
-        /** The session mode used by [method XRInterface.initialize] when setting up the WebXR session.  
-         *  This doesn't have any effect on the interface when already initialized.  
-         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRSessionMode]WebXR's XRSessionMode[/url], including: `"immersive-vr"`, `"immersive-ar"`, and `"inline"`.  
-         */
-        get session_mode(): string
-        set session_mode(value: string)
-        
-        /** A comma-seperated list of required features used by [method XRInterface.initialize] when setting up the WebXR session.  
-         *  If a user's browser or device doesn't support one of the given features, initialization will fail and [signal session_failed] will be emitted.  
-         *  This doesn't have any effect on the interface when already initialized.  
-         *  See the MDN documentation on [url=https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#session_features]WebXR's session features[/url] for a list of possible values.  
-         */
-        get required_features(): string
-        set required_features(value: string)
-        
-        /** A comma-seperated list of optional features used by [method XRInterface.initialize] when setting up the WebXR session.  
-         *  If a user's browser or device doesn't support one of the given features, initialization will continue, but you won't be able to use the requested feature.  
-         *  This doesn't have any effect on the interface when already initialized.  
-         *  See the MDN documentation on [url=https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#session_features]WebXR's session features[/url] for a list of possible values.  
-         */
-        get optional_features(): string
-        set optional_features(value: string)
-        
-        /** A comma-seperated list of reference space types used by [method XRInterface.initialize] when setting up the WebXR session.  
-         *  The reference space types are requested in order, and the first one supported by the user's device or browser will be used. The [member reference_space_type] property contains the reference space type that was ultimately selected.  
-         *  This doesn't have any effect on the interface when already initialized.  
-         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceType]WebXR's XRReferenceSpaceType[/url]. If you want to use a particular reference space type, it must be listed in either [member required_features] or [member optional_features].  
-         */
-        get requested_reference_space_types(): string
-        set requested_reference_space_types(value: string)
-        
-        /** The reference space type (from the list of requested types set in the [member requested_reference_space_types] property), that was ultimately used by [method XRInterface.initialize] when setting up the WebXR session.  
-         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceType]WebXR's XRReferenceSpaceType[/url]. If you want to use a particular reference space type, it must be listed in either [member required_features] or [member optional_features].  
-         */
-        get reference_space_type(): string
-        
-        /** A comma-separated list of features that were successfully enabled by [method XRInterface.initialize] when setting up the WebXR session.  
-         *  This may include features requested by setting [member required_features] and [member optional_features], and will only be available after [signal session_started] has been emitted.  
-         *      
-         *  **Note:** This may not be support by all web browsers, in which case it will be an empty string.  
-         */
-        get enabled_features(): string
-        
-        /** Indicates if the WebXR session's imagery is visible to the user.  
-         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRVisibilityState]WebXR's XRVisibilityState[/url], including `"hidden"`, `"visible"`, and `"visible-blurred"`.  
-         */
-        get visibility_state(): string
-        
-        /** Emitted by [method is_session_supported] to indicate if the given [param session_mode] is supported or not. */
-        readonly session_supported: Signal<(session_mode: string, supported: boolean) => void>
-        
-        /** Emitted by [method XRInterface.initialize] if the session is successfully started.  
-         *  At this point, it's safe to do `get_viewport().use_xr = true` to instruct Godot to start rendering to the XR device.  
-         */
-        readonly session_started: Signal<() => void>
-        
-        /** Emitted when the user ends the WebXR session (which can be done using UI from the browser or device).  
-         *  At this point, you should do `get_viewport().use_xr = false` to instruct Godot to resume rendering to the screen.  
-         */
-        readonly session_ended: Signal<() => void>
-        
-        /** Emitted by [method XRInterface.initialize] if the session fails to start.  
-         *  [param message] may optionally contain an error message from WebXR, or an empty string if no message is available.  
-         */
-        readonly session_failed: Signal<(message: string) => void>
-        
-        /** Emitted when one of the input source has started its "primary action".  
-         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
-         */
-        readonly selectstart: Signal<(input_source_id: int64) => void>
-        
-        /** Emitted after one of the input sources has finished its "primary action".  
-         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
-         */
-        readonly select: Signal<(input_source_id: int64) => void>
-        
-        /** Emitted when one of the input sources has finished its "primary action".  
-         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
-         */
-        readonly selectend: Signal<(input_source_id: int64) => void>
-        
-        /** Emitted when one of the input sources has started its "primary squeeze action".  
-         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
-         */
-        readonly squeezestart: Signal<(input_source_id: int64) => void>
-        
-        /** Emitted after one of the input sources has finished its "primary squeeze action".  
-         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
-         */
-        readonly squeeze: Signal<(input_source_id: int64) => void>
-        
-        /** Emitted when one of the input sources has finished its "primary squeeze action".  
-         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
-         */
-        readonly squeezeend: Signal<(input_source_id: int64) => void>
-        
-        /** Emitted when [member visibility_state] has changed. */
-        readonly visibility_state_changed: Signal<() => void>
-        
-        /** Emitted to indicate that the reference space has been reset or reconfigured.  
-         *  When (or whether) this is emitted depends on the user's browser or device, but may include when the user has changed the dimensions of their play space (which you may be able to access via [method XRInterface.get_play_area]) or pressed/held a button to recenter their position.  
-         *  See [url=https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace/reset_event]WebXR's XRReferenceSpace reset event[/url] for more information.  
-         */
-        readonly reference_space_reset: Signal<() => void>
-        
-        /** Emitted after the display's refresh rate has changed. */
-        readonly display_refresh_rate_changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWebXRInterface;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWebXRInterface;
-    }
-    namespace Window {
-        enum Mode {
-            /** Windowed mode, i.e. [Window] doesn't occupy the whole screen (unless set to the size of the screen). */
-            MODE_WINDOWED = 0,
-            
-            /** Minimized window mode, i.e. [Window] is not visible and available on window manager's window list. Normally happens when the minimize button is pressed. */
-            MODE_MINIMIZED = 1,
-            
-            /** Maximized window mode, i.e. [Window] will occupy whole screen area except task bar and still display its borders. Normally happens when the maximize button is pressed. */
-            MODE_MAXIMIZED = 2,
-            
-            /** Full screen mode with full multi-window support.  
-             *  Full screen window covers the entire display area of a screen and has no decorations. The display's video mode is not changed.  
-             *  **On Android:** This enables immersive mode.  
-             *  **On macOS:** A new desktop is used to display the running project.  
-             *      
-             *  **Note:** Regardless of the platform, enabling full screen will change the window size to match the monitor's size. Therefore, make sure your project supports [url=https://docs.godotengine.org/en/4.6/tutorials/rendering/multiple_resolutions.html]multiple resolutions[/url] when enabling full screen mode.  
-             */
-            MODE_FULLSCREEN = 3,
-            
-            /** A single window full screen mode. This mode has less overhead, but only one window can be open on a given screen at a time (opening a child window or application switching will trigger a full screen transition).  
-             *  Full screen window covers the entire display area of a screen and has no border or decorations. The display's video mode is not changed.  
-             *      
-             *  **Note:** This mode might not work with screen recording software.  
-             *  **On Android:** This enables immersive mode.  
-             *  **On Windows:** Depending on video driver, full screen transition might cause screens to go black for a moment.  
-             *  **On macOS:** A new desktop is used to display the running project. Exclusive full screen mode prevents Dock and Menu from showing up when the mouse pointer is hovering the edge of the screen.  
-             *  **On Linux (X11):** Exclusive full screen mode bypasses compositor.  
-             *  **On Linux (Wayland):** Equivalent to [constant MODE_FULLSCREEN].  
-             *      
-             *  **Note:** Regardless of the platform, enabling full screen will change the window size to match the monitor's size. Therefore, make sure your project supports [url=https://docs.godotengine.org/en/4.6/tutorials/rendering/multiple_resolutions.html]multiple resolutions[/url] when enabling full screen mode.  
-             */
-            MODE_EXCLUSIVE_FULLSCREEN = 4,
-        }
-        enum Flags {
-            /** The window can't be resized by dragging its resize grip. It's still possible to resize the window using [member size]. This flag is ignored for full screen windows. Set with [member unresizable]. */
-            FLAG_RESIZE_DISABLED = 0,
-            
-            /** The window do not have native title bar and other decorations. This flag is ignored for full-screen windows. Set with [member borderless]. */
-            FLAG_BORDERLESS = 1,
-            
-            /** The window is floating on top of all other windows. This flag is ignored for full-screen windows. Set with [member always_on_top]. */
-            FLAG_ALWAYS_ON_TOP = 2,
-            
-            /** The window background can be transparent. Set with [member transparent].  
-             *      
-             *  **Note:** This flag has no effect if either [member ProjectSettings.display/window/per_pixel_transparency/allowed], or the window's [member Viewport.transparent_bg] is set to `false`.  
-             */
-            FLAG_TRANSPARENT = 3,
-            
-            /** The window can't be focused. No-focus window will ignore all input, except mouse clicks. Set with [member unfocusable]. */
-            FLAG_NO_FOCUS = 4,
-            
-            /** Window is part of menu or [OptionButton] dropdown. This flag can't be changed when the window is visible. An active popup window will exclusively receive all input, without stealing focus from its parent. Popup windows are automatically closed when uses click outside it, or when an application is switched. Popup window must have transient parent set (see [member transient]).  
-             *      
-             *  **Note:** This flag has no effect in embedded windows (unless said window is a [Popup]).  
-             */
-            FLAG_POPUP = 5,
-            
-            /** Window content is expanded to the full size of the window. Unlike borderless window, the frame is left intact and can be used to resize the window, title bar is transparent, but have minimize/maximize/close buttons. Set with [member extend_to_title].  
-             *      
-             *  **Note:** This flag is implemented only on macOS.  
-             *      
-             *  **Note:** This flag has no effect in embedded windows.  
-             */
-            FLAG_EXTEND_TO_TITLE = 6,
-            
-            /** All mouse events are passed to the underlying window of the same application.  
-             *      
-             *  **Note:** This flag has no effect in embedded windows.  
-             */
-            FLAG_MOUSE_PASSTHROUGH = 7,
-            
-            /** Window style is overridden, forcing sharp corners.  
-             *      
-             *  **Note:** This flag has no effect in embedded windows.  
-             *      
-             *  **Note:** This flag is implemented only on Windows (11).  
-             */
-            FLAG_SHARP_CORNERS = 8,
-            
-            /** Windows is excluded from screenshots taken by [method DisplayServer.screen_get_image], [method DisplayServer.screen_get_image_rect], and [method DisplayServer.screen_get_pixel].  
-             *      
-             *  **Note:** This flag has no effect in embedded windows.  
-             *      
-             *  **Note:** This flag is implemented on macOS and Windows (10, 20H1).  
-             *      
-             *  **Note:** Setting this flag will prevent standard screenshot methods from capturing a window image, but does **NOT** guarantee that other apps won't be able to capture an image. It should not be used as a DRM or security measure.  
-             */
-            FLAG_EXCLUDE_FROM_CAPTURE = 9,
-            
-            /** Signals the window manager that this window is supposed to be an implementation-defined "popup" (usually a floating, borderless, untileable and immovable child window). */
-            FLAG_POPUP_WM_HINT = 10,
-            
-            /** Window minimize button is disabled.  
-             *      
-             *  **Note:** This flag is implemented on macOS and Windows.  
-             */
-            FLAG_MINIMIZE_DISABLED = 11,
-            
-            /** Window maximize button is disabled.  
-             *      
-             *  **Note:** This flag is implemented on macOS and Windows.  
-             */
-            FLAG_MAXIMIZE_DISABLED = 12,
-            
-            /** Max value of the [enum Flags]. */
-            FLAG_MAX = 13,
-        }
-        enum ContentScaleMode {
-            /** The content will not be scaled to match the [Window]'s size ([member content_scale_size] is ignored). */
-            CONTENT_SCALE_MODE_DISABLED = 0,
-            
-            /** The content will be rendered at the target size. This is more performance-expensive than [constant CONTENT_SCALE_MODE_VIEWPORT], but provides better results. */
-            CONTENT_SCALE_MODE_CANVAS_ITEMS = 1,
-            
-            /** The content will be rendered at the base size and then scaled to the target size. More performant than [constant CONTENT_SCALE_MODE_CANVAS_ITEMS], but results in pixelated image. */
-            CONTENT_SCALE_MODE_VIEWPORT = 2,
-        }
-        enum ContentScaleAspect {
-            /** The aspect will be ignored. Scaling will simply stretch the content to fit the target size. */
-            CONTENT_SCALE_ASPECT_IGNORE = 0,
-            
-            /** The content's aspect will be preserved. If the target size has different aspect from the base one, the image will be centered and black bars will appear on left and right sides. */
-            CONTENT_SCALE_ASPECT_KEEP = 1,
-            
-            /** The content can be expanded vertically. Scaling horizontally will result in keeping the width ratio and then black bars on left and right sides. */
-            CONTENT_SCALE_ASPECT_KEEP_WIDTH = 2,
-            
-            /** The content can be expanded horizontally. Scaling vertically will result in keeping the height ratio and then black bars on top and bottom sides. */
-            CONTENT_SCALE_ASPECT_KEEP_HEIGHT = 3,
-            
-            /** The content's aspect will be preserved. If the target size has different aspect from the base one, the content will stay in the top-left corner and add an extra visible area in the stretched space. */
-            CONTENT_SCALE_ASPECT_EXPAND = 4,
-        }
-        enum ContentScaleStretch {
-            /** The content will be stretched according to a fractional factor. This fills all the space available in the window, but allows "pixel wobble" to occur due to uneven pixel scaling. */
-            CONTENT_SCALE_STRETCH_FRACTIONAL = 0,
-            
-            /** The content will be stretched only according to an integer factor, preserving sharp pixels. This may leave a black background visible on the window's edges depending on the window size. */
-            CONTENT_SCALE_STRETCH_INTEGER = 1,
-        }
-        enum LayoutDirection {
-            /** Automatic layout direction, determined from the parent window layout direction. */
-            LAYOUT_DIRECTION_INHERITED = 0,
-            
-            /** Automatic layout direction, determined from the current locale. */
-            LAYOUT_DIRECTION_APPLICATION_LOCALE = 1,
-            
-            /** Left-to-right layout direction. */
-            LAYOUT_DIRECTION_LTR = 2,
-            
-            /** Right-to-left layout direction. */
-            LAYOUT_DIRECTION_RTL = 3,
-            
-            /** Automatic layout direction, determined from the system locale. */
-            LAYOUT_DIRECTION_SYSTEM_LOCALE = 4,
-            
-            /** Represents the size of the [enum LayoutDirection] enum. */
-            LAYOUT_DIRECTION_MAX = 5,
-            LAYOUT_DIRECTION_LOCALE = 1,
-        }
-        enum WindowInitialPosition {
-            /** Initial window position is determined by [member position]. */
-            WINDOW_INITIAL_POSITION_ABSOLUTE = 0,
-            
-            /** Initial window position is the center of the primary screen. */
-            WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN = 1,
-            
-            /** Initial window position is the center of the main window screen. */
-            WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN = 2,
-            
-            /** Initial window position is the center of [member current_screen] screen. */
-            WINDOW_INITIAL_POSITION_CENTER_OTHER_SCREEN = 3,
-            
-            /** Initial window position is the center of the screen containing the mouse pointer. */
-            WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS = 4,
-            
-            /** Initial window position is the center of the screen containing the window with the keyboard focus. */
-            WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS = 5,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWindow extends __RPCMapViewport {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWindow extends __NameMapViewport {
-    }
-    /** Base class for all windows, dialogs, and popups.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_window.html  
-     */
-    class Window<Map extends NodePathMap = any> extends Viewport<Map> {
-        /** Emitted when [Window]'s visibility changes, right before [signal visibility_changed]. */
-        static readonly NOTIFICATION_VISIBILITY_CHANGED = 30
-        
-        /** Sent when the node needs to refresh its theme items. This happens in one of the following cases:  
-         *  - The [member theme] property is changed on this node or any of its ancestors.  
-         *  - The [member theme_type_variation] property is changed on this node.  
-         *  - The node enters the scene tree.  
-         *      
-         *  **Note:** As an optimization, this notification won't be sent from changes that occur while this node is outside of the scene tree. Instead, all of the theme item updates can be applied at once when the node enters the scene tree.  
-         */
-        static readonly NOTIFICATION_THEME_CHANGED = 32
-        constructor(identifier?: any)
-        
-        /** Virtual method to be implemented by the user. Overrides the value returned by [method get_contents_minimum_size]. */
-        /* gdvirtual */ _get_contents_minimum_size(): Vector2
-        
-        /** Centers the window in the current screen. If the window is embedded, it is centered in the embedder [Viewport] instead. */
-        move_to_center(): void
-        
-        /** Resets the size to the minimum size, which is the max of [member min_size] and (if [member wrap_controls] is enabled) [method get_contents_minimum_size]. This is equivalent to calling `set_size(Vector2i())` (or any size below the minimum). */
-        reset_size(): void
-        
-        /** Returns the window's position including its border.  
-         *      
-         *  **Note:** If [member visible] is `false`, this method returns the same value as [member position].  
-         */
-        get_position_with_decorations(): Vector2i
-        
-        /** Returns the window's size including its border.  
-         *      
-         *  **Note:** If [member visible] is `false`, this method returns the same value as [member size].  
-         */
-        get_size_with_decorations(): Vector2i
-        
-        /** Sets a specified window flag. */
-        set_flag(flag: Window.Flags, enabled: boolean): void
-        
-        /** Returns `true` if the [param flag] is set. */
-        get_flag(flag: Window.Flags): boolean
-        
-        /** Returns `true` if the window can be maximized (the maximize button is enabled). */
-        is_maximize_allowed(): boolean
-        
-        /** Tells the OS that the [Window] needs an attention. This makes the window stand out in some way depending on the system, e.g. it might blink on the task bar. */
-        request_attention(): void
-        
-        /** Causes the window to grab focus, allowing it to receive user input. */
-        move_to_foreground(): void
-        
-        /** Hides the window. This is not the same as minimized state. Hidden window can't be interacted with and needs to be made visible with [method show]. */
-        hide(): void
-        
-        /** Makes the [Window] appear. This enables interactions with the [Window] and doesn't change any of its property other than visibility (unlike e.g. [method popup]). */
-        show(): void
-        
-        /** If [param unparent] is `true`, the window is automatically unparented when going invisible.  
-         *      
-         *  **Note:** Make sure to keep a reference to the node, otherwise it will be orphaned. You also need to manually call [method Node.queue_free] to free the window if it's not parented.  
-         */
-        set_unparent_when_invisible(unparent: boolean): void
-        
-        /** Returns whether the window is being drawn to the screen. */
-        can_draw(): boolean
-        
-        /** Returns `true` if the window is focused. */
-        has_focus(): boolean
-        
-        /** Causes the window to grab focus, allowing it to receive user input. */
-        grab_focus(): void
-        
-        /** Starts an interactive drag operation on the window, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's title bar. Using this method allows the window to participate in space switching, tiling, and other system features. */
-        start_drag(): void
-        
-        /** Starts an interactive resize operation on the window, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's edge. */
-        start_resize(edge: DisplayServer.WindowResizeEdge): void
-        
-        /** If [param active] is `true`, enables system's native IME (Input Method Editor). */
-        set_ime_active(active: boolean): void
-        
-        /** Moves IME to the given position. */
-        set_ime_position(position: Vector2i): void
-        
-        /** Returns `true` if the window is currently embedded in another window. */
-        is_embedded(): boolean
-        
-        /** Returns the combined minimum size from the child [Control] nodes of the window. Use [method child_controls_changed] to update it when child nodes have changed.  
-         *  The value returned by this method can be overridden with [method _get_contents_minimum_size].  
-         */
-        get_contents_minimum_size(): Vector2
-        
-        /** Requests an update of the [Window] size to fit underlying [Control] nodes. */
-        child_controls_changed(): void
-        
-        /** Prevents `*_theme_*_override` methods from emitting [constant NOTIFICATION_THEME_CHANGED] until [method end_bulk_theme_override] is called. */
-        begin_bulk_theme_override(): void
-        
-        /** Ends a bulk theme override update. See [method begin_bulk_theme_override]. */
-        end_bulk_theme_override(): void
-        
-        /** Creates a local override for a theme icon with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_icon_override].  
-         *  See also [method get_theme_icon].  
-         */
-        add_theme_icon_override(name: StringName, texture: Texture2D): void
-        
-        /** Creates a local override for a theme [StyleBox] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_stylebox_override].  
-         *  See also [method get_theme_stylebox] and [method Control.add_theme_stylebox_override] for more details.  
-         */
-        add_theme_stylebox_override(name: StringName, stylebox: StyleBox): void
-        
-        /** Creates a local override for a theme [Font] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_font_override].  
-         *  See also [method get_theme_font].  
-         */
-        add_theme_font_override(name: StringName, font: Font): void
-        
-        /** Creates a local override for a theme font size with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_font_size_override].  
-         *  See also [method get_theme_font_size].  
-         */
-        add_theme_font_size_override(name: StringName, font_size: int64): void
-        
-        /** Creates a local override for a theme [Color] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_color_override].  
-         *  See also [method get_theme_color] and [method Control.add_theme_color_override] for more details.  
-         */
-        add_theme_color_override(name: StringName, color: Color): void
-        
-        /** Creates a local override for a theme constant with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_constant_override].  
-         *  See also [method get_theme_constant].  
-         */
-        add_theme_constant_override(name: StringName, constant: int64): void
-        
-        /** Removes a local override for a theme icon with the specified [param name] previously added by [method add_theme_icon_override] or via the Inspector dock. */
-        remove_theme_icon_override(name: StringName): void
-        
-        /** Removes a local override for a theme [StyleBox] with the specified [param name] previously added by [method add_theme_stylebox_override] or via the Inspector dock. */
-        remove_theme_stylebox_override(name: StringName): void
-        
-        /** Removes a local override for a theme [Font] with the specified [param name] previously added by [method add_theme_font_override] or via the Inspector dock. */
-        remove_theme_font_override(name: StringName): void
-        
-        /** Removes a local override for a theme font size with the specified [param name] previously added by [method add_theme_font_size_override] or via the Inspector dock. */
-        remove_theme_font_size_override(name: StringName): void
-        
-        /** Removes a local override for a theme [Color] with the specified [param name] previously added by [method add_theme_color_override] or via the Inspector dock. */
-        remove_theme_color_override(name: StringName): void
-        
-        /** Removes a local override for a theme constant with the specified [param name] previously added by [method add_theme_constant_override] or via the Inspector dock. */
-        remove_theme_constant_override(name: StringName): void
-        
-        /** Returns an icon from the first matching [Theme] in the tree if that [Theme] has an icon item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        get_theme_icon(name: StringName, theme_type?: StringName /* = '' */): null | Texture2D
-        
-        /** Returns a [StyleBox] from the first matching [Theme] in the tree if that [Theme] has a stylebox item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        get_theme_stylebox(name: StringName, theme_type?: StringName /* = '' */): null | StyleBox
-        
-        /** Returns a [Font] from the first matching [Theme] in the tree if that [Theme] has a font item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        get_theme_font(name: StringName, theme_type?: StringName /* = '' */): null | Font
-        
-        /** Returns a font size from the first matching [Theme] in the tree if that [Theme] has a font size item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        get_theme_font_size(name: StringName, theme_type?: StringName /* = '' */): int64
-        
-        /** Returns a [Color] from the first matching [Theme] in the tree if that [Theme] has a color item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for more details.  
-         */
-        get_theme_color(name: StringName, theme_type?: StringName /* = '' */): Color
-        
-        /** Returns a constant from the first matching [Theme] in the tree if that [Theme] has a constant item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for more details.  
-         */
-        get_theme_constant(name: StringName, theme_type?: StringName /* = '' */): int64
-        
-        /** Returns `true` if there is a local override for a theme icon with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_icon_override].  
-         */
-        has_theme_icon_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme [StyleBox] with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_stylebox_override].  
-         */
-        has_theme_stylebox_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme [Font] with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_font_override].  
-         */
-        has_theme_font_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme font size with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_font_size_override].  
-         */
-        has_theme_font_size_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme [Color] with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_color_override].  
-         */
-        has_theme_color_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a local override for a theme constant with the specified [param name] in this [Control] node.  
-         *  See [method add_theme_constant_override].  
-         */
-        has_theme_constant_override(name: StringName): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has an icon item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        has_theme_icon(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a stylebox item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        has_theme_stylebox(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a font item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        has_theme_font(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a font size item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        has_theme_font_size(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a color item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        has_theme_color(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns `true` if there is a matching [Theme] in the tree that has a constant item with the specified [param name] and [param theme_type].  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        has_theme_constant(name: StringName, theme_type?: StringName /* = '' */): boolean
-        
-        /** Returns the default base scale value from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_base_scale] value.  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        get_theme_default_base_scale(): float64
-        
-        /** Returns the default font from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_font] value.  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        get_theme_default_font(): null | Font
-        
-        /** Returns the default font size value from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_font_size] value.  
-         *  See [method Control.get_theme_color] for details.  
-         */
-        get_theme_default_font_size(): int64
-        
-        /** Returns the ID of the window. */
-        get_window_id(): int64
-        
-        /** Returns the focused window. */
-        static get_focused_window(): null | Window
-        
-        /** Sets layout direction and text writing direction. Right-to-left layouts are necessary for certain languages (e.g. Arabic and Hebrew). */
-        set_layout_direction(direction: Window.LayoutDirection): void
-        
-        /** Returns layout direction and text writing direction. */
-        get_layout_direction(): Window.LayoutDirection
-        
-        /** Returns `true` if the layout is right-to-left. */
-        is_layout_rtl(): boolean
-        
-        /** Enables font oversampling. This makes fonts look better when they are scaled up. */
-        set_use_font_oversampling(enable: boolean): void
-        
-        /** Returns `true` if font oversampling is enabled. See [method set_use_font_oversampling]. */
-        is_using_font_oversampling(): boolean
-        
-        /** Shows the [Window] and makes it transient (see [member transient]). If [param rect] is provided, it will be set as the [Window]'s size. Fails if called on the main window.  
-         *  If [member ProjectSettings.display/window/subwindows/embed_subwindows] is `true` (single-window mode), [param rect]'s coordinates are global and relative to the main window's top-left corner (excluding window decorations). If [param rect]'s position coordinates are negative, the window will be located outside the main window and may not be visible as a result.  
-         *  If [member ProjectSettings.display/window/subwindows/embed_subwindows] is `false` (multi-window mode), [param rect]'s coordinates are global and relative to the top-left corner of the leftmost screen. If [param rect]'s position coordinates are negative, the window will be placed at the top-left corner of the screen.  
-         *      
-         *  **Note:** [param rect] must be in global coordinates if specified.  
-         */
-        popup(rect?: Rect2i /* = new Rect2i(0, 0, 0, 0) */): void
-        
-        /** Popups the [Window] with a position shifted by parent [Window]'s position. If the [Window] is embedded, has the same effect as [method popup]. */
-        popup_on_parent(parent_rect: Rect2i): void
-        
-        /** Popups the [Window] at the center of the current screen, with optionally given minimum size. If the [Window] is embedded, it will be centered in the parent [Viewport] instead.  
-         *      
-         *  **Note:** Calling it with the default value of [param minsize] is equivalent to calling it with [member size].  
-         */
-        popup_centered(minsize?: Vector2i /* = Vector2i.ZERO */): void
-        
-        /** If [Window] is embedded, popups the [Window] centered inside its embedder and sets its size as a [param ratio] of embedder's size.  
-         *  If [Window] is a native window, popups the [Window] centered inside the screen of its parent [Window] and sets its size as a [param ratio] of the screen size.  
-         */
-        popup_centered_ratio(ratio?: float64 /* = 0.8 */): void
-        
-        /** Popups the [Window] centered inside its parent [Window]. [param fallback_ratio] determines the maximum size of the [Window], in relation to its parent.  
-         *      
-         *  **Note:** Calling it with the default value of [param minsize] is equivalent to calling it with [member size].  
-         */
-        popup_centered_clamped(minsize?: Vector2i /* = Vector2i.ZERO */, fallback_ratio?: float64 /* = 0.75 */): void
-        
-        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup] on it. The dialog must have no current parent, otherwise the method fails.  
-         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
-         */
-        popup_exclusive(from_node: Node, rect?: Rect2i /* = new Rect2i(0, 0, 0, 0) */): void
-        
-        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup_on_parent] on it. The dialog must have no current parent, otherwise the method fails.  
-         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
-         */
-        popup_exclusive_on_parent(from_node: Node, parent_rect: Rect2i): void
-        
-        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup_centered] on it. The dialog must have no current parent, otherwise the method fails.  
-         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
-         */
-        popup_exclusive_centered(from_node: Node, minsize?: Vector2i /* = Vector2i.ZERO */): void
-        
-        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup_centered_ratio] on it. The dialog must have no current parent, otherwise the method fails.  
-         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
-         */
-        popup_exclusive_centered_ratio(from_node: Node, ratio?: float64 /* = 0.8 */): void
-        
-        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup_centered_clamped] on it. The dialog must have no current parent, otherwise the method fails.  
-         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
-         */
-        popup_exclusive_centered_clamped(from_node: Node, minsize?: Vector2i /* = Vector2i.ZERO */, fallback_ratio?: float64 /* = 0.75 */): void
-        
-        /** Set's the window's current mode.  
-         *      
-         *  **Note:** Fullscreen mode is not exclusive full screen on Windows and Linux.  
-         *      
-         *  **Note:** This method only works with native windows, i.e. the main window and [Window]-derived nodes when [member Viewport.gui_embed_subwindows] is disabled in the main viewport.  
-         */
-        get mode(): int64
-        set mode(value: int64)
-        
-        /** The window's title. If the [Window] is native, title styles set in [Theme] will have no effect. */
-        get title(): string
-        set title(value: string)
-        
-        /** Specifies the initial type of position for the [Window]. */
-        get initial_position(): int64
-        set initial_position(value: int64)
-        
-        /** The window's position in pixels.  
-         *  If [member ProjectSettings.display/window/subwindows/embed_subwindows] is `false`, the position is in absolute screen coordinates. This typically applies to editor plugins. If the setting is `true`, the window's position is in the coordinates of its parent [Viewport].  
-         *      
-         *  **Note:** This property only works if [member initial_position] is set to [constant WINDOW_INITIAL_POSITION_ABSOLUTE].  
-         */
-        get position(): Vector2i
-        set position(value: Vector2i)
-        
-        /** The window's size in pixels. See also [member content_scale_size], which doesn't set the window's physical size but affects how scaling works relative to the current [member content_scale_mode]. */
-        get size(): Vector2i
-        set size(value: Vector2i)
-        
-        /** The screen the window is currently on. */
-        get current_screen(): int64
-        set current_screen(value: int64)
-        
-        /** If set, defines the window's custom decoration area which will receive mouse input, even if normal input to the window is blocked (such as when it has an exclusive child opened). See also [signal nonclient_window_input]. */
-        get nonclient_area(): Rect2i
-        set nonclient_area(value: Rect2i)
-        
-        /** Sets a polygonal region of the window which accepts mouse events. Mouse events outside the region will be passed through.  
-         *  Passing an empty array will disable passthrough support (all mouse events will be intercepted by the window, which is the default behavior).  
-         *    
-         *      
-         *  **Note:** This property is ignored if [member mouse_passthrough] is set to `true`.  
-         *      
-         *  **Note:** On Windows, the portion of a window that lies outside the region is not drawn, while on Linux (X11) and macOS it is.  
-         *      
-         *  **Note:** This property is implemented on Linux (X11), macOS and Windows.  
-         */
-        get mouse_passthrough_polygon(): PackedVector2Array
-        set mouse_passthrough_polygon(value: PackedVector2Array | Vector2[])
-        
-        /** If `true`, the window is visible. */
-        get visible(): boolean
-        set visible(value: boolean)
-        
-        /** If `true`, the window's size will automatically update when a child node is added or removed, ignoring [member min_size] if the new size is bigger.  
-         *  If `false`, you need to call [method child_controls_changed] manually.  
-         */
-        get wrap_controls(): boolean
-        set wrap_controls(value: boolean)
-        
-        /** If `true`, the [Window] is transient, i.e. it's considered a child of another [Window]. The transient window will be destroyed with its transient parent and will return focus to their parent when closed. The transient window is displayed on top of a non-exclusive full-screen parent window. Transient windows can't enter full-screen mode.  
-         *  Note that behavior might be different depending on the platform.  
-         */
-        get transient(): boolean
-        set transient(value: boolean)
-        
-        /** If `true`, and the [Window] is [member transient], this window will (at the time of becoming visible) become transient to the currently focused window instead of the immediate parent window in the hierarchy. Note that the transient parent is assigned at the time this window becomes visible, so changing it afterwards has no effect until re-shown. */
-        get transient_to_focused(): boolean
-        set transient_to_focused(value: boolean)
-        
-        /** If `true`, the [Window] will be in exclusive mode. Exclusive windows are always on top of their parent and will block all input going to the parent [Window].  
-         *  Needs [member transient] enabled to work.  
-         */
-        get exclusive(): boolean
-        set exclusive(value: boolean)
-        
-        /** If `true`, the window can't be resized. */
-        get unresizable(): boolean
-        set unresizable(value: boolean)
-        
-        /** If `true`, the window will have no borders. */
-        get borderless(): boolean
-        set borderless(value: boolean)
-        
-        /** If `true`, the window will be on top of all other windows. Does not work if [member transient] is enabled. */
-        get always_on_top(): boolean
-        set always_on_top(value: boolean)
-        
-        /** If `true`, the [Window]'s background can be transparent. This is best used with embedded windows.  
-         *      
-         *  **Note:** Transparency support is implemented on Linux, macOS and Windows, but availability might vary depending on GPU driver, display manager, and compositor capabilities.  
-         *      
-         *  **Note:** This property has no effect if [member ProjectSettings.display/window/per_pixel_transparency/allowed] is set to `false`.  
-         */
-        get transparent(): boolean
-        set transparent(value: boolean)
-        
-        /** If `true`, the [Window] can't be focused nor interacted with. It can still be visible. */
-        get unfocusable(): boolean
-        set unfocusable(value: boolean)
-        
-        /** If `true`, the [Window] will be considered a popup. Popups are sub-windows that don't show as separate windows in system's window manager's window list and will send close request when anything is clicked outside of them (unless [member exclusive] is enabled). */
-        get popup_window(): boolean
-        set popup_window(value: boolean)
-        
-        /** If `true`, the [Window] contents is expanded to the full size of the window, window title bar is transparent.  
-         *      
-         *  **Note:** This property is implemented only on macOS.  
-         *      
-         *  **Note:** This property only works with native windows.  
-         */
-        get extend_to_title(): boolean
-        set extend_to_title(value: boolean)
-        
-        /** If `true`, all mouse events will be passed to the underlying window of the same application. See also [member mouse_passthrough_polygon].  
-         *      
-         *  **Note:** This property is implemented on Linux (X11), macOS and Windows.  
-         *      
-         *  **Note:** This property only works with native windows.  
-         */
-        get mouse_passthrough(): boolean
-        set mouse_passthrough(value: boolean)
-        
-        /** If `true`, the [Window] will override the OS window style to display sharp corners.  
-         *      
-         *  **Note:** This property is implemented only on Windows (11).  
-         *      
-         *  **Note:** This property only works with native windows.  
-         */
-        get sharp_corners(): boolean
-        set sharp_corners(value: boolean)
-        
-        /** If `true`, the [Window] is excluded from screenshots taken by [method DisplayServer.screen_get_image], [method DisplayServer.screen_get_image_rect], and [method DisplayServer.screen_get_pixel].  
-         *      
-         *  **Note:** This property is implemented on macOS and Windows.  
-         *      
-         *  **Note:** Enabling this setting will prevent standard screenshot methods from capturing a window image, but does **NOT** guarantee that other apps won't be able to capture an image. It should not be used as a DRM or security measure.  
-         */
-        get exclude_from_capture(): boolean
-        set exclude_from_capture(value: boolean)
-        
-        /** If `true`, the [Window] will signal to the window manager that it is supposed to be an implementation-defined "popup" (usually a floating, borderless, untileable and immovable child window). */
-        get popup_wm_hint(): boolean
-        set popup_wm_hint(value: boolean)
-        
-        /** If `true`, the [Window]'s minimize button is disabled.  
-         *      
-         *  **Note:** If both minimize and maximize buttons are disabled, buttons are fully hidden, and only close button is visible.  
-         *      
-         *  **Note:** This property is implemented only on macOS and Windows.  
-         */
-        get minimize_disabled(): boolean
-        set minimize_disabled(value: boolean)
-        
-        /** If `true`, the [Window]'s maximize button is disabled.  
-         *      
-         *  **Note:** If both minimize and maximize buttons are disabled, buttons are fully hidden, and only close button is visible.  
-         *      
-         *  **Note:** This property is implemented only on macOS and Windows.  
-         */
-        get maximize_disabled(): boolean
-        set maximize_disabled(value: boolean)
-        
-        /** If `true`, native window will be used regardless of parent viewport and project settings. */
-        get force_native(): boolean
-        set force_native(value: boolean)
-        
-        /** If non-zero, the [Window] can't be resized to be smaller than this size.  
-         *      
-         *  **Note:** This property will be ignored in favor of [method get_contents_minimum_size] if [member wrap_controls] is enabled and if its size is bigger.  
-         */
-        get min_size(): Vector2i
-        set min_size(value: Vector2i)
-        
-        /** If non-zero, the [Window] can't be resized to be bigger than this size.  
-         *      
-         *  **Note:** This property will be ignored if the value is lower than [member min_size].  
-         */
-        get max_size(): Vector2i
-        set max_size(value: Vector2i)
-        
-        /** If `true`, the [Window] width is expanded to keep the title bar text fully visible. */
-        get keep_title_visible(): boolean
-        set keep_title_visible(value: boolean)
-        
-        /** The content's base size in "virtual" pixels. Not to be confused with [member size], which sets the actual window's physical size in pixels. If set to a value greater than `0` and [member content_scale_mode] is set to a value other than [constant CONTENT_SCALE_MODE_DISABLED], the [Window]'s content will be scaled when the window is resized to a different size. Higher values will make the content appear  *smaller* , as it will be able to fit more of the project in view. On the root [Window], this is set to match [member ProjectSettings.display/window/size/viewport_width] and [member ProjectSettings.display/window/size/viewport_height] by default.  
-         *  For example, when using [constant CONTENT_SCALE_MODE_CANVAS_ITEMS] and [member content_scale_size] set to `Vector2i(1280, 720)`, using a window size of `2560×1440` will make 2D elements appear at double their original size, as the content is scaled by a factor of `2.0` (`2560.0 / 1280.0 = 2.0`, `1440.0 / 720.0 = 2.0`).  
-         *  See [url=https://docs.godotengine.org/en/4.6/tutorials/rendering/multiple_resolutions.html#base-size]the Base size section of the Multiple resolutions documentation[/url] for details.  
-         */
-        get content_scale_size(): Vector2i
-        set content_scale_size(value: Vector2i)
-        
-        /** Specifies how the content is scaled when the [Window] is resized. */
-        get content_scale_mode(): int64
-        set content_scale_mode(value: int64)
-        
-        /** Specifies how the content's aspect behaves when the [Window] is resized. The base aspect is determined by [member content_scale_size]. */
-        get content_scale_aspect(): int64
-        set content_scale_aspect(value: int64)
-        
-        /** The policy to use to determine the final scale factor for 2D elements. This affects how [member content_scale_factor] is applied, in addition to the automatic scale factor determined by [member content_scale_size]. */
-        get content_scale_stretch(): int64
-        set content_scale_stretch(value: int64)
-        
-        /** Specifies the base scale of [Window]'s content when its [member size] is equal to [member content_scale_size]. See also [method Viewport.get_stretch_transform]. */
-        get content_scale_factor(): float64
-        set content_scale_factor(value: float64)
-        
-        /** Toggles if any text should automatically change to its translated version depending on the current locale. */
-        get auto_translate(): boolean
-        set auto_translate(value: boolean)
-        
-        /** The human-readable node name that is reported to assistive apps. */
-        get accessibility_name(): string
-        set accessibility_name(value: string)
-        
-        /** The human-readable node description that is reported to assistive apps. */
-        get accessibility_description(): string
-        set accessibility_description(value: string)
-        
-        /** The [Theme] resource this node and all its [Control] and [Window] children use. If a child node has its own [Theme] resource set, theme items are merged with child's definitions having higher priority.  
-         *      
-         *  **Note:** [Window] styles will have no effect unless the window is embedded.  
-         */
-        get theme(): null | Theme
-        set theme(value: null | Theme)
-        
-        /** The name of a theme type variation used by this [Window] to look up its own theme items. See [member Control.theme_type_variation] for more details. */
-        get theme_type_variation(): string
-        set theme_type_variation(value: string)
-        
-        /** Emitted when the [Window] is currently focused and receives any input, passing the received event as an argument. The event's position, if present, is in the embedder's coordinate system. */
-        readonly window_input: Signal<(event: InputEvent) => void>
-        
-        /** Emitted when the mouse event is received by the custom decoration area defined by [member nonclient_area], and normal input to the window is blocked (such as when it has an exclusive child opened). [param event]'s position is in the embedder's coordinate system. */
-        readonly nonclient_window_input: Signal<(event: InputEvent) => void>
-        
-        /** Emitted when files are dragged from the OS file manager and dropped in the game window. The argument is a list of file paths.  
-         *    
-         *      
-         *  **Note:** This signal only works with native windows, i.e. the main window and [Window]-derived nodes when [member Viewport.gui_embed_subwindows] is disabled in the main viewport.  
-         */
-        readonly files_dropped: Signal<(files: PackedStringArray) => void>
-        
-        /** Emitted when the mouse cursor enters the [Window]'s visible area, that is not occluded behind other [Control]s or windows, provided its [member Viewport.gui_disable_input] is `false` and regardless if it's currently focused or not. */
-        readonly mouse_entered: Signal<() => void>
-        
-        /** Emitted when the mouse cursor leaves the [Window]'s visible area, that is not occluded behind other [Control]s or windows, provided its [member Viewport.gui_disable_input] is `false` and regardless if it's currently focused or not. */
-        readonly mouse_exited: Signal<() => void>
-        
-        /** Emitted when the [Window] gains focus. */
-        readonly focus_entered: Signal<() => void>
-        
-        /** Emitted when the [Window] loses its focus. */
-        readonly focus_exited: Signal<() => void>
-        
-        /** Emitted when the [Window]'s close button is pressed or when [member popup_window] is enabled and user clicks outside the window.  
-         *  This signal can be used to handle window closing, e.g. by connecting it to [method hide].  
-         */
-        readonly close_requested: Signal<() => void>
-        
-        /** Emitted when a go back request is sent (e.g. pressing the "Back" button on Android), right after [constant Node.NOTIFICATION_WM_GO_BACK_REQUEST]. */
-        readonly go_back_requested: Signal<() => void>
-        
-        /** Emitted when [Window] is made visible or disappears. */
-        readonly visibility_changed: Signal<() => void>
-        
-        /** Emitted right after [method popup] call, before the [Window] appears or does anything. */
-        readonly about_to_popup: Signal<() => void>
-        
-        /** Emitted when the [constant NOTIFICATION_THEME_CHANGED] notification is sent. */
-        readonly theme_changed: Signal<() => void>
-        
-        /** Emitted when the [Window]'s DPI changes as a result of OS-level changes (e.g. moving the window from a Retina display to a lower resolution one).  
-         *      
-         *  **Note:** Only implemented on macOS and Linux (Wayland).  
-         */
-        readonly dpi_changed: Signal<() => void>
-        
-        /** Emitted when window title bar decorations are changed, e.g. macOS window enter/exit full screen mode, or extend-to-title flag is changed. */
-        readonly titlebar_changed: Signal<() => void>
-        
-        /** Emitted when window title bar text is changed. */
-        readonly title_changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWindow;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWindow;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWorld2D extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWorld2D extends __NameMapResource {
-    }
-    /** A resource that holds all components of a 2D world, such as a canvas and a physics space.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_world2d.html  
-     */
-    class World2D extends Resource {
-        constructor(identifier?: any)
-        /** The [RID] of this world's canvas resource. Used by the [RenderingServer] for 2D drawing. */
-        get canvas(): RID
-        
-        /** The [RID] of this world's navigation map. Used by the [NavigationServer2D]. */
-        get navigation_map(): RID
-        
-        /** The [RID] of this world's physics space resource. Used by the [PhysicsServer2D] for 2D physics, treating it as both a space and an area. */
-        get space(): RID
-        
-        /** Direct access to the world's physics 2D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to [method Node._physics_process] in the main thread. */
-        get direct_space_state(): null | PhysicsDirectSpaceState2D
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWorld2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWorld2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWorld3D extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWorld3D extends __NameMapResource {
-    }
-    /** A resource that holds all components of a 3D world, such as a visual scenario and a physics space.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_world3d.html  
-     */
-    class World3D extends Resource {
-        constructor(identifier?: any)
-        /** The World3D's [Environment]. */
-        get environment(): null | Environment
-        set environment(value: null | Environment)
-        
-        /** The World3D's fallback environment will be used if [member environment] fails or is missing. */
-        get fallback_environment(): null | Environment
-        set fallback_environment(value: null | Environment)
-        
-        /** The default [CameraAttributes] resource to use if none set on the [Camera3D]. */
-        get camera_attributes(): null | CameraAttributesPractical | CameraAttributesPhysical
-        set camera_attributes(value: null | CameraAttributesPractical | CameraAttributesPhysical)
-        
-        /** The World3D's physics space. */
-        get space(): RID
-        
-        /** The [RID] of this world's navigation map. Used by the [NavigationServer3D]. */
-        get navigation_map(): RID
-        
-        /** The World3D's visual scenario. */
-        get scenario(): RID
-        
-        /** Direct access to the world's physics 3D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to [method Node._physics_process] in the main thread. */
-        get direct_space_state(): null | PhysicsDirectSpaceState3D
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWorld3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWorld3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWorldBoundaryShape2D extends __RPCMapShape2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWorldBoundaryShape2D extends __NameMapShape2D {
-    }
-    /** A 2D world boundary (half-plane) shape used for physics collision.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_worldboundaryshape2d.html  
-     */
-    class WorldBoundaryShape2D extends Shape2D {
-        constructor(identifier?: any)
-        /** The line's normal, typically a unit vector. Its direction indicates the non-colliding half-plane. Can be of any length but zero. Defaults to [constant Vector2.UP]. */
-        get normal(): Vector2
-        set normal(value: Vector2)
-        
-        /** The distance from the origin to the line, expressed in terms of [member normal] (according to its direction and magnitude). Actual absolute distance from the origin to the line can be calculated as `abs(distance) / normal.length()`.  
-         *  In the scalar equation of the line `ax + by = d`, this is `d`, while the `(a, b)` coordinates are represented by the [member normal] property.  
-         */
-        get distance(): float64
-        set distance(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWorldBoundaryShape2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWorldBoundaryShape2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWorldBoundaryShape3D extends __RPCMapShape3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWorldBoundaryShape3D extends __NameMapShape3D {
-    }
-    /** A 3D world boundary (half-space) shape used for physics collision.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_worldboundaryshape3d.html  
-     */
-    class WorldBoundaryShape3D extends Shape3D {
-        constructor(identifier?: any)
-        /** The [Plane] used by the [WorldBoundaryShape3D] for collision. */
-        get plane(): Plane
-        set plane(value: Plane)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWorldBoundaryShape3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWorldBoundaryShape3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWorldEnvironment extends __RPCMapNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapWorldEnvironment extends __NameMapNode {
-    }
-    /** Default environment properties for the entire scene (post-processing effects, lighting and background settings).  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_worldenvironment.html  
-     */
-    class WorldEnvironment<Map extends NodePathMap = any> extends Node<Map> {
-        constructor(identifier?: any)
-        /** The [Environment] resource used by this [WorldEnvironment], defining the default properties. */
-        get environment(): null | Environment
-        set environment(value: null | Environment)
-        
-        /** The default [CameraAttributes] resource to use if none set on the [Camera3D]. */
-        get camera_attributes(): null | CameraAttributesPractical | CameraAttributesPhysical
-        set camera_attributes(value: null | CameraAttributesPractical | CameraAttributesPhysical)
-        
-        /** The default [Compositor] resource to use if none set on the [Camera3D]. */
-        get compositor(): null | Compositor
-        set compositor(value: null | Compositor)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWorldEnvironment;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapWorldEnvironment;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapX509Certificate extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapX509Certificate extends __NameMapResource {
-    }
-    /** An X509 certificate (e.g. for TLS).  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_x509certificate.html  
-     */
-    class X509Certificate extends Resource {
-        constructor(identifier?: any)
-        /** Saves a certificate to the given [param path] (should be a "*.crt" file). */
-        save(path: string): Error
-        
-        /** Loads a certificate from [param path] ("*.crt" file). */
-        load(path: string): Error
-        
-        /** Returns a string representation of the certificate, or an empty string if the certificate is invalid. */
-        save_to_string(): string
-        
-        /** Loads a certificate from the given [param string]. */
-        load_from_string(string_: string): Error
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapX509Certificate;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapX509Certificate;
-    }
-    namespace XMLParser {
-        enum NodeType {
-            /** There's no node (no file or buffer opened). */
-            NODE_NONE = 0,
-            
-            /** An element node type, also known as a tag, e.g. `<title>`. */
-            NODE_ELEMENT = 1,
-            
-            /** An end of element node type, e.g. `</title>`. */
-            NODE_ELEMENT_END = 2,
-            
-            /** A text node type, i.e. text that is not inside an element. This includes whitespace. */
-            NODE_TEXT = 3,
-            
-            /** A comment node type, e.g. `<!--A comment-->`. */
-            NODE_COMMENT = 4,
-            
-            /** A node type for CDATA (Character Data) sections, e.g. `<![CDATA[CDATA section]]>`. */
-            NODE_CDATA = 5,
-            
-            /** An unknown node type. */
-            NODE_UNKNOWN = 6,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXMLParser extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapXMLParser extends __NameMapRefCounted {
-    }
-    /** Provides a low-level interface for creating parsers for XML files.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_xmlparser.html  
-     */
-    class XMLParser extends RefCounted {
-        constructor(identifier?: any)
-        /** Parses the next node in the file. This method returns an error code. */
-        read(): Error
-        
-        /** Returns the type of the current node. Compare with [enum NodeType] constants. */
-        get_node_type(): XMLParser.NodeType
-        
-        /** Returns the name of a node. This method will raise an error if the currently parsed node is a text node.  
-         *      
-         *  **Note:** The content of a [constant NODE_CDATA] node and the comment string of a [constant NODE_COMMENT] node are also considered names.  
-         */
-        get_node_name(): string
-        
-        /** Returns the contents of a text node. This method will raise an error if the current parsed node is of any other type. */
-        get_node_data(): string
-        
-        /** Returns the byte offset of the currently parsed node since the beginning of the file or buffer. This is usually equivalent to the number of characters before the read position. */
-        get_node_offset(): int64
-        
-        /** Returns the number of attributes in the currently parsed element.  
-         *      
-         *  **Note:** If this method is used while the currently parsed node is not [constant NODE_ELEMENT] or [constant NODE_ELEMENT_END], this count will not be updated and will still reflect the last element.  
-         */
-        get_attribute_count(): int64
-        
-        /** Returns the name of an attribute of the currently parsed element, specified by the [param idx] index. */
-        get_attribute_name(idx: int64): string
-        
-        /** Returns the value of an attribute of the currently parsed element, specified by the [param idx] index. */
-        get_attribute_value(idx: int64): string
-        
-        /** Returns `true` if the currently parsed element has an attribute with the [param name]. */
-        has_attribute(name: string): boolean
-        
-        /** Returns the value of an attribute of the currently parsed element, specified by its [param name]. This method will raise an error if the element has no such attribute. */
-        get_named_attribute_value(name: string): string
-        
-        /** Returns the value of an attribute of the currently parsed element, specified by its [param name]. This method will return an empty string if the element has no such attribute. */
-        get_named_attribute_value_safe(name: string): string
-        
-        /** Returns `true` if the currently parsed element is empty, e.g. `<element />`. */
-        is_empty(): boolean
-        
-        /** Returns the current line in the parsed file, counting from 0. */
-        get_current_line(): int64
-        
-        /** Skips the current section. If the currently parsed node contains more inner nodes, they will be ignored and the cursor will go to the closing of the current element. */
-        skip_section(): void
-        
-        /** Moves the buffer cursor to a certain offset (since the beginning) and reads the next node there. This method returns an error code. */
-        seek(position: int64): Error
-        
-        /** Opens an XML [param file] for parsing. This method returns an error code. */
-        open(file: string): Error
-        
-        /** Opens an XML raw [param buffer] for parsing. This method returns an error code. */
-        open_buffer(buffer: PackedByteArray | byte[] | ArrayBuffer): Error
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXMLParser;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapXMLParser;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRAnchor3D extends __RPCMapXRNode3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapXRAnchor3D extends __NameMapXRNode3D {
-    }
-    /** An anchor point in AR space.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_xranchor3d.html  
-     */
-    class XRAnchor3D<Map extends NodePathMap = any> extends XRNode3D<Map> {
-        constructor(identifier?: any)
-        /** Returns the estimated size of the plane that was detected. Say when the anchor relates to a table in the real world, this is the estimated size of the surface of that table. */
-        get_size(): Vector3
-        
-        /** Returns a plane aligned with our anchor; handy for intersection testing. */
-        get_plane(): Plane
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRAnchor3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapXRAnchor3D;
-    }
-    namespace XRBodyModifier3D {
-        enum BodyUpdate {
-            /** The skeleton's upper body joints are updated. */
-            BODY_UPDATE_UPPER_BODY = 1,
-            
-            /** The skeleton's lower body joints are updated. */
-            BODY_UPDATE_LOWER_BODY = 2,
-            
-            /** The skeleton's hand joints are updated. */
-            BODY_UPDATE_HANDS = 4,
-        }
-        enum BoneUpdate {
-            /** The skeleton's bones are fully updated (both position and rotation) to match the tracked bones. */
-            BONE_UPDATE_FULL = 0,
-            
-            /** The skeleton's bones are only rotated to align with the tracked bones, preserving bone length. */
-            BONE_UPDATE_ROTATION_ONLY = 1,
-            
-            /** Represents the size of the [enum BoneUpdate] enum. */
-            BONE_UPDATE_MAX = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRBodyModifier3D extends __RPCMapSkeletonModifier3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapXRBodyModifier3D extends __NameMapSkeletonModifier3D {
-    }
-    /** A node for driving body meshes from [XRBodyTracker] data.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrbodymodifier3d.html  
-     */
-    class XRBodyModifier3D<Map extends NodePathMap = any> extends SkeletonModifier3D<Map> {
-        constructor(identifier?: any)
-        /** The name of the [XRBodyTracker] registered with [XRServer] to obtain the body tracking data from. */
-        get body_tracker(): string
-        set body_tracker(value: string)
-        
-        /** Specifies the body parts to update. */
-        get body_update(): int64
-        set body_update(value: int64)
-        
-        /** Specifies the type of updates to perform on the bones. */
-        get bone_update(): int64
-        set bone_update(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRBodyModifier3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapXRBodyModifier3D;
-    }
-    namespace XRBodyTracker {
-        enum BodyFlags {
-            /** Upper body tracking supported. */
-            BODY_FLAG_UPPER_BODY_SUPPORTED = 1,
-            
-            /** Lower body tracking supported. */
-            BODY_FLAG_LOWER_BODY_SUPPORTED = 2,
-            
-            /** Hand tracking supported. */
-            BODY_FLAG_HANDS_SUPPORTED = 4,
-        }
-        enum Joint {
-            /** Root joint. */
-            JOINT_ROOT = 0,
-            
-            /** Hips joint. */
-            JOINT_HIPS = 1,
-            
-            /** Spine joint. */
-            JOINT_SPINE = 2,
-            
-            /** Chest joint. */
-            JOINT_CHEST = 3,
-            
-            /** Upper chest joint. */
-            JOINT_UPPER_CHEST = 4,
-            
-            /** Neck joint. */
-            JOINT_NECK = 5,
-            
-            /** Head joint. */
-            JOINT_HEAD = 6,
-            
-            /** Head tip joint. */
-            JOINT_HEAD_TIP = 7,
-            
-            /** Left shoulder joint. */
-            JOINT_LEFT_SHOULDER = 8,
-            
-            /** Left upper arm joint. */
-            JOINT_LEFT_UPPER_ARM = 9,
-            
-            /** Left lower arm joint. */
-            JOINT_LEFT_LOWER_ARM = 10,
-            
-            /** Right shoulder joint. */
-            JOINT_RIGHT_SHOULDER = 11,
-            
-            /** Right upper arm joint. */
-            JOINT_RIGHT_UPPER_ARM = 12,
-            
-            /** Right lower arm joint. */
-            JOINT_RIGHT_LOWER_ARM = 13,
-            
-            /** Left upper leg joint. */
-            JOINT_LEFT_UPPER_LEG = 14,
-            
-            /** Left lower leg joint. */
-            JOINT_LEFT_LOWER_LEG = 15,
-            
-            /** Left foot joint. */
-            JOINT_LEFT_FOOT = 16,
-            
-            /** Left toes joint. */
-            JOINT_LEFT_TOES = 17,
-            
-            /** Right upper leg joint. */
-            JOINT_RIGHT_UPPER_LEG = 18,
-            
-            /** Right lower leg joint. */
-            JOINT_RIGHT_LOWER_LEG = 19,
-            
-            /** Right foot joint. */
-            JOINT_RIGHT_FOOT = 20,
-            
-            /** Right toes joint. */
-            JOINT_RIGHT_TOES = 21,
-            
-            /** Left hand joint. */
-            JOINT_LEFT_HAND = 22,
-            
-            /** Left palm joint. */
-            JOINT_LEFT_PALM = 23,
-            
-            /** Left wrist joint. */
-            JOINT_LEFT_WRIST = 24,
-            
-            /** Left thumb metacarpal joint. */
-            JOINT_LEFT_THUMB_METACARPAL = 25,
-            
-            /** Left thumb phalanx proximal joint. */
-            JOINT_LEFT_THUMB_PHALANX_PROXIMAL = 26,
-            
-            /** Left thumb phalanx distal joint. */
-            JOINT_LEFT_THUMB_PHALANX_DISTAL = 27,
-            
-            /** Left thumb tip joint. */
-            JOINT_LEFT_THUMB_TIP = 28,
-            
-            /** Left index finger metacarpal joint. */
-            JOINT_LEFT_INDEX_FINGER_METACARPAL = 29,
-            
-            /** Left index finger phalanx proximal joint. */
-            JOINT_LEFT_INDEX_FINGER_PHALANX_PROXIMAL = 30,
-            
-            /** Left index finger phalanx intermediate joint. */
-            JOINT_LEFT_INDEX_FINGER_PHALANX_INTERMEDIATE = 31,
-            
-            /** Left index finger phalanx distal joint. */
-            JOINT_LEFT_INDEX_FINGER_PHALANX_DISTAL = 32,
-            
-            /** Left index finger tip joint. */
-            JOINT_LEFT_INDEX_FINGER_TIP = 33,
-            
-            /** Left middle finger metacarpal joint. */
-            JOINT_LEFT_MIDDLE_FINGER_METACARPAL = 34,
-            
-            /** Left middle finger phalanx proximal joint. */
-            JOINT_LEFT_MIDDLE_FINGER_PHALANX_PROXIMAL = 35,
-            
-            /** Left middle finger phalanx intermediate joint. */
-            JOINT_LEFT_MIDDLE_FINGER_PHALANX_INTERMEDIATE = 36,
-            
-            /** Left middle finger phalanx distal joint. */
-            JOINT_LEFT_MIDDLE_FINGER_PHALANX_DISTAL = 37,
-            
-            /** Left middle finger tip joint. */
-            JOINT_LEFT_MIDDLE_FINGER_TIP = 38,
-            
-            /** Left ring finger metacarpal joint. */
-            JOINT_LEFT_RING_FINGER_METACARPAL = 39,
-            
-            /** Left ring finger phalanx proximal joint. */
-            JOINT_LEFT_RING_FINGER_PHALANX_PROXIMAL = 40,
-            
-            /** Left ring finger phalanx intermediate joint. */
-            JOINT_LEFT_RING_FINGER_PHALANX_INTERMEDIATE = 41,
-            
-            /** Left ring finger phalanx distal joint. */
-            JOINT_LEFT_RING_FINGER_PHALANX_DISTAL = 42,
-            
-            /** Left ring finger tip joint. */
-            JOINT_LEFT_RING_FINGER_TIP = 43,
-            
-            /** Left pinky finger metacarpal joint. */
-            JOINT_LEFT_PINKY_FINGER_METACARPAL = 44,
-            
-            /** Left pinky finger phalanx proximal joint. */
-            JOINT_LEFT_PINKY_FINGER_PHALANX_PROXIMAL = 45,
-            
-            /** Left pinky finger phalanx intermediate joint. */
-            JOINT_LEFT_PINKY_FINGER_PHALANX_INTERMEDIATE = 46,
-            
-            /** Left pinky finger phalanx distal joint. */
-            JOINT_LEFT_PINKY_FINGER_PHALANX_DISTAL = 47,
-            
-            /** Left pinky finger tip joint. */
-            JOINT_LEFT_PINKY_FINGER_TIP = 48,
-            
-            /** Right hand joint. */
-            JOINT_RIGHT_HAND = 49,
-            
-            /** Right palm joint. */
-            JOINT_RIGHT_PALM = 50,
-            
-            /** Right wrist joint. */
-            JOINT_RIGHT_WRIST = 51,
-            
-            /** Right thumb metacarpal joint. */
-            JOINT_RIGHT_THUMB_METACARPAL = 52,
-            
-            /** Right thumb phalanx proximal joint. */
-            JOINT_RIGHT_THUMB_PHALANX_PROXIMAL = 53,
-            
-            /** Right thumb phalanx distal joint. */
-            JOINT_RIGHT_THUMB_PHALANX_DISTAL = 54,
-            
-            /** Right thumb tip joint. */
-            JOINT_RIGHT_THUMB_TIP = 55,
-            
-            /** Right index finger metacarpal joint. */
-            JOINT_RIGHT_INDEX_FINGER_METACARPAL = 56,
-            
-            /** Right index finger phalanx proximal joint. */
-            JOINT_RIGHT_INDEX_FINGER_PHALANX_PROXIMAL = 57,
-            
-            /** Right index finger phalanx intermediate joint. */
-            JOINT_RIGHT_INDEX_FINGER_PHALANX_INTERMEDIATE = 58,
-            
-            /** Right index finger phalanx distal joint. */
-            JOINT_RIGHT_INDEX_FINGER_PHALANX_DISTAL = 59,
-            
-            /** Right index finger tip joint. */
-            JOINT_RIGHT_INDEX_FINGER_TIP = 60,
-            
-            /** Right middle finger metacarpal joint. */
-            JOINT_RIGHT_MIDDLE_FINGER_METACARPAL = 61,
-            
-            /** Right middle finger phalanx proximal joint. */
-            JOINT_RIGHT_MIDDLE_FINGER_PHALANX_PROXIMAL = 62,
-            
-            /** Right middle finger phalanx intermediate joint. */
-            JOINT_RIGHT_MIDDLE_FINGER_PHALANX_INTERMEDIATE = 63,
-            
-            /** Right middle finger phalanx distal joint. */
-            JOINT_RIGHT_MIDDLE_FINGER_PHALANX_DISTAL = 64,
-            
-            /** Right middle finger tip joint. */
-            JOINT_RIGHT_MIDDLE_FINGER_TIP = 65,
-            
-            /** Right ring finger metacarpal joint. */
-            JOINT_RIGHT_RING_FINGER_METACARPAL = 66,
-            
-            /** Right ring finger phalanx proximal joint. */
-            JOINT_RIGHT_RING_FINGER_PHALANX_PROXIMAL = 67,
-            
-            /** Right ring finger phalanx intermediate joint. */
-            JOINT_RIGHT_RING_FINGER_PHALANX_INTERMEDIATE = 68,
-            
-            /** Right ring finger phalanx distal joint. */
-            JOINT_RIGHT_RING_FINGER_PHALANX_DISTAL = 69,
-            
-            /** Right ring finger tip joint. */
-            JOINT_RIGHT_RING_FINGER_TIP = 70,
-            
-            /** Right pinky finger metacarpal joint. */
-            JOINT_RIGHT_PINKY_FINGER_METACARPAL = 71,
-            
-            /** Right pinky finger phalanx proximal joint. */
-            JOINT_RIGHT_PINKY_FINGER_PHALANX_PROXIMAL = 72,
-            
-            /** Right pinky finger phalanx intermediate joint. */
-            JOINT_RIGHT_PINKY_FINGER_PHALANX_INTERMEDIATE = 73,
-            
-            /** Right pinky finger phalanx distal joint. */
-            JOINT_RIGHT_PINKY_FINGER_PHALANX_DISTAL = 74,
-            
-            /** Right pinky finger tip joint. */
-            JOINT_RIGHT_PINKY_FINGER_TIP = 75,
-            
-            /** Lower chest joint. */
-            JOINT_LOWER_CHEST = 76,
-            
-            /** Left scapula joint. */
-            JOINT_LEFT_SCAPULA = 77,
-            
-            /** Left wrist twist joint. */
-            JOINT_LEFT_WRIST_TWIST = 78,
-            
-            /** Right scapula joint. */
-            JOINT_RIGHT_SCAPULA = 79,
-            
-            /** Right wrist twist joint. */
-            JOINT_RIGHT_WRIST_TWIST = 80,
-            
-            /** Left foot twist joint. */
-            JOINT_LEFT_FOOT_TWIST = 81,
-            
-            /** Left heel joint. */
-            JOINT_LEFT_HEEL = 82,
-            
-            /** Left middle foot joint. */
-            JOINT_LEFT_MIDDLE_FOOT = 83,
-            
-            /** Right foot twist joint. */
-            JOINT_RIGHT_FOOT_TWIST = 84,
-            
-            /** Right heel joint. */
-            JOINT_RIGHT_HEEL = 85,
-            
-            /** Right middle foot joint. */
-            JOINT_RIGHT_MIDDLE_FOOT = 86,
-            
-            /** Represents the size of the [enum Joint] enum. */
-            JOINT_MAX = 87,
-        }
-        enum JointFlags {
-            /** The joint's orientation data is valid. */
-            JOINT_FLAG_ORIENTATION_VALID = 1,
-            
-            /** The joint's orientation is actively tracked. May not be set if tracking has been temporarily lost. */
-            JOINT_FLAG_ORIENTATION_TRACKED = 2,
-            
-            /** The joint's position data is valid. */
-            JOINT_FLAG_POSITION_VALID = 4,
-            
-            /** The joint's position is actively tracked. May not be set if tracking has been temporarily lost. */
-            JOINT_FLAG_POSITION_TRACKED = 8,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRBodyTracker extends __RPCMapXRPositionalTracker {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapXRBodyTracker extends __NameMapXRPositionalTracker {
-    }
-    /** A tracked body in XR.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrbodytracker.html  
-     */
-    class XRBodyTracker extends XRPositionalTracker {
-        constructor(identifier?: any)
-        /** Sets flags about the validity of the tracking data for the given body joint. */
-        set_joint_flags(joint: XRBodyTracker.Joint, flags: XRBodyTracker.JointFlags): void
-        
-        /** Returns flags about the validity of the tracking data for the given body joint. */
-        get_joint_flags(joint: XRBodyTracker.Joint): XRBodyTracker.JointFlags
-        
-        /** Sets the transform for the given body joint. */
-        set_joint_transform(joint: XRBodyTracker.Joint, transform: Transform3D): void
-        
-        /** Returns the transform for the given body joint. */
-        get_joint_transform(joint: XRBodyTracker.Joint): Transform3D
-        
-        /** If `true`, the body tracking data is valid. */
-        get has_tracking_data(): boolean
-        set has_tracking_data(value: boolean)
-        
-        /** The type of body tracking data captured. */
-        get body_flags(): int64
-        set body_flags(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRBodyTracker;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapXRBodyTracker;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRCamera3D extends __RPCMapCamera3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapXRCamera3D extends __NameMapCamera3D {
-    }
-    /** A camera node with a few overrules for AR/VR applied, such as location tracking.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrcamera3d.html  
-     */
-    class XRCamera3D<Map extends NodePathMap = any> extends Camera3D<Map> {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRCamera3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapXRCamera3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRController3D extends __RPCMapXRNode3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapXRController3D extends __NameMapXRNode3D {
-    }
-    /** A 3D node representing a spatially-tracked controller.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrcontroller3d.html  
-     */
-    class XRController3D<Map extends NodePathMap = any> extends XRNode3D<Map> {
-        constructor(identifier?: any)
-        /** Returns `true` if the button with the given [param name] is pressed.  
-         *      
-         *  **Note:** The current [XRInterface] defines the [param name] for each input. In the case of OpenXR, these are the names of actions in the current action set.  
-         */
-        is_button_pressed(name: StringName): boolean
-        
-        /** Returns a [Variant] for the input with the given [param name]. This works for any input type, the variant will be typed according to the actions configuration.  
-         *      
-         *  **Note:** The current [XRInterface] defines the [param name] for each input. In the case of OpenXR, these are the names of actions in the current action set.  
-         */
-        get_input(name: StringName): any
-        
-        /** Returns a numeric value for the input with the given [param name]. This is used for triggers and grip sensors.  
-         *      
-         *  **Note:** The current [XRInterface] defines the [param name] for each input. In the case of OpenXR, these are the names of actions in the current action set.  
-         */
-        get_float(name: StringName): float64
-        
-        /** Returns a [Vector2] for the input with the given [param name]. This is used for thumbsticks and thumbpads found on many controllers.  
-         *      
-         *  **Note:** The current [XRInterface] defines the [param name] for each input. In the case of OpenXR, these are the names of actions in the current action set.  
-         */
-        get_vector2(name: StringName): Vector2
-        
-        /** Returns the hand holding this controller, if known. */
-        get_tracker_hand(): XRPositionalTracker.TrackerHand
-        
-        /** Emitted when a button on this controller is pressed. */
-        readonly button_pressed: Signal<(name: string) => void>
-        
-        /** Emitted when a button on this controller is released. */
-        readonly button_released: Signal<(name: string) => void>
-        
-        /** Emitted when a trigger or similar input on this controller changes value. */
-        readonly input_float_changed: Signal<(name: string, value: float64) => void>
-        
-        /** Emitted when a thumbstick or thumbpad on this controller is moved. */
-        readonly input_vector2_changed: Signal<(name: string, value: Vector2) => void>
-        
-        /** Emitted when the interaction profile on this controller is changed. */
-        readonly profile_changed: Signal<(role: string) => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRController3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapXRController3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRControllerTracker extends __RPCMapXRPositionalTracker {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapXRControllerTracker extends __NameMapXRPositionalTracker {
-    }
-    /** A tracked controller.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrcontrollertracker.html  
-     */
-    class XRControllerTracker extends XRPositionalTracker {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRControllerTracker;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapXRControllerTracker;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRFaceModifier3D extends __RPCMapNode3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapXRFaceModifier3D extends __NameMapNode3D {
-    }
-    /** A node for driving standard face meshes from [XRFaceTracker] weights.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrfacemodifier3d.html  
-     */
-    class XRFaceModifier3D<Map extends NodePathMap = any> extends Node3D<Map> {
-        constructor(identifier?: any)
-        /** The [XRFaceTracker] path. */
-        get face_tracker(): string
-        set face_tracker(value: string)
-        
-        /** The [NodePath] of the face [MeshInstance3D]. */
-        get target(): NodePath
-        set target(value: NodePath | string)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRFaceModifier3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapXRFaceModifier3D;
-    }
-    namespace XRFaceTracker {
-        enum BlendShapeEntry {
-            /** Right eye looks outwards. */
-            FT_EYE_LOOK_OUT_RIGHT = 0,
-            
-            /** Right eye looks inwards. */
-            FT_EYE_LOOK_IN_RIGHT = 1,
-            
-            /** Right eye looks upwards. */
-            FT_EYE_LOOK_UP_RIGHT = 2,
-            
-            /** Right eye looks downwards. */
-            FT_EYE_LOOK_DOWN_RIGHT = 3,
-            
-            /** Left eye looks outwards. */
-            FT_EYE_LOOK_OUT_LEFT = 4,
-            
-            /** Left eye looks inwards. */
-            FT_EYE_LOOK_IN_LEFT = 5,
-            
-            /** Left eye looks upwards. */
-            FT_EYE_LOOK_UP_LEFT = 6,
-            
-            /** Left eye looks downwards. */
-            FT_EYE_LOOK_DOWN_LEFT = 7,
-            
-            /** Closes the right eyelid. */
-            FT_EYE_CLOSED_RIGHT = 8,
-            
-            /** Closes the left eyelid. */
-            FT_EYE_CLOSED_LEFT = 9,
-            
-            /** Squeezes the right eye socket muscles. */
-            FT_EYE_SQUINT_RIGHT = 10,
-            
-            /** Squeezes the left eye socket muscles. */
-            FT_EYE_SQUINT_LEFT = 11,
-            
-            /** Right eyelid widens beyond relaxed. */
-            FT_EYE_WIDE_RIGHT = 12,
-            
-            /** Left eyelid widens beyond relaxed. */
-            FT_EYE_WIDE_LEFT = 13,
-            
-            /** Dilates the right eye pupil. */
-            FT_EYE_DILATION_RIGHT = 14,
-            
-            /** Dilates the left eye pupil. */
-            FT_EYE_DILATION_LEFT = 15,
-            
-            /** Constricts the right eye pupil. */
-            FT_EYE_CONSTRICT_RIGHT = 16,
-            
-            /** Constricts the left eye pupil. */
-            FT_EYE_CONSTRICT_LEFT = 17,
-            
-            /** Right eyebrow pinches in. */
-            FT_BROW_PINCH_RIGHT = 18,
-            
-            /** Left eyebrow pinches in. */
-            FT_BROW_PINCH_LEFT = 19,
-            
-            /** Outer right eyebrow pulls down. */
-            FT_BROW_LOWERER_RIGHT = 20,
-            
-            /** Outer left eyebrow pulls down. */
-            FT_BROW_LOWERER_LEFT = 21,
-            
-            /** Inner right eyebrow pulls up. */
-            FT_BROW_INNER_UP_RIGHT = 22,
-            
-            /** Inner left eyebrow pulls up. */
-            FT_BROW_INNER_UP_LEFT = 23,
-            
-            /** Outer right eyebrow pulls up. */
-            FT_BROW_OUTER_UP_RIGHT = 24,
-            
-            /** Outer left eyebrow pulls up. */
-            FT_BROW_OUTER_UP_LEFT = 25,
-            
-            /** Right side face sneers. */
-            FT_NOSE_SNEER_RIGHT = 26,
-            
-            /** Left side face sneers. */
-            FT_NOSE_SNEER_LEFT = 27,
-            
-            /** Right side nose canal dilates. */
-            FT_NASAL_DILATION_RIGHT = 28,
-            
-            /** Left side nose canal dilates. */
-            FT_NASAL_DILATION_LEFT = 29,
-            
-            /** Right side nose canal constricts. */
-            FT_NASAL_CONSTRICT_RIGHT = 30,
-            
-            /** Left side nose canal constricts. */
-            FT_NASAL_CONSTRICT_LEFT = 31,
-            
-            /** Raises the right side cheek. */
-            FT_CHEEK_SQUINT_RIGHT = 32,
-            
-            /** Raises the left side cheek. */
-            FT_CHEEK_SQUINT_LEFT = 33,
-            
-            /** Puffs the right side cheek. */
-            FT_CHEEK_PUFF_RIGHT = 34,
-            
-            /** Puffs the left side cheek. */
-            FT_CHEEK_PUFF_LEFT = 35,
-            
-            /** Sucks in the right side cheek. */
-            FT_CHEEK_SUCK_RIGHT = 36,
-            
-            /** Sucks in the left side cheek. */
-            FT_CHEEK_SUCK_LEFT = 37,
-            
-            /** Opens jawbone. */
-            FT_JAW_OPEN = 38,
-            
-            /** Closes the mouth. */
-            FT_MOUTH_CLOSED = 39,
-            
-            /** Pushes jawbone right. */
-            FT_JAW_RIGHT = 40,
-            
-            /** Pushes jawbone left. */
-            FT_JAW_LEFT = 41,
-            
-            /** Pushes jawbone forward. */
-            FT_JAW_FORWARD = 42,
-            
-            /** Pushes jawbone backward. */
-            FT_JAW_BACKWARD = 43,
-            
-            /** Flexes jaw muscles. */
-            FT_JAW_CLENCH = 44,
-            
-            /** Raises the jawbone. */
-            FT_JAW_MANDIBLE_RAISE = 45,
-            
-            /** Upper right lip part tucks in the mouth. */
-            FT_LIP_SUCK_UPPER_RIGHT = 46,
-            
-            /** Upper left lip part tucks in the mouth. */
-            FT_LIP_SUCK_UPPER_LEFT = 47,
-            
-            /** Lower right lip part tucks in the mouth. */
-            FT_LIP_SUCK_LOWER_RIGHT = 48,
-            
-            /** Lower left lip part tucks in the mouth. */
-            FT_LIP_SUCK_LOWER_LEFT = 49,
-            
-            /** Right lip corner folds into the mouth. */
-            FT_LIP_SUCK_CORNER_RIGHT = 50,
-            
-            /** Left lip corner folds into the mouth. */
-            FT_LIP_SUCK_CORNER_LEFT = 51,
-            
-            /** Upper right lip part pushes into a funnel. */
-            FT_LIP_FUNNEL_UPPER_RIGHT = 52,
-            
-            /** Upper left lip part pushes into a funnel. */
-            FT_LIP_FUNNEL_UPPER_LEFT = 53,
-            
-            /** Lower right lip part pushes into a funnel. */
-            FT_LIP_FUNNEL_LOWER_RIGHT = 54,
-            
-            /** Lower left lip part pushes into a funnel. */
-            FT_LIP_FUNNEL_LOWER_LEFT = 55,
-            
-            /** Upper right lip part pushes outwards. */
-            FT_LIP_PUCKER_UPPER_RIGHT = 56,
-            
-            /** Upper left lip part pushes outwards. */
-            FT_LIP_PUCKER_UPPER_LEFT = 57,
-            
-            /** Lower right lip part pushes outwards. */
-            FT_LIP_PUCKER_LOWER_RIGHT = 58,
-            
-            /** Lower left lip part pushes outwards. */
-            FT_LIP_PUCKER_LOWER_LEFT = 59,
-            
-            /** Upper right part of the lip pulls up. */
-            FT_MOUTH_UPPER_UP_RIGHT = 60,
-            
-            /** Upper left part of the lip pulls up. */
-            FT_MOUTH_UPPER_UP_LEFT = 61,
-            
-            /** Lower right part of the lip pulls up. */
-            FT_MOUTH_LOWER_DOWN_RIGHT = 62,
-            
-            /** Lower left part of the lip pulls up. */
-            FT_MOUTH_LOWER_DOWN_LEFT = 63,
-            
-            /** Upper right lip part pushes in the cheek. */
-            FT_MOUTH_UPPER_DEEPEN_RIGHT = 64,
-            
-            /** Upper left lip part pushes in the cheek. */
-            FT_MOUTH_UPPER_DEEPEN_LEFT = 65,
-            
-            /** Moves upper lip right. */
-            FT_MOUTH_UPPER_RIGHT = 66,
-            
-            /** Moves upper lip left. */
-            FT_MOUTH_UPPER_LEFT = 67,
-            
-            /** Moves lower lip right. */
-            FT_MOUTH_LOWER_RIGHT = 68,
-            
-            /** Moves lower lip left. */
-            FT_MOUTH_LOWER_LEFT = 69,
-            
-            /** Right lip corner pulls diagonally up and out. */
-            FT_MOUTH_CORNER_PULL_RIGHT = 70,
-            
-            /** Left lip corner pulls diagonally up and out. */
-            FT_MOUTH_CORNER_PULL_LEFT = 71,
-            
-            /** Right corner lip slants up. */
-            FT_MOUTH_CORNER_SLANT_RIGHT = 72,
-            
-            /** Left corner lip slants up. */
-            FT_MOUTH_CORNER_SLANT_LEFT = 73,
-            
-            /** Right corner lip pulls down. */
-            FT_MOUTH_FROWN_RIGHT = 74,
-            
-            /** Left corner lip pulls down. */
-            FT_MOUTH_FROWN_LEFT = 75,
-            
-            /** Mouth corner lip pulls out and down. */
-            FT_MOUTH_STRETCH_RIGHT = 76,
-            
-            /** Mouth corner lip pulls out and down. */
-            FT_MOUTH_STRETCH_LEFT = 77,
-            
-            /** Right lip corner is pushed backwards. */
-            FT_MOUTH_DIMPLE_RIGHT = 78,
-            
-            /** Left lip corner is pushed backwards. */
-            FT_MOUTH_DIMPLE_LEFT = 79,
-            
-            /** Raises and slightly pushes out the upper mouth. */
-            FT_MOUTH_RAISER_UPPER = 80,
-            
-            /** Raises and slightly pushes out the lower mouth. */
-            FT_MOUTH_RAISER_LOWER = 81,
-            
-            /** Right side lips press and flatten together vertically. */
-            FT_MOUTH_PRESS_RIGHT = 82,
-            
-            /** Left side lips press and flatten together vertically. */
-            FT_MOUTH_PRESS_LEFT = 83,
-            
-            /** Right side lips squeeze together horizontally. */
-            FT_MOUTH_TIGHTENER_RIGHT = 84,
-            
-            /** Left side lips squeeze together horizontally. */
-            FT_MOUTH_TIGHTENER_LEFT = 85,
-            
-            /** Tongue visibly sticks out of the mouth. */
-            FT_TONGUE_OUT = 86,
-            
-            /** Tongue points upwards. */
-            FT_TONGUE_UP = 87,
-            
-            /** Tongue points downwards. */
-            FT_TONGUE_DOWN = 88,
-            
-            /** Tongue points right. */
-            FT_TONGUE_RIGHT = 89,
-            
-            /** Tongue points left. */
-            FT_TONGUE_LEFT = 90,
-            
-            /** Sides of the tongue funnel, creating a roll. */
-            FT_TONGUE_ROLL = 91,
-            
-            /** Tongue arches up then down inside the mouth. */
-            FT_TONGUE_BLEND_DOWN = 92,
-            
-            /** Tongue arches down then up inside the mouth. */
-            FT_TONGUE_CURL_UP = 93,
-            
-            /** Tongue squishes together and thickens. */
-            FT_TONGUE_SQUISH = 94,
-            
-            /** Tongue flattens and thins out. */
-            FT_TONGUE_FLAT = 95,
-            
-            /** Tongue tip rotates clockwise, with the rest following gradually. */
-            FT_TONGUE_TWIST_RIGHT = 96,
-            
-            /** Tongue tip rotates counter-clockwise, with the rest following gradually. */
-            FT_TONGUE_TWIST_LEFT = 97,
-            
-            /** Inner mouth throat closes. */
-            FT_SOFT_PALATE_CLOSE = 98,
-            
-            /** The Adam's apple visibly swallows. */
-            FT_THROAT_SWALLOW = 99,
-            
-            /** Right side neck visibly flexes. */
-            FT_NECK_FLEX_RIGHT = 100,
-            
-            /** Left side neck visibly flexes. */
-            FT_NECK_FLEX_LEFT = 101,
-            
-            /** Closes both eye lids. */
-            FT_EYE_CLOSED = 102,
-            
-            /** Widens both eye lids. */
-            FT_EYE_WIDE = 103,
-            
-            /** Squints both eye lids. */
-            FT_EYE_SQUINT = 104,
-            
-            /** Dilates both pupils. */
-            FT_EYE_DILATION = 105,
-            
-            /** Constricts both pupils. */
-            FT_EYE_CONSTRICT = 106,
-            
-            /** Pulls the right eyebrow down and in. */
-            FT_BROW_DOWN_RIGHT = 107,
-            
-            /** Pulls the left eyebrow down and in. */
-            FT_BROW_DOWN_LEFT = 108,
-            
-            /** Pulls both eyebrows down and in. */
-            FT_BROW_DOWN = 109,
-            
-            /** Right brow appears worried. */
-            FT_BROW_UP_RIGHT = 110,
-            
-            /** Left brow appears worried. */
-            FT_BROW_UP_LEFT = 111,
-            
-            /** Both brows appear worried. */
-            FT_BROW_UP = 112,
-            
-            /** Entire face sneers. */
-            FT_NOSE_SNEER = 113,
-            
-            /** Both nose canals dilate. */
-            FT_NASAL_DILATION = 114,
-            
-            /** Both nose canals constrict. */
-            FT_NASAL_CONSTRICT = 115,
-            
-            /** Puffs both cheeks. */
-            FT_CHEEK_PUFF = 116,
-            
-            /** Sucks in both cheeks. */
-            FT_CHEEK_SUCK = 117,
-            
-            /** Raises both cheeks. */
-            FT_CHEEK_SQUINT = 118,
-            
-            /** Tucks in the upper lips. */
-            FT_LIP_SUCK_UPPER = 119,
-            
-            /** Tucks in the lower lips. */
-            FT_LIP_SUCK_LOWER = 120,
-            
-            /** Tucks in both lips. */
-            FT_LIP_SUCK = 121,
-            
-            /** Funnels in the upper lips. */
-            FT_LIP_FUNNEL_UPPER = 122,
-            
-            /** Funnels in the lower lips. */
-            FT_LIP_FUNNEL_LOWER = 123,
-            
-            /** Funnels in both lips. */
-            FT_LIP_FUNNEL = 124,
-            
-            /** Upper lip part pushes outwards. */
-            FT_LIP_PUCKER_UPPER = 125,
-            
-            /** Lower lip part pushes outwards. */
-            FT_LIP_PUCKER_LOWER = 126,
-            
-            /** Lips push outwards. */
-            FT_LIP_PUCKER = 127,
-            
-            /** Raises the upper lips. */
-            FT_MOUTH_UPPER_UP = 128,
-            
-            /** Lowers the lower lips. */
-            FT_MOUTH_LOWER_DOWN = 129,
-            
-            /** Mouth opens, revealing teeth. */
-            FT_MOUTH_OPEN = 130,
-            
-            /** Moves mouth right. */
-            FT_MOUTH_RIGHT = 131,
-            
-            /** Moves mouth left. */
-            FT_MOUTH_LEFT = 132,
-            
-            /** Right side of the mouth smiles. */
-            FT_MOUTH_SMILE_RIGHT = 133,
-            
-            /** Left side of the mouth smiles. */
-            FT_MOUTH_SMILE_LEFT = 134,
-            
-            /** Mouth expresses a smile. */
-            FT_MOUTH_SMILE = 135,
-            
-            /** Right side of the mouth expresses sadness. */
-            FT_MOUTH_SAD_RIGHT = 136,
-            
-            /** Left side of the mouth expresses sadness. */
-            FT_MOUTH_SAD_LEFT = 137,
-            
-            /** Mouth expresses sadness. */
-            FT_MOUTH_SAD = 138,
-            
-            /** Mouth stretches. */
-            FT_MOUTH_STRETCH = 139,
-            
-            /** Lip corners dimple. */
-            FT_MOUTH_DIMPLE = 140,
-            
-            /** Mouth tightens. */
-            FT_MOUTH_TIGHTENER = 141,
-            
-            /** Mouth presses together. */
-            FT_MOUTH_PRESS = 142,
-            
-            /** Represents the size of the [enum BlendShapeEntry] enum. */
-            FT_MAX = 143,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRFaceTracker extends __RPCMapXRTracker {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapXRFaceTracker extends __NameMapXRTracker {
-    }
-    /** A tracked face.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrfacetracker.html  
-     */
-    class XRFaceTracker extends XRTracker {
-        constructor(identifier?: any)
-        /** Returns the requested face blend shape weight. */
-        get_blend_shape(blend_shape: XRFaceTracker.BlendShapeEntry): float64
-        
-        /** Sets a face blend shape weight. */
-        set_blend_shape(blend_shape: XRFaceTracker.BlendShapeEntry, weight: float64): void
-        
-        /** The array of face blend shape weights with indices corresponding to the [enum BlendShapeEntry] enum. */
-        get blend_shapes(): PackedFloat32Array
-        set blend_shapes(value: PackedFloat32Array | float32[])
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRFaceTracker;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapXRFaceTracker;
-    }
     namespace XRHandModifier3D {
         enum BoneUpdate {
             /** The skeleton's bones are fully updated (both position and rotation) to match the tracked bones. */
@@ -5814,9 +11,6 @@ declare module "godot" {
             /** Represents the size of the [enum BoneUpdate] enum. */
             BONE_UPDATE_MAX = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRHandModifier3D extends __RPCMapSkeletonModifier3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRHandModifier3D extends __NameMapSkeletonModifier3D {
@@ -5834,8 +28,6 @@ declare module "godot" {
         /** Specifies the type of updates to perform on the bones. */
         get bone_update(): int64
         set bone_update(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRHandModifier3D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRHandModifier3D;
     }
@@ -5959,9 +151,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRHandTracker extends __RPCMapXRPositionalTracker {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRHandTracker extends __NameMapXRPositionalTracker {
     }
     /** A tracked hand in XR.  
@@ -6007,8 +196,6 @@ declare module "godot" {
         /** The source of the hand tracking data. */
         get hand_tracking_source(): int64
         set hand_tracking_source(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRHandTracker;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRHandTracker;
     }
@@ -6090,9 +277,6 @@ declare module "godot" {
             /** The texture format is the same as expected by the Vulkan `VK_EXT_fragment_density_map` extension. */
             XR_VRS_TEXTURE_FORMAT_FRAGMENT_DENSITY_MAP = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRInterface extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRInterface extends __NameMapRefCounted {
@@ -6204,12 +388,7 @@ declare module "godot" {
         /** Emitted when the play area is changed. This can be a result of the player resetting the boundary or entering a new play area, the player changing the play area mode, the world scale changing or the player resetting their headset orientation. */
         readonly play_area_changed: Signal<(mode: int64) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRInterface;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRInterface;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRInterfaceExtension extends __RPCMapXRInterface {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRInterfaceExtension extends __NameMapXRInterface {
@@ -6323,12 +502,7 @@ declare module "godot" {
         /** Returns a valid [RID] for a texture to which we should render the current frame if supported by the interface. */
         get_render_target_texture(render_target: RID): RID
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRInterfaceExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRInterfaceExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRNode3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRNode3D extends __NameMapNode3D {
@@ -6376,12 +550,7 @@ declare module "godot" {
         /** Emitted when the [member tracker] starts or stops receiving updated tracking data for the [member pose] being tracked. The [param tracking] argument indicates whether the tracker is getting updated tracking data. */
         readonly tracking_changed: Signal<(tracking: boolean) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRNode3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRNode3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXROrigin3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXROrigin3D extends __NameMapNode3D {
@@ -6400,8 +569,6 @@ declare module "godot" {
         get current(): boolean
         set current(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXROrigin3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXROrigin3D;
     }
     namespace XRPose {
@@ -6415,9 +582,6 @@ declare module "godot" {
             /** Tracking information is considered accurate and up to date. */
             XR_TRACKING_CONFIDENCE_HIGH = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRPose extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRPose extends __NameMapRefCounted {
@@ -6454,8 +618,6 @@ declare module "godot" {
         get tracking_confidence(): int64
         set tracking_confidence(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRPose;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRPose;
     }
     namespace XRPositionalTracker {
@@ -6472,9 +634,6 @@ declare module "godot" {
             /** Represents the size of the [enum TrackerHand] enum. */
             TRACKER_HAND_MAX = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRPositionalTracker extends __RPCMapXRTracker {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRPositionalTracker extends __NameMapXRTracker {
@@ -6532,12 +691,7 @@ declare module "godot" {
         /** Emitted when the profile of our tracker changes. */
         readonly profile_changed: Signal<(role: string) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRPositionalTracker;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRPositionalTracker;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRTracker extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRTracker extends __NameMapRefCounted {
@@ -6559,12 +713,7 @@ declare module "godot" {
         get description(): string
         set description(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRTracker;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRTracker;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRVRS extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRVRS extends __NameMapObject {
@@ -6592,8 +741,6 @@ declare module "godot" {
         get vrs_render_region(): Rect2i
         set vrs_render_region(value: Rect2i)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRVRS;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRVRS;
     }
     namespace ZIPPacker {
@@ -6620,9 +767,6 @@ declare module "godot" {
             /** Start a file with the best Deflate compression level (`9`). This is slow to compress, but results in smaller file sizes than [constant COMPRESSION_DEFAULT]. Decompression speed is generally unaffected by the chosen compression level. */
             COMPRESSION_BEST = 9,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapZIPPacker extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapZIPPacker extends __NameMapRefCounted {
@@ -6660,12 +804,7 @@ declare module "godot" {
         get compression_level(): int64
         set compression_level(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapZIPPacker;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapZIPPacker;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapZIPReader extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapZIPReader extends __NameMapRefCounted {
@@ -6699,8 +838,6 @@ declare module "godot" {
         
         /** Returns the compression level of the file in the loaded zip archive. Returns `-1` if the file doesn't exist or any other error occurs. Must be called after [method open]. */
         get_compression_level(path: string, case_sensitive?: boolean /* = true */): int64
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapZIPReader;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapZIPReader;
     }
@@ -9389,4 +3526,4450 @@ declare module "godot" {
         get ok_hsl_l(): float64
         set ok_hsl_l(value: float64)
     }
+    /** A pre-parsed scene tree path.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_nodepath.html  
+     */
+    class NodePath {
+        constructor()
+        constructor(from: NodePath | string)
+        constructor(from: string)
+        
+        /** Returns `true` if the node path is absolute. Unlike a relative path, an absolute path is represented by a leading slash character (`/`) and always begins from the [SceneTree]. It can be used to reliably access nodes from the root node (e.g. `"/root/Global"` if an autoload named "Global" exists). */
+        is_absolute(): boolean
+        
+        /** Returns the number of node names in the path. Property subnames are not included.  
+         *  For example, `"../RigidBody2D/Sprite2D:texture"` contains 3 node names.  
+         */
+        get_name_count(): int64
+        
+        /** Returns the node name indicated by [param idx], starting from 0. If [param idx] is out of bounds, an error is generated. See also [method get_subname_count] and [method get_name_count].  
+         *    
+         */
+        get_name(idx: int64): StringName
+        
+        /** Returns the number of property names ("subnames") in the path. Each subname in the node path is listed after a colon character (`:`).  
+         *  For example, `"Level/RigidBody2D/Sprite2D:texture:resource_name"` contains 2 subnames.  
+         */
+        get_subname_count(): int64
+        
+        /** Returns the 32-bit hash value representing the node path's contents.  
+         *      
+         *  **Note:** Node paths with equal hash values are  *not*  guaranteed to be the same, as a result of hash collisions. Node paths with different hash values are guaranteed to be different.  
+         */
+        hash(): int64
+        
+        /** Returns the property name indicated by [param idx], starting from 0. If [param idx] is out of bounds, an error is generated. See also [method get_subname_count].  
+         *    
+         */
+        get_subname(idx: int64): StringName
+        
+        /** Returns all node names concatenated with a slash character (`/`) as a single [StringName]. */
+        get_concatenated_names(): StringName
+        
+        /** Returns all property subnames concatenated with a colon character (`:`) as a single [StringName].  
+         *    
+         */
+        get_concatenated_subnames(): StringName
+        
+        /** Returns the slice of the [NodePath], from [param begin] (inclusive) to [param end] (exclusive), as a new [NodePath].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the sum of [method get_name_count] and [method get_subname_count], so the default value for [param end] makes it slice to the end of the [NodePath] by default (i.e. `path.slice(1)` is a shorthand for `path.slice(1, path.get_name_count() + path.get_subname_count())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the [NodePath] (i.e. `path.slice(0, -2)` is a shorthand for `path.slice(0, path.get_name_count() + path.get_subname_count() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): NodePath
+        
+        /** Returns a copy of this node path with a colon character (`:`) prefixed, transforming it to a pure property path with no node names (relative to the current node).  
+         *    
+         */
+        get_as_property_path(): NodePath
+        
+        /** Returns `true` if the node path has been constructed from an empty [String] (`""`). */
+        is_empty(): boolean
+        static EQUAL(left: NodePath | string, right: NodePath | string): boolean
+        static NOT_EQUAL(left: NodePath | string, right: NodePath | string): boolean
+    }
+    /** A handle for a [Resource]'s unique identifier.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_rid.html  
+     */
+    class RID {
+        constructor()
+        constructor(from: RID)
+        
+        /** Returns `true` if the [RID] is not `0`. */
+        is_valid(): boolean
+        
+        /** Returns the ID of the referenced low-level resource. */
+        get_id(): int64
+        static EQUAL(left: RID, right: RID): boolean
+        static NOT_EQUAL(left: RID, right: RID): boolean
+        static LESS(left: RID, right: RID): boolean
+        static LESS_EQUAL(left: RID, right: RID): boolean
+        static GREATER(left: RID, right: RID): boolean
+        static GREATER_EQUAL(left: RID, right: RID): boolean
+    }
+    /** A built-in type representing a method or a standalone function.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_callable.html  
+     */
+    class Callable<T extends Function = Function> {
+        /**
+         * Create godot Callable without a bound object.
+         */
+        static create<F extends Function>(fn: F): Callable<F>
+        /**
+         * Create godot Callable with a bound object `self`.
+         */
+        static create<S extends Object, F extends (this: S, ...args: any[]) => any>(self: S, fn: F): Callable<F>
+        constructor()
+        constructor(from: Callable)
+        constructor(object: Object, method: StringName)
+        
+        /** Creates a new [Callable] for the method named [param method] in the specified [param variant]. To represent a method of a built-in [Variant] type, a custom callable is used (see [method is_custom]). If [param variant] is [Object], then a standard callable will be created instead.  
+         *      
+         *  **Note:** This method is always necessary for the [Dictionary] type, as property syntax is used to access its entries. You may also use this method when [param variant]'s type is not known in advance (for polymorphism).  
+         */
+        static create(variant: any, method: StringName): Callable
+        
+        /** Calls the method represented by this [Callable]. Unlike [method call], this method expects all arguments to be contained inside the [param arguments] [Array]. */
+        callv(arguments_: GArray): any
+        
+        /** Returns `true` if this [Callable] has no target to call the method on. Equivalent to `callable == Callable()`.  
+         *      
+         *  **Note:** This is  *not*  the same as `not is_valid()` and using `not is_null()` will  *not*  guarantee that this callable can be called. Use [method is_valid] instead.  
+         */
+        is_null(): boolean
+        
+        /** Returns `true` if this [Callable] is a custom callable. Custom callables are used:  
+         *  - for binding/unbinding arguments (see [method bind] and [method unbind]);  
+         *  - for representing methods of built-in [Variant] types (see [method create]);  
+         *  - for representing global, lambda, and RPC functions in GDScript;  
+         *  - for other purposes in the core, GDExtension, and C#.  
+         */
+        is_custom(): boolean
+        
+        /** Returns `true` if this [Callable] is a standard callable. This method is the opposite of [method is_custom]. Returns `false` if this callable is a lambda function. */
+        is_standard(): boolean
+        
+        /** Returns `true` if the callable's object exists and has a valid method name assigned, or is a custom callable. */
+        is_valid(): boolean
+        
+        /** Returns the object on which this [Callable] is called. */
+        get_object(): null | Object
+        
+        /** Returns the ID of this [Callable]'s object (see [method Object.get_instance_id]). */
+        get_object_id(): int64
+        
+        /** Returns the name of the method represented by this [Callable]. If the callable is a GDScript lambda function, returns the function's name or `"<anonymous lambda>"`. */
+        get_method(): StringName
+        
+        /** Returns the total number of arguments this [Callable] should take, including optional arguments. This means that any arguments bound with [method bind] are  *subtracted*  from the result, and any arguments unbound with [method unbind] are  *added*  to the result. */
+        get_argument_count(): int64
+        
+        /** Returns the total amount of arguments bound via successive [method bind] or [method unbind] calls. This is the same as the size of the array returned by [method get_bound_arguments]. See [method get_bound_arguments] for details.  
+         *      
+         *  **Note:** The [method get_bound_arguments_count] and [method get_unbound_arguments_count] methods can both return positive values.  
+         */
+        get_bound_arguments_count(): int64
+        
+        /** Returns the array of arguments bound via successive [method bind] or [method unbind] calls. These arguments will be added  *after*  the arguments passed to the call, from which [method get_unbound_arguments_count] arguments on the right have been previously excluded.  
+         *    
+         */
+        get_bound_arguments(): GArray
+        
+        /** Returns the total amount of arguments unbound via successive [method bind] or [method unbind] calls. See [method get_bound_arguments] for details.  
+         *      
+         *  **Note:** The [method get_bound_arguments_count] and [method get_unbound_arguments_count] methods can both return positive values.  
+         */
+        get_unbound_arguments_count(): int64
+        
+        /** Returns the 32-bit hash value of this [Callable]'s object.  
+         *      
+         *  **Note:** [Callable]s with equal content will always produce identical hash values. However, the reverse is not true. Returning identical hash values does  *not*  imply the callables are equal, because different callables can have identical hash values due to hash collisions. The engine uses a 32-bit hash algorithm for [method hash].  
+         */
+        hash(): int64
+        
+        /** Returns a copy of this [Callable] with one or more arguments bound, reading them from an array. When called, the bound arguments are passed  *after*  the arguments supplied by [method call]. See also [method unbind].  
+         *      
+         *  **Note:** When this method is chained with other similar methods, the order in which the argument list is modified is read from right to left.  
+         */
+        bindv(arguments_: GArray): Callable
+        
+        /** Returns a copy of this [Callable] with a number of arguments unbound. In other words, when the new callable is called the last few arguments supplied by the user are ignored, according to [param argcount]. The remaining arguments are passed to the callable. This allows to use the original callable in a context that attempts to pass more arguments than this callable can handle, e.g. a signal with a fixed number of arguments. See also [method bind].  
+         *      
+         *  **Note:** When this method is chained with other similar methods, the order in which the argument list is modified is read from right to left.  
+         *    
+         */
+        unbind(argcount: int64): Callable
+        
+        /** Calls the method represented by this [Callable]. Arguments can be passed and should match the method's signature. */
+        call: T
+        
+        /** Calls the method represented by this [Callable] in deferred mode, i.e. at the end of the current frame. Arguments can be passed and should match the method's signature.  
+         *    
+         *      
+         *  **Note:** Deferred calls are processed at idle time. Idle time happens mainly at the end of process and physics frames. In it, deferred calls will be run until there are none left, which means you can defer calls from other deferred calls and they'll still be run in the current idle time cycle. This means you should not call a method deferred from itself (or from a method called by it), as this causes infinite recursion the same way as if you had called the method directly.  
+         *  See also [method Object.call_deferred].  
+         */
+        call_deferred(...varargs: any[]): void
+        
+        /** Perform an RPC (Remote Procedure Call) on all connected peers. This is used for multiplayer and is normally not available, unless the function being called has been marked as  *RPC*  (using [annotation @GDScript.@rpc] or [method Node.rpc_config]). Calling this method on unsupported functions will result in an error. See [method Node.rpc]. */
+        rpc(...varargs: any[]): void
+        
+        /** Perform an RPC (Remote Procedure Call) on a specific peer ID (see multiplayer documentation for reference). This is used for multiplayer and is normally not available unless the function being called has been marked as  *RPC*  (using [annotation @GDScript.@rpc] or [method Node.rpc_config]). Calling this method on unsupported functions will result in an error. See [method Node.rpc_id]. */
+        rpc_id(peer_id: int64, ...varargs: any[]): void
+        
+        /** Returns a copy of this [Callable] with one or more arguments bound. When called, the bound arguments are passed  *after*  the arguments supplied by [method call]. See also [method unbind].  
+         *      
+         *  **Note:** When this method is chained with other similar methods, the order in which the argument list is modified is read from right to left.  
+         */
+        bind<A extends any[]>(...varargs: A): Callable<BindRight<T, A>>
+        static EQUAL(left: Callable, right: Callable): boolean
+        static NOT_EQUAL(left: Callable, right: Callable): boolean
+    }
+    /** A built-in type representing a signal of an [Object].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_signal.html  
+     */
+    class Signal<T extends (...args: any[]) => void = (...args: any[]) => void> {
+        as_promise(): Parameters<T> extends [] ? Promise<void> : Parameters<T> extends [infer R] ? Promise<R> : Promise<Parameters<T>>
+        constructor()
+        constructor(from: Signal)
+        constructor(object: Object, signal: StringName)
+        
+        /** Returns `true` if this [Signal] has no object and the signal name is empty. Equivalent to `signal == Signal()`. */
+        is_null(): boolean
+        
+        /** Returns the object emitting this signal. */
+        get_object(): null | Object
+        
+        /** Returns the ID of the object emitting this signal (see [method Object.get_instance_id]). */
+        get_object_id(): int64
+        
+        /** Returns the name of this signal. */
+        get_name(): StringName
+        
+        /** Connects this signal to the specified [param callable]. Optional [param flags] can be also added to configure the connection's behavior (see [enum Object.ConnectFlags] constants). You can provide additional arguments to the connected [param callable] by using [method Callable.bind].  
+         *  A signal can only be connected once to the same [Callable]. If the signal is already connected, this method returns [constant ERR_INVALID_PARAMETER] and generates an error, unless the signal is connected with [constant Object.CONNECT_REFERENCE_COUNTED]. To prevent this, use [method is_connected] first to check for existing connections.  
+         *    
+         *      
+         *  **Note:** If the [param callable]'s object is freed, the connection will be lost.  
+         */
+        connect(callable: Callable<T>, flags?: int64 /* = 0 */): int64
+        
+        /** Disconnects this signal from the specified [Callable]. If the connection does not exist, generates an error. Use [method is_connected] to make sure that the connection exists. */
+        disconnect(callable: Callable<T>): void
+        
+        /** Returns `true` if the specified [Callable] is connected to this signal. */
+        is_connected(callable: Callable<T>): boolean
+        
+        /** Returns an [Array] of connections for this signal. Each connection is represented as a [Dictionary] that contains three entries:  
+         *  - `signal` is a reference to this signal;  
+         *  - `callable` is a reference to the connected [Callable];  
+         *  - `flags` is a combination of [enum Object.ConnectFlags].  
+         */
+        get_connections(): GArray
+        
+        /** Returns `true` if any [Callable] is connected to this signal. */
+        has_connections(): boolean
+        
+        /** Emits this signal. All [Callable]s connected to this signal will be triggered. This method supports a variable number of arguments, so parameters can be passed as a comma separated list. */
+        emit: T
+        static EQUAL(left: Signal, right: Signal): boolean
+        static NOT_EQUAL(left: Signal, right: Signal): boolean
+    }
+    type GArrayCreateSource<T> = ReadonlyArray<T> | {
+        [Symbol.iterator](): IteratorObject<GDataStructureCreateValue<T>>;
+        [K: number]: GDataStructureCreateValue<T>;
+    }
+    type GDataStructureCreateValue<V> = V | (
+         V extends GArray<infer T>
+     ? [T] extends [any[]]
+         ? GArrayCreateSource<{ [I in keyof T]: GDataStructureCreateValue<T[I]> }>
+         : GArrayCreateSource<GDataStructureCreateValue<T>>
+     : V extends GDictionary<infer T>
+         ? { [K in keyof T]: GDataStructureCreateValue<T[K]> }
+         : never
+         )
+    class GDictionary<T = Record<any, any>> {
+        /** Builder function that returns a GDictionary with properties populated from a source JS object. */
+        static create<V extends { [key: number | string]: GWrappableValue }>(properties: V): GValueWrap<V>
+        static create<V extends GDictionary<any>>(properties: V extends GDictionary<infer T> ? { [K in keyof T]: GDataStructureCreateValue<T[K]> } : never): V
+        [Symbol.iterator](): IteratorObject<{ key: any, value: any }>
+        /** Returns a Proxy that targets this GDictionary but behaves similar to a regular JavaScript object. Values are exposed as enumerable properties, so Object.keys(), Object.entries() etc. will work. */
+        proxy<Write extends boolean = false>(): Write extends true ? GDictionaryProxy<T> : GDictionaryReadProxy<T>
+        
+        set_keyed<K extends keyof T>(key: K, value: T[K]): void
+        get_keyed<K extends keyof T>(key: K): UndefinedToNull<T[K]>
+        constructor()
+        constructor(from: GDictionary)
+        constructor(base: GDictionary, key_type: int64, key_class_name: StringName, key_script: any, value_type: int64, value_class_name: StringName, value_script: any)
+        size(): int64
+        is_empty(): boolean
+        clear(): void
+        assign(dictionary: T): void
+        sort(): void
+        merge(dictionary: T, overwrite?: boolean /* = false */): void
+        merged<U>(dictionary: GDictionary<U>, overwrite?: boolean /* = false */): GDictionary<T & U>
+        has(key: keyof T): boolean
+        has_all(keys: keyof T extends GAny ? GArray<keyof T> : GArray): boolean
+        find_key(value: T[keyof T]): keyof T
+        erase(key: keyof T): boolean
+        hash(): int64
+        keys(): keyof T extends GAny ? GArray<keyof T> : GArray
+        values(): UndefinedToNull<T[keyof T]> extends GAny ? GArray<UndefinedToNull<T[keyof T]>> : GArray
+        duplicate(deep?: boolean /* = false */): GDictionary<T>
+        duplicate_deep(deep_subresources_mode?: int64 /* = 1 */): GDictionary
+        get<K extends keyof T>(key: K, default_?: any /* = <any> {} */): UndefinedToNull<T[K]>
+        get_or_add<K extends keyof T>(key: K, default_: T[K] /* = <any> {} */): UndefinedToNull<T[K]>
+        set<K extends keyof T>(key: K, value: T[K]): boolean
+        is_typed(): boolean
+        is_typed_key(): boolean
+        is_typed_value(): boolean
+        is_same_typed(dictionary: GDictionary): boolean
+        is_same_typed_key(dictionary: GDictionary): boolean
+        is_same_typed_value(dictionary: GDictionary): boolean
+        get_typed_key_builtin(): int64
+        get_typed_value_builtin(): int64
+        get_typed_key_class_name(): StringName
+        get_typed_value_class_name(): StringName
+        get_typed_key_script(): any
+        get_typed_value_script(): any
+        make_read_only(): void
+        is_read_only(): boolean
+        recursive_equal(dictionary: GDictionary, recursion_count: int64): boolean
+        static EQUAL(left: GDictionary, right: GDictionary): boolean
+        static NOT_EQUAL(left: GDictionary, right: GDictionary): boolean
+    }
+    class GArray<T extends GAny | GAny[] = GAny | GAny[]> {
+        /** Builder function that returns a GArray populated with elements from a JS array. */
+        static create<A extends any[]>(elements: A): GValueWrap<A>
+        static create<A extends GArray<any>>(
+            elements: A extends GArray<infer T>
+                ? [T] extends [any[]]
+                    ? { [I in keyof T]: GDataStructureCreateValue<T[I]> }
+                    : Array<GDataStructureCreateValue<T>>
+                : never
+        ): GValueWrap<A>
+        static create<E extends GAny>(elements: Array<GDataStructureCreateValue<E>>): GArray<E>
+        [Symbol.iterator](): IteratorObject<GArrayElement<T>>
+        /** Returns a Proxy that targets this GArray but behaves similar to a JavaScript array. */
+        proxy<Write extends boolean = false>(): Write extends true ? GArrayProxy<GArrayElement<T>> : GArrayReadProxy<GArrayElement<T>>
+        
+        set_indexed<I extends int64>(index: I, value: GArrayElement<T, I>): void
+        get_indexed<I extends int64>(index: I): GArrayElement<T, I>
+        constructor()
+        constructor(from: GArray)
+        constructor(base: GArray, type: int64, class_name: StringName, script: any)
+        constructor(from: PackedByteArray | byte[] | ArrayBuffer)
+        constructor(from: PackedInt32Array | int32[])
+        constructor(from: PackedInt64Array | int64[])
+        constructor(from: PackedFloat32Array | float32[])
+        constructor(from: PackedFloat64Array | float64[])
+        constructor(from: PackedStringArray | string[])
+        constructor(from: PackedVector2Array | Vector2[])
+        constructor(from: PackedVector3Array | Vector3[])
+        constructor(from: PackedColorArray | Color[])
+        constructor(from: PackedVector4Array)
+        size(): int64
+        is_empty(): boolean
+        clear(): void
+        hash(): int64
+        assign(array: GArray): void
+        get<I extends int64>(index: I): GArrayElement<T, I>
+        set<I extends int64>(index: I, value: GArrayElement<T, I>): void
+        push_back(value: GArrayElement<T>): void
+        push_front(value: GArrayElement<T>): void
+        append(value: GArrayElement<T>): void
+        append_array(array: GArray<GArrayElement<T>>): void
+        resize(size: int64): int64
+        insert(position: int64, value: GArrayElement<T>): int64
+        remove_at(position: int64): void
+        fill(value: GArrayElement<T>): void
+        erase(value: GArrayElement<T>): void
+        front(): GArrayElement<T>
+        back(): GArrayElement<T>
+        pick_random(): GArrayElement<T>
+        find(what: GArrayElement<T>, from?: int64 /* = 0 */): int64
+        find_custom(method: Callable, from?: int64 /* = 0 */): int64
+        rfind(what: GArrayElement<T>, from?: int64 /* = -1 */): int64
+        rfind_custom(method: Callable, from?: int64 /* = -1 */): int64
+        count(value: GArrayElement<T>): int64
+        has(value: GArrayElement<T>): boolean
+        pop_back(): GArrayElement<T>
+        pop_front(): GArrayElement<T>
+        pop_at(position: int64): GArrayElement<T>
+        sort(): void
+        sort_custom(func: Callable<(a: GArrayElement<T>, b: GArrayElement<T>) => boolean>): void
+        shuffle(): void
+        bsearch(value: GArrayElement<T>, before?: boolean /* = true */): int64
+        bsearch_custom(value: GArrayElement<T>, func: Callable<(a: GArrayElement<T>, b: GArrayElement<T>) => boolean>, before?: boolean /* = true */): int64
+        reverse(): void
+        duplicate(deep?: boolean /* = false */): this
+        duplicate_deep(deep_subresources_mode?: int64 /* = 1 */): GArray
+        slice(begin: int64, end?: int64 /* = 2147483647 */, step?: int64 /* = 1 */, deep?: boolean /* = false */): GArray<GArrayElement<T>>
+        filter(method: Callable<(value: GArrayElement<T>) => boolean>): GArray<GArrayElement<T>>
+        map<U extends GAny>(method: Callable<(value: GArrayElement<T>) => U>): GArray<U>
+        reduce(method: Callable, accum?: any /* = <any> {} */): any
+        any(method: Callable<(value: GArrayElement<T>) => boolean>): boolean
+        all(method: Callable<(value: GArrayElement<T>) => boolean>): boolean
+        max(): GArrayElement<T>
+        min(): GArrayElement<T>
+        is_typed(): boolean
+        is_same_typed(array: GArray): boolean
+        get_typed_builtin(): int64
+        get_typed_class_name(): StringName
+        get_typed_script(): any
+        make_read_only(): void
+        is_read_only(): boolean
+        static EQUAL(left: GArray, right: GArray): boolean
+        static NOT_EQUAL(left: GArray, right: GArray): boolean
+        static LESS(left: GArray, right: GArray): boolean
+        static LESS_EQUAL(left: GArray, right: GArray): boolean
+        static GREATER(left: GArray, right: GArray): boolean
+        static GREATER_EQUAL(left: GArray, right: GArray): boolean
+    }
+    /** A packed array of bytes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedbytearray.html  
+     */
+    class PackedByteArray {
+        /** [jsb utility method] Converts a PackedByteArray to a JavaScript ArrayBuffer. */
+        to_array_buffer(): ArrayBuffer
+        constructor()
+        constructor(from: PackedByteArray | byte[] | ArrayBuffer)
+        constructor(from: GArray)
+        
+        /** Returns the byte at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns `0`.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): int64
+        
+        /** Changes the byte at the given index. */
+        set(index: int64, value: int64): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Appends an element at the end of the array. */
+        push_back(value: int64): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: int64): boolean
+        
+        /** Appends a [PackedByteArray] at the end of this array. */
+        append_array(array: PackedByteArray | byte[] | ArrayBuffer): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: int64): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: int64): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value]. */
+        has(value: int64): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedByteArray], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedByteArray].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order. */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         */
+        bsearch(value: int64, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedByteArray
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed. */
+        find(value: int64, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array. */
+        rfind(value: int64, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array. */
+        count(value: int64): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead. */
+        erase(value: int64): boolean
+        
+        /** Converts ASCII/Latin-1 encoded array to [String]. Fast alternative to [method get_string_from_utf8] if the content is ASCII/Latin-1 only. Unlike the UTF-8 function this function maps every byte to a character in the array. Multibyte sequences will not be interpreted correctly. For parsing user input always use [method get_string_from_utf8]. This is the inverse of [method String.to_ascii_buffer]. */
+        get_string_from_ascii(): string
+        
+        /** Converts UTF-8 encoded array to [String]. Slower than [method get_string_from_ascii] but supports UTF-8 encoded data. Use this function if you are unsure about the source of the data. For user input this function should always be preferred. Returns empty string if source array is not valid UTF-8 string. This is the inverse of [method String.to_utf8_buffer]. */
+        get_string_from_utf8(): string
+        
+        /** Converts UTF-16 encoded array to [String]. If the BOM is missing, little-endianness is assumed. Returns empty string if source array is not valid UTF-16 string. This is the inverse of [method String.to_utf16_buffer]. */
+        get_string_from_utf16(): string
+        
+        /** Converts UTF-32 encoded array to [String]. Returns empty string if source array is not valid UTF-32 string. This is the inverse of [method String.to_utf32_buffer]. */
+        get_string_from_utf32(): string
+        
+        /** Converts wide character (`wchar_t`, UTF-16 on Windows, UTF-32 on other platforms) encoded array to [String]. Returns empty string if source array is not valid wide string. This is the inverse of [method String.to_wchar_buffer]. */
+        get_string_from_wchar(): string
+        
+        /** Converts system multibyte code page encoded array to [String]. If conversion fails, empty string is returned. This is the inverse of [method String.to_multibyte_char_buffer].  
+         *  The values permitted for [param encoding] are system dependent. If [param encoding] is empty string, system default encoding is used.  
+         *  - For Windows, see [url=https://learn.microsoft.com/en-us/windows/win32/Intl/code-page-identifiers]Code Page Identifiers[/url] .NET names.  
+         *  - For macOS and Linux/BSD, see `libiconv` library documentation and `iconv --list` for a list of supported encodings.  
+         */
+        get_string_from_multibyte_char(encoding?: string /* = '' */): string
+        
+        /** Returns a hexadecimal representation of this array as a [String].  
+         *    
+         */
+        hex_encode(): string
+        
+        /** Returns a new [PackedByteArray] with the data compressed. Set the compression mode using one of [enum FileAccess.CompressionMode]'s constants. */
+        compress(compression_mode?: int64 /* = 0 */): PackedByteArray
+        
+        /** Returns a new [PackedByteArray] with the data decompressed. Set [param buffer_size] to the size of the uncompressed data. Set the compression mode using one of [enum FileAccess.CompressionMode]'s constants.  
+         *      
+         *  **Note:** Decompression is not guaranteed to work with data not compressed by Godot, for example if data compressed with the deflate compression mode lacks a checksum or header.  
+         */
+        decompress(buffer_size: int64, compression_mode?: int64 /* = 0 */): PackedByteArray
+        
+        /** Returns a new [PackedByteArray] with the data decompressed. Set the compression mode using one of [enum FileAccess.CompressionMode]'s constants. **This method only accepts brotli, gzip, and deflate compression modes.**  
+         *  This method is potentially slower than [method decompress], as it may have to re-allocate its output buffer multiple times while decompressing, whereas [method decompress] knows it's output buffer size from the beginning.  
+         *  GZIP has a maximal compression ratio of 1032:1, meaning it's very possible for a small compressed payload to decompress to a potentially very large output. To guard against this, you may provide a maximum size this function is allowed to allocate in bytes via [param max_output_size]. Passing -1 will allow for unbounded output. If any positive value is passed, and the decompression exceeds that amount in bytes, then an error will be returned.  
+         *      
+         *  **Note:** Decompression is not guaranteed to work with data not compressed by Godot, for example if data compressed with the deflate compression mode lacks a checksum or header.  
+         */
+        decompress_dynamic(max_output_size: int64, compression_mode?: int64 /* = 0 */): PackedByteArray
+        
+        /** Decodes a 8-bit unsigned integer number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0` if a valid number can't be decoded. */
+        decode_u8(byte_offset: int64): int64
+        
+        /** Decodes a 8-bit signed integer number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0` if a valid number can't be decoded. */
+        decode_s8(byte_offset: int64): int64
+        
+        /** Decodes a 16-bit unsigned integer number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0` if a valid number can't be decoded. */
+        decode_u16(byte_offset: int64): int64
+        
+        /** Decodes a 16-bit signed integer number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0` if a valid number can't be decoded. */
+        decode_s16(byte_offset: int64): int64
+        
+        /** Decodes a 32-bit unsigned integer number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0` if a valid number can't be decoded. */
+        decode_u32(byte_offset: int64): int64
+        
+        /** Decodes a 32-bit signed integer number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0` if a valid number can't be decoded. */
+        decode_s32(byte_offset: int64): int64
+        
+        /** Decodes a 64-bit unsigned integer number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0` if a valid number can't be decoded. */
+        decode_u64(byte_offset: int64): int64
+        
+        /** Decodes a 64-bit signed integer number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0` if a valid number can't be decoded. */
+        decode_s64(byte_offset: int64): int64
+        
+        /** Decodes a 16-bit floating-point number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0.0` if a valid number can't be decoded. */
+        decode_half(byte_offset: int64): float64
+        
+        /** Decodes a 32-bit floating-point number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0.0` if a valid number can't be decoded. */
+        decode_float(byte_offset: int64): float64
+        
+        /** Decodes a 64-bit floating-point number from the bytes starting at [param byte_offset]. Fails if the byte count is insufficient. Returns `0.0` if a valid number can't be decoded. */
+        decode_double(byte_offset: int64): float64
+        
+        /** Returns `true` if a valid [Variant] value can be decoded at the [param byte_offset]. Returns `false` otherwise or when the value is [Object]-derived and [param allow_objects] is `false`. */
+        has_encoded_var(byte_offset: int64, allow_objects?: boolean /* = false */): boolean
+        
+        /** Decodes a [Variant] from the bytes starting at [param byte_offset]. Returns `null` if a valid variant can't be decoded or the value is [Object]-derived and [param allow_objects] is `false`. */
+        decode_var(byte_offset: int64, allow_objects?: boolean /* = false */): any
+        
+        /** Decodes a size of a [Variant] from the bytes starting at [param byte_offset]. Requires at least 4 bytes of data starting at the offset, otherwise fails. */
+        decode_var_size(byte_offset: int64, allow_objects?: boolean /* = false */): int64
+        
+        /** Returns a copy of the data converted to a [PackedInt32Array], where each block of 4 bytes has been converted to a signed 32-bit integer (C++ `int32_t`).  
+         *  The size of the input array must be a multiple of 4 (size of 32-bit integer). The size of the new array will be `byte_array.size() / 4`.  
+         *  If the original data can't be converted to signed 32-bit integers, the resulting data is undefined.  
+         */
+        to_int32_array(): PackedInt32Array
+        
+        /** Returns a copy of the data converted to a [PackedInt64Array], where each block of 8 bytes has been converted to a signed 64-bit integer (C++ `int64_t`, Godot [int]).  
+         *  The size of the input array must be a multiple of 8 (size of 64-bit integer). The size of the new array will be `byte_array.size() / 8`.  
+         *  If the original data can't be converted to signed 64-bit integers, the resulting data is undefined.  
+         */
+        to_int64_array(): PackedInt64Array
+        
+        /** Returns a copy of the data converted to a [PackedFloat32Array], where each block of 4 bytes has been converted to a 32-bit float (C++ [code skip-lint]float`).  
+         *  The size of the input array must be a multiple of 4 (size of 32-bit float). The size of the new array will be `byte_array.size() / 4`.  
+         *  If the original data can't be converted to 32-bit floats, the resulting data is undefined.  
+         */
+        to_float32_array(): PackedFloat32Array
+        
+        /** Returns a copy of the data converted to a [PackedFloat64Array], where each block of 8 bytes has been converted to a 64-bit float (C++ `double`, Godot [float]).  
+         *  The size of the input array must be a multiple of 8 (size of 64-bit double). The size of the new array will be `byte_array.size() / 8`.  
+         *  If the original data can't be converted to 64-bit floats, the resulting data is undefined.  
+         */
+        to_float64_array(): PackedFloat64Array
+        
+        /** Returns a copy of the data converted to a [PackedVector2Array], where each block of 8 bytes or 16 bytes (32-bit or 64-bit) has been converted to a [Vector2] variant.  
+         *      
+         *  **Note:** The size of the input array must be a multiple of 8 or 16 (depending on the build settings, see [Vector2] for more details). The size of the new array will be `byte_array.size() / (8 or 16)`. If the original data can't be converted to [Vector2] variants, the resulting data is undefined.  
+         */
+        to_vector2_array(): PackedVector2Array
+        
+        /** Returns a copy of the data converted to a [PackedVector3Array], where each block of 12 or 24 bytes (32-bit or 64-bit) has been converted to a [Vector3] variant.  
+         *      
+         *  **Note:** The size of the input array must be a multiple of 12 or 24 (depending on the build settings, see [Vector3] for more details). The size of the new array will be `byte_array.size() / (12 or 24)`. If the original data can't be converted to [Vector3] variants, the resulting data is undefined.  
+         */
+        to_vector3_array(): PackedVector3Array
+        
+        /** Returns a copy of the data converted to a [PackedVector4Array], where each block of 16 or 32 bytes (32-bit or 64-bit) has been converted to a [Vector4] variant.  
+         *      
+         *  **Note:** The size of the input array must be a multiple of 16 or 32 (depending on the build settings, see [Vector4] for more details). The size of the new array will be `byte_array.size() / (16 or 32)`. If the original data can't be converted to [Vector4] variants, the resulting data is undefined.  
+         */
+        to_vector4_array(): PackedVector4Array
+        
+        /** Returns a copy of the data converted to a [PackedColorArray], where each block of 16 bytes has been converted to a [Color] variant.  
+         *      
+         *  **Note:** The size of the input array must be a multiple of 16 (size of four 32-bit float variables). The size of the new array will be `byte_array.size() / 16`. If the original data can't be converted to [Color] variants, the resulting data is undefined.  
+         */
+        to_color_array(): PackedColorArray
+        
+        /** Swaps the byte order of [param count] 16-bit segments of the array starting at [param offset]. Swap is done in-place. If [param count] is less than zero, all segments to the end of array are processed, if processed data size is not a multiple of 2, the byte after the last processed 16-bit segment is not modified. */
+        bswap16(offset?: int64 /* = 0 */, count?: int64 /* = -1 */): void
+        
+        /** Swaps the byte order of [param count] 32-bit segments of the array starting at [param offset]. Swap is done in-place. If [param count] is less than zero, all segments to the end of array are processed, if processed data size is not a multiple of 4, bytes after the last processed 32-bit segment are not modified. */
+        bswap32(offset?: int64 /* = 0 */, count?: int64 /* = -1 */): void
+        
+        /** Swaps the byte order of [param count] 64-bit segments of the array starting at [param offset]. Swap is done in-place. If [param count] is less than zero, all segments to the end of array are processed, if processed data size is not a multiple of 8, bytes after the last processed 64-bit segment are not modified. */
+        bswap64(offset?: int64 /* = 0 */, count?: int64 /* = -1 */): void
+        
+        /** Encodes a 8-bit unsigned integer number (byte) at the index of [param byte_offset] bytes. The array must have at least 1 byte of space, starting at the offset. */
+        encode_u8(byte_offset: int64, value: int64): void
+        
+        /** Encodes a 8-bit signed integer number (signed byte) at the index of [param byte_offset] bytes. The array must have at least 1 byte of space, starting at the offset. */
+        encode_s8(byte_offset: int64, value: int64): void
+        
+        /** Encodes a 16-bit unsigned integer number as bytes at the index of [param byte_offset] bytes. The array must have at least 2 bytes of space, starting at the offset. */
+        encode_u16(byte_offset: int64, value: int64): void
+        
+        /** Encodes a 16-bit signed integer number as bytes at the index of [param byte_offset] bytes. The array must have at least 2 bytes of space, starting at the offset. */
+        encode_s16(byte_offset: int64, value: int64): void
+        
+        /** Encodes a 32-bit unsigned integer number as bytes at the index of [param byte_offset] bytes. The array must have at least 4 bytes of space, starting at the offset. */
+        encode_u32(byte_offset: int64, value: int64): void
+        
+        /** Encodes a 32-bit signed integer number as bytes at the index of [param byte_offset] bytes. The array must have at least 4 bytes of space, starting at the offset. */
+        encode_s32(byte_offset: int64, value: int64): void
+        
+        /** Encodes a 64-bit unsigned integer number as bytes at the index of [param byte_offset] bytes. The array must have at least 8 bytes of space, starting at the offset. */
+        encode_u64(byte_offset: int64, value: int64): void
+        
+        /** Encodes a 64-bit signed integer number as bytes at the index of [param byte_offset] bytes. The array must have at least 8 bytes of space, starting at the offset. */
+        encode_s64(byte_offset: int64, value: int64): void
+        
+        /** Encodes a 16-bit floating-point number as bytes at the index of [param byte_offset] bytes. The array must have at least 2 bytes of space, starting at the offset. */
+        encode_half(byte_offset: int64, value: float64): void
+        
+        /** Encodes a 32-bit floating-point number as bytes at the index of [param byte_offset] bytes. The array must have at least 4 bytes of space, starting at the offset. */
+        encode_float(byte_offset: int64, value: float64): void
+        
+        /** Encodes a 64-bit floating-point number as bytes at the index of [param byte_offset] bytes. The array must have at least 8 bytes of allocated space, starting at the offset. */
+        encode_double(byte_offset: int64, value: float64): void
+        
+        /** Encodes a [Variant] at the index of [param byte_offset] bytes. A sufficient space must be allocated, depending on the encoded variant's size. If [param allow_objects] is `false`, [Object]-derived values are not permitted and will instead be serialized as ID-only. */
+        encode_var(byte_offset: int64, value: any, allow_objects?: boolean /* = false */): int64
+        static EQUAL(left: PackedByteArray | byte[] | ArrayBuffer, right: PackedByteArray | byte[] | ArrayBuffer): boolean
+        static NOT_EQUAL(left: PackedByteArray | byte[] | ArrayBuffer, right: PackedByteArray | byte[] | ArrayBuffer): boolean
+    }
+    /** A packed array of 32-bit integers.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedint32array.html  
+     */
+    class PackedInt32Array {
+        constructor()
+        constructor(from: PackedInt32Array | int32[])
+        constructor(from: GArray)
+        
+        /** Returns the 32-bit integer at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns `0`.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): int64
+        
+        /** Changes the integer at the given index. */
+        set(index: int64, value: int64): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Appends a value to the array. */
+        push_back(value: int64): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: int64): boolean
+        
+        /** Appends a [PackedInt32Array] at the end of this array. */
+        append_array(array: PackedInt32Array | int32[]): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new integer at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: int64): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: int64): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value]. */
+        has(value: int64): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedInt32Array], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedInt32Array].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedInt32Array
+        
+        /** Returns a copy of the data converted to a [PackedByteArray], where each element has been encoded as 4 bytes.  
+         *  The size of the new array will be `int32_array.size() * 4`.  
+         */
+        to_byte_array(): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order. */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         */
+        bsearch(value: int64, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedInt32Array
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed. */
+        find(value: int64, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array. */
+        rfind(value: int64, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array. */
+        count(value: int64): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead. */
+        erase(value: int64): boolean
+        static EQUAL(left: PackedInt32Array | int32[], right: PackedInt32Array | int32[]): boolean
+        static NOT_EQUAL(left: PackedInt32Array | int32[], right: PackedInt32Array | int32[]): boolean
+    }
+    /** A packed array of 64-bit integers.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedint64array.html  
+     */
+    class PackedInt64Array {
+        constructor()
+        constructor(from: PackedInt64Array | int64[])
+        constructor(from: GArray)
+        
+        /** Returns the 64-bit integer at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns `0`.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): int64
+        
+        /** Changes the integer at the given index. */
+        set(index: int64, value: int64): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Appends a value to the array. */
+        push_back(value: int64): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: int64): boolean
+        
+        /** Appends a [PackedInt64Array] at the end of this array. */
+        append_array(array: PackedInt64Array | int64[]): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new integer at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: int64): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: int64): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value]. */
+        has(value: int64): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedInt64Array], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedInt64Array].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedInt64Array
+        
+        /** Returns a copy of the data converted to a [PackedByteArray], where each element has been encoded as 8 bytes.  
+         *  The size of the new array will be `int64_array.size() * 8`.  
+         */
+        to_byte_array(): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order. */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         */
+        bsearch(value: int64, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedInt64Array
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed. */
+        find(value: int64, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array. */
+        rfind(value: int64, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array. */
+        count(value: int64): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead. */
+        erase(value: int64): boolean
+        static EQUAL(left: PackedInt64Array | int64[], right: PackedInt64Array | int64[]): boolean
+        static NOT_EQUAL(left: PackedInt64Array | int64[], right: PackedInt64Array | int64[]): boolean
+    }
+    /** A packed array of 32-bit floating-point values.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedfloat32array.html  
+     */
+    class PackedFloat32Array {
+        constructor()
+        constructor(from: PackedFloat32Array | float32[])
+        constructor(from: GArray)
+        
+        /** Returns the 32-bit float at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns `0.0`.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): float64
+        
+        /** Changes the float at the given index. */
+        set(index: int64, value: float64): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Appends an element at the end of the array. */
+        push_back(value: float64): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: float64): boolean
+        
+        /** Appends a [PackedFloat32Array] at the end of this array. */
+        append_array(array: PackedFloat32Array | float32[]): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: float64): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: float64): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value].  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        has(value: float64): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedFloat32Array], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedFloat32Array].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedFloat32Array
+        
+        /** Returns a copy of the data converted to a [PackedByteArray], where each element has been encoded as 4 bytes.  
+         *  The size of the new array will be `float32_array.size() * 4`.  
+         */
+        to_byte_array(): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        bsearch(value: float64, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedFloat32Array
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        find(value: float64, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        rfind(value: float64, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        count(value: float64): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        erase(value: float64): boolean
+        static EQUAL(left: PackedFloat32Array | float32[], right: PackedFloat32Array | float32[]): boolean
+        static NOT_EQUAL(left: PackedFloat32Array | float32[], right: PackedFloat32Array | float32[]): boolean
+    }
+    /** A packed array of 64-bit floating-point values.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedfloat64array.html  
+     */
+    class PackedFloat64Array {
+        constructor()
+        constructor(from: PackedFloat64Array | float64[])
+        constructor(from: GArray)
+        
+        /** Returns the 64-bit float at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns `0.0`.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): float64
+        
+        /** Changes the float at the given index. */
+        set(index: int64, value: float64): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Appends an element at the end of the array. */
+        push_back(value: float64): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: float64): boolean
+        
+        /** Appends a [PackedFloat64Array] at the end of this array. */
+        append_array(array: PackedFloat64Array | float64[]): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: float64): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: float64): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value].  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        has(value: float64): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedFloat64Array], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedFloat64Array].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedFloat64Array
+        
+        /** Returns a copy of the data converted to a [PackedByteArray], where each element has been encoded as 8 bytes.  
+         *  The size of the new array will be `float64_array.size() * 8`.  
+         */
+        to_byte_array(): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        bsearch(value: float64, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedFloat64Array
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        find(value: float64, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        rfind(value: float64, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        count(value: float64): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead.  
+         *      
+         *  **Note:** [constant @GDScript.NAN] doesn't behave the same as other numbers. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        erase(value: float64): boolean
+        static EQUAL(left: PackedFloat64Array | float64[], right: PackedFloat64Array | float64[]): boolean
+        static NOT_EQUAL(left: PackedFloat64Array | float64[], right: PackedFloat64Array | float64[]): boolean
+    }
+    /** A packed array of [String]s.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedstringarray.html  
+     */
+    class PackedStringArray {
+        constructor()
+        constructor(from: PackedStringArray | string[])
+        constructor(from: GArray)
+        
+        /** Returns the [String] at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns an empty string.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): string
+        
+        /** Changes the [String] at the given index. */
+        set(index: int64, value: string): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Appends a string element at end of the array. */
+        push_back(value: string): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: string): boolean
+        
+        /** Appends a [PackedStringArray] at the end of this array. */
+        append_array(array: PackedStringArray | string[]): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: string): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: string): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value]. */
+        has(value: string): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedStringArray], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedStringArray].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedStringArray
+        
+        /** Returns a [PackedByteArray] with each string encoded as UTF-8. Strings are `null` terminated. */
+        to_byte_array(): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order. */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         */
+        bsearch(value: string, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedStringArray
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed. */
+        find(value: string, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array. */
+        rfind(value: string, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array. */
+        count(value: string): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead. */
+        erase(value: string): boolean
+        static EQUAL(left: PackedStringArray | string[], right: PackedStringArray | string[]): boolean
+        static NOT_EQUAL(left: PackedStringArray | string[], right: PackedStringArray | string[]): boolean
+    }
+    /** A packed array of [Vector2]s.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedvector2array.html  
+     */
+    class PackedVector2Array {
+        constructor()
+        constructor(from: PackedVector2Array | Vector2[])
+        constructor(from: GArray)
+        
+        /** Returns the [Vector2] at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns `Vector2(0, 0)`.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): Vector2
+        
+        /** Changes the [Vector2] at the given index. */
+        set(index: int64, value: Vector2): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Inserts a [Vector2] at the end. */
+        push_back(value: Vector2): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: Vector2): boolean
+        
+        /** Appends a [PackedVector2Array] at the end of this array. */
+        append_array(array: PackedVector2Array | Vector2[]): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: Vector2): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: Vector2): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value].  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        has(value: Vector2): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedVector2Array], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedVector2Array].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedVector2Array
+        
+        /** Returns a [PackedByteArray] with each vector encoded as bytes. */
+        to_byte_array(): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        bsearch(value: Vector2, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedVector2Array
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        find(value: Vector2, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        rfind(value: Vector2, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        count(value: Vector2): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        erase(value: Vector2): boolean
+        static EQUAL(left: PackedVector2Array | Vector2[], right: PackedVector2Array | Vector2[]): boolean
+        static NOT_EQUAL(left: PackedVector2Array | Vector2[], right: PackedVector2Array | Vector2[]): boolean
+    }
+    /** A packed array of [Vector3]s.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedvector3array.html  
+     */
+    class PackedVector3Array {
+        constructor()
+        constructor(from: PackedVector3Array | Vector3[])
+        constructor(from: GArray)
+        
+        /** Returns the [Vector3] at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns `Vector3(0, 0, 0)`.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): Vector3
+        
+        /** Changes the [Vector3] at the given index. */
+        set(index: int64, value: Vector3): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Inserts a [Vector3] at the end. */
+        push_back(value: Vector3): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: Vector3): boolean
+        
+        /** Appends a [PackedVector3Array] at the end of this array. */
+        append_array(array: PackedVector3Array | Vector3[]): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: Vector3): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: Vector3): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value].  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        has(value: Vector3): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedVector3Array], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedVector3Array].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedVector3Array
+        
+        /** Returns a [PackedByteArray] with each vector encoded as bytes. */
+        to_byte_array(): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        bsearch(value: Vector3, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedVector3Array
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        find(value: Vector3, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        rfind(value: Vector3, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        count(value: Vector3): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        erase(value: Vector3): boolean
+        static EQUAL(left: PackedVector3Array | Vector3[], right: PackedVector3Array | Vector3[]): boolean
+        static NOT_EQUAL(left: PackedVector3Array | Vector3[], right: PackedVector3Array | Vector3[]): boolean
+    }
+    /** A packed array of [Vector4]s.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedvector4array.html  
+     */
+    class PackedVector4Array {
+        constructor()
+        constructor(from: PackedVector4Array)
+        constructor(from: GArray)
+        
+        /** Returns the [Vector4] at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns `Vector4(0, 0, 0, 0)`.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): Vector4
+        
+        /** Changes the [Vector4] at the given index. */
+        set(index: int64, value: Vector4): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Inserts a [Vector4] at the end. */
+        push_back(value: Vector4): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: Vector4): boolean
+        
+        /** Appends a [PackedVector4Array] at the end of this array. */
+        append_array(array: PackedVector4Array): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: Vector4): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: Vector4): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value].  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        has(value: Vector4): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedVector4Array], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedVector4Array].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedVector4Array
+        
+        /** Returns a [PackedByteArray] with each vector encoded as bytes. */
+        to_byte_array(): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        bsearch(value: Vector4, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedVector4Array
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        find(value: Vector4, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        rfind(value: Vector4, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        count(value: Vector4): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead.  
+         *      
+         *  **Note:** Vectors with [constant @GDScript.NAN] elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.  
+         */
+        erase(value: Vector4): boolean
+        static EQUAL(left: PackedVector4Array, right: PackedVector4Array): boolean
+        static NOT_EQUAL(left: PackedVector4Array, right: PackedVector4Array): boolean
+    }
+    /** A packed array of [Color]s.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedcolorarray.html  
+     */
+    class PackedColorArray {
+        constructor()
+        constructor(from: PackedColorArray | Color[])
+        constructor(from: GArray)
+        
+        /** Returns the [Color] at the given [param index] in the array. If [param index] is out-of-bounds or negative, this method fails and returns `Color(0, 0, 0, 1)`.  
+         *  This method is similar (but not identical) to the `[]` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.  
+         */
+        get(index: int64): Color
+        
+        /** Changes the [Color] at the given index. */
+        set(index: int64, value: Color): void
+        
+        /** Returns the number of elements in the array. */
+        size(): int64
+        
+        /** Returns `true` if the array is empty. */
+        is_empty(): boolean
+        
+        /** Appends a value to the array. */
+        push_back(value: Color): boolean
+        
+        /** Appends an element at the end of the array (alias of [method push_back]). */
+        append(value: Color): boolean
+        
+        /** Appends a [PackedColorArray] at the end of this array. */
+        append_array(array: PackedColorArray | Color[]): void
+        
+        /** Removes an element from the array by index. */
+        remove_at(index: int64): void
+        
+        /** Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (`idx == size()`). */
+        insert(at_index: int64, value: Color): int64
+        
+        /** Assigns the given value to all elements in the array. This can typically be used together with [method resize] to create an array with a given size and initialized elements. */
+        fill(value: Color): void
+        
+        /** Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling [method resize] once and assigning the new values is faster than adding new elements one by one.  
+         *  Returns [constant OK] on success, or one of the following [enum Error] constants if this method fails: [constant ERR_INVALID_PARAMETER] if the size is negative, or [constant ERR_OUT_OF_MEMORY] if allocations fail. Use [method size] to find the actual size of the array after resize.  
+         */
+        resize(new_size: int64): int64
+        
+        /** Clears the array. This is equivalent to using [method resize] with a size of `0`. */
+        clear(): void
+        
+        /** Returns `true` if the array contains [param value]. */
+        has(value: Color): boolean
+        
+        /** Reverses the order of the elements in the array. */
+        reverse(): void
+        
+        /** Returns the slice of the [PackedColorArray], from [param begin] (inclusive) to [param end] (exclusive), as a new [PackedColorArray].  
+         *  The absolute value of [param begin] and [param end] will be clamped to the array size, so the default value for [param end] makes it slice to the size of the array by default (i.e. `arr.slice(1)` is a shorthand for `arr.slice(1, arr.size())`).  
+         *  If either [param begin] or [param end] are negative, they will be relative to the end of the array (i.e. `arr.slice(0, -2)` is a shorthand for `arr.slice(0, arr.size() - 2)`).  
+         */
+        slice(begin: int64, end?: int64 /* = 2147483647 */): PackedColorArray
+        
+        /** Returns a [PackedByteArray] with each color encoded as bytes. */
+        to_byte_array(): PackedByteArray
+        
+        /** Sorts the elements of the array in ascending order. */
+        sort(): void
+        
+        /** Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a [param before] specifier can be passed. If `false`, the returned index comes after all existing entries of the value in the array.  
+         *      
+         *  **Note:** Calling [method bsearch] on an unsorted array results in unexpected behavior.  
+         */
+        bsearch(value: Color, before?: boolean /* = true */): int64
+        
+        /** Creates a copy of the array, and returns it. */
+        duplicate(): PackedColorArray
+        
+        /** Searches the array for a value and returns its index or `-1` if not found. Optionally, the initial search index can be passed. */
+        find(value: Color, from?: int64 /* = 0 */): int64
+        
+        /** Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array. */
+        rfind(value: Color, from?: int64 /* = -1 */): int64
+        
+        /** Returns the number of times an element is in the array. */
+        count(value: Color): int64
+        
+        /** Removes the first occurrence of a value from the array and returns `true`. If the value does not exist in the array, nothing happens and `false` is returned. To remove an element by index, use [method remove_at] instead. */
+        erase(value: Color): boolean
+        static EQUAL(left: PackedColorArray | Color[], right: PackedColorArray | Color[]): boolean
+        static NOT_EQUAL(left: PackedColorArray | Color[], right: PackedColorArray | Color[]): boolean
+    }
+    /** A built-in type for strings.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_string.html  
+     */
+    class String {
+        /** Performs a case-sensitive comparison to another string. Returns `-1` if less than, `1` if greater than, or `0` if equal. "Less than" and "greater than" are determined by the [url=https://en.wikipedia.org/wiki/List_of_Unicode_characters]Unicode code points[/url] of each string, which roughly matches the alphabetical order.  
+         *  If the character comparison reaches the end of one string, but the other string contains more characters, then it will use length as the deciding factor: `1` will be returned if this string is longer than the [param to] string, or `-1` if shorter. Note that the length of empty strings is always `0`.  
+         *  To get a [bool] result from a string comparison, use the `==` operator instead. See also [method nocasecmp_to], [method filecasecmp_to], and [method naturalcasecmp_to].  
+         */
+        static casecmp_to(target: string, to: string): int64
+        
+        /** Performs a **case-insensitive** comparison to another string. Returns `-1` if less than, `1` if greater than, or `0` if equal. "Less than" or "greater than" are determined by the [url=https://en.wikipedia.org/wiki/List_of_Unicode_characters]Unicode code points[/url] of each string, which roughly matches the alphabetical order. Internally, lowercase characters are converted to uppercase for the comparison.  
+         *  If the character comparison reaches the end of one string, but the other string contains more characters, then it will use length as the deciding factor: `1` will be returned if this string is longer than the [param to] string, or `-1` if shorter. Note that the length of empty strings is always `0`.  
+         *  To get a [bool] result from a string comparison, use the `==` operator instead. See also [method casecmp_to], [method filenocasecmp_to], and [method naturalnocasecmp_to].  
+         */
+        static nocasecmp_to(target: string, to: string): int64
+        
+        /** Performs a **case-sensitive**,  *natural order*  comparison to another string. Returns `-1` if less than, `1` if greater than, or `0` if equal. "Less than" or "greater than" are determined by the [url=https://en.wikipedia.org/wiki/List_of_Unicode_characters]Unicode code points[/url] of each string, which roughly matches the alphabetical order.  
+         *  When used for sorting, natural order comparison orders sequences of numbers by the combined value of each digit as is often expected, instead of the single digit's value. A sorted sequence of numbered strings will be `["1", "2", "3", ...]`, not `["1", "10", "2", "3", ...]`.  
+         *  If the character comparison reaches the end of one string, but the other string contains more characters, then it will use length as the deciding factor: `1` will be returned if this string is longer than the [param to] string, or `-1` if shorter. Note that the length of empty strings is always `0`.  
+         *  To get a [bool] result from a string comparison, use the `==` operator instead. See also [method naturalnocasecmp_to], [method filecasecmp_to], and [method nocasecmp_to].  
+         */
+        static naturalcasecmp_to(target: string, to: string): int64
+        
+        /** Performs a **case-insensitive**,  *natural order*  comparison to another string. Returns `-1` if less than, `1` if greater than, or `0` if equal. "Less than" or "greater than" are determined by the [url=https://en.wikipedia.org/wiki/List_of_Unicode_characters]Unicode code points[/url] of each string, which roughly matches the alphabetical order. Internally, lowercase characters are converted to uppercase for the comparison.  
+         *  When used for sorting, natural order comparison orders sequences of numbers by the combined value of each digit as is often expected, instead of the single digit's value. A sorted sequence of numbered strings will be `["1", "2", "3", ...]`, not `["1", "10", "2", "3", ...]`.  
+         *  If the character comparison reaches the end of one string, but the other string contains more characters, then it will use length as the deciding factor: `1` will be returned if this string is longer than the [param to] string, or `-1` if shorter. Note that the length of empty strings is always `0`.  
+         *  To get a [bool] result from a string comparison, use the `==` operator instead. See also [method naturalcasecmp_to], [method filenocasecmp_to], and [method casecmp_to].  
+         */
+        static naturalnocasecmp_to(target: string, to: string): int64
+        
+        /** Like [method naturalcasecmp_to] but prioritizes strings that begin with periods (`.`) and underscores (`_`) before any other character. Useful when sorting folders or file names.  
+         *  To get a [bool] result from a string comparison, use the `==` operator instead. See also [method filenocasecmp_to], [method naturalcasecmp_to], and [method casecmp_to].  
+         */
+        static filecasecmp_to(target: string, to: string): int64
+        
+        /** Like [method naturalnocasecmp_to] but prioritizes strings that begin with periods (`.`) and underscores (`_`) before any other character. Useful when sorting folders or file names.  
+         *  To get a [bool] result from a string comparison, use the `==` operator instead. See also [method filecasecmp_to], [method naturalnocasecmp_to], and [method nocasecmp_to].  
+         */
+        static filenocasecmp_to(target: string, to: string): int64
+        
+        /** Returns the number of characters in the string. Empty strings (`""`) always return `0`. See also [method is_empty]. */
+        static length(target: string): int64
+        
+        /** Returns part of the string from the position [param from] with length [param len]. If [param len] is `-1` (as by default), returns the rest of the string starting from the given position. */
+        static substr(target: string, from: int64, len?: int64 /* = -1 */): string
+        
+        /** Splits the string using a [param delimiter] and returns the substring at index [param slice]. Returns the original string if [param delimiter] does not occur in the string. Returns an empty string if the [param slice] does not exist.  
+         *  This is faster than [method split], if you only need one or two substrings.  
+         *    
+         */
+        static get_slice(target: string, delimiter: string, slice: int64): string
+        
+        /** Splits the string using a Unicode character with code [param delimiter] and returns the substring at index [param slice]. Returns an empty string if the [param slice] does not exist.  
+         *  This is faster than [method split], if you only need one or two substrings.  
+         *  This is a Unicode version of [method get_slice].  
+         */
+        static get_slicec(target: string, delimiter: int64, slice: int64): string
+        
+        /** Returns the total number of slices when the string is split with the given [param delimiter] (see [method split]).  
+         *  Use [method get_slice] to extract a specific slice.  
+         *    
+         */
+        static get_slice_count(target: string, delimiter: string): int64
+        
+        /** Returns the index of the **first** occurrence of [param what] in this string, or `-1` if there are none. The search's start can be specified with [param from], continuing to the end of the string.  
+         *    
+         *      
+         *  **Note:** If you just want to know whether the string contains [param what], use [method contains]. In GDScript, you may also use the `in` operator.  
+         *      
+         *  **Note:** A negative value of [param from] is converted to a starting index by counting back from the last possible index with enough space to find [param what].  
+         */
+        static find(target: string, what: string, from?: int64 /* = 0 */): int64
+        
+        /** Returns the index of the **first** **case-insensitive** occurrence of [param what] in this string, or `-1` if there are none. The starting search index can be specified with [param from], continuing to the end of the string. */
+        static findn(target: string, what: string, from?: int64 /* = 0 */): int64
+        
+        /** Returns the number of occurrences of the substring [param what] between [param from] and [param to] positions. If [param to] is 0, the search continues until the end of the string. */
+        static count(target: string, what: string, from?: int64 /* = 0 */, to?: int64 /* = 0 */): int64
+        
+        /** Returns the number of occurrences of the substring [param what] between [param from] and [param to] positions, **ignoring case**. If [param to] is 0, the search continues until the end of the string. */
+        static countn(target: string, what: string, from?: int64 /* = 0 */, to?: int64 /* = 0 */): int64
+        
+        /** Returns the index of the **last** occurrence of [param what] in this string, or `-1` if there are none. The search's start can be specified with [param from], continuing to the beginning of the string. This method is the reverse of [method find].  
+         *      
+         *  **Note:** A negative value of [param from] is converted to a starting index by counting back from the last possible index with enough space to find [param what].  
+         *      
+         *  **Note:** A value of [param from] that is greater than the last possible index with enough space to find [param what] is considered out-of-bounds, and returns `-1`.  
+         */
+        static rfind(target: string, what: string, from?: int64 /* = -1 */): int64
+        
+        /** Returns the index of the **last** **case-insensitive** occurrence of [param what] in this string, or `-1` if there are none. The starting search index can be specified with [param from], continuing to the beginning of the string. This method is the reverse of [method findn]. */
+        static rfindn(target: string, what: string, from?: int64 /* = -1 */): int64
+        
+        /** Does a simple expression match (also called "glob" or "globbing"), where `*` matches zero or more arbitrary characters and `?` matches any single character except a period (`.`). An empty string or empty expression always evaluates to `false`. */
+        static match(target: string, expr: string): boolean
+        
+        /** Does a simple **case-insensitive** expression match, where `*` matches zero or more arbitrary characters and `?` matches any single character except a period (`.`). An empty string or empty expression always evaluates to `false`. */
+        static matchn(target: string, expr: string): boolean
+        
+        /** Returns `true` if the string begins with the given [param text]. See also [method ends_with]. */
+        static begins_with(target: string, text: string): boolean
+        
+        /** Returns `true` if the string ends with the given [param text]. See also [method begins_with]. */
+        static ends_with(target: string, text: string): boolean
+        
+        /** Returns `true` if all characters of this string can be found in [param text] in their original order. This is not the same as [method contains].  
+         *    
+         */
+        static is_subsequence_of(target: string, text: string): boolean
+        
+        /** Returns `true` if all characters of this string can be found in [param text] in their original order, **ignoring case**. This is not the same as [method containsn]. */
+        static is_subsequence_ofn(target: string, text: string): boolean
+        
+        /** Returns an array containing the bigrams (pairs of consecutive characters) of this string.  
+         *    
+         */
+        static bigrams(target: string): PackedStringArray
+        
+        /** Returns the similarity index ([url=https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient]Sørensen-Dice coefficient[/url]) of this string compared to another. A result of `1.0` means totally similar, while `0.0` means totally dissimilar.  
+         *    
+         */
+        static similarity(target: string, text: string): float64
+        
+        /** Formats the string by replacing all occurrences of [param placeholder] with the elements of [param values].  
+         *  [param values] can be a [Dictionary], an [Array], or an [Object]. Any underscores in [param placeholder] will be replaced with the corresponding keys in advance. Array elements use their index as keys.  
+         *    
+         *  Some additional handling is performed when [param values] is an [Array]. If [param placeholder] does not contain an underscore, the elements of the [param values] array will be used to replace one occurrence of the placeholder in order; If an element of [param values] is another 2-element array, it'll be interpreted as a key-value pair.  
+         *    
+         *  When passing an [Object], the property names from [method Object.get_property_list] are used as keys.  
+         *    
+         *  See also the [url=https://docs.godotengine.org/en/4.6/tutorials/scripting/gdscript/gdscript_format_string.html]GDScript format string[/url] tutorial.  
+         *      
+         *  **Note:** Each replacement is done sequentially for each element of [param values], **not** all at once. This means that if any element is inserted and it contains another placeholder, it may be changed by the next replacement. While this can be very useful, it often causes unexpected results. If not necessary, make sure [param values]'s elements do not contain placeholders.  
+         *    
+         *      
+         *  **Note:** In C#, it's recommended to [url=https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated]interpolate strings with "$"[/url], instead.  
+         */
+        static format(target: string, values: any, placeholder?: string /* = '{_}' */): string
+        
+        /** Replaces all occurrences of [param what] inside the string with the given [param forwhat]. */
+        static replace(target: string, what: string, forwhat: string): string
+        
+        /** Replaces all **case-insensitive** occurrences of [param what] inside the string with the given [param forwhat]. */
+        static replacen(target: string, what: string, forwhat: string): string
+        
+        /** Replaces all occurrences of the Unicode character with code [param key] with the Unicode character with code [param with]. Faster version of [method replace] when the key is only one character long. To get a single character use `"X".unicode_at(0)` (note that some strings, like compound letters and emoji, can be composed of multiple unicode codepoints, and will not work with this method, use [method length] to make sure). */
+        static replace_char(target: string, key: int64, with_: int64): string
+        
+        /** Replaces any occurrence of the characters in [param keys] with the Unicode character with code [param with]. See also [method replace_char]. */
+        static replace_chars(target: string, keys: string, with_: int64): string
+        
+        /** Removes all occurrences of the Unicode character with code [param what]. Faster version of [method replace] when the key is only one character long and the replacement is `""`. */
+        static remove_char(target: string, what: int64): string
+        
+        /** Removes all occurrences of the characters in [param chars]. See also [method remove_char]. */
+        static remove_chars(target: string, chars: string): string
+        
+        /** Repeats this string a number of times. [param count] needs to be greater than `0`. Otherwise, returns an empty string. */
+        static repeat(target: string, count: int64): string
+        
+        /** Returns the copy of this string in reverse order. This operation works on unicode codepoints, rather than sequences of codepoints, and may break things like compound letters or emojis. */
+        static reverse(target: string): string
+        
+        /** Inserts [param what] at the given [param position] in the string. */
+        static insert(target: string, position: int64, what: string): string
+        
+        /** Returns a string with [param chars] characters erased starting from [param position]. If [param chars] goes beyond the string's length given the specified [param position], fewer characters will be erased from the returned string. Returns an empty string if either [param position] or [param chars] is negative. Returns the original string unmodified if [param chars] is `0`. */
+        static erase(target: string, position: int64, chars?: int64 /* = 1 */): string
+        
+        /** Changes the appearance of the string: replaces underscores (`_`) with spaces, adds spaces before uppercase letters in the middle of a word, converts all letters to lowercase, then converts the first one and each one following a space to uppercase.  
+         *    
+         */
+        static capitalize(target: string): string
+        
+        /** Returns the string converted to `camelCase`. */
+        static to_camel_case(target: string): string
+        
+        /** Returns the string converted to `PascalCase`. */
+        static to_pascal_case(target: string): string
+        
+        /** Returns the string converted to `snake_case`.  
+         *      
+         *  **Note:** Numbers followed by a  *single*  letter are not separated in the conversion to keep some words (such as "2D") together.  
+         *    
+         */
+        static to_snake_case(target: string): string
+        
+        /** Returns the string converted to `kebab-case`.  
+         *      
+         *  **Note:** Numbers followed by a  *single*  letter are not separated in the conversion to keep some words (such as "2D") together.  
+         *    
+         */
+        static to_kebab_case(target: string): string
+        
+        /** Splits the string using a [param delimiter] and returns an array of the substrings. If [param delimiter] is an empty string, each substring will be a single character. This method is the opposite of [method join].  
+         *  If [param allow_empty] is `false`, empty strings between adjacent delimiters are excluded from the array.  
+         *  If [param maxsplit] is greater than `0`, the number of splits may not exceed [param maxsplit]. By default, the entire string is split.  
+         *    
+         *      
+         *  **Note:** If you only need one substring from the array, consider using [method get_slice] which is faster. If you need to split strings with more complex rules, use the [RegEx] class instead.  
+         */
+        static split(target: string, delimiter?: string /* = '' */, allow_empty?: boolean /* = true */, maxsplit?: int64 /* = 0 */): PackedStringArray
+        
+        /** Splits the string using a [param delimiter] and returns an array of the substrings, starting from the end of the string. The splits in the returned array appear in the same order as the original string. If [param delimiter] is an empty string, each substring will be a single character.  
+         *  If [param allow_empty] is `false`, empty strings between adjacent delimiters are excluded from the array.  
+         *  If [param maxsplit] is greater than `0`, the number of splits may not exceed [param maxsplit]. By default, the entire string is split, which is mostly identical to [method split].  
+         *    
+         */
+        static rsplit(target: string, delimiter?: string /* = '' */, allow_empty?: boolean /* = true */, maxsplit?: int64 /* = 0 */): PackedStringArray
+        
+        /** Splits the string into floats by using a [param delimiter] and returns a [PackedFloat64Array].  
+         *  If [param allow_empty] is `false`, empty or invalid [float] conversions between adjacent delimiters are excluded.  
+         *    
+         */
+        static split_floats(target: string, delimiter: string, allow_empty?: boolean /* = true */): PackedFloat64Array
+        
+        /** Returns the concatenation of [param parts]' elements, with each element separated by the string calling this method. This method is the opposite of [method split].  
+         *    
+         */
+        static join(target: string, parts: PackedStringArray | string[]): string
+        
+        /** Returns the string converted to `UPPERCASE`. */
+        static to_upper(target: string): string
+        
+        /** Returns the string converted to `lowercase`. */
+        static to_lower(target: string): string
+        
+        /** Returns the first [param length] characters from the beginning of the string. If [param length] is negative, strips the last [param length] characters from the string's end.  
+         *    
+         */
+        static left(target: string, length: int64): string
+        
+        /** Returns the last [param length] characters from the end of the string. If [param length] is negative, strips the first [param length] characters from the string's beginning.  
+         *    
+         */
+        static right(target: string, length: int64): string
+        
+        /** Strips all non-printable characters from the beginning and the end of the string. These include spaces, tabulations (`\t`), and newlines (`\n` `\r`).  
+         *  If [param left] is `false`, ignores the string's beginning. Likewise, if [param right] is `false`, ignores the string's end.  
+         */
+        static strip_edges(target: string, left?: boolean /* = true */, right?: boolean /* = true */): string
+        
+        /** Strips all escape characters from the string. These include all non-printable control characters of the first page of the ASCII table (values from 0 to 31), such as tabulation (`\t`) and newline (`\n`, `\r`) characters, but  *not*  spaces. */
+        static strip_escapes(target: string): string
+        
+        /** Removes a set of characters defined in [param chars] from the string's beginning. See also [method rstrip].  
+         *      
+         *  **Note:** [param chars] is not a prefix. Use [method trim_prefix] to remove a single prefix, rather than a set of characters.  
+         */
+        static lstrip(target: string, chars: string): string
+        
+        /** Removes a set of characters defined in [param chars] from the string's end. See also [method lstrip].  
+         *      
+         *  **Note:** [param chars] is not a suffix. Use [method trim_suffix] to remove a single suffix, rather than a set of characters.  
+         */
+        static rstrip(target: string, chars: string): string
+        
+        /** If the string is a valid file name or path, returns the file extension without the leading period (`.`). Otherwise, returns an empty string.  
+         *    
+         */
+        static get_extension(target: string): string
+        
+        /** If the string is a valid file path, returns the full file path, without the extension.  
+         *    
+         */
+        static get_basename(target: string): string
+        
+        /** Concatenates [param path] at the end of the string as a subpath, adding `/` if necessary.  
+         *  **Example:** `"this/is".path_join("path") == "this/is/path"`.  
+         */
+        static path_join(target: string, path: string): string
+        
+        /** Returns the character code at position [param at].  
+         *  See also [method chr], [method @GDScript.char], and [method @GDScript.ord].  
+         */
+        static unicode_at(target: string, at: int64): int64
+        
+        /** Indents every line of the string with the given [param prefix]. Empty lines are not indented. See also [method dedent] to remove indentation.  
+         *  For example, the string can be indented with two tabulations using `"\t\t"`, or four spaces using `"    "`.  
+         */
+        static indent(target: string, prefix: string): string
+        
+        /** Returns a copy of the string with indentation (leading tabs and spaces) removed. See also [method indent] to add indentation. */
+        static dedent(target: string): string
+        
+        /** Returns the 32-bit hash value representing the string's contents.  
+         *      
+         *  **Note:** Strings with equal hash values are  *not*  guaranteed to be the same, as a result of hash collisions. On the contrary, strings with different hash values are guaranteed to be different.  
+         */
+        static hash(target: string): int64
+        
+        /** Returns the [url=https://en.wikipedia.org/wiki/MD5]MD5 hash[/url] of the string as another [String]. */
+        static md5_text(target: string): string
+        
+        /** Returns the [url=https://en.wikipedia.org/wiki/SHA-1]SHA-1[/url] hash of the string as another [String]. */
+        static sha1_text(target: string): string
+        
+        /** Returns the [url=https://en.wikipedia.org/wiki/SHA-2]SHA-256[/url] hash of the string as another [String]. */
+        static sha256_text(target: string): string
+        
+        /** Returns the [url=https://en.wikipedia.org/wiki/MD5]MD5 hash[/url] of the string as a [PackedByteArray]. */
+        static md5_buffer(target: string): PackedByteArray
+        
+        /** Returns the [url=https://en.wikipedia.org/wiki/SHA-1]SHA-1[/url] hash of the string as a [PackedByteArray]. */
+        static sha1_buffer(target: string): PackedByteArray
+        
+        /** Returns the [url=https://en.wikipedia.org/wiki/SHA-2]SHA-256[/url] hash of the string as a [PackedByteArray]. */
+        static sha256_buffer(target: string): PackedByteArray
+        
+        /** Returns `true` if the string's length is `0` (`""`). See also [method length]. */
+        static is_empty(target: string): boolean
+        
+        /** Returns `true` if the string contains [param what]. In GDScript, this corresponds to the `in` operator.  
+         *    
+         *  If you need to know where [param what] is within the string, use [method find]. See also [method containsn].  
+         */
+        static contains(target: string, what: string): boolean
+        
+        /** Returns `true` if the string contains [param what], **ignoring case**.  
+         *  If you need to know where [param what] is within the string, use [method findn]. See also [method contains].  
+         */
+        static containsn(target: string, what: string): boolean
+        
+        /** Returns `true` if the string is a path to a file or directory, and its starting point is explicitly defined. This method is the opposite of [method is_relative_path].  
+         *  This includes all paths starting with `"res://"`, `"user://"`, `"C:\"`, `"/"`, etc.  
+         */
+        static is_absolute_path(target: string): boolean
+        
+        /** Returns `true` if the string is a path, and its starting point is dependent on context. The path could begin from the current directory, or the current [Node] (if the string is derived from a [NodePath]), and may sometimes be prefixed with `"./"`. This method is the opposite of [method is_absolute_path]. */
+        static is_relative_path(target: string): boolean
+        
+        /** If the string is a valid file path, converts the string into a canonical path. This is the shortest possible path, without `"./"`, and all the unnecessary `".."` and `"/"`.  
+         *    
+         */
+        static simplify_path(target: string): string
+        
+        /** If the string is a valid file path, returns the base directory name.  
+         *    
+         */
+        static get_base_dir(target: string): string
+        
+        /** If the string is a valid file path, returns the file name, including the extension.  
+         *    
+         */
+        static get_file(target: string): string
+        
+        /** Returns a copy of the string with special characters escaped using the XML standard. If [param escape_quotes] is `true`, the single quote (`'`) and double quote (`"`) characters are also escaped. */
+        static xml_escape(target: string, escape_quotes?: boolean /* = false */): string
+        
+        /** Returns a copy of the string with escaped characters replaced by their meanings according to the XML standard. */
+        static xml_unescape(target: string): string
+        
+        /** Encodes the string to URL-friendly format. This method is meant to properly encode the parameters in a URL when sending an HTTP request. See also [method uri_decode].  
+         *    
+         */
+        static uri_encode(target: string): string
+        
+        /** Decodes the string from its URL-encoded format. This method is meant to properly decode the parameters in a URL when receiving an HTTP request. See also [method uri_encode].  
+         *    
+         *      
+         *  **Note:** This method decodes `+` as space.  
+         */
+        static uri_decode(target: string): string
+        
+        /** Decodes the file path from its URL-encoded format. Unlike [method uri_decode] this method leaves `+` as is. */
+        static uri_file_decode(target: string): string
+        
+        /** Returns a copy of the string with special characters escaped using the C language standard. */
+        static c_escape(target: string): string
+        
+        /** Returns a copy of the string with escaped characters replaced by their meanings. Supported escape sequences are `\'`, `\"`, `\\`, `\a`, `\b`, `\f`, `\n`, `\r`, `\t`, `\v`.  
+         *      
+         *  **Note:** Unlike the GDScript parser, this method doesn't support the `\uXXXX` escape sequence.  
+         */
+        static c_unescape(target: string): string
+        
+        /** Returns a copy of the string with special characters escaped using the JSON standard. Because it closely matches the C standard, it is possible to use [method c_unescape] to unescape the string, if necessary. */
+        static json_escape(target: string): string
+        
+        /** Returns a copy of the string with all characters that are not allowed in [member Node.name] (`.` `:` `@` `/` `"` `%`) replaced with underscores. */
+        static validate_node_name(target: string): string
+        
+        /** Returns a copy of the string with all characters that are not allowed in [method is_valid_filename] replaced with underscores. */
+        static validate_filename(target: string): string
+        
+        /** Returns `true` if this string is a valid ASCII identifier. A valid ASCII identifier may contain only letters, digits, and underscores (`_`), and the first character may not be a digit.  
+         *    
+         *  See also [method is_valid_unicode_identifier].  
+         */
+        static is_valid_ascii_identifier(target: string): boolean
+        
+        /** Returns `true` if this string is a valid Unicode identifier.  
+         *  A valid Unicode identifier must begin with a Unicode character of class `XID_Start` or `"_"`, and may contain Unicode characters of class `XID_Continue` in the other positions.  
+         *    
+         *  See also [method is_valid_ascii_identifier].  
+         *      
+         *  **Note:** This method checks identifiers the same way as GDScript. See [method TextServer.is_valid_identifier] for more advanced checks.  
+         */
+        static is_valid_unicode_identifier(target: string): boolean
+        
+        /** Returns `true` if this string is a valid identifier. A valid identifier may contain only letters, digits and underscores (`_`), and the first character may not be a digit.  
+         *    
+         */
+        static is_valid_identifier(target: string): boolean
+        
+        /** Returns `true` if this string represents a valid integer. A valid integer only contains digits, and may be prefixed with a positive (`+`) or negative (`-`) sign. See also [method to_int].  
+         *    
+         */
+        static is_valid_int(target: string): boolean
+        
+        /** Returns `true` if this string represents a valid floating-point number. A valid float may contain only digits, one decimal point (`.`), and the exponent letter (`e`). It may also be prefixed with a positive (`+`) or negative (`-`) sign. Any valid integer is also a valid float (see [method is_valid_int]). See also [method to_float].  
+         *    
+         */
+        static is_valid_float(target: string): boolean
+        
+        /** Returns `true` if this string is a valid hexadecimal number. A valid hexadecimal number only contains digits or letters `A` to `F` (either uppercase or lowercase), and may be prefixed with a positive (`+`) or negative (`-`) sign.  
+         *  If [param with_prefix] is `true`, the hexadecimal number needs to prefixed by `"0x"` to be considered valid.  
+         *    
+         */
+        static is_valid_hex_number(target: string, with_prefix?: boolean /* = false */): boolean
+        
+        /** Returns `true` if this string is a valid color in hexadecimal HTML notation. The string must be a hexadecimal value (see [method is_valid_hex_number]) of either 3, 4, 6 or 8 digits, and may be prefixed by a hash sign (`#`). Other HTML notations for colors, such as names or `hsl()`, are not considered valid. See also [method Color.html]. */
+        static is_valid_html_color(target: string): boolean
+        
+        /** Returns `true` if this string represents a well-formatted IPv4 or IPv6 address. This method considers [url=https://en.wikipedia.org/wiki/Reserved_IP_addresses]reserved IP addresses[/url] such as `"0.0.0.0"` and `"ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"` as valid. */
+        static is_valid_ip_address(target: string): boolean
+        
+        /** Returns `true` if this string is a valid file name. A valid file name cannot be empty, begin or end with space characters, or contain characters that are not allowed (`:` `/` `\` `?` `*` `"` `|` `%` `<` `>`). */
+        static is_valid_filename(target: string): boolean
+        
+        /** Converts the string representing an integer number into an [int]. This method removes any non-number character and stops at the first decimal point (`.`). See also [method is_valid_int].  
+         *    
+         */
+        static to_int(target: string): int64
+        
+        /** Converts the string representing a decimal number into a [float]. This method stops on the first non-number character, except the first decimal point (`.`) and the exponent letter (`e`). See also [method is_valid_float].  
+         *    
+         */
+        static to_float(target: string): float64
+        
+        /** Converts the string representing a hexadecimal number into an [int]. The string may be optionally prefixed with `"0x"`, and an additional `-` prefix for negative numbers.  
+         *    
+         */
+        static hex_to_int(target: string): int64
+        
+        /** Converts the string representing a binary number into an [int]. The string may optionally be prefixed with `"0b"`, and an additional `-` prefix for negative numbers.  
+         *    
+         */
+        static bin_to_int(target: string): int64
+        
+        /** Formats the string to be at least [param min_length] long by adding [param character]s to the left of the string, if necessary. See also [method rpad]. */
+        static lpad(target: string, min_length: int64, character?: string /* = ' ' */): string
+        
+        /** Formats the string to be at least [param min_length] long, by adding [param character]s to the right of the string, if necessary. See also [method lpad]. */
+        static rpad(target: string, min_length: int64, character?: string /* = ' ' */): string
+        
+        /** Formats the string representing a number to have an exact number of [param digits]  *after*  the decimal point. */
+        static pad_decimals(target: string, digits: int64): string
+        
+        /** Formats the string representing a number to have an exact number of [param digits]  *before*  the decimal point. */
+        static pad_zeros(target: string, digits: int64): string
+        
+        /** Removes the given [param prefix] from the start of the string, or returns the string unchanged. */
+        static trim_prefix(target: string, prefix: string): string
+        
+        /** Removes the given [param suffix] from the end of the string, or returns the string unchanged. */
+        static trim_suffix(target: string, suffix: string): string
+        
+        /** Converts the string to an [url=https://en.wikipedia.org/wiki/ASCII]ASCII[/url]/Latin-1 encoded [PackedByteArray]. This method is slightly faster than [method to_utf8_buffer], but replaces all unsupported characters with spaces. This is the inverse of [method PackedByteArray.get_string_from_ascii]. */
+        static to_ascii_buffer(target: string): PackedByteArray
+        
+        /** Converts the string to a [url=https://en.wikipedia.org/wiki/UTF-8]UTF-8[/url] encoded [PackedByteArray]. This method is slightly slower than [method to_ascii_buffer], but supports all UTF-8 characters. For most cases, prefer using this method. This is the inverse of [method PackedByteArray.get_string_from_utf8]. */
+        static to_utf8_buffer(target: string): PackedByteArray
+        
+        /** Converts the string to a [url=https://en.wikipedia.org/wiki/UTF-16]UTF-16[/url] encoded [PackedByteArray]. This is the inverse of [method PackedByteArray.get_string_from_utf16]. */
+        static to_utf16_buffer(target: string): PackedByteArray
+        
+        /** Converts the string to a [url=https://en.wikipedia.org/wiki/UTF-32]UTF-32[/url] encoded [PackedByteArray]. This is the inverse of [method PackedByteArray.get_string_from_utf32]. */
+        static to_utf32_buffer(target: string): PackedByteArray
+        
+        /** Converts the string to a [url=https://en.wikipedia.org/wiki/Wide_character]wide character[/url] (`wchar_t`, UTF-16 on Windows, UTF-32 on other platforms) encoded [PackedByteArray]. This is the inverse of [method PackedByteArray.get_string_from_wchar]. */
+        static to_wchar_buffer(target: string): PackedByteArray
+        
+        /** Converts the string to system multibyte code page encoded [PackedByteArray]. If conversion fails, empty array is returned.  
+         *  The values permitted for [param encoding] are system dependent. If [param encoding] is empty string, system default encoding is used.  
+         *  - For Windows, see [url=https://learn.microsoft.com/en-us/windows/win32/Intl/code-page-identifiers]Code Page Identifiers[/url] .NET names.  
+         *  - For macOS and Linux/BSD, see `libiconv` library documentation and `iconv --list` for a list of supported encodings.  
+         */
+        static to_multibyte_char_buffer(target: string, encoding?: string /* = '' */): PackedByteArray
+        
+        /** Decodes a hexadecimal string as a [PackedByteArray].  
+         *    
+         */
+        static hex_decode(target: string): PackedByteArray
+        
+        /** Converts the given [param number] to a string representation, in scientific notation.  
+         *    
+         *      
+         *  **Note:** In C#, this method is not implemented. To achieve similar results, see C#'s [url=https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings]Standard numeric format strings[/url].  
+         */
+        static num_scientific(number: float64): string
+        
+        /** Converts a [float] to a string representation of a decimal number, with the number of decimal places specified in [param decimals].  
+         *  If [param decimals] is `-1` as by default, the string representation may only have up to 14 significant digits, with digits before the decimal point having priority over digits after.  
+         *  Trailing zeros are not included in the string. The last digit is rounded, not truncated.  
+         *    
+         */
+        static num(number: float64, decimals?: int64 /* = -1 */): string
+        
+        /** Converts the given [param number] to a string representation, with the given [param base].  
+         *  By default, [param base] is set to decimal (`10`). Other common bases in programming include binary (`2`), [url=https://en.wikipedia.org/wiki/Octal]octal[/url] (`8`), hexadecimal (`16`).  
+         *  If [param capitalize_hex] is `true`, digits higher than 9 are represented in uppercase.  
+         */
+        static num_int64(number: int64, base?: int64 /* = 10 */, capitalize_hex?: boolean /* = false */): string
+        
+        /** Converts the given unsigned [int] to a string representation, with the given [param base].  
+         *  By default, [param base] is set to decimal (`10`). Other common bases in programming include binary (`2`), [url=https://en.wikipedia.org/wiki/Octal]octal[/url] (`8`), hexadecimal (`16`).  
+         *  If [param capitalize_hex] is `true`, digits higher than 9 are represented in uppercase.  
+         */
+        static num_uint64(number: int64, base?: int64 /* = 10 */, capitalize_hex?: boolean /* = false */): string
+        
+        /** Returns a single Unicode character from the integer [param code]. You may use [url=https://unicodelookup.com/]unicodelookup.com[/url] or [url=https://www.unicode.org/charts/]unicode.org[/url] as points of reference.  
+         *    
+         *  See also [method unicode_at], [method @GDScript.char], and [method @GDScript.ord].  
+         */
+        static chr(code: int64): string
+        
+        /** Converts [param size] which represents a number of bytes into a human-readable form.  
+         *  The result is in [url=https://en.wikipedia.org/wiki/Binary_prefix#IEC_prefixes]IEC prefix format[/url], which may end in either `"B"`, `"KiB"`, `"MiB"`, `"GiB"`, `"TiB"`, `"PiB"`, or `"EiB"`.  
+         */
+        static humanize_size(size: int64): string
+    }
+    enum Side {
+        /** Left side, usually used for [Control] or [StyleBox]-derived classes. */
+        SIDE_LEFT = 0,
+        
+        /** Top side, usually used for [Control] or [StyleBox]-derived classes. */
+        SIDE_TOP = 1,
+        
+        /** Right side, usually used for [Control] or [StyleBox]-derived classes. */
+        SIDE_RIGHT = 2,
+        
+        /** Bottom side, usually used for [Control] or [StyleBox]-derived classes. */
+        SIDE_BOTTOM = 3,
+    }
+    enum Corner {
+        /** Top-left corner. */
+        CORNER_TOP_LEFT = 0,
+        
+        /** Top-right corner. */
+        CORNER_TOP_RIGHT = 1,
+        
+        /** Bottom-right corner. */
+        CORNER_BOTTOM_RIGHT = 2,
+        
+        /** Bottom-left corner. */
+        CORNER_BOTTOM_LEFT = 3,
+    }
+    enum Orientation {
+        /** General vertical alignment, usually used for [Separator], [ScrollBar], [Slider], etc. */
+        VERTICAL = 1,
+        
+        /** General horizontal alignment, usually used for [Separator], [ScrollBar], [Slider], etc. */
+        HORIZONTAL = 0,
+    }
+    enum ClockDirection {
+        /** Clockwise rotation. Used by some methods (e.g. [method Image.rotate_90]). */
+        CLOCKWISE = 0,
+        
+        /** Counter-clockwise rotation. Used by some methods (e.g. [method Image.rotate_90]). */
+        COUNTERCLOCKWISE = 1,
+    }
+    enum HorizontalAlignment {
+        /** Horizontal left alignment, usually for text-derived classes. */
+        HORIZONTAL_ALIGNMENT_LEFT = 0,
+        
+        /** Horizontal center alignment, usually for text-derived classes. */
+        HORIZONTAL_ALIGNMENT_CENTER = 1,
+        
+        /** Horizontal right alignment, usually for text-derived classes. */
+        HORIZONTAL_ALIGNMENT_RIGHT = 2,
+        
+        /** Expand row to fit width, usually for text-derived classes. */
+        HORIZONTAL_ALIGNMENT_FILL = 3,
+    }
+    enum VerticalAlignment {
+        /** Vertical top alignment, usually for text-derived classes. */
+        VERTICAL_ALIGNMENT_TOP = 0,
+        
+        /** Vertical center alignment, usually for text-derived classes. */
+        VERTICAL_ALIGNMENT_CENTER = 1,
+        
+        /** Vertical bottom alignment, usually for text-derived classes. */
+        VERTICAL_ALIGNMENT_BOTTOM = 2,
+        
+        /** Expand rows to fit height, usually for text-derived classes. */
+        VERTICAL_ALIGNMENT_FILL = 3,
+    }
+    enum InlineAlignment {
+        /** Aligns the top of the inline object (e.g. image, table) to the position of the text specified by `INLINE_ALIGNMENT_TO_*` constant. */
+        INLINE_ALIGNMENT_TOP_TO = 0,
+        
+        /** Aligns the center of the inline object (e.g. image, table) to the position of the text specified by `INLINE_ALIGNMENT_TO_*` constant. */
+        INLINE_ALIGNMENT_CENTER_TO = 1,
+        
+        /** Aligns the baseline (user defined) of the inline object (e.g. image, table) to the position of the text specified by `INLINE_ALIGNMENT_TO_*` constant. */
+        INLINE_ALIGNMENT_BASELINE_TO = 3,
+        
+        /** Aligns the bottom of the inline object (e.g. image, table) to the position of the text specified by `INLINE_ALIGNMENT_TO_*` constant. */
+        INLINE_ALIGNMENT_BOTTOM_TO = 2,
+        
+        /** Aligns the position of the inline object (e.g. image, table) specified by `INLINE_ALIGNMENT_*_TO` constant to the top of the text. */
+        INLINE_ALIGNMENT_TO_TOP = 0,
+        
+        /** Aligns the position of the inline object (e.g. image, table) specified by `INLINE_ALIGNMENT_*_TO` constant to the center of the text. */
+        INLINE_ALIGNMENT_TO_CENTER = 4,
+        
+        /** Aligns the position of the inline object (e.g. image, table) specified by `INLINE_ALIGNMENT_*_TO` constant to the baseline of the text. */
+        INLINE_ALIGNMENT_TO_BASELINE = 8,
+        
+        /** Aligns inline object (e.g. image, table) to the bottom of the text. */
+        INLINE_ALIGNMENT_TO_BOTTOM = 12,
+        
+        /** Aligns top of the inline object (e.g. image, table) to the top of the text. Equivalent to `INLINE_ALIGNMENT_TOP_TO | INLINE_ALIGNMENT_TO_TOP`. */
+        INLINE_ALIGNMENT_TOP = 0,
+        
+        /** Aligns center of the inline object (e.g. image, table) to the center of the text. Equivalent to `INLINE_ALIGNMENT_CENTER_TO | INLINE_ALIGNMENT_TO_CENTER`. */
+        INLINE_ALIGNMENT_CENTER = 5,
+        
+        /** Aligns bottom of the inline object (e.g. image, table) to the bottom of the text. Equivalent to `INLINE_ALIGNMENT_BOTTOM_TO | INLINE_ALIGNMENT_TO_BOTTOM`. */
+        INLINE_ALIGNMENT_BOTTOM = 14,
+        
+        /** A bit mask for `INLINE_ALIGNMENT_*_TO` alignment constants. */
+        INLINE_ALIGNMENT_IMAGE_MASK = 3,
+        
+        /** A bit mask for `INLINE_ALIGNMENT_TO_*` alignment constants. */
+        INLINE_ALIGNMENT_TEXT_MASK = 12,
+    }
+    enum EulerOrder {
+        /** Specifies that Euler angles should be in XYZ order. When composing, the order is X, Y, Z. When decomposing, the order is reversed, first Z, then Y, and X last. */
+        EULER_ORDER_XYZ = 0,
+        
+        /** Specifies that Euler angles should be in XZY order. When composing, the order is X, Z, Y. When decomposing, the order is reversed, first Y, then Z, and X last. */
+        EULER_ORDER_XZY = 1,
+        
+        /** Specifies that Euler angles should be in YXZ order. When composing, the order is Y, X, Z. When decomposing, the order is reversed, first Z, then X, and Y last. */
+        EULER_ORDER_YXZ = 2,
+        
+        /** Specifies that Euler angles should be in YZX order. When composing, the order is Y, Z, X. When decomposing, the order is reversed, first X, then Z, and Y last. */
+        EULER_ORDER_YZX = 3,
+        
+        /** Specifies that Euler angles should be in ZXY order. When composing, the order is Z, X, Y. When decomposing, the order is reversed, first Y, then X, and Z last. */
+        EULER_ORDER_ZXY = 4,
+        
+        /** Specifies that Euler angles should be in ZYX order. When composing, the order is Z, Y, X. When decomposing, the order is reversed, first X, then Y, and Z last. */
+        EULER_ORDER_ZYX = 5,
+    }
+    enum Key {
+        /** Enum value which doesn't correspond to any key. This is used to initialize [enum Key] properties with a generic state. */
+        KEY_NONE = 0,
+        
+        /** Keycodes with this bit applied are non-printable. */
+        KEY_SPECIAL = 4194304,
+        
+        /** Escape key. */
+        KEY_ESCAPE = 4194305,
+        
+        /** Tab key. */
+        KEY_TAB = 4194306,
+        
+        /** Shift + Tab key. */
+        KEY_BACKTAB = 4194307,
+        
+        /** Backspace key. */
+        KEY_BACKSPACE = 4194308,
+        
+        /** Return key (on the main keyboard). */
+        KEY_ENTER = 4194309,
+        
+        /** Enter key on the numeric keypad. */
+        KEY_KP_ENTER = 4194310,
+        
+        /** Insert key. */
+        KEY_INSERT = 4194311,
+        
+        /** Delete key. */
+        KEY_DELETE = 4194312,
+        
+        /** Pause key. */
+        KEY_PAUSE = 4194313,
+        
+        /** Print Screen key. */
+        KEY_PRINT = 4194314,
+        
+        /** System Request key. */
+        KEY_SYSREQ = 4194315,
+        
+        /** Clear key. */
+        KEY_CLEAR = 4194316,
+        
+        /** Home key. */
+        KEY_HOME = 4194317,
+        
+        /** End key. */
+        KEY_END = 4194318,
+        
+        /** Left arrow key. */
+        KEY_LEFT = 4194319,
+        
+        /** Up arrow key. */
+        KEY_UP = 4194320,
+        
+        /** Right arrow key. */
+        KEY_RIGHT = 4194321,
+        
+        /** Down arrow key. */
+        KEY_DOWN = 4194322,
+        
+        /** Page Up key. */
+        KEY_PAGEUP = 4194323,
+        
+        /** Page Down key. */
+        KEY_PAGEDOWN = 4194324,
+        
+        /** Shift key. */
+        KEY_SHIFT = 4194325,
+        
+        /** Control key. */
+        KEY_CTRL = 4194326,
+        
+        /** Meta key. */
+        KEY_META = 4194327,
+        
+        /** Alt key. */
+        KEY_ALT = 4194328,
+        
+        /** Caps Lock key. */
+        KEY_CAPSLOCK = 4194329,
+        
+        /** Num Lock key. */
+        KEY_NUMLOCK = 4194330,
+        
+        /** Scroll Lock key. */
+        KEY_SCROLLLOCK = 4194331,
+        
+        /** F1 key. */
+        KEY_F1 = 4194332,
+        
+        /** F2 key. */
+        KEY_F2 = 4194333,
+        
+        /** F3 key. */
+        KEY_F3 = 4194334,
+        
+        /** F4 key. */
+        KEY_F4 = 4194335,
+        
+        /** F5 key. */
+        KEY_F5 = 4194336,
+        
+        /** F6 key. */
+        KEY_F6 = 4194337,
+        
+        /** F7 key. */
+        KEY_F7 = 4194338,
+        
+        /** F8 key. */
+        KEY_F8 = 4194339,
+        
+        /** F9 key. */
+        KEY_F9 = 4194340,
+        
+        /** F10 key. */
+        KEY_F10 = 4194341,
+        
+        /** F11 key. */
+        KEY_F11 = 4194342,
+        
+        /** F12 key. */
+        KEY_F12 = 4194343,
+        
+        /** F13 key. */
+        KEY_F13 = 4194344,
+        
+        /** F14 key. */
+        KEY_F14 = 4194345,
+        
+        /** F15 key. */
+        KEY_F15 = 4194346,
+        
+        /** F16 key. */
+        KEY_F16 = 4194347,
+        
+        /** F17 key. */
+        KEY_F17 = 4194348,
+        
+        /** F18 key. */
+        KEY_F18 = 4194349,
+        
+        /** F19 key. */
+        KEY_F19 = 4194350,
+        
+        /** F20 key. */
+        KEY_F20 = 4194351,
+        
+        /** F21 key. */
+        KEY_F21 = 4194352,
+        
+        /** F22 key. */
+        KEY_F22 = 4194353,
+        
+        /** F23 key. */
+        KEY_F23 = 4194354,
+        
+        /** F24 key. */
+        KEY_F24 = 4194355,
+        
+        /** F25 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F25 = 4194356,
+        
+        /** F26 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F26 = 4194357,
+        
+        /** F27 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F27 = 4194358,
+        
+        /** F28 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F28 = 4194359,
+        
+        /** F29 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F29 = 4194360,
+        
+        /** F30 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F30 = 4194361,
+        
+        /** F31 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F31 = 4194362,
+        
+        /** F32 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F32 = 4194363,
+        
+        /** F33 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F33 = 4194364,
+        
+        /** F34 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F34 = 4194365,
+        
+        /** F35 key. Only supported on macOS and Linux due to a Windows limitation. */
+        KEY_F35 = 4194366,
+        
+        /** Multiply (*) key on the numeric keypad. */
+        KEY_KP_MULTIPLY = 4194433,
+        
+        /** Divide (/) key on the numeric keypad. */
+        KEY_KP_DIVIDE = 4194434,
+        
+        /** Subtract (-) key on the numeric keypad. */
+        KEY_KP_SUBTRACT = 4194435,
+        
+        /** Period (.) key on the numeric keypad. */
+        KEY_KP_PERIOD = 4194436,
+        
+        /** Add (+) key on the numeric keypad. */
+        KEY_KP_ADD = 4194437,
+        
+        /** Number 0 on the numeric keypad. */
+        KEY_KP_0 = 4194438,
+        
+        /** Number 1 on the numeric keypad. */
+        KEY_KP_1 = 4194439,
+        
+        /** Number 2 on the numeric keypad. */
+        KEY_KP_2 = 4194440,
+        
+        /** Number 3 on the numeric keypad. */
+        KEY_KP_3 = 4194441,
+        
+        /** Number 4 on the numeric keypad. */
+        KEY_KP_4 = 4194442,
+        
+        /** Number 5 on the numeric keypad. */
+        KEY_KP_5 = 4194443,
+        
+        /** Number 6 on the numeric keypad. */
+        KEY_KP_6 = 4194444,
+        
+        /** Number 7 on the numeric keypad. */
+        KEY_KP_7 = 4194445,
+        
+        /** Number 8 on the numeric keypad. */
+        KEY_KP_8 = 4194446,
+        
+        /** Number 9 on the numeric keypad. */
+        KEY_KP_9 = 4194447,
+        
+        /** Context menu key. */
+        KEY_MENU = 4194370,
+        
+        /** Hyper key. (On Linux/X11 only). */
+        KEY_HYPER = 4194371,
+        
+        /** Help key. */
+        KEY_HELP = 4194373,
+        
+        /** Back key. */
+        KEY_BACK = 4194376,
+        
+        /** Forward key. */
+        KEY_FORWARD = 4194377,
+        
+        /** Media stop key. */
+        KEY_STOP = 4194378,
+        
+        /** Refresh key. */
+        KEY_REFRESH = 4194379,
+        
+        /** Volume down key. */
+        KEY_VOLUMEDOWN = 4194380,
+        
+        /** Mute volume key. */
+        KEY_VOLUMEMUTE = 4194381,
+        
+        /** Volume up key. */
+        KEY_VOLUMEUP = 4194382,
+        
+        /** Media play key. */
+        KEY_MEDIAPLAY = 4194388,
+        
+        /** Media stop key. */
+        KEY_MEDIASTOP = 4194389,
+        
+        /** Previous song key. */
+        KEY_MEDIAPREVIOUS = 4194390,
+        
+        /** Next song key. */
+        KEY_MEDIANEXT = 4194391,
+        
+        /** Media record key. */
+        KEY_MEDIARECORD = 4194392,
+        
+        /** Home page key. */
+        KEY_HOMEPAGE = 4194393,
+        
+        /** Favorites key. */
+        KEY_FAVORITES = 4194394,
+        
+        /** Search key. */
+        KEY_SEARCH = 4194395,
+        
+        /** Standby key. */
+        KEY_STANDBY = 4194396,
+        
+        /** Open URL / Launch Browser key. */
+        KEY_OPENURL = 4194397,
+        
+        /** Launch Mail key. */
+        KEY_LAUNCHMAIL = 4194398,
+        
+        /** Launch Media key. */
+        KEY_LAUNCHMEDIA = 4194399,
+        
+        /** Launch Shortcut 0 key. */
+        KEY_LAUNCH0 = 4194400,
+        
+        /** Launch Shortcut 1 key. */
+        KEY_LAUNCH1 = 4194401,
+        
+        /** Launch Shortcut 2 key. */
+        KEY_LAUNCH2 = 4194402,
+        
+        /** Launch Shortcut 3 key. */
+        KEY_LAUNCH3 = 4194403,
+        
+        /** Launch Shortcut 4 key. */
+        KEY_LAUNCH4 = 4194404,
+        
+        /** Launch Shortcut 5 key. */
+        KEY_LAUNCH5 = 4194405,
+        
+        /** Launch Shortcut 6 key. */
+        KEY_LAUNCH6 = 4194406,
+        
+        /** Launch Shortcut 7 key. */
+        KEY_LAUNCH7 = 4194407,
+        
+        /** Launch Shortcut 8 key. */
+        KEY_LAUNCH8 = 4194408,
+        
+        /** Launch Shortcut 9 key. */
+        KEY_LAUNCH9 = 4194409,
+        
+        /** Launch Shortcut A key. */
+        KEY_LAUNCHA = 4194410,
+        
+        /** Launch Shortcut B key. */
+        KEY_LAUNCHB = 4194411,
+        
+        /** Launch Shortcut C key. */
+        KEY_LAUNCHC = 4194412,
+        
+        /** Launch Shortcut D key. */
+        KEY_LAUNCHD = 4194413,
+        
+        /** Launch Shortcut E key. */
+        KEY_LAUNCHE = 4194414,
+        
+        /** Launch Shortcut F key. */
+        KEY_LAUNCHF = 4194415,
+        
+        /** "Globe" key on Mac / iPad keyboard. */
+        KEY_GLOBE = 4194416,
+        
+        /** "On-screen keyboard" key on iPad keyboard. */
+        KEY_KEYBOARD = 4194417,
+        
+        /** 英数 key on Mac keyboard. */
+        KEY_JIS_EISU = 4194418,
+        
+        /** かな key on Mac keyboard. */
+        KEY_JIS_KANA = 4194419,
+        
+        /** Unknown key. */
+        KEY_UNKNOWN = 8388607,
+        
+        /** Space key. */
+        KEY_SPACE = 32,
+        
+        /** Exclamation mark (`!`) key. */
+        KEY_EXCLAM = 33,
+        
+        /** Double quotation mark (`"`) key. */
+        KEY_QUOTEDBL = 34,
+        
+        /** Number sign or  *hash*  (`#`) key. */
+        KEY_NUMBERSIGN = 35,
+        
+        /** Dollar sign (`$`) key. */
+        KEY_DOLLAR = 36,
+        
+        /** Percent sign (`%`) key. */
+        KEY_PERCENT = 37,
+        
+        /** Ampersand (`&`) key. */
+        KEY_AMPERSAND = 38,
+        
+        /** Apostrophe (`'`) key. */
+        KEY_APOSTROPHE = 39,
+        
+        /** Left parenthesis (`(`) key. */
+        KEY_PARENLEFT = 40,
+        
+        /** Right parenthesis (`)`) key. */
+        KEY_PARENRIGHT = 41,
+        
+        /** Asterisk (`*`) key. */
+        KEY_ASTERISK = 42,
+        
+        /** Plus (`+`) key. */
+        KEY_PLUS = 43,
+        
+        /** Comma (`,`) key. */
+        KEY_COMMA = 44,
+        
+        /** Minus (`-`) key. */
+        KEY_MINUS = 45,
+        
+        /** Period (`.`) key. */
+        KEY_PERIOD = 46,
+        
+        /** Slash (`/`) key. */
+        KEY_SLASH = 47,
+        
+        /** Number 0 key. */
+        KEY_0 = 48,
+        
+        /** Number 1 key. */
+        KEY_1 = 49,
+        
+        /** Number 2 key. */
+        KEY_2 = 50,
+        
+        /** Number 3 key. */
+        KEY_3 = 51,
+        
+        /** Number 4 key. */
+        KEY_4 = 52,
+        
+        /** Number 5 key. */
+        KEY_5 = 53,
+        
+        /** Number 6 key. */
+        KEY_6 = 54,
+        
+        /** Number 7 key. */
+        KEY_7 = 55,
+        
+        /** Number 8 key. */
+        KEY_8 = 56,
+        
+        /** Number 9 key. */
+        KEY_9 = 57,
+        
+        /** Colon (`:`) key. */
+        KEY_COLON = 58,
+        
+        /** Semicolon (`;`) key. */
+        KEY_SEMICOLON = 59,
+        
+        /** Less-than sign (`<`) key. */
+        KEY_LESS = 60,
+        
+        /** Equal sign (`=`) key. */
+        KEY_EQUAL = 61,
+        
+        /** Greater-than sign (`>`) key. */
+        KEY_GREATER = 62,
+        
+        /** Question mark (`?`) key. */
+        KEY_QUESTION = 63,
+        
+        /** At sign (`@`) key. */
+        KEY_AT = 64,
+        
+        /** A key. */
+        KEY_A = 65,
+        
+        /** B key. */
+        KEY_B = 66,
+        
+        /** C key. */
+        KEY_C = 67,
+        
+        /** D key. */
+        KEY_D = 68,
+        
+        /** E key. */
+        KEY_E = 69,
+        
+        /** F key. */
+        KEY_F = 70,
+        
+        /** G key. */
+        KEY_G = 71,
+        
+        /** H key. */
+        KEY_H = 72,
+        
+        /** I key. */
+        KEY_I = 73,
+        
+        /** J key. */
+        KEY_J = 74,
+        
+        /** K key. */
+        KEY_K = 75,
+        
+        /** L key. */
+        KEY_L = 76,
+        
+        /** M key. */
+        KEY_M = 77,
+        
+        /** N key. */
+        KEY_N = 78,
+        
+        /** O key. */
+        KEY_O = 79,
+        
+        /** P key. */
+        KEY_P = 80,
+        
+        /** Q key. */
+        KEY_Q = 81,
+        
+        /** R key. */
+        KEY_R = 82,
+        
+        /** S key. */
+        KEY_S = 83,
+        
+        /** T key. */
+        KEY_T = 84,
+        
+        /** U key. */
+        KEY_U = 85,
+        
+        /** V key. */
+        KEY_V = 86,
+        
+        /** W key. */
+        KEY_W = 87,
+        
+        /** X key. */
+        KEY_X = 88,
+        
+        /** Y key. */
+        KEY_Y = 89,
+        
+        /** Z key. */
+        KEY_Z = 90,
+        
+        /** Left bracket (`[lb]`) key. */
+        KEY_BRACKETLEFT = 91,
+        
+        /** Backslash (`\`) key. */
+        KEY_BACKSLASH = 92,
+        
+        /** Right bracket (`[rb]`) key. */
+        KEY_BRACKETRIGHT = 93,
+        
+        /** Caret (`^`) key. */
+        KEY_ASCIICIRCUM = 94,
+        
+        /** Underscore (`_`) key. */
+        KEY_UNDERSCORE = 95,
+        
+        /** Backtick (```) key. */
+        KEY_QUOTELEFT = 96,
+        
+        /** Left brace (`{`) key. */
+        KEY_BRACELEFT = 123,
+        
+        /** Vertical bar or  *pipe*  (`|`) key. */
+        KEY_BAR = 124,
+        
+        /** Right brace (`}`) key. */
+        KEY_BRACERIGHT = 125,
+        
+        /** Tilde (`~`) key. */
+        KEY_ASCIITILDE = 126,
+        
+        /** Yen symbol (`¥`) key. */
+        KEY_YEN = 165,
+        
+        /** Section sign (`§`) key. */
+        KEY_SECTION = 167,
+    }
+    enum KeyModifierMask {
+        /** Key Code mask. */
+        KEY_CODE_MASK = 8388607,
+        
+        /** Modifier key mask. */
+        KEY_MODIFIER_MASK = 2130706432,
+        
+        /** Automatically remapped to [constant KEY_META] on macOS and [constant KEY_CTRL] on other platforms, this mask is never set in the actual events, and should be used for key mapping only. */
+        KEY_MASK_CMD_OR_CTRL = 16777216,
+        
+        /** Shift key mask. */
+        KEY_MASK_SHIFT = 33554432,
+        
+        /** Alt or Option (on macOS) key mask. */
+        KEY_MASK_ALT = 67108864,
+        
+        /** Command (on macOS) or Meta/Windows key mask. */
+        KEY_MASK_META = 134217728,
+        
+        /** Control key mask. */
+        KEY_MASK_CTRL = 268435456,
+        
+        /** Keypad key mask. */
+        KEY_MASK_KPAD = 536870912,
+        
+        /** Group Switch key mask. */
+        KEY_MASK_GROUP_SWITCH = 1073741824,
+    }
+    enum KeyLocation {
+        /** Used for keys which only appear once, or when a comparison doesn't need to differentiate the `LEFT` and `RIGHT` versions.  
+         *  For example, when using [method InputEvent.is_match], an event which has [constant KEY_LOCATION_UNSPECIFIED] will match any [enum KeyLocation] on the passed event.  
+         */
+        KEY_LOCATION_UNSPECIFIED = 0,
+        
+        /** A key which is to the left of its twin. */
+        KEY_LOCATION_LEFT = 1,
+        
+        /** A key which is to the right of its twin. */
+        KEY_LOCATION_RIGHT = 2,
+    }
+    enum MouseButton {
+        /** Enum value which doesn't correspond to any mouse button. This is used to initialize [enum MouseButton] properties with a generic state. */
+        MOUSE_BUTTON_NONE = 0,
+        
+        /** Primary mouse button, usually assigned to the left button. */
+        MOUSE_BUTTON_LEFT = 1,
+        
+        /** Secondary mouse button, usually assigned to the right button. */
+        MOUSE_BUTTON_RIGHT = 2,
+        
+        /** Middle mouse button. */
+        MOUSE_BUTTON_MIDDLE = 3,
+        
+        /** Mouse wheel scrolling up. */
+        MOUSE_BUTTON_WHEEL_UP = 4,
+        
+        /** Mouse wheel scrolling down. */
+        MOUSE_BUTTON_WHEEL_DOWN = 5,
+        
+        /** Mouse wheel left button (only present on some mice). */
+        MOUSE_BUTTON_WHEEL_LEFT = 6,
+        
+        /** Mouse wheel right button (only present on some mice). */
+        MOUSE_BUTTON_WHEEL_RIGHT = 7,
+        
+        /** Extra mouse button 1. This is sometimes present, usually to the sides of the mouse. */
+        MOUSE_BUTTON_XBUTTON1 = 8,
+        
+        /** Extra mouse button 2. This is sometimes present, usually to the sides of the mouse. */
+        MOUSE_BUTTON_XBUTTON2 = 9,
+    }
+    enum MouseButtonMask {
+        /** Primary mouse button mask, usually for the left button. */
+        MOUSE_BUTTON_MASK_LEFT = 1,
+        
+        /** Secondary mouse button mask, usually for the right button. */
+        MOUSE_BUTTON_MASK_RIGHT = 2,
+        
+        /** Middle mouse button mask. */
+        MOUSE_BUTTON_MASK_MIDDLE = 4,
+        
+        /** Extra mouse button 1 mask. */
+        MOUSE_BUTTON_MASK_MB_XBUTTON1 = 128,
+        
+        /** Extra mouse button 2 mask. */
+        MOUSE_BUTTON_MASK_MB_XBUTTON2 = 256,
+    }
+    enum JoyButton {
+        /** An invalid game controller button. */
+        JOY_BUTTON_INVALID = -1,
+        
+        /** Game controller SDL button A. Corresponds to the bottom action button: Sony Cross, Xbox A, Nintendo B. */
+        JOY_BUTTON_A = 0,
+        
+        /** Game controller SDL button B. Corresponds to the right action button: Sony Circle, Xbox B, Nintendo A. */
+        JOY_BUTTON_B = 1,
+        
+        /** Game controller SDL button X. Corresponds to the left action button: Sony Square, Xbox X, Nintendo Y. */
+        JOY_BUTTON_X = 2,
+        
+        /** Game controller SDL button Y. Corresponds to the top action button: Sony Triangle, Xbox Y, Nintendo X. */
+        JOY_BUTTON_Y = 3,
+        
+        /** Game controller SDL back button. Corresponds to the Sony Select, Xbox Back, Nintendo - button. */
+        JOY_BUTTON_BACK = 4,
+        
+        /** Game controller SDL guide button. Corresponds to the Sony PS, Xbox Home button. */
+        JOY_BUTTON_GUIDE = 5,
+        
+        /** Game controller SDL start button. Corresponds to the Sony Options, Xbox Menu, Nintendo + button. */
+        JOY_BUTTON_START = 6,
+        
+        /** Game controller SDL left stick button. Corresponds to the Sony L3, Xbox L/LS button. */
+        JOY_BUTTON_LEFT_STICK = 7,
+        
+        /** Game controller SDL right stick button. Corresponds to the Sony R3, Xbox R/RS button. */
+        JOY_BUTTON_RIGHT_STICK = 8,
+        
+        /** Game controller SDL left shoulder button. Corresponds to the Sony L1, Xbox LB button. */
+        JOY_BUTTON_LEFT_SHOULDER = 9,
+        
+        /** Game controller SDL right shoulder button. Corresponds to the Sony R1, Xbox RB button. */
+        JOY_BUTTON_RIGHT_SHOULDER = 10,
+        
+        /** Game controller D-pad up button. */
+        JOY_BUTTON_DPAD_UP = 11,
+        
+        /** Game controller D-pad down button. */
+        JOY_BUTTON_DPAD_DOWN = 12,
+        
+        /** Game controller D-pad left button. */
+        JOY_BUTTON_DPAD_LEFT = 13,
+        
+        /** Game controller D-pad right button. */
+        JOY_BUTTON_DPAD_RIGHT = 14,
+        
+        /** Game controller SDL miscellaneous button. Corresponds to Xbox share button, PS5 microphone button, Nintendo Switch capture button. */
+        JOY_BUTTON_MISC1 = 15,
+        
+        /** Game controller SDL paddle 1 button. */
+        JOY_BUTTON_PADDLE1 = 16,
+        
+        /** Game controller SDL paddle 2 button. */
+        JOY_BUTTON_PADDLE2 = 17,
+        
+        /** Game controller SDL paddle 3 button. */
+        JOY_BUTTON_PADDLE3 = 18,
+        
+        /** Game controller SDL paddle 4 button. */
+        JOY_BUTTON_PADDLE4 = 19,
+        
+        /** Game controller SDL touchpad button. */
+        JOY_BUTTON_TOUCHPAD = 20,
+        
+        /** The number of SDL game controller buttons. */
+        JOY_BUTTON_SDL_MAX = 21,
+        
+        /** The maximum number of game controller buttons supported by the engine. The actual limit may be lower on specific platforms:  
+         *  - **Android:** Up to 36 buttons.  
+         *  - **Linux:** Up to 80 buttons.  
+         *  - **Windows** and **macOS:** Up to 128 buttons.  
+         */
+        JOY_BUTTON_MAX = 128,
+    }
+    enum JoyAxis {
+        /** An invalid game controller axis. */
+        JOY_AXIS_INVALID = -1,
+        
+        /** Game controller left joystick x-axis. */
+        JOY_AXIS_LEFT_X = 0,
+        
+        /** Game controller left joystick y-axis. */
+        JOY_AXIS_LEFT_Y = 1,
+        
+        /** Game controller right joystick x-axis. */
+        JOY_AXIS_RIGHT_X = 2,
+        
+        /** Game controller right joystick y-axis. */
+        JOY_AXIS_RIGHT_Y = 3,
+        
+        /** Game controller left trigger axis. */
+        JOY_AXIS_TRIGGER_LEFT = 4,
+        
+        /** Game controller right trigger axis. */
+        JOY_AXIS_TRIGGER_RIGHT = 5,
+        
+        /** The number of SDL game controller axes. */
+        JOY_AXIS_SDL_MAX = 6,
+        
+        /** The maximum number of game controller axes: OpenVR supports up to 5 Joysticks making a total of 10 axes. */
+        JOY_AXIS_MAX = 10,
+    }
+    enum MIDIMessage {
+        /** Does not correspond to any MIDI message. This is the default value of [member InputEventMIDI.message]. */
+        MIDI_MESSAGE_NONE = 0,
+        
+        /** MIDI message sent when a note is released.  
+         *      
+         *  **Note:** Not all MIDI devices send this message; some may send [constant MIDI_MESSAGE_NOTE_ON] with [member InputEventMIDI.velocity] set to `0`.  
+         */
+        MIDI_MESSAGE_NOTE_OFF = 8,
+        
+        /** MIDI message sent when a note is pressed. */
+        MIDI_MESSAGE_NOTE_ON = 9,
+        
+        /** MIDI message sent to indicate a change in pressure while a note is being pressed down, also called aftertouch. */
+        MIDI_MESSAGE_AFTERTOUCH = 10,
+        
+        /** MIDI message sent when a controller value changes. In a MIDI device, a controller is any input that doesn't play notes. These may include sliders for volume, balance, and panning, as well as switches and pedals. See the [url=https://en.wikipedia.org/wiki/General_MIDI#Controller_events]General MIDI specification[/url] for a small list. */
+        MIDI_MESSAGE_CONTROL_CHANGE = 11,
+        
+        /** MIDI message sent when the MIDI device changes its current instrument (also called  *program*  or  *preset* ). */
+        MIDI_MESSAGE_PROGRAM_CHANGE = 12,
+        
+        /** MIDI message sent to indicate a change in pressure for the whole channel. Some MIDI devices may send this instead of [constant MIDI_MESSAGE_AFTERTOUCH]. */
+        MIDI_MESSAGE_CHANNEL_PRESSURE = 13,
+        
+        /** MIDI message sent when the value of the pitch bender changes, usually a wheel on the MIDI device. */
+        MIDI_MESSAGE_PITCH_BEND = 14,
+        
+        /** MIDI system exclusive (SysEx) message. This type of message is not standardized and it's highly dependent on the MIDI device sending it.  
+         *      
+         *  **Note:** Getting this message's data from [InputEventMIDI] is not implemented.  
+         */
+        MIDI_MESSAGE_SYSTEM_EXCLUSIVE = 240,
+        
+        /** MIDI message sent every quarter frame to keep connected MIDI devices synchronized. Related to [constant MIDI_MESSAGE_TIMING_CLOCK].  
+         *      
+         *  **Note:** Getting this message's data from [InputEventMIDI] is not implemented.  
+         */
+        MIDI_MESSAGE_QUARTER_FRAME = 241,
+        
+        /** MIDI message sent to jump onto a new position in the current sequence or song.  
+         *      
+         *  **Note:** Getting this message's data from [InputEventMIDI] is not implemented.  
+         */
+        MIDI_MESSAGE_SONG_POSITION_POINTER = 242,
+        
+        /** MIDI message sent to select a sequence or song to play.  
+         *      
+         *  **Note:** Getting this message's data from [InputEventMIDI] is not implemented.  
+         */
+        MIDI_MESSAGE_SONG_SELECT = 243,
+        
+        /** MIDI message sent to request a tuning calibration. Used on analog synthesizers. Most modern MIDI devices do not need this message. */
+        MIDI_MESSAGE_TUNE_REQUEST = 246,
+        
+        /** MIDI message sent 24 times after [constant MIDI_MESSAGE_QUARTER_FRAME], to keep connected MIDI devices synchronized. */
+        MIDI_MESSAGE_TIMING_CLOCK = 248,
+        
+        /** MIDI message sent to start the current sequence or song from the beginning. */
+        MIDI_MESSAGE_START = 250,
+        
+        /** MIDI message sent to resume from the point the current sequence or song was paused. */
+        MIDI_MESSAGE_CONTINUE = 251,
+        
+        /** MIDI message sent to pause the current sequence or song. */
+        MIDI_MESSAGE_STOP = 252,
+        
+        /** MIDI message sent repeatedly while the MIDI device is idle, to tell the receiver that the connection is alive. Most MIDI devices do not send this message. */
+        MIDI_MESSAGE_ACTIVE_SENSING = 254,
+        
+        /** MIDI message sent to reset a MIDI device to its default state, as if it was just turned on. It should not be sent when the MIDI device is being turned on. */
+        MIDI_MESSAGE_SYSTEM_RESET = 255,
+    }
+    enum Error {
+        /** Methods that return [enum Error] return [constant OK] when no error occurred.  
+         *  Since [constant OK] has value `0`, and all other error constants are positive integers, it can also be used in boolean checks.  
+         *    
+         *      
+         *  **Note:** Many functions do not return an error code, but will print error messages to standard output.  
+         */
+        OK = 0,
+        
+        /** Generic error. */
+        FAILED = 1,
+        
+        /** Unavailable error. */
+        ERR_UNAVAILABLE = 2,
+        
+        /** Unconfigured error. */
+        ERR_UNCONFIGURED = 3,
+        
+        /** Unauthorized error. */
+        ERR_UNAUTHORIZED = 4,
+        
+        /** Parameter range error. */
+        ERR_PARAMETER_RANGE_ERROR = 5,
+        
+        /** Out of memory (OOM) error. */
+        ERR_OUT_OF_MEMORY = 6,
+        
+        /** File: Not found error. */
+        ERR_FILE_NOT_FOUND = 7,
+        
+        /** File: Bad drive error. */
+        ERR_FILE_BAD_DRIVE = 8,
+        
+        /** File: Bad path error. */
+        ERR_FILE_BAD_PATH = 9,
+        
+        /** File: No permission error. */
+        ERR_FILE_NO_PERMISSION = 10,
+        
+        /** File: Already in use error. */
+        ERR_FILE_ALREADY_IN_USE = 11,
+        
+        /** File: Can't open error. */
+        ERR_FILE_CANT_OPEN = 12,
+        
+        /** File: Can't write error. */
+        ERR_FILE_CANT_WRITE = 13,
+        
+        /** File: Can't read error. */
+        ERR_FILE_CANT_READ = 14,
+        
+        /** File: Unrecognized error. */
+        ERR_FILE_UNRECOGNIZED = 15,
+        
+        /** File: Corrupt error. */
+        ERR_FILE_CORRUPT = 16,
+        
+        /** File: Missing dependencies error. */
+        ERR_FILE_MISSING_DEPENDENCIES = 17,
+        
+        /** File: End of file (EOF) error. */
+        ERR_FILE_EOF = 18,
+        
+        /** Can't open error. */
+        ERR_CANT_OPEN = 19,
+        
+        /** Can't create error. */
+        ERR_CANT_CREATE = 20,
+        
+        /** Query failed error. */
+        ERR_QUERY_FAILED = 21,
+        
+        /** Already in use error. */
+        ERR_ALREADY_IN_USE = 22,
+        
+        /** Locked error. */
+        ERR_LOCKED = 23,
+        
+        /** Timeout error. */
+        ERR_TIMEOUT = 24,
+        
+        /** Can't connect error. */
+        ERR_CANT_CONNECT = 25,
+        
+        /** Can't resolve error. */
+        ERR_CANT_RESOLVE = 26,
+        
+        /** Connection error. */
+        ERR_CONNECTION_ERROR = 27,
+        
+        /** Can't acquire resource error. */
+        ERR_CANT_ACQUIRE_RESOURCE = 28,
+        
+        /** Can't fork process error. */
+        ERR_CANT_FORK = 29,
+        
+        /** Invalid data error. */
+        ERR_INVALID_DATA = 30,
+        
+        /** Invalid parameter error. */
+        ERR_INVALID_PARAMETER = 31,
+        
+        /** Already exists error. */
+        ERR_ALREADY_EXISTS = 32,
+        
+        /** Does not exist error. */
+        ERR_DOES_NOT_EXIST = 33,
+        
+        /** Database: Read error. */
+        ERR_DATABASE_CANT_READ = 34,
+        
+        /** Database: Write error. */
+        ERR_DATABASE_CANT_WRITE = 35,
+        
+        /** Compilation failed error. */
+        ERR_COMPILATION_FAILED = 36,
+        
+        /** Method not found error. */
+        ERR_METHOD_NOT_FOUND = 37,
+        
+        /** Linking failed error. */
+        ERR_LINK_FAILED = 38,
+        
+        /** Script failed error. */
+        ERR_SCRIPT_FAILED = 39,
+        
+        /** Cycling link (import cycle) error. */
+        ERR_CYCLIC_LINK = 40,
+        
+        /** Invalid declaration error. */
+        ERR_INVALID_DECLARATION = 41,
+        
+        /** Duplicate symbol error. */
+        ERR_DUPLICATE_SYMBOL = 42,
+        
+        /** Parse error. */
+        ERR_PARSE_ERROR = 43,
+        
+        /** Busy error. */
+        ERR_BUSY = 44,
+        
+        /** Skip error. */
+        ERR_SKIP = 45,
+        
+        /** Help error. Used internally when passing `--version` or `--help` as executable options. */
+        ERR_HELP = 46,
+        
+        /** Bug error, caused by an implementation issue in the method.  
+         *      
+         *  **Note:** If a built-in method returns this code, please open an issue on [url=https://github.com/godotengine/godot/issues]the GitHub Issue Tracker[/url].  
+         */
+        ERR_BUG = 47,
+        
+        /** Printer on fire error (This is an easter egg, no built-in methods return this error code). */
+        ERR_PRINTER_ON_FIRE = 48,
+    }
+    enum PropertyHint {
+        /** The property has no hint for the editor. */
+        PROPERTY_HINT_NONE = 0,
+        
+        /** Hints that an [int] or [float] property should be within a range specified via the hint string `"min,max"` or `"min,max,step"`. The hint string can optionally include `"or_greater"` and/or `"or_less"` to allow manual input going respectively above the max or below the min values.  
+         *  **Example:** `"-360,360,1,or_greater,or_less"`.  
+         *  Additionally, other keywords can be included: `"exp"` for exponential range editing, `"radians_as_degrees"` for editing radian angles in degrees (the range values are also in degrees), `"degrees"` to hint at an angle, `"prefer_slider"` to show the slider for integers, `"hide_control"` to hide the slider or up-down arrows, and `"suffix:px/s"` to display a suffix indicating the value's unit (e.g. `px/s` for pixels per second).  
+         */
+        PROPERTY_HINT_RANGE = 1,
+        
+        /** Hints that an [int], [String], or [StringName] property is an enumerated value to pick in a list specified via a hint string.  
+         *  The hint string is a comma separated list of names such as `"Hello,Something,Else"`. Whitespace is **not** removed from either end of a name. For integer properties, the first name in the list has value 0, the next 1, and so on. Explicit values can also be specified by appending `:integer` to the name, e.g. `"Zero,One,Three:3,Four,Six:6"`.  
+         */
+        PROPERTY_HINT_ENUM = 2,
+        
+        /** Hints that a [String] or [StringName] property can be an enumerated value to pick in a list specified via a hint string such as `"Hello,Something,Else"`. See [constant PROPERTY_HINT_ENUM] for details.  
+         *  Unlike [constant PROPERTY_HINT_ENUM], a property with this hint still accepts arbitrary values and can be empty. The list of values serves to suggest possible values.  
+         */
+        PROPERTY_HINT_ENUM_SUGGESTION = 3,
+        
+        /** Hints that a [float] property should be edited via an exponential easing function. The hint string can include `"attenuation"` to flip the curve horizontally and/or `"positive_only"` to exclude in/out easing and limit values to be greater than or equal to zero. */
+        PROPERTY_HINT_EXP_EASING = 4,
+        
+        /** Hints that a vector property should allow its components to be linked. For example, this allows [member Vector2.x] and [member Vector2.y] to be edited together. */
+        PROPERTY_HINT_LINK = 5,
+        
+        /** Hints that an [int] property is a bitmask with named bit flags.  
+         *  The hint string is a comma separated list of names such as `"Bit0,Bit1,Bit2,Bit3"`. Whitespace is **not** removed from either end of a name. The first name in the list has value 1, the next 2, then 4, 8, 16 and so on. Explicit values can also be specified by appending `:integer` to the name, e.g. `"A:4,B:8,C:16"`. You can also combine several flags (`"A:4,B:8,AB:12,C:16"`).  
+         *      
+         *  **Note:** A flag value must be at least `1` and at most `2 ** 32 - 1`.  
+         *      
+         *  **Note:** Unlike [constant PROPERTY_HINT_ENUM], the previous explicit value is not taken into account. For the hint `"A:16,B,C"`, A is 16, B is 2, C is 4.  
+         */
+        PROPERTY_HINT_FLAGS = 6,
+        
+        /** Hints that an [int] property is a bitmask using the optionally named 2D render layers. */
+        PROPERTY_HINT_LAYERS_2D_RENDER = 7,
+        
+        /** Hints that an [int] property is a bitmask using the optionally named 2D physics layers. */
+        PROPERTY_HINT_LAYERS_2D_PHYSICS = 8,
+        
+        /** Hints that an [int] property is a bitmask using the optionally named 2D navigation layers. */
+        PROPERTY_HINT_LAYERS_2D_NAVIGATION = 9,
+        
+        /** Hints that an [int] property is a bitmask using the optionally named 3D render layers. */
+        PROPERTY_HINT_LAYERS_3D_RENDER = 10,
+        
+        /** Hints that an [int] property is a bitmask using the optionally named 3D physics layers. */
+        PROPERTY_HINT_LAYERS_3D_PHYSICS = 11,
+        
+        /** Hints that an [int] property is a bitmask using the optionally named 3D navigation layers. */
+        PROPERTY_HINT_LAYERS_3D_NAVIGATION = 12,
+        
+        /** Hints that an integer property is a bitmask using the optionally named avoidance layers. */
+        PROPERTY_HINT_LAYERS_AVOIDANCE = 37,
+        
+        /** Hints that a [String] property is a path to a file. Editing it will show a file dialog for picking the path. The hint string can be a set of filters with wildcards like `"*.png,*.jpg"`. By default the file will be stored as UID whenever available. You can use [ResourceUID] methods to convert it back to path. For storing a raw path, use [constant PROPERTY_HINT_FILE_PATH]. */
+        PROPERTY_HINT_FILE = 13,
+        
+        /** Hints that a [String] property is a path to a directory. Editing it will show a file dialog for picking the path. */
+        PROPERTY_HINT_DIR = 14,
+        
+        /** Hints that a [String] property is an absolute path to a file outside the project folder. Editing it will show a file dialog for picking the path. The hint string can be a set of filters with wildcards, like `"*.png,*.jpg"`. */
+        PROPERTY_HINT_GLOBAL_FILE = 15,
+        
+        /** Hints that a [String] property is an absolute path to a directory outside the project folder. Editing it will show a file dialog for picking the path. */
+        PROPERTY_HINT_GLOBAL_DIR = 16,
+        
+        /** Hints that a property is an instance of a [Resource]-derived type, optionally specified via the hint string (e.g. `"Texture2D"`). Editing it will show a popup menu of valid resource types to instantiate. */
+        PROPERTY_HINT_RESOURCE_TYPE = 17,
+        
+        /** Hints that a [String] property is text with line breaks. Editing it will show a text input field where line breaks can be typed.  
+         *  The hint string can be set to `"monospace"` to force the input field to use a monospaced font.  
+         *  If the hint string `"no_wrap"` is set, the input field will not wrap lines at boundaries, instead resorting to making the area scrollable.  
+         */
+        PROPERTY_HINT_MULTILINE_TEXT = 18,
+        
+        /** Hints that a [String] property is an [Expression]. */
+        PROPERTY_HINT_EXPRESSION = 19,
+        
+        /** Hints that a [String] property should show a placeholder text on its input field, if empty. The hint string is the placeholder text to use. */
+        PROPERTY_HINT_PLACEHOLDER_TEXT = 20,
+        
+        /** Hints that a [Color] property should be edited without affecting its transparency ([member Color.a] is not editable). */
+        PROPERTY_HINT_COLOR_NO_ALPHA = 21,
+        
+        /** Hints that the property's value is an object encoded as object ID, with its type specified in the hint string. Used by the debugger. */
+        PROPERTY_HINT_OBJECT_ID = 22,
+        
+        /** If a property is [String], hints that the property represents a particular type (class). This allows to select a type from the create dialog. The property will store the selected type as a string.  
+         *  If a property is [Array], hints the editor how to show elements. The `hint_string` must encode nested types using `":"` and `"/"`.  
+         *  If a property is [Dictionary], hints the editor how to show elements. The `hint_string` is the same as [Array], with a `";"` separating the key and value.  
+         *    
+         *  **Examples:**  
+         *    
+         *      
+         *  **Note:** The trailing colon is required for properly detecting built-in types.  
+         */
+        PROPERTY_HINT_TYPE_STRING = 23,
+        PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE = 24,
+        
+        /** Hints that an object is too big to be sent via the debugger. */
+        PROPERTY_HINT_OBJECT_TOO_BIG = 25,
+        
+        /** Hints that the hint string specifies valid node types for property of type [NodePath]. */
+        PROPERTY_HINT_NODE_PATH_VALID_TYPES = 26,
+        
+        /** Hints that a [String] property is a path to a file. Editing it will show a file dialog for picking the path for the file to be saved at. The dialog has access to the project's directory. The hint string can be a set of filters with wildcards like `"*.png,*.jpg"`. See also [member FileDialog.filters]. */
+        PROPERTY_HINT_SAVE_FILE = 27,
+        
+        /** Hints that a [String] property is a path to a file. Editing it will show a file dialog for picking the path for the file to be saved at. The dialog has access to the entire filesystem. The hint string can be a set of filters with wildcards like `"*.png,*.jpg"`. See also [member FileDialog.filters]. */
+        PROPERTY_HINT_GLOBAL_SAVE_FILE = 28,
+        PROPERTY_HINT_INT_IS_OBJECTID = 29,
+        
+        /** Hints that an [int] property is a pointer. Used by GDExtension. */
+        PROPERTY_HINT_INT_IS_POINTER = 30,
+        
+        /** Hints that a property is an [Array] with the stored type specified in the hint string. The hint string contains the type of the array (e.g. `"String"`).  
+         *  Use the hint string format from [constant PROPERTY_HINT_TYPE_STRING] for more control over the stored type.  
+         */
+        PROPERTY_HINT_ARRAY_TYPE = 31,
+        
+        /** Hints that a property is a [Dictionary] with the stored types specified in the hint string. The hint string contains the key and value types separated by a semicolon (e.g. `"int;String"`).  
+         *  Use the hint string format from [constant PROPERTY_HINT_TYPE_STRING] for more control over the stored types.  
+         */
+        PROPERTY_HINT_DICTIONARY_TYPE = 38,
+        
+        /** Hints that a string property is a locale code. Editing it will show a locale dialog for picking language and country. */
+        PROPERTY_HINT_LOCALE_ID = 32,
+        
+        /** Hints that a dictionary property is string translation map. Dictionary keys are locale codes and, values are translated strings. */
+        PROPERTY_HINT_LOCALIZABLE_STRING = 33,
+        
+        /** Hints that a property is an instance of a [Node]-derived type, optionally specified via the hint string (e.g. `"Node2D"`). Editing it will show a dialog for picking a node from the scene. */
+        PROPERTY_HINT_NODE_TYPE = 34,
+        
+        /** Hints that a quaternion property should disable the temporary euler editor. */
+        PROPERTY_HINT_HIDE_QUATERNION_EDIT = 35,
+        
+        /** Hints that a string property is a password, and every character is replaced with the secret character. */
+        PROPERTY_HINT_PASSWORD = 36,
+        
+        /** Hints that a [Callable] property should be displayed as a clickable button. When the button is pressed, the callable is called. The hint string specifies the button text and optionally an icon from the `"EditorIcons"` theme type.  
+         *  [codeblock lang=text]  
+         *  "Click me!" - A button with the text "Click me!" and the default "Callable" icon.  
+         *  "Click me!,ColorRect" - A button with the text "Click me!" and the "ColorRect" icon.  
+         *  [/codeblock]  
+         *      
+         *  **Note:** A [Callable] cannot be properly serialized and stored in a file, so it is recommended to use [constant PROPERTY_USAGE_EDITOR] instead of [constant PROPERTY_USAGE_DEFAULT].  
+         */
+        PROPERTY_HINT_TOOL_BUTTON = 39,
+        
+        /** Hints that a property will be changed on its own after setting, such as [member AudioStreamPlayer.playing] or [member GPUParticles3D.emitting]. */
+        PROPERTY_HINT_ONESHOT = 40,
+        
+        /** Hints that a boolean property will enable the feature associated with the group that it occurs in. The property will be displayed as a checkbox on the group header. Only works within a group or subgroup.  
+         *  By default, disabling the property hides all properties in the group. Use the optional hint string `"checkbox_only"` to disable this behavior.  
+         */
+        PROPERTY_HINT_GROUP_ENABLE = 42,
+        
+        /** Hints that a [String] or [StringName] property is the name of an input action. This allows the selection of any action name from the Input Map in the Project Settings. The hint string may contain two options separated by commas:  
+         *  - If it contains `"show_builtin"`, built-in input actions are included in the selection.  
+         *  - If it contains `"loose_mode"`, loose mode is enabled. This allows inserting any action name even if it's not present in the input map.  
+         */
+        PROPERTY_HINT_INPUT_NAME = 43,
+        
+        /** Like [constant PROPERTY_HINT_FILE], but the property is stored as a raw path, not UID. That means the reference will be broken if you move the file. Consider using [constant PROPERTY_HINT_FILE] when possible. */
+        PROPERTY_HINT_FILE_PATH = 44,
+        
+        /** Represents the size of the [enum PropertyHint] enum. */
+        PROPERTY_HINT_MAX = 45,
+    }
+    enum PropertyUsageFlags {
+        /** The property is not stored, and does not display in the editor. This is the default for non-exported properties. */
+        PROPERTY_USAGE_NONE = 0,
+        
+        /** The property is serialized and saved in the scene file (default for exported properties). */
+        PROPERTY_USAGE_STORAGE = 2,
+        
+        /** The property is shown in the [EditorInspector] (default for exported properties). */
+        PROPERTY_USAGE_EDITOR = 4,
+        
+        /** The property is excluded from the class reference. */
+        PROPERTY_USAGE_INTERNAL = 8,
+        
+        /** The property can be checked in the [EditorInspector]. */
+        PROPERTY_USAGE_CHECKABLE = 16,
+        
+        /** The property is checked in the [EditorInspector]. */
+        PROPERTY_USAGE_CHECKED = 32,
+        
+        /** Used to group properties together in the editor. See [EditorInspector]. */
+        PROPERTY_USAGE_GROUP = 64,
+        
+        /** Used to categorize properties together in the editor. */
+        PROPERTY_USAGE_CATEGORY = 128,
+        
+        /** Used to group properties together in the editor in a subgroup (under a group). See [EditorInspector]. */
+        PROPERTY_USAGE_SUBGROUP = 256,
+        
+        /** The property is a bitfield, i.e. it contains multiple flags represented as bits. */
+        PROPERTY_USAGE_CLASS_IS_BITFIELD = 512,
+        
+        /** The property does not save its state in [PackedScene]. */
+        PROPERTY_USAGE_NO_INSTANCE_STATE = 1024,
+        
+        /** Editing the property prompts the user for restarting the editor. */
+        PROPERTY_USAGE_RESTART_IF_CHANGED = 2048,
+        
+        /** The property is a script variable. [constant PROPERTY_USAGE_SCRIPT_VARIABLE] can be used to distinguish between exported script variables from built-in variables (which don't have this usage flag). By default, [constant PROPERTY_USAGE_SCRIPT_VARIABLE] is **not** applied to variables that are created by overriding [method Object._get_property_list] in a script. */
+        PROPERTY_USAGE_SCRIPT_VARIABLE = 4096,
+        
+        /** The property value of type [Object] will be stored even if its value is `null`. */
+        PROPERTY_USAGE_STORE_IF_NULL = 8192,
+        
+        /** If this property is modified, all inspector fields will be refreshed. */
+        PROPERTY_USAGE_UPDATE_ALL_IF_MODIFIED = 16384,
+        PROPERTY_USAGE_SCRIPT_DEFAULT_VALUE = 32768,
+        
+        /** The property is a variable of enum type, i.e. it only takes named integer constants from its associated enumeration. */
+        PROPERTY_USAGE_CLASS_IS_ENUM = 65536,
+        
+        /** If property has `nil` as default value, its type will be [Variant]. */
+        PROPERTY_USAGE_NIL_IS_VARIANT = 131072,
+        
+        /** The property is the element count of a property array, i.e. a list of groups of related properties. Properties defined with this usage also need a specific `class_name` field in the form of `label,prefix`. The field may also include additional comma-separated options:  
+         *  - `page_size=N`: Overrides [member EditorSettings.interface/inspector/max_array_dictionary_items_per_page] for this array.  
+         *  - `add_button_text=text`: The text displayed by the "Add Element" button.  
+         *  - `static`: The elements can't be re-arranged.  
+         *  - `const`: New elements can't be added.  
+         *  - `numbered`: An index will appear next to each element.  
+         *  - `unfoldable`: The array can't be folded.  
+         *  - `swap_method=method_name`: The method that will be called when two elements switch places. The method should take 2 [int] parameters, which will be indices of the elements being swapped.  
+         *  Note that making a full-fledged property array requires boilerplate code involving [method Object._get_property_list].  
+         */
+        PROPERTY_USAGE_ARRAY = 262144,
+        
+        /** When duplicating a resource with [method Resource.duplicate], and this flag is set on a property of that resource, the property should always be duplicated, regardless of the `subresources` bool parameter. */
+        PROPERTY_USAGE_ALWAYS_DUPLICATE = 524288,
+        
+        /** When duplicating a resource with [method Resource.duplicate], and this flag is set on a property of that resource, the property should never be duplicated, regardless of the `subresources` bool parameter. */
+        PROPERTY_USAGE_NEVER_DUPLICATE = 1048576,
+        
+        /** The property is only shown in the editor if modern renderers are supported (the Compatibility rendering method is excluded). */
+        PROPERTY_USAGE_HIGH_END_GFX = 2097152,
+        
+        /** The [NodePath] property will always be relative to the scene's root. Mostly useful for local resources. */
+        PROPERTY_USAGE_NODE_PATH_FROM_SCENE_ROOT = 4194304,
+        
+        /** Use when a resource is created on the fly, i.e. the getter will always return a different instance. [ResourceSaver] needs this information to properly save such resources. */
+        PROPERTY_USAGE_RESOURCE_NOT_PERSISTENT = 8388608,
+        
+        /** Inserting an animation key frame of this property will automatically increment the value, allowing to easily keyframe multiple values in a row. */
+        PROPERTY_USAGE_KEYING_INCREMENTS = 16777216,
+        PROPERTY_USAGE_DEFERRED_SET_RESOURCE = 33554432,
+        
+        /** When this property is a [Resource] and base object is a [Node], a resource instance will be automatically created whenever the node is created in the editor. */
+        PROPERTY_USAGE_EDITOR_INSTANTIATE_OBJECT = 67108864,
+        
+        /** The property is considered a basic setting and will appear even when advanced mode is disabled. Used for project settings. */
+        PROPERTY_USAGE_EDITOR_BASIC_SETTING = 134217728,
+        
+        /** The property is read-only in the [EditorInspector]. */
+        PROPERTY_USAGE_READ_ONLY = 268435456,
+        
+        /** An export preset property with this flag contains confidential information and is stored separately from the rest of the export preset configuration. */
+        PROPERTY_USAGE_SECRET = 536870912,
+        
+        /** Default usage (storage and editor). */
+        PROPERTY_USAGE_DEFAULT = 6,
+        
+        /** Default usage but without showing the property in the editor (storage). */
+        PROPERTY_USAGE_NO_EDITOR = 2,
+    }
+    enum MethodFlags {
+        /** Flag for a normal method. */
+        METHOD_FLAG_NORMAL = 1,
+        
+        /** Flag for an editor method. */
+        METHOD_FLAG_EDITOR = 2,
+        
+        /** Flag for a constant method. */
+        METHOD_FLAG_CONST = 4,
+        
+        /** Flag for a virtual method. */
+        METHOD_FLAG_VIRTUAL = 8,
+        
+        /** Flag for a method with a variable number of arguments. */
+        METHOD_FLAG_VARARG = 16,
+        
+        /** Flag for a static method. */
+        METHOD_FLAG_STATIC = 32,
+        
+        /** Used internally. Allows to not dump core virtual methods (such as [method Object._notification]) to the JSON API. */
+        METHOD_FLAG_OBJECT_CORE = 64,
+        
+        /** Flag for a virtual method that is required. In GDScript, this flag is set for abstract functions. */
+        METHOD_FLAG_VIRTUAL_REQUIRED = 128,
+        
+        /** Default method flags (normal). */
+        METHOD_FLAGS_DEFAULT = 1,
+    }
+    namespace Variant {
+        enum Type {
+            /** Variable is `null`. */
+            TYPE_NIL = 0,
+            
+            /** Variable is of type [bool]. */
+            TYPE_BOOL = 1,
+            
+            /** Variable is of type [int]. */
+            TYPE_INT = 2,
+            
+            /** Variable is of type [float]. */
+            TYPE_FLOAT = 3,
+            
+            /** Variable is of type [String]. */
+            TYPE_STRING = 4,
+            
+            /** Variable is of type [Vector2]. */
+            TYPE_VECTOR2 = 5,
+            
+            /** Variable is of type [Vector2i]. */
+            TYPE_VECTOR2I = 6,
+            
+            /** Variable is of type [Rect2]. */
+            TYPE_RECT2 = 7,
+            
+            /** Variable is of type [Rect2i]. */
+            TYPE_RECT2I = 8,
+            
+            /** Variable is of type [Vector3]. */
+            TYPE_VECTOR3 = 9,
+            
+            /** Variable is of type [Vector3i]. */
+            TYPE_VECTOR3I = 10,
+            
+            /** Variable is of type [Transform2D]. */
+            TYPE_TRANSFORM2D = 11,
+            
+            /** Variable is of type [Vector4]. */
+            TYPE_VECTOR4 = 12,
+            
+            /** Variable is of type [Vector4i]. */
+            TYPE_VECTOR4I = 13,
+            
+            /** Variable is of type [Plane]. */
+            TYPE_PLANE = 14,
+            
+            /** Variable is of type [Quaternion]. */
+            TYPE_QUATERNION = 15,
+            
+            /** Variable is of type [AABB]. */
+            TYPE_AABB = 16,
+            
+            /** Variable is of type [Basis]. */
+            TYPE_BASIS = 17,
+            
+            /** Variable is of type [Transform3D]. */
+            TYPE_TRANSFORM3D = 18,
+            
+            /** Variable is of type [Projection]. */
+            TYPE_PROJECTION = 19,
+            
+            /** Variable is of type [Color]. */
+            TYPE_COLOR = 20,
+            
+            /** Variable is of type [StringName]. */
+            TYPE_STRING_NAME = 21,
+            
+            /** Variable is of type [NodePath]. */
+            TYPE_NODE_PATH = 22,
+            
+            /** Variable is of type [RID]. */
+            TYPE_RID = 23,
+            
+            /** Variable is of type [Object]. */
+            TYPE_OBJECT = 24,
+            
+            /** Variable is of type [Callable]. */
+            TYPE_CALLABLE = 25,
+            
+            /** Variable is of type [Signal]. */
+            TYPE_SIGNAL = 26,
+            
+            /** Variable is of type [Dictionary]. */
+            TYPE_DICTIONARY = 27,
+            
+            /** Variable is of type [Array]. */
+            TYPE_ARRAY = 28,
+            
+            /** Variable is of type [PackedByteArray]. */
+            TYPE_PACKED_BYTE_ARRAY = 29,
+            
+            /** Variable is of type [PackedInt32Array]. */
+            TYPE_PACKED_INT32_ARRAY = 30,
+            
+            /** Variable is of type [PackedInt64Array]. */
+            TYPE_PACKED_INT64_ARRAY = 31,
+            
+            /** Variable is of type [PackedFloat32Array]. */
+            TYPE_PACKED_FLOAT32_ARRAY = 32,
+            
+            /** Variable is of type [PackedFloat64Array]. */
+            TYPE_PACKED_FLOAT64_ARRAY = 33,
+            
+            /** Variable is of type [PackedStringArray]. */
+            TYPE_PACKED_STRING_ARRAY = 34,
+            
+            /** Variable is of type [PackedVector2Array]. */
+            TYPE_PACKED_VECTOR2_ARRAY = 35,
+            
+            /** Variable is of type [PackedVector3Array]. */
+            TYPE_PACKED_VECTOR3_ARRAY = 36,
+            
+            /** Variable is of type [PackedColorArray]. */
+            TYPE_PACKED_COLOR_ARRAY = 37,
+            
+            /** Variable is of type [PackedVector4Array]. */
+            TYPE_PACKED_VECTOR4_ARRAY = 38,
+            
+            /** Represents the size of the [enum Variant.Type] enum. */
+            TYPE_MAX = 39,
+        }
+    }
+    namespace Variant {
+        enum Operator {
+            /** Equality operator (`==`). */
+            OP_EQUAL = 0,
+            
+            /** Inequality operator (`!=`). */
+            OP_NOT_EQUAL = 1,
+            
+            /** Less than operator (`<`). */
+            OP_LESS = 2,
+            
+            /** Less than or equal operator (`<=`). */
+            OP_LESS_EQUAL = 3,
+            
+            /** Greater than operator (`>`). */
+            OP_GREATER = 4,
+            
+            /** Greater than or equal operator (`>=`). */
+            OP_GREATER_EQUAL = 5,
+            
+            /** Addition operator (`+`). */
+            OP_ADD = 6,
+            
+            /** Subtraction operator (`-`). */
+            OP_SUBTRACT = 7,
+            
+            /** Multiplication operator (`*`). */
+            OP_MULTIPLY = 8,
+            
+            /** Division operator (`/`). */
+            OP_DIVIDE = 9,
+            
+            /** Unary negation operator (`-`). */
+            OP_NEGATE = 10,
+            
+            /** Unary plus operator (`+`). */
+            OP_POSITIVE = 11,
+            
+            /** Remainder/modulo operator (`%`). */
+            OP_MODULE = 12,
+            
+            /** Power operator (`**`). */
+            OP_POWER = 13,
+            
+            /** Left shift operator (`<<`). */
+            OP_SHIFT_LEFT = 14,
+            
+            /** Right shift operator (`>>`). */
+            OP_SHIFT_RIGHT = 15,
+            
+            /** Bitwise AND operator (`&`). */
+            OP_BIT_AND = 16,
+            
+            /** Bitwise OR operator (`|`). */
+            OP_BIT_OR = 17,
+            
+            /** Bitwise XOR operator (`^`). */
+            OP_BIT_XOR = 18,
+            
+            /** Bitwise NOT operator (`~`). */
+            OP_BIT_NEGATE = 19,
+            
+            /** Logical AND operator (`and` or `&&`). */
+            OP_AND = 20,
+            
+            /** Logical OR operator (`or` or `||`). */
+            OP_OR = 21,
+            
+            /** Logical XOR operator (not implemented in GDScript). */
+            OP_XOR = 22,
+            
+            /** Logical NOT operator (`not` or `!`). */
+            OP_NOT = 23,
+            
+            /** Logical IN operator (`in`). */
+            OP_IN = 24,
+            
+            /** Represents the size of the [enum Variant.Operator] enum. */
+            OP_MAX = 25,
+        }
+    }
+    
+    /** Returns the sine of angle [param angle_rad] in radians.  
+     *    
+     */
+    function sin(angle_rad: float64): float64
+    
+    /** Returns the cosine of angle [param angle_rad] in radians.  
+     *    
+     */
+    function cos(angle_rad: float64): float64
+    
+    /** Returns the tangent of angle [param angle_rad] in radians.  
+     *    
+     */
+    function tan(angle_rad: float64): float64
+    
+    /** Returns the hyperbolic sine of [param x].  
+     *    
+     */
+    function sinh(x: float64): float64
+    
+    /** Returns the hyperbolic cosine of [param x] in radians.  
+     *    
+     */
+    function cosh(x: float64): float64
+    
+    /** Returns the hyperbolic tangent of [param x].  
+     *    
+     */
+    function tanh(x: float64): float64
+    
+    /** Returns the arc sine of [param x] in radians. Use to get the angle of sine [param x]. [param x] will be clamped between `-1.0` and `1.0` (inclusive), in order to prevent [method asin] from returning [constant @GDScript.NAN].  
+     *    
+     */
+    function asin(x: float64): float64
+    
+    /** Returns the arc cosine of [param x] in radians. Use to get the angle of cosine [param x]. [param x] will be clamped between `-1.0` and `1.0` (inclusive), in order to prevent [method acos] from returning [constant @GDScript.NAN].  
+     *    
+     */
+    function acos(x: float64): float64
+    
+    /** Returns the arc tangent of [param x] in radians. Use it to get the angle from an angle's tangent in trigonometry.  
+     *  The method cannot know in which quadrant the angle should fall. See [method atan2] if you have both `y` and [code skip-lint]x`.  
+     *    
+     *  If [param x] is between `-PI / 2` and `PI / 2` (inclusive), `atan(tan(x))` is equal to [param x].  
+     */
+    function atan(x: float64): float64
+    
+    /** Returns the arc tangent of `y/x` in radians. Use to get the angle of tangent `y/x`. To compute the value, the method takes into account the sign of both arguments in order to determine the quadrant.  
+     *  Important note: The Y coordinate comes first, by convention.  
+     *    
+     */
+    function atan2(y: float64, x: float64): float64
+    
+    /** Returns the hyperbolic arc (also called inverse) sine of [param x], returning a value in radians. Use it to get the angle from an angle's sine in hyperbolic space.  
+     *    
+     */
+    function asinh(x: float64): float64
+    
+    /** Returns the hyperbolic arc (also called inverse) cosine of [param x], returning a value in radians. Use it to get the angle from an angle's cosine in hyperbolic space if [param x] is larger or equal to 1. For values of [param x] lower than 1, it will return 0, in order to prevent [method acosh] from returning [constant @GDScript.NAN].  
+     *    
+     */
+    function acosh(x: float64): float64
+    
+    /** Returns the hyperbolic arc (also called inverse) tangent of [param x], returning a value in radians. Use it to get the angle from an angle's tangent in hyperbolic space if [param x] is between -1 and 1 (non-inclusive).  
+     *  In mathematics, the inverse hyperbolic tangent is only defined for -1 < [param x] < 1 in the real set, so values equal or lower to -1 for [param x] return negative [constant @GDScript.INF] and values equal or higher than 1 return positive [constant @GDScript.INF] in order to prevent [method atanh] from returning [constant @GDScript.NAN].  
+     *    
+     */
+    function atanh(x: float64): float64
+    
+    /** Returns the square root of [param x], where [param x] is a non-negative number.  
+     *    
+     *      
+     *  **Note:** Negative values of [param x] return NaN ("Not a Number"). In C#, if you need negative inputs, use `System.Numerics.Complex`.  
+     */
+    function sqrt(x: float64): float64
+    
+    /** Returns the floating-point remainder of [param x] divided by [param y], keeping the sign of [param x].  
+     *    
+     *  For the integer remainder operation, use the `%` operator.  
+     */
+    function fmod(x: float64, y: float64): float64
+    
+    /** Returns the floating-point modulus of [param x] divided by [param y], wrapping equally in positive and negative.  
+     *    
+     *  Prints:  
+     *  [codeblock lang=text]  
+     *   (x)  (fmod(x, 1.5))   (fposmod(x, 1.5))  
+     *  -1.5           -0.0  |  0.0  
+     *  -1.0           -1.0  |  0.5  
+     *  -0.5           -0.5  |  1.0  
+     *   0.0            0.0  |  0.0  
+     *   0.5            0.5  |  0.5  
+     *   1.0            1.0  |  1.0  
+     *   1.5            0.0  |  0.0  
+     *  [/codeblock]  
+     */
+    function fposmod(x: float64, y: float64): float64
+    
+    /** Returns the integer modulus of [param x] divided by [param y] that wraps equally in positive and negative.  
+     *    
+     *  Prints:  
+     *  [codeblock lang=text]  
+     *  (i)  (i % 3)   (posmod(i, 3))  
+     *  -3        0  |  0  
+     *  -2       -2  |  1  
+     *  -1       -1  |  2  
+     *   0        0  |  0  
+     *   1        1  |  1  
+     *   2        2  |  2  
+     *   3        0  |  0  
+     *  [/codeblock]  
+     */
+    function posmod(x: int64, y: int64): int64
+    
+    /** Rounds [param x] downward (towards negative infinity), returning the largest whole number that is not more than [param x]. Supported types: [int], [float], [Vector2], [Vector2i], [Vector3], [Vector3i], [Vector4], [Vector4i].  
+     *    
+     *  See also [method ceil], [method round], and [method snapped].  
+     *      
+     *  **Note:** For better type safety, use [method floorf], [method floori], [method Vector2.floor], [method Vector3.floor], or [method Vector4.floor].  
+     */
+    function floor(x: any): any
+    
+    /** Rounds [param x] downward (towards negative infinity), returning the largest whole number that is not more than [param x].  
+     *  A type-safe version of [method floor], returning a [float].  
+     */
+    function floorf(x: float64): float64
+    
+    /** Rounds [param x] downward (towards negative infinity), returning the largest whole number that is not more than [param x].  
+     *  A type-safe version of [method floor], returning an [int].  
+     *      
+     *  **Note:** This function is  *not*  the same as `int(x)`, which rounds towards 0.  
+     */
+    function floori(x: float64): int64
+    
+    /** Rounds [param x] upward (towards positive infinity), returning the smallest whole number that is not less than [param x]. Supported types: [int], [float], [Vector2], [Vector2i], [Vector3], [Vector3i], [Vector4], [Vector4i].  
+     *    
+     *  See also [method floor], [method round], and [method snapped].  
+     *      
+     *  **Note:** For better type safety, use [method ceilf], [method ceili], [method Vector2.ceil], [method Vector3.ceil], or [method Vector4.ceil].  
+     */
+    function ceil(x: any): any
+    
+    /** Rounds [param x] upward (towards positive infinity), returning the smallest whole number that is not less than [param x].  
+     *  A type-safe version of [method ceil], returning a [float].  
+     */
+    function ceilf(x: float64): float64
+    
+    /** Rounds [param x] upward (towards positive infinity), returning the smallest whole number that is not less than [param x].  
+     *  A type-safe version of [method ceil], returning an [int].  
+     */
+    function ceili(x: float64): int64
+    
+    /** Rounds [param x] to the nearest whole number, with halfway cases rounded away from 0. Supported types: [int], [float], [Vector2], [Vector2i], [Vector3], [Vector3i], [Vector4], [Vector4i].  
+     *    
+     *  See also [method floor], [method ceil], and [method snapped].  
+     *      
+     *  **Note:** For better type safety, use [method roundf], [method roundi], [method Vector2.round], [method Vector3.round], or [method Vector4.round].  
+     */
+    function round(x: any): any
+    
+    /** Rounds [param x] to the nearest whole number, with halfway cases rounded away from 0.  
+     *  A type-safe version of [method round], returning a [float].  
+     */
+    function roundf(x: float64): float64
+    
+    /** Rounds [param x] to the nearest whole number, with halfway cases rounded away from 0.  
+     *  A type-safe version of [method round], returning an [int].  
+     */
+    function roundi(x: float64): int64
+    
+    /** Returns the absolute value of a [Variant] parameter [param x] (i.e. non-negative value). Supported types: [int], [float], [Vector2], [Vector2i], [Vector3], [Vector3i], [Vector4], [Vector4i].  
+     *    
+     *      
+     *  **Note:** For better type safety, use [method absf], [method absi], [method Vector2.abs], [method Vector2i.abs], [method Vector3.abs], [method Vector3i.abs], [method Vector4.abs], or [method Vector4i.abs].  
+     */
+    function abs(x: any): any
+    
+    /** Returns the absolute value of float parameter [param x] (i.e. positive value).  
+     *    
+     */
+    function absf(x: float64): float64
+    
+    /** Returns the absolute value of int parameter [param x] (i.e. positive value).  
+     *    
+     */
+    function absi(x: int64): int64
+    
+    /** Returns the same type of [Variant] as [param x], with `-1` for negative values, `1` for positive values, and `0` for zeros. For `nan` values it returns 0.  
+     *  Supported types: [int], [float], [Vector2], [Vector2i], [Vector3], [Vector3i], [Vector4], [Vector4i].  
+     *    
+     *      
+     *  **Note:** For better type safety, use [method signf], [method signi], [method Vector2.sign], [method Vector2i.sign], [method Vector3.sign], [method Vector3i.sign], [method Vector4.sign], or [method Vector4i.sign].  
+     */
+    function sign(x: any): any
+    
+    /** Returns `-1.0` if [param x] is negative, `1.0` if [param x] is positive, and `0.0` if [param x] is zero. For `nan` values of [param x] it returns 0.0.  
+     *    
+     */
+    function signf(x: float64): float64
+    
+    /** Returns `-1` if [param x] is negative, `1` if [param x] is positive, and `0` if [param x] is zero.  
+     *    
+     */
+    function signi(x: int64): int64
+    
+    /** Returns the multiple of [param step] that is the closest to [param x]. This can also be used to round a floating-point number to an arbitrary number of decimals.  
+     *  The returned value is the same type of [Variant] as [param step]. Supported types: [int], [float], [Vector2], [Vector2i], [Vector3], [Vector3i], [Vector4], [Vector4i].  
+     *    
+     *  See also [method ceil], [method floor], and [method round].  
+     *      
+     *  **Note:** For better type safety, use [method snappedf], [method snappedi], [method Vector2.snapped], [method Vector2i.snapped], [method Vector3.snapped], [method Vector3i.snapped], [method Vector4.snapped], or [method Vector4i.snapped].  
+     */
+    function snapped(x: any, step: any): any
+    
+    /** Returns the multiple of [param step] that is the closest to [param x]. This can also be used to round a floating-point number to an arbitrary number of decimals.  
+     *  A type-safe version of [method snapped], returning a [float].  
+     *    
+     */
+    function snappedf(x: float64, step: float64): float64
+    
+    /** Returns the multiple of [param step] that is the closest to [param x].  
+     *  A type-safe version of [method snapped], returning an [int].  
+     *    
+     */
+    function snappedi(x: float64, step: int64): int64
+    
+    /** Returns the result of [param base] raised to the power of [param exp].  
+     *  In GDScript, this is the equivalent of the `**` operator.  
+     *    
+     */
+    function pow(base: float64, exp: float64): float64
+    
+    /** Returns the [url=https://en.wikipedia.org/wiki/Natural_logarithm]natural logarithm[/url] of [param x] (base [url=https://en.wikipedia.org/wiki/E_(mathematical_constant)] *e* [/url], with  *e*  being approximately 2.71828). This is the amount of time needed to reach a certain level of continuous growth.  
+     *      
+     *  **Note:** This is not the same as the "log" function on most calculators, which uses a base 10 logarithm. To use base 10 logarithm, use `log(x) / log(10)`.  
+     *    
+     *      
+     *  **Note:** The logarithm of `0` returns `-inf`, while negative values return `-nan`.  
+     */
+    function log(x: float64): float64
+    
+    /** The natural exponential function. It raises the mathematical constant  *e*  to the power of [param x] and returns it.  
+     *   *e*  has an approximate value of 2.71828, and can be obtained with `exp(1)`.  
+     *  For exponents to other bases use the method [method pow].  
+     *    
+     */
+    function exp(x: float64): float64
+    
+    /** Returns `true` if [param x] is a NaN ("Not a Number" or invalid) value. This method is needed as [constant @GDScript.NAN] is not equal to itself, which means `x == NAN` can't be used to check whether a value is a NaN. */
+    function is_nan(x: float64): boolean
+    
+    /** Returns `true` if [param x] is either positive infinity or negative infinity. See also [method is_finite] and [method is_nan]. */
+    function is_inf(x: float64): boolean
+    
+    /** Returns `true` if [param a] and [param b] are approximately equal to each other.  
+     *  Here, "approximately equal" means that [param a] and [param b] are within a small internal epsilon of each other, which scales with the magnitude of the numbers.  
+     *  Infinity values of the same sign are considered equal.  
+     */
+    function is_equal_approx(a: float64, b: float64): boolean
+    
+    /** Returns `true` if [param x] is zero or almost zero. The comparison is done using a tolerance calculation with a small internal epsilon.  
+     *  This function is faster than using [method is_equal_approx] with one value as zero.  
+     */
+    function is_zero_approx(x: float64): boolean
+    
+    /** Returns whether [param x] is a finite value, i.e. it is not [constant @GDScript.NAN], positive infinity, or negative infinity. See also [method is_inf] and [method is_nan]. */
+    function is_finite(x: float64): boolean
+    
+    /** Returns an "eased" value of [param x] based on an easing function defined with [param curve]. This easing function is based on an exponent. The [param curve] can be any floating-point number, with specific values leading to the following behaviors:  
+     *  [codeblock lang=text]  
+     *  - Lower than -1.0 (exclusive): Ease in-out  
+     *  - -1.0: Linear  
+     *  - Between -1.0 and 0.0 (exclusive): Ease out-in  
+     *  - 0.0: Constant  
+     *  - Between 0.0 to 1.0 (exclusive): Ease out  
+     *  - 1.0: Linear  
+     *  - Greater than 1.0 (exclusive): Ease in  
+     *  [/codeblock]  
+     *  [url=https://raw.githubusercontent.com/godotengine/godot-docs/master/img/ease_cheatsheet.png]ease() curve values cheatsheet[/url]  
+     *  See also [method smoothstep]. If you need to perform more advanced transitions, use [method Tween.interpolate_value].  
+     */
+    function ease(x: float64, curve: float64): float64
+    
+    /** Returns the position of the first non-zero digit, after the decimal point. Note that the maximum return value is 10, which is a design decision in the implementation.  
+     *    
+     */
+    function step_decimals(x: float64): int64
+    
+    /** Linearly interpolates between two values by the factor defined in [param weight]. To perform interpolation, [param weight] should be between `0.0` and `1.0` (inclusive). However, values outside this range are allowed and can be used to perform  *extrapolation* . If this is not desired, use [method clampf] to limit [param weight].  
+     *  Both [param from] and [param to] must be the same type. Supported types: [int], [float], [Vector2], [Vector3], [Vector4], [Color], [Quaternion], [Basis], [Transform2D], [Transform3D].  
+     *    
+     *  See also [method inverse_lerp] which performs the reverse of this operation. To perform eased interpolation with [method lerp], combine it with [method ease] or [method smoothstep]. See also [method remap] to map a continuous series of values to another.  
+     *      
+     *  **Note:** For better type safety, use [method lerpf], [method Vector2.lerp], [method Vector3.lerp], [method Vector4.lerp], [method Color.lerp], [method Quaternion.slerp], [method Basis.slerp], [method Transform2D.interpolate_with], or [method Transform3D.interpolate_with].  
+     */
+    function lerp(from: any, to: any, weight: any): any
+    
+    /** Linearly interpolates between two values by the factor defined in [param weight]. To perform interpolation, [param weight] should be between `0.0` and `1.0` (inclusive). However, values outside this range are allowed and can be used to perform  *extrapolation* . If this is not desired, use [method clampf] on the result of this function.  
+     *    
+     *  See also [method inverse_lerp] which performs the reverse of this operation. To perform eased interpolation with [method lerp], combine it with [method ease] or [method smoothstep].  
+     */
+    function lerpf(from: float64, to: float64, weight: float64): float64
+    
+    /** Cubic interpolates between two values by the factor defined in [param weight] with [param pre] and [param post] values. */
+    function cubic_interpolate(from: float64, to: float64, pre: float64, post: float64, weight: float64): float64
+    
+    /** Cubic interpolates between two rotation values with shortest path by the factor defined in [param weight] with [param pre] and [param post] values. See also [method lerp_angle]. */
+    function cubic_interpolate_angle(from: float64, to: float64, pre: float64, post: float64, weight: float64): float64
+    
+    /** Cubic interpolates between two values by the factor defined in [param weight] with [param pre] and [param post] values.  
+     *  It can perform smoother interpolation than [method cubic_interpolate] by the time values.  
+     */
+    function cubic_interpolate_in_time(from: float64, to: float64, pre: float64, post: float64, weight: float64, to_t: float64, pre_t: float64, post_t: float64): float64
+    
+    /** Cubic interpolates between two rotation values with shortest path by the factor defined in [param weight] with [param pre] and [param post] values. See also [method lerp_angle].  
+     *  It can perform smoother interpolation than [method cubic_interpolate] by the time values.  
+     */
+    function cubic_interpolate_angle_in_time(from: float64, to: float64, pre: float64, post: float64, weight: float64, to_t: float64, pre_t: float64, post_t: float64): float64
+    
+    /** Returns the point at the given [param t] on a one-dimensional [url=https://en.wikipedia.org/wiki/B%C3%A9zier_curve]Bézier curve[/url] defined by the given [param control_1], [param control_2], and [param end] points. */
+    function bezier_interpolate(start: float64, control_1: float64, control_2: float64, end: float64, t: float64): float64
+    
+    /** Returns the derivative at the given [param t] on a one-dimensional [url=https://en.wikipedia.org/wiki/B%C3%A9zier_curve]Bézier curve[/url] defined by the given [param control_1], [param control_2], and [param end] points. */
+    function bezier_derivative(start: float64, control_1: float64, control_2: float64, end: float64, t: float64): float64
+    
+    /** Returns the difference between the two angles (in radians), in the range of `[-PI, +PI]`. When [param from] and [param to] are opposite, returns `-PI` if [param from] is smaller than [param to], or `PI` otherwise. */
+    function angle_difference(from: float64, to: float64): float64
+    
+    /** Linearly interpolates between two angles (in radians) by a [param weight] value between 0.0 and 1.0.  
+     *  Similar to [method lerp], but interpolates correctly when the angles wrap around [constant @GDScript.TAU]. To perform eased interpolation with [method lerp_angle], combine it with [method ease] or [method smoothstep].  
+     *    
+     *      
+     *  **Note:** This function lerps through the shortest path between [param from] and [param to]. However, when these two angles are approximately `PI + k * TAU` apart for any integer `k`, it's not obvious which way they lerp due to floating-point precision errors. For example, `lerp_angle(0, PI, weight)` lerps counter-clockwise, while `lerp_angle(0, PI + 5 * TAU, weight)` lerps clockwise.  
+     */
+    function lerp_angle(from: float64, to: float64, weight: float64): float64
+    
+    /** Returns an interpolation or extrapolation factor considering the range specified in [param from] and [param to], and the interpolated value specified in [param weight]. The returned value will be between `0.0` and `1.0` if [param weight] is between [param from] and [param to] (inclusive). If [param weight] is located outside this range, then an extrapolation factor will be returned (return value lower than `0.0` or greater than `1.0`). Use [method clamp] on the result of [method inverse_lerp] if this is not desired.  
+     *    
+     *  See also [method lerp], which performs the reverse of this operation, and [method remap] to map a continuous series of values to another.  
+     */
+    function inverse_lerp(from: float64, to: float64, weight: float64): float64
+    
+    /** Maps a [param value] from range `[istart, istop]` to `[ostart, ostop]`. See also [method lerp] and [method inverse_lerp]. If [param value] is outside `[istart, istop]`, then the resulting value will also be outside `[ostart, ostop]`. If this is not desired, use [method clamp] on the result of this function.  
+     *    
+     *  For complex use cases where multiple ranges are needed, consider using [Curve] or [Gradient] instead.  
+     *      
+     *  **Note:** If `istart == istop`, the return value is undefined (most likely NaN, INF, or -INF).  
+     */
+    function remap(value: float64, istart: float64, istop: float64, ostart: float64, ostop: float64): float64
+    
+    /** Returns a smooth cubic Hermite interpolation between `0` and `1`.  
+     *  For positive ranges (when `from <= to`) the return value is `0` when `x <= from`, and `1` when `x >= to`. If [param x] lies between [param from] and [param to], the return value follows an S-shaped curve that smoothly transitions from `0` to `1`.  
+     *  For negative ranges (when `from > to`) the function is mirrored and returns `1` when `x <= to` and `0` when `x >= from`.  
+     *  This S-shaped curve is the cubic Hermite interpolator, given by `f(y) = 3*y^2 - 2*y^3` where `y = (x-from) / (to-from)`.  
+     *    
+     *  Compared to [method ease] with a curve value of `-1.6521`, [method smoothstep] returns the smoothest possible curve with no sudden changes in the derivative. If you need to perform more advanced transitions, use [Tween] or [AnimationPlayer].  
+     *  [url=https://raw.githubusercontent.com/godotengine/godot-docs/master/img/smoothstep_ease_comparison.png]Comparison between smoothstep() and ease(x, -1.6521) return values[/url]  
+     *  [url=https://raw.githubusercontent.com/godotengine/godot-docs/master/img/smoothstep_range.webp]Smoothstep() return values with positive, zero, and negative ranges[/url]  
+     */
+    function smoothstep(from: float64, to: float64, x: float64): float64
+    
+    /** Moves [param from] toward [param to] by the [param delta] amount. Will not go past [param to].  
+     *  Use a negative [param delta] value to move away.  
+     *    
+     */
+    function move_toward(from: float64, to: float64, delta: float64): float64
+    
+    /** Rotates [param from] toward [param to] by the [param delta] amount. Will not go past [param to].  
+     *  Similar to [method move_toward], but interpolates correctly when the angles wrap around [constant @GDScript.TAU].  
+     *  If [param delta] is negative, this function will rotate away from [param to], toward the opposite angle, and will not go past the opposite angle.  
+     */
+    function rotate_toward(from: float64, to: float64, delta: float64): float64
+    
+    /** Converts an angle expressed in degrees to radians.  
+     *    
+     */
+    function deg_to_rad(deg: float64): float64
+    
+    /** Converts an angle expressed in radians to degrees.  
+     *    
+     */
+    function rad_to_deg(rad: float64): float64
+    
+    /** Converts from linear energy to decibels (audio). Since volume is not normally linear, this can be used to implement volume sliders that behave as expected.  
+     *  **Example:** Change the Master bus's volume through a [Slider] node, which ranges from `0.0` to `1.0`:  
+     *    
+     */
+    function linear_to_db(lin: float64): float64
+    
+    /** Converts from decibels to linear energy (audio). */
+    function db_to_linear(db: float64): float64
+    
+    /** Wraps the [Variant] [param value] between [param min] and [param max]. [param min] is  *inclusive*  while [param max] is  *exclusive* . This can be used for creating loop-like behavior or infinite surfaces.  
+     *  Variant types [int] and [float] are supported. If any of the arguments is [float], this function returns a [float], otherwise it returns an [int].  
+     *    
+     */
+    function wrap(value: any, min: any, max: any): any
+    
+    /** Wraps the integer [param value] between [param min] and [param max]. [param min] is  *inclusive*  while [param max] is  *exclusive* . This can be used for creating loop-like behavior or infinite surfaces.  
+     *    
+     *    
+     */
+    function wrapi(value: int64, min: int64, max: int64): int64
+    
+    /** Wraps the float [param value] between [param min] and [param max]. [param min] is  *inclusive*  while [param max] is  *exclusive* . This can be used for creating loop-like behavior or infinite surfaces.  
+     *    
+     *    
+     *    
+     *      
+     *  **Note:** If [param min] is `0`, this is equivalent to [method fposmod], so prefer using that instead. [method wrapf] is more flexible than using the [method fposmod] approach by giving the user control over the minimum value.  
+     */
+    function wrapf(value: float64, min: float64, max: float64): float64
+    
+    /** Returns the maximum of the given numeric values. This function can take any number of arguments.  
+     *    
+     *      
+     *  **Note:** When using this on vectors it will  *not*  perform component-wise maximum, and will pick the largest value when compared using `x < y`. To perform component-wise maximum, use [method Vector2.max], [method Vector2i.max], [method Vector3.max], [method Vector3i.max], [method Vector4.max], and [method Vector4i.max].  
+     */
+    function max(...varargs: any[]): any
+    
+    /** Returns the maximum of two [int] values.  
+     *    
+     */
+    function maxi(a: int64, b: int64): int64
+    
+    /** Returns the maximum of two [float] values.  
+     *    
+     */
+    function maxf(a: float64, b: float64): float64
+    
+    /** Returns the minimum of the given numeric values. This function can take any number of arguments.  
+     *    
+     *      
+     *  **Note:** When using this on vectors it will  *not*  perform component-wise minimum, and will pick the smallest value when compared using `x < y`. To perform component-wise minimum, use [method Vector2.min], [method Vector2i.min], [method Vector3.min], [method Vector3i.min], [method Vector4.min], and [method Vector4i.min].  
+     */
+    function min(...varargs: any[]): any
+    
+    /** Returns the minimum of two [int] values.  
+     *    
+     */
+    function mini(a: int64, b: int64): int64
+    
+    /** Returns the minimum of two [float] values.  
+     *    
+     */
+    function minf(a: float64, b: float64): float64
+    
+    /** Clamps the [param value], returning a [Variant] not less than [param min] and not more than [param max]. Any values that can be compared with the less than and greater than operators will work.  
+     *    
+     *      
+     *  **Note:** For better type safety, use [method clampf], [method clampi], [method Vector2.clamp], [method Vector2i.clamp], [method Vector3.clamp], [method Vector3i.clamp], [method Vector4.clamp], [method Vector4i.clamp], or [method Color.clamp] (not currently supported by this method).  
+     *      
+     *  **Note:** When using this on vectors it will  *not*  perform component-wise clamping, and will pick [param min] if `value < min` or [param max] if `value > max`. To perform component-wise clamping use the methods listed above.  
+     */
+    function clamp(value: any, min: any, max: any): any
+    
+    /** Clamps the [param value], returning an [int] not less than [param min] and not more than [param max].  
+     *    
+     */
+    function clampi(value: int64, min: int64, max: int64): int64
+    
+    /** Clamps the [param value], returning a [float] not less than [param min] and not more than [param max].  
+     *    
+     */
+    function clampf(value: float64, min: float64, max: float64): float64
+    
+    /** Returns the smallest integer power of 2 that is greater than or equal to [param value].  
+     *    
+     *  **Warning:** Due to its implementation, this method returns `0` rather than `1` for values less than or equal to `0`, with an exception for [param value] being the smallest negative 64-bit integer (`-9223372036854775808`) in which case the [param value] is returned unchanged.  
+     */
+    function nearest_po2(value: int64): int64
+    
+    /** Wraps [param value] between `0` and the [param length]. If the limit is reached, the next value the function returns is decreased to the `0` side or increased to the [param length] side (like a triangle wave). If [param length] is less than zero, it becomes positive.  
+     *    
+     */
+    function pingpong(value: float64, length: float64): float64
+    
+    /** Randomizes the seed (or the internal state) of the random number generator. The current implementation uses a number based on the device's time.  
+     *      
+     *  **Note:** This function is called automatically when the project is run. If you need to fix the seed to have consistent, reproducible results, use [method seed] to initialize the random number generator.  
+     */
+    function randomize(): void
+    
+    /** Returns a random unsigned 32-bit integer. Use remainder to obtain a random value in the interval `[0, N - 1]` (where N is smaller than 2^32).  
+     *    
+     */
+    function randi(): int64
+    
+    /** Returns a random floating-point value between `0.0` and `1.0` (inclusive).  
+     *    
+     */
+    function randf(): float64
+    
+    /** Returns a random signed 32-bit integer between [param from] and [param to] (inclusive). If [param to] is lesser than [param from], they are swapped.  
+     *    
+     */
+    function randi_range(from: int64, to: int64): int64
+    
+    /** Returns a random floating-point value between [param from] and [param to] (inclusive).  
+     *    
+     */
+    function randf_range(from: float64, to: float64): float64
+    
+    /** Returns a [url=https://en.wikipedia.org/wiki/Normal_distribution]normally-distributed[/url], pseudo-random floating-point value from the specified [param mean] and a standard [param deviation]. This is also known as a Gaussian distribution.  
+     *      
+     *  **Note:** This method uses the [url=https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform]Box-Muller transform[/url] algorithm.  
+     */
+    function randfn(mean: float64, deviation: float64): float64
+    
+    /** Sets the seed for the random number generator to [param base]. Setting the seed manually can ensure consistent, repeatable results for most random functions.  
+     *    
+     */
+    function seed(base: int64): void
+    
+    /** Given a [param seed], returns a [PackedInt64Array] of size `2`, where its first element is the randomized [int] value, and the second element is the same as [param seed]. Passing the same [param seed] consistently returns the same array.  
+     *      
+     *  **Note:** "Seed" here refers to the internal state of the pseudo random number generator, currently implemented as a 64 bit integer.  
+     *    
+     */
+    function rand_from_seed(seed: int64): PackedInt64Array
+    
+    /** Returns a [WeakRef] instance holding a weak reference to [param obj]. Returns an empty [WeakRef] instance if [param obj] is `null`. Prints an error and returns `null` if [param obj] is neither [Object]-derived nor `null`.  
+     *  A weak reference to an object is not enough to keep the object alive: when the only remaining references to a referent are weak references, garbage collection is free to destroy the referent and reuse its memory for something else. However, until the object is actually destroyed the weak reference may return the object even if there are no strong references to it.  
+     */
+    function weakref(obj: any): any
+    
+    /** Returns the internal type of the given [param variable], using the [enum Variant.Type] values.  
+     *    
+     *  See also [method type_string].  
+     */
+    function godot_typeof(variable: any): int64
+    
+    /** Converts the given [param variant] to the given [param type], using the [enum Variant.Type] values. This method is generous with how it handles types, it can automatically convert between array types, convert numeric [String]s to [int], and converting most things to [String].  
+     *  If the type conversion cannot be done, this method will return the default value for that type, for example converting [Rect2] to [Vector2] will always return [constant Vector2.ZERO]. This method will never show error messages as long as [param type] is a valid Variant type.  
+     *  The returned value is a [Variant], but the data inside and its type will be the same as the requested type.  
+     *    
+     */
+    function type_convert(variant: any, type: int64): any
+    
+    /** Converts one or more arguments of any [Variant] type to a [String] in the best way possible.  
+     *    
+     */
+    function str(...varargs: any[]): string
+    
+    /** Returns a human-readable name for the given [enum Error] code.  
+     *    
+     */
+    function error_string(error: int64): string
+    
+    /** Returns a human-readable name of the given [param type], using the [enum Variant.Type] values.  
+     *    
+     *  See also [method typeof].  
+     */
+    function type_string(type: int64): string
+    
+    /** Converts one or more arguments of any type to string in the best way possible and prints them to the console.  
+     *    
+     *      
+     *  **Note:** Consider using [method push_error] and [method push_warning] to print error and warning messages instead of [method print] or [method print_rich]. This distinguishes them from print messages used for debugging purposes, while also displaying a stack trace when an error or warning is printed. See also [member Engine.print_to_stdout] and [member ProjectSettings.application/run/disable_stdout].  
+     */
+    function print(...varargs: any[]): void
+    
+    /** Converts one or more arguments of any type to string in the best way possible and prints them to the console.  
+     *  The following BBCode tags are supported: `b`, `i`, `u`, `s`, `indent`, `code`, `url`, `center`, `right`, `color`, `bgcolor`, `fgcolor`.  
+     *  URL tags only support URLs wrapped by a URL tag, not URLs with a different title.  
+     *  When printing to standard output, the supported subset of BBCode is converted to ANSI escape codes for the terminal emulator to display. Support for ANSI escape codes varies across terminal emulators, especially for italic and strikethrough. In standard output, `code` is represented with faint text but without any font change. Unsupported tags are left as-is in standard output.  
+     *    
+     *      
+     *  **Note:** Consider using [method push_error] and [method push_warning] to print error and warning messages instead of [method print] or [method print_rich]. This distinguishes them from print messages used for debugging purposes, while also displaying a stack trace when an error or warning is printed.  
+     *      
+     *  **Note:** Output displayed in the editor supports clickable [code skip-lint][url=address]text[/url]` tags. The [code skip-lint][url]` tag's `address` value is handled by [method OS.shell_open] when clicked.  
+     */
+    function print_rich(...varargs: any[]): void
+    
+    /** Prints one or more arguments to strings in the best way possible to standard error line.  
+     *    
+     */
+    function printerr(...varargs: any[]): void
+    
+    /** Prints one or more arguments to the console with a tab between each argument.  
+     *    
+     */
+    function printt(...varargs: any[]): void
+    
+    /** Prints one or more arguments to the console with a space between each argument.  
+     *    
+     */
+    function prints(...varargs: any[]): void
+    
+    /** Prints one or more arguments to strings in the best way possible to the OS terminal. Unlike [method print], no newline is automatically added at the end.  
+     *      
+     *  **Note:** The OS terminal is  *not*  the same as the editor's Output dock. The output sent to the OS terminal can be seen when running Godot from a terminal. On Windows, this requires using the `console.exe` executable.  
+     *    
+     */
+    function printraw(...varargs: any[]): void
+    
+    /** If verbose mode is enabled ([method OS.is_stdout_verbose] returning `true`), converts one or more arguments of any type to string in the best way possible and prints them to the console. */
+    function print_verbose(...varargs: any[]): void
+    
+    /** Pushes an error message to Godot's built-in debugger and to the OS terminal.  
+     *    
+     *      
+     *  **Note:** This function does not pause project execution. To print an error message and pause project execution in debug builds, use `assert(false, "test error")` instead.  
+     */
+    function push_error(...varargs: any[]): void
+    
+    /** Pushes a warning message to Godot's built-in debugger and to the OS terminal.  
+     *    
+     */
+    function push_warning(...varargs: any[]): void
+    
+    /** Converts a [Variant] [param variable] to a formatted [String] that can then be parsed using [method str_to_var].  
+     *    
+     *  Prints:  
+     *  [codeblock lang=text]  
+     *  {  
+     *  	"a": 1,  
+     *  	"b": 2  
+     *  }  
+     *  [/codeblock]  
+     *      
+     *  **Note:** Converting [Signal] or [Callable] is not supported and will result in an empty value for these types, regardless of their data.  
+     */
+    function var_to_str(variable: any): string
+    
+    /** Converts a formatted [param string] that was returned by [method var_to_str] to the original [Variant].  
+     *    
+     */
+    function str_to_var(string_: string): any
+    
+    /** Encodes a [Variant] value to a byte array, without encoding objects. Deserialization can be done with [method bytes_to_var].  
+     *      
+     *  **Note:** If you need object serialization, see [method var_to_bytes_with_objects].  
+     *      
+     *  **Note:** Encoding [Callable] is not supported and will result in an empty value, regardless of the data.  
+     */
+    function var_to_bytes(variable: any): PackedByteArray
+    
+    /** Decodes a byte array back to a [Variant] value, without decoding objects.  
+     *      
+     *  **Note:** If you need object deserialization, see [method bytes_to_var_with_objects].  
+     */
+    function bytes_to_var(bytes: PackedByteArray | byte[] | ArrayBuffer): any
+    
+    /** Encodes a [Variant] value to a byte array. Encoding objects is allowed (and can potentially include executable code). Deserialization can be done with [method bytes_to_var_with_objects].  
+     *      
+     *  **Note:** Encoding [Callable] is not supported and will result in an empty value, regardless of the data.  
+     */
+    function var_to_bytes_with_objects(variable: any): PackedByteArray
+    
+    /** Decodes a byte array back to a [Variant] value. Decoding objects is allowed.  
+     *  **Warning:** Deserialized object can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threats (remote code execution).  
+     */
+    function bytes_to_var_with_objects(bytes: PackedByteArray | byte[] | ArrayBuffer): any
+    
+    /** Returns the integer hash of the passed [param variable].  
+     *    
+     */
+    function hash(variable: any): int64
+    
+    /** Returns the [Object] that corresponds to [param instance_id]. All Objects have a unique instance ID. See also [method Object.get_instance_id].  
+     *    
+     */
+    function instance_from_id(instance_id: int64): null | Object
+    
+    /** Returns `true` if the Object that corresponds to [param id] is a valid object (e.g. has not been deleted from memory). All Objects have a unique instance ID. */
+    function is_instance_id_valid(id: int64): boolean
+    
+    /** Returns `true` if [param instance] is a valid Object (e.g. has not been deleted from memory). */
+    function is_instance_valid(instance: any): boolean
+    
+    /** Allocates a unique ID which can be used by the implementation to construct an RID. This is used mainly from native extensions to implement servers. */
+    function rid_allocate_id(): int64
+    
+    /** Creates an RID from a [param base]. This is used mainly from native extensions to build servers. */
+    function rid_from_int64(base: int64): RID
+    
+    /** Returns `true`, for value types, if [param a] and [param b] share the same value. Returns `true`, for reference types, if the references of [param a] and [param b] are the same.  
+     *    
+     *  These are [Variant] value types: `null`, [bool], [int], [float], [String], [StringName], [Vector2], [Vector2i], [Vector3], [Vector3i], [Vector4], [Vector4i], [Rect2], [Rect2i], [Transform2D], [Transform3D], [Plane], [Quaternion], [AABB], [Basis], [Projection], [Color], [NodePath], [RID], [Callable] and [Signal].  
+     *  These are [Variant] reference types: [Object], [Dictionary], [Array], [PackedByteArray], [PackedInt32Array], [PackedInt64Array], [PackedFloat32Array], [PackedFloat64Array], [PackedStringArray], [PackedVector2Array], [PackedVector3Array], [PackedVector4Array], and [PackedColorArray].  
+     */
+    function is_same(a: any, b: any): boolean
+    
+    /** shorthand for getting project settings */
+    function GLOBAL_GET(entry_path: StringName): any
+    
+    /** shorthand for getting editor settings  
+     *  NOTE: calling before EditorSettings created will cause null reference exception.  
+     */
+    function EDITOR_GET(entry_path: StringName): any
 }

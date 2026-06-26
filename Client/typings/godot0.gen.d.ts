@@ -302,9 +302,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPerformance extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPerformance extends __NameMapObject {
     }
     /** Exposes performance-related data.  
@@ -323,7 +320,7 @@ declare module "godot" {
          *  The debugger calls the callable to get the value of custom monitor. The callable must return a zero or positive integer or floating-point number.  
          *  Callables are called with arguments supplied in argument array.  
          */
-        static add_custom_monitor(id: StringName, callable: Callable, arguments_?: GArray, type?: Performance.MonitorType /* = 0 */): void
+        static add_custom_monitor(id: StringName, callable: Callable, arguments_?: GArray /* = [] */, type?: Performance.MonitorType /* = 0 */): void
         
         /** Removes the custom monitor with given [param id]. Prints an error if the given [param id] is already absent. */
         static remove_custom_monitor(id: StringName): void
@@ -343,14 +340,9 @@ declare module "godot" {
         /** Returns the [enum MonitorType] values of active custom monitors in an [Array]. */
         static get_custom_monitor_types(): PackedInt32Array
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPerformance;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPerformance;
     }
     // _singleton_class_: Engine
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEngine extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEngine extends __NameMapObject {
     }
@@ -570,14 +562,9 @@ declare module "godot" {
         static get physics_jitter_fix(): float64
         static set physics_jitter_fix(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEngine;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEngine;
     }
     // _singleton_class_: ProjectSettings
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapProjectSettings extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapProjectSettings extends __NameMapObject {
     }
@@ -604,7 +591,7 @@ declare module "godot" {
          *  **Note:** This method doesn't take potential feature overrides into account automatically. Use [method get_setting_with_override] to handle seamlessly.  
          *  See also [method has_setting] to check whether a setting exists.  
          */
-        static get_setting(name: string, default_value?: any /* = {} */): any
+        static get_setting(name: string, default_value?: any /* = <any> {} */): any
         
         /** Similar to [method get_setting], but applies feature tag overrides if any exists and is valid.  
          *  **Example:** If the setting override `"application/config/name.windows"` exists, and the following code is executed on a  *Windows*  operating system, the overridden setting is printed instead:  
@@ -701,8 +688,6 @@ declare module "godot" {
         /** Emitted when any setting is changed, up to once per process frame. */
         static readonly settings_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapProjectSettings;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapProjectSettings;
     }
     // _singleton_class_: OS
@@ -761,9 +746,6 @@ declare module "godot" {
             /** Standard I/O device type is unknown. */
             STD_HANDLE_UNKNOWN = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapOS extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapOS extends __NameMapObject {
@@ -925,7 +907,7 @@ declare module "godot" {
          *      
          *  **Note:** On Android, system commands such as `dumpsys` can only be run on a rooted device.  
          */
-        static execute(path: string, arguments_: PackedStringArray | string[], output?: GArray, read_stderr?: boolean /* = false */, open_console?: boolean /* = false */): int64
+        static execute(path: string, arguments_: PackedStringArray | string[], output?: GArray /* = [] */, read_stderr?: boolean /* = false */, open_console?: boolean /* = false */): int64
         
         /** Creates a new process that runs independently of Godot with redirected IO. It will not terminate when Godot terminates. The path specified in [param path] must exist and be an executable file or macOS `.app` bundle. The path is resolved based on the current platform. The [param arguments] are used in the given order and separated by a space.  
          *  If [param blocking] is `false`, created pipes work in non-blocking mode, i.e. read and write operations will return immediately. Use [method FileAccess.get_error] to check if the last read/write operation was successful.  
@@ -1369,8 +1351,6 @@ declare module "godot" {
         static get delta_smoothing(): boolean
         static set delta_smoothing(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapOS;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapOS;
     }
     // _singleton_class_: Time
@@ -1434,9 +1414,6 @@ declare module "godot" {
             /** The day of the week Saturday, represented numerically as `6`. */
             WEEKDAY_SATURDAY = 6,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTime extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTime extends __NameMapObject {
@@ -1553,14 +1530,9 @@ declare module "godot" {
          */
         static get_ticks_usec(): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTime;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTime;
     }
     // _singleton_class_: TextServerManager
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextServerManager extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTextServerManager extends __NameMapObject {
     }
@@ -1599,14 +1571,9 @@ declare module "godot" {
         /** Emitted when an interface is removed. */
         static readonly interface_removed: Signal<(interface_name: StringName) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextServerManager;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTextServerManager;
     }
     // _singleton_class_: NavigationServer2DManager
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapNavigationServer2DManager extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapNavigationServer2DManager extends __NameMapObject {
     }
@@ -1621,14 +1588,9 @@ declare module "godot" {
         /** Sets the default [NavigationServer2D] implementation to the one identified by [param name], if [param priority] is greater than the priority of the current default implementation. */
         static set_default_server(name: string, priority: int64): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapNavigationServer2DManager;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapNavigationServer2DManager;
     }
     // _singleton_class_: PhysicsServer2DManager
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsServer2DManager extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsServer2DManager extends __NameMapObject {
     }
@@ -1643,14 +1605,9 @@ declare module "godot" {
         /** Set the default [PhysicsServer2D] implementation to the one identified by [param name], if [param priority] is greater than the priority of the current default implementation. */
         static set_default_server(name: string, priority: int64): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsServer2DManager;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsServer2DManager;
     }
     // _singleton_class_: NavigationServer3DManager
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapNavigationServer3DManager extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapNavigationServer3DManager extends __NameMapObject {
     }
@@ -1665,14 +1622,9 @@ declare module "godot" {
         /** Sets the default [NavigationServer3D] implementation to the one identified by [param name], if [param priority] is greater than the priority of the current default implementation. */
         static set_default_server(name: string, priority: int64): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapNavigationServer3DManager;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapNavigationServer3DManager;
     }
     // _singleton_class_: PhysicsServer3DManager
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsServer3DManager extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsServer3DManager extends __NameMapObject {
     }
@@ -1687,14 +1639,9 @@ declare module "godot" {
         /** Set the default [PhysicsServer3D] implementation to the one identified by [param name], if [param priority] is greater than the priority of the current default implementation. */
         static set_default_server(name: string, priority: int64): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsServer3DManager;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsServer3DManager;
     }
     // _singleton_class_: NavigationMeshGenerator
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapNavigationMeshGenerator extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapNavigationMeshGenerator extends __NameMapObject {
     }
@@ -1718,8 +1665,6 @@ declare module "godot" {
         
         /** Bakes the provided [param navigation_mesh] with the data from the provided [param source_geometry_data]. After the process is finished the optional [param callback] will be called. */
         static bake_from_source_geometry_data(navigation_mesh: NavigationMesh, source_geometry_data: NavigationMeshSourceGeometryData3D, callback?: Callable /* = new Callable() */): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapNavigationMeshGenerator;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapNavigationMeshGenerator;
     }
@@ -1751,9 +1696,6 @@ declare module "godot" {
             /** Address type: Any. */
             TYPE_ANY = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapIP extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapIP extends __NameMapObject {
@@ -1802,8 +1744,6 @@ declare module "godot" {
         /** Removes all of a [param hostname]'s cached references. If no [param hostname] is given, all cached IP addresses are removed. */
         static clear_cache(hostname?: string /* = '' */): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapIP;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapIP;
     }
     // _singleton_class_: Geometry2D
@@ -1847,9 +1787,6 @@ declare module "godot" {
             /** Endpoints are rounded off and extended by `delta` units. */
             END_ROUND = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGeometry2D extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGeometry2D extends __NameMapObject {
@@ -1958,14 +1895,9 @@ declare module "godot" {
          */
         static bresenham_line(from: Vector2i, to: Vector2i): GArray<Vector2i>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGeometry2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGeometry2D;
     }
     // _singleton_class_: Geometry3D
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGeometry3D extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGeometry3D extends __NameMapObject {
     }
@@ -2021,8 +1953,6 @@ declare module "godot" {
         /** Tetrahedralizes the volume specified by a discrete set of [param points] in 3D space, ensuring that no point lies within the circumsphere of any resulting tetrahedron. The method returns a [PackedInt32Array] where each tetrahedron consists of four consecutive point indices into the [param points] array (resulting in an array with `n * 4` elements, where `n` is the number of tetrahedra found). If the tetrahedralization is unsuccessful, an empty [PackedInt32Array] is returned. */
         static tetrahedralize_delaunay(points: PackedVector3Array | Vector3[]): PackedInt32Array
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGeometry3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGeometry3D;
     }
     // _singleton_class_: ResourceLoader
@@ -2058,9 +1988,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapResourceLoader extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapResourceLoader extends __NameMapObject {
     }
     /** A singleton for loading resource files.  
@@ -2078,7 +2005,7 @@ declare module "godot" {
          *      
          *  **Note:** The recommended way of using this method is to call it during different frames (e.g., in [method Node._process], instead of a loop).  
          */
-        static load_threaded_get_status(path: string, progress?: GArray): ResourceLoader.ThreadLoadStatus
+        static load_threaded_get_status(path: string, progress?: GArray /* = [] */): ResourceLoader.ThreadLoadStatus
         
         /** Returns the resource loaded by [method load_threaded_request].  
          *  If this is called before the loading thread is done (i.e. [method load_threaded_get_status] is not [constant THREAD_LOAD_LOADED]), the calling thread will be blocked until the resource has finished loading. However, it's recommended to use [method load_threaded_get_status] to known when the load has actually completed.  
@@ -2150,8 +2077,6 @@ declare module "godot" {
          */
         static list_directory(directory_path: string): PackedStringArray
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapResourceLoader;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapResourceLoader;
     }
     // _singleton_class_: ResourceSaver
@@ -2181,9 +2106,6 @@ declare module "godot" {
             /** Take over the paths of the saved subresources (see [method Resource.take_over_path]). */
             FLAG_REPLACE_SUBRESOURCE_PATHS = 64,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapResourceSaver extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapResourceSaver extends __NameMapObject {
@@ -2220,8 +2142,6 @@ declare module "godot" {
         /** Returns the resource ID for the given path. If [param generate] is `true`, a new resource ID will be generated if one for the path is not found. If [param generate] is `false` and the path is not found, [constant ResourceUID.INVALID_ID] is returned. */
         static get_resource_id_for_path(path: string, generate?: boolean /* = false */): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapResourceSaver;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapResourceSaver;
     }
     // _singleton_class_: ClassDB
@@ -2242,9 +2162,6 @@ declare module "godot" {
             /** Unknown class type. */
             API_NONE = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapClassDB extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapClassDB extends __NameMapObject {
@@ -2350,14 +2267,9 @@ declare module "godot" {
         /** Returns whether this [param class] is enabled or not. */
         static is_class_enabled(class_: StringName): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapClassDB;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapClassDB;
     }
     // _singleton_class_: Marshalls
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapMarshalls extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapMarshalls extends __NameMapObject {
     }
@@ -2389,14 +2301,9 @@ declare module "godot" {
         /** Returns a decoded string corresponding to the Base64-encoded string [param base64_str]. */
         static base64_to_utf8(base64_str: string): string
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapMarshalls;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapMarshalls;
     }
     // _singleton_class_: TranslationServer
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTranslationServer extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTranslationServer extends __NameMapObject {
     }
@@ -2525,8 +2432,6 @@ declare module "godot" {
         static get pseudolocalization_enabled(): boolean
         static set pseudolocalization_enabled(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTranslationServer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTranslationServer;
     }
     // _singleton_class_: Input
@@ -2608,9 +2513,6 @@ declare module "godot" {
             /** Help cursor. Usually a question mark. */
             CURSOR_HELP = 16,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInput extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInput extends __NameMapObject {
@@ -2944,14 +2846,9 @@ declare module "godot" {
         /** Emitted when a joypad device has been connected or disconnected. */
         static readonly joy_connection_changed: Signal<(device: int64, connected: boolean) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInput;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInput;
     }
     // _singleton_class_: InputMap
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputMap extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputMap extends __NameMapObject {
     }
@@ -3012,14 +2909,9 @@ declare module "godot" {
         /** Emitted when the [ProjectSettings] [InputMap] has been loaded. */
         static readonly project_settings_loaded: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputMap;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputMap;
     }
     // _singleton_class_: EngineDebugger
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEngineDebugger extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEngineDebugger extends __NameMapObject {
     }
@@ -3047,7 +2939,7 @@ declare module "godot" {
         static profiler_add_frame_data(name: StringName, data: GArray): void
         
         /** Calls the `toggle` callable of the profiler with given [param name] and [param arguments]. Enables/Disables the same profiler depending on [param enable] argument. */
-        static profiler_enable(name: StringName, enable: boolean, arguments_?: GArray): void
+        static profiler_enable(name: StringName, enable: boolean, arguments_?: GArray /* = [] */): void
         
         /** Registers a message capture with given [param name]. If [param name] is "my_message" then messages starting with "my_message:" will be called with the given callable.  
          *  The callable must accept a message string and a data array as argument. The callable should return `true` if the message is recognized.  
@@ -3101,8 +2993,6 @@ declare module "godot" {
         /** Clears all breakpoints. */
         static clear_breakpoints(): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEngineDebugger;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEngineDebugger;
     }
     // _singleton_class_: GDExtensionManager
@@ -3123,9 +3013,6 @@ declare module "godot" {
             /** The extension requires the application to restart to fully load. */
             LOAD_STATUS_NEEDS_RESTART = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGDExtensionManager extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGDExtensionManager extends __NameMapObject {
@@ -3174,14 +3061,9 @@ declare module "godot" {
          */
         static readonly extension_unloading: Signal<(extension: GDExtension) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGDExtensionManager;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGDExtensionManager;
     }
     // _singleton_class_: ResourceUID
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapResourceUID extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapResourceUID extends __NameMapObject {
     }
@@ -3241,14 +3123,9 @@ declare module "godot" {
         /** Returns a path, converting [param path_or_uid] if necessary. Fails and returns an empty string if an invalid UID is provided. */
         static ensure_path(path_or_uid: string): string
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapResourceUID;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapResourceUID;
     }
     // _singleton_class_: WorkerThreadPool
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapWorkerThreadPool extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapWorkerThreadPool extends __NameMapObject {
     }
@@ -3308,14 +3185,9 @@ declare module "godot" {
         /** Returns the task group ID of the current thread calling this method, or `-1` if invalid or the current thread is not part of a task group. */
         static get_caller_group_id(): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapWorkerThreadPool;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapWorkerThreadPool;
     }
     // _singleton_class_: ThemeDB
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapThemeDB extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapThemeDB extends __NameMapObject {
     }
@@ -3361,14 +3233,9 @@ declare module "godot" {
         /** Emitted when one of the fallback values had been changed. Use it to refresh the look of controls that may rely on the fallback theme items. */
         static readonly fallback_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapThemeDB;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapThemeDB;
     }
     // _singleton_class_: EditorInterface
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapEditorInterface extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapEditorInterface extends __NameMapObject {
     }
@@ -3513,7 +3380,7 @@ declare module "godot" {
          *  **Example:** Display the node selection dialog as soon as this node is added to the tree for the first time:  
          *    
          */
-        static popup_node_selector(callback: Callable, valid_types?: GArray<StringName>, current_value?: Node): void
+        static popup_node_selector(callback: Callable, valid_types?: GArray<StringName> /* = [] */, current_value?: Node /* = undefined */): void
         
         /** Pops up an editor dialog for selecting properties from [param object]. The [param callback] must take a single argument of type [NodePath]. It is called on the selected property path (see [method NodePath.get_as_property_path]) or the empty path `^""` if the dialog is canceled. If [param type_filter] is provided, the dialog will only show properties that match one of the listed [enum Variant.Type] values. If [param current_value] is provided, the property will be selected automatically in the property list, if it exists.  
          *    
@@ -3524,7 +3391,7 @@ declare module "godot" {
         static popup_method_selector(object: Object, callback: Callable, current_value?: string /* = '' */): void
         
         /** Pops up an editor dialog for quick selecting a resource file. The [param callback] must take a single argument of type [String] which will contain the path of the selected resource or be empty if the dialog is canceled. If [param base_types] is provided, the dialog will only show resources that match these types. Only types deriving from [Resource] are supported. */
-        static popup_quick_open(callback: Callable, base_types?: GArray<StringName>): void
+        static popup_quick_open(callback: Callable, base_types?: GArray<StringName> /* = [] */): void
         
         /** Pops up an editor dialog for creating an object.  
          *  The [param callback] must take a single argument of type [String], which will contain the type name of the selected object (or the script path of the type, if the type is created from a script), or be an empty string if no item is selected.  
@@ -3535,7 +3402,7 @@ declare module "godot" {
          *      
          *  **Note:** Trying to list the base type in the [param type_blocklist] will hide all types derived from the base type from the create dialog.  
          */
-        static popup_create_dialog(callback: Callable, base_type?: StringName /* = '' */, current_type?: string /* = '' */, dialog_title?: string /* = '' */, type_blocklist?: GArray<StringName>): void
+        static popup_create_dialog(callback: Callable, base_type?: StringName /* = '' */, current_type?: string /* = '' */, dialog_title?: string /* = '' */, type_blocklist?: GArray<StringName> /* = [] */): void
         
         /** Returns the editor's [FileSystemDock] instance.  
          *  **Warning:** Removing and freeing this node will render a part of the editor useless and may cause a crash.  
@@ -3641,14 +3508,9 @@ declare module "godot" {
         static get movie_maker_enabled(): boolean
         static set movie_maker_enabled(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapEditorInterface;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapEditorInterface;
     }
     // _singleton_class_: JavaClassWrapper
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJavaClassWrapper extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJavaClassWrapper extends __NameMapObject {
     }
@@ -3673,14 +3535,9 @@ declare module "godot" {
          */
         static get_exception(): null | JavaObject
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJavaClassWrapper;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJavaClassWrapper;
     }
     // _singleton_class_: JavaScriptBridge
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJavaScriptBridge extends __RPCMapObject {
-    }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJavaScriptBridge extends __NameMapObject {
     }
@@ -3745,8 +3602,6 @@ declare module "godot" {
         /** Emitted when an update for this progressive web app has been detected but is waiting to be activated because a previous version is active. See [method pwa_update] to force the update to take place immediately. */
         static readonly pwa_update_available: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJavaScriptBridge;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJavaScriptBridge;
     }
     // _singleton_class_: AudioServer
@@ -3782,9 +3637,6 @@ declare module "godot" {
             /** Represents the size of the [enum PlaybackType] enum. */
             PLAYBACK_TYPE_MAX = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioServer extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioServer extends __NameMapObject {
@@ -3994,8 +3846,6 @@ declare module "godot" {
         /** Emitted when the audio bus at [param bus_index] is renamed from [param old_name] to [param new_name]. */
         static readonly bus_renamed: Signal<(bus_index: int64, old_name: StringName, new_name: StringName) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioServer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioServer;
     }
     // _singleton_class_: CameraServer
@@ -4013,9 +3863,6 @@ declare module "godot" {
             /** The CbCr component camera image. */
             FEED_CBCR_IMAGE = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCameraServer extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCameraServer extends __NameMapObject {
@@ -4057,8 +3904,6 @@ declare module "godot" {
         
         /** Emitted when camera feeds are updated. */
         static readonly camera_feeds_updated: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCameraServer;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCameraServer;
     }
@@ -4853,9 +4698,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapDisplayServer extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapDisplayServer extends __NameMapObject {
     }
     /** A server interface for low-level window management.  
@@ -4949,7 +4791,7 @@ declare module "godot" {
          *  "_help" - Help menu (macOS).  
          *  [/codeblock]  
          */
-        static global_menu_add_item(menu_root: string, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static global_menu_add_item(menu_root: string, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new checkable item with text [param label] to the global menu with ID [param menu_root].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -4967,7 +4809,7 @@ declare module "godot" {
          *  "_help" - Help menu (macOS).  
          *  [/codeblock]  
          */
-        static global_menu_add_check_item(menu_root: string, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static global_menu_add_check_item(menu_root: string, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new item with text [param label] and icon [param icon] to the global menu with ID [param menu_root].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -4985,7 +4827,7 @@ declare module "godot" {
          *  "_help" - Help menu (macOS).  
          *  [/codeblock]  
          */
-        static global_menu_add_icon_item(menu_root: string, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static global_menu_add_icon_item(menu_root: string, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new checkable item with text [param label] and icon [param icon] to the global menu with ID [param menu_root].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -5003,7 +4845,7 @@ declare module "godot" {
          *  "_help" - Help menu (macOS).  
          *  [/codeblock]  
          */
-        static global_menu_add_icon_check_item(menu_root: string, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static global_menu_add_icon_check_item(menu_root: string, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new radio-checkable item with text [param label] to the global menu with ID [param menu_root].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -5023,7 +4865,7 @@ declare module "godot" {
          *  "_help" - Help menu (macOS).  
          *  [/codeblock]  
          */
-        static global_menu_add_radio_check_item(menu_root: string, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static global_menu_add_radio_check_item(menu_root: string, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new radio-checkable item with text [param label] and icon [param icon] to the global menu with ID [param menu_root].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -5043,7 +4885,7 @@ declare module "godot" {
          *  "_help" - Help menu (macOS).  
          *  [/codeblock]  
          */
-        static global_menu_add_icon_radio_check_item(menu_root: string, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static global_menu_add_icon_radio_check_item(menu_root: string, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new item with text [param label] to the global menu with ID [param menu_root].  
          *  Contrarily to normal binary items, multistate items can have more than two states, as defined by [param max_states]. Each press or activate of the item will increase the state by one. The default value is defined by [param default_state].  
@@ -5064,7 +4906,7 @@ declare module "godot" {
          *  "_help" - Help menu (macOS).  
          *  [/codeblock]  
          */
-        static global_menu_add_multistate_item(menu_root: string, label: string, max_states: int64, default_state: int64, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static global_menu_add_multistate_item(menu_root: string, label: string, max_states: int64, default_state: int64, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a separator between items to the global menu with ID [param menu_root]. Separators also occupy an index.  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -6479,8 +6321,6 @@ declare module "godot" {
         /** Returns `true` if any additional outputs have been registered via [method register_additional_output]. */
         static has_additional_outputs(): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapDisplayServer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapDisplayServer;
     }
     // _singleton_class_: NativeMenu
@@ -6520,9 +6360,6 @@ declare module "godot" {
             /** Dock icon right-click menu ID (on macOS this menu include standard application control items and a list of open windows). */
             DOCK_MENU_ID = 5,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapNativeMenu extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapNativeMenu extends __NameMapObject {
@@ -6653,7 +6490,7 @@ declare module "godot" {
          *      
          *  **Note:** This method is implemented on macOS and Windows.  
          */
-        static add_submenu_item(rid: RID, label: string, submenu_rid: RID, tag?: any /* = {} */, index?: int64 /* = -1 */): int64
+        static add_submenu_item(rid: RID, label: string, submenu_rid: RID, tag?: any /* = <any> {} */, index?: int64 /* = -1 */): int64
         
         /** Adds a new item with text [param label] to the global menu [param rid].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -6665,7 +6502,7 @@ declare module "godot" {
          *      
          *  **Note:** On Windows, [param accelerator] and [param key_callback] are ignored.  
          */
-        static add_item(rid: RID, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static add_item(rid: RID, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new checkable item with text [param label] to the global menu [param rid].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -6677,7 +6514,7 @@ declare module "godot" {
          *      
          *  **Note:** On Windows, [param accelerator] and [param key_callback] are ignored.  
          */
-        static add_check_item(rid: RID, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static add_check_item(rid: RID, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new item with text [param label] and icon [param icon] to the global menu [param rid].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -6689,7 +6526,7 @@ declare module "godot" {
          *      
          *  **Note:** On Windows, [param accelerator] and [param key_callback] are ignored.  
          */
-        static add_icon_item(rid: RID, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static add_icon_item(rid: RID, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new checkable item with text [param label] and icon [param icon] to the global menu [param rid].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -6701,7 +6538,7 @@ declare module "godot" {
          *      
          *  **Note:** On Windows, [param accelerator] and [param key_callback] are ignored.  
          */
-        static add_icon_check_item(rid: RID, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static add_icon_check_item(rid: RID, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new radio-checkable item with text [param label] to the global menu [param rid].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -6715,7 +6552,7 @@ declare module "godot" {
          *      
          *  **Note:** On Windows, [param accelerator] and [param key_callback] are ignored.  
          */
-        static add_radio_check_item(rid: RID, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static add_radio_check_item(rid: RID, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new radio-checkable item with text [param label] and icon [param icon] to the global menu [param rid].  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -6729,7 +6566,7 @@ declare module "godot" {
          *      
          *  **Note:** On Windows, [param accelerator] and [param key_callback] are ignored.  
          */
-        static add_icon_radio_check_item(rid: RID, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static add_icon_radio_check_item(rid: RID, icon: Texture2D, label: string, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a new item with text [param label] to the global menu [param rid].  
          *  Contrarily to normal binary items, multistate items can have more than two states, as defined by [param max_states]. Each press or activate of the item will increase the state by one. The default value is defined by [param default_state].  
@@ -6744,7 +6581,7 @@ declare module "godot" {
          *      
          *  **Note:** On Windows, [param accelerator] and [param key_callback] are ignored.  
          */
-        static add_multistate_item(rid: RID, label: string, max_states: int64, default_state: int64, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
+        static add_multistate_item(rid: RID, label: string, max_states: int64, default_state: int64, callback?: Callable /* = new Callable() */, key_callback?: Callable /* = new Callable() */, tag?: any /* = <any> {} */, accelerator?: Key /* = 0 */, index?: int64 /* = -1 */): int64
         
         /** Adds a separator between items to the global menu [param rid]. Separators also occupy an index.  
          *  Returns index of the inserted item, it's not guaranteed to be the same as [param index] value.  
@@ -7008,8 +6845,6 @@ declare module "godot" {
          *  **Note:** This method is implemented on macOS and Windows.  
          */
         static clear(rid: RID): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapNativeMenu;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapNativeMenu;
     }
@@ -8603,9 +8438,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderingServer extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderingServer extends __NameMapObject {
     }
     /** Server for anything visible.  
@@ -8850,7 +8682,7 @@ declare module "godot" {
         /** Returns the stride of the index buffer for a mesh with the given [param format]. */
         static mesh_surface_get_format_index_stride(format: RenderingServer.ArrayFormat, vertex_count: int64): int64
         static mesh_add_surface(mesh: RID, surface: GDictionary): void
-        static mesh_add_surface_from_arrays(mesh: RID, primitive: RenderingServer.PrimitiveType, arrays: GArray, blend_shapes?: GArray, lods?: GDictionary /* = new GDictionary() */, compress_format?: RenderingServer.ArrayFormat /* = 0 */): void
+        static mesh_add_surface_from_arrays(mesh: RID, primitive: RenderingServer.PrimitiveType, arrays: GArray, blend_shapes?: GArray /* = [] */, lods?: GDictionary /* = new GDictionary() */, compress_format?: RenderingServer.ArrayFormat /* = 0 */): void
         
         /** Returns a mesh's blend shape count. */
         static mesh_get_blend_shape_count(mesh: RID): int64
@@ -10546,8 +10378,6 @@ declare module "godot" {
         
         /** Emitted at the end of the frame, after the RenderingServer has finished updating all the Viewports. */
         static readonly frame_post_draw: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderingServer;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderingServer;
     }

@@ -35,9 +35,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapNavigationServer2D extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapNavigationServer2D extends __NameMapObject {
     }
     /** A server interface for low-level 2D navigation access.  
@@ -504,8 +501,6 @@ declare module "godot" {
         /** Emitted when avoidance debug settings are changed. Only available in debug builds. */
         static readonly avoidance_debug_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapNavigationServer2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapNavigationServer2D;
     }
     // _singleton_class_: NavigationServer3D
@@ -541,9 +536,6 @@ declare module "godot" {
             /** Constant to get the number of active navigation obstacles. */
             INFO_OBSTACLE_COUNT = 9,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapNavigationServer3D extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapNavigationServer3D extends __NameMapObject {
@@ -1070,8 +1062,6 @@ declare module "godot" {
         /** Emitted when avoidance debug settings are changed. Only available in debug builds. */
         static readonly avoidance_debug_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapNavigationServer3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapNavigationServer3D;
     }
     // _singleton_class_: PhysicsServer2D
@@ -1343,9 +1333,6 @@ declare module "godot" {
             /** Constant to get the number of space regions where a collision could occur. */
             INFO_ISLAND_COUNT = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsServer2D extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsServer2D extends __NameMapObject {
@@ -1724,10 +1711,10 @@ declare module "godot" {
          *  2. [code skip-lint]userdata`: a [Variant]; its value will be the [param userdata] passed into this method.  
          *  If [param userdata] is `null`, then [param callable] must take only the `state` parameter.  
          */
-        static body_set_force_integration_callback(body: RID, callable: Callable, userdata?: any /* = {} */): void
+        static body_set_force_integration_callback(body: RID, callable: Callable, userdata?: any /* = <any> {} */): void
         
         /** Returns `true` if a collision would result from moving the body along a motion vector from a given point in space. See [PhysicsTestMotionParameters2D] for the available motion parameters. Optionally a [PhysicsTestMotionResult2D] object can be passed, which will be used to store the information about the resulting collision. */
-        static body_test_motion(body: RID, parameters: PhysicsTestMotionParameters2D, result?: PhysicsTestMotionResult2D): boolean
+        static body_test_motion(body: RID, parameters: PhysicsTestMotionParameters2D, result?: PhysicsTestMotionResult2D /* = undefined */): boolean
         
         /** Returns the [PhysicsDirectBodyState2D] of the body. Returns `null` if the body is destroyed or not assigned to a space. */
         static body_get_direct_state(body: RID): null | PhysicsDirectBodyState2D
@@ -1788,8 +1775,6 @@ declare module "godot" {
         
         /** Returns the value of a physics engine state specified by [param process_info]. */
         static get_process_info(process_info: PhysicsServer2D.ProcessInfo): int64
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsServer2D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsServer2D;
     }
@@ -2245,9 +2230,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsServer3D extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsServer3D extends __NameMapObject {
     }
     /** A server interface for low-level 3D physics access.  
@@ -2622,13 +2604,13 @@ declare module "godot" {
          *  2. [code skip-lint]userdata`: a [Variant]; its value will be the [param userdata] passed into this method.  
          *  If [param userdata] is `null`, then [param callable] must take only the `state` parameter.  
          */
-        static body_set_force_integration_callback(body: RID, callable: Callable, userdata?: any /* = {} */): void
+        static body_set_force_integration_callback(body: RID, callable: Callable, userdata?: any /* = <any> {} */): void
         
         /** Sets the body pickable with rays if [param enable] is set. */
         static body_set_ray_pickable(body: RID, enable: boolean): void
         
         /** Returns `true` if a collision would result from moving along a motion vector from a given point in space. [PhysicsTestMotionParameters3D] is passed to set motion parameters. [PhysicsTestMotionResult3D] can be passed to return additional information. */
-        static body_test_motion(body: RID, parameters: PhysicsTestMotionParameters3D, result?: PhysicsTestMotionResult3D): boolean
+        static body_test_motion(body: RID, parameters: PhysicsTestMotionParameters3D, result?: PhysicsTestMotionResult3D /* = undefined */): boolean
         
         /** Returns the [PhysicsDirectBodyState3D] of the body. Returns `null` if the body is destroyed or removed from the physics space. */
         static body_get_direct_state(body: RID): null | PhysicsDirectBodyState3D
@@ -2853,8 +2835,6 @@ declare module "godot" {
         /** Returns the value of a physics engine state specified by [param process_info]. */
         static get_process_info(process_info: PhysicsServer3D.ProcessInfo): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsServer3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsServer3D;
     }
     // _singleton_class_: XRServer
@@ -2900,9 +2880,6 @@ declare module "godot" {
             /** Does not reset the orientation of the HMD, only the position of the player gets centered. */
             DONT_RESET_ROTATION = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapXRServer extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapXRServer extends __NameMapObject {
@@ -3000,8 +2977,6 @@ declare module "godot" {
         /** Emitted when a tracker is removed. You should remove any [XRController3D] or [XRAnchor3D] points if applicable. This is not mandatory, the nodes simply become inactive and will be made active again when a new tracker becomes available (i.e. a new controller is switched on that takes the place of the previous one). */
         static readonly tracker_removed: Signal<(tracker_name: StringName, type: int64) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapXRServer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapXRServer;
     }
     // ERROR: singleton GDScriptLanguageProtocol without class info GDScriptLanguageProtocol
@@ -3022,9 +2997,6 @@ declare module "godot" {
             /** Maximum value for the mode enum. */
             MODE_MAX = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAESContext extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAESContext extends __NameMapRefCounted {
@@ -3053,12 +3025,7 @@ declare module "godot" {
         /** Close this AES context so it can be started again. See [method start]. */
         finish(): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAESContext;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAESContext;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAStar2D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAStar2D extends __NameMapRefCounted {
@@ -3184,12 +3151,7 @@ declare module "godot" {
         get neighbor_filter_enabled(): boolean
         set neighbor_filter_enabled(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAStar2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAStar2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAStar3D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAStar3D extends __NameMapRefCounted {
@@ -3315,8 +3277,6 @@ declare module "godot" {
         get neighbor_filter_enabled(): boolean
         set neighbor_filter_enabled(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAStar3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAStar3D;
     }
     namespace AStarGrid2D {
@@ -3377,9 +3337,6 @@ declare module "godot" {
             /** Represents the size of the [enum CellShape] enum. */
             CELL_SHAPE_MAX = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAStarGrid2D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAStarGrid2D extends __NameMapRefCounted {
@@ -3510,12 +3467,7 @@ declare module "godot" {
         get diagonal_mode(): int64
         set diagonal_mode(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAStarGrid2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAStarGrid2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAcceptDialog extends __RPCMapWindow {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAcceptDialog extends __NameMapWindow {
@@ -3586,12 +3538,7 @@ declare module "godot" {
         /** Emitted when a custom button with an action is pressed. See [method add_button]. */
         readonly custom_action: Signal<(action: StringName) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAcceptDialog;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAcceptDialog;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAimModifier3D extends __RPCMapBoneConstraint3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAimModifier3D extends __NameMapBoneConstraint3D {
@@ -3641,12 +3588,7 @@ declare module "godot" {
         get setting_count(): int64
         set setting_count(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAimModifier3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAimModifier3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimatableBody2D extends __RPCMapStaticBody2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimatableBody2D extends __NameMapStaticBody2D {
@@ -3661,12 +3603,7 @@ declare module "godot" {
         get sync_to_physics(): boolean
         set sync_to_physics(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimatableBody2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimatableBody2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimatableBody3D extends __RPCMapStaticBody3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimatableBody3D extends __NameMapStaticBody3D {
@@ -3681,12 +3618,7 @@ declare module "godot" {
         get sync_to_physics(): boolean
         set sync_to_physics(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimatableBody3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimatableBody3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimatedSprite2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimatedSprite2D extends __NameMapNode2D {
@@ -3792,12 +3724,7 @@ declare module "godot" {
          */
         readonly animation_finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimatedSprite2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimatedSprite2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimatedSprite3D extends __RPCMapSpriteBase3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimatedSprite3D extends __NameMapSpriteBase3D {
@@ -3885,12 +3812,7 @@ declare module "godot" {
          */
         readonly animation_finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimatedSprite3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimatedSprite3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimatedTexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimatedTexture extends __NameMapTexture2D {
@@ -4962,8 +4884,6 @@ declare module "godot" {
         get "frame_255/duration"(): float64
         set "frame_255/duration"(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimatedTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimatedTexture;
     }
     namespace Animation {
@@ -5057,9 +4977,6 @@ declare module "godot" {
             /** Finds only the key with matching the time. */
             FIND_MODE_EXACT = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimation extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimation extends __NameMapResource {
@@ -5341,12 +5258,7 @@ declare module "godot" {
         /** Returns `true` if the capture track is included. This is a cached readonly value for performance. */
         get capture_included(): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimation;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimation;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationLibrary extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationLibrary extends __NameMapResource {
@@ -5396,8 +5308,6 @@ declare module "godot" {
          */
         readonly animation_changed: Signal<(name: StringName) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationLibrary;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationLibrary;
     }
     namespace AnimationMixer {
@@ -5442,9 +5352,6 @@ declare module "godot" {
              */
             ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationMixer extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationMixer extends __NameMapNode {
@@ -5648,8 +5555,6 @@ declare module "godot" {
         /** Notifies when the property related process have been updated. */
         readonly mixer_updated: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationMixer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationMixer;
     }
     namespace AnimationNode {
@@ -5666,9 +5571,6 @@ declare module "godot" {
             /** Paths matching the filter will be blended (by the blend value). */
             FILTER_BLEND = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNode extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNode extends __NameMapResource {
@@ -5771,12 +5673,7 @@ declare module "godot" {
         /** Emitted by nodes that inherit from this class and that have an internal tree when one of their animation nodes removes. The animation nodes that emit this signal are [AnimationNodeBlendSpace1D], [AnimationNodeBlendSpace2D], [AnimationNodeStateMachine], and [AnimationNodeBlendTree]. */
         readonly animation_node_removed: Signal<(object_id: int64, name: string) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNode;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNode;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeAdd2 extends __RPCMapAnimationNodeSync {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeAdd2 extends __NameMapAnimationNodeSync {
@@ -5788,12 +5685,7 @@ declare module "godot" {
     class AnimationNodeAdd2 extends AnimationNodeSync {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeAdd2;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeAdd2;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeAdd3 extends __RPCMapAnimationNodeSync {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeAdd3 extends __NameMapAnimationNodeSync {
@@ -5805,8 +5697,6 @@ declare module "godot" {
     class AnimationNodeAdd3 extends AnimationNodeSync {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeAdd3;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeAdd3;
     }
     namespace AnimationNodeAnimation {
@@ -5817,9 +5707,6 @@ declare module "godot" {
             /** Plays animation in backward direction. */
             PLAY_MODE_BACKWARD = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeAnimation extends __RPCMapAnimationRootNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeAnimation extends __NameMapAnimationRootNode {
@@ -5874,12 +5761,7 @@ declare module "godot" {
         get loop_mode(): int64
         set loop_mode(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeAnimation;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeAnimation;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeBlend2 extends __RPCMapAnimationNodeSync {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeBlend2 extends __NameMapAnimationNodeSync {
@@ -5891,12 +5773,7 @@ declare module "godot" {
     class AnimationNodeBlend2 extends AnimationNodeSync {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeBlend2;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeBlend2;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeBlend3 extends __RPCMapAnimationNodeSync {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeBlend3 extends __NameMapAnimationNodeSync {
@@ -5907,8 +5784,6 @@ declare module "godot" {
      */
     class AnimationNodeBlend3 extends AnimationNodeSync {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeBlend3;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeBlend3;
     }
@@ -5923,9 +5798,6 @@ declare module "godot" {
             /** Similar to [constant BLEND_MODE_DISCRETE], but starts the new animation at the last animation's playback position. */
             BLEND_MODE_DISCRETE_CARRY = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeBlendSpace1D extends __RPCMapAnimationRootNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeBlendSpace1D extends __NameMapAnimationRootNode {
@@ -6240,8 +6112,6 @@ declare module "godot" {
         get sync(): boolean
         set sync(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeBlendSpace1D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeBlendSpace1D;
     }
     namespace AnimationNodeBlendSpace2D {
@@ -6255,9 +6125,6 @@ declare module "godot" {
             /** Similar to [constant BLEND_MODE_DISCRETE], but starts the new animation at the last animation's playback position. */
             BLEND_MODE_DISCRETE_CARRY = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeBlendSpace2D extends __RPCMapAnimationRootNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeBlendSpace2D extends __NameMapAnimationRootNode {
@@ -6597,12 +6464,7 @@ declare module "godot" {
         /** Emitted every time the blend space's triangles are created, removed, or when one of their vertices changes position. */
         readonly triangles_updated: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeBlendSpace2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeBlendSpace2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeBlendTree extends __RPCMapAnimationRootNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeBlendTree extends __NameMapAnimationRootNode {
@@ -6668,12 +6530,7 @@ declare module "godot" {
         /** Emitted when the input port information is changed. */
         readonly node_changed: Signal<(node_name: StringName) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeBlendTree;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeBlendTree;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeExtension extends __RPCMapAnimationNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeExtension extends __NameMapAnimationNode {
@@ -6695,8 +6552,6 @@ declare module "godot" {
         
         /** Returns the animation's remaining time for the given node info. For looping animations, it will only return the remaining time if [param break_loop] is `true`, a large integer value will be returned otherwise. */
         static get_remaining_time(node_info: PackedFloat32Array | float32[], break_loop: boolean): float64
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeExtension;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeExtension;
     }
@@ -6721,9 +6576,6 @@ declare module "godot" {
             /** Blends two animations additively. See also [AnimationNodeAdd2]. */
             MIX_MODE_ADD = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeOneShot extends __RPCMapAnimationNodeSync {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeOneShot extends __NameMapAnimationNodeSync {
@@ -6782,12 +6634,7 @@ declare module "godot" {
         get autorestart_random_delay(): float64
         set autorestart_random_delay(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeOneShot;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeOneShot;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeOutput extends __RPCMapAnimationNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeOutput extends __NameMapAnimationNode {
@@ -6798,8 +6645,6 @@ declare module "godot" {
      */
     class AnimationNodeOutput extends AnimationNode {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeOutput;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeOutput;
     }
@@ -6814,9 +6659,6 @@ declare module "godot" {
             /** This is a grouped state machine that can be controlled from a parent state machine. It does not work independently. There must be a state machine with [member state_machine_type] of [constant STATE_MACHINE_TYPE_ROOT] or [constant STATE_MACHINE_TYPE_NESTED] in the parent or ancestor. */
             STATE_MACHINE_TYPE_GROUPED = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeStateMachine extends __RPCMapAnimationRootNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeStateMachine extends __NameMapAnimationRootNode {
@@ -6901,12 +6743,7 @@ declare module "godot" {
         get reset_ends(): boolean
         set reset_ends(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeStateMachine;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeStateMachine;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeStateMachinePlayback extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeStateMachinePlayback extends __NameMapResource {
@@ -6978,8 +6815,6 @@ declare module "godot" {
          */
         readonly state_finished: Signal<(state: StringName) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeStateMachinePlayback;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeStateMachinePlayback;
     }
     namespace AnimationNodeStateMachineTransition {
@@ -7003,9 +6838,6 @@ declare module "godot" {
             /** Automatically use this transition if the [member advance_condition] and [member advance_expression] checks are `true` (if assigned). */
             ADVANCE_MODE_AUTO = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeStateMachineTransition extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeStateMachineTransition extends __NameMapResource {
@@ -7060,12 +6892,7 @@ declare module "godot" {
         /** Emitted when [member advance_condition] is changed. */
         readonly advance_condition_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeStateMachineTransition;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeStateMachineTransition;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeSub2 extends __RPCMapAnimationNodeSync {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeSub2 extends __NameMapAnimationNodeSync {
@@ -7077,12 +6904,7 @@ declare module "godot" {
     class AnimationNodeSub2 extends AnimationNodeSync {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeSub2;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeSub2;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeSync extends __RPCMapAnimationNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeSync extends __NameMapAnimationNode {
@@ -7099,12 +6921,7 @@ declare module "godot" {
         get sync(): boolean
         set sync(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeSync;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeSync;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeTimeScale extends __RPCMapAnimationNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeTimeScale extends __NameMapAnimationNode {
@@ -7116,12 +6933,7 @@ declare module "godot" {
     class AnimationNodeTimeScale extends AnimationNode {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeTimeScale;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeTimeScale;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeTimeSeek extends __RPCMapAnimationNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeTimeSeek extends __NameMapAnimationNode {
@@ -7136,12 +6948,7 @@ declare module "godot" {
         get explicit_elapse(): boolean
         set explicit_elapse(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeTimeSeek;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeTimeSeek;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationNodeTransition extends __RPCMapAnimationNodeSync {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationNodeTransition extends __NameMapAnimationNodeSync {
@@ -7189,8 +6996,6 @@ declare module "godot" {
         get input_count(): int64
         set input_count(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationNodeTransition;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationNodeTransition;
     }
     namespace AnimationPlayer {
@@ -7203,9 +7008,6 @@ declare module "godot" {
             ANIMATION_METHOD_CALL_DEFERRED = 0,
             ANIMATION_METHOD_CALL_IMMEDIATE = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationPlayer extends __RPCMapAnimationMixer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationPlayer extends __NameMapAnimationMixer {
@@ -7422,12 +7224,7 @@ declare module "godot" {
          */
         readonly animation_changed: Signal<(old_name: StringName, new_name: StringName) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationPlayer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationPlayer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationRootNode extends __RPCMapAnimationNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationRootNode extends __NameMapAnimationNode {
@@ -7439,8 +7236,6 @@ declare module "godot" {
     class AnimationRootNode extends AnimationNode {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationRootNode;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationRootNode;
     }
     namespace AnimationTree {
@@ -7449,9 +7244,6 @@ declare module "godot" {
             ANIMATION_PROCESS_IDLE = 1,
             ANIMATION_PROCESS_MANUAL = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAnimationTree extends __RPCMapAnimationMixer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAnimationTree extends __NameMapAnimationMixer {
@@ -7483,8 +7275,6 @@ declare module "godot" {
         /** Emitted when the [member anim_player] is changed. */
         readonly animation_player_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAnimationTree;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAnimationTree;
     }
     namespace Area2D {
@@ -7504,9 +7294,6 @@ declare module "godot" {
             /** This area replaces any gravity/damping calculated so far (in [member priority] order), but keeps calculating the rest of the areas. */
             SPACE_OVERRIDE_REPLACE_COMBINE = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapArea2D extends __RPCMapCollisionObject2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapArea2D extends __NameMapCollisionObject2D {
@@ -7652,8 +7439,6 @@ declare module "godot" {
         /** Emitted when the received [param area] exits this area. Requires [member monitoring] to be set to `true`. */
         readonly area_exited: Signal<(area: Area2D) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapArea2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapArea2D;
     }
     namespace Area3D {
@@ -7673,9 +7458,6 @@ declare module "godot" {
             /** This area replaces any gravity/damping calculated so far (in [member priority] order), but keeps calculating the rest of the areas. */
             SPACE_OVERRIDE_REPLACE_COMBINE = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapArea3D extends __RPCMapCollisionObject3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapArea3D extends __NameMapCollisionObject3D {
@@ -7858,12 +7640,7 @@ declare module "godot" {
         /** Emitted when the received [param area] exits this area. Requires [member monitoring] to be set to `true`. */
         readonly area_exited: Signal<(area: Area3D) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapArea3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapArea3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapArrayMesh extends __RPCMapMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapArrayMesh extends __NameMapMesh {
@@ -7898,7 +7675,7 @@ declare module "godot" {
          *      
          *  **Note:** When using indices, it is recommended to only use points, lines, or triangles.  
          */
-        add_surface_from_arrays(primitive: Mesh.PrimitiveType, arrays: GArray, blend_shapes?: GArray<GArray>, lods?: GDictionary /* = new GDictionary() */, flags?: Mesh.ArrayFormat /* = 0 */): void
+        add_surface_from_arrays(primitive: Mesh.PrimitiveType, arrays: GArray, blend_shapes?: GArray<GArray> /* = [] */, lods?: GDictionary /* = new GDictionary() */, flags?: Mesh.ArrayFormat /* = 0 */): void
         
         /** Removes all surfaces from this [ArrayMesh]. */
         clear_surfaces(): void
@@ -7955,12 +7732,7 @@ declare module "godot" {
         get shadow_mesh(): null | ArrayMesh
         set shadow_mesh(value: null | ArrayMesh)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapArrayMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapArrayMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapArrayOccluder3D extends __RPCMapOccluder3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapArrayOccluder3D extends __NameMapOccluder3D {
@@ -7987,8 +7759,6 @@ declare module "godot" {
          */
         get indices(): PackedInt32Array
         set indices(value: PackedInt32Array | int32[])
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapArrayOccluder3D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapArrayOccluder3D;
     }
@@ -8020,9 +7790,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAspectRatioContainer extends __RPCMapContainer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAspectRatioContainer extends __NameMapContainer {
     }
     /** A container that preserves the proportions of its child controls.  
@@ -8047,12 +7814,7 @@ declare module "godot" {
         get alignment_vertical(): int64
         set alignment_vertical(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAspectRatioContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAspectRatioContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAtlasTexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAtlasTexture extends __NameMapTexture2D {
@@ -8082,12 +7844,7 @@ declare module "godot" {
         get filter_clip(): boolean
         set filter_clip(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAtlasTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAtlasTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioBusLayout extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioBusLayout extends __NameMapResource {
@@ -8099,12 +7856,7 @@ declare module "godot" {
     class AudioBusLayout extends Resource {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioBusLayout;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioBusLayout;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffect extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffect extends __NameMapResource {
@@ -8122,12 +7874,7 @@ declare module "godot" {
          */
         /* gdvirtual */ _instantiate(): null | AudioEffectInstance
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffect;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffect;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectAmplify extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectAmplify extends __NameMapAudioEffect {
@@ -8149,12 +7896,7 @@ declare module "godot" {
         get volume_linear(): float64
         set volume_linear(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectAmplify;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectAmplify;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectBandLimitFilter extends __RPCMapAudioEffectFilter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectBandLimitFilter extends __NameMapAudioEffectFilter {
@@ -8166,12 +7908,7 @@ declare module "godot" {
     class AudioEffectBandLimitFilter extends AudioEffectFilter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectBandLimitFilter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectBandLimitFilter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectBandPassFilter extends __RPCMapAudioEffectFilter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectBandPassFilter extends __NameMapAudioEffectFilter {
@@ -8183,12 +7920,7 @@ declare module "godot" {
     class AudioEffectBandPassFilter extends AudioEffectFilter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectBandPassFilter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectBandPassFilter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectCapture extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectCapture extends __NameMapAudioEffect {
@@ -8230,12 +7962,7 @@ declare module "godot" {
         get buffer_length(): float64
         set buffer_length(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectCapture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectCapture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectChorus extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectChorus extends __NameMapAudioEffect {
@@ -8367,12 +8094,7 @@ declare module "godot" {
         get "voice/4/pan"(): float64
         set "voice/4/pan"(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectChorus;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectChorus;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectCompressor extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectCompressor extends __NameMapAudioEffect {
@@ -8412,12 +8134,7 @@ declare module "godot" {
         get sidechain(): StringName
         set sidechain(value: StringName)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectCompressor;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectCompressor;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectDelay extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectDelay extends __NameMapAudioEffect {
@@ -8481,8 +8198,6 @@ declare module "godot" {
         get feedback_lowpass(): float64
         set feedback_lowpass(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectDelay;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectDelay;
     }
     namespace AudioEffectDistortion {
@@ -8500,9 +8215,6 @@ declare module "godot" {
             /** Waveshaper distortions are used mainly by electronic musicians to achieve an extra-abrasive sound. */
             MODE_WAVESHAPE = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectDistortion extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectDistortion extends __NameMapAudioEffect {
@@ -8534,12 +8246,7 @@ declare module "godot" {
         get post_gain(): float64
         set post_gain(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectDistortion;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectDistortion;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectEQ extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectEQ extends __NameMapAudioEffect {
@@ -8560,12 +8267,7 @@ declare module "godot" {
         /** Returns the number of bands of the equalizer. */
         get_band_count(): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectEQ;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectEQ;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectEQ10 extends __RPCMapAudioEffectEQ {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectEQ10 extends __NameMapAudioEffectEQ {
@@ -8578,12 +8280,7 @@ declare module "godot" {
     class AudioEffectEQ10 extends AudioEffectEQ {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectEQ10;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectEQ10;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectEQ21 extends __RPCMapAudioEffectEQ {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectEQ21 extends __NameMapAudioEffectEQ {
@@ -8596,12 +8293,7 @@ declare module "godot" {
     class AudioEffectEQ21 extends AudioEffectEQ {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectEQ21;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectEQ21;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectEQ6 extends __RPCMapAudioEffectEQ {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectEQ6 extends __NameMapAudioEffectEQ {
@@ -8613,8 +8305,6 @@ declare module "godot" {
      */
     class AudioEffectEQ6 extends AudioEffectEQ {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectEQ6;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectEQ6;
     }
@@ -8632,9 +8322,6 @@ declare module "godot" {
             /** Cutting off at 24dB per octave. */
             FILTER_24DB = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectFilter extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectFilter extends __NameMapAudioEffect {
@@ -8661,12 +8348,7 @@ declare module "godot" {
         get db(): int64
         set db(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectFilter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectFilter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectHardLimiter extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectHardLimiter extends __NameMapAudioEffect {
@@ -8691,12 +8373,7 @@ declare module "godot" {
         get release(): float64
         set release(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectHardLimiter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectHardLimiter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectHighPassFilter extends __RPCMapAudioEffectFilter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectHighPassFilter extends __NameMapAudioEffectFilter {
@@ -8708,12 +8385,7 @@ declare module "godot" {
     class AudioEffectHighPassFilter extends AudioEffectFilter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectHighPassFilter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectHighPassFilter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectHighShelfFilter extends __RPCMapAudioEffectFilter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectHighShelfFilter extends __NameMapAudioEffectFilter {
@@ -8725,12 +8397,7 @@ declare module "godot" {
     class AudioEffectHighShelfFilter extends AudioEffectFilter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectHighShelfFilter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectHighShelfFilter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectInstance extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectInstance extends __NameMapRefCounted {
@@ -8752,12 +8419,7 @@ declare module "godot" {
          */
         /* gdvirtual */ _process_silence(): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectInstance;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectInstance;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectLimiter extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectLimiter extends __NameMapAudioEffect {
@@ -8782,12 +8444,7 @@ declare module "godot" {
         get soft_clip_ratio(): float64
         set soft_clip_ratio(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectLimiter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectLimiter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectLowPassFilter extends __RPCMapAudioEffectFilter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectLowPassFilter extends __NameMapAudioEffectFilter {
@@ -8799,12 +8456,7 @@ declare module "godot" {
     class AudioEffectLowPassFilter extends AudioEffectFilter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectLowPassFilter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectLowPassFilter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectLowShelfFilter extends __RPCMapAudioEffectFilter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectLowShelfFilter extends __NameMapAudioEffectFilter {
@@ -8816,12 +8468,7 @@ declare module "godot" {
     class AudioEffectLowShelfFilter extends AudioEffectFilter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectLowShelfFilter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectLowShelfFilter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectNotchFilter extends __RPCMapAudioEffectFilter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectNotchFilter extends __NameMapAudioEffectFilter {
@@ -8833,12 +8480,7 @@ declare module "godot" {
     class AudioEffectNotchFilter extends AudioEffectFilter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectNotchFilter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectNotchFilter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectPanner extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectPanner extends __NameMapAudioEffect {
@@ -8853,12 +8495,7 @@ declare module "godot" {
         get pan(): float64
         set pan(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectPanner;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectPanner;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectPhaser extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectPhaser extends __NameMapAudioEffect {
@@ -8890,8 +8527,6 @@ declare module "godot" {
         get depth(): float64
         set depth(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectPhaser;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectPhaser;
     }
     namespace AudioEffectPitchShift {
@@ -8916,9 +8551,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectPitchShift extends __RPCMapAudioEffect {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectPitchShift extends __NameMapAudioEffect {
     }
     /** Adds a pitch-shifting audio effect to an audio bus.  
@@ -8940,12 +8572,7 @@ declare module "godot" {
         get fft_size(): int64
         set fft_size(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectPitchShift;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectPitchShift;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectRecord extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectRecord extends __NameMapAudioEffect {
@@ -8969,12 +8596,7 @@ declare module "godot" {
         get format(): int64
         set format(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectRecord;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectRecord;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectReverb extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectReverb extends __NameMapAudioEffect {
@@ -9017,8 +8639,6 @@ declare module "godot" {
         get wet(): float64
         set wet(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectReverb;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectReverb;
     }
     namespace AudioEffectSpectrumAnalyzer {
@@ -9043,9 +8663,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectSpectrumAnalyzer extends __RPCMapAudioEffect {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectSpectrumAnalyzer extends __NameMapAudioEffect {
     }
     /** Audio effect that can be used for real-time audio visualizations.  
@@ -9064,8 +8681,6 @@ declare module "godot" {
         get fft_size(): int64
         set fft_size(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectSpectrumAnalyzer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectSpectrumAnalyzer;
     }
     namespace AudioEffectSpectrumAnalyzerInstance {
@@ -9076,9 +8691,6 @@ declare module "godot" {
             /** Use the maximum value of the frequency range as magnitude. */
             MAGNITUDE_MAX = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectSpectrumAnalyzerInstance extends __RPCMapAudioEffectInstance {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectSpectrumAnalyzerInstance extends __NameMapAudioEffectInstance {
@@ -9094,12 +8706,7 @@ declare module "godot" {
          */
         get_magnitude_for_frequency_range(from_hz: float64, to_hz: float64, mode?: AudioEffectSpectrumAnalyzerInstance.MagnitudeMode /* = 1 */): Vector2
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectSpectrumAnalyzerInstance;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectSpectrumAnalyzerInstance;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioEffectStereoEnhance extends __RPCMapAudioEffect {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioEffectStereoEnhance extends __NameMapAudioEffect {
@@ -9122,12 +8729,7 @@ declare module "godot" {
         get surround(): float64
         set surround(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioEffectStereoEnhance;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioEffectStereoEnhance;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioListener2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioListener2D extends __NameMapNode2D {
@@ -9149,8 +8751,6 @@ declare module "godot" {
         /** Returns `true` if this [AudioListener2D] is currently active. */
         is_current(): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioListener2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioListener2D;
     }
     namespace AudioListener3D {
@@ -9164,9 +8764,6 @@ declare module "godot" {
             /** Simulate [url=https://en.wikipedia.org/wiki/Doppler_effect]Doppler effect[/url] by tracking positions of objects that are changed in `_physics_process`. Changes in the relative velocity of this listener compared to those objects affect how audio is perceived (changing the audio's [member AudioStreamPlayer3D.pitch_scale]). */
             DOPPLER_TRACKING_PHYSICS_STEP = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioListener3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioListener3D extends __NameMapNode3D {
@@ -9199,8 +8796,815 @@ declare module "godot" {
         get doppler_tracking(): int64
         set doppler_tracking(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioListener3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioListener3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapAudioSample extends __NameMapRefCounted {
+    }
+    /** Base class for audio samples.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiosample.html  
+     */
+    class AudioSample extends RefCounted {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapAudioSample;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapAudioSamplePlayback extends __NameMapRefCounted {
+    }
+    /** Meta class for playing back audio samples.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiosampleplayback.html  
+     */
+    class AudioSamplePlayback extends RefCounted {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapAudioSamplePlayback;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapAudioStream extends __NameMapResource {
+    }
+    /** Base class for audio streams.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiostream.html  
+     */
+    class AudioStream extends Resource {
+        constructor(identifier?: any)
+        /** Override this method to customize the returned value of [method instantiate_playback]. Should return a new [AudioStreamPlayback] created when the stream is played (such as by an [AudioStreamPlayer]). */
+        /* gdvirtual */ _instantiate_playback(): null | AudioStreamPlayback
+        
+        /** Override this method to customize the name assigned to this audio stream. Unused by the engine. */
+        /* gdvirtual */ _get_stream_name(): string
+        
+        /** Override this method to customize the returned value of [method get_length]. Should return the length of this audio stream, in seconds. */
+        /* gdvirtual */ _get_length(): float64
+        
+        /** Override this method to customize the returned value of [method is_monophonic]. Should return `true` if this audio stream only supports one channel. */
+        /* gdvirtual */ _is_monophonic(): boolean
+        
+        /** Overridable method. Should return the tempo of this audio stream, in beats per minute (BPM). Used by the engine to determine the position of every beat.  
+         *  Ideally, the returned value should be based off the stream's sample rate ([member AudioStreamWAV.mix_rate], for example).  
+         */
+        /* gdvirtual */ _get_bpm(): float64
+        
+        /** Overridable method. Should return the total number of beats of this audio stream. Used by the engine to determine the position of every beat.  
+         *  Ideally, the returned value should be based off the stream's sample rate ([member AudioStreamWAV.mix_rate], for example).  
+         */
+        /* gdvirtual */ _get_beat_count(): int64
+        
+        /** Override this method to customize the tags for this audio stream. Should return a [Dictionary] of strings with the tag as the key and its content as the value.  
+         *  Commonly used tags include `title`, `artist`, `album`, `tracknumber`, and `date`.  
+         */
+        /* gdvirtual */ _get_tags(): GDictionary
+        
+        /** Return the controllable parameters of this stream. This array contains dictionaries with a property info description format (see [method Object.get_property_list]). Additionally, the default value for this parameter must be added tho each dictionary in "default_value" field. */
+        /* gdvirtual */ _get_parameter_list(): GArray<GDictionary>
+        
+        /** Override this method to return `true` if this stream has a loop. */
+        /* gdvirtual */ _has_loop(): boolean
+        
+        /** Override this method to return the bar beats of this stream. */
+        /* gdvirtual */ _get_bar_beats(): int64
+        
+        /** Returns the length of the audio stream in seconds. If this stream is an [AudioStreamRandomizer], returns the length of the last played stream. If this stream has an indefinite length (such as for [AudioStreamGenerator] and [AudioStreamMicrophone]), returns `0.0`. */
+        get_length(): float64
+        
+        /** Returns `true` if this audio stream only supports one channel ( *monophony* ), or `false` if the audio stream supports two or more channels ( *polyphony* ). */
+        is_monophonic(): boolean
+        
+        /** Returns a newly created [AudioStreamPlayback] intended to play this audio stream. Useful for when you want to extend [method _instantiate_playback] but call [method instantiate_playback] from an internally held AudioStream subresource. An example of this can be found in the source code for `AudioStreamRandomPitch::instantiate_playback`. */
+        instantiate_playback(): null | AudioStreamPlayback
+        
+        /** Returns if the current [AudioStream] can be used as a sample. Only static streams can be sampled. */
+        can_be_sampled(): boolean
+        
+        /** Generates an [AudioSample] based on the current stream. */
+        generate_sample(): null | AudioSample
+        
+        /** Returns `true` if the stream is a collection of other streams, `false` otherwise. */
+        is_meta_stream(): boolean
+        
+        /** Signal to be emitted to notify when the parameter list changed. */
+        readonly parameter_list_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapAudioStream;
+    }
+    namespace AudioStreamGenerator {
+        enum AudioStreamGeneratorMixRate {
+            /** Current [AudioServer] output mixing rate. */
+            MIX_RATE_OUTPUT = 0,
+            
+            /** Current [AudioServer] input mixing rate. */
+            MIX_RATE_INPUT = 1,
+            
+            /** Custom mixing rate, specified by [member mix_rate]. */
+            MIX_RATE_CUSTOM = 2,
+            
+            /** Maximum value for the mixing rate mode enum. */
+            MIX_RATE_MAX = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapAudioStreamGenerator extends __NameMapAudioStream {
+    }
+    /** An audio stream with utilities for procedural sound generation.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiostreamgenerator.html  
+     */
+    class AudioStreamGenerator extends AudioStream {
+        constructor(identifier?: any)
+        /** Mixing rate mode. If set to [constant MIX_RATE_CUSTOM], [member mix_rate] is used, otherwise current [AudioServer] mixing rate is used. */
+        get mix_rate_mode(): int64
+        set mix_rate_mode(value: int64)
+        
+        /** The sample rate to use (in Hz). Higher values are more demanding for the CPU to generate, but result in better quality.  
+         *  In games, common sample rates in use are `11025`, `16000`, `22050`, `32000`, `44100`, and `48000`.  
+         *  According to the [url=https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem]Nyquist-Shannon sampling theorem[/url], there is no quality difference to human hearing when going past 40,000 Hz (since most humans can only hear up to ~20,000 Hz, often less). If you are generating lower-pitched sounds such as voices, lower sample rates such as `32000` or `22050` may be usable with no loss in quality.  
+         *      
+         *  **Note:** [AudioStreamGenerator] is not automatically resampling input data, to produce expected result [member mix_rate_mode] should match the sampling rate of input data.  
+         *      
+         *  **Note:** If you are using [AudioEffectCapture] as the source of your data, set [member mix_rate_mode] to [constant MIX_RATE_INPUT] or [constant MIX_RATE_OUTPUT] to automatically match current [AudioServer] mixing rate.  
+         */
+        get mix_rate(): float64
+        set mix_rate(value: float64)
+        
+        /** The length of the buffer to generate (in seconds). Lower values result in less latency, but require the script to generate audio data faster, resulting in increased CPU usage and more risk for audio cracking if the CPU can't keep up. */
+        get buffer_length(): float64
+        set buffer_length(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapAudioStreamGenerator;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapAudioStreamGeneratorPlayback extends __NameMapAudioStreamPlaybackResampled {
+    }
+    /** Plays back audio generated using [AudioStreamGenerator].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiostreamgeneratorplayback.html  
+     */
+    class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled {
+        constructor(identifier?: any)
+        /** Pushes a single audio data frame to the buffer. This is usually less efficient than [method push_buffer] in C# and compiled languages via GDExtension, but [method push_frame] may be  *more*  efficient in GDScript. */
+        push_frame(frame: Vector2): boolean
+        
+        /** Returns `true` if a buffer of the size [param amount] can be pushed to the audio sample data buffer without overflowing it, `false` otherwise. */
+        can_push_buffer(amount: int64): boolean
+        
+        /** Pushes several audio data frames to the buffer. This is usually more efficient than [method push_frame] in C# and compiled languages via GDExtension, but [method push_buffer] may be  *less*  efficient in GDScript. */
+        push_buffer(frames: PackedVector2Array | Vector2[]): boolean
+        
+        /** Returns the number of frames that can be pushed to the audio sample data buffer without overflowing it. If the result is `0`, the buffer is full. */
+        get_frames_available(): int64
+        
+        /** Returns the number of times the playback skipped due to a buffer underrun in the audio sample data. This value is reset at the start of the playback. */
+        get_skips(): int64
+        
+        /** Clears the audio sample data buffer. */
+        clear_buffer(): void
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapAudioStreamGeneratorPlayback;
+    }
+    namespace AudioStreamInteractive {
+        enum TransitionFromTime {
+            /** Start transition as soon as possible, don't wait for any specific time position. */
+            TRANSITION_FROM_TIME_IMMEDIATE = 0,
+            
+            /** Transition when the clip playback position reaches the next beat. */
+            TRANSITION_FROM_TIME_NEXT_BEAT = 1,
+            
+            /** Transition when the clip playback position reaches the next bar. */
+            TRANSITION_FROM_TIME_NEXT_BAR = 2,
+            
+            /** Transition when the current clip finished playing. */
+            TRANSITION_FROM_TIME_END = 3,
+        }
+        enum TransitionToTime {
+            /** Transition to the same position in the destination clip. This is useful when both clips have exactly the same length and the music should fade between them. */
+            TRANSITION_TO_TIME_SAME_POSITION = 0,
+            
+            /** Transition to the start of the destination clip. */
+            TRANSITION_TO_TIME_START = 1,
+        }
+        enum FadeMode {
+            /** Do not use fade for the transition. This is useful when transitioning from a clip-end to clip-beginning, and each clip has their begin/end. */
+            FADE_DISABLED = 0,
+            
+            /** Use a fade-in in the next clip, let the current clip finish. */
+            FADE_IN = 1,
+            
+            /** Use a fade-out in the current clip, the next clip will start by itself. */
+            FADE_OUT = 2,
+            
+            /** Use a cross-fade between clips. */
+            FADE_CROSS = 3,
+            
+            /** Use automatic fade logic depending on the transition from/to. It is recommended to use this by default. */
+            FADE_AUTOMATIC = 4,
+        }
+        enum AutoAdvanceMode {
+            /** Disable auto-advance (default). */
+            AUTO_ADVANCE_DISABLED = 0,
+            
+            /** Enable auto-advance, a clip must be specified. */
+            AUTO_ADVANCE_ENABLED = 1,
+            
+            /** Enable auto-advance, but instead of specifying a clip, the playback will return to hold (see [method add_transition]). */
+            AUTO_ADVANCE_RETURN_TO_HOLD = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapAudioStreamInteractive extends __NameMapAudioStream {
+    }
+    /** Audio stream that can playback music interactively, combining clips and a transition table.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiostreaminteractive.html  
+     */
+    class AudioStreamInteractive extends AudioStream {
+        /** This constant describes that any clip is valid for a specific transition as either source or destination. */
+        static readonly CLIP_ANY = -1
+        constructor(identifier?: any)
+        _get_linked_undo_properties(for_property: string, for_value: any): PackedStringArray
+        _inspector_array_swap_clip(a: int64, b: int64): void
+        
+        /** Set the name of the current clip (for easier identification). */
+        set_clip_name(clip_index: int64, name: StringName): void
+        
+        /** Return the name of a clip. */
+        get_clip_name(clip_index: int64): StringName
+        
+        /** Set the [AudioStream] associated with the current clip. */
+        set_clip_stream(clip_index: int64, stream: AudioStream): void
+        
+        /** Return the [AudioStream] associated with a clip. */
+        get_clip_stream(clip_index: int64): null | AudioStream
+        
+        /** Set whether a clip will auto-advance by changing the auto-advance mode. */
+        set_clip_auto_advance(clip_index: int64, mode: AudioStreamInteractive.AutoAdvanceMode): void
+        
+        /** Return whether a clip has auto-advance enabled. See [method set_clip_auto_advance]. */
+        get_clip_auto_advance(clip_index: int64): AudioStreamInteractive.AutoAdvanceMode
+        
+        /** Set the index of the next clip towards which this clip will auto advance to when finished. If the clip being played loops, then auto-advance will be ignored. */
+        set_clip_auto_advance_next_clip(clip_index: int64, auto_advance_next_clip: int64): void
+        
+        /** Return the clip towards which the clip referenced by [param clip_index] will auto-advance to. */
+        get_clip_auto_advance_next_clip(clip_index: int64): int64
+        
+        /** Add a transition between two clips. Provide the indices of the source and destination clips, or use the [constant CLIP_ANY] constant to indicate that transition happens to/from any clip to this one.  
+         *  * [param from_time] indicates the moment in the current clip the transition will begin after triggered.  
+         *  * [param to_time] indicates the time in the next clip that the playback will start from.  
+         *  * [param fade_mode] indicates how the fade will happen between clips. If unsure, just use [constant FADE_AUTOMATIC] which uses the most common type of fade for each situation.  
+         *  * [param fade_beats] indicates how many beats the fade will take. Using decimals is allowed.  
+         *  * [param use_filler_clip] indicates that there will be a filler clip used between the source and destination clips.  
+         *  * [param filler_clip] the index of the filler clip.  
+         *  * If [param hold_previous] is used, then this clip will be remembered. This can be used together with [constant AUTO_ADVANCE_RETURN_TO_HOLD] to return to this clip after another is done playing.  
+         */
+        add_transition(from_clip: int64, to_clip: int64, from_time: AudioStreamInteractive.TransitionFromTime, to_time: AudioStreamInteractive.TransitionToTime, fade_mode: AudioStreamInteractive.FadeMode, fade_beats: float64, use_filler_clip?: boolean /* = false */, filler_clip?: int64 /* = -1 */, hold_previous?: boolean /* = false */): void
+        
+        /** Returns `true` if a given transition exists (was added via [method add_transition]). */
+        has_transition(from_clip: int64, to_clip: int64): boolean
+        
+        /** Erase a transition by providing [param from_clip] and [param to_clip] clip indices. [constant CLIP_ANY] can be used for either argument or both. */
+        erase_transition(from_clip: int64, to_clip: int64): void
+        
+        /** Return the list of transitions (from, to interleaved). */
+        get_transition_list(): PackedInt32Array
+        
+        /** Return the source time position for a transition (see [method add_transition]). */
+        get_transition_from_time(from_clip: int64, to_clip: int64): AudioStreamInteractive.TransitionFromTime
+        
+        /** Return the destination time position for a transition (see [method add_transition]). */
+        get_transition_to_time(from_clip: int64, to_clip: int64): AudioStreamInteractive.TransitionToTime
+        
+        /** Return the mode for a transition (see [method add_transition]). */
+        get_transition_fade_mode(from_clip: int64, to_clip: int64): AudioStreamInteractive.FadeMode
+        
+        /** Return the time (in beats) for a transition (see [method add_transition]). */
+        get_transition_fade_beats(from_clip: int64, to_clip: int64): float64
+        
+        /** Return whether a transition uses the  *filler clip*  functionality (see [method add_transition]). */
+        is_transition_using_filler_clip(from_clip: int64, to_clip: int64): boolean
+        
+        /** Return the filler clip for a transition (see [method add_transition]). */
+        get_transition_filler_clip(from_clip: int64, to_clip: int64): int64
+        
+        /** Return whether a transition uses the  *hold previous*  functionality (see [method add_transition]). */
+        is_transition_holding_previous(from_clip: int64, to_clip: int64): boolean
+        
+        /** Amount of clips contained in this interactive player. */
+        get clip_count(): int64
+        set clip_count(value: int64)
+        get "clip_0/name"(): StringName
+        set "clip_0/name"(value: StringName)
+        get "clip_0/stream"(): null | AudioStream
+        set "clip_0/stream"(value: null | AudioStream)
+        get "clip_0/auto_advance"(): int64
+        set "clip_0/auto_advance"(value: int64)
+        get "clip_0/next_clip"(): int64
+        set "clip_0/next_clip"(value: int64)
+        get "clip_1/name"(): StringName
+        set "clip_1/name"(value: StringName)
+        get "clip_1/stream"(): null | AudioStream
+        set "clip_1/stream"(value: null | AudioStream)
+        get "clip_1/auto_advance"(): int64
+        set "clip_1/auto_advance"(value: int64)
+        get "clip_1/next_clip"(): int64
+        set "clip_1/next_clip"(value: int64)
+        get "clip_2/name"(): StringName
+        set "clip_2/name"(value: StringName)
+        get "clip_2/stream"(): null | AudioStream
+        set "clip_2/stream"(value: null | AudioStream)
+        get "clip_2/auto_advance"(): int64
+        set "clip_2/auto_advance"(value: int64)
+        get "clip_2/next_clip"(): int64
+        set "clip_2/next_clip"(value: int64)
+        get "clip_3/name"(): StringName
+        set "clip_3/name"(value: StringName)
+        get "clip_3/stream"(): null | AudioStream
+        set "clip_3/stream"(value: null | AudioStream)
+        get "clip_3/auto_advance"(): int64
+        set "clip_3/auto_advance"(value: int64)
+        get "clip_3/next_clip"(): int64
+        set "clip_3/next_clip"(value: int64)
+        get "clip_4/name"(): StringName
+        set "clip_4/name"(value: StringName)
+        get "clip_4/stream"(): null | AudioStream
+        set "clip_4/stream"(value: null | AudioStream)
+        get "clip_4/auto_advance"(): int64
+        set "clip_4/auto_advance"(value: int64)
+        get "clip_4/next_clip"(): int64
+        set "clip_4/next_clip"(value: int64)
+        get "clip_5/name"(): StringName
+        set "clip_5/name"(value: StringName)
+        get "clip_5/stream"(): null | AudioStream
+        set "clip_5/stream"(value: null | AudioStream)
+        get "clip_5/auto_advance"(): int64
+        set "clip_5/auto_advance"(value: int64)
+        get "clip_5/next_clip"(): int64
+        set "clip_5/next_clip"(value: int64)
+        get "clip_6/name"(): StringName
+        set "clip_6/name"(value: StringName)
+        get "clip_6/stream"(): null | AudioStream
+        set "clip_6/stream"(value: null | AudioStream)
+        get "clip_6/auto_advance"(): int64
+        set "clip_6/auto_advance"(value: int64)
+        get "clip_6/next_clip"(): int64
+        set "clip_6/next_clip"(value: int64)
+        get "clip_7/name"(): StringName
+        set "clip_7/name"(value: StringName)
+        get "clip_7/stream"(): null | AudioStream
+        set "clip_7/stream"(value: null | AudioStream)
+        get "clip_7/auto_advance"(): int64
+        set "clip_7/auto_advance"(value: int64)
+        get "clip_7/next_clip"(): int64
+        set "clip_7/next_clip"(value: int64)
+        get "clip_8/name"(): StringName
+        set "clip_8/name"(value: StringName)
+        get "clip_8/stream"(): null | AudioStream
+        set "clip_8/stream"(value: null | AudioStream)
+        get "clip_8/auto_advance"(): int64
+        set "clip_8/auto_advance"(value: int64)
+        get "clip_8/next_clip"(): int64
+        set "clip_8/next_clip"(value: int64)
+        get "clip_9/name"(): StringName
+        set "clip_9/name"(value: StringName)
+        get "clip_9/stream"(): null | AudioStream
+        set "clip_9/stream"(value: null | AudioStream)
+        get "clip_9/auto_advance"(): int64
+        set "clip_9/auto_advance"(value: int64)
+        get "clip_9/next_clip"(): int64
+        set "clip_9/next_clip"(value: int64)
+        get "clip_10/name"(): StringName
+        set "clip_10/name"(value: StringName)
+        get "clip_10/stream"(): null | AudioStream
+        set "clip_10/stream"(value: null | AudioStream)
+        get "clip_10/auto_advance"(): int64
+        set "clip_10/auto_advance"(value: int64)
+        get "clip_10/next_clip"(): int64
+        set "clip_10/next_clip"(value: int64)
+        get "clip_11/name"(): StringName
+        set "clip_11/name"(value: StringName)
+        get "clip_11/stream"(): null | AudioStream
+        set "clip_11/stream"(value: null | AudioStream)
+        get "clip_11/auto_advance"(): int64
+        set "clip_11/auto_advance"(value: int64)
+        get "clip_11/next_clip"(): int64
+        set "clip_11/next_clip"(value: int64)
+        get "clip_12/name"(): StringName
+        set "clip_12/name"(value: StringName)
+        get "clip_12/stream"(): null | AudioStream
+        set "clip_12/stream"(value: null | AudioStream)
+        get "clip_12/auto_advance"(): int64
+        set "clip_12/auto_advance"(value: int64)
+        get "clip_12/next_clip"(): int64
+        set "clip_12/next_clip"(value: int64)
+        get "clip_13/name"(): StringName
+        set "clip_13/name"(value: StringName)
+        get "clip_13/stream"(): null | AudioStream
+        set "clip_13/stream"(value: null | AudioStream)
+        get "clip_13/auto_advance"(): int64
+        set "clip_13/auto_advance"(value: int64)
+        get "clip_13/next_clip"(): int64
+        set "clip_13/next_clip"(value: int64)
+        get "clip_14/name"(): StringName
+        set "clip_14/name"(value: StringName)
+        get "clip_14/stream"(): null | AudioStream
+        set "clip_14/stream"(value: null | AudioStream)
+        get "clip_14/auto_advance"(): int64
+        set "clip_14/auto_advance"(value: int64)
+        get "clip_14/next_clip"(): int64
+        set "clip_14/next_clip"(value: int64)
+        get "clip_15/name"(): StringName
+        set "clip_15/name"(value: StringName)
+        get "clip_15/stream"(): null | AudioStream
+        set "clip_15/stream"(value: null | AudioStream)
+        get "clip_15/auto_advance"(): int64
+        set "clip_15/auto_advance"(value: int64)
+        get "clip_15/next_clip"(): int64
+        set "clip_15/next_clip"(value: int64)
+        get "clip_16/name"(): StringName
+        set "clip_16/name"(value: StringName)
+        get "clip_16/stream"(): null | AudioStream
+        set "clip_16/stream"(value: null | AudioStream)
+        get "clip_16/auto_advance"(): int64
+        set "clip_16/auto_advance"(value: int64)
+        get "clip_16/next_clip"(): int64
+        set "clip_16/next_clip"(value: int64)
+        get "clip_17/name"(): StringName
+        set "clip_17/name"(value: StringName)
+        get "clip_17/stream"(): null | AudioStream
+        set "clip_17/stream"(value: null | AudioStream)
+        get "clip_17/auto_advance"(): int64
+        set "clip_17/auto_advance"(value: int64)
+        get "clip_17/next_clip"(): int64
+        set "clip_17/next_clip"(value: int64)
+        get "clip_18/name"(): StringName
+        set "clip_18/name"(value: StringName)
+        get "clip_18/stream"(): null | AudioStream
+        set "clip_18/stream"(value: null | AudioStream)
+        get "clip_18/auto_advance"(): int64
+        set "clip_18/auto_advance"(value: int64)
+        get "clip_18/next_clip"(): int64
+        set "clip_18/next_clip"(value: int64)
+        get "clip_19/name"(): StringName
+        set "clip_19/name"(value: StringName)
+        get "clip_19/stream"(): null | AudioStream
+        set "clip_19/stream"(value: null | AudioStream)
+        get "clip_19/auto_advance"(): int64
+        set "clip_19/auto_advance"(value: int64)
+        get "clip_19/next_clip"(): int64
+        set "clip_19/next_clip"(value: int64)
+        get "clip_20/name"(): StringName
+        set "clip_20/name"(value: StringName)
+        get "clip_20/stream"(): null | AudioStream
+        set "clip_20/stream"(value: null | AudioStream)
+        get "clip_20/auto_advance"(): int64
+        set "clip_20/auto_advance"(value: int64)
+        get "clip_20/next_clip"(): int64
+        set "clip_20/next_clip"(value: int64)
+        get "clip_21/name"(): StringName
+        set "clip_21/name"(value: StringName)
+        get "clip_21/stream"(): null | AudioStream
+        set "clip_21/stream"(value: null | AudioStream)
+        get "clip_21/auto_advance"(): int64
+        set "clip_21/auto_advance"(value: int64)
+        get "clip_21/next_clip"(): int64
+        set "clip_21/next_clip"(value: int64)
+        get "clip_22/name"(): StringName
+        set "clip_22/name"(value: StringName)
+        get "clip_22/stream"(): null | AudioStream
+        set "clip_22/stream"(value: null | AudioStream)
+        get "clip_22/auto_advance"(): int64
+        set "clip_22/auto_advance"(value: int64)
+        get "clip_22/next_clip"(): int64
+        set "clip_22/next_clip"(value: int64)
+        get "clip_23/name"(): StringName
+        set "clip_23/name"(value: StringName)
+        get "clip_23/stream"(): null | AudioStream
+        set "clip_23/stream"(value: null | AudioStream)
+        get "clip_23/auto_advance"(): int64
+        set "clip_23/auto_advance"(value: int64)
+        get "clip_23/next_clip"(): int64
+        set "clip_23/next_clip"(value: int64)
+        get "clip_24/name"(): StringName
+        set "clip_24/name"(value: StringName)
+        get "clip_24/stream"(): null | AudioStream
+        set "clip_24/stream"(value: null | AudioStream)
+        get "clip_24/auto_advance"(): int64
+        set "clip_24/auto_advance"(value: int64)
+        get "clip_24/next_clip"(): int64
+        set "clip_24/next_clip"(value: int64)
+        get "clip_25/name"(): StringName
+        set "clip_25/name"(value: StringName)
+        get "clip_25/stream"(): null | AudioStream
+        set "clip_25/stream"(value: null | AudioStream)
+        get "clip_25/auto_advance"(): int64
+        set "clip_25/auto_advance"(value: int64)
+        get "clip_25/next_clip"(): int64
+        set "clip_25/next_clip"(value: int64)
+        get "clip_26/name"(): StringName
+        set "clip_26/name"(value: StringName)
+        get "clip_26/stream"(): null | AudioStream
+        set "clip_26/stream"(value: null | AudioStream)
+        get "clip_26/auto_advance"(): int64
+        set "clip_26/auto_advance"(value: int64)
+        get "clip_26/next_clip"(): int64
+        set "clip_26/next_clip"(value: int64)
+        get "clip_27/name"(): StringName
+        set "clip_27/name"(value: StringName)
+        get "clip_27/stream"(): null | AudioStream
+        set "clip_27/stream"(value: null | AudioStream)
+        get "clip_27/auto_advance"(): int64
+        set "clip_27/auto_advance"(value: int64)
+        get "clip_27/next_clip"(): int64
+        set "clip_27/next_clip"(value: int64)
+        get "clip_28/name"(): StringName
+        set "clip_28/name"(value: StringName)
+        get "clip_28/stream"(): null | AudioStream
+        set "clip_28/stream"(value: null | AudioStream)
+        get "clip_28/auto_advance"(): int64
+        set "clip_28/auto_advance"(value: int64)
+        get "clip_28/next_clip"(): int64
+        set "clip_28/next_clip"(value: int64)
+        get "clip_29/name"(): StringName
+        set "clip_29/name"(value: StringName)
+        get "clip_29/stream"(): null | AudioStream
+        set "clip_29/stream"(value: null | AudioStream)
+        get "clip_29/auto_advance"(): int64
+        set "clip_29/auto_advance"(value: int64)
+        get "clip_29/next_clip"(): int64
+        set "clip_29/next_clip"(value: int64)
+        get "clip_30/name"(): StringName
+        set "clip_30/name"(value: StringName)
+        get "clip_30/stream"(): null | AudioStream
+        set "clip_30/stream"(value: null | AudioStream)
+        get "clip_30/auto_advance"(): int64
+        set "clip_30/auto_advance"(value: int64)
+        get "clip_30/next_clip"(): int64
+        set "clip_30/next_clip"(value: int64)
+        get "clip_31/name"(): StringName
+        set "clip_31/name"(value: StringName)
+        get "clip_31/stream"(): null | AudioStream
+        set "clip_31/stream"(value: null | AudioStream)
+        get "clip_31/auto_advance"(): int64
+        set "clip_31/auto_advance"(value: int64)
+        get "clip_31/next_clip"(): int64
+        set "clip_31/next_clip"(value: int64)
+        get "clip_32/name"(): StringName
+        set "clip_32/name"(value: StringName)
+        get "clip_32/stream"(): null | AudioStream
+        set "clip_32/stream"(value: null | AudioStream)
+        get "clip_32/auto_advance"(): int64
+        set "clip_32/auto_advance"(value: int64)
+        get "clip_32/next_clip"(): int64
+        set "clip_32/next_clip"(value: int64)
+        get "clip_33/name"(): StringName
+        set "clip_33/name"(value: StringName)
+        get "clip_33/stream"(): null | AudioStream
+        set "clip_33/stream"(value: null | AudioStream)
+        get "clip_33/auto_advance"(): int64
+        set "clip_33/auto_advance"(value: int64)
+        get "clip_33/next_clip"(): int64
+        set "clip_33/next_clip"(value: int64)
+        get "clip_34/name"(): StringName
+        set "clip_34/name"(value: StringName)
+        get "clip_34/stream"(): null | AudioStream
+        set "clip_34/stream"(value: null | AudioStream)
+        get "clip_34/auto_advance"(): int64
+        set "clip_34/auto_advance"(value: int64)
+        get "clip_34/next_clip"(): int64
+        set "clip_34/next_clip"(value: int64)
+        get "clip_35/name"(): StringName
+        set "clip_35/name"(value: StringName)
+        get "clip_35/stream"(): null | AudioStream
+        set "clip_35/stream"(value: null | AudioStream)
+        get "clip_35/auto_advance"(): int64
+        set "clip_35/auto_advance"(value: int64)
+        get "clip_35/next_clip"(): int64
+        set "clip_35/next_clip"(value: int64)
+        get "clip_36/name"(): StringName
+        set "clip_36/name"(value: StringName)
+        get "clip_36/stream"(): null | AudioStream
+        set "clip_36/stream"(value: null | AudioStream)
+        get "clip_36/auto_advance"(): int64
+        set "clip_36/auto_advance"(value: int64)
+        get "clip_36/next_clip"(): int64
+        set "clip_36/next_clip"(value: int64)
+        get "clip_37/name"(): StringName
+        set "clip_37/name"(value: StringName)
+        get "clip_37/stream"(): null | AudioStream
+        set "clip_37/stream"(value: null | AudioStream)
+        get "clip_37/auto_advance"(): int64
+        set "clip_37/auto_advance"(value: int64)
+        get "clip_37/next_clip"(): int64
+        set "clip_37/next_clip"(value: int64)
+        get "clip_38/name"(): StringName
+        set "clip_38/name"(value: StringName)
+        get "clip_38/stream"(): null | AudioStream
+        set "clip_38/stream"(value: null | AudioStream)
+        get "clip_38/auto_advance"(): int64
+        set "clip_38/auto_advance"(value: int64)
+        get "clip_38/next_clip"(): int64
+        set "clip_38/next_clip"(value: int64)
+        get "clip_39/name"(): StringName
+        set "clip_39/name"(value: StringName)
+        get "clip_39/stream"(): null | AudioStream
+        set "clip_39/stream"(value: null | AudioStream)
+        get "clip_39/auto_advance"(): int64
+        set "clip_39/auto_advance"(value: int64)
+        get "clip_39/next_clip"(): int64
+        set "clip_39/next_clip"(value: int64)
+        get "clip_40/name"(): StringName
+        set "clip_40/name"(value: StringName)
+        get "clip_40/stream"(): null | AudioStream
+        set "clip_40/stream"(value: null | AudioStream)
+        get "clip_40/auto_advance"(): int64
+        set "clip_40/auto_advance"(value: int64)
+        get "clip_40/next_clip"(): int64
+        set "clip_40/next_clip"(value: int64)
+        get "clip_41/name"(): StringName
+        set "clip_41/name"(value: StringName)
+        get "clip_41/stream"(): null | AudioStream
+        set "clip_41/stream"(value: null | AudioStream)
+        get "clip_41/auto_advance"(): int64
+        set "clip_41/auto_advance"(value: int64)
+        get "clip_41/next_clip"(): int64
+        set "clip_41/next_clip"(value: int64)
+        get "clip_42/name"(): StringName
+        set "clip_42/name"(value: StringName)
+        get "clip_42/stream"(): null | AudioStream
+        set "clip_42/stream"(value: null | AudioStream)
+        get "clip_42/auto_advance"(): int64
+        set "clip_42/auto_advance"(value: int64)
+        get "clip_42/next_clip"(): int64
+        set "clip_42/next_clip"(value: int64)
+        get "clip_43/name"(): StringName
+        set "clip_43/name"(value: StringName)
+        get "clip_43/stream"(): null | AudioStream
+        set "clip_43/stream"(value: null | AudioStream)
+        get "clip_43/auto_advance"(): int64
+        set "clip_43/auto_advance"(value: int64)
+        get "clip_43/next_clip"(): int64
+        set "clip_43/next_clip"(value: int64)
+        get "clip_44/name"(): StringName
+        set "clip_44/name"(value: StringName)
+        get "clip_44/stream"(): null | AudioStream
+        set "clip_44/stream"(value: null | AudioStream)
+        get "clip_44/auto_advance"(): int64
+        set "clip_44/auto_advance"(value: int64)
+        get "clip_44/next_clip"(): int64
+        set "clip_44/next_clip"(value: int64)
+        get "clip_45/name"(): StringName
+        set "clip_45/name"(value: StringName)
+        get "clip_45/stream"(): null | AudioStream
+        set "clip_45/stream"(value: null | AudioStream)
+        get "clip_45/auto_advance"(): int64
+        set "clip_45/auto_advance"(value: int64)
+        get "clip_45/next_clip"(): int64
+        set "clip_45/next_clip"(value: int64)
+        get "clip_46/name"(): StringName
+        set "clip_46/name"(value: StringName)
+        get "clip_46/stream"(): null | AudioStream
+        set "clip_46/stream"(value: null | AudioStream)
+        get "clip_46/auto_advance"(): int64
+        set "clip_46/auto_advance"(value: int64)
+        get "clip_46/next_clip"(): int64
+        set "clip_46/next_clip"(value: int64)
+        get "clip_47/name"(): StringName
+        set "clip_47/name"(value: StringName)
+        get "clip_47/stream"(): null | AudioStream
+        set "clip_47/stream"(value: null | AudioStream)
+        get "clip_47/auto_advance"(): int64
+        set "clip_47/auto_advance"(value: int64)
+        get "clip_47/next_clip"(): int64
+        set "clip_47/next_clip"(value: int64)
+        get "clip_48/name"(): StringName
+        set "clip_48/name"(value: StringName)
+        get "clip_48/stream"(): null | AudioStream
+        set "clip_48/stream"(value: null | AudioStream)
+        get "clip_48/auto_advance"(): int64
+        set "clip_48/auto_advance"(value: int64)
+        get "clip_48/next_clip"(): int64
+        set "clip_48/next_clip"(value: int64)
+        get "clip_49/name"(): StringName
+        set "clip_49/name"(value: StringName)
+        get "clip_49/stream"(): null | AudioStream
+        set "clip_49/stream"(value: null | AudioStream)
+        get "clip_49/auto_advance"(): int64
+        set "clip_49/auto_advance"(value: int64)
+        get "clip_49/next_clip"(): int64
+        set "clip_49/next_clip"(value: int64)
+        get "clip_50/name"(): StringName
+        set "clip_50/name"(value: StringName)
+        get "clip_50/stream"(): null | AudioStream
+        set "clip_50/stream"(value: null | AudioStream)
+        get "clip_50/auto_advance"(): int64
+        set "clip_50/auto_advance"(value: int64)
+        get "clip_50/next_clip"(): int64
+        set "clip_50/next_clip"(value: int64)
+        get "clip_51/name"(): StringName
+        set "clip_51/name"(value: StringName)
+        get "clip_51/stream"(): null | AudioStream
+        set "clip_51/stream"(value: null | AudioStream)
+        get "clip_51/auto_advance"(): int64
+        set "clip_51/auto_advance"(value: int64)
+        get "clip_51/next_clip"(): int64
+        set "clip_51/next_clip"(value: int64)
+        get "clip_52/name"(): StringName
+        set "clip_52/name"(value: StringName)
+        get "clip_52/stream"(): null | AudioStream
+        set "clip_52/stream"(value: null | AudioStream)
+        get "clip_52/auto_advance"(): int64
+        set "clip_52/auto_advance"(value: int64)
+        get "clip_52/next_clip"(): int64
+        set "clip_52/next_clip"(value: int64)
+        get "clip_53/name"(): StringName
+        set "clip_53/name"(value: StringName)
+        get "clip_53/stream"(): null | AudioStream
+        set "clip_53/stream"(value: null | AudioStream)
+        get "clip_53/auto_advance"(): int64
+        set "clip_53/auto_advance"(value: int64)
+        get "clip_53/next_clip"(): int64
+        set "clip_53/next_clip"(value: int64)
+        get "clip_54/name"(): StringName
+        set "clip_54/name"(value: StringName)
+        get "clip_54/stream"(): null | AudioStream
+        set "clip_54/stream"(value: null | AudioStream)
+        get "clip_54/auto_advance"(): int64
+        set "clip_54/auto_advance"(value: int64)
+        get "clip_54/next_clip"(): int64
+        set "clip_54/next_clip"(value: int64)
+        get "clip_55/name"(): StringName
+        set "clip_55/name"(value: StringName)
+        get "clip_55/stream"(): null | AudioStream
+        set "clip_55/stream"(value: null | AudioStream)
+        get "clip_55/auto_advance"(): int64
+        set "clip_55/auto_advance"(value: int64)
+        get "clip_55/next_clip"(): int64
+        set "clip_55/next_clip"(value: int64)
+        get "clip_56/name"(): StringName
+        set "clip_56/name"(value: StringName)
+        get "clip_56/stream"(): null | AudioStream
+        set "clip_56/stream"(value: null | AudioStream)
+        get "clip_56/auto_advance"(): int64
+        set "clip_56/auto_advance"(value: int64)
+        get "clip_56/next_clip"(): int64
+        set "clip_56/next_clip"(value: int64)
+        get "clip_57/name"(): StringName
+        set "clip_57/name"(value: StringName)
+        get "clip_57/stream"(): null | AudioStream
+        set "clip_57/stream"(value: null | AudioStream)
+        get "clip_57/auto_advance"(): int64
+        set "clip_57/auto_advance"(value: int64)
+        get "clip_57/next_clip"(): int64
+        set "clip_57/next_clip"(value: int64)
+        get "clip_58/name"(): StringName
+        set "clip_58/name"(value: StringName)
+        get "clip_58/stream"(): null | AudioStream
+        set "clip_58/stream"(value: null | AudioStream)
+        get "clip_58/auto_advance"(): int64
+        set "clip_58/auto_advance"(value: int64)
+        get "clip_58/next_clip"(): int64
+        set "clip_58/next_clip"(value: int64)
+        get "clip_59/name"(): StringName
+        set "clip_59/name"(value: StringName)
+        get "clip_59/stream"(): null | AudioStream
+        set "clip_59/stream"(value: null | AudioStream)
+        get "clip_59/auto_advance"(): int64
+        set "clip_59/auto_advance"(value: int64)
+        get "clip_59/next_clip"(): int64
+        set "clip_59/next_clip"(value: int64)
+        get "clip_60/name"(): StringName
+        set "clip_60/name"(value: StringName)
+        get "clip_60/stream"(): null | AudioStream
+        set "clip_60/stream"(value: null | AudioStream)
+        get "clip_60/auto_advance"(): int64
+        set "clip_60/auto_advance"(value: int64)
+        get "clip_60/next_clip"(): int64
+        set "clip_60/next_clip"(value: int64)
+        get "clip_61/name"(): StringName
+        set "clip_61/name"(value: StringName)
+        get "clip_61/stream"(): null | AudioStream
+        set "clip_61/stream"(value: null | AudioStream)
+        get "clip_61/auto_advance"(): int64
+        set "clip_61/auto_advance"(value: int64)
+        get "clip_61/next_clip"(): int64
+        set "clip_61/next_clip"(value: int64)
+        get "clip_62/name"(): StringName
+        set "clip_62/name"(value: StringName)
+        get "clip_62/stream"(): null | AudioStream
+        set "clip_62/stream"(value: null | AudioStream)
+        get "clip_62/auto_advance"(): int64
+        set "clip_62/auto_advance"(value: int64)
+        get "clip_62/next_clip"(): int64
+        set "clip_62/next_clip"(value: int64)
+        
+        /** Index of the initial clip, which will be played first when this stream is played. */
+        get initial_clip(): int64
+        set initial_clip(value: int64)
+        get _transitions(): GDictionary
+        set _transitions(value: GDictionary)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapAudioStreamInteractive;
     }
 }

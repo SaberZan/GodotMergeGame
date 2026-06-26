@@ -1,2309 +1,5 @@
 // AUTO-GENERATED
 declare module "godot" {
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFAnimation extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFAnimation extends __NameMapResource {
-    }
-    /** @link https://docs.godotengine.org/en/4.6/classes/class_gltfanimation.html */
-    class GLTFAnimation extends Resource {
-        constructor(identifier?: any)
-        /** Gets additional arbitrary data in this [GLTFAnimation] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
-         *  The argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is `null`.  
-         */
-        get_additional_data(extension_name: StringName): any
-        
-        /** Sets additional arbitrary data in this [GLTFAnimation] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
-         *  The first argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.  
-         */
-        set_additional_data(extension_name: StringName, additional_data: any): void
-        
-        /** The original name of the animation. */
-        get original_name(): string
-        set original_name(value: string)
-        get loop(): boolean
-        set loop(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFAnimation;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFAnimation;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFBufferView extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFBufferView extends __NameMapResource {
-    }
-    /** Represents a glTF buffer view.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfbufferview.html  
-     */
-    class GLTFBufferView extends Resource {
-        constructor(identifier?: any)
-        /** Loads the buffer view data from the buffer referenced by this buffer view in the given [GLTFState]. Interleaved data with a byte stride is not yet supported by this method. The data is returned as a [PackedByteArray]. */
-        load_buffer_view_data(state: GLTFState): PackedByteArray
-        
-        /** Creates a new GLTFBufferView instance by parsing the given [Dictionary]. */
-        static from_dictionary(dictionary: GDictionary): null | GLTFBufferView
-        
-        /** Serializes this GLTFBufferView instance into a [Dictionary]. */
-        to_dictionary(): GDictionary
-        
-        /** The index of the buffer this buffer view is referencing. If `-1`, this buffer view is not referencing any buffer. */
-        get buffer(): int64
-        set buffer(value: int64)
-        
-        /** The offset, in bytes, from the start of the buffer to the start of this buffer view. */
-        get byte_offset(): int64
-        set byte_offset(value: int64)
-        
-        /** The length, in bytes, of this buffer view. If `0`, this buffer view is empty. */
-        get byte_length(): int64
-        set byte_length(value: int64)
-        
-        /** The stride, in bytes, between interleaved data. If `-1`, this buffer view is not interleaved. */
-        get byte_stride(): int64
-        set byte_stride(value: int64)
-        
-        /** `true` if the GLTFBufferView's OpenGL GPU buffer type is an `ELEMENT_ARRAY_BUFFER` used for vertex indices (integer constant `34963`). `false` if the buffer type is any other value. See [url=https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md]Buffers, BufferViews, and Accessors[/url] for possible values. This property is set on import and used on export. */
-        get indices(): boolean
-        set indices(value: boolean)
-        
-        /** `true` if the GLTFBufferView's OpenGL GPU buffer type is an `ARRAY_BUFFER` used for vertex attributes (integer constant `34962`). `false` if the buffer type is any other value. See [url=https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md]Buffers, BufferViews, and Accessors[/url] for possible values. This property is set on import and used on export. */
-        get vertex_attributes(): boolean
-        set vertex_attributes(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFBufferView;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFBufferView;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFCamera extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFCamera extends __NameMapResource {
-    }
-    /** Represents a glTF camera.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfcamera.html  
-     */
-    class GLTFCamera extends Resource {
-        constructor(identifier?: any)
-        /** Create a new GLTFCamera instance from the given Godot [Camera3D] node. */
-        static from_node(camera_node: Camera3D): null | GLTFCamera
-        
-        /** Converts this GLTFCamera instance into a Godot [Camera3D] node. */
-        to_node(): null | Camera3D
-        
-        /** Creates a new GLTFCamera instance by parsing the given [Dictionary]. */
-        static from_dictionary(dictionary: GDictionary): null | GLTFCamera
-        
-        /** Serializes this GLTFCamera instance into a [Dictionary]. */
-        to_dictionary(): GDictionary
-        
-        /** If `true`, the camera is in perspective mode. Otherwise, the camera is in orthographic/orthogonal mode. This maps to glTF's camera `type` property. See [member Camera3D.projection] and the glTF spec for more information. */
-        get perspective(): boolean
-        set perspective(value: boolean)
-        
-        /** The FOV of the camera. This class and glTF define the camera FOV in radians, while Godot uses degrees. This maps to glTF's `yfov` property. This value is only used for perspective cameras, when [member perspective] is `true`. */
-        get fov(): float64
-        set fov(value: float64)
-        
-        /** The size of the camera. This class and glTF define the camera size magnitude as a radius in meters, while Godot defines it as a diameter in meters. This maps to glTF's `ymag` property. This value is only used for orthographic/orthogonal cameras, when [member perspective] is `false`. */
-        get size_mag(): float64
-        set size_mag(value: float64)
-        
-        /** The distance to the far culling boundary for this camera relative to its local Z axis, in meters. This maps to glTF's `zfar` property. */
-        get depth_far(): float64
-        set depth_far(value: float64)
-        
-        /** The distance to the near culling boundary for this camera relative to its local Z axis, in meters. This maps to glTF's `znear` property. */
-        get depth_near(): float64
-        set depth_near(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFCamera;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFCamera;
-    }
-    namespace GLTFDocument {
-        enum RootNodeMode {
-            /** Treat the Godot scene's root node as the root node of the glTF file, and mark it as the single root node via the `GODOT_single_root` glTF extension. This will be parsed the same as [constant ROOT_NODE_MODE_KEEP_ROOT] if the implementation does not support `GODOT_single_root`. */
-            ROOT_NODE_MODE_SINGLE_ROOT = 0,
-            
-            /** Treat the Godot scene's root node as the root node of the glTF file, but do not mark it as anything special. An extra root node will be generated when importing into Godot. This uses only vanilla glTF features. This is equivalent to the behavior in Godot 4.1 and earlier. */
-            ROOT_NODE_MODE_KEEP_ROOT = 1,
-            
-            /** Treat the Godot scene's root node as the name of the glTF scene, and add all of its children as root nodes of the glTF file. This uses only vanilla glTF features. This avoids an extra root node, but only the name of the Godot scene's root node will be preserved, as it will not be saved as a node. */
-            ROOT_NODE_MODE_MULTI_ROOT = 2,
-        }
-        enum VisibilityMode {
-            /** If the scene contains any non-visible nodes, include them, mark them as non-visible with `KHR_node_visibility`, and require that importers respect their non-visibility. Downside: If the importer does not support `KHR_node_visibility`, the file cannot be imported. */
-            VISIBILITY_MODE_INCLUDE_REQUIRED = 0,
-            
-            /** If the scene contains any non-visible nodes, include them, mark them as non-visible with `KHR_node_visibility`, and do not impose any requirements on importers. Downside: If the importer does not support `KHR_node_visibility`, invisible objects will be visible. */
-            VISIBILITY_MODE_INCLUDE_OPTIONAL = 1,
-            
-            /** If the scene contains any non-visible nodes, do not include them in the export. This is the same as the behavior in Godot 4.4 and earlier. Downside: Invisible nodes will not exist in the exported file. */
-            VISIBILITY_MODE_EXCLUDE = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFDocument extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFDocument extends __NameMapResource {
-    }
-    /** Class for importing and exporting glTF files in and out of Godot.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfdocument.html  
-     */
-    class GLTFDocument extends Resource {
-        constructor(identifier?: any)
-        /** Takes a path to a glTF file and imports the data at that file path to the given [GLTFState] object through the [param state] parameter.  
-         *      
-         *  **Note:** The [param base_path] tells [method append_from_file] where to find dependencies and can be empty.  
-         */
-        append_from_file(path: string, state: GLTFState, flags?: int64 /* = 0 */, base_path?: string /* = '' */): Error
-        
-        /** Takes a [PackedByteArray] defining a glTF and imports the data to the given [GLTFState] object through the [param state] parameter.  
-         *      
-         *  **Note:** The [param base_path] tells [method append_from_buffer] where to find dependencies and can be empty.  
-         */
-        append_from_buffer(bytes: PackedByteArray | byte[] | ArrayBuffer, base_path: string, state: GLTFState, flags?: int64 /* = 0 */): Error
-        
-        /** Takes a Godot Engine scene node and exports it and its descendants to the given [GLTFState] object through the [param state] parameter. */
-        append_from_scene(node: Node, state: GLTFState, flags?: int64 /* = 0 */): Error
-        
-        /** Takes a [GLTFState] object through the [param state] parameter and returns a Godot Engine scene node.  
-         *  The [param bake_fps] parameter overrides the bake_fps in [param state].  
-         */
-        generate_scene(state: GLTFState, bake_fps?: float64 /* = 30 */, trimming?: boolean /* = false */, remove_immutable_tracks?: boolean /* = true */): null | Node
-        
-        /** Takes a [GLTFState] object through the [param state] parameter and returns a glTF [PackedByteArray]. */
-        generate_buffer(state: GLTFState): PackedByteArray
-        
-        /** Takes a [GLTFState] object through the [param state] parameter and writes a glTF file to the filesystem.  
-         *      
-         *  **Note:** The extension of the glTF file determines if it is a .glb binary file or a .gltf text file.  
-         */
-        write_to_filesystem(state: GLTFState, path: string): Error
-        
-        /** Determines a mapping between the given glTF Object Model [param json_pointer] and the corresponding Godot node path(s) in the generated Godot scene. The details of this mapping are returned in a [GLTFObjectModelProperty] object. Additional mappings can be supplied via the [method GLTFDocumentExtension._export_object_model_property] callback method. */
-        static import_object_model_property(state: GLTFState, json_pointer: string): null | GLTFObjectModelProperty
-        
-        /** Determines a mapping between the given Godot [param node_path] and the corresponding glTF Object Model JSON pointer(s) in the generated glTF file. The details of this mapping are returned in a [GLTFObjectModelProperty] object. Additional mappings can be supplied via the [method GLTFDocumentExtension._import_object_model_property] callback method. */
-        static export_object_model_property(state: GLTFState, node_path: NodePath | string, godot_node: Node, gltf_node_index: int64): null | GLTFObjectModelProperty
-        
-        /** Registers the given [GLTFDocumentExtension] instance with GLTFDocument. If [param first_priority] is `true`, this extension will be run first. Otherwise, it will be run last.  
-         *      
-         *  **Note:** Like GLTFDocument itself, all GLTFDocumentExtension classes must be stateless in order to function properly. If you need to store data, use the `set_additional_data` and `get_additional_data` methods in [GLTFState] or [GLTFNode].  
-         */
-        static register_gltf_document_extension(extension: GLTFDocumentExtension, first_priority?: boolean /* = false */): void
-        
-        /** Unregisters the given [GLTFDocumentExtension] instance. */
-        static unregister_gltf_document_extension(extension: GLTFDocumentExtension): void
-        
-        /** Returns a list of all support glTF extensions, including extensions supported directly by the engine, and extensions supported by user plugins registering [GLTFDocumentExtension] classes.  
-         *      
-         *  **Note:** If this method is run before a GLTFDocumentExtension is registered, its extensions won't be included in the list. Be sure to only run this method after all extensions are registered. If you run this when the engine starts, consider waiting a frame before calling this method to ensure all extensions are registered.  
-         */
-        static get_supported_gltf_extensions(): PackedStringArray
-        
-        /** The user-friendly name of the export image format. This is used when exporting the glTF file, including writing to a file and writing to a byte array.  
-         *  By default, Godot allows the following options: "None", "PNG", "JPEG", "Lossless WebP", and "Lossy WebP". Support for more image formats can be added in [GLTFDocumentExtension] classes. A single extension class can provide multiple options for the specific format to use, or even an option that uses multiple formats at once.  
-         */
-        get image_format(): string
-        set image_format(value: string)
-        
-        /** If [member image_format] is a lossy image format, this determines the lossy quality of the image. On a range of `0.0` to `1.0`, where `0.0` is the lowest quality and `1.0` is the highest quality. A lossy quality of `1.0` is not the same as lossless. */
-        get lossy_quality(): float64
-        set lossy_quality(value: float64)
-        
-        /** The user-friendly name of the fallback image format. This is used when exporting the glTF file, including writing to a file and writing to a byte array.  
-         *  This property may only be one of "None", "PNG", or "JPEG", and is only used when the [member image_format] is not one of "None", "PNG", or "JPEG". If having multiple extension image formats is desired, that can be done using a [GLTFDocumentExtension] class - this property only covers the use case of providing a base glTF fallback image when using a custom image format.  
-         */
-        get fallback_image_format(): string
-        set fallback_image_format(value: string)
-        
-        /** The quality of the fallback image, if any. For PNG files, this downscales the image on both dimensions by this factor. For JPEG files, this is the lossy quality of the image. A low value is recommended, since including multiple high quality images in a glTF file defeats the file size gains of using a more efficient image format. */
-        get fallback_image_quality(): float64
-        set fallback_image_quality(value: float64)
-        
-        /** How to process the root node during export. The default and recommended value is [constant ROOT_NODE_MODE_SINGLE_ROOT].  
-         *      
-         *  **Note:** Regardless of how the glTF file is exported, when importing, the root node type and name can be overridden in the scene import settings tab.  
-         */
-        get root_node_mode(): int64
-        set root_node_mode(value: int64)
-        
-        /** How to deal with node visibility during export. This setting does nothing if all nodes are visible. The default and recommended value is [constant VISIBILITY_MODE_INCLUDE_REQUIRED], which uses the `KHR_node_visibility` extension. */
-        get visibility_mode(): int64
-        set visibility_mode(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFDocument;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFDocument;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFDocumentExtension extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFDocumentExtension extends __NameMapResource {
-    }
-    /** [GLTFDocument] extension class.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfdocumentextension.html  
-     */
-    class GLTFDocumentExtension extends Resource {
-        constructor(identifier?: any)
-        /** Part of the import process. This method is run first, before all other parts of the import process.  
-         *  The return value is used to determine if this [GLTFDocumentExtension] instance should be used for importing a given glTF file. If [constant OK], the import will use this [GLTFDocumentExtension] instance. If not overridden, [constant OK] is returned.  
-         */
-        /* gdvirtual */ _import_preflight(state: GLTFState, extensions: PackedStringArray | string[]): Error
-        
-        /** Part of the import process. This method is run after [method _import_preflight] and before [method _parse_node_extensions].  
-         *  Returns an array of the glTF extensions supported by this GLTFDocumentExtension class. This is used to validate if a glTF file with required extensions can be loaded.  
-         */
-        /* gdvirtual */ _get_supported_extensions(): PackedStringArray
-        
-        /** Part of the import process. This method is run after [method _get_supported_extensions] and before [method _import_post_parse].  
-         *  Runs when parsing the node extensions of a GLTFNode. This method can be used to process the extension JSON data into a format that can be used by [method _generate_scene_node]. The return value should be a member of the [enum Error] enum.  
-         */
-        /* gdvirtual */ _parse_node_extensions(state: GLTFState, gltf_node: GLTFNode, extensions: GDictionary): Error
-        
-        /** Part of the import process. This method is run after [method _parse_node_extensions] and before [method _parse_texture_json].  
-         *  Runs when parsing image data from a glTF file. The data could be sourced from a separate file, a URI, or a buffer, and then is passed as a byte array.  
-         */
-        /* gdvirtual */ _parse_image_data(state: GLTFState, image_data: PackedByteArray | byte[] | ArrayBuffer, mime_type: string, ret_image: Image): Error
-        
-        /** Returns the file extension to use for saving image data into, for example, `".png"`. If defined, when this extension is used to handle images, and the images are saved to a separate file, the image bytes will be copied to a file with this extension. If this is set, there should be a [ResourceImporter] class able to import the file. If not defined or empty, Godot will save the image into a PNG file. */
-        /* gdvirtual */ _get_image_file_extension(): string
-        
-        /** Part of the import process. This method is run after [method _parse_image_data] and before [method _generate_scene_node].  
-         *  Runs when parsing the texture JSON from the glTF textures array. This can be used to set the source image index to use as the texture.  
-         */
-        /* gdvirtual */ _parse_texture_json(state: GLTFState, texture_json: GDictionary, ret_gltf_texture: GLTFTexture): Error
-        
-        /** Part of the import process. Allows GLTFDocumentExtension classes to provide mappings for JSON pointers to glTF properties, as defined by the glTF object model, to properties of nodes in the Godot scene tree.  
-         *  Returns a [GLTFObjectModelProperty] instance that defines how the property should be mapped. If your extension can't handle the property, return `null` or an instance without any NodePaths (see [method GLTFObjectModelProperty.has_node_paths]). You should use [method GLTFObjectModelProperty.set_types] to set the types, and [method GLTFObjectModelProperty.append_path_to_property] function is useful for most simple cases.  
-         *  In many cases, [param partial_paths] will contain the start of a path, allowing the extension to complete the path. For example, for `/nodes/3/extensions/MY_ext/prop`, Godot will pass you a NodePath that leads to node 3, so the GLTFDocumentExtension class only needs to resolve the last `MY_ext/prop` part of the path. In this example, the extension should check `split.size() > 4 and split[0] == "nodes" and split[2] == "extensions" and split[3] == "MY_ext"` at the start of the function to check if this JSON pointer applies to it, then it can use [param partial_paths] and handle `split[4]`.  
-         */
-        /* gdvirtual */ _import_object_model_property(state: GLTFState, split_json_pointer: PackedStringArray | string[], partial_paths: GArray<NodePath>): null | GLTFObjectModelProperty
-        
-        /** Part of the import process. This method is run after [method _parse_node_extensions] and before [method _import_pre_generate].  
-         *  This method can be used to modify any of the data imported so far after parsing each node, but before generating the scene or any of its nodes.  
-         */
-        /* gdvirtual */ _import_post_parse(state: GLTFState): Error
-        
-        /** Part of the import process. This method is run after [method _import_post_parse] and before [method _generate_scene_node].  
-         *  This method can be used to modify or read from any of the processed data structures, before generating the nodes and then running the final per-node import step.  
-         */
-        /* gdvirtual */ _import_pre_generate(state: GLTFState): Error
-        
-        /** Part of the import process. This method is run after [method _import_pre_generate] and before [method _import_node].  
-         *  Runs when generating a Godot scene node from a GLTFNode. The returned node will be added to the scene tree. Multiple nodes can be generated in this step if they are added as a child of the returned node.  
-         *      
-         *  **Note:** The [param scene_parent] parameter may be `null` if this is the single root node.  
-         */
-        /* gdvirtual */ _generate_scene_node(state: GLTFState, gltf_node: GLTFNode, scene_parent: Node): null | Node3D
-        
-        /** Part of the import process. This method is run after [method _generate_scene_node] and before [method _import_post].  
-         *  This method can be used to make modifications to each of the generated Godot scene nodes.  
-         */
-        /* gdvirtual */ _import_node(state: GLTFState, gltf_node: GLTFNode, json: GDictionary, node: Node): Error
-        
-        /** Part of the import process. This method is run last, after all other parts of the import process.  
-         *  This method can be used to modify the final Godot scene generated by the import process.  
-         */
-        /* gdvirtual */ _import_post(state: GLTFState, root: Node): Error
-        
-        /** Part of the export process. This method is run first, before all other parts of the export process.  
-         *  The return value is used to determine if this [GLTFDocumentExtension] instance should be used for exporting a given glTF file. If [constant OK], the export will use this [GLTFDocumentExtension] instance. If not overridden, [constant OK] is returned.  
-         */
-        /* gdvirtual */ _export_preflight(state: GLTFState, root: Node): Error
-        
-        /** Part of the export process. This method is run after [method _export_preflight] and before [method _export_post_convert].  
-         *  Runs when converting the data from a Godot scene node. This method can be used to process the Godot scene node data into a format that can be used by [method _export_node].  
-         */
-        /* gdvirtual */ _convert_scene_node(state: GLTFState, gltf_node: GLTFNode, scene_node: Node): void
-        
-        /** Part of the export process. This method is run after [method _convert_scene_node] and before [method _export_preserialize].  
-         *  This method can be used to modify the converted node data structures before serialization with any additional data from the scene tree.  
-         */
-        /* gdvirtual */ _export_post_convert(state: GLTFState, root: Node): Error
-        
-        /** Part of the export process. This method is run after [method _export_post_convert] and before [method _get_saveable_image_formats].  
-         *  This method can be used to alter the state before performing serialization. It runs every time when generating a buffer with [method GLTFDocument.generate_buffer] or writing to the file system with [method GLTFDocument.write_to_filesystem].  
-         */
-        /* gdvirtual */ _export_preserialize(state: GLTFState): Error
-        
-        /** Part of the export process. Allows GLTFDocumentExtension classes to provide mappings for properties of nodes in the Godot scene tree, to JSON pointers to glTF properties, as defined by the glTF object model.  
-         *  Returns a [GLTFObjectModelProperty] instance that defines how the property should be mapped. If your extension can't handle the property, return `null` or an instance without any JSON pointers (see [method GLTFObjectModelProperty.has_json_pointers]). You should use [method GLTFObjectModelProperty.set_types] to set the types, and set the JSON pointer(s) using the [member GLTFObjectModelProperty.json_pointers] property.  
-         *  The parameters provide context for the property, including the NodePath, the Godot node, the GLTF node index, and the target object. The [param target_object] will be equal to [param godot_node] if no sub-object can be found, otherwise it will point to a sub-object. For example, if the path is `^"A/B/C/MeshInstance3D:mesh:surface_0/material:emission_intensity"`, it will get the node, then the mesh, and then the material, so [param target_object] will be the [Material] resource, and [param target_depth] will be 2 because 2 levels were traversed to get to the target.  
-         */
-        /* gdvirtual */ _export_object_model_property(state: GLTFState, node_path: NodePath | string, godot_node: Node, gltf_node_index: int64, target_object: Object, target_depth: int64): null | GLTFObjectModelProperty
-        
-        /** Part of the export process. This method is run after [method _convert_scene_node] and before [method _export_node].  
-         *  Returns an array of the image formats that can be saved/exported by this extension. This extension will only be selected as the image exporter if the [GLTFDocument]'s [member GLTFDocument.image_format] is in this array. If this [GLTFDocumentExtension] is selected as the image exporter, one of the [method _save_image_at_path] or [method _serialize_image_to_bytes] methods will run next, otherwise [method _export_node] will run next. If the format name contains `"Lossy"`, the lossy quality slider will be displayed.  
-         */
-        /* gdvirtual */ _get_saveable_image_formats(): PackedStringArray
-        
-        /** Part of the export process. This method is run after [method _get_saveable_image_formats] and before [method _serialize_texture_json].  
-         *  This method is run when embedding images in the glTF file. When images are saved separately, [method _save_image_at_path] runs instead. Note that these methods only run when this [GLTFDocumentExtension] is selected as the image exporter.  
-         *  This method must set the image MIME type in the [param image_dict] with the `"mimeType"` key. For example, for a PNG image, it would be set to `"image/png"`. The return value must be a [PackedByteArray] containing the image data.  
-         */
-        /* gdvirtual */ _serialize_image_to_bytes(state: GLTFState, image: Image, image_dict: GDictionary, image_format: string, lossy_quality: float64): PackedByteArray
-        
-        /** Part of the export process. This method is run after [method _get_saveable_image_formats] and before [method _serialize_texture_json].  
-         *  This method is run when saving images separately from the glTF file. When images are embedded, [method _serialize_image_to_bytes] runs instead. Note that these methods only run when this [GLTFDocumentExtension] is selected as the image exporter.  
-         */
-        /* gdvirtual */ _save_image_at_path(state: GLTFState, image: Image, file_path: string, image_format: string, lossy_quality: float64): Error
-        
-        /** Part of the export process. This method is run after [method _save_image_at_path] or [method _serialize_image_to_bytes], and before [method _export_node]. Note that this method only runs when this [GLTFDocumentExtension] is selected as the image exporter.  
-         *  This method can be used to set up the extensions for the texture JSON by editing [param texture_json]. The extension must also be added as used extension with [method GLTFState.add_used_extension], be sure to set `required` to `true` if you are not providing a fallback.  
-         */
-        /* gdvirtual */ _serialize_texture_json(state: GLTFState, texture_json: GDictionary, gltf_texture: GLTFTexture, image_format: string): Error
-        
-        /** Part of the export process. This method is run after [method _get_saveable_image_formats] and before [method _export_post]. If this [GLTFDocumentExtension] is used for exporting images, this runs after [method _serialize_texture_json].  
-         *  This method can be used to modify the final JSON of each node. Data should be primarily stored in [param gltf_node] prior to serializing the JSON, but the original Godot [Node] is also provided if available. [param node] may be `null` if not available, such as when exporting glTF data not generated from a Godot scene.  
-         */
-        /* gdvirtual */ _export_node(state: GLTFState, gltf_node: GLTFNode, json: GDictionary, node: Node): Error
-        
-        /** Part of the export process. This method is run last, after all other parts of the export process.  
-         *  This method can be used to modify the final JSON of the generated glTF file.  
-         */
-        /* gdvirtual */ _export_post(state: GLTFState): Error
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFDocumentExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFDocumentExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFDocumentExtensionConvertImporterMesh extends __RPCMapGLTFDocumentExtension {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFDocumentExtensionConvertImporterMesh extends __NameMapGLTFDocumentExtension {
-    }
-    /** @link https://docs.godotengine.org/en/4.6/classes/class_gltfdocumentextensionconvertimportermesh.html */
-    class GLTFDocumentExtensionConvertImporterMesh extends GLTFDocumentExtension {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFDocumentExtensionConvertImporterMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFDocumentExtensionConvertImporterMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFLight extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFLight extends __NameMapResource {
-    }
-    /** Represents a glTF light.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltflight.html  
-     */
-    class GLTFLight extends Resource {
-        constructor(identifier?: any)
-        /** Create a new GLTFLight instance from the given Godot [Light3D] node. */
-        static from_node(light_node: Light3D): null | GLTFLight
-        
-        /** Converts this GLTFLight instance into a Godot [Light3D] node. */
-        to_node(): null | Light3D
-        
-        /** Creates a new GLTFLight instance by parsing the given [Dictionary]. */
-        static from_dictionary(dictionary: GDictionary): null | GLTFLight
-        
-        /** Serializes this GLTFLight instance into a [Dictionary]. */
-        to_dictionary(): GDictionary
-        get_additional_data(extension_name: StringName): any
-        set_additional_data(extension_name: StringName, additional_data: any): void
-        
-        /** The [Color] of the light in linear space. Defaults to white. A black color causes the light to have no effect.  
-         *  This value is linear to match glTF, but will be converted to nonlinear sRGB when creating a Godot [Light3D] node upon import, or converted to linear when exporting a Godot [Light3D] to glTF.  
-         */
-        get color(): Color
-        set color(value: Color)
-        
-        /** The intensity of the light. This is expressed in candelas (lumens per steradian) for point and spot lights, and lux (lumens per m²) for directional lights. When creating a Godot light, this value is converted to a unitless multiplier. */
-        get intensity(): float64
-        set intensity(value: float64)
-        
-        /** The type of the light. The values accepted by Godot are "point", "spot", and "directional", which correspond to Godot's [OmniLight3D], [SpotLight3D], and [DirectionalLight3D] respectively. */
-        get light_type(): string
-        set light_type(value: string)
-        
-        /** The range of the light, beyond which the light has no effect. glTF lights with no range defined behave like physical lights (which have infinite range). When creating a Godot light, the range is clamped to `4096.0`. */
-        get range(): float64
-        set range(value: float64)
-        
-        /** The inner angle of the cone in a spotlight. Must be less than or equal to the outer cone angle.  
-         *  Within this angle, the light is at full brightness. Between the inner and outer cone angles, there is a transition from full brightness to zero brightness. When creating a Godot [SpotLight3D], the ratio between the inner and outer cone angles is used to calculate the attenuation of the light.  
-         */
-        get inner_cone_angle(): float64
-        set inner_cone_angle(value: float64)
-        
-        /** The outer angle of the cone in a spotlight. Must be greater than or equal to the inner angle.  
-         *  At this angle, the light drops off to zero brightness. Between the inner and outer cone angles, there is a transition from full brightness to zero brightness. If this angle is a half turn, then the spotlight emits in all directions. When creating a Godot [SpotLight3D], the outer cone angle is used as the angle of the spotlight.  
-         */
-        get outer_cone_angle(): float64
-        set outer_cone_angle(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFLight;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFLight;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFMesh extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFMesh extends __NameMapResource {
-    }
-    /** GLTFMesh represents a glTF mesh.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfmesh.html  
-     */
-    class GLTFMesh extends Resource {
-        constructor(identifier?: any)
-        /** Gets additional arbitrary data in this [GLTFMesh] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
-         *  The argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is `null`.  
-         */
-        get_additional_data(extension_name: StringName): any
-        
-        /** Sets additional arbitrary data in this [GLTFMesh] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
-         *  The first argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.  
-         */
-        set_additional_data(extension_name: StringName, additional_data: any): void
-        
-        /** The original name of the mesh. */
-        get original_name(): string
-        set original_name(value: string)
-        
-        /** The [ImporterMesh] object representing the mesh itself. */
-        get mesh(): null | Object
-        set mesh(value: null | Object)
-        
-        /** An array of floats representing the blend weights of the mesh. */
-        get blend_weights(): PackedFloat32Array
-        set blend_weights(value: PackedFloat32Array | float32[])
-        
-        /** An array of Material objects representing the materials used in the mesh. */
-        get instance_materials(): GArray
-        set instance_materials(value: GArray)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFNode extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFNode extends __NameMapResource {
-    }
-    /** glTF node class.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfnode.html  
-     */
-    class GLTFNode extends Resource {
-        constructor(identifier?: any)
-        /** Appends the given child node index to the [member children] array. */
-        append_child_index(child_index: int64): void
-        
-        /** Gets additional arbitrary data in this [GLTFNode] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
-         *  The argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is `null`.  
-         */
-        get_additional_data(extension_name: StringName): any
-        
-        /** Sets additional arbitrary data in this [GLTFNode] instance. This can be used to keep per-node state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
-         *  The first argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.  
-         */
-        set_additional_data(extension_name: StringName, additional_data: any): void
-        
-        /** Returns the [NodePath] that this GLTF node will have in the Godot scene tree after being imported. This is useful when importing glTF object model pointers with [GLTFObjectModelProperty], for handling extensions such as `KHR_animation_pointer` or `KHR_interactivity`.  
-         *  If [param handle_skeletons] is `true`, paths to skeleton bone glTF nodes will be resolved properly. For example, a path that would be `^"A/B/C/Bone1/Bone2/Bone3"` if `false` will become `^"A/B/C/Skeleton3D:Bone3"`.  
-         */
-        get_scene_node_path(gltf_state: GLTFState, handle_skeletons?: boolean /* = true */): NodePath
-        
-        /** The original name of the node. */
-        get original_name(): string
-        set original_name(value: string)
-        
-        /** The index of the parent node in the [GLTFState]. If -1, this node is a root node. */
-        get parent(): int64
-        set parent(value: int64)
-        
-        /** How deep into the node hierarchy this node is. A root node will have a height of 0, its children will have a height of 1, and so on. If -1, the height has not been calculated. */
-        get height(): int64
-        set height(value: int64)
-        
-        /** The transform of the glTF node relative to its parent. This property is usually unused since the position, rotation, and scale properties are preferred. */
-        get xform(): Transform3D
-        set xform(value: Transform3D)
-        
-        /** If this glTF node is a mesh, the index of the [GLTFMesh] in the [GLTFState] that describes the mesh's properties. If -1, this node is not a mesh. */
-        get mesh(): int64
-        set mesh(value: int64)
-        
-        /** If this glTF node is a camera, the index of the [GLTFCamera] in the [GLTFState] that describes the camera's properties. If `-1`, this node is not a camera. */
-        get camera(): int64
-        set camera(value: int64)
-        
-        /** If this glTF node has a skin, the index of the [GLTFSkin] in the [GLTFState] that describes the skin's properties. If -1, this node does not have a skin. */
-        get skin(): int64
-        set skin(value: int64)
-        
-        /** If this glTF node has a skeleton, the index of the [GLTFSkeleton] in the [GLTFState] that describes the skeleton's properties. If -1, this node does not have a skeleton. */
-        get skeleton(): int64
-        set skeleton(value: int64)
-        
-        /** The position of the glTF node relative to its parent. */
-        get position(): Vector3
-        set position(value: Vector3)
-        
-        /** The rotation of the glTF node relative to its parent. */
-        get rotation(): Quaternion
-        set rotation(value: Quaternion)
-        
-        /** The scale of the glTF node relative to its parent. */
-        get scale(): Vector3
-        set scale(value: Vector3)
-        
-        /** The indices of the child nodes in the [GLTFState]. If this glTF node has no children, this will be an empty array. */
-        get children(): PackedInt32Array
-        set children(value: PackedInt32Array | int32[])
-        
-        /** If this glTF node is a light, the index of the [GLTFLight] in the [GLTFState] that describes the light's properties. If -1, this node is not a light. */
-        get light(): int64
-        set light(value: int64)
-        
-        /** If `true`, the GLTF node is visible. If `false`, the GLTF node is not visible. This is converted to the [member Node3D.visible] property in the Godot scene, and is exported to `KHR_node_visibility` when `false`. */
-        get visible(): boolean
-        set visible(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFNode;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFNode;
-    }
-    namespace GLTFObjectModelProperty {
-        enum GLTFObjectModelType {
-            /** Unknown or not set object model type. If the object model type is set to this value, the real type still needs to be determined. */
-            GLTF_OBJECT_MODEL_TYPE_UNKNOWN = 0,
-            
-            /** Object model type "bool". Represented in the glTF JSON as a boolean, and encoded in a [GLTFAccessor] as "SCALAR". When encoded in an accessor, a value of `0` is `false`, and any other value is `true`. */
-            GLTF_OBJECT_MODEL_TYPE_BOOL = 1,
-            
-            /** Object model type "float". Represented in the glTF JSON as a number, and encoded in a [GLTFAccessor] as "SCALAR". */
-            GLTF_OBJECT_MODEL_TYPE_FLOAT = 2,
-            
-            /** Object model type "float[lb][rb]". Represented in the glTF JSON as an array of numbers, and encoded in a [GLTFAccessor] as "SCALAR". */
-            GLTF_OBJECT_MODEL_TYPE_FLOAT_ARRAY = 3,
-            
-            /** Object model type "float2". Represented in the glTF JSON as an array of two numbers, and encoded in a [GLTFAccessor] as "VEC2". */
-            GLTF_OBJECT_MODEL_TYPE_FLOAT2 = 4,
-            
-            /** Object model type "float3". Represented in the glTF JSON as an array of three numbers, and encoded in a [GLTFAccessor] as "VEC3". */
-            GLTF_OBJECT_MODEL_TYPE_FLOAT3 = 5,
-            
-            /** Object model type "float4". Represented in the glTF JSON as an array of four numbers, and encoded in a [GLTFAccessor] as "VEC4". */
-            GLTF_OBJECT_MODEL_TYPE_FLOAT4 = 6,
-            
-            /** Object model type "float2x2". Represented in the glTF JSON as an array of four numbers, and encoded in a [GLTFAccessor] as "MAT2". */
-            GLTF_OBJECT_MODEL_TYPE_FLOAT2X2 = 7,
-            
-            /** Object model type "float3x3". Represented in the glTF JSON as an array of nine numbers, and encoded in a [GLTFAccessor] as "MAT3". */
-            GLTF_OBJECT_MODEL_TYPE_FLOAT3X3 = 8,
-            
-            /** Object model type "float4x4". Represented in the glTF JSON as an array of sixteen numbers, and encoded in a [GLTFAccessor] as "MAT4". */
-            GLTF_OBJECT_MODEL_TYPE_FLOAT4X4 = 9,
-            
-            /** Object model type "int". Represented in the glTF JSON as a number, and encoded in a [GLTFAccessor] as "SCALAR". The range of values is limited to signed integers. For `KHR_interactivity`, only 32-bit integers are supported. */
-            GLTF_OBJECT_MODEL_TYPE_INT = 10,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFObjectModelProperty extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFObjectModelProperty extends __NameMapRefCounted {
-    }
-    /** Describes how to access a property as defined in the glTF object model.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfobjectmodelproperty.html  
-     */
-    class GLTFObjectModelProperty extends RefCounted {
-        constructor(identifier?: any)
-        /** Appends a [NodePath] to [member node_paths]. This can be used by [GLTFDocumentExtension] classes to define how a glTF object model property maps to a Godot property, or multiple Godot properties. Prefer using [method append_path_to_property] for simple cases. Be sure to also call [method set_types] once (the order does not matter). */
-        append_node_path(node_path: NodePath | string): void
-        
-        /** High-level wrapper over [method append_node_path] that handles the most common cases. It constructs a new [NodePath] using [param node_path] as a base and appends [param prop_name] to the subpath. Be sure to also call [method set_types] once (the order does not matter). */
-        append_path_to_property(node_path: NodePath | string, prop_name: StringName): void
-        
-        /** The GLTF accessor type associated with this property's [member object_model_type]. See [member GLTFAccessor.accessor_type] for possible values, and see [enum GLTFObjectModelType] for how the object model type maps to accessor types. */
-        get_accessor_type(): GLTFAccessor.GLTFAccessorType
-        
-        /** Returns `true` if [member node_paths] is not empty. This is used during import to determine if a [GLTFObjectModelProperty] can handle converting a glTF object model property to a Godot property. */
-        has_node_paths(): boolean
-        
-        /** Returns `true` if [member json_pointers] is not empty. This is used during export to determine if a [GLTFObjectModelProperty] can handle converting a Godot property to a glTF object model property. */
-        has_json_pointers(): boolean
-        
-        /** Sets the [member variant_type] and [member object_model_type] properties. This is a convenience method to set both properties at once, since they are almost always known at the same time. This method should be called once. Calling it again with the same values will have no effect. */
-        set_types(variant_type: Variant.Type, obj_model_type: GLTFObjectModelProperty.GLTFObjectModelType): void
-        
-        /** If set, this [Expression] will be used to convert the property value from the glTF object model to the value expected by the Godot property. This is useful when the glTF object model uses a different unit system, or when the data needs to be transformed in some way. If `null`, the value will be copied as-is. */
-        get gltf_to_godot_expression(): null | Expression
-        set gltf_to_godot_expression(value: null | Expression)
-        
-        /** If set, this [Expression] will be used to convert the property value from the Godot property to the value expected by the glTF object model. This is useful when the glTF object model uses a different unit system, or when the data needs to be transformed in some way. If `null`, the value will be copied as-is. */
-        get godot_to_gltf_expression(): null | Expression
-        set godot_to_gltf_expression(value: null | Expression)
-        
-        /** An array of [NodePath]s that point to a property, or multiple properties, in the Godot scene tree. On import, this will either be set by [GLTFDocument], or by a [GLTFDocumentExtension] class. For simple cases, use [method append_path_to_property] to add properties to this array.  
-         *  In most cases [member node_paths] will only have one item, but in some cases a single glTF JSON pointer will map to multiple Godot properties. For example, a [GLTFCamera] or [GLTFLight] used on multiple glTF nodes will be represented by multiple Godot nodes.  
-         */
-        get node_paths(): GArray
-        set node_paths(value: GArray)
-        
-        /** The type of data stored in the glTF file as defined by the object model. This is a superset of the available accessor types, and determines the accessor type. */
-        get object_model_type(): int64
-        set object_model_type(value: int64)
-        
-        /** The glTF object model JSON pointers used to identify the property in the glTF object model. In most cases, there will be only one item in this array, but specific cases may require multiple pointers. The items are themselves arrays which represent the JSON pointer split into its components. */
-        get json_pointers(): PackedStringArray
-        set json_pointers(value: PackedStringArray | string[])
-        
-        /** The type of data stored in the Godot property. This is the type of the property that the [member node_paths] point to. */
-        get variant_type(): int64
-        set variant_type(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFObjectModelProperty;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFObjectModelProperty;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFPhysicsBody extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFPhysicsBody extends __NameMapResource {
-    }
-    /** Represents a glTF physics body.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfphysicsbody.html  
-     */
-    class GLTFPhysicsBody extends Resource {
-        constructor(identifier?: any)
-        /** Creates a new GLTFPhysicsBody instance from the given Godot [CollisionObject3D] node. */
-        static from_node(body_node: CollisionObject3D): null | GLTFPhysicsBody
-        
-        /** Converts this GLTFPhysicsBody instance into a Godot [CollisionObject3D] node. */
-        to_node(): null | CollisionObject3D
-        
-        /** Creates a new GLTFPhysicsBody instance by parsing the given [Dictionary] in the `OMI_physics_body` glTF extension format. */
-        static from_dictionary(dictionary: GDictionary): null | GLTFPhysicsBody
-        
-        /** Serializes this GLTFPhysicsBody instance into a [Dictionary]. It will be in the format expected by the `OMI_physics_body` glTF extension. */
-        to_dictionary(): GDictionary
-        
-        /** The type of the body.  
-         *  When importing, this controls what type of [CollisionObject3D] node Godot should generate. Valid values are `"static"`, `"animatable"`, `"character"`, `"rigid"`, `"vehicle"`, and `"trigger"`.  
-         *  When exporting, this will be squashed down to one of `"static"`, `"kinematic"`, or `"dynamic"` motion types, or the `"trigger"` property.  
-         */
-        get body_type(): string
-        set body_type(value: string)
-        
-        /** The mass of the physics body, in kilograms. This is only used when the body type is "rigid" or "vehicle". */
-        get mass(): float64
-        set mass(value: float64)
-        
-        /** The linear velocity of the physics body, in meters per second. This is only used when the body type is "rigid" or "vehicle". */
-        get linear_velocity(): Vector3
-        set linear_velocity(value: Vector3)
-        
-        /** The angular velocity of the physics body, in radians per second. This is only used when the body type is "rigid" or "vehicle". */
-        get angular_velocity(): Vector3
-        set angular_velocity(value: Vector3)
-        
-        /** The center of mass of the body, in meters. This is in local space relative to the body. By default, the center of the mass is the body's origin. */
-        get center_of_mass(): Vector3
-        set center_of_mass(value: Vector3)
-        
-        /** The inertia strength of the physics body, in kilogram meter squared (kg⋅m²). This represents the inertia around the principle axes, the diagonal of the inertia tensor matrix. This is only used when the body type is "rigid" or "vehicle".  
-         *  When converted to a Godot [RigidBody3D] node, if this value is zero, then the inertia will be calculated automatically.  
-         */
-        get inertia_diagonal(): Vector3
-        set inertia_diagonal(value: Vector3)
-        
-        /** The inertia orientation of the physics body. This defines the rotation of the inertia's principle axes relative to the object's local axes. This is only used when the body type is "rigid" or "vehicle" and [member inertia_diagonal] is set to a non-zero value. */
-        get inertia_orientation(): Quaternion
-        set inertia_orientation(value: Quaternion)
-        
-        /** The inertia tensor of the physics body, in kilogram meter squared (kg⋅m²). This is only used when the body type is "rigid" or "vehicle".  
-         *  When converted to a Godot [RigidBody3D] node, if this value is zero, then the inertia will be calculated automatically.  
-         */
-        get inertia_tensor(): Basis
-        set inertia_tensor(value: Basis)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFPhysicsBody;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFPhysicsBody;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFPhysicsShape extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFPhysicsShape extends __NameMapResource {
-    }
-    /** Represents a glTF physics shape.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfphysicsshape.html  
-     */
-    class GLTFPhysicsShape extends Resource {
-        constructor(identifier?: any)
-        /** Creates a new GLTFPhysicsShape instance from the given Godot [CollisionShape3D] node. */
-        static from_node(shape_node: CollisionShape3D): null | GLTFPhysicsShape
-        
-        /** Converts this GLTFPhysicsShape instance into a Godot [CollisionShape3D] node. */
-        to_node(cache_shapes?: boolean /* = false */): null | CollisionShape3D
-        
-        /** Creates a new GLTFPhysicsShape instance from the given Godot [Shape3D] resource. */
-        static from_resource(shape_resource: Shape3D): null | GLTFPhysicsShape
-        
-        /** Converts this GLTFPhysicsShape instance into a Godot [Shape3D] resource. */
-        to_resource(cache_shapes?: boolean /* = false */): null | Shape3D
-        
-        /** Creates a new GLTFPhysicsShape instance by parsing the given [Dictionary]. */
-        static from_dictionary(dictionary: GDictionary): null | GLTFPhysicsShape
-        
-        /** Serializes this GLTFPhysicsShape instance into a [Dictionary] in the format defined by `OMI_physics_shape`. */
-        to_dictionary(): GDictionary
-        
-        /** The type of shape this shape represents. Valid values are `"box"`, `"capsule"`, `"cylinder"`, `"sphere"`, `"hull"`, and `"trimesh"`. */
-        get shape_type(): string
-        set shape_type(value: string)
-        
-        /** The size of the shape, in meters. This is only used when the shape type is `"box"`, and it represents the `"diameter"` of the box. This value should not be negative. */
-        get size(): Vector3
-        set size(value: Vector3)
-        
-        /** The radius of the shape, in meters. This is only used when the shape type is `"capsule"`, `"cylinder"`, or `"sphere"`. This value should not be negative. */
-        get radius(): float64
-        set radius(value: float64)
-        
-        /** The height of the shape, in meters. This is only used when the shape type is `"capsule"` or `"cylinder"`. This value should not be negative, and for `"capsule"` it should be at least twice the radius. */
-        get height(): float64
-        set height(value: float64)
-        
-        /** If `true`, indicates that this shape is a trigger. For Godot, this means that the shape should be a child of an [Area3D] node.  
-         *  This is the only variable not used in the [method to_node] method, it's intended to be used alongside when deciding where to add the generated node as a child.  
-         */
-        get is_trigger(): boolean
-        set is_trigger(value: boolean)
-        
-        /** The index of the shape's mesh in the glTF file. This is only used when the shape type is `"hull"` (convex hull) or `"trimesh"` (concave trimesh). */
-        get mesh_index(): int64
-        set mesh_index(value: int64)
-        
-        /** The [ImporterMesh] resource of the shape. This is only used when the shape type is `"hull"` (convex hull) or `"trimesh"` (concave trimesh). */
-        get importer_mesh(): null | ImporterMesh
-        set importer_mesh(value: null | ImporterMesh)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFPhysicsShape;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFPhysicsShape;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFSkeleton extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFSkeleton extends __NameMapResource {
-    }
-    /** @link https://docs.godotengine.org/en/4.6/classes/class_gltfskeleton.html */
-    class GLTFSkeleton extends Resource {
-        constructor(identifier?: any)
-        get_godot_skeleton(): null | Skeleton3D
-        get_bone_attachment_count(): int64
-        get_bone_attachment(idx: int64): null | BoneAttachment3D
-        get joints(): PackedInt32Array
-        set joints(value: PackedInt32Array | int32[])
-        get roots(): PackedInt32Array
-        set roots(value: PackedInt32Array | int32[])
-        get unique_names(): GArray
-        set unique_names(value: GArray)
-        get godot_bone_node(): GDictionary
-        set godot_bone_node(value: GDictionary)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFSkeleton;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFSkeleton;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFSkin extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFSkin extends __NameMapResource {
-    }
-    /** @link https://docs.godotengine.org/en/4.6/classes/class_gltfskin.html */
-    class GLTFSkin extends Resource {
-        constructor(identifier?: any)
-        get skin_root(): int64
-        set skin_root(value: int64)
-        get joints_original(): PackedInt32Array
-        set joints_original(value: PackedInt32Array | int32[])
-        get inverse_binds(): GArray
-        set inverse_binds(value: GArray)
-        get joints(): PackedInt32Array
-        set joints(value: PackedInt32Array | int32[])
-        get non_joints(): PackedInt32Array
-        set non_joints(value: PackedInt32Array | int32[])
-        get roots(): PackedInt32Array
-        set roots(value: PackedInt32Array | int32[])
-        get skeleton(): int64
-        set skeleton(value: int64)
-        get joint_i_to_bone_i(): GDictionary
-        set joint_i_to_bone_i(value: GDictionary)
-        get joint_i_to_name(): GDictionary
-        set joint_i_to_name(value: GDictionary)
-        get godot_skin(): null | Skin
-        set godot_skin(value: null | Skin)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFSkin;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFSkin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFSpecGloss extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFSpecGloss extends __NameMapResource {
-    }
-    /** Archived glTF extension for specular/glossy materials.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfspecgloss.html  
-     */
-    class GLTFSpecGloss extends Resource {
-        constructor(identifier?: any)
-        /** The diffuse texture. */
-        get diffuse_img(): null | Object
-        set diffuse_img(value: null | Object)
-        
-        /** The reflected diffuse factor of the material. */
-        get diffuse_factor(): Color
-        set diffuse_factor(value: Color)
-        
-        /** The glossiness or smoothness of the material. */
-        get gloss_factor(): float64
-        set gloss_factor(value: float64)
-        
-        /** The specular RGB color of the material. The alpha channel is unused. */
-        get specular_factor(): Color
-        set specular_factor(value: Color)
-        
-        /** The specular-glossiness texture. */
-        get spec_gloss_img(): null | Object
-        set spec_gloss_img(value: null | Object)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFSpecGloss;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFSpecGloss;
-    }
-    namespace GLTFState {
-        enum HandleBinaryImageMode {
-            /** When importing a glTF file with embedded binary images, discards all images and uses untextured materials in their place. Images stored as separate files in the `res://` folder are not affected by this; those will be used as Godot imported them. */
-            HANDLE_BINARY_IMAGE_MODE_DISCARD_TEXTURES = 0,
-            
-            /** When importing a glTF file with embedded binary images, extracts them and saves them to their own files. This allows the image to be imported by Godot's image importer, which can then have their import options customized by the user, including optionally compressing the image to VRAM texture formats.  
-             *  This will save the images's bytes exactly as-is, without recompression. For image formats supplied by glTF extensions, the file will have a filename ending with the file extension supplied by [method GLTFDocumentExtension._get_image_file_extension] of the extension class.  
-             *      
-             *  **Note:** This option is editor-only. At runtime, this acts the same as [constant HANDLE_BINARY_IMAGE_MODE_EMBED_AS_UNCOMPRESSED].  
-             */
-            HANDLE_BINARY_IMAGE_MODE_EXTRACT_TEXTURES = 1,
-            
-            /** When importing a glTF file with embedded binary images, embeds textures VRAM compressed with Basis Universal into the generated scene. Images stored as separate files in the `res://` folder are not affected by this; those will be used as Godot imported them. */
-            HANDLE_BINARY_IMAGE_MODE_EMBED_AS_BASISU = 2,
-            
-            /** When importing a glTF file with embedded binary images, embeds textures compressed losslessly into the generated scene. Images stored as separate files in the `res://` folder are not affected by this; those will be used as Godot imported them. */
-            HANDLE_BINARY_IMAGE_MODE_EMBED_AS_UNCOMPRESSED = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFState extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFState extends __NameMapResource {
-    }
-    /** Represents all data of a glTF file.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltfstate.html  
-     */
-    class GLTFState extends Resource {
-        /** Discards all embedded textures and uses untextured materials. */
-        static readonly HANDLE_BINARY_DISCARD_TEXTURES = 0
-        
-        /** Extracts embedded textures to be reimported and compressed. Editor only. Acts as uncompressed at runtime. */
-        static readonly HANDLE_BINARY_EXTRACT_TEXTURES = 1
-        
-        /** Embeds textures VRAM compressed with Basis Universal into the generated scene. */
-        static readonly HANDLE_BINARY_EMBED_AS_BASISU = 2
-        
-        /** Embeds textures compressed losslessly into the generated scene, matching old behavior. */
-        static readonly HANDLE_BINARY_EMBED_AS_UNCOMPRESSED = 3
-        constructor(identifier?: any)
-        
-        /** Appends an extension to the list of extensions used by this glTF file during serialization. If [param required] is `true`, the extension will also be added to the list of required extensions. Do not run this in [method GLTFDocumentExtension._export_post], as that stage is too late to add extensions. The final list is sorted alphabetically. */
-        add_used_extension(extension_name: string, required: boolean): void
-        
-        /** Appends the given byte array [param data] to the buffers and creates a [GLTFBufferView] for it. The index of the destination [GLTFBufferView] is returned. If [param deduplication] is `true`, the buffers are first searched for duplicate data, otherwise new bytes are always appended. */
-        append_data_to_buffers(data: PackedByteArray | byte[] | ArrayBuffer, deduplication: boolean): int64
-        
-        /** Appends the given [GLTFNode] to the state, and returns its new index. This can be used to export one Godot node as multiple glTF nodes, or inject new glTF nodes at import time. On import, this must be called before [method GLTFDocumentExtension._generate_scene_node] finishes for the parent node. On export, this must be called before [method GLTFDocumentExtension._export_node] runs for the parent node.  
-         *  The [param godot_scene_node] parameter is the Godot scene node that corresponds to this glTF node. This is highly recommended to be set to a valid node, but may be `null` if there is no corresponding Godot scene node. One Godot scene node may be used for multiple glTF nodes, so if exporting multiple glTF nodes for one Godot scene node, use the same Godot scene node for each.  
-         *  The [param parent_node_index] parameter is the index of the parent [GLTFNode] in the state. If `-1`, the node will be a root node, otherwise the new node will be added to the parent's list of children. The index will also be written to the [member GLTFNode.parent] property of the new node.  
-         */
-        append_gltf_node(gltf_node: GLTFNode, godot_scene_node: Node, parent_node_index: int64): int64
-        
-        /** Returns the number of [AnimationPlayer] nodes in this [GLTFState]. These nodes are only used during the export process when converting Godot [AnimationPlayer] nodes to glTF animations. */
-        get_animation_players_count(anim_player_index: int64): int64
-        
-        /** Returns the [AnimationPlayer] node with the given index. These nodes are only used during the export process when converting Godot [AnimationPlayer] nodes to glTF animations. */
-        get_animation_player(anim_player_index: int64): null | AnimationPlayer
-        
-        /** Returns the Godot scene node that corresponds to the same index as the [GLTFNode] it was generated from. This is the inverse of [method get_node_index]. Useful during the import process.  
-         *      
-         *  **Note:** Not every [GLTFNode] will have a scene node generated, and not every generated scene node will have a corresponding [GLTFNode]. If there is no scene node for this [GLTFNode] index, `null` is returned.  
-         */
-        get_scene_node(gltf_node_index: int64): null | Node
-        
-        /** Returns the index of the [GLTFNode] corresponding to this Godot scene node. This is the inverse of [method get_scene_node]. Useful during the export process.  
-         *      
-         *  **Note:** Not every Godot scene node will have a corresponding [GLTFNode], and not every [GLTFNode] will have a scene node generated. If there is no [GLTFNode] index for this scene node, `-1` is returned.  
-         */
-        get_node_index(scene_node: Node): int64
-        
-        /** Gets additional arbitrary data in this [GLTFState] instance. This can be used to keep per-file state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
-         *  The argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is `null`.  
-         */
-        get_additional_data(extension_name: StringName): any
-        
-        /** Sets additional arbitrary data in this [GLTFState] instance. This can be used to keep per-file state data in [GLTFDocumentExtension] classes, which is important because they are stateless.  
-         *  The first argument should be the [GLTFDocumentExtension] name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.  
-         */
-        set_additional_data(extension_name: StringName, additional_data: any): void
-        
-        /** The original raw JSON document corresponding to this GLTFState. */
-        get json(): GDictionary
-        set json(value: GDictionary)
-        get major_version(): int64
-        set major_version(value: int64)
-        get minor_version(): int64
-        set minor_version(value: int64)
-        
-        /** The copyright string in the asset header of the glTF file. This is set during import if present and export if non-empty. See the glTF asset header documentation for more information. */
-        get copyright(): string
-        set copyright(value: string)
-        
-        /** The binary buffer attached to a .glb file. */
-        get glb_data(): PackedByteArray
-        set glb_data(value: PackedByteArray | byte[] | ArrayBuffer)
-        get use_named_skin_binds(): boolean
-        set use_named_skin_binds(value: boolean)
-        get nodes(): GArray
-        set nodes(value: GArray)
-        get buffers(): GArray
-        set buffers(value: GArray)
-        get buffer_views(): GArray
-        set buffer_views(value: GArray)
-        get accessors(): GArray
-        set accessors(value: GArray)
-        get meshes(): GArray
-        set meshes(value: GArray)
-        get materials(): GArray
-        set materials(value: GArray)
-        
-        /** The name of the scene. When importing, if not specified, this will be the file name. When exporting, if specified, the scene name will be saved to the glTF file. */
-        get scene_name(): string
-        set scene_name(value: string)
-        
-        /** The folder path associated with this glTF data. This is used to find other files the glTF file references, like images or binary buffers. This will be set during import when appending from a file, and will be set during export when writing to a file. */
-        get base_path(): string
-        set base_path(value: string)
-        
-        /** The file name associated with this glTF data. If it ends with `.gltf`, this is text-based glTF, otherwise this is binary GLB. This will be set during import when appending from a file, and will be set during export when writing to a file. If writing to a buffer, this will be an empty string. */
-        get filename(): string
-        set filename(value: string)
-        
-        /** The root nodes of the glTF file. Typically, a glTF file will only have one scene, and therefore one root node. However, a glTF file may have multiple scenes and therefore multiple root nodes, which will be generated as siblings of each other and as children of the root node of the generated Godot scene. */
-        get root_nodes(): PackedInt32Array
-        set root_nodes(value: PackedInt32Array | int32[])
-        get textures(): GArray
-        set textures(value: GArray)
-        get texture_samplers(): GArray
-        set texture_samplers(value: GArray)
-        get images(): GArray
-        set images(value: GArray)
-        get skins(): GArray
-        set skins(value: GArray)
-        get cameras(): GArray
-        set cameras(value: GArray)
-        get lights(): GArray
-        set lights(value: GArray)
-        get unique_names(): GArray
-        set unique_names(value: GArray)
-        get unique_animation_names(): GArray
-        set unique_animation_names(value: GArray)
-        get skeletons(): GArray
-        set skeletons(value: GArray)
-        get create_animations(): boolean
-        set create_animations(value: boolean)
-        
-        /** If `true`, forces all GLTFNodes in the document to be bones of a single [Skeleton3D] Godot node. */
-        get import_as_skeleton_bones(): boolean
-        set import_as_skeleton_bones(value: boolean)
-        get animations(): GArray
-        set animations(value: GArray)
-        
-        /** When importing a glTF file with unimported raw binary images embedded inside of binary blob buffers, in data URIs, or separate files not imported by Godot, this controls how the images are handled. Images can be discarded, saved as separate files, or embedded in the scene lossily or losslessly. See [enum HandleBinaryImageMode] for options.  
-         *  This property does nothing for image files in the `res://` folder imported by Godot, as those are handled by Godot's image importer directly, and then the Godot scene generated from the glTF file will use the images as Godot imported them.  
-         */
-        get handle_binary_image_mode(): int64
-        set handle_binary_image_mode(value: int64)
-        
-        /** The baking fps of the animation for either import or export. */
-        get bake_fps(): float64
-        set bake_fps(value: float64)
-        get handle_binary_image(): int64
-        set handle_binary_image(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFState;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFState;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFTexture extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFTexture extends __NameMapResource {
-    }
-    /** GLTFTexture represents a texture in a glTF file.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltftexture.html  
-     */
-    class GLTFTexture extends Resource {
-        constructor(identifier?: any)
-        /** The index of the image associated with this texture, see [method GLTFState.get_images]. If -1, then this texture does not have an image assigned. */
-        get src_image(): int64
-        set src_image(value: int64)
-        
-        /** ID of the texture sampler to use when sampling the image. If -1, then the default texture sampler is used (linear filtering, and repeat wrapping in both axes). */
-        get sampler(): int64
-        set sampler(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGLTFTextureSampler extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGLTFTextureSampler extends __NameMapResource {
-    }
-    /** Represents a glTF texture sampler  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gltftexturesampler.html  
-     */
-    class GLTFTextureSampler extends Resource {
-        constructor(identifier?: any)
-        /** Texture's magnification filter, used when texture appears larger on screen than the source image. */
-        get mag_filter(): int64
-        set mag_filter(value: int64)
-        
-        /** Texture's minification filter, used when the texture appears smaller on screen than the source image. */
-        get min_filter(): int64
-        set min_filter(value: int64)
-        
-        /** Wrapping mode to use for S-axis (horizontal) texture coordinates. */
-        get wrap_s(): int64
-        set wrap_s(value: int64)
-        
-        /** Wrapping mode to use for T-axis (vertical) texture coordinates. */
-        get wrap_t(): int64
-        set wrap_t(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGLTFTextureSampler;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGLTFTextureSampler;
-    }
-    namespace GPUParticles2D {
-        enum DrawOrder {
-            /** Particles are drawn in the order emitted. */
-            DRAW_ORDER_INDEX = 0,
-            
-            /** Particles are drawn in order of remaining lifetime. In other words, the particle with the highest lifetime is drawn at the front. */
-            DRAW_ORDER_LIFETIME = 1,
-            
-            /** Particles are drawn in reverse order of remaining lifetime. In other words, the particle with the lowest lifetime is drawn at the front. */
-            DRAW_ORDER_REVERSE_LIFETIME = 2,
-        }
-        enum EmitFlags {
-            /** Particle starts at the specified position. */
-            EMIT_FLAG_POSITION = 1,
-            
-            /** Particle starts with specified rotation and scale. */
-            EMIT_FLAG_ROTATION_SCALE = 2,
-            
-            /** Particle starts with the specified velocity vector, which defines the emission direction and speed. */
-            EMIT_FLAG_VELOCITY = 4,
-            
-            /** Particle starts with specified color. */
-            EMIT_FLAG_COLOR = 8,
-            
-            /** Particle starts with specified `CUSTOM` data. */
-            EMIT_FLAG_CUSTOM = 16,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticles2D extends __RPCMapNode2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticles2D extends __NameMapNode2D {
-    }
-    /** A 2D particle emitter.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticles2d.html  
-     */
-    class GPUParticles2D<Map extends NodePathMap = any> extends Node2D<Map> {
-        constructor(identifier?: any)
-        /** Requests the particles to process for extra process time during a single frame.  
-         *  Useful for particle playback, if used in combination with [member use_fixed_seed] or by calling [method restart] with parameter `keep_seed` set to `true`.  
-         */
-        request_particles_process(process_time: float64): void
-        
-        /** Returns a rectangle containing the positions of all existing particles.  
-         *      
-         *  **Note:** When using threaded rendering this method synchronizes the rendering thread. Calling it often may have a negative impact on performance.  
-         */
-        capture_rect(): Rect2
-        
-        /** Restarts the particle emission cycle, clearing existing particles. To avoid particles vanishing from the viewport, wait for the [signal finished] signal before calling.  
-         *      
-         *  **Note:** The [signal finished] signal is only emitted by [member one_shot] emitters.  
-         *  If [param keep_seed] is `true`, the current random seed will be preserved. Useful for seeking and playback.  
-         */
-        restart(keep_seed?: boolean /* = false */): void
-        
-        /** Emits a single particle. Whether [param xform], [param velocity], [param color] and [param custom] are applied depends on the value of [param flags]. See [enum EmitFlags].  
-         *  The default ParticleProcessMaterial will overwrite [param color] and use the contents of [param custom] as `(rotation, age, animation, lifetime)`.  
-         *      
-         *  **Note:** [method emit_particle] is only supported on the Forward+ and Mobile rendering methods, not Compatibility.  
-         */
-        emit_particle(xform: Transform2D, velocity: Vector2, color: Color, custom: Color, flags: int64): void
-        
-        /** Sets this node's properties to match a given [CPUParticles2D] node. */
-        convert_from_particles(particles: Node): void
-        
-        /** If `true`, particles are being emitted. [member emitting] can be used to start and stop particles from emitting. However, if [member one_shot] is `true` setting [member emitting] to `true` will not restart the emission cycle unless all active particles have finished processing. Use the [signal finished] signal to be notified once all active particles finish processing.  
-         *      
-         *  **Note:** For [member one_shot] emitters, due to the particles being computed on the GPU, there may be a short period after receiving the [signal finished] signal during which setting this to `true` will not restart the emission cycle.  
-         *  **Tip:** If your [member one_shot] emitter needs to immediately restart emitting particles once [signal finished] signal is received, consider calling [method restart] instead of setting [member emitting].  
-         */
-        get emitting(): boolean
-        set emitting(value: boolean)
-        
-        /** The number of particles to emit in one emission cycle. The effective emission rate is `(amount * amount_ratio) / lifetime` particles per second. Higher values will increase GPU requirements, even if not all particles are visible at a given time or if [member amount_ratio] is decreased.  
-         *      
-         *  **Note:** Changing this value will cause the particle system to restart. To avoid this, change [member amount_ratio] instead.  
-         */
-        get amount(): int64
-        set amount(value: int64)
-        
-        /** The ratio of particles that should actually be emitted. If set to a value lower than `1.0`, this will set the amount of emitted particles throughout the lifetime to `amount * amount_ratio`. Unlike changing [member amount], changing [member amount_ratio] while emitting does not affect already-emitted particles and doesn't cause the particle system to restart. [member amount_ratio] can be used to create effects that make the number of emitted particles vary over time.  
-         *      
-         *  **Note:** Reducing the [member amount_ratio] has no performance benefit, since resources need to be allocated and processed for the total [member amount] of particles regardless of the [member amount_ratio]. If you don't intend to change the number of particles emitted while the particles are emitting, make sure [member amount_ratio] is set to `1` and change [member amount] to your liking instead.  
-         */
-        get amount_ratio(): float64
-        set amount_ratio(value: float64)
-        
-        /** Path to another [GPUParticles2D] node that will be used as a subemitter (see [member ParticleProcessMaterial.sub_emitter_mode]). Subemitters can be used to achieve effects such as fireworks, sparks on collision, bubbles popping into water drops, and more.  
-         *      
-         *  **Note:** When [member sub_emitter] is set, the target [GPUParticles2D] node will no longer emit particles on its own.  
-         */
-        get sub_emitter(): NodePath
-        set sub_emitter(value: NodePath | string)
-        
-        /** Particle texture. If `null`, particles will be squares with a size of 1×1 pixels.  
-         *      
-         *  **Note:** To use a flipbook texture, assign a new [CanvasItemMaterial] to the [GPUParticles2D]'s [member CanvasItem.material] property, then enable [member CanvasItemMaterial.particles_animation] and set [member CanvasItemMaterial.particles_anim_h_frames], [member CanvasItemMaterial.particles_anim_v_frames], and [member CanvasItemMaterial.particles_anim_loop] to match the flipbook texture.  
-         */
-        get texture(): null | Texture2D
-        set texture(value: null | Texture2D)
-        
-        /** The amount of time each particle will exist (in seconds). The effective emission rate is `(amount * amount_ratio) / lifetime` particles per second. */
-        get lifetime(): float64
-        set lifetime(value: float64)
-        
-        /** Causes all the particles in this node to interpolate towards the end of their lifetime.  
-         *      
-         *  **Note:** This only works when used with a [ParticleProcessMaterial]. It needs to be manually implemented for custom process shaders.  
-         */
-        get interp_to_end(): float64
-        set interp_to_end(value: float64)
-        
-        /** If `true`, only one emission cycle occurs. If set `true` during a cycle, emission will stop at the cycle's end. */
-        get one_shot(): boolean
-        set one_shot(value: boolean)
-        
-        /** Particle system starts as if it had already run for this many seconds.  
-         *      
-         *  **Note:** This can be very expensive if set to a high number as it requires running the particle shader a number of times equal to the [member fixed_fps] (or 30, if [member fixed_fps] is 0) for every second. In extreme cases it can even lead to a GPU crash due to the volume of work done in a single frame.  
-         */
-        get preprocess(): float64
-        set preprocess(value: float64)
-        
-        /** Particle system's running speed scaling ratio. A value of `0` can be used to pause the particles. */
-        get speed_scale(): float64
-        set speed_scale(value: float64)
-        
-        /** How rapidly particles in an emission cycle are emitted. If greater than `0`, there will be a gap in emissions before the next cycle begins. */
-        get explosiveness(): float64
-        set explosiveness(value: float64)
-        
-        /** Emission lifetime randomness ratio. */
-        get randomness(): float64
-        set randomness(value: float64)
-        
-        /** If `true`, particles will use the same seed for every simulation using the seed defined in [member seed]. This is useful for situations where the visual outcome should be consistent across replays, for example when using Movie Maker mode. */
-        get use_fixed_seed(): boolean
-        set use_fixed_seed(value: boolean)
-        
-        /** Sets the random seed used by the particle system. Only effective if [member use_fixed_seed] is `true`. */
-        get seed(): int64
-        set seed(value: int64)
-        
-        /** The particle system's frame rate is fixed to a value. For example, changing the value to 2 will make the particles render at 2 frames per second. Note this does not slow down the simulation of the particle system itself. */
-        get fixed_fps(): int64
-        set fixed_fps(value: int64)
-        
-        /** Enables particle interpolation, which makes the particle movement smoother when their [member fixed_fps] is lower than the screen refresh rate. */
-        get interpolate(): boolean
-        set interpolate(value: boolean)
-        
-        /** If `true`, results in fractional delta calculation which has a smoother particles display effect. */
-        get fract_delta(): boolean
-        set fract_delta(value: boolean)
-        
-        /** Multiplier for particle's collision radius. `1.0` corresponds to the size of the sprite. If particles appear to sink into the ground when colliding, increase this value. If particles appear to float when colliding, decrease this value. Only effective if [member ParticleProcessMaterial.collision_mode] is [constant ParticleProcessMaterial.COLLISION_RIGID] or [constant ParticleProcessMaterial.COLLISION_HIDE_ON_CONTACT].  
-         *      
-         *  **Note:** Particles always have a spherical collision shape.  
-         */
-        get collision_base_size(): float64
-        set collision_base_size(value: float64)
-        
-        /** The [Rect2] that determines the node's region which needs to be visible on screen for the particle system to be active.  
-         *  Grow the rect if particles suddenly appear/disappear when the node enters/exits the screen. The [Rect2] can be grown via code or with the **Particles → Generate Visibility Rect** editor tool.  
-         */
-        get visibility_rect(): Rect2
-        set visibility_rect(value: Rect2)
-        
-        /** If `true`, particles use the parent node's coordinate space (known as local coordinates). This will cause particles to move and rotate along the [GPUParticles2D] node (and its parents) when it is moved or rotated. If `false`, particles use global coordinates; they will not move or rotate along the [GPUParticles2D] node (and its parents) when it is moved or rotated. */
-        get local_coords(): boolean
-        set local_coords(value: boolean)
-        
-        /** Particle draw order. */
-        get draw_order(): int64
-        set draw_order(value: int64)
-        
-        /** If `true`, enables particle trails using a mesh skinning system.  
-         *      
-         *  **Note:** Unlike [GPUParticles3D], the number of trail sections and subdivisions is set with the [member trail_sections] and [member trail_section_subdivisions] properties.  
-         */
-        get trail_enabled(): boolean
-        set trail_enabled(value: boolean)
-        
-        /** The amount of time the particle's trail should represent (in seconds). Only effective if [member trail_enabled] is `true`. */
-        get trail_lifetime(): float64
-        set trail_lifetime(value: float64)
-        
-        /** The number of sections to use for the particle trail rendering. Higher values can result in smoother trail curves, at the cost of performance due to increased mesh complexity. See also [member trail_section_subdivisions]. Only effective if [member trail_enabled] is `true`. */
-        get trail_sections(): int64
-        set trail_sections(value: int64)
-        
-        /** The number of subdivisions to use for the particle trail rendering. Higher values can result in smoother trail curves, at the cost of performance due to increased mesh complexity. See also [member trail_sections]. Only effective if [member trail_enabled] is `true`. */
-        get trail_section_subdivisions(): int64
-        set trail_section_subdivisions(value: int64)
-        
-        /** [Material] for processing particles. Can be a [ParticleProcessMaterial] or a [ShaderMaterial]. */
-        get process_material(): null | ParticleProcessMaterial | ShaderMaterial
-        set process_material(value: null | ParticleProcessMaterial | ShaderMaterial)
-        
-        /** Emitted when all active particles have finished processing. To immediately restart the emission cycle, call [method restart].  
-         *  This signal is never emitted when [member one_shot] is disabled, as particles will be emitted and processed continuously.  
-         *      
-         *  **Note:** For [member one_shot] emitters, due to the particles being computed on the GPU, there may be a short period after receiving the signal during which setting [member emitting] to `true` will not restart the emission cycle. This delay is avoided by instead calling [method restart].  
-         */
-        readonly finished: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticles2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticles2D;
-    }
-    namespace GPUParticles3D {
-        enum DrawOrder {
-            /** Particles are drawn in the order emitted. */
-            DRAW_ORDER_INDEX = 0,
-            
-            /** Particles are drawn in order of remaining lifetime. In other words, the particle with the highest lifetime is drawn at the front. */
-            DRAW_ORDER_LIFETIME = 1,
-            
-            /** Particles are drawn in reverse order of remaining lifetime. In other words, the particle with the lowest lifetime is drawn at the front. */
-            DRAW_ORDER_REVERSE_LIFETIME = 2,
-            
-            /** Particles are drawn in order of depth. */
-            DRAW_ORDER_VIEW_DEPTH = 3,
-        }
-        enum EmitFlags {
-            /** Particle starts at the specified position. */
-            EMIT_FLAG_POSITION = 1,
-            
-            /** Particle starts with specified rotation and scale. */
-            EMIT_FLAG_ROTATION_SCALE = 2,
-            
-            /** Particle starts with the specified velocity vector, which defines the emission direction and speed. */
-            EMIT_FLAG_VELOCITY = 4,
-            
-            /** Particle starts with specified color. */
-            EMIT_FLAG_COLOR = 8,
-            
-            /** Particle starts with specified `CUSTOM` data. */
-            EMIT_FLAG_CUSTOM = 16,
-        }
-        enum TransformAlign {
-            TRANSFORM_ALIGN_DISABLED = 0,
-            TRANSFORM_ALIGN_Z_BILLBOARD = 1,
-            TRANSFORM_ALIGN_Y_TO_VELOCITY = 2,
-            TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticles3D extends __RPCMapGeometryInstance3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticles3D extends __NameMapGeometryInstance3D {
-    }
-    /** A 3D particle emitter.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticles3d.html  
-     */
-    class GPUParticles3D<Map extends NodePathMap = any> extends GeometryInstance3D<Map> {
-        /** Maximum number of draw passes supported. */
-        static readonly MAX_DRAW_PASSES = 4
-        constructor(identifier?: any)
-        
-        /** Sets the [Mesh] that is drawn at index [param pass]. */
-        set_draw_pass_mesh(pass: int64, mesh: Mesh): void
-        
-        /** Returns the [Mesh] that is drawn at index [param pass]. */
-        get_draw_pass_mesh(pass: int64): null | Mesh
-        
-        /** Restarts the particle emission cycle, clearing existing particles. To avoid particles vanishing from the viewport, wait for the [signal finished] signal before calling.  
-         *      
-         *  **Note:** The [signal finished] signal is only emitted by [member one_shot] emitters.  
-         *  If [param keep_seed] is `true`, the current random seed will be preserved. Useful for seeking and playback.  
-         */
-        restart(keep_seed?: boolean /* = false */): void
-        
-        /** Returns the axis-aligned bounding box that contains all the particles that are active in the current frame. */
-        capture_aabb(): AABB
-        
-        /** Emits a single particle. Whether [param xform], [param velocity], [param color] and [param custom] are applied depends on the value of [param flags]. See [enum EmitFlags].  
-         *  The default ParticleProcessMaterial will overwrite [param color] and use the contents of [param custom] as `(rotation, age, animation, lifetime)`.  
-         *      
-         *  **Note:** [method emit_particle] is only supported on the Forward+ and Mobile rendering methods, not Compatibility.  
-         */
-        emit_particle(xform: Transform3D, velocity: Vector3, color: Color, custom: Color, flags: int64): void
-        
-        /** Sets this node's properties to match a given [CPUParticles3D] node. */
-        convert_from_particles(particles: Node): void
-        
-        /** Requests the particles to process for extra process time during a single frame.  
-         *  Useful for particle playback, if used in combination with [member use_fixed_seed] or by calling [method restart] with parameter `keep_seed` set to `true`.  
-         */
-        request_particles_process(process_time: float64): void
-        
-        /** If `true`, particles are being emitted. [member emitting] can be used to start and stop particles from emitting. However, if [member one_shot] is `true` setting [member emitting] to `true` will not restart the emission cycle unless all active particles have finished processing. Use the [signal finished] signal to be notified once all active particles finish processing.  
-         *      
-         *  **Note:** For [member one_shot] emitters, due to the particles being computed on the GPU, there may be a short period after receiving the [signal finished] signal during which setting this to `true` will not restart the emission cycle.  
-         *  **Tip:** If your [member one_shot] emitter needs to immediately restart emitting particles once [signal finished] signal is received, consider calling [method restart] instead of setting [member emitting].  
-         */
-        get emitting(): boolean
-        set emitting(value: boolean)
-        
-        /** The number of particles to emit in one emission cycle. The effective emission rate is `(amount * amount_ratio) / lifetime` particles per second. Higher values will increase GPU requirements, even if not all particles are visible at a given time or if [member amount_ratio] is decreased.  
-         *      
-         *  **Note:** Changing this value will cause the particle system to restart. To avoid this, change [member amount_ratio] instead.  
-         */
-        get amount(): int64
-        set amount(value: int64)
-        
-        /** The ratio of particles that should actually be emitted. If set to a value lower than `1.0`, this will set the amount of emitted particles throughout the lifetime to `amount * amount_ratio`. Unlike changing [member amount], changing [member amount_ratio] while emitting does not affect already-emitted particles and doesn't cause the particle system to restart. [member amount_ratio] can be used to create effects that make the number of emitted particles vary over time.  
-         *      
-         *  **Note:** Reducing the [member amount_ratio] has no performance benefit, since resources need to be allocated and processed for the total [member amount] of particles regardless of the [member amount_ratio]. If you don't intend to change the number of particles emitted while the particles are emitting, make sure [member amount_ratio] is set to `1` and change [member amount] to your liking instead.  
-         */
-        get amount_ratio(): float64
-        set amount_ratio(value: float64)
-        
-        /** Path to another [GPUParticles3D] node that will be used as a subemitter (see [member ParticleProcessMaterial.sub_emitter_mode]). Subemitters can be used to achieve effects such as fireworks, sparks on collision, bubbles popping into water drops, and more.  
-         *      
-         *  **Note:** When [member sub_emitter] is set, the target [GPUParticles3D] node will no longer emit particles on its own.  
-         */
-        get sub_emitter(): NodePath
-        set sub_emitter(value: NodePath | string)
-        
-        /** The amount of time each particle will exist (in seconds). The effective emission rate is `(amount * amount_ratio) / lifetime` particles per second. */
-        get lifetime(): float64
-        set lifetime(value: float64)
-        
-        /** Causes all the particles in this node to interpolate towards the end of their lifetime.  
-         *      
-         *  **Note:** This only works when used with a [ParticleProcessMaterial]. It needs to be manually implemented for custom process shaders.  
-         */
-        get interp_to_end(): float64
-        set interp_to_end(value: float64)
-        
-        /** If `true`, only the number of particles equal to [member amount] will be emitted. */
-        get one_shot(): boolean
-        set one_shot(value: boolean)
-        
-        /** Amount of time to preprocess the particles before animation starts. Lets you start the animation some time after particles have started emitting.  
-         *      
-         *  **Note:** This can be very expensive if set to a high number as it requires running the particle shader a number of times equal to the [member fixed_fps] (or 30, if [member fixed_fps] is 0) for every second. In extreme cases it can even lead to a GPU crash due to the volume of work done in a single frame.  
-         */
-        get preprocess(): float64
-        set preprocess(value: float64)
-        
-        /** Speed scaling ratio. A value of `0` can be used to pause the particles. */
-        get speed_scale(): float64
-        set speed_scale(value: float64)
-        
-        /** Time ratio between each emission. If `0`, particles are emitted continuously. If `1`, all particles are emitted simultaneously. */
-        get explosiveness(): float64
-        set explosiveness(value: float64)
-        
-        /** Emission randomness ratio. */
-        get randomness(): float64
-        set randomness(value: float64)
-        
-        /** If `true`, particles will use the same seed for every simulation using the seed defined in [member seed]. This is useful for situations where the visual outcome should be consistent across replays, for example when using Movie Maker mode. */
-        get use_fixed_seed(): boolean
-        set use_fixed_seed(value: boolean)
-        
-        /** Sets the random seed used by the particle system. Only effective if [member use_fixed_seed] is `true`. */
-        get seed(): int64
-        set seed(value: int64)
-        
-        /** The particle system's frame rate is fixed to a value. For example, changing the value to 2 will make the particles render at 2 frames per second. Note this does not slow down the simulation of the particle system itself. */
-        get fixed_fps(): int64
-        set fixed_fps(value: int64)
-        
-        /** Enables particle interpolation, which makes the particle movement smoother when their [member fixed_fps] is lower than the screen refresh rate. */
-        get interpolate(): boolean
-        set interpolate(value: boolean)
-        
-        /** If `true`, results in fractional delta calculation which has a smoother particles display effect. */
-        get fract_delta(): boolean
-        set fract_delta(value: boolean)
-        
-        /** The base diameter for particle collision in meters. If particles appear to sink into the ground when colliding, increase this value. If particles appear to float when colliding, decrease this value. Only effective if [member ParticleProcessMaterial.collision_mode] is [constant ParticleProcessMaterial.COLLISION_RIGID] or [constant ParticleProcessMaterial.COLLISION_HIDE_ON_CONTACT].  
-         *      
-         *  **Note:** Particles always have a spherical collision shape.  
-         */
-        get collision_base_size(): float64
-        set collision_base_size(value: float64)
-        
-        /** The [AABB] that determines the node's region which needs to be visible on screen for the particle system to be active. [member GeometryInstance3D.extra_cull_margin] is added on each of the AABB's axes. Particle collisions and attraction will only occur within this area.  
-         *  Grow the box if particles suddenly appear/disappear when the node enters/exits the screen. The [AABB] can be grown via code or with the **Particles → Generate AABB** editor tool.  
-         *      
-         *  **Note:** [member visibility_aabb] is overridden by [member GeometryInstance3D.custom_aabb] if that property is set to a non-default value.  
-         */
-        get visibility_aabb(): AABB
-        set visibility_aabb(value: AABB)
-        
-        /** If `true`, particles use the parent node's coordinate space (known as local coordinates). This will cause particles to move and rotate along the [GPUParticles3D] node (and its parents) when it is moved or rotated. If `false`, particles use global coordinates; they will not move or rotate along the [GPUParticles3D] node (and its parents) when it is moved or rotated. */
-        get local_coords(): boolean
-        set local_coords(value: boolean)
-        
-        /** Particle draw order.  
-         *      
-         *  **Note:** [constant DRAW_ORDER_INDEX] is the only option that supports motion vectors for effects like TAA. It is suggested to use this draw order if the particles are opaque to fix ghosting artifacts.  
-         */
-        get draw_order(): int64
-        set draw_order(value: int64)
-        get transform_align(): int64
-        set transform_align(value: int64)
-        
-        /** If `true`, enables particle trails using a mesh skinning system. Designed to work with [RibbonTrailMesh] and [TubeTrailMesh].  
-         *      
-         *  **Note:** [member BaseMaterial3D.use_particle_trails] must also be enabled on the particle mesh's material. Otherwise, setting [member trail_enabled] to `true` will have no effect.  
-         *      
-         *  **Note:** Unlike [GPUParticles2D], the number of trail sections and subdivisions is set in the [RibbonTrailMesh] or the [TubeTrailMesh]'s properties.  
-         */
-        get trail_enabled(): boolean
-        set trail_enabled(value: boolean)
-        
-        /** The amount of time the particle's trail should represent (in seconds). Only effective if [member trail_enabled] is `true`. */
-        get trail_lifetime(): float64
-        set trail_lifetime(value: float64)
-        
-        /** [Material] for processing particles. Can be a [ParticleProcessMaterial] or a [ShaderMaterial]. */
-        get process_material(): null | ParticleProcessMaterial | ShaderMaterial
-        set process_material(value: null | ParticleProcessMaterial | ShaderMaterial)
-        
-        /** The number of draw passes when rendering particles. */
-        get draw_passes(): int64
-        set draw_passes(value: int64)
-        
-        /** [Mesh] that is drawn for the first draw pass. */
-        get draw_pass_1(): null | Mesh
-        set draw_pass_1(value: null | Mesh)
-        
-        /** [Mesh] that is drawn for the second draw pass. */
-        get draw_pass_2(): null | Mesh
-        set draw_pass_2(value: null | Mesh)
-        
-        /** [Mesh] that is drawn for the third draw pass. */
-        get draw_pass_3(): null | Mesh
-        set draw_pass_3(value: null | Mesh)
-        
-        /** [Mesh] that is drawn for the fourth draw pass. */
-        get draw_pass_4(): null | Mesh
-        set draw_pass_4(value: null | Mesh)
-        get draw_skin(): null | Skin
-        set draw_skin(value: null | Skin)
-        
-        /** Emitted when all active particles have finished processing. To immediately restart the emission cycle, call [method restart].  
-         *  This signal is never emitted when [member one_shot] is disabled, as particles will be emitted and processed continuously.  
-         *      
-         *  **Note:** For [member one_shot] emitters, due to the particles being computed on the GPU, there may be a short period after receiving the signal during which setting [member emitting] to `true` will not restart the emission cycle. This delay is avoided by instead calling [method restart].  
-         */
-        readonly finished: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticles3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticles3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticlesAttractor3D extends __RPCMapVisualInstance3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticlesAttractor3D extends __NameMapVisualInstance3D {
-    }
-    /** Abstract base class for 3D particle attractors.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlesattractor3d.html  
-     */
-    class GPUParticlesAttractor3D<Map extends NodePathMap = any> extends VisualInstance3D<Map> {
-        constructor(identifier?: any)
-        /** Adjusts the strength of the attractor. If [member strength] is negative, particles will be pushed in the opposite direction. Particles will be pushed  *away*  from the attractor's origin if [member directionality] is `0.0`, or towards local +Z if [member directionality] is greater than `0.0`. */
-        get strength(): float64
-        set strength(value: float64)
-        
-        /** The particle attractor's attenuation. Higher values result in more gradual pushing of particles as they come closer to the attractor's origin. Zero or negative values will cause particles to be pushed very fast as soon as the touch the attractor's edges. */
-        get attenuation(): float64
-        set attenuation(value: float64)
-        
-        /** Adjusts how directional the attractor is. At `0.0`, the attractor is not directional at all: it will attract particles towards its center. At `1.0`, the attractor is fully directional: particles will always be pushed towards local -Z (or +Z if [member strength] is negative).  
-         *      
-         *  **Note:** If [member directionality] is greater than `0.0`, the direction in which particles are pushed can be changed by rotating the [GPUParticlesAttractor3D] node.  
-         */
-        get directionality(): float64
-        set directionality(value: float64)
-        
-        /** The particle rendering layers ([member VisualInstance3D.layers]) that will be affected by the attractor. By default, all particles are affected by an attractor.  
-         *  After configuring particle nodes accordingly, specific layers can be unchecked to prevent certain particles from being affected by attractors. For example, this can be used if you're using an attractor as part of a spell effect but don't want the attractor to affect unrelated weather particles at the same position.  
-         *  Particle attraction can also be disabled on a per-process material basis by setting [member ParticleProcessMaterial.attractor_interaction_enabled] on the [GPUParticles3D] node.  
-         */
-        get cull_mask(): int64
-        set cull_mask(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticlesAttractor3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticlesAttractor3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticlesAttractorBox3D extends __RPCMapGPUParticlesAttractor3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticlesAttractorBox3D extends __NameMapGPUParticlesAttractor3D {
-    }
-    /** A box-shaped attractor that influences particles from [GPUParticles3D] nodes.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlesattractorbox3d.html  
-     */
-    class GPUParticlesAttractorBox3D<Map extends NodePathMap = any> extends GPUParticlesAttractor3D<Map> {
-        constructor(identifier?: any)
-        /** The attractor box's size in 3D units. */
-        get size(): Vector3
-        set size(value: Vector3)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticlesAttractorBox3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticlesAttractorBox3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticlesAttractorSphere3D extends __RPCMapGPUParticlesAttractor3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticlesAttractorSphere3D extends __NameMapGPUParticlesAttractor3D {
-    }
-    /** A spheroid-shaped attractor that influences particles from [GPUParticles3D] nodes.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlesattractorsphere3d.html  
-     */
-    class GPUParticlesAttractorSphere3D<Map extends NodePathMap = any> extends GPUParticlesAttractor3D<Map> {
-        constructor(identifier?: any)
-        /** The attractor sphere's radius in 3D units.  
-         *      
-         *  **Note:** Stretched ellipses can be obtained by using non-uniform scaling on the [GPUParticlesAttractorSphere3D] node.  
-         */
-        get radius(): float64
-        set radius(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticlesAttractorSphere3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticlesAttractorSphere3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticlesAttractorVectorField3D extends __RPCMapGPUParticlesAttractor3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticlesAttractorVectorField3D extends __NameMapGPUParticlesAttractor3D {
-    }
-    /** A box-shaped attractor with varying directions and strengths defined in it that influences particles from [GPUParticles3D] nodes.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlesattractorvectorfield3d.html  
-     */
-    class GPUParticlesAttractorVectorField3D<Map extends NodePathMap = any> extends GPUParticlesAttractor3D<Map> {
-        constructor(identifier?: any)
-        /** The size of the vector field box in 3D units. */
-        get size(): Vector3
-        set size(value: Vector3)
-        
-        /** The 3D texture to be used. Values are linearly interpolated between the texture's pixels.  
-         *      
-         *  **Note:** To get better performance, the 3D texture's resolution should reflect the [member size] of the attractor. Since particle attraction is usually low-frequency data, the texture can be kept at a low resolution such as 64×64×64.  
-         */
-        get texture(): null | Texture3D
-        set texture(value: null | Texture3D)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticlesAttractorVectorField3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticlesAttractorVectorField3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticlesCollision3D extends __RPCMapVisualInstance3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticlesCollision3D extends __NameMapVisualInstance3D {
-    }
-    /** Abstract base class for 3D particle collision shapes affecting [GPUParticles3D] nodes.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollision3d.html  
-     */
-    class GPUParticlesCollision3D<Map extends NodePathMap = any> extends VisualInstance3D<Map> {
-        constructor(identifier?: any)
-        /** The particle rendering layers ([member VisualInstance3D.layers]) that will be affected by the collision shape. By default, all particles that have [member ParticleProcessMaterial.collision_mode] set to [constant ParticleProcessMaterial.COLLISION_RIGID] or [constant ParticleProcessMaterial.COLLISION_HIDE_ON_CONTACT] will be affected by a collision shape.  
-         *  After configuring particle nodes accordingly, specific layers can be unchecked to prevent certain particles from being affected by colliders. For example, this can be used if you're using a collider as part of a spell effect but don't want the collider to affect unrelated weather particles at the same position.  
-         *  Particle collision can also be disabled on a per-process material basis by setting [member ParticleProcessMaterial.collision_mode] on the [GPUParticles3D] node.  
-         */
-        get cull_mask(): int64
-        set cull_mask(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticlesCollision3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticlesCollision3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticlesCollisionBox3D extends __RPCMapGPUParticlesCollision3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticlesCollisionBox3D extends __NameMapGPUParticlesCollision3D {
-    }
-    /** A box-shaped 3D particle collision shape affecting [GPUParticles3D] nodes.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollisionbox3d.html  
-     */
-    class GPUParticlesCollisionBox3D<Map extends NodePathMap = any> extends GPUParticlesCollision3D<Map> {
-        constructor(identifier?: any)
-        /** The collision box's size in 3D units. */
-        get size(): Vector3
-        set size(value: Vector3)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticlesCollisionBox3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticlesCollisionBox3D;
-    }
-    namespace GPUParticlesCollisionHeightField3D {
-        enum Resolution {
-            /** Generate a 256×256 heightmap. Intended for small-scale scenes, or larger scenes with no distant particles. */
-            RESOLUTION_256 = 0,
-            
-            /** Generate a 512×512 heightmap. Intended for medium-scale scenes, or larger scenes with no distant particles. */
-            RESOLUTION_512 = 1,
-            
-            /** Generate a 1024×1024 heightmap. Intended for large scenes with distant particles. */
-            RESOLUTION_1024 = 2,
-            
-            /** Generate a 2048×2048 heightmap. Intended for very large scenes with distant particles. */
-            RESOLUTION_2048 = 3,
-            
-            /** Generate a 4096×4096 heightmap. Intended for huge scenes with distant particles. */
-            RESOLUTION_4096 = 4,
-            
-            /** Generate a 8192×8192 heightmap. Intended for gigantic scenes with distant particles. */
-            RESOLUTION_8192 = 5,
-            
-            /** Represents the size of the [enum Resolution] enum. */
-            RESOLUTION_MAX = 6,
-        }
-        enum UpdateMode {
-            /** Only update the heightmap when the [GPUParticlesCollisionHeightField3D] node is moved, or when the camera moves if [member follow_camera_enabled] is `true`. An update can be forced by slightly moving the [GPUParticlesCollisionHeightField3D] in any direction, or by calling [method RenderingServer.particles_collision_height_field_update]. */
-            UPDATE_MODE_WHEN_MOVED = 0,
-            
-            /** Update the heightmap every frame. This has a significant performance cost. This update should only be used when geometry that particles can collide with changes significantly during gameplay. */
-            UPDATE_MODE_ALWAYS = 1,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticlesCollisionHeightField3D extends __RPCMapGPUParticlesCollision3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticlesCollisionHeightField3D extends __NameMapGPUParticlesCollision3D {
-    }
-    /** A real-time heightmap-shaped 3D particle collision shape affecting [GPUParticles3D] nodes.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollisionheightfield3d.html  
-     */
-    class GPUParticlesCollisionHeightField3D<Map extends NodePathMap = any> extends GPUParticlesCollision3D<Map> {
-        constructor(identifier?: any)
-        /** Based on [param value], enables or disables the specified layer in the [member heightfield_mask], given a [param layer_number] between `1` and `20`, inclusive. */
-        set_heightfield_mask_value(layer_number: int64, value: boolean): void
-        
-        /** Returns `true` if the specified layer of the [member heightfield_mask] is enabled, given a [param layer_number] between `1` and `20`, inclusive. */
-        get_heightfield_mask_value(layer_number: int64): boolean
-        
-        /** The collision heightmap's size in 3D units. To improve heightmap quality, [member size] should be set as small as possible while covering the parts of the scene you need. */
-        get size(): Vector3
-        set size(value: Vector3)
-        
-        /** Higher resolutions can represent small details more accurately in large scenes, at the cost of lower performance. If [member update_mode] is [constant UPDATE_MODE_ALWAYS], consider using the lowest resolution possible. */
-        get resolution(): int64
-        set resolution(value: int64)
-        
-        /** The update policy to use for the generated heightmap. */
-        get update_mode(): int64
-        set update_mode(value: int64)
-        
-        /** If `true`, the [GPUParticlesCollisionHeightField3D] will follow the current camera in global space. The [GPUParticlesCollisionHeightField3D] does not need to be a child of the [Camera3D] node for this to work.  
-         *  Following the camera has a performance cost, as it will force the heightmap to update whenever the camera moves. Consider lowering [member resolution] to improve performance if [member follow_camera_enabled] is `true`.  
-         */
-        get follow_camera_enabled(): boolean
-        set follow_camera_enabled(value: boolean)
-        
-        /** The visual layers to account for when updating the heightmap. Only [MeshInstance3D]s whose [member VisualInstance3D.layers] match with this [member heightfield_mask] will be included in the heightmap collision update. By default, all 20 user-visible layers are taken into account for updating the heightmap collision.  
-         *      
-         *  **Note:** Since the [member heightfield_mask] allows for 32 layers to be stored in total, there are an additional 12 layers that are only used internally by the engine and aren't exposed in the editor. Setting [member heightfield_mask] using a script allows you to toggle those reserved layers, which can be useful for editor plugins.  
-         *  To adjust [member heightfield_mask] more easily using a script, use [method get_heightfield_mask_value] and [method set_heightfield_mask_value].  
-         */
-        get heightfield_mask(): int64
-        set heightfield_mask(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticlesCollisionHeightField3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticlesCollisionHeightField3D;
-    }
-    namespace GPUParticlesCollisionSDF3D {
-        enum Resolution {
-            /** Bake a 16×16×16 signed distance field. This is the fastest option, but also the least precise. */
-            RESOLUTION_16 = 0,
-            
-            /** Bake a 32×32×32 signed distance field. */
-            RESOLUTION_32 = 1,
-            
-            /** Bake a 64×64×64 signed distance field. */
-            RESOLUTION_64 = 2,
-            
-            /** Bake a 128×128×128 signed distance field. */
-            RESOLUTION_128 = 3,
-            
-            /** Bake a 256×256×256 signed distance field. */
-            RESOLUTION_256 = 4,
-            
-            /** Bake a 512×512×512 signed distance field. This is the slowest option, but also the most precise. */
-            RESOLUTION_512 = 5,
-            
-            /** Represents the size of the [enum Resolution] enum. */
-            RESOLUTION_MAX = 6,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticlesCollisionSDF3D extends __RPCMapGPUParticlesCollision3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticlesCollisionSDF3D extends __NameMapGPUParticlesCollision3D {
-    }
-    /** A baked signed distance field 3D particle collision shape affecting [GPUParticles3D] nodes.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollisionsdf3d.html  
-     */
-    class GPUParticlesCollisionSDF3D<Map extends NodePathMap = any> extends GPUParticlesCollision3D<Map> {
-        constructor(identifier?: any)
-        /** Based on [param value], enables or disables the specified layer in the [member bake_mask], given a [param layer_number] between 1 and 32. */
-        set_bake_mask_value(layer_number: int64, value: boolean): void
-        
-        /** Returns whether or not the specified layer of the [member bake_mask] is enabled, given a [param layer_number] between 1 and 32. */
-        get_bake_mask_value(layer_number: int64): boolean
-        
-        /** The collision SDF's size in 3D units. To improve SDF quality, the [member size] should be set as small as possible while covering the parts of the scene you need. */
-        get size(): Vector3
-        set size(value: Vector3)
-        
-        /** The bake resolution to use for the signed distance field [member texture]. The texture must be baked again for changes to the [member resolution] property to be effective. Higher resolutions have a greater performance cost and take more time to bake. Higher resolutions also result in larger baked textures, leading to increased VRAM and storage space requirements. To improve performance and reduce bake times, use the lowest resolution possible for the object you're representing the collision of. */
-        get resolution(): int64
-        set resolution(value: int64)
-        
-        /** The collision shape's thickness. Unlike other particle colliders, [GPUParticlesCollisionSDF3D] is actually hollow on the inside. [member thickness] can be increased to prevent particles from tunneling through the collision shape at high speeds, or when the [GPUParticlesCollisionSDF3D] is moved. */
-        get thickness(): float64
-        set thickness(value: float64)
-        
-        /** The visual layers to account for when baking the particle collision SDF. Only [MeshInstance3D]s whose [member VisualInstance3D.layers] match with this [member bake_mask] will be included in the generated particle collision SDF. By default, all objects are taken into account for the particle collision SDF baking. */
-        get bake_mask(): int64
-        set bake_mask(value: int64)
-        
-        /** The 3D texture representing the signed distance field. */
-        get texture(): null | Texture3D
-        set texture(value: null | Texture3D)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticlesCollisionSDF3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticlesCollisionSDF3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGPUParticlesCollisionSphere3D extends __RPCMapGPUParticlesCollision3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGPUParticlesCollisionSphere3D extends __NameMapGPUParticlesCollision3D {
-    }
-    /** A sphere-shaped 3D particle collision shape affecting [GPUParticles3D] nodes.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_gpuparticlescollisionsphere3d.html  
-     */
-    class GPUParticlesCollisionSphere3D<Map extends NodePathMap = any> extends GPUParticlesCollision3D<Map> {
-        constructor(identifier?: any)
-        /** The collision sphere's radius in 3D units. */
-        get radius(): float64
-        set radius(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGPUParticlesCollisionSphere3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGPUParticlesCollisionSphere3D;
-    }
-    namespace Generic6DOFJoint3D {
-        enum Param {
-            /** The minimum difference between the pivot points' axes. */
-            PARAM_LINEAR_LOWER_LIMIT = 0,
-            
-            /** The maximum difference between the pivot points' axes. */
-            PARAM_LINEAR_UPPER_LIMIT = 1,
-            
-            /** A factor applied to the movement across the axes. The lower, the slower the movement. */
-            PARAM_LINEAR_LIMIT_SOFTNESS = 2,
-            
-            /** The amount of restitution on the axes' movement. The lower, the more momentum gets lost. */
-            PARAM_LINEAR_RESTITUTION = 3,
-            
-            /** The amount of damping that happens at the linear motion across the axes. */
-            PARAM_LINEAR_DAMPING = 4,
-            
-            /** The velocity the linear motor will try to reach. */
-            PARAM_LINEAR_MOTOR_TARGET_VELOCITY = 5,
-            
-            /** The maximum force the linear motor will apply while trying to reach the velocity target. */
-            PARAM_LINEAR_MOTOR_FORCE_LIMIT = 6,
-            PARAM_LINEAR_SPRING_STIFFNESS = 7,
-            PARAM_LINEAR_SPRING_DAMPING = 8,
-            PARAM_LINEAR_SPRING_EQUILIBRIUM_POINT = 9,
-            
-            /** The minimum rotation in negative direction to break loose and rotate around the axes. */
-            PARAM_ANGULAR_LOWER_LIMIT = 10,
-            
-            /** The minimum rotation in positive direction to break loose and rotate around the axes. */
-            PARAM_ANGULAR_UPPER_LIMIT = 11,
-            
-            /** The speed of all rotations across the axes. */
-            PARAM_ANGULAR_LIMIT_SOFTNESS = 12,
-            
-            /** The amount of rotational damping across the axes. The lower, the more damping occurs. */
-            PARAM_ANGULAR_DAMPING = 13,
-            
-            /** The amount of rotational restitution across the axes. The lower, the more restitution occurs. */
-            PARAM_ANGULAR_RESTITUTION = 14,
-            
-            /** The maximum amount of force that can occur, when rotating around the axes. */
-            PARAM_ANGULAR_FORCE_LIMIT = 15,
-            
-            /** When rotating across the axes, this error tolerance factor defines how much the correction gets slowed down. The lower, the slower. */
-            PARAM_ANGULAR_ERP = 16,
-            
-            /** Target speed for the motor at the axes. */
-            PARAM_ANGULAR_MOTOR_TARGET_VELOCITY = 17,
-            
-            /** Maximum acceleration for the motor at the axes. */
-            PARAM_ANGULAR_MOTOR_FORCE_LIMIT = 18,
-            PARAM_ANGULAR_SPRING_STIFFNESS = 19,
-            PARAM_ANGULAR_SPRING_DAMPING = 20,
-            PARAM_ANGULAR_SPRING_EQUILIBRIUM_POINT = 21,
-            
-            /** Represents the size of the [enum Param] enum. */
-            PARAM_MAX = 22,
-        }
-        enum Flag {
-            /** If enabled, linear motion is possible within the given limits. */
-            FLAG_ENABLE_LINEAR_LIMIT = 0,
-            
-            /** If enabled, rotational motion is possible within the given limits. */
-            FLAG_ENABLE_ANGULAR_LIMIT = 1,
-            FLAG_ENABLE_LINEAR_SPRING = 3,
-            FLAG_ENABLE_ANGULAR_SPRING = 2,
-            
-            /** If enabled, there is a rotational motor across these axes. */
-            FLAG_ENABLE_MOTOR = 4,
-            
-            /** If enabled, there is a linear motor across these axes. */
-            FLAG_ENABLE_LINEAR_MOTOR = 5,
-            
-            /** Represents the size of the [enum Flag] enum. */
-            FLAG_MAX = 6,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGeneric6DOFJoint3D extends __RPCMapJoint3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapGeneric6DOFJoint3D extends __NameMapJoint3D {
-    }
-    /** A physics joint that allows for complex movement and rotation between two 3D physics bodies.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_generic6dofjoint3d.html  
-     */
-    class Generic6DOFJoint3D<Map extends NodePathMap = any> extends Joint3D<Map> {
-        constructor(identifier?: any)
-        set_param_x(param: Generic6DOFJoint3D.Param, value: float64): void
-        get_param_x(param: Generic6DOFJoint3D.Param): float64
-        set_param_y(param: Generic6DOFJoint3D.Param, value: float64): void
-        get_param_y(param: Generic6DOFJoint3D.Param): float64
-        set_param_z(param: Generic6DOFJoint3D.Param, value: float64): void
-        get_param_z(param: Generic6DOFJoint3D.Param): float64
-        set_flag_x(flag: Generic6DOFJoint3D.Flag, value: boolean): void
-        get_flag_x(flag: Generic6DOFJoint3D.Flag): boolean
-        set_flag_y(flag: Generic6DOFJoint3D.Flag, value: boolean): void
-        get_flag_y(flag: Generic6DOFJoint3D.Flag): boolean
-        set_flag_z(flag: Generic6DOFJoint3D.Flag, value: boolean): void
-        get_flag_z(flag: Generic6DOFJoint3D.Flag): boolean
-        
-        /** If `true`, the linear motion across the X axis is limited. */
-        get "linear_limit_x/enabled"(): boolean
-        set "linear_limit_x/enabled"(value: boolean)
-        
-        /** The maximum difference between the pivot points' X axis. */
-        get "linear_limit_x/upper_distance"(): float64
-        set "linear_limit_x/upper_distance"(value: float64)
-        
-        /** The minimum difference between the pivot points' X axis. */
-        get "linear_limit_x/lower_distance"(): float64
-        set "linear_limit_x/lower_distance"(value: float64)
-        
-        /** A factor applied to the movement across the X axis. The lower, the slower the movement. */
-        get "linear_limit_x/softness"(): float64
-        set "linear_limit_x/softness"(value: float64)
-        
-        /** The amount of restitution on the X axis movement. The lower, the more momentum gets lost. */
-        get "linear_limit_x/restitution"(): float64
-        set "linear_limit_x/restitution"(value: float64)
-        
-        /** The amount of damping that happens at the X motion. */
-        get "linear_limit_x/damping"(): float64
-        set "linear_limit_x/damping"(value: float64)
-        
-        /** If `true`, the linear motion across the Y axis is limited. */
-        get "linear_limit_y/enabled"(): boolean
-        set "linear_limit_y/enabled"(value: boolean)
-        
-        /** The maximum difference between the pivot points' Y axis. */
-        get "linear_limit_y/upper_distance"(): float64
-        set "linear_limit_y/upper_distance"(value: float64)
-        
-        /** The minimum difference between the pivot points' Y axis. */
-        get "linear_limit_y/lower_distance"(): float64
-        set "linear_limit_y/lower_distance"(value: float64)
-        
-        /** A factor applied to the movement across the Y axis. The lower, the slower the movement. */
-        get "linear_limit_y/softness"(): float64
-        set "linear_limit_y/softness"(value: float64)
-        
-        /** The amount of restitution on the Y axis movement. The lower, the more momentum gets lost. */
-        get "linear_limit_y/restitution"(): float64
-        set "linear_limit_y/restitution"(value: float64)
-        
-        /** The amount of damping that happens at the Y motion. */
-        get "linear_limit_y/damping"(): float64
-        set "linear_limit_y/damping"(value: float64)
-        
-        /** If `true`, the linear motion across the Z axis is limited. */
-        get "linear_limit_z/enabled"(): boolean
-        set "linear_limit_z/enabled"(value: boolean)
-        
-        /** The maximum difference between the pivot points' Z axis. */
-        get "linear_limit_z/upper_distance"(): float64
-        set "linear_limit_z/upper_distance"(value: float64)
-        
-        /** The minimum difference between the pivot points' Z axis. */
-        get "linear_limit_z/lower_distance"(): float64
-        set "linear_limit_z/lower_distance"(value: float64)
-        
-        /** A factor applied to the movement across the Z axis. The lower, the slower the movement. */
-        get "linear_limit_z/softness"(): float64
-        set "linear_limit_z/softness"(value: float64)
-        
-        /** The amount of restitution on the Z axis movement. The lower, the more momentum gets lost. */
-        get "linear_limit_z/restitution"(): float64
-        set "linear_limit_z/restitution"(value: float64)
-        
-        /** The amount of damping that happens at the Z motion. */
-        get "linear_limit_z/damping"(): float64
-        set "linear_limit_z/damping"(value: float64)
-        
-        /** If `true`, then there is a linear motor on the X axis. It will attempt to reach the target velocity while staying within the force limits. */
-        get "linear_motor_x/enabled"(): boolean
-        set "linear_motor_x/enabled"(value: boolean)
-        
-        /** The speed that the linear motor will attempt to reach on the X axis. */
-        get "linear_motor_x/target_velocity"(): float64
-        set "linear_motor_x/target_velocity"(value: float64)
-        
-        /** The maximum force the linear motor can apply on the X axis while trying to reach the target velocity. */
-        get "linear_motor_x/force_limit"(): float64
-        set "linear_motor_x/force_limit"(value: float64)
-        
-        /** If `true`, then there is a linear motor on the Y axis. It will attempt to reach the target velocity while staying within the force limits. */
-        get "linear_motor_y/enabled"(): boolean
-        set "linear_motor_y/enabled"(value: boolean)
-        
-        /** The speed that the linear motor will attempt to reach on the Y axis. */
-        get "linear_motor_y/target_velocity"(): float64
-        set "linear_motor_y/target_velocity"(value: float64)
-        
-        /** The maximum force the linear motor can apply on the Y axis while trying to reach the target velocity. */
-        get "linear_motor_y/force_limit"(): float64
-        set "linear_motor_y/force_limit"(value: float64)
-        
-        /** If `true`, then there is a linear motor on the Z axis. It will attempt to reach the target velocity while staying within the force limits. */
-        get "linear_motor_z/enabled"(): boolean
-        set "linear_motor_z/enabled"(value: boolean)
-        
-        /** The speed that the linear motor will attempt to reach on the Z axis. */
-        get "linear_motor_z/target_velocity"(): float64
-        set "linear_motor_z/target_velocity"(value: float64)
-        
-        /** The maximum force the linear motor can apply on the Z axis while trying to reach the target velocity. */
-        get "linear_motor_z/force_limit"(): float64
-        set "linear_motor_z/force_limit"(value: float64)
-        get "linear_spring_x/enabled"(): boolean
-        set "linear_spring_x/enabled"(value: boolean)
-        get "linear_spring_x/stiffness"(): float64
-        set "linear_spring_x/stiffness"(value: float64)
-        get "linear_spring_x/damping"(): float64
-        set "linear_spring_x/damping"(value: float64)
-        get "linear_spring_x/equilibrium_point"(): float64
-        set "linear_spring_x/equilibrium_point"(value: float64)
-        get "linear_spring_y/enabled"(): boolean
-        set "linear_spring_y/enabled"(value: boolean)
-        get "linear_spring_y/stiffness"(): float64
-        set "linear_spring_y/stiffness"(value: float64)
-        get "linear_spring_y/damping"(): float64
-        set "linear_spring_y/damping"(value: float64)
-        get "linear_spring_y/equilibrium_point"(): float64
-        set "linear_spring_y/equilibrium_point"(value: float64)
-        get "linear_spring_z/enabled"(): boolean
-        set "linear_spring_z/enabled"(value: boolean)
-        get "linear_spring_z/stiffness"(): float64
-        set "linear_spring_z/stiffness"(value: float64)
-        get "linear_spring_z/damping"(): float64
-        set "linear_spring_z/damping"(value: float64)
-        get "linear_spring_z/equilibrium_point"(): float64
-        set "linear_spring_z/equilibrium_point"(value: float64)
-        
-        /** If `true`, rotation across the X axis is limited. */
-        get "angular_limit_x/enabled"(): boolean
-        set "angular_limit_x/enabled"(value: boolean)
-        
-        /** The minimum rotation in positive direction to break loose and rotate around the X axis. */
-        get "angular_limit_x/upper_angle"(): float64
-        set "angular_limit_x/upper_angle"(value: float64)
-        
-        /** The minimum rotation in negative direction to break loose and rotate around the X axis. */
-        get "angular_limit_x/lower_angle"(): float64
-        set "angular_limit_x/lower_angle"(value: float64)
-        
-        /** The speed of all rotations across the X axis. */
-        get "angular_limit_x/softness"(): float64
-        set "angular_limit_x/softness"(value: float64)
-        
-        /** The amount of rotational restitution across the X axis. The lower, the more restitution occurs. */
-        get "angular_limit_x/restitution"(): float64
-        set "angular_limit_x/restitution"(value: float64)
-        
-        /** The amount of rotational damping across the X axis.  
-         *  The lower, the longer an impulse from one side takes to travel to the other side.  
-         */
-        get "angular_limit_x/damping"(): float64
-        set "angular_limit_x/damping"(value: float64)
-        
-        /** The maximum amount of force that can occur, when rotating around the X axis. */
-        get "angular_limit_x/force_limit"(): float64
-        set "angular_limit_x/force_limit"(value: float64)
-        
-        /** When rotating across the X axis, this error tolerance factor defines how much the correction gets slowed down. The lower, the slower. */
-        get "angular_limit_x/erp"(): float64
-        set "angular_limit_x/erp"(value: float64)
-        
-        /** If `true`, rotation across the Y axis is limited. */
-        get "angular_limit_y/enabled"(): boolean
-        set "angular_limit_y/enabled"(value: boolean)
-        
-        /** The minimum rotation in positive direction to break loose and rotate around the Y axis. */
-        get "angular_limit_y/upper_angle"(): float64
-        set "angular_limit_y/upper_angle"(value: float64)
-        
-        /** The minimum rotation in negative direction to break loose and rotate around the Y axis. */
-        get "angular_limit_y/lower_angle"(): float64
-        set "angular_limit_y/lower_angle"(value: float64)
-        
-        /** The speed of all rotations across the Y axis. */
-        get "angular_limit_y/softness"(): float64
-        set "angular_limit_y/softness"(value: float64)
-        
-        /** The amount of rotational restitution across the Y axis. The lower, the more restitution occurs. */
-        get "angular_limit_y/restitution"(): float64
-        set "angular_limit_y/restitution"(value: float64)
-        
-        /** The amount of rotational damping across the Y axis. The lower, the more damping occurs. */
-        get "angular_limit_y/damping"(): float64
-        set "angular_limit_y/damping"(value: float64)
-        
-        /** The maximum amount of force that can occur, when rotating around the Y axis. */
-        get "angular_limit_y/force_limit"(): float64
-        set "angular_limit_y/force_limit"(value: float64)
-        
-        /** When rotating across the Y axis, this error tolerance factor defines how much the correction gets slowed down. The lower, the slower. */
-        get "angular_limit_y/erp"(): float64
-        set "angular_limit_y/erp"(value: float64)
-        
-        /** If `true`, rotation across the Z axis is limited. */
-        get "angular_limit_z/enabled"(): boolean
-        set "angular_limit_z/enabled"(value: boolean)
-        
-        /** The minimum rotation in positive direction to break loose and rotate around the Z axis. */
-        get "angular_limit_z/upper_angle"(): float64
-        set "angular_limit_z/upper_angle"(value: float64)
-        
-        /** The minimum rotation in negative direction to break loose and rotate around the Z axis. */
-        get "angular_limit_z/lower_angle"(): float64
-        set "angular_limit_z/lower_angle"(value: float64)
-        
-        /** The speed of all rotations across the Z axis. */
-        get "angular_limit_z/softness"(): float64
-        set "angular_limit_z/softness"(value: float64)
-        
-        /** The amount of rotational restitution across the Z axis. The lower, the more restitution occurs. */
-        get "angular_limit_z/restitution"(): float64
-        set "angular_limit_z/restitution"(value: float64)
-        
-        /** The amount of rotational damping across the Z axis. The lower, the more damping occurs. */
-        get "angular_limit_z/damping"(): float64
-        set "angular_limit_z/damping"(value: float64)
-        
-        /** The maximum amount of force that can occur, when rotating around the Z axis. */
-        get "angular_limit_z/force_limit"(): float64
-        set "angular_limit_z/force_limit"(value: float64)
-        
-        /** When rotating across the Z axis, this error tolerance factor defines how much the correction gets slowed down. The lower, the slower. */
-        get "angular_limit_z/erp"(): float64
-        set "angular_limit_z/erp"(value: float64)
-        
-        /** If `true`, a rotating motor at the X axis is enabled. */
-        get "angular_motor_x/enabled"(): boolean
-        set "angular_motor_x/enabled"(value: boolean)
-        
-        /** Target speed for the motor at the X axis. */
-        get "angular_motor_x/target_velocity"(): float64
-        set "angular_motor_x/target_velocity"(value: float64)
-        
-        /** Maximum acceleration for the motor at the X axis. */
-        get "angular_motor_x/force_limit"(): float64
-        set "angular_motor_x/force_limit"(value: float64)
-        
-        /** If `true`, a rotating motor at the Y axis is enabled. */
-        get "angular_motor_y/enabled"(): boolean
-        set "angular_motor_y/enabled"(value: boolean)
-        
-        /** Target speed for the motor at the Y axis. */
-        get "angular_motor_y/target_velocity"(): float64
-        set "angular_motor_y/target_velocity"(value: float64)
-        
-        /** Maximum acceleration for the motor at the Y axis. */
-        get "angular_motor_y/force_limit"(): float64
-        set "angular_motor_y/force_limit"(value: float64)
-        
-        /** If `true`, a rotating motor at the Z axis is enabled. */
-        get "angular_motor_z/enabled"(): boolean
-        set "angular_motor_z/enabled"(value: boolean)
-        
-        /** Target speed for the motor at the Z axis. */
-        get "angular_motor_z/target_velocity"(): float64
-        set "angular_motor_z/target_velocity"(value: float64)
-        
-        /** Maximum acceleration for the motor at the Z axis. */
-        get "angular_motor_z/force_limit"(): float64
-        set "angular_motor_z/force_limit"(value: float64)
-        get "angular_spring_x/enabled"(): boolean
-        set "angular_spring_x/enabled"(value: boolean)
-        get "angular_spring_x/stiffness"(): float64
-        set "angular_spring_x/stiffness"(value: float64)
-        get "angular_spring_x/damping"(): float64
-        set "angular_spring_x/damping"(value: float64)
-        get "angular_spring_x/equilibrium_point"(): float64
-        set "angular_spring_x/equilibrium_point"(value: float64)
-        get "angular_spring_y/enabled"(): boolean
-        set "angular_spring_y/enabled"(value: boolean)
-        get "angular_spring_y/stiffness"(): float64
-        set "angular_spring_y/stiffness"(value: float64)
-        get "angular_spring_y/damping"(): float64
-        set "angular_spring_y/damping"(value: float64)
-        get "angular_spring_y/equilibrium_point"(): float64
-        set "angular_spring_y/equilibrium_point"(value: float64)
-        get "angular_spring_z/enabled"(): boolean
-        set "angular_spring_z/enabled"(value: boolean)
-        get "angular_spring_z/stiffness"(): float64
-        set "angular_spring_z/stiffness"(value: float64)
-        get "angular_spring_z/damping"(): float64
-        set "angular_spring_z/damping"(value: float64)
-        get "angular_spring_z/equilibrium_point"(): float64
-        set "angular_spring_z/equilibrium_point"(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGeneric6DOFJoint3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapGeneric6DOFJoint3D;
-    }
     namespace GeometryInstance3D {
         enum ShadowCastingSetting {
             /** Will not cast any shadows. Use this to improve performance for small geometry that is unlikely to cast noticeable shadows (such as debris). */
@@ -2366,9 +62,6 @@ declare module "godot" {
              */
             VISIBILITY_RANGE_FADE_DEPENDENCIES = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGeometryInstance3D extends __RPCMapVisualInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGeometryInstance3D extends __NameMapVisualInstance3D {
@@ -2480,12 +173,7 @@ declare module "godot" {
         get visibility_range_fade_mode(): int64
         set visibility_range_fade_mode(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGeometryInstance3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGeometryInstance3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGodotInstance extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGodotInstance extends __NameMapObject {
@@ -2517,8 +205,6 @@ declare module "godot" {
         /** Notifies the instance that it is being resumed. */
         resume(): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGodotInstance;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGodotInstance;
     }
     namespace Gradient {
@@ -2542,9 +228,6 @@ declare module "godot" {
             /** [url=https://bottosson.github.io/posts/oklab/]Oklab[/url] color space. This color space provides a smooth and uniform-looking transition between colors. */
             GRADIENT_COLOR_SPACE_OKLAB = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGradient extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGradient extends __NameMapResource {
@@ -2610,12 +293,7 @@ declare module "godot" {
         get colors(): PackedColorArray
         set colors(value: PackedColorArray | Color[])
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGradient;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGradient;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGradientTexture1D extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGradientTexture1D extends __NameMapTexture2D {
@@ -2637,8 +315,6 @@ declare module "godot" {
         /** If `true`, the generated texture will support high dynamic range ([constant Image.FORMAT_RGBAF] format). This allows for glow effects to work if [member Environment.glow_enabled] is `true`. If `false`, the generated texture will use low dynamic range; overbright colors will be clamped ([constant Image.FORMAT_RGBA8] format). */
         get use_hdr(): boolean
         set use_hdr(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGradientTexture1D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGradientTexture1D;
     }
@@ -2663,9 +339,6 @@ declare module "godot" {
             /** The texture is filled starting from [member fill_from] to [member fill_to] offsets, mirroring the pattern in both directions. */
             REPEAT_MIRROR = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGradientTexture2D extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGradientTexture2D extends __NameMapTexture2D {
@@ -2708,8 +381,6 @@ declare module "godot" {
         get repeat(): int64
         set repeat(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGradientTexture2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGradientTexture2D;
     }
     namespace GraphEdit {
@@ -2727,9 +398,6 @@ declare module "godot" {
             /** Draw the grid using dots. */
             GRID_PATTERN_DOTS = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGraphEdit extends __RPCMapControl {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGraphEdit extends __NameMapControl {
@@ -3030,12 +698,7 @@ declare module "godot" {
         /** Emitted when the scroll offset is changed by the user. It will not be emitted when changed in code. */
         readonly scroll_offset_changed: Signal<(offset: Vector2) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGraphEdit;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGraphEdit;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGraphElement extends __RPCMapContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGraphElement extends __NameMapContainer {
@@ -3097,12 +760,7 @@ declare module "godot" {
         /** Emitted when the GraphElement is moved. */
         readonly position_offset_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGraphElement;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGraphElement;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGraphFrame extends __RPCMapGraphElement {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGraphFrame extends __NameMapGraphElement {
@@ -3145,12 +803,7 @@ declare module "godot" {
         /** Emitted when [member autoshrink_enabled] or [member autoshrink_margin] changes. */
         readonly autoshrink_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGraphFrame;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGraphFrame;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGraphNode extends __RPCMapGraphElement {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGraphNode extends __NameMapGraphElement {
@@ -3175,7 +828,7 @@ declare module "godot" {
          *      
          *  **Note:** This method only sets properties of the slot. To create the slot itself, add a [Control]-derived child to the GraphNode.  
          */
-        set_slot(slot_index: int64, enable_left_port: boolean, type_left: int64, color_left: Color, enable_right_port: boolean, type_right: int64, color_right: Color, custom_icon_left?: Texture2D, custom_icon_right?: Texture2D, draw_stylebox?: boolean /* = true */): void
+        set_slot(slot_index: int64, enable_left_port: boolean, type_left: int64, color_left: Color, enable_right_port: boolean, type_right: int64, color_right: Color, custom_icon_left?: Texture2D /* = undefined */, custom_icon_right?: Texture2D /* = undefined */, draw_stylebox?: boolean /* = true */): void
         
         /** Disables the slot with the given [param slot_index]. This will remove the corresponding input and output port from the GraphNode. */
         clear_slot(slot_index: int64): void
@@ -3301,12 +954,7 @@ declare module "godot" {
         /** Emitted when any slot's size might have changed. */
         readonly slot_sizes_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGraphNode;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGraphNode;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGridContainer extends __RPCMapContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGridContainer extends __NameMapContainer {
@@ -3321,12 +969,7 @@ declare module "godot" {
         get columns(): int64
         set columns(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGridContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGridContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGridMap extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGridMap extends __NameMapNode3D {
@@ -3479,12 +1122,7 @@ declare module "godot" {
         /** Emitted when the [MeshLibrary] of this GridMap changes. */
         readonly changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGridMap;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGridMap;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGridMapEditorPlugin extends __RPCMapEditorPlugin {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGridMapEditorPlugin extends __NameMapEditorPlugin {
@@ -3525,12 +1163,7 @@ declare module "godot" {
          */
         get_selected_palette_item(): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGridMapEditorPlugin;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGridMapEditorPlugin;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapGrooveJoint2D extends __RPCMapJoint2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapGrooveJoint2D extends __NameMapJoint2D {
@@ -3549,12 +1182,7 @@ declare module "godot" {
         get initial_offset(): float64
         set initial_offset(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapGrooveJoint2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapGrooveJoint2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHBoxContainer extends __RPCMapBoxContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHBoxContainer extends __NameMapBoxContainer {
@@ -3566,12 +1194,7 @@ declare module "godot" {
     class HBoxContainer<Map extends NodePathMap = any> extends BoxContainer<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHBoxContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHBoxContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHFlowContainer extends __RPCMapFlowContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHFlowContainer extends __NameMapFlowContainer {
@@ -3583,12 +1206,7 @@ declare module "godot" {
     class HFlowContainer<Map extends NodePathMap = any> extends FlowContainer<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHFlowContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHFlowContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHMACContext extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHMACContext extends __NameMapRefCounted {
@@ -3608,12 +1226,7 @@ declare module "godot" {
         /** Returns the resulting HMAC. If the HMAC failed, an empty [PackedByteArray] is returned. */
         finish(): PackedByteArray
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHMACContext;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHMACContext;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHScrollBar extends __RPCMapScrollBar {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHScrollBar extends __NameMapScrollBar {
@@ -3625,12 +1238,7 @@ declare module "godot" {
     class HScrollBar<Map extends NodePathMap = any> extends ScrollBar<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHScrollBar;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHScrollBar;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHSeparator extends __RPCMapSeparator {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHSeparator extends __NameMapSeparator {
@@ -3642,12 +1250,7 @@ declare module "godot" {
     class HSeparator<Map extends NodePathMap = any> extends Separator<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHSeparator;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHSeparator;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHSlider extends __RPCMapSlider {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHSlider extends __NameMapSlider {
@@ -3659,12 +1262,7 @@ declare module "godot" {
     class HSlider<Map extends NodePathMap = any> extends Slider<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHSlider;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHSlider;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHSplitContainer extends __RPCMapSplitContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHSplitContainer extends __NameMapSplitContainer {
@@ -3675,8 +1273,6 @@ declare module "godot" {
      */
     class HSplitContainer<Map extends NodePathMap = any> extends SplitContainer<Map> {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHSplitContainer;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHSplitContainer;
     }
@@ -3934,9 +1530,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHTTPClient extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHTTPClient extends __NameMapRefCounted {
     }
     /** Low-level hyper-text transfer protocol client.  
@@ -3948,7 +1541,7 @@ declare module "godot" {
         /** Connects to a host. This needs to be done before any requests are sent.  
          *  If no [param port] is specified (or `-1` is used), it is automatically set to 80 for HTTP and 443 for HTTPS. You can pass the optional [param tls_options] parameter to customize the trusted certification authorities, or the common name verification when using HTTPS. See [method TLSOptions.client] and [method TLSOptions.client_unsafe].  
          */
-        connect_to_host(host: string, port?: int64 /* = -1 */, tls_options?: TLSOptions): Error
+        connect_to_host(host: string, port?: int64 /* = -1 */, tls_options?: TLSOptions /* = undefined */): Error
         
         /** Sends a raw HTTP request to the connected host with the given [param method].  
          *  The URL parameter is usually just the part after the host, so for `https://example.com/index.php`, it is `/index.php`. When sending requests to an HTTP proxy server, it should be an absolute URL. For [constant HTTPClient.METHOD_OPTIONS] requests, `*` is also allowed. For [constant HTTPClient.METHOD_CONNECT] requests, it should be the authority component (`host:port`).  
@@ -4033,8 +1626,6 @@ declare module "godot" {
         get read_chunk_size(): int64
         set read_chunk_size(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHTTPClient;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHTTPClient;
     }
     namespace HTTPRequest {
@@ -4081,9 +1672,6 @@ declare module "godot" {
             /** Request failed due to a timeout. If you expect requests to take a long time, try increasing the value of [member timeout] or setting it to `0.0` to remove the timeout completely. */
             RESULT_TIMEOUT = 13,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHTTPRequest extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHTTPRequest extends __NameMapNode {
@@ -4175,8 +1763,6 @@ declare module "godot" {
         /** Emitted when a request is completed. */
         readonly request_completed: Signal<(result: int64, response_code: int64, headers: PackedStringArray, body: PackedByteArray) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHTTPRequest;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHTTPRequest;
     }
     namespace HashingContext {
@@ -4190,9 +1776,6 @@ declare module "godot" {
             /** Hashing algorithm: SHA-256. */
             HASH_SHA256 = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHashingContext extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHashingContext extends __NameMapRefCounted {
@@ -4212,12 +1795,7 @@ declare module "godot" {
         /** Closes the current context, and return the computed hash. */
         finish(): PackedByteArray
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHashingContext;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHashingContext;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHeightMapShape3D extends __RPCMapShape3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHeightMapShape3D extends __NameMapShape3D {
@@ -4253,8 +1831,6 @@ declare module "godot" {
         /** Heightmap data. The array's size must be equal to [member map_width] multiplied by [member map_depth]. */
         get map_data(): PackedFloat32Array
         set map_data(value: PackedFloat32Array | float32[])
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHeightMapShape3D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHeightMapShape3D;
     }
@@ -4295,9 +1871,6 @@ declare module "godot" {
             /** Represents the size of the [enum Flag] enum. */
             FLAG_MAX = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapHingeJoint3D extends __RPCMapJoint3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapHingeJoint3D extends __NameMapJoint3D {
@@ -4358,12 +1931,7 @@ declare module "godot" {
         get "motor/max_impulse"(): float64
         set "motor/max_impulse"(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapHingeJoint3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapHingeJoint3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapIKModifier3D extends __RPCMapSkeletonModifier3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapIKModifier3D extends __NameMapSkeletonModifier3D {
@@ -4391,8 +1959,6 @@ declare module "godot" {
          */
         get mutable_bone_axes(): boolean
         set mutable_bone_axes(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapIKModifier3D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapIKModifier3D;
     }
@@ -4688,9 +2254,6 @@ declare module "godot" {
             /** Hint to indicate that the low quality 8×8 ASTC compression format should be used. */
             ASTC_FORMAT_8x8 = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapImage extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapImage extends __NameMapResource {
@@ -5022,8 +2585,6 @@ declare module "godot" {
         get data(): GDictionary
         set data(value: GDictionary)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapImage;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapImage;
     }
     namespace ImageFormatLoader {
@@ -5032,9 +2593,6 @@ declare module "godot" {
             FLAG_FORCE_LINEAR = 1,
             FLAG_CONVERT_COLORS = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapImageFormatLoader extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapImageFormatLoader extends __NameMapRefCounted {
@@ -5046,12 +2604,7 @@ declare module "godot" {
     class ImageFormatLoader extends RefCounted {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapImageFormatLoader;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapImageFormatLoader;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapImageFormatLoaderExtension extends __RPCMapImageFormatLoader {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapImageFormatLoaderExtension extends __NameMapImageFormatLoader {
@@ -5074,12 +2627,7 @@ declare module "godot" {
         /** Remove this format loader from the engine. */
         remove_format_loader(): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapImageFormatLoaderExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapImageFormatLoaderExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapImageTexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapImageTexture extends __NameMapTexture2D {
@@ -5113,12 +2661,7 @@ declare module "godot" {
         get image(): null | Image
         set image(value: null | Image)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapImageTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapImageTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapImageTexture3D extends __RPCMapTexture3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapImageTexture3D extends __NameMapTexture3D {
@@ -5137,12 +2680,7 @@ declare module "godot" {
         get _images(): GArray<Image>
         set _images(value: GArray<Image>)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapImageTexture3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapImageTexture3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapImageTextureLayered extends __RPCMapTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapImageTextureLayered extends __NameMapTextureLayered {
@@ -5168,12 +2706,7 @@ declare module "godot" {
         get _images(): GArray<Image>
         set _images(value: GArray<Image>)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapImageTextureLayered;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapImageTextureLayered;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapImmediateMesh extends __RPCMapMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapImmediateMesh extends __NameMapMesh {
@@ -5185,7 +2718,7 @@ declare module "godot" {
     class ImmediateMesh extends Mesh {
         constructor(identifier?: any)
         /** Begin a new surface. */
-        surface_begin(primitive: Mesh.PrimitiveType, material?: Material): void
+        surface_begin(primitive: Mesh.PrimitiveType, material?: Material /* = undefined */): void
         
         /** Set the color attribute that will be pushed with the next vertex. */
         surface_set_color(color: Color): void
@@ -5217,12 +2750,7 @@ declare module "godot" {
         /** Clear all surfaces. */
         clear_surfaces(): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapImmediateMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapImmediateMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapImporterMesh extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapImporterMesh extends __NameMapResource {
@@ -5257,7 +2785,7 @@ declare module "godot" {
          *      
          *  **Note:** When using indices, it is recommended to only use points, lines, or triangles.  
          */
-        add_surface(primitive: Mesh.PrimitiveType, arrays: GArray, blend_shapes?: GArray<GArray>, lods?: GDictionary /* = new GDictionary() */, material?: Material, name?: string /* = '' */, flags?: int64 /* = 0 */): void
+        add_surface(primitive: Mesh.PrimitiveType, arrays: GArray, blend_shapes?: GArray<GArray> /* = [] */, lods?: GDictionary /* = new GDictionary() */, material?: Material /* = undefined */, name?: string /* = '' */, flags?: int64 /* = 0 */): void
         
         /** Returns the number of surfaces that the mesh holds. */
         get_surface_count(): int64
@@ -5307,7 +2835,7 @@ declare module "godot" {
          *  This method caches the returned mesh, and subsequent calls will return the cached data until [method clear] is called.  
          *  If not yet cached and [param base_mesh] is provided, [param base_mesh] will be used and mutated.  
          */
-        get_mesh(base_mesh?: ArrayMesh): null | ArrayMesh
+        get_mesh(base_mesh?: ArrayMesh /* = undefined */): null | ArrayMesh
         
         /** Converts the given [Mesh] into an [ImporterMesh] by copying all its surfaces, blend shapes, materials, and metadata into a new [ImporterMesh] object. */
         static from_mesh(mesh: Mesh): null | ImporterMesh
@@ -5323,12 +2851,7 @@ declare module "godot" {
         get _data(): GDictionary
         set _data(value: GDictionary)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapImporterMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapImporterMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapImporterMeshInstance3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapImporterMeshInstance3D extends __NameMapNode3D {
@@ -5357,12 +2880,7 @@ declare module "godot" {
         get visibility_range_fade_mode(): int64
         set visibility_range_fade_mode(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapImporterMeshInstance3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapImporterMeshInstance3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEvent extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEvent extends __NameMapResource {
@@ -5444,12 +2962,7 @@ declare module "godot" {
         get device(): int64
         set device(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEvent;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEvent;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventAction extends __RPCMapInputEvent {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventAction extends __NameMapInputEvent {
@@ -5476,12 +2989,7 @@ declare module "godot" {
         get event_index(): int64
         set event_index(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventAction;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventAction;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventFromWindow extends __RPCMapInputEvent {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventFromWindow extends __NameMapInputEvent {
@@ -5496,12 +3004,7 @@ declare module "godot" {
         get window_id(): int64
         set window_id(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventFromWindow;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventFromWindow;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventGesture extends __RPCMapInputEventWithModifiers {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventGesture extends __NameMapInputEventWithModifiers {
@@ -5516,12 +3019,7 @@ declare module "godot" {
         get position(): Vector2
         set position(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventGesture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventGesture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventJoypadButton extends __RPCMapInputEvent {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventJoypadButton extends __NameMapInputEvent {
@@ -5542,12 +3040,7 @@ declare module "godot" {
         get pressed(): boolean
         set pressed(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventJoypadButton;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventJoypadButton;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventJoypadMotion extends __RPCMapInputEvent {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventJoypadMotion extends __NameMapInputEvent {
@@ -5566,12 +3059,7 @@ declare module "godot" {
         get axis_value(): float64
         set axis_value(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventJoypadMotion;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventJoypadMotion;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventKey extends __RPCMapInputEventWithModifiers {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventKey extends __NameMapInputEventWithModifiers {
@@ -5663,12 +3151,7 @@ declare module "godot" {
         get echo(): boolean
         set echo(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventKey;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventKey;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventMIDI extends __RPCMapInputEvent {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventMIDI extends __NameMapInputEvent {
@@ -5724,12 +3207,7 @@ declare module "godot" {
         get controller_value(): int64
         set controller_value(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventMIDI;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventMIDI;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventMagnifyGesture extends __RPCMapInputEventGesture {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventMagnifyGesture extends __NameMapInputEventGesture {
@@ -5744,12 +3222,7 @@ declare module "godot" {
         get factor(): float64
         set factor(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventMagnifyGesture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventMagnifyGesture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventMouse extends __RPCMapInputEventWithModifiers {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventMouse extends __NameMapInputEventWithModifiers {
@@ -5776,12 +3249,7 @@ declare module "godot" {
         get global_position(): Vector2
         set global_position(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventMouse;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventMouse;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventMouseButton extends __RPCMapInputEventMouse {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventMouseButton extends __NameMapInputEventMouse {
@@ -5812,12 +3280,7 @@ declare module "godot" {
         get double_click(): boolean
         set double_click(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventMouseButton;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventMouseButton;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventMouseMotion extends __RPCMapInputEventMouse {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventMouseMotion extends __NameMapInputEventMouse {
@@ -5877,12 +3340,7 @@ declare module "godot" {
         get screen_velocity(): Vector2
         set screen_velocity(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventMouseMotion;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventMouseMotion;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventPanGesture extends __RPCMapInputEventGesture {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventPanGesture extends __NameMapInputEventGesture {
@@ -5897,12 +3355,7 @@ declare module "godot" {
         get delta(): Vector2
         set delta(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventPanGesture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventPanGesture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventScreenDrag extends __RPCMapInputEventFromWindow {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventScreenDrag extends __NameMapInputEventFromWindow {
@@ -5955,12 +3408,7 @@ declare module "godot" {
         get screen_velocity(): Vector2
         set screen_velocity(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventScreenDrag;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventScreenDrag;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventScreenTouch extends __RPCMapInputEventFromWindow {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventScreenTouch extends __NameMapInputEventFromWindow {
@@ -5991,12 +3439,7 @@ declare module "godot" {
         get double_tap(): boolean
         set double_tap(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventScreenTouch;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventScreenTouch;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventShortcut extends __RPCMapInputEvent {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventShortcut extends __NameMapInputEvent {
@@ -6011,12 +3454,7 @@ declare module "godot" {
         get shortcut(): null | Shortcut
         set shortcut(value: null | Shortcut)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventShortcut;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventShortcut;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInputEventWithModifiers extends __RPCMapInputEventFromWindow {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInputEventWithModifiers extends __NameMapInputEventFromWindow {
@@ -6055,12 +3493,7 @@ declare module "godot" {
         get meta_pressed(): boolean
         set meta_pressed(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInputEventWithModifiers;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInputEventWithModifiers;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapInstancePlaceholder extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapInstancePlaceholder extends __NameMapNode {
@@ -6080,17 +3513,12 @@ declare module "godot" {
          *      
          *  **Note:** [method create_instance] is not thread-safe. Use [method Object.call_deferred] if calling from a thread.  
          */
-        create_instance(replace?: boolean /* = false */, custom_scene?: PackedScene): Node
+        create_instance(replace?: boolean /* = false */, custom_scene?: PackedScene /* = undefined */): Node
         
         /** Gets the path to the [PackedScene] resource file that is loaded by default when calling [method create_instance]. Not thread-safe. Use [method Object.call_deferred] if calling from a thread. */
         get_instance_path(): string
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapInstancePlaceholder;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapInstancePlaceholder;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapIntervalTweener extends __RPCMapTweener {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapIntervalTweener extends __NameMapTweener {
@@ -6101,8 +3529,6 @@ declare module "godot" {
      */
     class IntervalTweener extends Tweener {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapIntervalTweener;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapIntervalTweener;
     }
@@ -6139,9 +3565,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapItemList extends __RPCMapControl {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapItemList extends __NameMapControl {
     }
     /** A vertical list of selectable items with one or multiple columns.  
@@ -6154,7 +3577,7 @@ declare module "godot" {
          *  Specify an [param icon], or use `null` as the [param icon] for a list item with no icon.  
          *  If [param selectable] is `true`, the list item will be selectable.  
          */
-        add_item(text: string, icon?: Texture2D, selectable?: boolean /* = true */): int64
+        add_item(text: string, icon?: Texture2D /* = undefined */, selectable?: boolean /* = true */): int64
         
         /** Adds an item to the item list with no text, only an icon. Returns the index of an added item. */
         add_icon_item(icon: Texture2D, selectable?: boolean /* = true */): int64
@@ -6422,12 +3845,7 @@ declare module "godot" {
         /** Emitted when specified list item is activated via double-clicking or by pressing [kbd]Enter[/kbd]. */
         readonly item_activated: Signal<(index: int64) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapItemList;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapItemList;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapIterateIK3D extends __RPCMapChainIK3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapIterateIK3D extends __NameMapChainIK3D {
@@ -6524,12 +3942,7 @@ declare module "godot" {
         get setting_count(): int64
         set setting_count(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapIterateIK3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapIterateIK3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJNISingleton extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJNISingleton extends __NameMapObject {
@@ -6543,12 +3956,7 @@ declare module "godot" {
         /** Returns `true` if the given [param method] name exists in the JNISingleton's Java methods. */
         has_java_method(method: StringName): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJNISingleton;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJNISingleton;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJSON extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJSON extends __NameMapResource {
@@ -6608,8 +4016,6 @@ declare module "godot" {
         get data(): any
         set data(value: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJSON;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJSON;
     }
     namespace JSONRPC {
@@ -6629,9 +4035,6 @@ declare module "godot" {
             /** An internal error occurred while processing the request. Not used by the built-in JSONRPC. */
             INTERNAL_ERROR = -32603,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJSONRPC extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJSONRPC extends __NameMapObject {
@@ -6679,14 +4082,9 @@ declare module "godot" {
          *  - [param message]: A custom message about this error.  
          *  - [param id]: The request this error is a response to.  
          */
-        make_response_error(code: int64, message: string, id?: any /* = {} */): GDictionary
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJSONRPC;
+        make_response_error(code: int64, message: string, id?: any /* = <any> {} */): GDictionary
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJSONRPC;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJacobianIK3D extends __RPCMapIterateIK3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJacobianIK3D extends __NameMapIterateIK3D {
@@ -6698,12 +4096,7 @@ declare module "godot" {
     class JacobianIK3D<Map extends NodePathMap = any> extends IterateIK3D<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJacobianIK3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJacobianIK3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJavaClass extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJavaClass extends __NameMapRefCounted {
@@ -6726,12 +4119,7 @@ declare module "godot" {
         /** Returns `true` if the given [param method] name exists in the object's Java methods. */
         has_java_method(method: StringName): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJavaClass;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJavaClass;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJavaObject extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJavaObject extends __NameMapRefCounted {
@@ -6748,12 +4136,7 @@ declare module "godot" {
         /** Returns `true` if the given [param method] name exists in the object's Java methods. */
         has_java_method(method: StringName): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJavaObject;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJavaObject;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJavaScriptObject extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJavaScriptObject extends __NameMapRefCounted {
@@ -6765,12 +4148,7 @@ declare module "godot" {
     class JavaScriptObject extends RefCounted {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJavaScriptObject;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJavaScriptObject;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJoint2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJoint2D extends __NameMapNode2D {
@@ -6802,12 +4180,7 @@ declare module "godot" {
         get disable_collision(): boolean
         set disable_collision(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJoint2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJoint2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJoint3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJoint3D extends __NameMapNode3D {
@@ -6841,12 +4214,7 @@ declare module "godot" {
         get exclude_nodes_from_collision(): boolean
         set exclude_nodes_from_collision(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJoint3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJoint3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJointLimitation3D extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJointLimitation3D extends __NameMapResource {
@@ -6858,12 +4226,7 @@ declare module "godot" {
     class JointLimitation3D extends Resource {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJointLimitation3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJointLimitation3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapJointLimitationCone3D extends __RPCMapJointLimitation3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapJointLimitationCone3D extends __NameMapJointLimitation3D {
@@ -6880,12 +4243,7 @@ declare module "godot" {
         get angle(): float64
         set angle(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapJointLimitationCone3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapJointLimitationCone3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapKinematicCollision2D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapKinematicCollision2D extends __NameMapRefCounted {
@@ -6935,12 +4293,7 @@ declare module "godot" {
         /** Returns the colliding body's velocity. */
         get_collider_velocity(): Vector2
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapKinematicCollision2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapKinematicCollision2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapKinematicCollision3D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapKinematicCollision3D extends __NameMapRefCounted {
@@ -6993,12 +4346,7 @@ declare module "godot" {
         /** Returns the colliding body's velocity given a collision index (the deepest collision by default). */
         get_collider_velocity(collision_index?: int64 /* = 0 */): Vector3
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapKinematicCollision3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapKinematicCollision3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLabel extends __RPCMapControl {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLabel extends __NameMapControl {
@@ -7123,8 +4471,6 @@ declare module "godot" {
         get structured_text_bidi_override_options(): GArray
         set structured_text_bidi_override_options(value: GArray)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLabel;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLabel;
     }
     namespace Label3D {
@@ -7165,9 +4511,6 @@ declare module "godot" {
             /** This mode draws cuts off all values below a spatially-deterministic threshold, the rest will remain opaque. */
             ALPHA_CUT_HASH = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLabel3D extends __RPCMapGeometryInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLabel3D extends __NameMapGeometryInstance3D {
@@ -7331,12 +4674,7 @@ declare module "godot" {
         get structured_text_bidi_override_options(): GArray
         set structured_text_bidi_override_options(value: GArray)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLabel3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLabel3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLabelSettings extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLabelSettings extends __NameMapResource {
@@ -7443,8 +4781,6 @@ declare module "godot" {
         get stacked_shadow_count(): int64
         set stacked_shadow_count(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLabelSettings;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLabelSettings;
     }
     namespace Light2D {
@@ -7468,9 +4804,6 @@ declare module "godot" {
             /** Mix the value of pixels corresponding to the Light2D to the values of pixels under it by linear interpolation. */
             BLEND_MODE_MIX = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLight2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLight2D extends __NameMapNode2D {
@@ -7549,8 +4882,6 @@ declare module "godot" {
         /** The shadow mask. Used with [LightOccluder2D] to cast shadows. Only occluders with a matching [member CanvasItem.light_mask] will cast shadows. See also [member range_item_cull_mask], which affects which objects can  *receive*  the light. */
         get shadow_item_cull_mask(): int64
         set shadow_item_cull_mask(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLight2D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLight2D;
     }
@@ -7638,9 +4969,6 @@ declare module "godot" {
             /** Light is taken into account in dynamic baking ([VoxelGI] and SDFGI ([member Environment.sdfgi_enabled]) only). The light can be moved around or modified with global illumination updating in real-time. The light's global illumination appearance will be slightly different compared to [constant BAKE_STATIC]. This has a greater performance cost compared to [constant BAKE_STATIC]. When using SDFGI, the update speed of dynamic lights is affected by [member ProjectSettings.rendering/global_illumination/sdfgi/frames_to_update_lights]. */
             BAKE_DYNAMIC = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLight3D extends __RPCMapVisualInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLight3D extends __NameMapVisualInstance3D {
@@ -7812,12 +5140,7 @@ declare module "godot" {
         get editor_only(): boolean
         set editor_only(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLight3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLight3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLightOccluder2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLightOccluder2D extends __NameMapNode2D {
@@ -7839,8 +5162,6 @@ declare module "godot" {
         /** The LightOccluder2D's occluder light mask. The LightOccluder2D will cast shadows only from Light2D(s) that have the same light mask(s). */
         get occluder_light_mask(): int64
         set occluder_light_mask(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLightOccluder2D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLightOccluder2D;
     }
@@ -7927,9 +5248,6 @@ declare module "godot" {
             /** Use [member environment_custom_color] multiplied by [member environment_custom_energy] as a constant source of environment lighting when baking lightmaps. */
             ENVIRONMENT_MODE_CUSTOM_COLOR = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLightmapGI extends __RPCMapVisualInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLightmapGI extends __NameMapVisualInstance3D {
@@ -8056,8 +5374,6 @@ declare module "godot" {
         get light_data(): null | LightmapGIData
         set light_data(value: null | LightmapGIData)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLightmapGI;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLightmapGI;
     }
     namespace LightmapGIData {
@@ -8071,9 +5387,6 @@ declare module "godot" {
             /** Shadowmasking is enabled. Directional shadows will be rendered with real-time shadows overlaid on top of the shadowmask texture. This mode makes for smoother shadow transitions when the camera moves fast, at the cost of a potential smearing effect for directional shadows that are up close (due to the real-time shadow being mixed with a low-resolution shadowmask). Objects that only have shadows baked in the shadowmask (and no real-time shadows) will keep their shadows up close. */
             SHADOWMASK_MODE_OVERLAY = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLightmapGIData extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLightmapGIData extends __NameMapResource {
@@ -8118,12 +5431,7 @@ declare module "godot" {
         get light_textures(): GArray
         set light_textures(value: GArray)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLightmapGIData;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLightmapGIData;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLightmapProbe extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLightmapProbe extends __NameMapNode3D {
@@ -8135,12 +5443,7 @@ declare module "godot" {
     class LightmapProbe<Map extends NodePathMap = any> extends Node3D<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLightmapProbe;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLightmapProbe;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLightmapper extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLightmapper extends __NameMapRefCounted {
@@ -8152,12 +5455,7 @@ declare module "godot" {
     class Lightmapper extends RefCounted {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLightmapper;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLightmapper;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLightmapperRD extends __RPCMapLightmapper {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLightmapperRD extends __NameMapLightmapper {
@@ -8169,12 +5467,7 @@ declare module "godot" {
     class LightmapperRD extends Lightmapper {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLightmapperRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLightmapperRD;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLimitAngularVelocityModifier3D extends __RPCMapSkeletonModifier3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLimitAngularVelocityModifier3D extends __NameMapSkeletonModifier3D {
@@ -8235,8 +5528,6 @@ declare module "godot" {
         /** The number of joints in the list which created by chains dynamically. */
         get joint_count(): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLimitAngularVelocityModifier3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLimitAngularVelocityModifier3D;
     }
     namespace Line2D {
@@ -8270,9 +5561,6 @@ declare module "godot" {
             /** Stretches the texture across the polyline. [member CanvasItem.texture_repeat] of the [Line2D] node must be [constant CanvasItem.TEXTURE_REPEAT_DISABLED] for best results. */
             LINE_TEXTURE_STRETCH = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLine2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLine2D extends __NameMapNode2D {
@@ -8366,8 +5654,6 @@ declare module "godot" {
          */
         get antialiased(): boolean
         set antialiased(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLine2D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLine2D;
     }
@@ -8509,9 +5795,6 @@ declare module "godot" {
             /** Scale the right icon to fit the LineEdit. */
             EXPAND_MODE_FIT_TO_LINE_EDIT = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLineEdit extends __RPCMapControl {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLineEdit extends __NameMapControl {
@@ -8782,8 +6065,6 @@ declare module "godot" {
         /** Emitted when the [LineEdit] switches in or out of edit mode. */
         readonly editing_toggled: Signal<(toggled_on: boolean) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLineEdit;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLineEdit;
     }
     namespace LinkButton {
@@ -8797,9 +6078,6 @@ declare module "godot" {
             /** The LinkButton will never show an underline at the bottom of its text. */
             UNDERLINE_MODE_NEVER = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLinkButton extends __RPCMapBaseButton {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLinkButton extends __NameMapBaseButton {
@@ -8848,8 +6126,6 @@ declare module "godot" {
         get structured_text_bidi_override_options(): GArray
         set structured_text_bidi_override_options(value: GArray)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLinkButton;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLinkButton;
     }
     namespace Logger {
@@ -8866,9 +6142,6 @@ declare module "godot" {
             /** The message received is a shader error. */
             ERROR_TYPE_SHADER = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLogger extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLogger extends __NameMapRefCounted {
@@ -8897,8 +6170,6 @@ declare module "godot" {
          */
         /* gdvirtual */ _log_message(message: string, error: boolean): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLogger;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLogger;
     }
     namespace LookAtModifier3D {
@@ -8918,9 +6189,6 @@ declare module "godot" {
              */
             ORIGIN_FROM_EXTERNAL_NODE = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapLookAtModifier3D extends __RPCMapSkeletonModifier3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapLookAtModifier3D extends __NameMapSkeletonModifier3D {
@@ -9085,12 +6353,7 @@ declare module "godot" {
         get secondary_negative_damp_threshold(): float64
         set secondary_negative_damp_threshold(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapLookAtModifier3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapLookAtModifier3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapMainLoop extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapMainLoop extends __NameMapObject {
@@ -9178,12 +6441,7 @@ declare module "godot" {
         /** Emitted when a user responds to a permission request. */
         readonly on_request_permissions_result: Signal<(permission: string, granted: boolean) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapMainLoop;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapMainLoop;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapMarginContainer extends __RPCMapContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapMarginContainer extends __NameMapContainer {
@@ -9195,12 +6453,7 @@ declare module "godot" {
     class MarginContainer<Map extends NodePathMap = any> extends Container<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapMarginContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapMarginContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapMarker2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapMarker2D extends __NameMapNode2D {
@@ -9215,8 +6468,2737 @@ declare module "godot" {
         get gizmo_extents(): float64
         set gizmo_extents(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapMarker2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapMarker2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMarker3D extends __NameMapNode3D {
+    }
+    /** Generic 3D position hint for editing.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_marker3d.html  
+     */
+    class Marker3D<Map extends NodePathMap = any> extends Node3D<Map> {
+        constructor(identifier?: any)
+        /** Size of the gizmo cross that appears in the editor. */
+        get gizmo_extents(): float64
+        set gizmo_extents(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMarker3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMaterial extends __NameMapResource {
+    }
+    /** Virtual base class for applying visual properties to an object, such as color and roughness.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_material.html  
+     */
+    class Material extends Resource {
+        /** Maximum value for the [member render_priority] parameter. */
+        static readonly RENDER_PRIORITY_MAX = 127
+        
+        /** Minimum value for the [member render_priority] parameter. */
+        static readonly RENDER_PRIORITY_MIN = -128
+        constructor(identifier?: any)
+        
+        /** Only exposed for the purpose of overriding. You cannot call this function directly. Used internally by various editor tools. Used to access the RID of the [Material]'s [Shader]. */
+        /* gdvirtual */ _get_shader_rid(): RID
+        
+        /** Only exposed for the purpose of overriding. You cannot call this function directly. Used internally by various editor tools. */
+        /* gdvirtual */ _get_shader_mode(): Shader.Mode
+        
+        /** Only exposed for the purpose of overriding. You cannot call this function directly. Used internally to determine if [member next_pass] should be shown in the editor or not. */
+        /* gdvirtual */ _can_do_next_pass(): boolean
+        
+        /** Only exposed for the purpose of overriding. You cannot call this function directly. Used internally to determine if [member render_priority] should be shown in the editor or not. */
+        /* gdvirtual */ _can_use_render_priority(): boolean
+        
+        /** Only available when running in the editor. Opens a popup that visualizes the generated shader code, including all variants and internal shader code. See also [method Shader.inspect_native_shader_code]. */
+        inspect_native_shader_code(): void
+        
+        /** Creates a placeholder version of this resource ([PlaceholderMaterial]). */
+        create_placeholder(): Resource
+        
+        /** Sets the render priority for objects in 3D scenes. Higher priority objects will be sorted in front of lower priority objects. In other words, all objects with [member render_priority] `1` will render on top of all objects with [member render_priority] `0`.  
+         *      
+         *  **Note:** This only applies to [StandardMaterial3D]s and [ShaderMaterial]s with type "Spatial".  
+         *      
+         *  **Note:** This will not impact how transparent objects are sorted relative to opaque objects or how dynamic meshes will be sorted relative to other opaque meshes. This is because all transparent objects are drawn after all opaque objects and all dynamic opaque meshes are drawn before other opaque meshes.  
+         */
+        get render_priority(): int64
+        set render_priority(value: int64)
+        
+        /** Sets the [Material] to be used for the next pass. This renders the object again using a different material.  
+         *      
+         *  **Note:** [member next_pass] materials are not necessarily drawn immediately after the source [Material]. Draw order is determined by material properties, [member render_priority], and distance to camera.  
+         *      
+         *  **Note:** This only applies to [StandardMaterial3D]s and [ShaderMaterial]s with type "Spatial".  
+         */
+        get next_pass(): null | Material
+        set next_pass(value: null | Material)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMaterial;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMenuBar extends __NameMapControl {
+    }
+    /** A horizontal menu bar that creates a menu for each [PopupMenu] child.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_menubar.html  
+     */
+    class MenuBar<Map extends NodePathMap = any> extends Control<Map> {
+        constructor(identifier?: any)
+        /** If `true`, shortcuts are disabled and cannot be used to trigger the button. */
+        set_disable_shortcuts(disabled: boolean): void
+        
+        /** Returns `true` if the current system's global menu is supported and used by this [MenuBar]. */
+        is_native_menu(): boolean
+        
+        /** Returns number of menu items. */
+        get_menu_count(): int64
+        
+        /** Sets menu item title. */
+        set_menu_title(menu: int64, title: string): void
+        
+        /** Returns menu item title. */
+        get_menu_title(menu: int64): string
+        
+        /** Sets menu item tooltip. */
+        set_menu_tooltip(menu: int64, tooltip: string): void
+        
+        /** Returns menu item tooltip. */
+        get_menu_tooltip(menu: int64): string
+        
+        /** If `true`, menu item is disabled. */
+        set_menu_disabled(menu: int64, disabled: boolean): void
+        
+        /** Returns `true` if the menu item is disabled. */
+        is_menu_disabled(menu: int64): boolean
+        
+        /** If `true`, menu item is hidden. */
+        set_menu_hidden(menu: int64, hidden: boolean): void
+        
+        /** Returns `true` if the menu item is hidden. */
+        is_menu_hidden(menu: int64): boolean
+        
+        /** Returns [PopupMenu] associated with menu item. */
+        get_menu_popup(menu: int64): null | PopupMenu
+        
+        /** Flat [MenuBar] don't display item decoration. */
+        get flat(): boolean
+        set flat(value: boolean)
+        
+        /** Position order in the global menu to insert [MenuBar] items at. All menu items in the [MenuBar] are always inserted as a continuous range. Menus with lower [member start_index] are inserted first. Menus with [member start_index] equal to `-1` are inserted last. */
+        get start_index(): int64
+        set start_index(value: int64)
+        
+        /** If `true`, when the cursor hovers above menu item, it will close the current [PopupMenu] and open the other one. */
+        get switch_on_hover(): boolean
+        set switch_on_hover(value: boolean)
+        
+        /** If `true`, [MenuBar] will use system global menu when supported.  
+         *      
+         *  **Note:** If `true` and global menu is supported, this node is not displayed, has zero size, and all its child nodes except [PopupMenu]s are inaccessible.  
+         *      
+         *  **Note:** This property overrides the value of the [member PopupMenu.prefer_native_menu] property of the child nodes.  
+         */
+        get prefer_global_menu(): boolean
+        set prefer_global_menu(value: boolean)
+        
+        /** Base text writing direction. */
+        get text_direction(): int64
+        set text_direction(value: int64)
+        
+        /** Language code used for line-breaking and text shaping algorithms. If left empty, the current locale is used instead. */
+        get language(): string
+        set language(value: string)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMenuBar;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMenuButton extends __NameMapButton {
+    }
+    /** A button that brings up a [PopupMenu] when clicked.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_menubutton.html  
+     */
+    class MenuButton<Map extends NodePathMap = any> extends Button<Map> {
+        constructor(identifier?: any)
+        /** Returns the [PopupMenu] contained in this button.  
+         *  **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their [member Window.visible] property.  
+         */
+        get_popup(): null | PopupMenu
+        
+        /** Adjusts popup position and sizing for the [MenuButton], then shows the [PopupMenu]. Prefer this over using `get_popup().popup()`. */
+        show_popup(): void
+        
+        /** If `true`, shortcuts are disabled and cannot be used to trigger the button. */
+        set_disable_shortcuts(disabled: boolean): void
+        
+        /** If `true`, when the cursor hovers above another [MenuButton] within the same parent which also has [member switch_on_hover] enabled, it will close the current [MenuButton] and open the other one. */
+        get switch_on_hover(): boolean
+        set switch_on_hover(value: boolean)
+        
+        /** The number of items currently in the list. */
+        get item_count(): int64
+        set item_count(value: int64)
+        
+        /** Emitted when the [PopupMenu] of this MenuButton is about to show. */
+        readonly about_to_popup: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMenuButton;
+    }
+    namespace Mesh {
+        enum PrimitiveType {
+            /** Render array as points (one vertex equals one point). */
+            PRIMITIVE_POINTS = 0,
+            
+            /** Render array as lines (every two vertices a line is created). */
+            PRIMITIVE_LINES = 1,
+            
+            /** Render array as line strip. */
+            PRIMITIVE_LINE_STRIP = 2,
+            
+            /** Render array as triangles (every three vertices a triangle is created). */
+            PRIMITIVE_TRIANGLES = 3,
+            
+            /** Render array as triangle strips. */
+            PRIMITIVE_TRIANGLE_STRIP = 4,
+        }
+        enum ArrayType {
+            /** [PackedVector3Array], [PackedVector2Array], or [Array] of vertex positions. */
+            ARRAY_VERTEX = 0,
+            
+            /** [PackedVector3Array] of vertex normals.  
+             *      
+             *  **Note:** The array has to consist of normal vectors, otherwise they will be normalized by the engine, potentially causing visual discrepancies.  
+             */
+            ARRAY_NORMAL = 1,
+            
+            /** [PackedFloat32Array] of vertex tangents. Each element in groups of 4 floats, first 3 floats determine the tangent, and the last the binormal direction as -1 or 1. */
+            ARRAY_TANGENT = 2,
+            
+            /** [PackedColorArray] of vertex colors. */
+            ARRAY_COLOR = 3,
+            
+            /** [PackedVector2Array] for UV coordinates. */
+            ARRAY_TEX_UV = 4,
+            
+            /** [PackedVector2Array] for second UV coordinates. */
+            ARRAY_TEX_UV2 = 5,
+            
+            /** Contains custom color channel 0. [PackedByteArray] if `(format >> Mesh.ARRAY_FORMAT_CUSTOM0_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK` is [constant ARRAY_CUSTOM_RGBA8_UNORM], [constant ARRAY_CUSTOM_RGBA8_SNORM], [constant ARRAY_CUSTOM_RG_HALF], or [constant ARRAY_CUSTOM_RGBA_HALF]. [PackedFloat32Array] otherwise. */
+            ARRAY_CUSTOM0 = 6,
+            
+            /** Contains custom color channel 1. [PackedByteArray] if `(format >> Mesh.ARRAY_FORMAT_CUSTOM1_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK` is [constant ARRAY_CUSTOM_RGBA8_UNORM], [constant ARRAY_CUSTOM_RGBA8_SNORM], [constant ARRAY_CUSTOM_RG_HALF], or [constant ARRAY_CUSTOM_RGBA_HALF]. [PackedFloat32Array] otherwise. */
+            ARRAY_CUSTOM1 = 7,
+            
+            /** Contains custom color channel 2. [PackedByteArray] if `(format >> Mesh.ARRAY_FORMAT_CUSTOM2_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK` is [constant ARRAY_CUSTOM_RGBA8_UNORM], [constant ARRAY_CUSTOM_RGBA8_SNORM], [constant ARRAY_CUSTOM_RG_HALF], or [constant ARRAY_CUSTOM_RGBA_HALF]. [PackedFloat32Array] otherwise. */
+            ARRAY_CUSTOM2 = 8,
+            
+            /** Contains custom color channel 3. [PackedByteArray] if `(format >> Mesh.ARRAY_FORMAT_CUSTOM3_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK` is [constant ARRAY_CUSTOM_RGBA8_UNORM], [constant ARRAY_CUSTOM_RGBA8_SNORM], [constant ARRAY_CUSTOM_RG_HALF], or [constant ARRAY_CUSTOM_RGBA_HALF]. [PackedFloat32Array] otherwise. */
+            ARRAY_CUSTOM3 = 9,
+            
+            /** [PackedFloat32Array] or [PackedInt32Array] of bone indices. Contains either 4 or 8 numbers per vertex depending on the presence of the [constant ARRAY_FLAG_USE_8_BONE_WEIGHTS] flag. */
+            ARRAY_BONES = 10,
+            
+            /** [PackedFloat32Array] or [PackedFloat64Array] of bone weights in the range `0.0` to `1.0` (inclusive). Contains either 4 or 8 numbers per vertex depending on the presence of the [constant ARRAY_FLAG_USE_8_BONE_WEIGHTS] flag. */
+            ARRAY_WEIGHTS = 11,
+            
+            /** [PackedInt32Array] of integers used as indices referencing vertices, colors, normals, tangents, and textures. All of those arrays must have the same number of elements as the vertex array. No index can be beyond the vertex array size. When this index array is present, it puts the function into "index mode," where the index selects the  *i* 'th vertex, normal, tangent, color, UV, etc. This means if you want to have different normals or colors along an edge, you have to duplicate the vertices.  
+             *  For triangles, the index array is interpreted as triples, referring to the vertices of each triangle. For lines, the index array is in pairs indicating the start and end of each line.  
+             */
+            ARRAY_INDEX = 12,
+            
+            /** Represents the size of the [enum ArrayType] enum. */
+            ARRAY_MAX = 13,
+        }
+        enum ArrayCustomFormat {
+            /** Indicates this custom channel contains unsigned normalized byte colors from 0 to 1, encoded as [PackedByteArray]. */
+            ARRAY_CUSTOM_RGBA8_UNORM = 0,
+            
+            /** Indicates this custom channel contains signed normalized byte colors from -1 to 1, encoded as [PackedByteArray]. */
+            ARRAY_CUSTOM_RGBA8_SNORM = 1,
+            
+            /** Indicates this custom channel contains half precision float colors, encoded as [PackedByteArray]. Only red and green channels are used. */
+            ARRAY_CUSTOM_RG_HALF = 2,
+            
+            /** Indicates this custom channel contains half precision float colors, encoded as [PackedByteArray]. */
+            ARRAY_CUSTOM_RGBA_HALF = 3,
+            
+            /** Indicates this custom channel contains full float colors, in a [PackedFloat32Array]. Only the red channel is used. */
+            ARRAY_CUSTOM_R_FLOAT = 4,
+            
+            /** Indicates this custom channel contains full float colors, in a [PackedFloat32Array]. Only red and green channels are used. */
+            ARRAY_CUSTOM_RG_FLOAT = 5,
+            
+            /** Indicates this custom channel contains full float colors, in a [PackedFloat32Array]. Only red, green and blue channels are used. */
+            ARRAY_CUSTOM_RGB_FLOAT = 6,
+            
+            /** Indicates this custom channel contains full float colors, in a [PackedFloat32Array]. */
+            ARRAY_CUSTOM_RGBA_FLOAT = 7,
+            
+            /** Represents the size of the [enum ArrayCustomFormat] enum. */
+            ARRAY_CUSTOM_MAX = 8,
+        }
+        enum ArrayFormat {
+            /** Mesh array contains vertices. All meshes require a vertex array so this should always be present. */
+            ARRAY_FORMAT_VERTEX = 1,
+            
+            /** Mesh array contains normals. */
+            ARRAY_FORMAT_NORMAL = 2,
+            
+            /** Mesh array contains tangents. */
+            ARRAY_FORMAT_TANGENT = 4,
+            
+            /** Mesh array contains colors. */
+            ARRAY_FORMAT_COLOR = 8,
+            
+            /** Mesh array contains UVs. */
+            ARRAY_FORMAT_TEX_UV = 16,
+            
+            /** Mesh array contains second UV. */
+            ARRAY_FORMAT_TEX_UV2 = 32,
+            
+            /** Mesh array contains custom channel index 0. */
+            ARRAY_FORMAT_CUSTOM0 = 64,
+            
+            /** Mesh array contains custom channel index 1. */
+            ARRAY_FORMAT_CUSTOM1 = 128,
+            
+            /** Mesh array contains custom channel index 2. */
+            ARRAY_FORMAT_CUSTOM2 = 256,
+            
+            /** Mesh array contains custom channel index 3. */
+            ARRAY_FORMAT_CUSTOM3 = 512,
+            
+            /** Mesh array contains bones. */
+            ARRAY_FORMAT_BONES = 1024,
+            
+            /** Mesh array contains bone weights. */
+            ARRAY_FORMAT_WEIGHTS = 2048,
+            
+            /** Mesh array uses indices. */
+            ARRAY_FORMAT_INDEX = 4096,
+            
+            /** Mask of mesh channels permitted in blend shapes. */
+            ARRAY_FORMAT_BLEND_SHAPE_MASK = 7,
+            
+            /** Shift of first custom channel. */
+            ARRAY_FORMAT_CUSTOM_BASE = 13,
+            
+            /** Number of format bits per custom channel. See [enum ArrayCustomFormat]. */
+            ARRAY_FORMAT_CUSTOM_BITS = 3,
+            
+            /** Amount to shift [enum ArrayCustomFormat] for custom channel index 0. */
+            ARRAY_FORMAT_CUSTOM0_SHIFT = 13,
+            
+            /** Amount to shift [enum ArrayCustomFormat] for custom channel index 1. */
+            ARRAY_FORMAT_CUSTOM1_SHIFT = 16,
+            
+            /** Amount to shift [enum ArrayCustomFormat] for custom channel index 2. */
+            ARRAY_FORMAT_CUSTOM2_SHIFT = 19,
+            
+            /** Amount to shift [enum ArrayCustomFormat] for custom channel index 3. */
+            ARRAY_FORMAT_CUSTOM3_SHIFT = 22,
+            
+            /** Mask of custom format bits per custom channel. Must be shifted by one of the SHIFT constants. See [enum ArrayCustomFormat]. */
+            ARRAY_FORMAT_CUSTOM_MASK = 7,
+            
+            /** Shift of first compress flag. Compress flags should be passed to [method ArrayMesh.add_surface_from_arrays] and [method SurfaceTool.commit]. */
+            ARRAY_COMPRESS_FLAGS_BASE = 25,
+            
+            /** Flag used to mark that the array contains 2D vertices. */
+            ARRAY_FLAG_USE_2D_VERTICES = 33554432,
+            
+            /** Flag used to mark that the mesh data will use `GL_DYNAMIC_DRAW` on GLES. Unused on Vulkan. */
+            ARRAY_FLAG_USE_DYNAMIC_UPDATE = 67108864,
+            
+            /** Flag used to mark that the mesh contains up to 8 bone influences per vertex. This flag indicates that [constant ARRAY_BONES] and [constant ARRAY_WEIGHTS] elements will have double length. */
+            ARRAY_FLAG_USE_8_BONE_WEIGHTS = 134217728,
+            
+            /** Flag used to mark that the mesh intentionally contains no vertex array. */
+            ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY = 268435456,
+            
+            /** Flag used to mark that a mesh is using compressed attributes (vertices, normals, tangents, UVs). When this form of compression is enabled, vertex positions will be packed into an RGBA16UNORM attribute and scaled in the vertex shader. The normal and tangent will be packed into an RG16UNORM representing an axis, and a 16-bit float stored in the A-channel of the vertex. UVs will use 16-bit normalized floats instead of full 32-bit signed floats. When using this compression mode you must use either vertices, normals, and tangents or only vertices. You cannot use normals without tangents. Importers will automatically enable this compression if they can. */
+            ARRAY_FLAG_COMPRESS_ATTRIBUTES = 536870912,
+        }
+        enum BlendShapeMode {
+            /** Blend shapes are normalized. */
+            BLEND_SHAPE_MODE_NORMALIZED = 0,
+            
+            /** Blend shapes are relative to base weight. */
+            BLEND_SHAPE_MODE_RELATIVE = 1,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMesh extends __NameMapResource {
+    }
+    /** A [Resource] that contains vertex array-based geometry.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_mesh.html  
+     */
+    class Mesh extends Resource {
+        constructor(identifier?: any)
+        /** Virtual method to override the surface count for a custom class extending [Mesh]. */
+        /* gdvirtual */ _get_surface_count(): int64
+        
+        /** Virtual method to override the surface array length for a custom class extending [Mesh]. */
+        /* gdvirtual */ _surface_get_array_len(index: int64): int64
+        
+        /** Virtual method to override the surface array index length for a custom class extending [Mesh]. */
+        /* gdvirtual */ _surface_get_array_index_len(index: int64): int64
+        
+        /** Virtual method to override the surface arrays for a custom class extending [Mesh]. */
+        /* gdvirtual */ _surface_get_arrays(index: int64): GArray
+        
+        /** Virtual method to override the blend shape arrays for a custom class extending [Mesh]. */
+        /* gdvirtual */ _surface_get_blend_shape_arrays(index: int64): GArray<GArray>
+        
+        /** Virtual method to override the surface LODs for a custom class extending [Mesh]. */
+        /* gdvirtual */ _surface_get_lods(index: int64): GDictionary
+        
+        /** Virtual method to override the surface format for a custom class extending [Mesh]. */
+        /* gdvirtual */ _surface_get_format(index: int64): int64
+        
+        /** Virtual method to override the surface primitive type for a custom class extending [Mesh]. */
+        /* gdvirtual */ _surface_get_primitive_type(index: int64): int64
+        
+        /** Virtual method to override the setting of a [param material] at the given [param index] for a custom class extending [Mesh]. */
+        /* gdvirtual */ _surface_set_material(index: int64, material: Material): void
+        
+        /** Virtual method to override the surface material for a custom class extending [Mesh]. */
+        /* gdvirtual */ _surface_get_material(index: int64): null | Material
+        
+        /** Virtual method to override the number of blend shapes for a custom class extending [Mesh]. */
+        /* gdvirtual */ _get_blend_shape_count(): int64
+        
+        /** Virtual method to override the retrieval of blend shape names for a custom class extending [Mesh]. */
+        /* gdvirtual */ _get_blend_shape_name(index: int64): StringName
+        
+        /** Virtual method to override the names of blend shapes for a custom class extending [Mesh]. */
+        /* gdvirtual */ _set_blend_shape_name(index: int64, name: StringName): void
+        
+        /** Virtual method to override the [AABB] for a custom class extending [Mesh]. */
+        /* gdvirtual */ _get_aabb(): AABB
+        
+        /** Returns the smallest [AABB] enclosing this mesh in local space. Not affected by `custom_aabb`.  
+         *      
+         *  **Note:** This is only implemented for [ArrayMesh] and [PrimitiveMesh].  
+         */
+        get_aabb(): AABB
+        
+        /** Returns all the vertices that make up the faces of the mesh. Each three vertices represent one triangle. */
+        get_faces(): PackedVector3Array
+        
+        /** Returns the number of surfaces that the [Mesh] holds. This is equivalent to [method MeshInstance3D.get_surface_override_material_count]. */
+        get_surface_count(): int64
+        
+        /** Returns the arrays for the vertices, normals, UVs, etc. that make up the requested surface (see [method ArrayMesh.add_surface_from_arrays]). */
+        surface_get_arrays(surf_idx: int64): GArray
+        
+        /** Returns the blend shape arrays for the requested surface. */
+        surface_get_blend_shape_arrays(surf_idx: int64): GArray<GArray>
+        
+        /** Sets a [Material] for a given surface. Surface will be rendered using this material.  
+         *      
+         *  **Note:** This assigns the material within the [Mesh] resource, not the [Material] associated to the [MeshInstance3D]'s Surface Material Override properties. To set the [Material] associated to the [MeshInstance3D]'s Surface Material Override properties, use [method MeshInstance3D.set_surface_override_material] instead.  
+         */
+        surface_set_material(surf_idx: int64, material: Material): void
+        
+        /** Returns a [Material] in a given surface. Surface is rendered using this material.  
+         *      
+         *  **Note:** This returns the material within the [Mesh] resource, not the [Material] associated to the [MeshInstance3D]'s Surface Material Override properties. To get the [Material] associated to the [MeshInstance3D]'s Surface Material Override properties, use [method MeshInstance3D.get_surface_override_material] instead.  
+         */
+        surface_get_material(surf_idx: int64): null | Material
+        
+        /** Creates a placeholder version of this resource ([PlaceholderMesh]). */
+        create_placeholder(): Resource
+        
+        /** Calculate a [ConcavePolygonShape3D] from the mesh. */
+        create_trimesh_shape(): ConcavePolygonShape3D
+        
+        /** Calculate a [ConvexPolygonShape3D] from the mesh.  
+         *  If [param clean] is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.  
+         *  If [param simplify] is `true`, the geometry can be further simplified to reduce the number of vertices. Disabled by default.  
+         */
+        create_convex_shape(clean?: boolean /* = true */, simplify?: boolean /* = false */): ConvexPolygonShape3D
+        
+        /** Calculate an outline mesh at a defined offset (margin) from the original mesh.  
+         *      
+         *  **Note:** This method typically returns the vertices in reverse order (e.g. clockwise to counterclockwise).  
+         */
+        create_outline(margin: float64): Mesh
+        
+        /** Generate a [TriangleMesh] from the mesh. Considers only surfaces using one of these primitive types: [constant PRIMITIVE_TRIANGLES], [constant PRIMITIVE_TRIANGLE_STRIP]. */
+        generate_triangle_mesh(): null | TriangleMesh
+        
+        /** Sets a hint to be used for lightmap resolution. */
+        get lightmap_size_hint(): Vector2i
+        set lightmap_size_hint(value: Vector2i)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMesh;
+    }
+    namespace MeshConvexDecompositionSettings {
+        enum Mode {
+            /** Constant for voxel-based approximate convex decomposition. */
+            CONVEX_DECOMPOSITION_MODE_VOXEL = 0,
+            
+            /** Constant for tetrahedron-based approximate convex decomposition. */
+            CONVEX_DECOMPOSITION_MODE_TETRAHEDRON = 1,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMeshConvexDecompositionSettings extends __NameMapRefCounted {
+    }
+    /** Parameters to be used with a [Mesh] convex decomposition operation.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_meshconvexdecompositionsettings.html  
+     */
+    class MeshConvexDecompositionSettings extends RefCounted {
+        constructor(identifier?: any)
+        /** Maximum concavity. Ranges from `0.0` to `1.0`. */
+        get max_concavity(): float64
+        set max_concavity(value: float64)
+        
+        /** Controls the bias toward clipping along symmetry planes. Ranges from `0.0` to `1.0`. */
+        get symmetry_planes_clipping_bias(): float64
+        set symmetry_planes_clipping_bias(value: float64)
+        
+        /** Controls the bias toward clipping along revolution axes. Ranges from `0.0` to `1.0`. */
+        get revolution_axes_clipping_bias(): float64
+        set revolution_axes_clipping_bias(value: float64)
+        
+        /** Controls the adaptive sampling of the generated convex-hulls. Ranges from `0.0` to `0.01`. */
+        get min_volume_per_convex_hull(): float64
+        set min_volume_per_convex_hull(value: float64)
+        
+        /** Maximum number of voxels generated during the voxelization stage. */
+        get resolution(): int64
+        set resolution(value: int64)
+        
+        /** Controls the maximum number of triangles per convex-hull. Ranges from `4` to `1024`. */
+        get max_num_vertices_per_convex_hull(): int64
+        set max_num_vertices_per_convex_hull(value: int64)
+        
+        /** Controls the granularity of the search for the "best" clipping plane. Ranges from `1` to `16`. */
+        get plane_downsampling(): int64
+        set plane_downsampling(value: int64)
+        
+        /** Controls the precision of the convex-hull generation process during the clipping plane selection stage. Ranges from `1` to `16`. */
+        get convex_hull_downsampling(): int64
+        set convex_hull_downsampling(value: int64)
+        
+        /** If `true`, normalizes the mesh before applying the convex decomposition. */
+        get normalize_mesh(): boolean
+        set normalize_mesh(value: boolean)
+        
+        /** Mode for the approximate convex decomposition. */
+        get mode(): int64
+        set mode(value: int64)
+        
+        /** If `true`, uses approximation for computing convex hulls. */
+        get convex_hull_approximation(): boolean
+        set convex_hull_approximation(value: boolean)
+        
+        /** The maximum number of convex hulls to produce from the merge operation. */
+        get max_convex_hulls(): int64
+        set max_convex_hulls(value: int64)
+        
+        /** If `true`, projects output convex hull vertices onto the original source mesh to increase floating-point accuracy of the results. */
+        get project_hull_vertices(): boolean
+        set project_hull_vertices(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMeshConvexDecompositionSettings;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMeshDataTool extends __NameMapRefCounted {
+    }
+    /** Helper tool to access and edit [Mesh] data.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_meshdatatool.html  
+     */
+    class MeshDataTool extends RefCounted {
+        constructor(identifier?: any)
+        /** Clears all data currently in MeshDataTool. */
+        clear(): void
+        
+        /** Uses specified surface of given [Mesh] to populate data for MeshDataTool.  
+         *  Requires [Mesh] with primitive type [constant Mesh.PRIMITIVE_TRIANGLES].  
+         */
+        create_from_surface(mesh: ArrayMesh, surface: int64): Error
+        
+        /** Adds a new surface to specified [Mesh] with edited data. */
+        commit_to_surface(mesh: ArrayMesh, compression_flags?: int64 /* = 0 */): Error
+        
+        /** Returns the [Mesh]'s format as a combination of the [enum Mesh.ArrayFormat] flags. For example, a mesh containing both vertices and normals would return a format of `3` because [constant Mesh.ARRAY_FORMAT_VERTEX] is `1` and [constant Mesh.ARRAY_FORMAT_NORMAL] is `2`. */
+        get_format(): int64
+        
+        /** Returns the total number of vertices in [Mesh]. */
+        get_vertex_count(): int64
+        
+        /** Returns the number of edges in this [Mesh]. */
+        get_edge_count(): int64
+        
+        /** Returns the number of faces in this [Mesh]. */
+        get_face_count(): int64
+        
+        /** Sets the position of the given vertex. */
+        set_vertex(idx: int64, vertex: Vector3): void
+        
+        /** Returns the position of the given vertex. */
+        get_vertex(idx: int64): Vector3
+        
+        /** Sets the normal of the given vertex. */
+        set_vertex_normal(idx: int64, normal: Vector3): void
+        
+        /** Returns the normal of the given vertex. */
+        get_vertex_normal(idx: int64): Vector3
+        
+        /** Sets the tangent of the given vertex.  
+         *      
+         *  **Note:** Even though [param tangent] is a [Plane], it does not directly represent the tangent plane. Its [member Plane.x], [member Plane.y], and [member Plane.z] represent the tangent vector and [member Plane.d] should be either `-1` or `1`. See also [constant Mesh.ARRAY_TANGENT].  
+         */
+        set_vertex_tangent(idx: int64, tangent: Plane): void
+        
+        /** Returns the tangent of the given vertex. */
+        get_vertex_tangent(idx: int64): Plane
+        
+        /** Sets the UV of the given vertex. */
+        set_vertex_uv(idx: int64, uv: Vector2): void
+        
+        /** Returns the UV of the given vertex. */
+        get_vertex_uv(idx: int64): Vector2
+        
+        /** Sets the UV2 of the given vertex. */
+        set_vertex_uv2(idx: int64, uv2: Vector2): void
+        
+        /** Returns the UV2 of the given vertex. */
+        get_vertex_uv2(idx: int64): Vector2
+        
+        /** Sets the color of the given vertex. */
+        set_vertex_color(idx: int64, color: Color): void
+        
+        /** Returns the color of the given vertex. */
+        get_vertex_color(idx: int64): Color
+        
+        /** Sets the bones of the given vertex. */
+        set_vertex_bones(idx: int64, bones: PackedInt32Array | int32[]): void
+        
+        /** Returns the bones of the given vertex. */
+        get_vertex_bones(idx: int64): PackedInt32Array
+        
+        /** Sets the bone weights of the given vertex. */
+        set_vertex_weights(idx: int64, weights: PackedFloat32Array | float32[]): void
+        
+        /** Returns bone weights of the given vertex. */
+        get_vertex_weights(idx: int64): PackedFloat32Array
+        
+        /** Sets the metadata associated with the given vertex. */
+        set_vertex_meta(idx: int64, meta: any): void
+        
+        /** Returns the metadata associated with the given vertex. */
+        get_vertex_meta(idx: int64): any
+        
+        /** Returns an array of edges that share the given vertex. */
+        get_vertex_edges(idx: int64): PackedInt32Array
+        
+        /** Returns an array of faces that share the given vertex. */
+        get_vertex_faces(idx: int64): PackedInt32Array
+        
+        /** Returns the index of the specified [param vertex] connected to the edge at index [param idx].  
+         *  [param vertex] can only be `0` or `1`, as edges are composed of two vertices.  
+         */
+        get_edge_vertex(idx: int64, vertex: int64): int64
+        
+        /** Returns array of faces that touch given edge. */
+        get_edge_faces(idx: int64): PackedInt32Array
+        
+        /** Sets the metadata of the given edge. */
+        set_edge_meta(idx: int64, meta: any): void
+        
+        /** Returns meta information assigned to given edge. */
+        get_edge_meta(idx: int64): any
+        
+        /** Returns the specified vertex index of the given face.  
+         *  [param vertex] must be either `0`, `1`, or `2` because faces contain three vertices.  
+         *    
+         */
+        get_face_vertex(idx: int64, vertex: int64): int64
+        
+        /** Returns the edge associated with the face at index [param idx].  
+         *  [param edge] argument must be either `0`, `1`, or `2` because a face only has three edges.  
+         */
+        get_face_edge(idx: int64, edge: int64): int64
+        
+        /** Sets the metadata of the given face. */
+        set_face_meta(idx: int64, meta: any): void
+        
+        /** Returns the metadata associated with the given face. */
+        get_face_meta(idx: int64): any
+        
+        /** Calculates and returns the face normal of the given face. */
+        get_face_normal(idx: int64): Vector3
+        
+        /** Sets the material to be used by newly-constructed [Mesh]. */
+        set_material(material: Material): void
+        
+        /** Returns the material assigned to the [Mesh]. */
+        get_material(): null | Material
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMeshDataTool;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMeshInstance2D extends __NameMapNode2D {
+    }
+    /** Node used for displaying a [Mesh] in 2D.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_meshinstance2d.html  
+     */
+    class MeshInstance2D<Map extends NodePathMap = any> extends Node2D<Map> {
+        constructor(identifier?: any)
+        /** The [Mesh] that will be drawn by the [MeshInstance2D]. */
+        get mesh(): null | Mesh
+        set mesh(value: null | Mesh)
+        
+        /** The [Texture2D] that will be used if using the default [CanvasItemMaterial]. Can be accessed as `TEXTURE` in CanvasItem shader. */
+        get texture(): null | Texture2D
+        set texture(value: null | Texture2D)
+        
+        /** Emitted when the [member texture] is changed. */
+        readonly texture_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMeshInstance2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMeshInstance3D extends __NameMapGeometryInstance3D {
+    }
+    /** Node that instances meshes into a scenario.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_meshinstance3d.html  
+     */
+    class MeshInstance3D<Map extends NodePathMap = any> extends GeometryInstance3D<Map> {
+        constructor(identifier?: any)
+        /** Returns the internal [SkinReference] containing the skeleton's [RID] attached to this RID. See also [method Resource.get_rid], [method SkinReference.get_skeleton], and [method RenderingServer.instance_attach_skeleton]. */
+        get_skin_reference(): null | SkinReference
+        
+        /** Returns the number of surface override materials. This is equivalent to [method Mesh.get_surface_count]. See also [method get_surface_override_material]. */
+        get_surface_override_material_count(): int64
+        
+        /** Sets the override [param material] for the specified [param surface] of the [Mesh] resource. This material is associated with this [MeshInstance3D] rather than with [member mesh].  
+         *      
+         *  **Note:** This assigns the [Material] associated to the [MeshInstance3D]'s Surface Material Override properties, not the material within the [Mesh] resource. To set the material within the [Mesh] resource, use [method Mesh.surface_set_material] instead.  
+         */
+        set_surface_override_material(surface: int64, material: Material): void
+        
+        /** Returns the override [Material] for the specified [param surface] of the [Mesh] resource. See also [method get_surface_override_material_count].  
+         *      
+         *  **Note:** This returns the [Material] associated to the [MeshInstance3D]'s Surface Material Override properties, not the material within the [Mesh] resource. To get the material within the [Mesh] resource, use [method Mesh.surface_get_material] instead.  
+         */
+        get_surface_override_material(surface: int64): null | Material
+        
+        /** Returns the [Material] that will be used by the [Mesh] when drawing. This can return the [member GeometryInstance3D.material_override], the surface override [Material] defined in this [MeshInstance3D], or the surface [Material] defined in the [member mesh]. For example, if [member GeometryInstance3D.material_override] is used, all surfaces will return the override material.  
+         *  Returns `null` if no material is active, including when [member mesh] is `null`.  
+         */
+        get_active_material(surface: int64): null | Material
+        
+        /** This helper creates a [StaticBody3D] child node with a [ConcavePolygonShape3D] collision shape calculated from the mesh geometry. It's mainly used for testing. */
+        create_trimesh_collision(): void
+        
+        /** This helper creates a [StaticBody3D] child node with a [ConvexPolygonShape3D] collision shape calculated from the mesh geometry. It's mainly used for testing.  
+         *  If [param clean] is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.  
+         *  If [param simplify] is `true`, the geometry can be further simplified to reduce the number of vertices. Disabled by default.  
+         */
+        create_convex_collision(clean?: boolean /* = true */, simplify?: boolean /* = false */): void
+        
+        /** This helper creates a [StaticBody3D] child node with multiple [ConvexPolygonShape3D] collision shapes calculated from the mesh geometry via convex decomposition. The convex decomposition operation can be controlled with parameters from the optional [param settings]. */
+        create_multiple_convex_collisions(settings?: MeshConvexDecompositionSettings /* = undefined */): void
+        
+        /** Returns the number of blend shapes available. Produces an error if [member mesh] is `null`. */
+        get_blend_shape_count(): int64
+        
+        /** Returns the index of the blend shape with the given [param name]. Returns `-1` if no blend shape with this name exists, including when [member mesh] is `null`. */
+        find_blend_shape_by_name(name: StringName): int64
+        
+        /** Returns the value of the blend shape at the given [param blend_shape_idx]. Returns `0.0` and produces an error if [member mesh] is `null` or doesn't have a blend shape at that index. */
+        get_blend_shape_value(blend_shape_idx: int64): float64
+        
+        /** Sets the value of the blend shape at [param blend_shape_idx] to [param value]. Produces an error if [member mesh] is `null` or doesn't have a blend shape at that index. */
+        set_blend_shape_value(blend_shape_idx: int64, value: float64): void
+        
+        /** This helper creates a [MeshInstance3D] child node with gizmos at every vertex calculated from the mesh geometry. It's mainly used for testing. */
+        create_debug_tangents(): void
+        
+        /** Takes a snapshot from the current [ArrayMesh] with all blend shapes applied according to their current weights and bakes it to the provided [param existing] mesh. If no [param existing] mesh is provided a new [ArrayMesh] is created, baked and returned. Mesh surface materials are not copied.  
+         *  **Performance:** [Mesh] data needs to be received from the GPU, stalling the [RenderingServer] in the process.  
+         */
+        bake_mesh_from_current_blend_shape_mix(existing?: ArrayMesh /* = undefined */): null | ArrayMesh
+        
+        /** Takes a snapshot of the current animated skeleton pose of the skinned mesh and bakes it to the provided [param existing] mesh. If no [param existing] mesh is provided a new [ArrayMesh] is created, baked, and returned. Requires a skeleton with a registered skin to work. Blendshapes are ignored. Mesh surface materials are not copied.  
+         *  **Performance:** [Mesh] data needs to be retrieved from the GPU, stalling the [RenderingServer] in the process.  
+         */
+        bake_mesh_from_current_skeleton_pose(existing?: ArrayMesh /* = undefined */): null | ArrayMesh
+        
+        /** The [Mesh] resource for the instance. */
+        get mesh(): null | Mesh
+        set mesh(value: null | Mesh)
+        
+        /** The [Skin] to be used by this instance. */
+        get skin(): null | Skin
+        set skin(value: null | Skin)
+        
+        /** [NodePath] to the [Skeleton3D] associated with the instance.  
+         *      
+         *  **Note:** The default value of this property has changed in Godot 4.6. Enable [member ProjectSettings.animation/compatibility/default_parent_skeleton_in_mesh_instance_3d] if the old behavior is needed for compatibility.  
+         */
+        get skeleton(): NodePath
+        set skeleton(value: NodePath | string)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMeshInstance3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMeshLibrary extends __NameMapResource {
+    }
+    /** Library of meshes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_meshlibrary.html  
+     */
+    class MeshLibrary extends Resource {
+        constructor(identifier?: any)
+        /** Creates a new item in the library with the given ID.  
+         *  You can get an unused ID from [method get_last_unused_item_id].  
+         */
+        create_item(id: int64): void
+        
+        /** Sets the item's name.  
+         *  This name is shown in the editor. It can also be used to look up the item later using [method find_item_by_name].  
+         */
+        set_item_name(id: int64, name: string): void
+        
+        /** Sets the item's mesh. */
+        set_item_mesh(id: int64, mesh: Mesh): void
+        
+        /** Sets the transform to apply to the item's mesh. */
+        set_item_mesh_transform(id: int64, mesh_transform: Transform3D): void
+        
+        /** Sets the item's shadow casting mode to [param shadow_casting_setting]. */
+        set_item_mesh_cast_shadow(id: int64, shadow_casting_setting: RenderingServer.ShadowCastingSetting): void
+        
+        /** Sets the item's navigation mesh. */
+        set_item_navigation_mesh(id: int64, navigation_mesh: NavigationMesh): void
+        
+        /** Sets the transform to apply to the item's navigation mesh. */
+        set_item_navigation_mesh_transform(id: int64, navigation_mesh: Transform3D): void
+        
+        /** Sets the item's navigation layers bitmask. */
+        set_item_navigation_layers(id: int64, navigation_layers: int64): void
+        
+        /** Sets an item's collision shapes.  
+         *  The array should consist of [Shape3D] objects, each followed by a [Transform3D] that will be applied to it. For shapes that should not have a transform, use [constant Transform3D.IDENTITY].  
+         */
+        set_item_shapes(id: int64, shapes: GArray): void
+        
+        /** Sets a texture to use as the item's preview icon in the editor. */
+        set_item_preview(id: int64, texture: Texture2D): void
+        
+        /** Returns the item's name. */
+        get_item_name(id: int64): string
+        
+        /** Returns the item's mesh. */
+        get_item_mesh(id: int64): null | Mesh
+        
+        /** Returns the transform applied to the item's mesh. */
+        get_item_mesh_transform(id: int64): Transform3D
+        
+        /** Returns the item's shadow casting mode. */
+        get_item_mesh_cast_shadow(id: int64): RenderingServer.ShadowCastingSetting
+        
+        /** Returns the item's navigation mesh. */
+        get_item_navigation_mesh(id: int64): null | NavigationMesh
+        
+        /** Returns the transform applied to the item's navigation mesh. */
+        get_item_navigation_mesh_transform(id: int64): Transform3D
+        
+        /** Returns the item's navigation layers bitmask. */
+        get_item_navigation_layers(id: int64): int64
+        
+        /** Returns an item's collision shapes.  
+         *  The array consists of each [Shape3D] followed by its [Transform3D].  
+         */
+        get_item_shapes(id: int64): GArray
+        
+        /** When running in the editor, returns a generated item preview (a 3D rendering in isometric perspective). When used in a running project, returns the manually-defined item preview which can be set using [method set_item_preview]. Returns an empty [Texture2D] if no preview was manually set in a running project. */
+        get_item_preview(id: int64): null | Texture2D
+        
+        /** Removes the item. */
+        remove_item(id: int64): void
+        
+        /** Returns the first item with the given name, or `-1` if no item is found. */
+        find_item_by_name(name: string): int64
+        
+        /** Clears the library. */
+        clear(): void
+        
+        /** Returns the list of item IDs in use. */
+        get_item_list(): PackedInt32Array
+        
+        /** Gets an unused ID for a new item. */
+        get_last_unused_item_id(): int64
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMeshLibrary;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMeshTexture extends __NameMapTexture2D {
+    }
+    /** Simple texture that uses a mesh to draw itself.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_meshtexture.html  
+     */
+    class MeshTexture extends Texture2D {
+        constructor(identifier?: any)
+        /** Sets the mesh used to draw. It must be a mesh using 2D vertices. */
+        get mesh(): null | Mesh
+        set mesh(value: null | Mesh)
+        
+        /** Sets the base texture that the Mesh will use to draw. */
+        get base_texture(): null | Texture2D
+        set base_texture(value: null | Texture2D)
+        
+        /** Sets the size of the image, needed for reference. */
+        get image_size(): Vector2
+        set image_size(value: Vector2)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMeshTexture;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMethodTweener extends __NameMapTweener {
+    }
+    /** Interpolates an abstract value and supplies it to a method called over time.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_methodtweener.html  
+     */
+    class MethodTweener extends Tweener {
+        constructor(identifier?: any)
+        /** Sets the time in seconds after which the [MethodTweener] will start interpolating. By default there's no delay. */
+        set_delay(delay: float64): null | MethodTweener
+        
+        /** Sets the type of used transition from [enum Tween.TransitionType]. If not set, the default transition is used from the [Tween] that contains this Tweener. */
+        set_trans(trans: Tween.TransitionType): null | MethodTweener
+        
+        /** Sets the type of used easing from [enum Tween.EaseType]. If not set, the default easing is used from the [Tween] that contains this Tweener. */
+        set_ease(ease: Tween.EaseType): null | MethodTweener
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMethodTweener;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMissingNode extends __NameMapNode {
+    }
+    /** An internal editor class intended for keeping the data of unrecognized nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_missingnode.html  
+     */
+    class MissingNode<Map extends NodePathMap = any> extends Node<Map> {
+        constructor(identifier?: any)
+        /** The name of the class this node was supposed to be (see [method Object.get_class]). */
+        get original_class(): string
+        set original_class(value: string)
+        
+        /** Returns the path of the scene this node was instance of originally. */
+        get original_scene(): string
+        set original_scene(value: string)
+        
+        /** If `true`, allows new properties to be set along with existing ones. If `false`, only existing properties' values can be set, and new properties cannot be added. */
+        get recording_properties(): boolean
+        set recording_properties(value: boolean)
+        
+        /** If `true`, allows new signals to be connected to along with existing ones. If `false`, only existing signals can be connected to, and new signals cannot be added. */
+        get recording_signals(): boolean
+        set recording_signals(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMissingNode;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMissingResource extends __NameMapResource {
+    }
+    /** An internal editor class intended for keeping the data of unrecognized resources.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_missingresource.html  
+     */
+    class MissingResource extends Resource {
+        constructor(identifier?: any)
+        /** The name of the class this resource was supposed to be (see [method Object.get_class]). */
+        get original_class(): string
+        set original_class(value: string)
+        
+        /** If set to `true`, allows new properties to be added on top of the existing ones with [method Object.set]. */
+        get recording_properties(): boolean
+        set recording_properties(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMissingResource;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMobileVRInterface extends __NameMapXRInterface {
+    }
+    /** Generic mobile VR implementation.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_mobilevrinterface.html  
+     */
+    class MobileVRInterface extends XRInterface {
+        constructor(identifier?: any)
+        /** The height at which the camera is placed in relation to the ground (i.e. [XROrigin3D] node). */
+        get eye_height(): float64
+        set eye_height(value: float64)
+        
+        /** The interocular distance, also known as the interpupillary distance. The distance between the pupils of the left and right eye. */
+        get iod(): float64
+        set iod(value: float64)
+        
+        /** The width of the display in centimeters. */
+        get display_width(): float64
+        set display_width(value: float64)
+        
+        /** The distance between the display and the lenses inside of the device in centimeters. */
+        get display_to_lens(): float64
+        set display_to_lens(value: float64)
+        
+        /** Set the offset rect relative to the area being rendered. A length of 1 represents the whole rendering area on that axis. */
+        get offset_rect(): Rect2
+        set offset_rect(value: Rect2)
+        
+        /** The oversample setting. Because of the lens distortion we have to render our buffers at a higher resolution then the screen can natively handle. A value between 1.5 and 2.0 often provides good results but at the cost of performance. */
+        get oversample(): float64
+        set oversample(value: float64)
+        
+        /** The k1 lens factor is one of the two constants that define the strength of the lens used and directly influences the lens distortion effect. */
+        get k1(): float64
+        set k1(value: float64)
+        
+        /** The k2 lens factor, see k1. */
+        get k2(): float64
+        set k2(value: float64)
+        
+        /** The minimum radius around the focal point where full quality is guaranteed if VRS is used as a percentage of screen size.  
+         *      
+         *  **Note:** Mobile and Forward+ renderers only. Requires [member Viewport.vrs_mode] to be set to [constant Viewport.VRS_XR].  
+         */
+        get vrs_min_radius(): float64
+        set vrs_min_radius(value: float64)
+        
+        /** The strength used to calculate the VRS density map. The greater this value, the more noticeable VRS is. This improves performance at the cost of quality.  
+         *      
+         *  **Note:** Mobile and Forward+ renderers only. Requires [member Viewport.vrs_mode] to be set to [constant Viewport.VRS_XR].  
+         */
+        get vrs_strength(): float64
+        set vrs_strength(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMobileVRInterface;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapModifierBoneTarget3D extends __NameMapSkeletonModifier3D {
+    }
+    /** А node that dynamically copies the 3D transform of a bone in its parent [Skeleton3D].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_modifierbonetarget3d.html  
+     */
+    class ModifierBoneTarget3D<Map extends NodePathMap = any> extends SkeletonModifier3D<Map> {
+        constructor(identifier?: any)
+        /** The name of the attached bone. */
+        get bone_name(): string
+        set bone_name(value: string)
+        
+        /** The index of the attached bone. */
+        get bone(): int64
+        set bone(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapModifierBoneTarget3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMovieWriter extends __NameMapObject {
+    }
+    /** Abstract class for non-real-time video recording encoders.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_moviewriter.html  
+     */
+    class MovieWriter extends Object {
+        constructor(identifier?: any)
+        /** Called when the audio sample rate used for recording the audio is requested by the engine. The value returned must be specified in Hz. Defaults to 48000 Hz if [method _get_audio_mix_rate] is not overridden. */
+        /* gdvirtual */ _get_audio_mix_rate(): int64
+        
+        /** Called when the audio speaker mode used for recording the audio is requested by the engine. This can affect the number of output channels in the resulting audio file/stream. Defaults to [constant AudioServer.SPEAKER_MODE_STEREO] if [method _get_audio_speaker_mode] is not overridden. */
+        /* gdvirtual */ _get_audio_speaker_mode(): AudioServer.SpeakerMode
+        
+        /** Called when the engine determines whether this [MovieWriter] is able to handle the file at [param path]. Must return `true` if this [MovieWriter] is able to handle the given file path, `false` otherwise. Typically, [method _handles_file] is overridden as follows to allow the user to record a file at any path with a given file extension:  
+         *    
+         */
+        /* gdvirtual */ _handles_file(path: string): boolean
+        
+        /** Returns the list of supported filename extensions for movies written with this [MovieWriter]. */
+        /* gdvirtual */ _get_supported_extensions(): PackedStringArray
+        
+        /** Called once before the engine starts writing video and audio data. [param movie_size] is the width and height of the video to save. [param fps] is the number of frames per second specified in the project settings or using the `--fixed-fps <fps>` [url=https://docs.godotengine.org/en/4.6/tutorials/editor/command_line_tutorial.html]command line argument[/url]. */
+        /* gdvirtual */ _write_begin(movie_size: Vector2i, fps: int64, base_path: string): Error
+        
+        /** Called at the end of every rendered frame. The [param frame_image] and [param audio_frame_block] function arguments should be written to. */
+        /* gdvirtual */ _write_frame(frame_image: Image, audio_frame_block: int64): Error
+        
+        /** Called when the engine finishes writing. This occurs when the engine quits by pressing the window manager's close button, or when [method SceneTree.quit] is called.  
+         *      
+         *  **Note:** Pressing [kbd]Ctrl + C[/kbd] on the terminal running the editor/project does  *not*  result in [method _write_end] being called.  
+         */
+        /* gdvirtual */ _write_end(): void
+        
+        /** Adds a writer to be usable by the engine. The supported file extensions can be set by overriding [method _handles_file].  
+         *      
+         *  **Note:** [method add_writer] must be called early enough in the engine initialization to work, as movie writing is designed to start at the same time as the rest of the engine.  
+         */
+        static add_writer(writer: MovieWriter): void
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMovieWriter;
+    }
+    namespace MultiMesh {
+        enum TransformFormat {
+            /** Use this when using 2D transforms. */
+            TRANSFORM_2D = 0,
+            
+            /** Use this when using 3D transforms. */
+            TRANSFORM_3D = 1,
+        }
+        enum PhysicsInterpolationQuality {
+            /** Always interpolate using Basis lerping, which can produce warping artifacts in some situations. */
+            INTERP_QUALITY_FAST = 0,
+            
+            /** Attempt to interpolate using Basis slerping (spherical linear interpolation) where possible, otherwise fall back to lerping. */
+            INTERP_QUALITY_HIGH = 1,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMultiMesh extends __NameMapResource {
+    }
+    /** Provides high-performance drawing of a mesh multiple times using GPU instancing.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_multimesh.html  
+     */
+    class MultiMesh extends Resource {
+        constructor(identifier?: any)
+        /** Sets the [Transform3D] for a specific instance. */
+        set_instance_transform(instance: int64, transform: Transform3D): void
+        
+        /** Sets the [Transform2D] for a specific instance. */
+        set_instance_transform_2d(instance: int64, transform: Transform2D): void
+        
+        /** Returns the [Transform3D] of a specific instance. */
+        get_instance_transform(instance: int64): Transform3D
+        
+        /** Returns the [Transform2D] of a specific instance. */
+        get_instance_transform_2d(instance: int64): Transform2D
+        
+        /** Sets the color of a specific instance by  *multiplying*  the mesh's existing vertex colors. This allows for different color tinting per instance.  
+         *      
+         *  **Note:** Each component is stored in 32 bits in the Forward+ and Mobile rendering methods, but is packed into 16 bits in the Compatibility rendering method.  
+         *  For the color to take effect, ensure that [member use_colors] is `true` on the [MultiMesh] and [member BaseMaterial3D.vertex_color_use_as_albedo] is `true` on the material. If you intend to set an absolute color instead of tinting, make sure the material's albedo color is set to pure white (`Color(1, 1, 1)`).  
+         */
+        set_instance_color(instance: int64, color: Color): void
+        
+        /** Gets a specific instance's color multiplier. */
+        get_instance_color(instance: int64): Color
+        
+        /** Sets custom data for a specific instance. [param custom_data] is a [Color] type only to contain 4 floating-point numbers.  
+         *      
+         *  **Note:** Each number is stored in 32 bits in the Forward+ and Mobile rendering methods, but is packed into 16 bits in the Compatibility rendering method.  
+         *  For the custom data to be used, ensure that [member use_custom_data] is `true`.  
+         *  This custom instance data has to be manually accessed in your custom shader using `INSTANCE_CUSTOM`.  
+         */
+        set_instance_custom_data(instance: int64, custom_data: Color): void
+        
+        /** Returns the custom data that has been set for a specific instance. */
+        get_instance_custom_data(instance: int64): Color
+        
+        /** When using  *physics interpolation* , this function allows you to prevent interpolation on an instance in the current physics tick.  
+         *  This allows you to move instances instantaneously, and should usually be used when initially placing an instance such as a bullet to prevent graphical glitches.  
+         */
+        reset_instance_physics_interpolation(instance: int64): void
+        
+        /** When using  *physics interpolation* , this function allows you to prevent interpolation for all instances in the current physics tick.  
+         *  This allows you to move all instances instantaneously, and should usually be used when initially placing instances to prevent graphical glitches.  
+         */
+        reset_instances_physics_interpolation(): void
+        
+        /** Returns the visibility axis-aligned bounding box in local space. */
+        get_aabb(): AABB
+        
+        /** An alternative to setting the [member buffer] property, which can be used with  *physics interpolation* . This method takes two arrays, and can set the data for the current and previous tick in one go. The renderer will automatically interpolate the data at each frame.  
+         *  This is useful for situations where the order of instances may change from physics tick to tick, such as particle systems.  
+         *  When the order of instances is coherent, the simpler alternative of setting [member buffer] can still be used with interpolation.  
+         */
+        set_buffer_interpolated(buffer_curr: PackedFloat32Array | float32[], buffer_prev: PackedFloat32Array | float32[]): void
+        
+        /** Format of transform used to transform mesh, either 2D or 3D. */
+        get transform_format(): int64
+        set transform_format(value: int64)
+        
+        /** If `true`, the [MultiMesh] will use color data (see [method set_instance_color]). Can only be set when [member instance_count] is `0` or less. This means that you need to call this method before setting the instance count, or temporarily reset it to `0`. */
+        get use_colors(): boolean
+        set use_colors(value: boolean)
+        
+        /** If `true`, the [MultiMesh] will use custom data (see [method set_instance_custom_data]). Can only be set when [member instance_count] is `0` or less. This means that you need to call this method before setting the instance count, or temporarily reset it to `0`. */
+        get use_custom_data(): boolean
+        set use_custom_data(value: boolean)
+        
+        /** Custom AABB for this MultiMesh resource. Setting this manually prevents costly runtime AABB recalculations. */
+        get custom_aabb(): AABB
+        set custom_aabb(value: AABB)
+        
+        /** Number of instances that will get drawn. This clears and (re)sizes the buffers. Setting data format or flags afterwards will have no effect.  
+         *  By default, all instances are drawn but you can limit this with [member visible_instance_count].  
+         */
+        get instance_count(): int64
+        set instance_count(value: int64)
+        
+        /** Limits the number of instances drawn, -1 draws all instances. Changing this does not change the sizes of the buffers. */
+        get visible_instance_count(): int64
+        set visible_instance_count(value: int64)
+        
+        /** [Mesh] resource to be instanced.  
+         *  The looks of the individual instances can be modified using [method set_instance_color] and [method set_instance_custom_data].  
+         */
+        get mesh(): null | Mesh
+        set mesh(value: null | Mesh)
+        get buffer(): PackedFloat32Array
+        set buffer(value: PackedFloat32Array | float32[])
+        
+        /** Array containing each [Transform3D] value used by all instances of this mesh, as a [PackedVector3Array]. Each transform is divided into 4 [Vector3] values corresponding to the transforms' `x`, `y`, `z`, and `origin`. */
+        get transform_array(): PackedVector3Array
+        set transform_array(value: PackedVector3Array | Vector3[])
+        
+        /** Array containing each [Transform2D] value used by all instances of this mesh, as a [PackedVector2Array]. Each transform is divided into 3 [Vector2] values corresponding to the transforms' `x`, `y`, and `origin`. */
+        get transform_2d_array(): PackedVector2Array
+        set transform_2d_array(value: PackedVector2Array | Vector2[])
+        
+        /** Array containing each [Color] used by all instances of this mesh. */
+        get color_array(): PackedColorArray
+        set color_array(value: PackedColorArray | Color[])
+        
+        /** Array containing each custom data value used by all instances of this mesh, as a [PackedColorArray]. */
+        get custom_data_array(): PackedColorArray
+        set custom_data_array(value: PackedColorArray | Color[])
+        
+        /** Choose whether to use an interpolation method that favors speed or quality.  
+         *  When using low physics tick rates (typically below 20) or high rates of object rotation, you may get better results from the high quality setting.  
+         *      
+         *  **Note:** Fast quality does not equate to low quality. Except in the special cases mentioned above, the quality should be comparable to high quality.  
+         */
+        get physics_interpolation_quality(): int64
+        set physics_interpolation_quality(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMultiMesh;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMultiMeshInstance2D extends __NameMapNode2D {
+    }
+    /** Node that instances a [MultiMesh] in 2D.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_multimeshinstance2d.html  
+     */
+    class MultiMeshInstance2D<Map extends NodePathMap = any> extends Node2D<Map> {
+        constructor(identifier?: any)
+        /** The [MultiMesh] that will be drawn by the [MultiMeshInstance2D]. */
+        get multimesh(): null | MultiMesh
+        set multimesh(value: null | MultiMesh)
+        
+        /** The [Texture2D] that will be used if using the default [CanvasItemMaterial]. Can be accessed as `TEXTURE` in CanvasItem shader. */
+        get texture(): null | Texture2D
+        set texture(value: null | Texture2D)
+        
+        /** Emitted when the [member texture] is changed. */
+        readonly texture_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMultiMeshInstance2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMultiMeshInstance3D extends __NameMapGeometryInstance3D {
+    }
+    /** Node that instances a [MultiMesh].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_multimeshinstance3d.html  
+     */
+    class MultiMeshInstance3D<Map extends NodePathMap = any> extends GeometryInstance3D<Map> {
+        constructor(identifier?: any)
+        /** The [MultiMesh] resource that will be used and shared among all instances of the [MultiMeshInstance3D]. */
+        get multimesh(): null | MultiMesh
+        set multimesh(value: null | MultiMesh)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMultiMeshInstance3D;
+    }
+    namespace MultiplayerAPI {
+        enum RPCMode {
+            /** Used with [method Node.rpc_config] to disable a method or property for all RPC calls, making it unavailable. Default for all methods. */
+            RPC_MODE_DISABLED = 0,
+            
+            /** Used with [method Node.rpc_config] to set a method to be callable remotely by any peer. Analogous to the `@rpc("any_peer")` annotation. Calls are accepted from all remote peers, no matter if they are node's authority or not. */
+            RPC_MODE_ANY_PEER = 1,
+            
+            /** Used with [method Node.rpc_config] to set a method to be callable remotely only by the current multiplayer authority (which is the server by default). Analogous to the `@rpc("authority")` annotation. See [method Node.set_multiplayer_authority]. */
+            RPC_MODE_AUTHORITY = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMultiplayerAPI extends __NameMapRefCounted {
+    }
+    /** High-level multiplayer API interface.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_multiplayerapi.html  
+     */
+    class MultiplayerAPI extends RefCounted {
+        constructor(identifier?: any)
+        /** Returns `true` if there is a [member multiplayer_peer] set. */
+        has_multiplayer_peer(): boolean
+        
+        /** Returns the unique peer ID of this MultiplayerAPI's [member multiplayer_peer]. */
+        get_unique_id(): int64
+        
+        /** Returns `true` if this MultiplayerAPI's [member multiplayer_peer] is valid and in server mode (listening for connections). */
+        is_server(): boolean
+        
+        /** Returns the sender's peer ID for the RPC currently being executed.  
+         *      
+         *  **Note:** This method returns `0` when called outside of an RPC. As such, the original peer ID may be lost when code execution is delayed (such as with GDScript's `await` keyword).  
+         */
+        get_remote_sender_id(): int64
+        
+        /** Method used for polling the MultiplayerAPI. You only need to worry about this if you set [member SceneTree.multiplayer_poll] to `false`. By default, [SceneTree] will poll its MultiplayerAPI(s) for you.  
+         *      
+         *  **Note:** This method results in RPCs being called, so they will be executed in the same context of this function (e.g. `_process`, `physics`, [Thread]).  
+         */
+        poll(): Error
+        
+        /** Sends an RPC to the target [param peer]. The given [param method] will be called on the remote [param object] with the provided [param arguments]. The RPC may also be called locally depending on the implementation and RPC configuration. See [method Node.rpc] and [method Node.rpc_config].  
+         *      
+         *  **Note:** Prefer using [method Node.rpc], [method Node.rpc_id], or `my_method.rpc(peer, arg1, arg2, ...)` (in GDScript), since they are faster. This method is mostly useful in conjunction with [MultiplayerAPIExtension] when extending or replacing the multiplayer capabilities.  
+         */
+        rpc(peer: int64, object: Object, method: StringName, arguments_?: GArray /* = [] */): Error
+        
+        /** Notifies the MultiplayerAPI of a new [param configuration] for the given [param object]. This method is used internally by [SceneTree] to configure the root path for this MultiplayerAPI (passing `null` and a valid [NodePath] as [param configuration]). This method can be further used by MultiplayerAPI implementations to provide additional features, refer to specific implementation (e.g. [SceneMultiplayer]) for details on how they use it.  
+         *      
+         *  **Note:** This method is mostly relevant when extending or overriding the MultiplayerAPI behavior via [MultiplayerAPIExtension].  
+         */
+        object_configuration_add(object: Object, configuration: any): Error
+        
+        /** Notifies the MultiplayerAPI to remove a [param configuration] for the given [param object]. This method is used internally by [SceneTree] to configure the root path for this MultiplayerAPI (passing `null` and an empty [NodePath] as [param configuration]). This method can be further used by MultiplayerAPI implementations to provide additional features, refer to specific implementation (e.g. [SceneMultiplayer]) for details on how they use it.  
+         *      
+         *  **Note:** This method is mostly relevant when extending or overriding the MultiplayerAPI behavior via [MultiplayerAPIExtension].  
+         */
+        object_configuration_remove(object: Object, configuration: any): Error
+        
+        /** Returns the peer IDs of all connected peers of this MultiplayerAPI's [member multiplayer_peer]. */
+        get_peers(): PackedInt32Array
+        
+        /** Sets the default MultiplayerAPI implementation class. This method can be used by modules and extensions to configure which implementation will be used by [SceneTree] when the engine starts. */
+        static set_default_interface(interface_name: StringName): void
+        
+        /** Returns the default MultiplayerAPI implementation class name. This is usually `"SceneMultiplayer"` when [SceneMultiplayer] is available. See [method set_default_interface]. */
+        static get_default_interface(): StringName
+        
+        /** Returns a new instance of the default MultiplayerAPI. */
+        static create_default_interface(): MultiplayerAPI
+        
+        /** The peer object to handle the RPC system (effectively enabling networking when set). Depending on the peer itself, the MultiplayerAPI will become a network server (check with [method is_server]) and will set root node's network mode to authority, or it will become a regular client peer. All child nodes are set to inherit the network mode by default. Handling of networking-related events (connection, disconnection, new clients) is done by connecting to MultiplayerAPI's signals. */
+        get multiplayer_peer(): null | MultiplayerPeer
+        set multiplayer_peer(value: null | MultiplayerPeer)
+        
+        /** Emitted when this MultiplayerAPI's [member multiplayer_peer] connects with a new peer. ID is the peer ID of the new peer. Clients get notified when other clients connect to the same server. Upon connecting to a server, a client also receives this signal for the server (with ID being 1). */
+        readonly peer_connected: Signal<(id: int64) => void>
+        
+        /** Emitted when this MultiplayerAPI's [member multiplayer_peer] disconnects from a peer. Clients get notified when other clients disconnect from the same server. */
+        readonly peer_disconnected: Signal<(id: int64) => void>
+        
+        /** Emitted when this MultiplayerAPI's [member multiplayer_peer] successfully connected to a server. Only emitted on clients. */
+        readonly connected_to_server: Signal<() => void>
+        
+        /** Emitted when this MultiplayerAPI's [member multiplayer_peer] fails to establish a connection to a server. Only emitted on clients. */
+        readonly connection_failed: Signal<() => void>
+        
+        /** Emitted when this MultiplayerAPI's [member multiplayer_peer] disconnects from server. Only emitted on clients. */
+        readonly server_disconnected: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMultiplayerAPI;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMultiplayerAPIExtension extends __NameMapMultiplayerAPI {
+    }
+    /** Base class used for extending the [MultiplayerAPI].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_multiplayerapiextension.html  
+     */
+    class MultiplayerAPIExtension extends MultiplayerAPI {
+        constructor(identifier?: any)
+        /** Callback for [method MultiplayerAPI.poll]. */
+        /* gdvirtual */ _poll(): Error
+        
+        /** Called when the [member MultiplayerAPI.multiplayer_peer] is set. */
+        /* gdvirtual */ _set_multiplayer_peer(multiplayer_peer: MultiplayerPeer): void
+        
+        /** Called when the [member MultiplayerAPI.multiplayer_peer] is retrieved. */
+        /* gdvirtual */ _get_multiplayer_peer(): null | MultiplayerPeer
+        
+        /** Callback for [method MultiplayerAPI.get_unique_id]. */
+        /* gdvirtual */ _get_unique_id(): int64
+        
+        /** Callback for [method MultiplayerAPI.get_peers]. */
+        /* gdvirtual */ _get_peer_ids(): PackedInt32Array
+        
+        /** Callback for [method MultiplayerAPI.rpc]. */
+        /* gdvirtual */ _rpc(peer: int64, object: Object, method: StringName, args: GArray): Error
+        
+        /** Callback for [method MultiplayerAPI.get_remote_sender_id]. */
+        /* gdvirtual */ _get_remote_sender_id(): int64
+        
+        /** Callback for [method MultiplayerAPI.object_configuration_add]. */
+        /* gdvirtual */ _object_configuration_add(object: Object, configuration: any): Error
+        
+        /** Callback for [method MultiplayerAPI.object_configuration_remove]. */
+        /* gdvirtual */ _object_configuration_remove(object: Object, configuration: any): Error
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMultiplayerAPIExtension;
+    }
+    namespace MultiplayerPeer {
+        enum ConnectionStatus {
+            /** The MultiplayerPeer is disconnected. */
+            CONNECTION_DISCONNECTED = 0,
+            
+            /** The MultiplayerPeer is currently connecting to a server. */
+            CONNECTION_CONNECTING = 1,
+            
+            /** This MultiplayerPeer is connected. */
+            CONNECTION_CONNECTED = 2,
+        }
+        enum TransferMode {
+            /** Packets are not acknowledged, no resend attempts are made for lost packets. Packets may arrive in any order. Potentially faster than [constant TRANSFER_MODE_UNRELIABLE_ORDERED]. Use for non-critical data, and always consider whether the order matters. */
+            TRANSFER_MODE_UNRELIABLE = 0,
+            
+            /** Packets are not acknowledged, no resend attempts are made for lost packets. Packets are received in the order they were sent in. Potentially faster than [constant TRANSFER_MODE_RELIABLE]. Use for non-critical data or data that would be outdated if received late due to resend attempt(s) anyway, for example movement and positional data. */
+            TRANSFER_MODE_UNRELIABLE_ORDERED = 1,
+            
+            /** Packets must be received and resend attempts should be made until the packets are acknowledged. Packets must be received in the order they were sent in. Most reliable transfer mode, but potentially the slowest due to the overhead. Use for critical data that must be transmitted and arrive in order, for example an ability being triggered or a chat message. Consider carefully if the information really is critical, and use sparingly. */
+            TRANSFER_MODE_RELIABLE = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMultiplayerPeer extends __NameMapPacketPeer {
+    }
+    /** Abstract class for specialized [PacketPeer]s used by the [MultiplayerAPI].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_multiplayerpeer.html  
+     */
+    class MultiplayerPeer extends PacketPeer {
+        /** Packets are sent to all connected peers. */
+        static readonly TARGET_PEER_BROADCAST = 0
+        
+        /** Packets are sent to the remote peer acting as server. */
+        static readonly TARGET_PEER_SERVER = 1
+        constructor(identifier?: any)
+        
+        /** Sets the peer to which packets will be sent.  
+         *  The [param id] can be one of: [constant TARGET_PEER_BROADCAST] to send to all connected peers, [constant TARGET_PEER_SERVER] to send to the peer acting as server, a valid peer ID to send to that specific peer, a negative peer ID to send to all peers except that one. By default, the target peer is [constant TARGET_PEER_BROADCAST].  
+         */
+        set_target_peer(id: int64): void
+        
+        /** Returns the ID of the [MultiplayerPeer] who sent the next available packet. See [method PacketPeer.get_available_packet_count]. */
+        get_packet_peer(): int64
+        
+        /** Returns the channel over which the next available packet was received. See [method PacketPeer.get_available_packet_count]. */
+        get_packet_channel(): int64
+        
+        /** Returns the transfer mode the remote peer used to send the next available packet. See [method PacketPeer.get_available_packet_count]. */
+        get_packet_mode(): MultiplayerPeer.TransferMode
+        
+        /** Waits up to 1 second to receive a new network event. */
+        poll(): void
+        
+        /** Immediately close the multiplayer peer returning to the state [constant CONNECTION_DISCONNECTED]. Connected peers will be dropped without emitting [signal peer_disconnected]. */
+        close(): void
+        
+        /** Disconnects the given [param peer] from this host. If [param force] is `true` the [signal peer_disconnected] signal will not be emitted for this peer. */
+        disconnect_peer(peer: int64, force?: boolean /* = false */): void
+        
+        /** Returns the current state of the connection. */
+        get_connection_status(): MultiplayerPeer.ConnectionStatus
+        
+        /** Returns the ID of this [MultiplayerPeer]. */
+        get_unique_id(): int64
+        
+        /** Returns a randomly generated integer that can be used as a network unique ID. */
+        generate_unique_id(): int64
+        
+        /** Returns `true` if the server can act as a relay in the current configuration. That is, if the higher level [MultiplayerAPI] should notify connected clients of other peers, and implement a relay protocol to allow communication between them. */
+        is_server_relay_supported(): boolean
+        
+        /** If `true`, this [MultiplayerPeer] refuses new connections. */
+        get refuse_new_connections(): boolean
+        set refuse_new_connections(value: boolean)
+        
+        /** The manner in which to send packets to the target peer. See the [method set_target_peer] method. */
+        get transfer_mode(): int64
+        set transfer_mode(value: int64)
+        
+        /** The channel to use to send packets. Many network APIs such as ENet and WebRTC allow the creation of multiple independent channels which behaves, in a way, like separate connections. This means that reliable data will only block delivery of other packets on that channel, and ordering will only be in respect to the channel the packet is being sent on. Using different channels to send **different and independent** state updates is a common way to optimize network usage and decrease latency in fast-paced games.  
+         *      
+         *  **Note:** The default channel (`0`) actually works as 3 separate channels (one for each [enum TransferMode]) so that [constant TRANSFER_MODE_RELIABLE] and [constant TRANSFER_MODE_UNRELIABLE_ORDERED] does not interact with each other by default. Refer to the specific network API documentation (e.g. ENet or WebRTC) to learn how to set up channels correctly.  
+         */
+        get transfer_channel(): int64
+        set transfer_channel(value: int64)
+        
+        /** Emitted when a remote peer connects. */
+        readonly peer_connected: Signal<(id: int64) => void>
+        
+        /** Emitted when a remote peer has disconnected. */
+        readonly peer_disconnected: Signal<(id: int64) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMultiplayerPeer;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMultiplayerPeerExtension extends __NameMapMultiplayerPeer {
+    }
+    /** Class that can be inherited to implement custom multiplayer API networking layers via GDExtension.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_multiplayerpeerextension.html  
+     */
+    class MultiplayerPeerExtension extends MultiplayerPeer {
+        constructor(identifier?: any)
+        /** Called when a packet needs to be received by the [MultiplayerAPI], with [param r_buffer_size] being the size of the binary [param r_buffer] in bytes. */
+        /* gdvirtual */ _get_packet(r_buffer: int64, r_buffer_size: int64): Error
+        
+        /** Called when a packet needs to be sent by the [MultiplayerAPI], with [param p_buffer_size] being the size of the binary [param p_buffer] in bytes. */
+        /* gdvirtual */ _put_packet(p_buffer: int64, p_buffer_size: int64): Error
+        
+        /** Called when the available packet count is internally requested by the [MultiplayerAPI]. */
+        /* gdvirtual */ _get_available_packet_count(): int64
+        
+        /** Called when the maximum allowed packet size (in bytes) is requested by the [MultiplayerAPI]. */
+        /* gdvirtual */ _get_max_packet_size(): int64
+        
+        /** Called when a packet needs to be received by the [MultiplayerAPI], if [method _get_packet] isn't implemented. Use this when extending this class via GDScript. */
+        /* gdvirtual */ _get_packet_script(): PackedByteArray
+        
+        /** Called when a packet needs to be sent by the [MultiplayerAPI], if [method _put_packet] isn't implemented. Use this when extending this class via GDScript. */
+        /* gdvirtual */ _put_packet_script(p_buffer: PackedByteArray | byte[] | ArrayBuffer): Error
+        
+        /** Called to get the channel over which the next available packet was received. See [method MultiplayerPeer.get_packet_channel]. */
+        /* gdvirtual */ _get_packet_channel(): int64
+        
+        /** Called to get the transfer mode the remote peer used to send the next available packet. See [method MultiplayerPeer.get_packet_mode]. */
+        /* gdvirtual */ _get_packet_mode(): MultiplayerPeer.TransferMode
+        
+        /** Called when the channel to use is set for this [MultiplayerPeer] (see [member MultiplayerPeer.transfer_channel]). */
+        /* gdvirtual */ _set_transfer_channel(p_channel: int64): void
+        
+        /** Called when the transfer channel to use is read on this [MultiplayerPeer] (see [member MultiplayerPeer.transfer_channel]). */
+        /* gdvirtual */ _get_transfer_channel(): int64
+        
+        /** Called when the transfer mode is set on this [MultiplayerPeer] (see [member MultiplayerPeer.transfer_mode]). */
+        /* gdvirtual */ _set_transfer_mode(p_mode: MultiplayerPeer.TransferMode): void
+        
+        /** Called when the transfer mode to use is read on this [MultiplayerPeer] (see [member MultiplayerPeer.transfer_mode]). */
+        /* gdvirtual */ _get_transfer_mode(): MultiplayerPeer.TransferMode
+        
+        /** Called when the target peer to use is set for this [MultiplayerPeer] (see [method MultiplayerPeer.set_target_peer]). */
+        /* gdvirtual */ _set_target_peer(p_peer: int64): void
+        
+        /** Called when the ID of the [MultiplayerPeer] who sent the most recent packet is requested (see [method MultiplayerPeer.get_packet_peer]). */
+        /* gdvirtual */ _get_packet_peer(): int64
+        
+        /** Called when the "is server" status is requested on the [MultiplayerAPI]. See [method MultiplayerAPI.is_server]. */
+        /* gdvirtual */ _is_server(): boolean
+        
+        /** Called when the [MultiplayerAPI] is polled. See [method MultiplayerAPI.poll]. */
+        /* gdvirtual */ _poll(): void
+        
+        /** Called when the multiplayer peer should be immediately closed (see [method MultiplayerPeer.close]). */
+        /* gdvirtual */ _close(): void
+        
+        /** Called when the connected [param p_peer] should be forcibly disconnected (see [method MultiplayerPeer.disconnect_peer]). */
+        /* gdvirtual */ _disconnect_peer(p_peer: int64, p_force: boolean): void
+        
+        /** Called when the unique ID of this [MultiplayerPeer] is requested (see [method MultiplayerPeer.get_unique_id]). The value must be between `1` and `2147483647`. */
+        /* gdvirtual */ _get_unique_id(): int64
+        
+        /** Called when the "refuse new connections" status is set on this [MultiplayerPeer] (see [member MultiplayerPeer.refuse_new_connections]). */
+        /* gdvirtual */ _set_refuse_new_connections(p_enable: boolean): void
+        
+        /** Called when the "refuse new connections" status is requested on this [MultiplayerPeer] (see [member MultiplayerPeer.refuse_new_connections]). */
+        /* gdvirtual */ _is_refusing_new_connections(): boolean
+        
+        /** Called to check if the server can act as a relay in the current configuration. See [method MultiplayerPeer.is_server_relay_supported]. */
+        /* gdvirtual */ _is_server_relay_supported(): boolean
+        
+        /** Called when the connection status is requested on the [MultiplayerPeer] (see [method MultiplayerPeer.get_connection_status]). */
+        /* gdvirtual */ _get_connection_status(): MultiplayerPeer.ConnectionStatus
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMultiplayerPeerExtension;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMultiplayerSpawner extends __NameMapNode {
+    }
+    /** Automatically replicates spawnable nodes from the authority to other multiplayer peers.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_multiplayerspawner.html  
+     */
+    class MultiplayerSpawner<Map extends NodePathMap = any> extends Node<Map> {
+        constructor(identifier?: any)
+        /** Adds a scene path to spawnable scenes, making it automatically replicated from the multiplayer authority to other peers when added as children of the node pointed by [member spawn_path]. */
+        add_spawnable_scene(path: string): void
+        
+        /** Returns the count of spawnable scene paths. */
+        get_spawnable_scene_count(): int64
+        
+        /** Returns the spawnable scene path by index. */
+        get_spawnable_scene(index: int64): string
+        
+        /** Clears all spawnable scenes. Does not despawn existing instances on remote peers. */
+        clear_spawnable_scenes(): void
+        
+        /** Requests a custom spawn, with [param data] passed to [member spawn_function] on all peers. Returns the locally spawned node instance already inside the scene tree, and added as a child of the node pointed by [member spawn_path].  
+         *      
+         *  **Note:** Spawnable scenes are spawned automatically. [method spawn] is only needed for custom spawns.  
+         */
+        spawn(data?: any /* = <any> {} */): null | Node
+        get _spawnable_scenes(): PackedStringArray
+        set _spawnable_scenes(value: PackedStringArray | string[])
+        
+        /** Path to the spawn root. Spawnable scenes that are added as direct children are replicated to other peers. */
+        get spawn_path(): NodePath
+        set spawn_path(value: NodePath | string)
+        
+        /** Maximum number of nodes allowed to be spawned by this spawner. Includes both spawnable scenes and custom spawns.  
+         *  When set to `0` (the default), there is no limit.  
+         */
+        get spawn_limit(): int64
+        set spawn_limit(value: int64)
+        
+        /** Method called on all peers when a custom [method spawn] is requested by the authority. Will receive the `data` parameter, and should return a [Node] that is not in the scene tree.  
+         *      
+         *  **Note:** The returned node should **not** be added to the scene with [method Node.add_child]. This is done automatically.  
+         */
+        get spawn_function(): Callable
+        set spawn_function(value: Callable)
+        
+        /** Emitted when a spawnable scene or custom spawn was despawned by the multiplayer authority. Only called on remote peers. */
+        readonly despawned: Signal<(node: Node) => void>
+        
+        /** Emitted when a spawnable scene or custom spawn was spawned by the multiplayer authority. Only called on remote peers. */
+        readonly spawned: Signal<(node: Node) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMultiplayerSpawner;
+    }
+    namespace MultiplayerSynchronizer {
+        enum VisibilityUpdateMode {
+            /** Visibility filters are updated during process frames (see [constant Node.NOTIFICATION_INTERNAL_PROCESS]). */
+            VISIBILITY_PROCESS_IDLE = 0,
+            
+            /** Visibility filters are updated during physics frames (see [constant Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS]). */
+            VISIBILITY_PROCESS_PHYSICS = 1,
+            
+            /** Visibility filters are not updated automatically, and must be updated manually by calling [method update_visibility]. */
+            VISIBILITY_PROCESS_NONE = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMultiplayerSynchronizer extends __NameMapNode {
+    }
+    /** Synchronizes properties from the multiplayer authority to the remote peers.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_multiplayersynchronizer.html  
+     */
+    class MultiplayerSynchronizer<Map extends NodePathMap = any> extends Node<Map> {
+        constructor(identifier?: any)
+        /** Updates the visibility of [param for_peer] according to visibility filters. If [param for_peer] is `0` (the default), all peers' visibilties are updated. */
+        update_visibility(for_peer?: int64 /* = 0 */): void
+        
+        /** Adds a peer visibility filter for this synchronizer.  
+         *  [param filter] should take a peer ID [int] and return a [bool].  
+         */
+        add_visibility_filter(filter: Callable): void
+        
+        /** Removes a peer visibility filter from this synchronizer. */
+        remove_visibility_filter(filter: Callable): void
+        
+        /** Sets the visibility of [param peer] to [param visible]. If [param peer] is `0`, the value of [member public_visibility] will be updated instead. */
+        set_visibility_for(peer: int64, visible: boolean): void
+        
+        /** Queries the current visibility for peer [param peer]. */
+        get_visibility_for(peer: int64): boolean
+        
+        /** Node path that replicated properties are relative to.  
+         *  If [member root_path] was spawned by a [MultiplayerSpawner], the node will be also be spawned and despawned based on this synchronizer visibility options.  
+         */
+        get root_path(): NodePath
+        set root_path(value: NodePath | string)
+        
+        /** Time interval between synchronizations. Used when the replication is set to [constant SceneReplicationConfig.REPLICATION_MODE_ALWAYS]. If set to `0.0` (the default), synchronizations happen every network process frame. */
+        get replication_interval(): float64
+        set replication_interval(value: float64)
+        
+        /** Time interval between delta synchronizations. Used when the replication is set to [constant SceneReplicationConfig.REPLICATION_MODE_ON_CHANGE]. If set to `0.0` (the default), delta synchronizations happen every network process frame. */
+        get delta_interval(): float64
+        set delta_interval(value: float64)
+        
+        /** Resource containing which properties to synchronize. */
+        get replication_config(): null | SceneReplicationConfig
+        set replication_config(value: null | SceneReplicationConfig)
+        
+        /** Specifies when visibility filters are updated. */
+        get visibility_update_mode(): int64
+        set visibility_update_mode(value: int64)
+        
+        /** Whether synchronization should be visible to all peers by default. See [method set_visibility_for] and [method add_visibility_filter] for ways of configuring fine-grained visibility options. */
+        get public_visibility(): boolean
+        set public_visibility(value: boolean)
+        
+        /** Emitted when a new synchronization state is received by this synchronizer after the properties have been updated. */
+        readonly synchronized: Signal<() => void>
+        
+        /** Emitted when a new delta synchronization state is received by this synchronizer after the properties have been updated. */
+        readonly delta_synchronized: Signal<() => void>
+        
+        /** Emitted when visibility of [param for_peer] is updated. See [method update_visibility]. */
+        readonly visibility_changed: Signal<(for_peer: int64) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMultiplayerSynchronizer;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapMutex extends __NameMapRefCounted {
+    }
+    /** A binary [Semaphore] for synchronization of multiple [Thread]s.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_mutex.html  
+     */
+    class Mutex extends RefCounted {
+        constructor(identifier?: any)
+        /** Locks this [Mutex], blocks until it is unlocked by the current owner.  
+         *      
+         *  **Note:** This function returns without blocking if the thread already has ownership of the mutex.  
+         */
+        lock(): void
+        
+        /** Tries locking this [Mutex], but does not block. Returns `true` on success, `false` otherwise.  
+         *      
+         *  **Note:** This function returns `true` if the thread already has ownership of the mutex.  
+         */
+        try_lock(): boolean
+        
+        /** Unlocks this [Mutex], leaving it to other threads.  
+         *      
+         *  **Note:** If a thread called [method lock] or [method try_lock] multiple times while already having ownership of the mutex, it must also call [method unlock] the same number of times in order to unlock it correctly.  
+         *  **Warning:** Calling [method unlock] more times than [method lock] on a given thread, thus ending up trying to unlock a non-locked mutex, is wrong and may causes crashes or deadlocks.  
+         */
+        unlock(): void
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapMutex;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapNavigationAgent2D extends __NameMapNode {
+    }
+    /** A 2D agent used to pathfind to a position while avoiding obstacles.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_navigationagent2d.html  
+     */
+    class NavigationAgent2D<Map extends NodePathMap = any> extends Node<Map> {
+        constructor(identifier?: any)
+        /** Returns the [RID] of this agent on the [NavigationServer2D]. */
+        get_rid(): RID
+        
+        /** Based on [param value], enables or disables the specified layer in the [member navigation_layers] bitmask, given a [param layer_number] between 1 and 32. */
+        set_navigation_layer_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member navigation_layers] bitmask is enabled, given a [param layer_number] between 1 and 32. */
+        get_navigation_layer_value(layer_number: int64): boolean
+        
+        /** Sets the [RID] of the navigation map this NavigationAgent node should use and also updates the `agent` on the NavigationServer. */
+        set_navigation_map(navigation_map: RID): void
+        
+        /** Returns the [RID] of the navigation map for this NavigationAgent node. This function returns always the map set on the NavigationAgent node and not the map of the abstract agent on the NavigationServer. If the agent map is changed directly with the NavigationServer API the NavigationAgent node will not be aware of the map change. Use [method set_navigation_map] to change the navigation map for the NavigationAgent and also update the agent on the NavigationServer. */
+        get_navigation_map(): RID
+        
+        /** Returns the length of the currently calculated path. The returned value is `0.0`, if the path is still calculating or no calculation has been requested yet. */
+        get_path_length(): float64
+        
+        /** Returns the next position in global coordinates that can be moved to, making sure that there are no static objects in the way. If the agent does not have a navigation path, it will return the position of the agent's parent. The use of this function once every physics frame is required to update the internal path logic of the NavigationAgent. */
+        get_next_path_position(): Vector2
+        
+        /** Replaces the internal velocity in the collision avoidance simulation with [param velocity]. When an agent is teleported to a new position this function should be used in the same frame. If called frequently this function can get agents stuck. */
+        set_velocity_forced(velocity: Vector2): void
+        
+        /** Returns the distance to the target position, using the agent's global position. The user must set [member target_position] in order for this to be accurate. */
+        distance_to_target(): float64
+        
+        /** Returns the path query result for the path the agent is currently following. */
+        get_current_navigation_result(): null | NavigationPathQueryResult2D
+        
+        /** Returns this agent's current path from start to finish in global coordinates. The path only updates when the target position is changed or the agent requires a repath. The path array is not intended to be used in direct path movement as the agent has its own internal path logic that would get corrupted by changing the path array manually. Use the intended [method get_next_path_position] once every physics frame to receive the next path point for the agents movement as this function also updates the internal path logic. */
+        get_current_navigation_path(): PackedVector2Array
+        
+        /** Returns which index the agent is currently on in the navigation path's [PackedVector2Array]. */
+        get_current_navigation_path_index(): int64
+        
+        /** Returns `true` if the agent reached the target, i.e. the agent moved within [member target_desired_distance] of the [member target_position]. It may not always be possible to reach the target but it should always be possible to reach the final position. See [method get_final_position]. */
+        is_target_reached(): boolean
+        
+        /** Returns `true` if [method get_final_position] is within [member target_desired_distance] of the [member target_position]. */
+        is_target_reachable(): boolean
+        
+        /** Returns `true` if the agent's navigation has finished. If the target is reachable, navigation ends when the target is reached. If the target is unreachable, navigation ends when the last waypoint of the path is reached.  
+         *      
+         *  **Note:** While `true` prefer to stop calling update functions like [method get_next_path_position]. This avoids jittering the standing agent due to calling repeated path updates.  
+         */
+        is_navigation_finished(): boolean
+        
+        /** Returns the reachable final position of the current navigation path in global coordinates. This position can change if the agent needs to update the navigation path which makes the agent emit the [signal path_changed] signal. */
+        get_final_position(): Vector2
+        _avoidance_done(new_velocity: Vector2): void
+        
+        /** Based on [param value], enables or disables the specified layer in the [member avoidance_layers] bitmask, given a [param layer_number] between 1 and 32. */
+        set_avoidance_layer_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member avoidance_layers] bitmask is enabled, given a [param layer_number] between 1 and 32. */
+        get_avoidance_layer_value(layer_number: int64): boolean
+        
+        /** Based on [param value], enables or disables the specified mask in the [member avoidance_mask] bitmask, given a [param mask_number] between 1 and 32. */
+        set_avoidance_mask_value(mask_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified mask of the [member avoidance_mask] bitmask is enabled, given a [param mask_number] between 1 and 32. */
+        get_avoidance_mask_value(mask_number: int64): boolean
+        
+        /** If set, a new navigation path from the current agent position to the [member target_position] is requested from the NavigationServer. */
+        get target_position(): Vector2
+        set target_position(value: Vector2)
+        
+        /** The distance threshold before a path point is considered to be reached. This allows agents to not have to hit a path point on the path exactly, but only to reach its general area. If this value is set too high, the NavigationAgent will skip points on the path, which can lead to it leaving the navigation mesh. If this value is set too low, the NavigationAgent will be stuck in a repath loop because it will constantly overshoot the distance to the next point on each physics frame update. */
+        get path_desired_distance(): float64
+        set path_desired_distance(value: float64)
+        
+        /** The distance threshold before the target is considered to be reached. On reaching the target, [signal target_reached] is emitted and navigation ends (see [method is_navigation_finished] and [signal navigation_finished]).  
+         *  You can make navigation end early by setting this property to a value greater than [member path_desired_distance] (navigation will end before reaching the last waypoint).  
+         *  You can also make navigation end closer to the target than each individual path position by setting this property to a value lower than [member path_desired_distance] (navigation won't immediately end when reaching the last waypoint). However, if the value set is too low, the agent will be stuck in a repath loop because it will constantly overshoot the distance to the target on each physics frame update.  
+         */
+        get target_desired_distance(): float64
+        set target_desired_distance(value: float64)
+        
+        /** The maximum distance the agent is allowed away from the ideal path to the final position. This can happen due to trying to avoid collisions. When the maximum distance is exceeded, it recalculates the ideal path. */
+        get path_max_distance(): float64
+        set path_max_distance(value: float64)
+        
+        /** A bitfield determining which navigation layers of navigation regions this agent will use to calculate a path. Changing it during runtime will clear the current navigation path and generate a new one, according to the new navigation layers. */
+        get navigation_layers(): int64
+        set navigation_layers(value: int64)
+        
+        /** The pathfinding algorithm used in the path query. */
+        get pathfinding_algorithm(): int64
+        set pathfinding_algorithm(value: int64)
+        
+        /** The path postprocessing applied to the raw path corridor found by the [member pathfinding_algorithm]. */
+        get path_postprocessing(): int64
+        set path_postprocessing(value: int64)
+        
+        /** Additional information to return with the navigation path. */
+        get path_metadata_flags(): int64
+        set path_metadata_flags(value: int64)
+        
+        /** If `true` a simplified version of the path will be returned with less critical path points removed. The simplification amount is controlled by [member simplify_epsilon]. The simplification uses a variant of Ramer-Douglas-Peucker algorithm for curve point decimation.  
+         *  Path simplification can be helpful to mitigate various path following issues that can arise with certain agent types and script behaviors. E.g. "steering" agents or avoidance in "open fields".  
+         */
+        get simplify_path(): boolean
+        set simplify_path(value: boolean)
+        
+        /** The path simplification amount in worlds units. */
+        get simplify_epsilon(): float64
+        set simplify_epsilon(value: float64)
+        
+        /** The maximum allowed length of the returned path in world units. A path will be clipped when going over this length. */
+        get path_return_max_length(): float64
+        set path_return_max_length(value: float64)
+        
+        /** The maximum allowed radius in world units that the returned path can be from the path start. The path will be clipped when going over this radius. Compared to [member path_return_max_length], this allows the agent to go that much further, if they need to walk around a corner.  
+         *      
+         *  **Note:** This will perform a sphere clip considering only the actual navigation mesh path points with the first path position being the sphere's center.  
+         */
+        get path_return_max_radius(): float64
+        set path_return_max_radius(value: float64)
+        
+        /** The maximum number of polygons that are searched before the pathfinding cancels the search for a path to the (possibly unreachable or very far away) target position polygon. In this case the pathfinding resets and builds a path from the start polygon to the polygon that was found closest to the target position so far. A value of `0` or below counts as unlimited. In case of unlimited the pathfinding will search all polygons connected with the start polygon until either the target position polygon is found or all available polygon search options are exhausted. */
+        get path_search_max_polygons(): int64
+        set path_search_max_polygons(value: int64)
+        
+        /** The maximum distance a searched polygon can be away from the start polygon before the pathfinding cancels the search for a path to the (possibly unreachable or very far away) target position polygon. In this case the pathfinding resets and builds a path from the start polygon to the polygon that was found closest to the target position so far. A value of `0` or below counts as unlimited. In case of unlimited the pathfinding will search all polygons connected with the start polygon until either the target position polygon is found or all available polygon search options are exhausted. */
+        get path_search_max_distance(): float64
+        set path_search_max_distance(value: float64)
+        
+        /** If `true` the agent is registered for an RVO avoidance callback on the [NavigationServer2D]. When [member velocity] is used and the processing is completed a `safe_velocity` Vector2 is received with a signal connection to [signal velocity_computed]. Avoidance processing with many registered agents has a significant performance cost and should only be enabled on agents that currently require it. */
+        get avoidance_enabled(): boolean
+        set avoidance_enabled(value: boolean)
+        
+        /** Sets the new wanted velocity for the agent. The avoidance simulation will try to fulfill this velocity if possible but will modify it to avoid collision with other agents and obstacles. When an agent is teleported to a new position, use [method set_velocity_forced] as well to reset the internal simulation velocity. */
+        get velocity(): Vector2
+        set velocity(value: Vector2)
+        
+        /** The radius of the avoidance agent. This is the "body" of the avoidance agent and not the avoidance maneuver starting radius (which is controlled by [member neighbor_distance]).  
+         *  Does not affect normal pathfinding. To change an actor's pathfinding radius bake [NavigationPolygon] resources with a different [member NavigationPolygon.agent_radius] property and use different navigation maps for each actor size.  
+         */
+        get radius(): float64
+        set radius(value: float64)
+        
+        /** The distance to search for other agents. */
+        get neighbor_distance(): float64
+        set neighbor_distance(value: float64)
+        
+        /** The maximum number of neighbors for the agent to consider. */
+        get max_neighbors(): int64
+        set max_neighbors(value: int64)
+        
+        /** The minimal amount of time for which this agent's velocities, that are computed with the collision avoidance algorithm, are safe with respect to other agents. The larger the number, the sooner the agent will respond to other agents, but less freedom in choosing its velocities. A too high value will slow down agents movement considerably. Must be positive. */
+        get time_horizon_agents(): float64
+        set time_horizon_agents(value: float64)
+        
+        /** The minimal amount of time for which this agent's velocities, that are computed with the collision avoidance algorithm, are safe with respect to static avoidance obstacles. The larger the number, the sooner the agent will respond to static avoidance obstacles, but less freedom in choosing its velocities. A too high value will slow down agents movement considerably. Must be positive. */
+        get time_horizon_obstacles(): float64
+        set time_horizon_obstacles(value: float64)
+        
+        /** The maximum speed that an agent can move. */
+        get max_speed(): float64
+        set max_speed(value: float64)
+        
+        /** A bitfield determining the avoidance layers for this NavigationAgent. Other agents with a matching bit on the [member avoidance_mask] will avoid this agent. */
+        get avoidance_layers(): int64
+        set avoidance_layers(value: int64)
+        
+        /** A bitfield determining what other avoidance agents and obstacles this NavigationAgent will avoid when a bit matches at least one of their [member avoidance_layers]. */
+        get avoidance_mask(): int64
+        set avoidance_mask(value: int64)
+        
+        /** The agent does not adjust the velocity for other agents that would match the [member avoidance_mask] but have a lower [member avoidance_priority]. This in turn makes the other agents with lower priority adjust their velocities even more to avoid collision with this agent. */
+        get avoidance_priority(): float64
+        set avoidance_priority(value: float64)
+        
+        /** If `true` shows debug visuals for this agent. */
+        get debug_enabled(): boolean
+        set debug_enabled(value: boolean)
+        
+        /** If `true` uses the defined [member debug_path_custom_color] for this agent instead of global color. */
+        get debug_use_custom(): boolean
+        set debug_use_custom(value: boolean)
+        
+        /** If [member debug_use_custom] is `true` uses this color for this agent instead of global color. */
+        get debug_path_custom_color(): Color
+        set debug_path_custom_color(value: Color)
+        
+        /** If [member debug_use_custom] is `true` uses this rasterized point size for rendering path points for this agent instead of global point size. */
+        get debug_path_custom_point_size(): float64
+        set debug_path_custom_point_size(value: float64)
+        
+        /** If [member debug_use_custom] is `true` uses this line width for rendering paths for this agent instead of global line width. */
+        get debug_path_custom_line_width(): float64
+        set debug_path_custom_line_width(value: float64)
+        
+        /** Emitted when the agent had to update the loaded path:  
+         *  - because path was previously empty.  
+         *  - because navigation map has changed.  
+         *  - because agent pushed further away from the current path segment than the [member path_max_distance].  
+         */
+        readonly path_changed: Signal<() => void>
+        
+        /** Signals that the agent reached the target, i.e. the agent moved within [member target_desired_distance] of the [member target_position]. This signal is emitted only once per loaded path.  
+         *  This signal will be emitted just before [signal navigation_finished] when the target is reachable.  
+         *  It may not always be possible to reach the target but it should always be possible to reach the final position. See [method get_final_position].  
+         */
+        readonly target_reached: Signal<() => void>
+        
+        /** Signals that the agent reached a waypoint. Emitted when the agent moves within [member path_desired_distance] of the next position of the path.  
+         *  The details dictionary may contain the following keys depending on the value of [member path_metadata_flags]:  
+         *  - `position`: The position of the waypoint that was reached.  
+         *  - `type`: The type of navigation primitive (region or link) that contains this waypoint.  
+         *  - `rid`: The [RID] of the containing navigation primitive (region or link).  
+         *  - `owner`: The object which manages the containing navigation primitive (region or link).  
+         */
+        readonly waypoint_reached: Signal<(details: GDictionary) => void>
+        
+        /** Signals that the agent reached a navigation link. Emitted when the agent moves within [member path_desired_distance] of the next position of the path when that position is a navigation link.  
+         *  The details dictionary may contain the following keys depending on the value of [member path_metadata_flags]:  
+         *  - `position`: The start position of the link that was reached.  
+         *  - `type`: Always [constant NavigationPathQueryResult2D.PATH_SEGMENT_TYPE_LINK].  
+         *  - `rid`: The [RID] of the link.  
+         *  - `owner`: The object which manages the link (usually [NavigationLink2D]).  
+         *  - `link_entry_position`: If `owner` is available and the owner is a [NavigationLink2D], it will contain the global position of the link's point the agent is entering.  
+         *  - `link_exit_position`: If `owner` is available and the owner is a [NavigationLink2D], it will contain the global position of the link's point which the agent is exiting.  
+         */
+        readonly link_reached: Signal<(details: GDictionary) => void>
+        
+        /** Signals that the agent's navigation has finished. If the target is reachable, navigation ends when the target is reached. If the target is unreachable, navigation ends when the last waypoint of the path is reached. This signal is emitted only once per loaded path.  
+         *  This signal will be emitted just after [signal target_reached] when the target is reachable.  
+         */
+        readonly navigation_finished: Signal<() => void>
+        
+        /** Notifies when the collision avoidance velocity is calculated. Emitted every update as long as [member avoidance_enabled] is `true` and the agent has a navigation map. */
+        readonly velocity_computed: Signal<(safe_velocity: Vector2) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapNavigationAgent2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapNavigationAgent3D extends __NameMapNode {
+    }
+    /** A 3D agent used to pathfind to a position while avoiding obstacles.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_navigationagent3d.html  
+     */
+    class NavigationAgent3D<Map extends NodePathMap = any> extends Node<Map> {
+        constructor(identifier?: any)
+        /** Returns the [RID] of this agent on the [NavigationServer3D]. */
+        get_rid(): RID
+        
+        /** Based on [param value], enables or disables the specified layer in the [member navigation_layers] bitmask, given a [param layer_number] between 1 and 32. */
+        set_navigation_layer_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member navigation_layers] bitmask is enabled, given a [param layer_number] between 1 and 32. */
+        get_navigation_layer_value(layer_number: int64): boolean
+        
+        /** Sets the [RID] of the navigation map this NavigationAgent node should use and also updates the `agent` on the NavigationServer. */
+        set_navigation_map(navigation_map: RID): void
+        
+        /** Returns the [RID] of the navigation map for this NavigationAgent node. This function returns always the map set on the NavigationAgent node and not the map of the abstract agent on the NavigationServer. If the agent map is changed directly with the NavigationServer API the NavigationAgent node will not be aware of the map change. Use [method set_navigation_map] to change the navigation map for the NavigationAgent and also update the agent on the NavigationServer. */
+        get_navigation_map(): RID
+        
+        /** Returns the length of the currently calculated path. The returned value is `0.0`, if the path is still calculating or no calculation has been requested yet. */
+        get_path_length(): float64
+        
+        /** Returns the next position in global coordinates that can be moved to, making sure that there are no static objects in the way. If the agent does not have a navigation path, it will return the position of the agent's parent. The use of this function once every physics frame is required to update the internal path logic of the NavigationAgent. */
+        get_next_path_position(): Vector3
+        
+        /** Replaces the internal velocity in the collision avoidance simulation with [param velocity]. When an agent is teleported to a new position this function should be used in the same frame. If called frequently this function can get agents stuck. */
+        set_velocity_forced(velocity: Vector3): void
+        
+        /** Returns the distance to the target position, using the agent's global position. The user must set [member target_position] in order for this to be accurate. */
+        distance_to_target(): float64
+        
+        /** Returns the path query result for the path the agent is currently following. */
+        get_current_navigation_result(): null | NavigationPathQueryResult3D
+        
+        /** Returns this agent's current path from start to finish in global coordinates. The path only updates when the target position is changed or the agent requires a repath. The path array is not intended to be used in direct path movement as the agent has its own internal path logic that would get corrupted by changing the path array manually. Use the intended [method get_next_path_position] once every physics frame to receive the next path point for the agents movement as this function also updates the internal path logic. */
+        get_current_navigation_path(): PackedVector3Array
+        
+        /** Returns which index the agent is currently on in the navigation path's [PackedVector3Array]. */
+        get_current_navigation_path_index(): int64
+        
+        /** Returns `true` if the agent reached the target, i.e. the agent moved within [member target_desired_distance] of the [member target_position]. It may not always be possible to reach the target but it should always be possible to reach the final position. See [method get_final_position]. */
+        is_target_reached(): boolean
+        
+        /** Returns `true` if [method get_final_position] is within [member target_desired_distance] of the [member target_position]. */
+        is_target_reachable(): boolean
+        
+        /** Returns `true` if the agent's navigation has finished. If the target is reachable, navigation ends when the target is reached. If the target is unreachable, navigation ends when the last waypoint of the path is reached.  
+         *      
+         *  **Note:** While `true` prefer to stop calling update functions like [method get_next_path_position]. This avoids jittering the standing agent due to calling repeated path updates.  
+         */
+        is_navigation_finished(): boolean
+        
+        /** Returns the reachable final position of the current navigation path in global coordinates. This position can change if the agent needs to update the navigation path which makes the agent emit the [signal path_changed] signal. */
+        get_final_position(): Vector3
+        _avoidance_done(new_velocity: Vector3): void
+        
+        /** Based on [param value], enables or disables the specified layer in the [member avoidance_layers] bitmask, given a [param layer_number] between 1 and 32. */
+        set_avoidance_layer_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member avoidance_layers] bitmask is enabled, given a [param layer_number] between 1 and 32. */
+        get_avoidance_layer_value(layer_number: int64): boolean
+        
+        /** Based on [param value], enables or disables the specified mask in the [member avoidance_mask] bitmask, given a [param mask_number] between 1 and 32. */
+        set_avoidance_mask_value(mask_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified mask of the [member avoidance_mask] bitmask is enabled, given a [param mask_number] between 1 and 32. */
+        get_avoidance_mask_value(mask_number: int64): boolean
+        
+        /** If set, a new navigation path from the current agent position to the [member target_position] is requested from the NavigationServer. */
+        get target_position(): Vector3
+        set target_position(value: Vector3)
+        
+        /** The distance threshold before a path point is considered to be reached. This allows agents to not have to hit a path point on the path exactly, but only to reach its general area. If this value is set too high, the NavigationAgent will skip points on the path, which can lead to it leaving the navigation mesh. If this value is set too low, the NavigationAgent will be stuck in a repath loop because it will constantly overshoot the distance to the next point on each physics frame update. */
+        get path_desired_distance(): float64
+        set path_desired_distance(value: float64)
+        
+        /** The distance threshold before the target is considered to be reached. On reaching the target, [signal target_reached] is emitted and navigation ends (see [method is_navigation_finished] and [signal navigation_finished]).  
+         *  You can make navigation end early by setting this property to a value greater than [member path_desired_distance] (navigation will end before reaching the last waypoint).  
+         *  You can also make navigation end closer to the target than each individual path position by setting this property to a value lower than [member path_desired_distance] (navigation won't immediately end when reaching the last waypoint). However, if the value set is too low, the agent will be stuck in a repath loop because it will constantly overshoot the distance to the target on each physics frame update.  
+         */
+        get target_desired_distance(): float64
+        set target_desired_distance(value: float64)
+        
+        /** The height offset is subtracted from the y-axis value of any vector path position for this NavigationAgent. The NavigationAgent height offset does not change or influence the navigation mesh or pathfinding query result. Additional navigation maps that use regions with navigation meshes that the developer baked with appropriate agent radius or height values are required to support different-sized agents. */
+        get path_height_offset(): float64
+        set path_height_offset(value: float64)
+        
+        /** The maximum distance the agent is allowed away from the ideal path to the final position. This can happen due to trying to avoid collisions. When the maximum distance is exceeded, it recalculates the ideal path. */
+        get path_max_distance(): float64
+        set path_max_distance(value: float64)
+        
+        /** A bitfield determining which navigation layers of navigation regions this agent will use to calculate a path. Changing it during runtime will clear the current navigation path and generate a new one, according to the new navigation layers. */
+        get navigation_layers(): int64
+        set navigation_layers(value: int64)
+        
+        /** The pathfinding algorithm used in the path query. */
+        get pathfinding_algorithm(): int64
+        set pathfinding_algorithm(value: int64)
+        
+        /** The path postprocessing applied to the raw path corridor found by the [member pathfinding_algorithm]. */
+        get path_postprocessing(): int64
+        set path_postprocessing(value: int64)
+        
+        /** Additional information to return with the navigation path. */
+        get path_metadata_flags(): int64
+        set path_metadata_flags(value: int64)
+        
+        /** If `true` a simplified version of the path will be returned with less critical path points removed. The simplification amount is controlled by [member simplify_epsilon]. The simplification uses a variant of Ramer-Douglas-Peucker algorithm for curve point decimation.  
+         *  Path simplification can be helpful to mitigate various path following issues that can arise with certain agent types and script behaviors. E.g. "steering" agents or avoidance in "open fields".  
+         */
+        get simplify_path(): boolean
+        set simplify_path(value: boolean)
+        
+        /** The path simplification amount in worlds units. */
+        get simplify_epsilon(): float64
+        set simplify_epsilon(value: float64)
+        
+        /** The maximum allowed length of the returned path in world units. A path will be clipped when going over this length. */
+        get path_return_max_length(): float64
+        set path_return_max_length(value: float64)
+        
+        /** The maximum allowed radius in world units that the returned path can be from the path start. The path will be clipped when going over this radius. Compared to [member path_return_max_length], this allows the agent to go that much further, if they need to walk around a corner.  
+         *      
+         *  **Note:** This will perform a sphere clip considering only the actual navigation mesh path points with the first path position being the sphere's center.  
+         */
+        get path_return_max_radius(): float64
+        set path_return_max_radius(value: float64)
+        
+        /** The maximum number of polygons that are searched before the pathfinding cancels the search for a path to the (possibly unreachable or very far away) target position polygon. In this case the pathfinding resets and builds a path from the start polygon to the polygon that was found closest to the target position so far. A value of `0` or below counts as unlimited. In case of unlimited the pathfinding will search all polygons connected with the start polygon until either the target position polygon is found or all available polygon search options are exhausted. */
+        get path_search_max_polygons(): int64
+        set path_search_max_polygons(value: int64)
+        
+        /** The maximum distance a searched polygon can be away from the start polygon before the pathfinding cancels the search for a path to the (possibly unreachable or very far away) target position polygon. In this case the pathfinding resets and builds a path from the start polygon to the polygon that was found closest to the target position so far. A value of `0` or below counts as unlimited. In case of unlimited the pathfinding will search all polygons connected with the start polygon until either the target position polygon is found or all available polygon search options are exhausted. */
+        get path_search_max_distance(): float64
+        set path_search_max_distance(value: float64)
+        
+        /** If `true` the agent is registered for an RVO avoidance callback on the [NavigationServer3D]. When [member velocity] is set and the processing is completed a `safe_velocity` Vector3 is received with a signal connection to [signal velocity_computed]. Avoidance processing with many registered agents has a significant performance cost and should only be enabled on agents that currently require it. */
+        get avoidance_enabled(): boolean
+        set avoidance_enabled(value: boolean)
+        
+        /** Sets the new wanted velocity for the agent. The avoidance simulation will try to fulfill this velocity if possible but will modify it to avoid collision with other agents and obstacles. When an agent is teleported to a new position, use [method set_velocity_forced] as well to reset the internal simulation velocity. */
+        get velocity(): Vector3
+        set velocity(value: Vector3)
+        
+        /** The height of the avoidance agent. Agents will ignore other agents or obstacles that are above or below their current position + height in 2D avoidance. Does nothing in 3D avoidance which uses radius spheres alone. */
+        get height(): float64
+        set height(value: float64)
+        
+        /** The radius of the avoidance agent. This is the "body" of the avoidance agent and not the avoidance maneuver starting radius (which is controlled by [member neighbor_distance]).  
+         *  Does not affect normal pathfinding. To change an actor's pathfinding radius bake [NavigationMesh] resources with a different [member NavigationMesh.agent_radius] property and use different navigation maps for each actor size.  
+         */
+        get radius(): float64
+        set radius(value: float64)
+        
+        /** The distance to search for other agents. */
+        get neighbor_distance(): float64
+        set neighbor_distance(value: float64)
+        
+        /** The maximum number of neighbors for the agent to consider. */
+        get max_neighbors(): int64
+        set max_neighbors(value: int64)
+        
+        /** The minimal amount of time for which this agent's velocities, that are computed with the collision avoidance algorithm, are safe with respect to other agents. The larger the number, the sooner the agent will respond to other agents, but less freedom in choosing its velocities. A too high value will slow down agents movement considerably. Must be positive. */
+        get time_horizon_agents(): float64
+        set time_horizon_agents(value: float64)
+        
+        /** The minimal amount of time for which this agent's velocities, that are computed with the collision avoidance algorithm, are safe with respect to static avoidance obstacles. The larger the number, the sooner the agent will respond to static avoidance obstacles, but less freedom in choosing its velocities. A too high value will slow down agents movement considerably. Must be positive. */
+        get time_horizon_obstacles(): float64
+        set time_horizon_obstacles(value: float64)
+        
+        /** The maximum speed that an agent can move. */
+        get max_speed(): float64
+        set max_speed(value: float64)
+        
+        /** If `true`, the agent calculates avoidance velocities in 3D omnidirectionally, e.g. for games that take place in air, underwater or space. Agents using 3D avoidance only avoid other agents using 3D avoidance, and react to radius-based avoidance obstacles. They ignore any vertex-based obstacles.  
+         *  If `false`, the agent calculates avoidance velocities in 2D along the x and z-axes, ignoring the y-axis. Agents using 2D avoidance only avoid other agents using 2D avoidance, and react to radius-based avoidance obstacles or vertex-based avoidance obstacles. Other agents using 2D avoidance that are below or above their current position including [member height] are ignored.  
+         */
+        get use_3d_avoidance(): boolean
+        set use_3d_avoidance(value: boolean)
+        
+        /** If `true`, and the agent uses 2D avoidance, it will remember the set y-axis velocity and reapply it after the avoidance step. While 2D avoidance has no y-axis and simulates on a flat plane this setting can help to soften the most obvious clipping on uneven 3D geometry. */
+        get keep_y_velocity(): boolean
+        set keep_y_velocity(value: boolean)
+        
+        /** A bitfield determining the avoidance layers for this NavigationAgent. Other agents with a matching bit on the [member avoidance_mask] will avoid this agent. */
+        get avoidance_layers(): int64
+        set avoidance_layers(value: int64)
+        
+        /** A bitfield determining what other avoidance agents and obstacles this NavigationAgent will avoid when a bit matches at least one of their [member avoidance_layers]. */
+        get avoidance_mask(): int64
+        set avoidance_mask(value: int64)
+        
+        /** The agent does not adjust the velocity for other agents that would match the [member avoidance_mask] but have a lower [member avoidance_priority]. This in turn makes the other agents with lower priority adjust their velocities even more to avoid collision with this agent. */
+        get avoidance_priority(): float64
+        set avoidance_priority(value: float64)
+        
+        /** If `true` shows debug visuals for this agent. */
+        get debug_enabled(): boolean
+        set debug_enabled(value: boolean)
+        
+        /** If `true` uses the defined [member debug_path_custom_color] for this agent instead of global color. */
+        get debug_use_custom(): boolean
+        set debug_use_custom(value: boolean)
+        
+        /** If [member debug_use_custom] is `true` uses this color for this agent instead of global color. */
+        get debug_path_custom_color(): Color
+        set debug_path_custom_color(value: Color)
+        
+        /** If [member debug_use_custom] is `true` uses this rasterized point size for rendering path points for this agent instead of global point size. */
+        get debug_path_custom_point_size(): float64
+        set debug_path_custom_point_size(value: float64)
+        
+        /** Emitted when the agent had to update the loaded path:  
+         *  - because path was previously empty.  
+         *  - because navigation map has changed.  
+         *  - because agent pushed further away from the current path segment than the [member path_max_distance].  
+         */
+        readonly path_changed: Signal<() => void>
+        
+        /** Signals that the agent reached the target, i.e. the agent moved within [member target_desired_distance] of the [member target_position]. This signal is emitted only once per loaded path.  
+         *  This signal will be emitted just before [signal navigation_finished] when the target is reachable.  
+         *  It may not always be possible to reach the target but it should always be possible to reach the final position. See [method get_final_position].  
+         */
+        readonly target_reached: Signal<() => void>
+        
+        /** Signals that the agent reached a waypoint. Emitted when the agent moves within [member path_desired_distance] of the next position of the path.  
+         *  The details dictionary may contain the following keys depending on the value of [member path_metadata_flags]:  
+         *  - `position`: The position of the waypoint that was reached.  
+         *  - `type`: The type of navigation primitive (region or link) that contains this waypoint.  
+         *  - `rid`: The [RID] of the containing navigation primitive (region or link).  
+         *  - `owner`: The object which manages the containing navigation primitive (region or link).  
+         */
+        readonly waypoint_reached: Signal<(details: GDictionary) => void>
+        
+        /** Signals that the agent reached a navigation link. Emitted when the agent moves within [member path_desired_distance] of the next position of the path when that position is a navigation link.  
+         *  The details dictionary may contain the following keys depending on the value of [member path_metadata_flags]:  
+         *  - `position`: The start position of the link that was reached.  
+         *  - `type`: Always [constant NavigationPathQueryResult3D.PATH_SEGMENT_TYPE_LINK].  
+         *  - `rid`: The [RID] of the link.  
+         *  - `owner`: The object which manages the link (usually [NavigationLink3D]).  
+         *  - `link_entry_position`: If `owner` is available and the owner is a [NavigationLink3D], it will contain the global position of the link's point the agent is entering.  
+         *  - `link_exit_position`: If `owner` is available and the owner is a [NavigationLink3D], it will contain the global position of the link's point which the agent is exiting.  
+         */
+        readonly link_reached: Signal<(details: GDictionary) => void>
+        
+        /** Signals that the agent's navigation has finished. If the target is reachable, navigation ends when the target is reached. If the target is unreachable, navigation ends when the last waypoint of the path is reached. This signal is emitted only once per loaded path.  
+         *  This signal will be emitted just after [signal target_reached] when the target is reachable.  
+         */
+        readonly navigation_finished: Signal<() => void>
+        
+        /** Notifies when the collision avoidance velocity is calculated. Emitted every update as long as [member avoidance_enabled] is `true` and the agent has a navigation map. */
+        readonly velocity_computed: Signal<(safe_velocity: Vector3) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapNavigationAgent3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapNavigationLink2D extends __NameMapNode2D {
+    }
+    /** A link between two positions on [NavigationRegion2D]s that agents can be routed through.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_navigationlink2d.html  
+     */
+    class NavigationLink2D<Map extends NodePathMap = any> extends Node2D<Map> {
+        constructor(identifier?: any)
+        /** Returns the [RID] of this link on the [NavigationServer2D]. */
+        get_rid(): RID
+        
+        /** Sets the [RID] of the navigation map this link should use. By default the link will automatically join the [World2D] default navigation map so this function is only required to override the default map. */
+        set_navigation_map(navigation_map: RID): void
+        
+        /** Returns the current navigation map [RID] used by this link. */
+        get_navigation_map(): RID
+        
+        /** Based on [param value], enables or disables the specified layer in the [member navigation_layers] bitmask, given a [param layer_number] between 1 and 32. */
+        set_navigation_layer_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member navigation_layers] bitmask is enabled, given a [param layer_number] between 1 and 32. */
+        get_navigation_layer_value(layer_number: int64): boolean
+        
+        /** Sets the [member start_position] that is relative to the link from a global [param position]. */
+        set_global_start_position(position: Vector2): void
+        
+        /** Returns the [member start_position] that is relative to the link as a global position. */
+        get_global_start_position(): Vector2
+        
+        /** Sets the [member end_position] that is relative to the link from a global [param position]. */
+        set_global_end_position(position: Vector2): void
+        
+        /** Returns the [member end_position] that is relative to the link as a global position. */
+        get_global_end_position(): Vector2
+        
+        /** Whether this link is currently active. If `false`, [method NavigationServer2D.map_get_path] will ignore this link. */
+        get enabled(): boolean
+        set enabled(value: boolean)
+        
+        /** Whether this link can be traveled in both directions or only from [member start_position] to [member end_position]. */
+        get bidirectional(): boolean
+        set bidirectional(value: boolean)
+        
+        /** A bitfield determining all navigation layers the link belongs to. These navigation layers will be checked when requesting a path with [method NavigationServer2D.map_get_path]. */
+        get navigation_layers(): int64
+        set navigation_layers(value: int64)
+        
+        /** Starting position of the link.  
+         *  This position will search out the nearest polygon in the navigation mesh to attach to.  
+         *  The distance the link will search is controlled by [method NavigationServer2D.map_set_link_connection_radius].  
+         */
+        get start_position(): Vector2
+        set start_position(value: Vector2)
+        
+        /** Ending position of the link.  
+         *  This position will search out the nearest polygon in the navigation mesh to attach to.  
+         *  The distance the link will search is controlled by [method NavigationServer2D.map_set_link_connection_radius].  
+         */
+        get end_position(): Vector2
+        set end_position(value: Vector2)
+        
+        /** When pathfinding enters this link from another regions navigation mesh the [member enter_cost] value is added to the path distance for determining the shortest path. */
+        get enter_cost(): float64
+        set enter_cost(value: float64)
+        
+        /** When pathfinding moves along the link the traveled distance is multiplied with [member travel_cost] for determining the shortest path. */
+        get travel_cost(): float64
+        set travel_cost(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapNavigationLink2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapNavigationLink3D extends __NameMapNode3D {
+    }
+    /** A link between two positions on [NavigationRegion3D]s that agents can be routed through.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_navigationlink3d.html  
+     */
+    class NavigationLink3D<Map extends NodePathMap = any> extends Node3D<Map> {
+        constructor(identifier?: any)
+        /** Returns the [RID] of this link on the [NavigationServer3D]. */
+        get_rid(): RID
+        
+        /** Sets the [RID] of the navigation map this link should use. By default the link will automatically join the [World3D] default navigation map so this function is only required to override the default map. */
+        set_navigation_map(navigation_map: RID): void
+        
+        /** Returns the current navigation map [RID] used by this link. */
+        get_navigation_map(): RID
+        
+        /** Based on [param value], enables or disables the specified layer in the [member navigation_layers] bitmask, given a [param layer_number] between 1 and 32. */
+        set_navigation_layer_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member navigation_layers] bitmask is enabled, given a [param layer_number] between 1 and 32. */
+        get_navigation_layer_value(layer_number: int64): boolean
+        
+        /** Sets the [member start_position] that is relative to the link from a global [param position]. */
+        set_global_start_position(position: Vector3): void
+        
+        /** Returns the [member start_position] that is relative to the link as a global position. */
+        get_global_start_position(): Vector3
+        
+        /** Sets the [member end_position] that is relative to the link from a global [param position]. */
+        set_global_end_position(position: Vector3): void
+        
+        /** Returns the [member end_position] that is relative to the link as a global position. */
+        get_global_end_position(): Vector3
+        
+        /** Whether this link is currently active. If `false`, [method NavigationServer3D.map_get_path] will ignore this link. */
+        get enabled(): boolean
+        set enabled(value: boolean)
+        
+        /** Whether this link can be traveled in both directions or only from [member start_position] to [member end_position]. */
+        get bidirectional(): boolean
+        set bidirectional(value: boolean)
+        
+        /** A bitfield determining all navigation layers the link belongs to. These navigation layers will be checked when requesting a path with [method NavigationServer3D.map_get_path]. */
+        get navigation_layers(): int64
+        set navigation_layers(value: int64)
+        
+        /** Starting position of the link.  
+         *  This position will search out the nearest polygon in the navigation mesh to attach to.  
+         *  The distance the link will search is controlled by [method NavigationServer3D.map_set_link_connection_radius].  
+         */
+        get start_position(): Vector3
+        set start_position(value: Vector3)
+        
+        /** Ending position of the link.  
+         *  This position will search out the nearest polygon in the navigation mesh to attach to.  
+         *  The distance the link will search is controlled by [method NavigationServer3D.map_set_link_connection_radius].  
+         */
+        get end_position(): Vector3
+        set end_position(value: Vector3)
+        
+        /** When pathfinding enters this link from another regions navigation mesh the [member enter_cost] value is added to the path distance for determining the shortest path. */
+        get enter_cost(): float64
+        set enter_cost(value: float64)
+        
+        /** When pathfinding moves along the link the traveled distance is multiplied with [member travel_cost] for determining the shortest path. */
+        get travel_cost(): float64
+        set travel_cost(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapNavigationLink3D;
+    }
+    namespace NavigationMesh {
+        enum SamplePartitionType {
+            /** Watershed partitioning. Generally the best choice if you precompute the navigation mesh, use this if you have large open areas. */
+            SAMPLE_PARTITION_WATERSHED = 0,
+            
+            /** Monotone partitioning. Use this if you want fast navigation mesh generation. */
+            SAMPLE_PARTITION_MONOTONE = 1,
+            
+            /** Layer partitioning. Good choice to use for tiled navigation mesh with medium and small sized tiles. */
+            SAMPLE_PARTITION_LAYERS = 2,
+            
+            /** Represents the size of the [enum SamplePartitionType] enum. */
+            SAMPLE_PARTITION_MAX = 3,
+        }
+        enum ParsedGeometryType {
+            /** Parses mesh instances as geometry. This includes [MeshInstance3D], [CSGShape3D], and [GridMap] nodes. */
+            PARSED_GEOMETRY_MESH_INSTANCES = 0,
+            
+            /** Parses [StaticBody3D] colliders as geometry. The collider should be in any of the layers specified by [member geometry_collision_mask]. */
+            PARSED_GEOMETRY_STATIC_COLLIDERS = 1,
+            
+            /** Both [constant PARSED_GEOMETRY_MESH_INSTANCES] and [constant PARSED_GEOMETRY_STATIC_COLLIDERS]. */
+            PARSED_GEOMETRY_BOTH = 2,
+            
+            /** Represents the size of the [enum ParsedGeometryType] enum. */
+            PARSED_GEOMETRY_MAX = 3,
+        }
+        enum SourceGeometryMode {
+            /** Scans the child nodes of the root node recursively for geometry. */
+            SOURCE_GEOMETRY_ROOT_NODE_CHILDREN = 0,
+            
+            /** Scans nodes in a group and their child nodes recursively for geometry. The group is specified by [member geometry_source_group_name]. */
+            SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN = 1,
+            
+            /** Uses nodes in a group for geometry. The group is specified by [member geometry_source_group_name]. */
+            SOURCE_GEOMETRY_GROUPS_EXPLICIT = 2,
+            
+            /** Represents the size of the [enum SourceGeometryMode] enum. */
+            SOURCE_GEOMETRY_MAX = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapNavigationMesh extends __NameMapResource {
+    }
+    /** A navigation mesh that defines traversable areas and obstacles.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_navigationmesh.html  
+     */
+    class NavigationMesh extends Resource {
+        constructor(identifier?: any)
+        /** Based on [param value], enables or disables the specified layer in the [member geometry_collision_mask], given a [param layer_number] between 1 and 32. */
+        set_collision_mask_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member geometry_collision_mask] is enabled, given a [param layer_number] between 1 and 32. */
+        get_collision_mask_value(layer_number: int64): boolean
+        
+        /** Adds a polygon using the indices of the vertices you get when calling [method get_vertices]. */
+        add_polygon(polygon: PackedInt32Array | int32[]): void
+        
+        /** Returns the number of polygons in the navigation mesh. */
+        get_polygon_count(): int64
+        
+        /** Returns a [PackedInt32Array] containing the indices of the vertices of a created polygon. */
+        get_polygon(idx: int64): PackedInt32Array
+        
+        /** Clears the array of polygons, but it doesn't clear the array of vertices. */
+        clear_polygons(): void
+        
+        /** Initializes the navigation mesh by setting the vertices and indices according to a [Mesh].  
+         *      
+         *  **Note:** The given [param mesh] must be of type [constant Mesh.PRIMITIVE_TRIANGLES] and have an index array.  
+         */
+        create_from_mesh(mesh: Mesh): void
+        
+        /** Clears the internal arrays for vertices and polygon indices. */
+        clear(): void
+        get vertices(): PackedVector3Array
+        set vertices(value: PackedVector3Array | Vector3[])
+        get polygons(): GArray
+        set polygons(value: GArray)
+        
+        /** Partitioning algorithm for creating the navigation mesh polys. */
+        get sample_partition_type(): int64
+        set sample_partition_type(value: int64)
+        
+        /** Determines which type of nodes will be parsed as geometry. */
+        get geometry_parsed_geometry_type(): int64
+        set geometry_parsed_geometry_type(value: int64)
+        
+        /** The physics layers to scan for static colliders.  
+         *  Only used when [member geometry_parsed_geometry_type] is [constant PARSED_GEOMETRY_STATIC_COLLIDERS] or [constant PARSED_GEOMETRY_BOTH].  
+         */
+        get geometry_collision_mask(): int64
+        set geometry_collision_mask(value: int64)
+        
+        /** The source of the geometry used when baking. */
+        get geometry_source_geometry_mode(): int64
+        set geometry_source_geometry_mode(value: int64)
+        
+        /** The name of the group to scan for geometry.  
+         *  Only used when [member geometry_source_geometry_mode] is [constant SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN] or [constant SOURCE_GEOMETRY_GROUPS_EXPLICIT].  
+         */
+        get geometry_source_group_name(): string
+        set geometry_source_group_name(value: string)
+        
+        /** The cell size used to rasterize the navigation mesh vertices on the XZ plane. Must match with the cell size on the navigation map. */
+        get cell_size(): float64
+        set cell_size(value: float64)
+        
+        /** The cell height used to rasterize the navigation mesh vertices on the Y axis. Must match with the cell height on the navigation map. */
+        get cell_height(): float64
+        set cell_height(value: float64)
+        
+        /** The size of the non-navigable border around the bake bounding area.  
+         *  In conjunction with the [member filter_baking_aabb] and a [member edge_max_error] value at `1.0` or below the border size can be used to bake tile aligned navigation meshes without the tile edges being shrunk by [member agent_radius].  
+         *      
+         *  **Note:** If this value is not `0.0`, it will be rounded up to the nearest multiple of [member cell_size] during baking.  
+         */
+        get border_size(): float64
+        set border_size(value: float64)
+        
+        /** The minimum floor to ceiling height that will still allow the floor area to be considered walkable.  
+         *      
+         *  **Note:** While baking, this value will be rounded up to the nearest multiple of [member cell_height].  
+         */
+        get agent_height(): float64
+        set agent_height(value: float64)
+        
+        /** The distance to erode/shrink the walkable area of the heightfield away from obstructions.  
+         *      
+         *  **Note:** While baking, this value will be rounded up to the nearest multiple of [member cell_size].  
+         *      
+         *  **Note:** The radius must be equal or higher than `0.0`. If the radius is `0.0`, it won't be possible to fix invalid outline overlaps and other precision errors during the baking process. As a result, some obstacles may be excluded incorrectly from the final navigation mesh, or may delete the navigation mesh's polygons.  
+         */
+        get agent_radius(): float64
+        set agent_radius(value: float64)
+        
+        /** The minimum ledge height that is considered to still be traversable.  
+         *      
+         *  **Note:** While baking, this value will be rounded down to the nearest multiple of [member cell_height].  
+         */
+        get agent_max_climb(): float64
+        set agent_max_climb(value: float64)
+        
+        /** The maximum slope that is considered walkable, in degrees. */
+        get agent_max_slope(): float64
+        set agent_max_slope(value: float64)
+        
+        /** The minimum size of a region for it to be created.  
+         *      
+         *  **Note:** This value will be squared to calculate the minimum number of cells allowed to form isolated island areas. For example, a value of 8 will set the number of cells to 64.  
+         */
+        get region_min_size(): float64
+        set region_min_size(value: float64)
+        
+        /** Any regions with a size smaller than this will be merged with larger regions if possible.  
+         *      
+         *  **Note:** This value will be squared to calculate the number of cells. For example, a value of 20 will set the number of cells to 400.  
+         */
+        get region_merge_size(): float64
+        set region_merge_size(value: float64)
+        
+        /** The maximum allowed length for contour edges along the border of the mesh. A value of `0.0` disables this feature.  
+         *      
+         *  **Note:** While baking, this value will be rounded up to the nearest multiple of [member cell_size].  
+         */
+        get edge_max_length(): float64
+        set edge_max_length(value: float64)
+        
+        /** The maximum distance a simplified contour's border edges should deviate the original raw contour. */
+        get edge_max_error(): float64
+        set edge_max_error(value: float64)
+        
+        /** The maximum number of vertices allowed for polygons generated during the contour to polygon conversion process. */
+        get vertices_per_polygon(): float64
+        set vertices_per_polygon(value: float64)
+        
+        /** The sampling distance to use when generating the detail mesh, in cell unit. */
+        get detail_sample_distance(): float64
+        set detail_sample_distance(value: float64)
+        
+        /** The maximum distance the detail mesh surface should deviate from heightfield, in cell unit. */
+        get detail_sample_max_error(): float64
+        set detail_sample_max_error(value: float64)
+        
+        /** If `true`, marks non-walkable spans as walkable if their maximum is within [member agent_max_climb] of a walkable neighbor. */
+        get filter_low_hanging_obstacles(): boolean
+        set filter_low_hanging_obstacles(value: boolean)
+        
+        /** If `true`, marks spans that are ledges as non-walkable. */
+        get filter_ledge_spans(): boolean
+        set filter_ledge_spans(value: boolean)
+        
+        /** If `true`, marks walkable spans as not walkable if the clearance above the span is less than [member agent_height]. */
+        get filter_walkable_low_height_spans(): boolean
+        set filter_walkable_low_height_spans(value: boolean)
+        
+        /** If the baking [AABB] has a volume the navigation mesh baking will be restricted to its enclosing area. */
+        get filter_baking_aabb(): AABB
+        set filter_baking_aabb(value: AABB)
+        
+        /** The position offset applied to the [member filter_baking_aabb] [AABB]. */
+        get filter_baking_aabb_offset(): Vector3
+        set filter_baking_aabb_offset(value: Vector3)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapNavigationMesh;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapNavigationMeshSourceGeometryData2D extends __NameMapResource {
+    }
+    /** Container for parsed source geometry data used in navigation mesh baking.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_navigationmeshsourcegeometrydata2d.html  
+     */
+    class NavigationMeshSourceGeometryData2D extends Resource {
+        constructor(identifier?: any)
+        /** Clears the internal data. */
+        clear(): void
+        
+        /** Returns `true` when parsed source geometry data exists. */
+        has_data(): boolean
+        
+        /** Appends another array of [param traversable_outlines] at the end of the existing traversable outlines array. */
+        append_traversable_outlines(traversable_outlines: GArray<PackedVector2Array>): void
+        
+        /** Appends another array of [param obstruction_outlines] at the end of the existing obstruction outlines array. */
+        append_obstruction_outlines(obstruction_outlines: GArray<PackedVector2Array>): void
+        
+        /** Adds the outline points of a shape as traversable area. */
+        add_traversable_outline(shape_outline: PackedVector2Array | Vector2[]): void
+        
+        /** Adds the outline points of a shape as obstructed area. */
+        add_obstruction_outline(shape_outline: PackedVector2Array | Vector2[]): void
+        
+        /** Adds the geometry data of another [NavigationMeshSourceGeometryData2D] to the navigation mesh baking data. */
+        merge(other_geometry: NavigationMeshSourceGeometryData2D): void
+        
+        /** Adds a projected obstruction shape to the source geometry. If [param carve] is `true` the carved shape will not be affected by additional offsets (e.g. agent radius) of the navigation mesh baking process. */
+        add_projected_obstruction(vertices: PackedVector2Array | Vector2[], carve: boolean): void
+        
+        /** Clears all projected obstructions. */
+        clear_projected_obstructions(): void
+        
+        /** Returns an axis-aligned bounding box that covers all the stored geometry data. The bounds are calculated when calling this function with the result cached until further geometry changes are made. */
+        get_bounds(): Rect2
+        get traversable_outlines(): GArray
+        set traversable_outlines(value: GArray)
+        get obstruction_outlines(): GArray
+        set obstruction_outlines(value: GArray)
+        get projected_obstructions(): GArray
+        set projected_obstructions(value: GArray)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapNavigationMeshSourceGeometryData2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapNavigationMeshSourceGeometryData3D extends __NameMapResource {
+    }
+    /** Container for parsed source geometry data used in navigation mesh baking.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_navigationmeshsourcegeometrydata3d.html  
+     */
+    class NavigationMeshSourceGeometryData3D extends Resource {
+        constructor(identifier?: any)
+        /** Appends arrays of [param vertices] and [param indices] at the end of the existing arrays. Adds the existing index as an offset to the appended indices. */
+        append_arrays(vertices: PackedFloat32Array | float32[], indices: PackedInt32Array | int32[]): void
+        
+        /** Clears the internal data. */
+        clear(): void
+        
+        /** Returns `true` when parsed source geometry data exists. */
+        has_data(): boolean
+        
+        /** Adds the geometry data of a [Mesh] resource to the navigation mesh baking data. The mesh must have valid triangulated mesh data to be considered. Since [NavigationMesh] resources have no transform, all vertex positions need to be offset by the node's transform using [param xform]. */
+        add_mesh(mesh: Mesh, xform: Transform3D): void
+        
+        /** Adds an [Array] the size of [constant Mesh.ARRAY_MAX] and with vertices at index [constant Mesh.ARRAY_VERTEX] and indices at index [constant Mesh.ARRAY_INDEX] to the navigation mesh baking data. The array must have valid triangulated mesh data to be considered. Since [NavigationMesh] resources have no transform, all vertex positions need to be offset by the node's transform using [param xform]. */
+        add_mesh_array(mesh_array: GArray, xform: Transform3D): void
+        
+        /** Adds an array of vertex positions to the geometry data for navigation mesh baking to form triangulated faces. For each face the array must have three vertex positions in clockwise winding order. Since [NavigationMesh] resources have no transform, all vertex positions need to be offset by the node's transform using [param xform]. */
+        add_faces(faces: PackedVector3Array | Vector3[], xform: Transform3D): void
+        
+        /** Adds the geometry data of another [NavigationMeshSourceGeometryData3D] to the navigation mesh baking data. */
+        merge(other_geometry: NavigationMeshSourceGeometryData3D): void
+        
+        /** Adds a projected obstruction shape to the source geometry. The [param vertices] are considered projected on an xz-axes plane, placed at the global y-axis [param elevation] and extruded by [param height]. If [param carve] is `true` the carved shape will not be affected by additional offsets (e.g. agent radius) of the navigation mesh baking process. */
+        add_projected_obstruction(vertices: PackedVector3Array | Vector3[], elevation: float64, height: float64, carve: boolean): void
+        
+        /** Clears all projected obstructions. */
+        clear_projected_obstructions(): void
+        
+        /** Returns an axis-aligned bounding box that covers all the stored geometry data. The bounds are calculated when calling this function with the result cached until further geometry changes are made. */
+        get_bounds(): AABB
+        get vertices(): PackedVector3Array
+        set vertices(value: PackedVector3Array | Vector3[])
+        get indices(): PackedInt32Array
+        set indices(value: PackedInt32Array | int32[])
+        get projected_obstructions(): GArray
+        set projected_obstructions(value: GArray)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapNavigationMeshSourceGeometryData3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapNavigationObstacle2D extends __NameMapNode2D {
+    }
+    /** 2D obstacle used to affect navigation mesh baking or constrain velocities of avoidance controlled agents.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_navigationobstacle2d.html  
+     */
+    class NavigationObstacle2D<Map extends NodePathMap = any> extends Node2D<Map> {
+        constructor(identifier?: any)
+        /** Returns the [RID] of this obstacle on the [NavigationServer2D]. */
+        get_rid(): RID
+        
+        /** Sets the [RID] of the navigation map this NavigationObstacle node should use and also updates the `obstacle` on the NavigationServer. */
+        set_navigation_map(navigation_map: RID): void
+        
+        /** Returns the [RID] of the navigation map for this NavigationObstacle node. This function returns always the map set on the NavigationObstacle node and not the map of the abstract obstacle on the NavigationServer. If the obstacle map is changed directly with the NavigationServer API the NavigationObstacle node will not be aware of the map change. Use [method set_navigation_map] to change the navigation map for the NavigationObstacle and also update the obstacle on the NavigationServer. */
+        get_navigation_map(): RID
+        
+        /** Based on [param value], enables or disables the specified layer in the [member avoidance_layers] bitmask, given a [param layer_number] between 1 and 32. */
+        set_avoidance_layer_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member avoidance_layers] bitmask is enabled, given a [param layer_number] between 1 and 32. */
+        get_avoidance_layer_value(layer_number: int64): boolean
+        
+        /** Sets the avoidance radius for the obstacle. */
+        get radius(): float64
+        set radius(value: float64)
+        
+        /** The outline vertices of the obstacle. If the vertices are winded in clockwise order agents will be pushed in by the obstacle, else they will be pushed out. Outlines can not be crossed or overlap. Should the vertices using obstacle be warped to a new position agent's can not predict this movement and may get trapped inside the obstacle. */
+        get vertices(): PackedVector2Array
+        set vertices(value: PackedVector2Array | Vector2[])
+        
+        /** If enabled and parsed in a navigation mesh baking process the obstacle will discard source geometry inside its [member vertices] defined shape. */
+        get affect_navigation_mesh(): boolean
+        set affect_navigation_mesh(value: boolean)
+        
+        /** If enabled the obstacle vertices will carve into the baked navigation mesh with the shape unaffected by additional offsets (e.g. agent radius).  
+         *  It will still be affected by further postprocessing of the baking process, like edge and polygon simplification.  
+         *  Requires [member affect_navigation_mesh] to be enabled.  
+         */
+        get carve_navigation_mesh(): boolean
+        set carve_navigation_mesh(value: boolean)
+        
+        /** If `true` the obstacle affects avoidance using agents. */
+        get avoidance_enabled(): boolean
+        set avoidance_enabled(value: boolean)
+        
+        /** Sets the wanted velocity for the obstacle so other agent's can better predict the obstacle if it is moved with a velocity regularly (every frame) instead of warped to a new position. Does only affect avoidance for the obstacles [member radius]. Does nothing for the obstacles static vertices. */
+        get velocity(): Vector2
+        set velocity(value: Vector2)
+        
+        /** A bitfield determining the avoidance layers for this obstacle. Agents with a matching bit on the their avoidance mask will avoid this obstacle. */
+        get avoidance_layers(): int64
+        set avoidance_layers(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapNavigationObstacle2D;
     }
 }

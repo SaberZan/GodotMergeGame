@@ -85,6 +85,7 @@ gulp.task("genCfg",(cb)=>{
 
     if(isValid){
         async function trans() {
+            param.params = param.params || {};
             param.params.designPath = param.designPath;
 
             let before = new selectTranslateBefore();

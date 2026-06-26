@@ -267,7 +267,6 @@ declare module "godot-jsb" {
             super: string;
 
             properties: Array<PropertySetGetInfo>;
-            rpc_methods?: Array<MethodBind>;
             virtual_methods: Array<MethodBind>;
             signals: Array<SignalInfo>;
             constants?: Array<ConstantInfo>;
@@ -299,8 +298,7 @@ declare module "godot-jsb" {
 
         interface GlobalConstantInfo {
             name: string;
-            values?: { [name: string]: number /** int64_t */ };
-            value?: number /** int64_t */;
+            values: { [name: string]: number /** int64_t */ };
         }
 
         interface ClassDoc {
@@ -330,14 +328,6 @@ declare module "godot-jsb" {
         function get_input_actions(): Array<string>;
 
         function delete_file(filepath: string): void;
-
-        function install_project_files(force?: boolean): Promise<void>;
-
-        function install_static_types(): Promise<void>;
-
-        function generate_types(skip_static_types?: boolean): Promise<void>;
-
-        function cleanup_invalid_files(): Promise<void>;
 
         const VERSION_DOCS_URL: string;
     }

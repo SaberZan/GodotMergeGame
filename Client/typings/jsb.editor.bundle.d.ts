@@ -185,8 +185,7 @@ declare module "jsb.editor.codegen" {
         make_classname(class_name: string, internal?: boolean): string;
         make_typename(info: PropertyInfo, used_as_input: boolean, non_nullable: boolean): string;
         make_arg(info: PropertyInfo, optional?: boolean): string;
-        private is_empty_default_value;
-        make_literal_value(value: GodotJsb.editor.DefaultArgumentInfo): string | null;
+        make_literal_value(value: GodotJsb.editor.DefaultArgumentInfo): string;
         make_arg_default_value(method_info: GodotJsb.editor.MethodBind, index: number): string;
         make_args(method_info: GodotJsb.editor.MethodBind): string;
         make_return(method_info: GodotJsb.editor.MethodBind): string;
@@ -198,16 +197,15 @@ declare module "jsb.editor.codegen" {
         private _splitter;
         private _types;
         private _use_project_settings;
-        constructor(out_dir: string, use_project_settings: boolean);
+        constructor(outDir: string, use_project_settings: boolean);
         private make_path;
         private new_splitter;
         private split;
         private cleanup;
         has_class(name?: string): boolean;
-        emit(skip_static_types?: boolean): Promise<void>;
+        emit(showToast?: boolean): Promise<void>;
         private emit_utility;
         private emit_global;
-        private emit_static_dts;
         private emit_aliases;
         private emit_singleton;
         private emit_godot_primitive;
@@ -226,13 +224,10 @@ declare module "jsb.editor.codegen" {
     export class ResourceTSDCodeGen {
         private _out_dir;
         private _resource_paths;
-        private _script_extensions;
         private _types;
         constructor(out_dir: string, resource_paths: string[]);
         private make_resource_path;
         emit(): Promise<void>;
-        private get_script_rpc_info;
-        private emit_script_rpc_types;
         private emit_resource_type;
     }
 }

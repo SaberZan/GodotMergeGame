@@ -1,12 +1,8 @@
 {
-    "target": "ProtoBuffers",
-    "params": {
-        "toCode": "csharp"
-    },
+    "target": "TS",
     "designPath": "./design",
     "output": {
-        "code": "../Client/Assets/Scripts/Game/Rumtime/HotFix/Cfg",
-        "bin": "../Client/Assets/GameResources/Cfg"
+        "ts": "../Client/Game/Cfg"
     },
     "config": {
         "1_常量表": {
@@ -17,20 +13,7 @@
                 ]
             ]
         },
-        "2_关卡表": {
-            "sheets": [
-                [
-                    "Map",
-                    "Map"
-                ],
-                [
-                    "Monster",
-                    "Monster"
-                ]
-            ],
-            "mergeName": "Level"
-        },
-        "3_物品表": {
+        "2_物品表": {
             "sheets": [
                 [
                     "ItemConfig",
@@ -38,11 +21,15 @@
                 ]
             ]
         },
-        "4_装备表": {
+        "3_Merge配置表": {
             "sheets": [
                 [
-                    "EquipmentConfig",
-                    "EquipmentCfg"
+                    "MergeItemData_棋子属性表",
+                    "MergeItemDataCfg"
+                ],
+                [
+                    "MergeUpgradeData_子棋子合成链路表",
+                    "MergeUpgradeData"
                 ]
             ]
         }

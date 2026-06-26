@@ -1,4579 +1,5 @@
 // AUTO-GENERATED
 declare module "godot" {
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextLine extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextLine extends __NameMapRefCounted {
-    }
-    /** Holds a line of text.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_textline.html  
-     */
-    class TextLine extends RefCounted {
-        constructor(identifier?: any)
-        /** Clears text line (removes text and inline objects). */
-        clear(): void
-        
-        /** Duplicates this [TextLine]. */
-        duplicate(): null | TextLine
-        
-        /** Returns the text writing direction inferred by the BiDi algorithm. */
-        get_inferred_direction(): TextServer.Direction
-        
-        /** Overrides BiDi for the structured text.  
-         *  Override ranges should cover full source text without overlaps. BiDi algorithm will be used on each range separately.  
-         */
-        set_bidi_override(override: GArray): void
-        
-        /** Adds text span and font to draw it. */
-        add_string(text: string, font: Font, font_size: int64, language?: string /* = '' */, meta?: any /* = {} */): boolean
-        
-        /** Adds inline object to the text buffer, [param key] must be unique. In the text, object is represented as [param length] object replacement characters. */
-        add_object(key: any, size: Vector2, inline_align?: InlineAlignment /* = 5 */, length?: int64 /* = 1 */, baseline?: float64 /* = 0 */): boolean
-        
-        /** Sets new size and alignment of embedded object. */
-        resize_object(key: any, size: Vector2, inline_align?: InlineAlignment /* = 5 */, baseline?: float64 /* = 0 */): boolean
-        
-        /** Returns `true` if an object with [param key] is embedded in this line. */
-        has_object(key: any): boolean
-        
-        /** Aligns text to the given tab-stops. */
-        tab_align(tab_stops: PackedFloat32Array | float32[]): void
-        
-        /** Returns array of inline objects. */
-        get_objects(): GArray
-        
-        /** Returns bounding rectangle of the inline object. */
-        get_object_rect(key: any): Rect2
-        
-        /** Returns size of the bounding box of the text. */
-        get_size(): Vector2
-        
-        /** Returns TextServer buffer RID. */
-        get_rid(): RID
-        
-        /** Returns the text ascent (number of pixels above the baseline for horizontal layout or to the left of baseline for vertical). */
-        get_line_ascent(): float64
-        
-        /** Returns the text descent (number of pixels below the baseline for horizontal layout or to the right of baseline for vertical). */
-        get_line_descent(): float64
-        
-        /** Returns width (for horizontal layout) or height (for vertical) of the text. */
-        get_line_width(): float64
-        
-        /** Returns pixel offset of the underline below the baseline. */
-        get_line_underline_position(): float64
-        
-        /** Returns thickness of the underline. */
-        get_line_underline_thickness(): float64
-        
-        /** Draw text into a canvas item at a given position, with [param color]. [param pos] specifies the top left corner of the bounding box. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        draw(canvas: RID, pos: Vector2, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Draw text into a canvas item at a given position, with [param color]. [param pos] specifies the top left corner of the bounding box. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        draw_outline(canvas: RID, pos: Vector2, outline_size?: int64 /* = 1 */, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Returns caret character offset at the specified pixel offset at the baseline. This function always returns a valid position. */
-        hit_test(coords: float64): int64
-        
-        /** Text writing direction. */
-        get direction(): int64
-        set direction(value: int64)
-        
-        /** Text orientation. */
-        get orientation(): int64
-        set orientation(value: int64)
-        
-        /** If set to `true` text will display invalid characters. */
-        get preserve_invalid(): boolean
-        set preserve_invalid(value: boolean)
-        
-        /** If set to `true` text will display control characters. */
-        get preserve_control(): boolean
-        set preserve_control(value: boolean)
-        
-        /** Text line width. */
-        get width(): float64
-        set width(value: float64)
-        
-        /** Sets text alignment within the line as if the line was horizontal. */
-        get alignment(): int64
-        set alignment(value: int64)
-        
-        /** Line alignment rules. For more info see [TextServer]. */
-        get flags(): int64
-        set flags(value: int64)
-        
-        /** The clipping behavior when the text exceeds the text line's set width. */
-        get text_overrun_behavior(): int64
-        set text_overrun_behavior(value: int64)
-        
-        /** Ellipsis character used for text clipping. */
-        get ellipsis_char(): string
-        set ellipsis_char(value: string)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextLine;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextLine;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextMesh extends __RPCMapPrimitiveMesh {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextMesh extends __NameMapPrimitiveMesh {
-    }
-    /** Generate a [PrimitiveMesh] from the text.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_textmesh.html  
-     */
-    class TextMesh extends PrimitiveMesh {
-        constructor(identifier?: any)
-        /** The text to generate mesh from.  
-         *      
-         *  **Note:** Due to being a [Resource], it doesn't follow the rules of [member Node.auto_translate_mode]. If disabling translation is desired, it should be done manually with [method Object.set_message_translation].  
-         */
-        get text(): string
-        set text(value: string)
-        
-        /** Font configuration used to display text. */
-        get font(): null | Font
-        set font(value: null | Font)
-        
-        /** Font size of the [TextMesh]'s text. This property works in tandem with [member pixel_size]. Higher values will result in a more detailed font, regardless of [member curve_step] and [member pixel_size]. Consider keeping this value below 63 (inclusive) for good performance, and adjust [member pixel_size] as needed to enlarge text.  
-         *      
-         *  **Note:** Changing this property will regenerate the mesh, which is a slow operation, especially with large font sizes and long texts. To change the text's size in real-time efficiently, change the node's [member Node3D.scale] instead.  
-         */
-        get font_size(): int64
-        set font_size(value: int64)
-        
-        /** Controls the text's horizontal alignment. Supports left, center, right, and fill (also known as justify). */
-        get horizontal_alignment(): int64
-        set horizontal_alignment(value: int64)
-        
-        /** Controls the text's vertical alignment. Supports top, center, and bottom. */
-        get vertical_alignment(): int64
-        set vertical_alignment(value: int64)
-        
-        /** If `true`, all the text displays as UPPERCASE. */
-        get uppercase(): boolean
-        set uppercase(value: boolean)
-        
-        /** Additional vertical spacing between lines (in pixels), spacing is added to line descent. This value can be negative. */
-        get line_spacing(): float64
-        set line_spacing(value: float64)
-        
-        /** If set to something other than [constant TextServer.AUTOWRAP_OFF], the text gets wrapped inside the node's bounding rectangle. If you resize the node, it will change its height automatically to show all the text. */
-        get autowrap_mode(): int64
-        set autowrap_mode(value: int64)
-        
-        /** Line fill alignment rules. */
-        get justification_flags(): int64
-        set justification_flags(value: int64)
-        
-        /** The size of one pixel's width on the text to scale it in 3D. This property works in tandem with [member font_size].  
-         *      
-         *  **Note:** Changing this property will regenerate the mesh, which is a slow operation, especially with large font sizes and long texts. To change the text's size in real-time efficiently, change the node's [member Node3D.scale] instead.  
-         */
-        get pixel_size(): float64
-        set pixel_size(value: float64)
-        
-        /** Step (in pixels) used to approximate Bézier curves. Lower values result in smoother curves, but is slower to generate and render. Consider adjusting this according to the font size and the typical viewing distance.  
-         *      
-         *  **Note:** Changing this property will regenerate the mesh, which is a slow operation, especially with large font sizes and long texts.  
-         */
-        get curve_step(): float64
-        set curve_step(value: float64)
-        
-        /** Depths of the mesh, if set to `0.0` only front surface, is generated, and UV layout is changed to use full texture for the front face only. */
-        get depth(): float64
-        set depth(value: float64)
-        
-        /** Text width (in pixels), used for fill alignment. */
-        get width(): float64
-        set width(value: float64)
-        
-        /** The text drawing offset (in pixels).  
-         *      
-         *  **Note:** Changing this property will regenerate the mesh, which is a slow operation. To change the text's position in real-time efficiently, change the node's [member Node3D.position] instead.  
-         */
-        get offset(): Vector2
-        set offset(value: Vector2)
-        
-        /** Base text writing direction. */
-        get text_direction(): int64
-        set text_direction(value: int64)
-        
-        /** Language code used for line-breaking and text shaping algorithms. If left empty, the current locale is used instead. */
-        get language(): string
-        set language(value: string)
-        
-        /** Set BiDi algorithm override for the structured text. */
-        get structured_text_bidi_override(): int64
-        set structured_text_bidi_override(value: int64)
-        
-        /** Set additional options for BiDi override. */
-        get structured_text_bidi_override_options(): GArray
-        set structured_text_bidi_override_options(value: GArray)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextParagraph extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextParagraph extends __NameMapRefCounted {
-    }
-    /** Holds a paragraph of text.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_textparagraph.html  
-     */
-    class TextParagraph extends RefCounted {
-        constructor(identifier?: any)
-        /** Clears text paragraph (removes text and inline objects). */
-        clear(): void
-        
-        /** Duplicates this [TextParagraph]. */
-        duplicate(): null | TextParagraph
-        
-        /** Returns the text writing direction inferred by the BiDi algorithm. */
-        get_inferred_direction(): TextServer.Direction
-        
-        /** Overrides BiDi for the structured text.  
-         *  Override ranges should cover full source text without overlaps. BiDi algorithm will be used on each range separately.  
-         */
-        set_bidi_override(override: GArray): void
-        
-        /** Sets drop cap, overrides previously set drop cap. Drop cap (dropped capital) is a decorative element at the beginning of a paragraph that is larger than the rest of the text. */
-        set_dropcap(text: string, font: Font, font_size: int64, dropcap_margins?: Rect2 /* = new Rect2(0, 0, 0, 0) */, language?: string /* = '' */): boolean
-        
-        /** Removes dropcap. */
-        clear_dropcap(): void
-        
-        /** Adds text span and font to draw it. */
-        add_string(text: string, font: Font, font_size: int64, language?: string /* = '' */, meta?: any /* = {} */): boolean
-        
-        /** Adds inline object to the text buffer, [param key] must be unique. In the text, object is represented as [param length] object replacement characters. */
-        add_object(key: any, size: Vector2, inline_align?: InlineAlignment /* = 5 */, length?: int64 /* = 1 */, baseline?: float64 /* = 0 */): boolean
-        
-        /** Sets new size and alignment of embedded object. */
-        resize_object(key: any, size: Vector2, inline_align?: InlineAlignment /* = 5 */, baseline?: float64 /* = 0 */): boolean
-        
-        /** Returns `true` if an object with [param key] is embedded in this shaped text buffer. */
-        has_object(key: any): boolean
-        
-        /** Aligns paragraph to the given tab-stops. */
-        tab_align(tab_stops: PackedFloat32Array | float32[]): void
-        
-        /** Returns the size of the bounding box of the paragraph, without line breaks. */
-        get_non_wrapped_size(): Vector2
-        
-        /** Returns the size of the bounding box of the paragraph. */
-        get_size(): Vector2
-        
-        /** Returns TextServer full string buffer RID. */
-        get_rid(): RID
-        
-        /** Returns TextServer line buffer RID. */
-        get_line_rid(line: int64): RID
-        
-        /** Returns drop cap text buffer RID. */
-        get_dropcap_rid(): RID
-        
-        /** Returns the character range of the paragraph. */
-        get_range(): Vector2i
-        
-        /** Returns number of lines in the paragraph. */
-        get_line_count(): int64
-        
-        /** Returns array of inline objects in the line. */
-        get_line_objects(line: int64): GArray
-        
-        /** Returns bounding rectangle of the inline object. */
-        get_line_object_rect(line: int64, key: any): Rect2
-        
-        /** Returns size of the bounding box of the line of text. Returned size is rounded up. */
-        get_line_size(line: int64): Vector2
-        
-        /** Returns character range of the line. */
-        get_line_range(line: int64): Vector2i
-        
-        /** Returns the text line ascent (number of pixels above the baseline for horizontal layout or to the left of baseline for vertical). */
-        get_line_ascent(line: int64): float64
-        
-        /** Returns the text line descent (number of pixels below the baseline for horizontal layout or to the right of baseline for vertical). */
-        get_line_descent(line: int64): float64
-        
-        /** Returns width (for horizontal layout) or height (for vertical) of the line of text. */
-        get_line_width(line: int64): float64
-        
-        /** Returns pixel offset of the underline below the baseline. */
-        get_line_underline_position(line: int64): float64
-        
-        /** Returns thickness of the underline. */
-        get_line_underline_thickness(line: int64): float64
-        
-        /** Returns drop cap bounding box size. */
-        get_dropcap_size(): Vector2
-        
-        /** Returns number of lines used by dropcap. */
-        get_dropcap_lines(): int64
-        
-        /** Draw all lines of the text and drop cap into a canvas item at a given position, with [param color]. [param pos] specifies the top left corner of the bounding box. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        draw(canvas: RID, pos: Vector2, color?: Color /* = new Color(1, 1, 1, 1) */, dc_color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Draw outlines of all lines of the text and drop cap into a canvas item at a given position, with [param color]. [param pos] specifies the top left corner of the bounding box. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        draw_outline(canvas: RID, pos: Vector2, outline_size?: int64 /* = 1 */, color?: Color /* = new Color(1, 1, 1, 1) */, dc_color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Draw single line of text into a canvas item at a given position, with [param color]. [param pos] specifies the top left corner of the bounding box. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        draw_line(canvas: RID, pos: Vector2, line: int64, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Draw outline of the single line of text into a canvas item at a given position, with [param color]. [param pos] specifies the top left corner of the bounding box. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        draw_line_outline(canvas: RID, pos: Vector2, line: int64, outline_size?: int64 /* = 1 */, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Draw drop cap into a canvas item at a given position, with [param color]. [param pos] specifies the top left corner of the bounding box. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        draw_dropcap(canvas: RID, pos: Vector2, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Draw drop cap outline into a canvas item at a given position, with [param color]. [param pos] specifies the top left corner of the bounding box. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        draw_dropcap_outline(canvas: RID, pos: Vector2, outline_size?: int64 /* = 1 */, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Returns caret character offset at the specified coordinates. This function always returns a valid position. */
-        hit_test(coords: Vector2): int64
-        
-        /** Text writing direction. */
-        get direction(): int64
-        set direction(value: int64)
-        
-        /** Custom punctuation character list, used for word breaking. If set to empty string, server defaults are used. */
-        get custom_punctuation(): string
-        set custom_punctuation(value: string)
-        
-        /** Text orientation. */
-        get orientation(): int64
-        set orientation(value: int64)
-        
-        /** If set to `true` text will display invalid characters. */
-        get preserve_invalid(): boolean
-        set preserve_invalid(value: boolean)
-        
-        /** If set to `true` text will display control characters. */
-        get preserve_control(): boolean
-        set preserve_control(value: boolean)
-        
-        /** Paragraph horizontal alignment. */
-        get alignment(): int64
-        set alignment(value: int64)
-        
-        /** Line breaking rules. For more info see [TextServer]. */
-        get break_flags(): int64
-        set break_flags(value: int64)
-        
-        /** Line fill alignment rules. */
-        get justification_flags(): int64
-        set justification_flags(value: int64)
-        
-        /** The clipping behavior when the text exceeds the paragraph's set width. */
-        get text_overrun_behavior(): int64
-        set text_overrun_behavior(value: int64)
-        
-        /** Ellipsis character used for text clipping. */
-        get ellipsis_char(): string
-        set ellipsis_char(value: string)
-        
-        /** Paragraph width. */
-        get width(): float64
-        set width(value: float64)
-        
-        /** Limits the lines of text shown. */
-        get max_lines_visible(): int64
-        set max_lines_visible(value: int64)
-        
-        /** Additional vertical spacing between lines (in pixels), spacing is added to line descent. This value can be negative. */
-        get line_spacing(): float64
-        set line_spacing(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextParagraph;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextParagraph;
-    }
-    namespace TextServer {
-        enum FontAntialiasing {
-            /** Font glyphs are rasterized as 1-bit bitmaps. */
-            FONT_ANTIALIASING_NONE = 0,
-            
-            /** Font glyphs are rasterized as 8-bit grayscale anti-aliased bitmaps. */
-            FONT_ANTIALIASING_GRAY = 1,
-            
-            /** Font glyphs are rasterized for LCD screens.  
-             *  LCD subpixel layout is determined by the value of the [member ProjectSettings.gui/theme/lcd_subpixel_layout] setting.  
-             *  LCD subpixel anti-aliasing mode is suitable only for rendering horizontal, unscaled text in 2D.  
-             */
-            FONT_ANTIALIASING_LCD = 2,
-        }
-        enum FontLCDSubpixelLayout {
-            /** Unknown or unsupported subpixel layout, LCD subpixel antialiasing is disabled. */
-            FONT_LCD_SUBPIXEL_LAYOUT_NONE = 0,
-            
-            /** Horizontal RGB subpixel layout. */
-            FONT_LCD_SUBPIXEL_LAYOUT_HRGB = 1,
-            
-            /** Horizontal BGR subpixel layout. */
-            FONT_LCD_SUBPIXEL_LAYOUT_HBGR = 2,
-            
-            /** Vertical RGB subpixel layout. */
-            FONT_LCD_SUBPIXEL_LAYOUT_VRGB = 3,
-            
-            /** Vertical BGR subpixel layout. */
-            FONT_LCD_SUBPIXEL_LAYOUT_VBGR = 4,
-            
-            /** Represents the size of the [enum FontLCDSubpixelLayout] enum. */
-            FONT_LCD_SUBPIXEL_LAYOUT_MAX = 5,
-        }
-        enum Direction {
-            /** Text direction is determined based on contents and current locale. */
-            DIRECTION_AUTO = 0,
-            
-            /** Text is written from left to right. */
-            DIRECTION_LTR = 1,
-            
-            /** Text is written from right to left. */
-            DIRECTION_RTL = 2,
-            
-            /** Text writing direction is the same as base string writing direction. Used for BiDi override only. */
-            DIRECTION_INHERITED = 3,
-        }
-        enum Orientation {
-            /** Text is written horizontally. */
-            ORIENTATION_HORIZONTAL = 0,
-            
-            /** Left to right text is written vertically from top to bottom.  
-             *  Right to left text is written vertically from bottom to top.  
-             */
-            ORIENTATION_VERTICAL = 1,
-        }
-        enum JustificationFlag {
-            /** Do not justify text. */
-            JUSTIFICATION_NONE = 0,
-            
-            /** Justify text by adding and removing kashidas. */
-            JUSTIFICATION_KASHIDA = 1,
-            
-            /** Justify text by changing width of the spaces between the words. */
-            JUSTIFICATION_WORD_BOUND = 2,
-            
-            /** Remove trailing and leading spaces from the justified text. */
-            JUSTIFICATION_TRIM_EDGE_SPACES = 4,
-            
-            /** Only apply justification to the part of the text after the last tab. */
-            JUSTIFICATION_AFTER_LAST_TAB = 8,
-            
-            /** Apply justification to the trimmed line with ellipsis. */
-            JUSTIFICATION_CONSTRAIN_ELLIPSIS = 16,
-            
-            /** Do not apply justification to the last line of the paragraph. */
-            JUSTIFICATION_SKIP_LAST_LINE = 32,
-            
-            /** Do not apply justification to the last line of the paragraph with visible characters (takes precedence over [constant JUSTIFICATION_SKIP_LAST_LINE]). */
-            JUSTIFICATION_SKIP_LAST_LINE_WITH_VISIBLE_CHARS = 64,
-            
-            /** Always apply justification to the paragraphs with a single line ([constant JUSTIFICATION_SKIP_LAST_LINE] and [constant JUSTIFICATION_SKIP_LAST_LINE_WITH_VISIBLE_CHARS] are ignored). */
-            JUSTIFICATION_DO_NOT_SKIP_SINGLE_LINE = 128,
-        }
-        enum AutowrapMode {
-            /** Autowrap is disabled. */
-            AUTOWRAP_OFF = 0,
-            
-            /** Wraps the text inside the node's bounding rectangle by allowing to break lines at arbitrary positions, which is useful when very limited space is available. */
-            AUTOWRAP_ARBITRARY = 1,
-            
-            /** Wraps the text inside the node's bounding rectangle by soft-breaking between words. */
-            AUTOWRAP_WORD = 2,
-            
-            /** Behaves similarly to [constant AUTOWRAP_WORD], but force-breaks a word if that single word does not fit in one line. */
-            AUTOWRAP_WORD_SMART = 3,
-        }
-        enum LineBreakFlag {
-            /** Do not break the line. */
-            BREAK_NONE = 0,
-            
-            /** Break the line at the line mandatory break characters (e.g. `"\n"`). */
-            BREAK_MANDATORY = 1,
-            
-            /** Break the line between the words. */
-            BREAK_WORD_BOUND = 2,
-            
-            /** Break the line between any unconnected graphemes. */
-            BREAK_GRAPHEME_BOUND = 4,
-            
-            /** Should be used only in conjunction with [constant BREAK_WORD_BOUND], break the line between any unconnected graphemes, if it's impossible to break it between the words. */
-            BREAK_ADAPTIVE = 8,
-            
-            /** Remove edge spaces from the broken line segments. */
-            BREAK_TRIM_EDGE_SPACES = 16,
-            
-            /** Subtract first line indentation width from all lines after the first one. */
-            BREAK_TRIM_INDENT = 32,
-            
-            /** Remove spaces and line break characters from the start of broken line segments.  
-             *  E.g, after line breaking, the second segment of the following text `test  \n  next`, is `next` if the flag is set, and `  next` if it is not.  
-             */
-            BREAK_TRIM_START_EDGE_SPACES = 64,
-            
-            /** Remove spaces and line break characters from the end of broken line segments.  
-             *  E.g, after line breaking, the first segment of the following text `test  \n  next`, is `test` if the flag is set, and `test  \n` if it is not.  
-             */
-            BREAK_TRIM_END_EDGE_SPACES = 128,
-        }
-        enum VisibleCharactersBehavior {
-            /** Trims text before the shaping. e.g, increasing [member Label.visible_characters] or [member RichTextLabel.visible_characters] value is visually identical to typing the text.  
-             *      
-             *  **Note:** In this mode, trimmed text is not processed at all. It is not accounted for in line breaking and size calculations.  
-             */
-            VC_CHARS_BEFORE_SHAPING = 0,
-            
-            /** Displays glyphs that are mapped to the first [member Label.visible_characters] or [member RichTextLabel.visible_characters] characters from the beginning of the text. */
-            VC_CHARS_AFTER_SHAPING = 1,
-            
-            /** Displays [member Label.visible_ratio] or [member RichTextLabel.visible_ratio] glyphs, starting from the left or from the right, depending on [member Control.layout_direction] value. */
-            VC_GLYPHS_AUTO = 2,
-            
-            /** Displays [member Label.visible_ratio] or [member RichTextLabel.visible_ratio] glyphs, starting from the left. */
-            VC_GLYPHS_LTR = 3,
-            
-            /** Displays [member Label.visible_ratio] or [member RichTextLabel.visible_ratio] glyphs, starting from the right. */
-            VC_GLYPHS_RTL = 4,
-        }
-        enum OverrunBehavior {
-            /** No text trimming is performed. */
-            OVERRUN_NO_TRIMMING = 0,
-            
-            /** Trims the text per character. */
-            OVERRUN_TRIM_CHAR = 1,
-            
-            /** Trims the text per word. */
-            OVERRUN_TRIM_WORD = 2,
-            
-            /** Trims the text per character and adds an ellipsis to indicate that parts are hidden if trimmed text is 6 characters or longer. */
-            OVERRUN_TRIM_ELLIPSIS = 3,
-            
-            /** Trims the text per word and adds an ellipsis to indicate that parts are hidden if trimmed text is 6 characters or longer. */
-            OVERRUN_TRIM_WORD_ELLIPSIS = 4,
-            
-            /** Trims the text per character and adds an ellipsis to indicate that parts are hidden regardless of trimmed text length. */
-            OVERRUN_TRIM_ELLIPSIS_FORCE = 5,
-            
-            /** Trims the text per word and adds an ellipsis to indicate that parts are hidden regardless of trimmed text length. */
-            OVERRUN_TRIM_WORD_ELLIPSIS_FORCE = 6,
-        }
-        enum TextOverrunFlag {
-            /** No trimming is performed. */
-            OVERRUN_NO_TRIM = 0,
-            
-            /** Trims the text when it exceeds the given width. */
-            OVERRUN_TRIM = 1,
-            
-            /** Trims the text per word instead of per grapheme. */
-            OVERRUN_TRIM_WORD_ONLY = 2,
-            
-            /** Determines whether an ellipsis should be added at the end of the text. */
-            OVERRUN_ADD_ELLIPSIS = 4,
-            
-            /** Determines whether the ellipsis at the end of the text is enforced and may not be hidden. */
-            OVERRUN_ENFORCE_ELLIPSIS = 8,
-            
-            /** Accounts for the text being justified before attempting to trim it (see [enum JustificationFlag]). */
-            OVERRUN_JUSTIFICATION_AWARE = 16,
-            
-            /** Determines whether the ellipsis should be added regardless of the string length, otherwise it is added only if the string is 6 characters or longer. */
-            OVERRUN_SHORT_STRING_ELLIPSIS = 32,
-        }
-        enum GraphemeFlag {
-            /** Grapheme is supported by the font, and can be drawn. */
-            GRAPHEME_IS_VALID = 1,
-            
-            /** Grapheme is part of right-to-left or bottom-to-top run. */
-            GRAPHEME_IS_RTL = 2,
-            
-            /** Grapheme is not part of source text, it was added by justification process. */
-            GRAPHEME_IS_VIRTUAL = 4,
-            
-            /** Grapheme is whitespace. */
-            GRAPHEME_IS_SPACE = 8,
-            
-            /** Grapheme is mandatory break point (e.g. `"\n"`). */
-            GRAPHEME_IS_BREAK_HARD = 16,
-            
-            /** Grapheme is optional break point (e.g. space). */
-            GRAPHEME_IS_BREAK_SOFT = 32,
-            
-            /** Grapheme is the tabulation character. */
-            GRAPHEME_IS_TAB = 64,
-            
-            /** Grapheme is kashida. */
-            GRAPHEME_IS_ELONGATION = 128,
-            
-            /** Grapheme is punctuation character. */
-            GRAPHEME_IS_PUNCTUATION = 256,
-            
-            /** Grapheme is underscore character. */
-            GRAPHEME_IS_UNDERSCORE = 512,
-            
-            /** Grapheme is connected to the previous grapheme. Breaking line before this grapheme is not safe. */
-            GRAPHEME_IS_CONNECTED = 1024,
-            
-            /** It is safe to insert a U+0640 before this grapheme for elongation. */
-            GRAPHEME_IS_SAFE_TO_INSERT_TATWEEL = 2048,
-            
-            /** Grapheme is an object replacement character for the embedded object. */
-            GRAPHEME_IS_EMBEDDED_OBJECT = 4096,
-            
-            /** Grapheme is a soft hyphen. */
-            GRAPHEME_IS_SOFT_HYPHEN = 8192,
-        }
-        enum Hinting {
-            /** Disables font hinting (smoother but less crisp). */
-            HINTING_NONE = 0,
-            
-            /** Use the light font hinting mode. */
-            HINTING_LIGHT = 1,
-            
-            /** Use the default font hinting mode (crisper but less smooth).  
-             *      
-             *  **Note:** This hinting mode changes both horizontal and vertical glyph metrics. If applied to monospace font, some glyphs might have different width.  
-             */
-            HINTING_NORMAL = 2,
-        }
-        enum SubpixelPositioning {
-            /** Glyph horizontal position is rounded to the whole pixel size, each glyph is rasterized once. */
-            SUBPIXEL_POSITIONING_DISABLED = 0,
-            
-            /** Glyph horizontal position is rounded based on font size.  
-             *  - To one quarter of the pixel size if font size is smaller or equal to [constant SUBPIXEL_POSITIONING_ONE_QUARTER_MAX_SIZE].  
-             *  - To one half of the pixel size if font size is smaller or equal to [constant SUBPIXEL_POSITIONING_ONE_HALF_MAX_SIZE].  
-             *  - To the whole pixel size for larger fonts.  
-             */
-            SUBPIXEL_POSITIONING_AUTO = 1,
-            
-            /** Glyph horizontal position is rounded to one half of the pixel size, each glyph is rasterized up to two times. */
-            SUBPIXEL_POSITIONING_ONE_HALF = 2,
-            
-            /** Glyph horizontal position is rounded to one quarter of the pixel size, each glyph is rasterized up to four times. */
-            SUBPIXEL_POSITIONING_ONE_QUARTER = 3,
-            
-            /** Maximum font size which will use "one half of the pixel" subpixel positioning in [constant SUBPIXEL_POSITIONING_AUTO] mode. */
-            SUBPIXEL_POSITIONING_ONE_HALF_MAX_SIZE = 20,
-            
-            /** Maximum font size which will use "one quarter of the pixel" subpixel positioning in [constant SUBPIXEL_POSITIONING_AUTO] mode. */
-            SUBPIXEL_POSITIONING_ONE_QUARTER_MAX_SIZE = 16,
-        }
-        enum Feature {
-            /** TextServer supports simple text layouts. */
-            FEATURE_SIMPLE_LAYOUT = 1,
-            
-            /** TextServer supports bidirectional text layouts. */
-            FEATURE_BIDI_LAYOUT = 2,
-            
-            /** TextServer supports vertical layouts. */
-            FEATURE_VERTICAL_LAYOUT = 4,
-            
-            /** TextServer supports complex text shaping. */
-            FEATURE_SHAPING = 8,
-            
-            /** TextServer supports justification using kashidas. */
-            FEATURE_KASHIDA_JUSTIFICATION = 16,
-            
-            /** TextServer supports complex line/word breaking rules (e.g. dictionary based). */
-            FEATURE_BREAK_ITERATORS = 32,
-            
-            /** TextServer supports loading bitmap fonts. */
-            FEATURE_FONT_BITMAP = 64,
-            
-            /** TextServer supports loading dynamic (TrueType, OpeType, etc.) fonts. */
-            FEATURE_FONT_DYNAMIC = 128,
-            
-            /** TextServer supports multichannel signed distance field dynamic font rendering. */
-            FEATURE_FONT_MSDF = 256,
-            
-            /** TextServer supports loading system fonts. */
-            FEATURE_FONT_SYSTEM = 512,
-            
-            /** TextServer supports variable fonts. */
-            FEATURE_FONT_VARIABLE = 1024,
-            
-            /** TextServer supports locale dependent and context sensitive case conversion. */
-            FEATURE_CONTEXT_SENSITIVE_CASE_CONVERSION = 2048,
-            
-            /** TextServer require external data file for some features, see [method load_support_data]. */
-            FEATURE_USE_SUPPORT_DATA = 4096,
-            
-            /** TextServer supports UAX #31 identifier validation, see [method is_valid_identifier]. */
-            FEATURE_UNICODE_IDENTIFIERS = 8192,
-            
-            /** TextServer supports [url=https://unicode.org/reports/tr36/]Unicode Technical Report #36[/url] and [url=https://unicode.org/reports/tr39/]Unicode Technical Standard #39[/url] based spoof detection features. */
-            FEATURE_UNICODE_SECURITY = 16384,
-        }
-        enum ContourPointTag {
-            /** Contour point is on the curve. */
-            CONTOUR_CURVE_TAG_ON = 1,
-            
-            /** Contour point isn't on the curve, but serves as a control point for a conic (quadratic) Bézier arc. */
-            CONTOUR_CURVE_TAG_OFF_CONIC = 0,
-            
-            /** Contour point isn't on the curve, but serves as a control point for a cubic Bézier arc. */
-            CONTOUR_CURVE_TAG_OFF_CUBIC = 2,
-        }
-        enum SpacingType {
-            /** Spacing for each glyph. */
-            SPACING_GLYPH = 0,
-            
-            /** Spacing for the space character. */
-            SPACING_SPACE = 1,
-            
-            /** Spacing at the top of the line. */
-            SPACING_TOP = 2,
-            
-            /** Spacing at the bottom of the line. */
-            SPACING_BOTTOM = 3,
-            
-            /** Represents the size of the [enum SpacingType] enum. */
-            SPACING_MAX = 4,
-        }
-        enum FontStyle {
-            /** Font is bold. */
-            FONT_BOLD = 1,
-            
-            /** Font is italic or oblique. */
-            FONT_ITALIC = 2,
-            
-            /** Font has fixed-width characters (also known as monospace). */
-            FONT_FIXED_WIDTH = 4,
-        }
-        enum StructuredTextParser {
-            /** Use default Unicode BiDi algorithm. */
-            STRUCTURED_TEXT_DEFAULT = 0,
-            
-            /** BiDi override for URI. */
-            STRUCTURED_TEXT_URI = 1,
-            
-            /** BiDi override for file path. */
-            STRUCTURED_TEXT_FILE = 2,
-            
-            /** BiDi override for email. */
-            STRUCTURED_TEXT_EMAIL = 3,
-            
-            /** BiDi override for lists. Structured text options: list separator [String]. */
-            STRUCTURED_TEXT_LIST = 4,
-            
-            /** BiDi override for GDScript. */
-            STRUCTURED_TEXT_GDSCRIPT = 5,
-            
-            /** User defined structured text BiDi override function. */
-            STRUCTURED_TEXT_CUSTOM = 6,
-        }
-        enum FixedSizeScaleMode {
-            /** Bitmap font is not scaled. */
-            FIXED_SIZE_SCALE_DISABLE = 0,
-            
-            /** Bitmap font is scaled to the closest integer multiple of the font's fixed size. This is the recommended option for pixel art fonts. */
-            FIXED_SIZE_SCALE_INTEGER_ONLY = 1,
-            
-            /** Bitmap font is scaled to an arbitrary (fractional) size. This is the recommended option for non-pixel art fonts. */
-            FIXED_SIZE_SCALE_ENABLED = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextServer extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextServer extends __NameMapRefCounted {
-    }
-    /** A server interface for font management and text rendering.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_textserver.html  
-     */
-    class TextServer extends RefCounted {
-        constructor(identifier?: any)
-        /** Returns `true` if the server supports a feature. */
-        has_feature(feature: TextServer.Feature): boolean
-        
-        /** Returns the name of the server interface. */
-        get_name(): string
-        
-        /** Returns text server features, see [enum Feature]. */
-        get_features(): int64
-        
-        /** Loads optional TextServer database (e.g. ICU break iterators and dictionaries).  
-         *      
-         *  **Note:** This function should be called before any other TextServer functions used, otherwise it won't have any effect.  
-         */
-        load_support_data(filename: string): boolean
-        
-        /** Returns default TextServer database (e.g. ICU break iterators and dictionaries) filename. */
-        get_support_data_filename(): string
-        
-        /** Returns TextServer database (e.g. ICU break iterators and dictionaries) description. */
-        get_support_data_info(): string
-        
-        /** Saves optional TextServer database (e.g. ICU break iterators and dictionaries) to the file.  
-         *      
-         *  **Note:** This function is used by during project export, to include TextServer database.  
-         */
-        save_support_data(filename: string): boolean
-        
-        /** Returns default TextServer database (e.g. ICU break iterators and dictionaries). */
-        get_support_data(): PackedByteArray
-        
-        /** Returns `true` if the locale requires text server support data for line/word breaking. */
-        is_locale_using_support_data(locale: string): boolean
-        
-        /** Returns `true` if locale is right-to-left. */
-        is_locale_right_to_left(locale: string): boolean
-        
-        /** Converts the given readable name of a feature, variation, script, or language to an OpenType tag. */
-        name_to_tag(name: string): int64
-        
-        /** Converts the given OpenType tag to the readable name of a feature, variation, script, or language. */
-        tag_to_name(tag: int64): string
-        
-        /** Returns `true` if [param rid] is valid resource owned by this text server. */
-        has(rid: RID): boolean
-        
-        /** Frees an object created by this [TextServer]. */
-        free_rid(rid: RID): void
-        
-        /** Creates a new, empty font cache entry resource. To free the resulting resource, use the [method free_rid] method. */
-        create_font(): RID
-        
-        /** Creates a new variation existing font which is reusing the same glyph cache and font data. To free the resulting resource, use the [method free_rid] method. */
-        create_font_linked_variation(font_rid: RID): RID
-        
-        /** Sets font source data, e.g contents of the dynamic font source file. */
-        font_set_data(font_rid: RID, data: PackedByteArray | byte[] | ArrayBuffer): void
-        
-        /** Sets an active face index in the TrueType / OpenType collection. */
-        font_set_face_index(font_rid: RID, face_index: int64): void
-        
-        /** Returns an active face index in the TrueType / OpenType collection. */
-        font_get_face_index(font_rid: RID): int64
-        
-        /** Returns number of faces in the TrueType / OpenType collection. */
-        font_get_face_count(font_rid: RID): int64
-        
-        /** Sets the font style flags.  
-         *      
-         *  **Note:** This value is used for font matching only and will not affect font rendering. Use [method font_set_face_index], [method font_set_variation_coordinates], [method font_set_embolden], or [method font_set_transform] instead.  
-         */
-        font_set_style(font_rid: RID, style: TextServer.FontStyle): void
-        
-        /** Returns font style flags. */
-        font_get_style(font_rid: RID): TextServer.FontStyle
-        
-        /** Sets the font family name. */
-        font_set_name(font_rid: RID, name: string): void
-        
-        /** Returns font family name. */
-        font_get_name(font_rid: RID): string
-        
-        /** Returns [Dictionary] with OpenType font name strings (localized font names, version, description, license information, sample text, etc.). */
-        font_get_ot_name_strings(font_rid: RID): GDictionary
-        
-        /** Sets the font style name. */
-        font_set_style_name(font_rid: RID, name: string): void
-        
-        /** Returns font style name. */
-        font_get_style_name(font_rid: RID): string
-        
-        /** Sets weight (boldness) of the font. A value in the `100...999` range, normal font weight is `400`, bold font weight is `700`.  
-         *      
-         *  **Note:** This value is used for font matching only and will not affect font rendering. Use [method font_set_face_index], [method font_set_variation_coordinates], or [method font_set_embolden] instead.  
-         */
-        font_set_weight(font_rid: RID, weight: int64): void
-        
-        /** Returns weight (boldness) of the font. A value in the `100...999` range, normal font weight is `400`, bold font weight is `700`. */
-        font_get_weight(font_rid: RID): int64
-        
-        /** Sets font stretch amount, compared to a normal width. A percentage value between `50%` and `200%`.  
-         *      
-         *  **Note:** This value is used for font matching only and will not affect font rendering. Use [method font_set_face_index], [method font_set_variation_coordinates], or [method font_set_transform] instead.  
-         */
-        font_set_stretch(font_rid: RID, weight: int64): void
-        
-        /** Returns font stretch amount, compared to a normal width. A percentage value between `50%` and `200%`. */
-        font_get_stretch(font_rid: RID): int64
-        
-        /** Sets font anti-aliasing mode. */
-        font_set_antialiasing(font_rid: RID, antialiasing: TextServer.FontAntialiasing): void
-        
-        /** Returns font anti-aliasing mode. */
-        font_get_antialiasing(font_rid: RID): TextServer.FontAntialiasing
-        
-        /** If set to `true`, embedded font bitmap loading is disabled (bitmap-only and color fonts ignore this property). */
-        font_set_disable_embedded_bitmaps(font_rid: RID, disable_embedded_bitmaps: boolean): void
-        
-        /** Returns whether the font's embedded bitmap loading is disabled. */
-        font_get_disable_embedded_bitmaps(font_rid: RID): boolean
-        
-        /** If set to `true` font texture mipmap generation is enabled. */
-        font_set_generate_mipmaps(font_rid: RID, generate_mipmaps: boolean): void
-        
-        /** Returns `true` if font texture mipmap generation is enabled. */
-        font_get_generate_mipmaps(font_rid: RID): boolean
-        
-        /** If set to `true`, glyphs of all sizes are rendered using single multichannel signed distance field generated from the dynamic font vector data. MSDF rendering allows displaying the font at any scaling factor without blurriness, and without incurring a CPU cost when the font size changes (since the font no longer needs to be rasterized on the CPU). As a downside, font hinting is not available with MSDF. The lack of font hinting may result in less crisp and less readable fonts at small sizes.  
-         *      
-         *  **Note:** MSDF font rendering does not render glyphs with overlapping shapes correctly. Overlapping shapes are not valid per the OpenType standard, but are still commonly found in many font files, especially those converted by Google Fonts. To avoid issues with overlapping glyphs, consider downloading the font file directly from the type foundry instead of relying on Google Fonts.  
-         */
-        font_set_multichannel_signed_distance_field(font_rid: RID, msdf: boolean): void
-        
-        /** Returns `true` if glyphs of all sizes are rendered using single multichannel signed distance field generated from the dynamic font vector data. */
-        font_is_multichannel_signed_distance_field(font_rid: RID): boolean
-        
-        /** Sets the width of the range around the shape between the minimum and maximum representable signed distance. */
-        font_set_msdf_pixel_range(font_rid: RID, msdf_pixel_range: int64): void
-        
-        /** Returns the width of the range around the shape between the minimum and maximum representable signed distance. */
-        font_get_msdf_pixel_range(font_rid: RID): int64
-        
-        /** Sets source font size used to generate MSDF textures. */
-        font_set_msdf_size(font_rid: RID, msdf_size: int64): void
-        
-        /** Returns source font size used to generate MSDF textures. */
-        font_get_msdf_size(font_rid: RID): int64
-        
-        /** Sets bitmap font fixed size. If set to value greater than zero, same cache entry will be used for all font sizes. */
-        font_set_fixed_size(font_rid: RID, fixed_size: int64): void
-        
-        /** Returns bitmap font fixed size. */
-        font_get_fixed_size(font_rid: RID): int64
-        
-        /** Sets bitmap font scaling mode. This property is used only if `fixed_size` is greater than zero. */
-        font_set_fixed_size_scale_mode(font_rid: RID, fixed_size_scale_mode: TextServer.FixedSizeScaleMode): void
-        
-        /** Returns bitmap font scaling mode. */
-        font_get_fixed_size_scale_mode(font_rid: RID): TextServer.FixedSizeScaleMode
-        
-        /** If set to `true`, system fonts can be automatically used as fallbacks. */
-        font_set_allow_system_fallback(font_rid: RID, allow_system_fallback: boolean): void
-        
-        /** Returns `true` if system fonts can be automatically used as fallbacks. */
-        font_is_allow_system_fallback(font_rid: RID): boolean
-        
-        /** Frees all automatically loaded system fonts. */
-        font_clear_system_fallback_cache(): void
-        
-        /** If set to `true` auto-hinting is preferred over font built-in hinting. */
-        font_set_force_autohinter(font_rid: RID, force_autohinter: boolean): void
-        
-        /** Returns `true` if auto-hinting is supported and preferred over font built-in hinting. Used by dynamic fonts only. */
-        font_is_force_autohinter(font_rid: RID): boolean
-        
-        /** If set to `true`, color modulation is applied when drawing colored glyphs, otherwise it's applied to the monochrome glyphs only. */
-        font_set_modulate_color_glyphs(font_rid: RID, force_autohinter: boolean): void
-        
-        /** Returns `true` if color modulation is applied when drawing the font's colored glyphs. */
-        font_is_modulate_color_glyphs(font_rid: RID): boolean
-        
-        /** Sets font hinting mode. Used by dynamic fonts only. */
-        font_set_hinting(font_rid: RID, hinting: TextServer.Hinting): void
-        
-        /** Returns the font hinting mode. Used by dynamic fonts only. */
-        font_get_hinting(font_rid: RID): TextServer.Hinting
-        
-        /** Sets font subpixel glyph positioning mode. */
-        font_set_subpixel_positioning(font_rid: RID, subpixel_positioning: TextServer.SubpixelPositioning): void
-        
-        /** Returns font subpixel glyph positioning mode. */
-        font_get_subpixel_positioning(font_rid: RID): TextServer.SubpixelPositioning
-        
-        /** Sets glyph position rounding behavior. If set to `true`, when aligning glyphs to the pixel boundaries rounding remainders are accumulated to ensure more uniform glyph distribution. This setting has no effect if subpixel positioning is enabled. */
-        font_set_keep_rounding_remainders(font_rid: RID, keep_rounding_remainders: boolean): void
-        
-        /** Returns glyph position rounding behavior. If set to `true`, when aligning glyphs to the pixel boundaries rounding remainders are accumulated to ensure more uniform glyph distribution. This setting has no effect if subpixel positioning is enabled. */
-        font_get_keep_rounding_remainders(font_rid: RID): boolean
-        
-        /** Sets font embolden strength. If [param strength] is not equal to zero, emboldens the font outlines. Negative values reduce the outline thickness. */
-        font_set_embolden(font_rid: RID, strength: float64): void
-        
-        /** Returns font embolden strength. */
-        font_get_embolden(font_rid: RID): float64
-        
-        /** Sets the spacing for [param spacing] to [param value] in pixels (not relative to the font size). */
-        font_set_spacing(font_rid: RID, spacing: TextServer.SpacingType, value: int64): void
-        
-        /** Returns the spacing for [param spacing] in pixels (not relative to the font size). */
-        font_get_spacing(font_rid: RID, spacing: TextServer.SpacingType): int64
-        
-        /** Sets extra baseline offset (as a fraction of font height). */
-        font_set_baseline_offset(font_rid: RID, baseline_offset: float64): void
-        
-        /** Returns extra baseline offset (as a fraction of font height). */
-        font_get_baseline_offset(font_rid: RID): float64
-        
-        /** Sets 2D transform, applied to the font outlines, can be used for slanting, flipping, and rotating glyphs.  
-         *  For example, to simulate italic typeface by slanting, apply the following transform `Transform2D(1.0, slant, 0.0, 1.0, 0.0, 0.0)`.  
-         */
-        font_set_transform(font_rid: RID, transform: Transform2D): void
-        
-        /** Returns 2D transform applied to the font outlines. */
-        font_get_transform(font_rid: RID): Transform2D
-        
-        /** Sets variation coordinates for the specified font cache entry. See [method font_supported_variation_list] for more info. */
-        font_set_variation_coordinates(font_rid: RID, variation_coordinates: GDictionary): void
-        
-        /** Returns variation coordinates for the specified font cache entry. See [method font_supported_variation_list] for more info. */
-        font_get_variation_coordinates(font_rid: RID): GDictionary
-        
-        /** If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See [member Viewport.oversampling]. This value doesn't override the [code skip-lint]oversampling` parameter of [code skip-lint]draw_*` methods. Used by dynamic fonts only. */
-        font_set_oversampling(font_rid: RID, oversampling: float64): void
-        
-        /** Returns oversampling factor override. If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See [member Viewport.oversampling]. This value doesn't override the [code skip-lint]oversampling` parameter of [code skip-lint]draw_*` methods. Used by dynamic fonts only. */
-        font_get_oversampling(font_rid: RID): float64
-        
-        /** Returns list of the font sizes in the cache. Each size is [Vector2i] with font size and outline size. */
-        font_get_size_cache_list(font_rid: RID): GArray<Vector2i>
-        
-        /** Removes all font sizes from the cache entry. */
-        font_clear_size_cache(font_rid: RID): void
-        
-        /** Removes specified font size from the cache entry. */
-        font_remove_size_cache(font_rid: RID, size: Vector2i): void
-        
-        /** Returns font cache information, each entry contains the following fields: `Vector2i size_px` - font size in pixels, `float viewport_oversampling` - viewport oversampling factor, `int glyphs` - number of rendered glyphs, `int textures` - number of used textures, `int textures_size` - size of texture data in bytes. */
-        font_get_size_cache_info(font_rid: RID): GArray<GDictionary>
-        
-        /** Sets the font ascent (number of pixels above the baseline). */
-        font_set_ascent(font_rid: RID, size: int64, ascent: float64): void
-        
-        /** Returns the font ascent (number of pixels above the baseline). */
-        font_get_ascent(font_rid: RID, size: int64): float64
-        
-        /** Sets the font descent (number of pixels below the baseline). */
-        font_set_descent(font_rid: RID, size: int64, descent: float64): void
-        
-        /** Returns the font descent (number of pixels below the baseline). */
-        font_get_descent(font_rid: RID, size: int64): float64
-        
-        /** Sets pixel offset of the underline below the baseline. */
-        font_set_underline_position(font_rid: RID, size: int64, underline_position: float64): void
-        
-        /** Returns pixel offset of the underline below the baseline. */
-        font_get_underline_position(font_rid: RID, size: int64): float64
-        
-        /** Sets thickness of the underline in pixels. */
-        font_set_underline_thickness(font_rid: RID, size: int64, underline_thickness: float64): void
-        
-        /** Returns thickness of the underline in pixels. */
-        font_get_underline_thickness(font_rid: RID, size: int64): float64
-        
-        /** Sets scaling factor of the color bitmap font. */
-        font_set_scale(font_rid: RID, size: int64, scale: float64): void
-        
-        /** Returns scaling factor of the color bitmap font. */
-        font_get_scale(font_rid: RID, size: int64): float64
-        
-        /** Returns number of textures used by font cache entry. */
-        font_get_texture_count(font_rid: RID, size: Vector2i): int64
-        
-        /** Removes all textures from font cache entry.  
-         *      
-         *  **Note:** This function will not remove glyphs associated with the texture, use [method font_remove_glyph] to remove them manually.  
-         */
-        font_clear_textures(font_rid: RID, size: Vector2i): void
-        
-        /** Removes specified texture from the cache entry.  
-         *      
-         *  **Note:** This function will not remove glyphs associated with the texture, remove them manually, using [method font_remove_glyph].  
-         */
-        font_remove_texture(font_rid: RID, size: Vector2i, texture_index: int64): void
-        
-        /** Sets font cache texture image data. */
-        font_set_texture_image(font_rid: RID, size: Vector2i, texture_index: int64, image: Image): void
-        
-        /** Returns font cache texture image data. */
-        font_get_texture_image(font_rid: RID, size: Vector2i, texture_index: int64): null | Image
-        
-        /** Sets array containing glyph packing data. */
-        font_set_texture_offsets(font_rid: RID, size: Vector2i, texture_index: int64, offset: PackedInt32Array | int32[]): void
-        
-        /** Returns array containing glyph packing data. */
-        font_get_texture_offsets(font_rid: RID, size: Vector2i, texture_index: int64): PackedInt32Array
-        
-        /** Returns list of rendered glyphs in the cache entry. */
-        font_get_glyph_list(font_rid: RID, size: Vector2i): PackedInt32Array
-        
-        /** Removes all rendered glyph information from the cache entry.  
-         *      
-         *  **Note:** This function will not remove textures associated with the glyphs, use [method font_remove_texture] to remove them manually.  
-         */
-        font_clear_glyphs(font_rid: RID, size: Vector2i): void
-        
-        /** Removes specified rendered glyph information from the cache entry.  
-         *      
-         *  **Note:** This function will not remove textures associated with the glyphs, use [method font_remove_texture] to remove them manually.  
-         */
-        font_remove_glyph(font_rid: RID, size: Vector2i, glyph: int64): void
-        
-        /** Returns glyph advance (offset of the next glyph).  
-         *      
-         *  **Note:** Advance for glyphs outlines is the same as the base glyph advance and is not saved.  
-         */
-        font_get_glyph_advance(font_rid: RID, size: int64, glyph: int64): Vector2
-        
-        /** Sets glyph advance (offset of the next glyph).  
-         *      
-         *  **Note:** Advance for glyphs outlines is the same as the base glyph advance and is not saved.  
-         */
-        font_set_glyph_advance(font_rid: RID, size: int64, glyph: int64, advance: Vector2): void
-        
-        /** Returns glyph offset from the baseline. */
-        font_get_glyph_offset(font_rid: RID, size: Vector2i, glyph: int64): Vector2
-        
-        /** Sets glyph offset from the baseline. */
-        font_set_glyph_offset(font_rid: RID, size: Vector2i, glyph: int64, offset: Vector2): void
-        
-        /** Returns size of the glyph. */
-        font_get_glyph_size(font_rid: RID, size: Vector2i, glyph: int64): Vector2
-        
-        /** Sets size of the glyph. */
-        font_set_glyph_size(font_rid: RID, size: Vector2i, glyph: int64, gl_size: Vector2): void
-        
-        /** Returns rectangle in the cache texture containing the glyph. */
-        font_get_glyph_uv_rect(font_rid: RID, size: Vector2i, glyph: int64): Rect2
-        
-        /** Sets rectangle in the cache texture containing the glyph. */
-        font_set_glyph_uv_rect(font_rid: RID, size: Vector2i, glyph: int64, uv_rect: Rect2): void
-        
-        /** Returns index of the cache texture containing the glyph. */
-        font_get_glyph_texture_idx(font_rid: RID, size: Vector2i, glyph: int64): int64
-        
-        /** Sets index of the cache texture containing the glyph. */
-        font_set_glyph_texture_idx(font_rid: RID, size: Vector2i, glyph: int64, texture_idx: int64): void
-        
-        /** Returns resource ID of the cache texture containing the glyph.  
-         *      
-         *  **Note:** If there are pending glyphs to render, calling this function might trigger the texture cache update.  
-         */
-        font_get_glyph_texture_rid(font_rid: RID, size: Vector2i, glyph: int64): RID
-        
-        /** Returns size of the cache texture containing the glyph.  
-         *      
-         *  **Note:** If there are pending glyphs to render, calling this function might trigger the texture cache update.  
-         */
-        font_get_glyph_texture_size(font_rid: RID, size: Vector2i, glyph: int64): Vector2
-        
-        /** Returns outline contours of the glyph as a [Dictionary] with the following contents:  
-         *  `points`         - [PackedVector3Array], containing outline points. `x` and `y` are point coordinates. `z` is the type of the point, using the [enum ContourPointTag] values.  
-         *  `contours`       - [PackedInt32Array], containing indices the end points of each contour.  
-         *  `orientation`    - [bool], contour orientation. If `true`, clockwise contours must be filled.  
-         *  - Two successive [constant CONTOUR_CURVE_TAG_ON] points indicate a line segment.  
-         *  - One [constant CONTOUR_CURVE_TAG_OFF_CONIC] point between two [constant CONTOUR_CURVE_TAG_ON] points indicates a single conic (quadratic) Bézier arc.  
-         *  - Two [constant CONTOUR_CURVE_TAG_OFF_CUBIC] points between two [constant CONTOUR_CURVE_TAG_ON] points indicate a single cubic Bézier arc.  
-         *  - Two successive [constant CONTOUR_CURVE_TAG_OFF_CONIC] points indicate two successive conic (quadratic) Bézier arcs with a virtual [constant CONTOUR_CURVE_TAG_ON] point at their middle.  
-         *  - Each contour is closed. The last point of a contour uses the first point of a contour as its next point, and vice versa. The first point can be [constant CONTOUR_CURVE_TAG_OFF_CONIC] point.  
-         */
-        font_get_glyph_contours(font: RID, size: int64, index: int64): GDictionary
-        
-        /** Returns list of the kerning overrides. */
-        font_get_kerning_list(font_rid: RID, size: int64): GArray<Vector2i>
-        
-        /** Removes all kerning overrides. */
-        font_clear_kerning_map(font_rid: RID, size: int64): void
-        
-        /** Removes kerning override for the pair of glyphs. */
-        font_remove_kerning(font_rid: RID, size: int64, glyph_pair: Vector2i): void
-        
-        /** Sets kerning for the pair of glyphs. */
-        font_set_kerning(font_rid: RID, size: int64, glyph_pair: Vector2i, kerning: Vector2): void
-        
-        /** Returns kerning for the pair of glyphs. */
-        font_get_kerning(font_rid: RID, size: int64, glyph_pair: Vector2i): Vector2
-        
-        /** Returns the glyph index of a [param char], optionally modified by the [param variation_selector]. See [method font_get_char_from_glyph_index]. */
-        font_get_glyph_index(font_rid: RID, size: int64, char: int64, variation_selector: int64): int64
-        
-        /** Returns character code associated with [param glyph_index], or `0` if [param glyph_index] is invalid. See [method font_get_glyph_index]. */
-        font_get_char_from_glyph_index(font_rid: RID, size: int64, glyph_index: int64): int64
-        
-        /** Returns `true` if a Unicode [param char] is available in the font. */
-        font_has_char(font_rid: RID, char: int64): boolean
-        
-        /** Returns a string containing all the characters available in the font. */
-        font_get_supported_chars(font_rid: RID): string
-        
-        /** Returns an array containing all glyph indices in the font. */
-        font_get_supported_glyphs(font_rid: RID): PackedInt32Array
-        
-        /** Renders the range of characters to the font cache texture. */
-        font_render_range(font_rid: RID, size: Vector2i, start: int64, end: int64): void
-        
-        /** Renders specified glyph to the font cache texture. */
-        font_render_glyph(font_rid: RID, size: Vector2i, index: int64): void
-        
-        /** Draws single glyph into a canvas item at the position, using [param font_rid] at the size [param size]. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used.  
-         *      
-         *  **Note:** Glyph index is specific to the font, use glyphs indices returned by [method shaped_text_get_glyphs] or [method font_get_glyph_index].  
-         *      
-         *  **Note:** If there are pending glyphs to render, calling this function might trigger the texture cache update.  
-         */
-        font_draw_glyph(font_rid: RID, canvas: RID, size: int64, pos: Vector2, index: int64, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Draws single glyph outline of size [param outline_size] into a canvas item at the position, using [param font_rid] at the size [param size]. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used.  
-         *      
-         *  **Note:** Glyph index is specific to the font, use glyphs indices returned by [method shaped_text_get_glyphs] or [method font_get_glyph_index].  
-         *      
-         *  **Note:** If there are pending glyphs to render, calling this function might trigger the texture cache update.  
-         */
-        font_draw_glyph_outline(font_rid: RID, canvas: RID, size: int64, outline_size: int64, pos: Vector2, index: int64, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Returns `true` if the font supports the given language (as a [url=https://en.wikipedia.org/wiki/ISO_639-1]ISO 639[/url] code). */
-        font_is_language_supported(font_rid: RID, language: string): boolean
-        
-        /** Adds override for [method font_is_language_supported]. */
-        font_set_language_support_override(font_rid: RID, language: string, supported: boolean): void
-        
-        /** Returns `true` if support override is enabled for the [param language]. */
-        font_get_language_support_override(font_rid: RID, language: string): boolean
-        
-        /** Remove language support override. */
-        font_remove_language_support_override(font_rid: RID, language: string): void
-        
-        /** Returns list of language support overrides. */
-        font_get_language_support_overrides(font_rid: RID): PackedStringArray
-        
-        /** Returns `true` if the font supports the given script (as a [url=https://en.wikipedia.org/wiki/ISO_15924]ISO 15924[/url] code). */
-        font_is_script_supported(font_rid: RID, script: string): boolean
-        
-        /** Adds override for [method font_is_script_supported]. */
-        font_set_script_support_override(font_rid: RID, script: string, supported: boolean): void
-        
-        /** Returns `true` if support override is enabled for the [param script]. */
-        font_get_script_support_override(font_rid: RID, script: string): boolean
-        
-        /** Removes script support override. */
-        font_remove_script_support_override(font_rid: RID, script: string): void
-        
-        /** Returns list of script support overrides. */
-        font_get_script_support_overrides(font_rid: RID): PackedStringArray
-        
-        /** Sets font OpenType feature set override. */
-        font_set_opentype_feature_overrides(font_rid: RID, overrides: GDictionary): void
-        
-        /** Returns font OpenType feature set override. */
-        font_get_opentype_feature_overrides(font_rid: RID): GDictionary
-        
-        /** Returns the dictionary of the supported OpenType features. */
-        font_supported_feature_list(font_rid: RID): GDictionary
-        
-        /** Returns the dictionary of the supported OpenType variation coordinates. */
-        font_supported_variation_list(font_rid: RID): GDictionary
-        
-        /** This method does nothing and always returns `1.0`. */
-        font_get_global_oversampling(): float64
-        
-        /** This method does nothing. */
-        font_set_global_oversampling(oversampling: float64): void
-        
-        /** Returns size of the replacement character (box with character hexadecimal code that is drawn in place of invalid characters). */
-        get_hex_code_box_size(size: int64, index: int64): Vector2
-        
-        /** Draws box displaying character hexadecimal code. Used for replacing missing characters. */
-        draw_hex_code_box(canvas: RID, size: int64, pos: Vector2, index: int64, color: Color): void
-        
-        /** Creates a new buffer for complex text layout, with the given [param direction] and [param orientation]. To free the resulting buffer, use [method free_rid] method.  
-         *      
-         *  **Note:** Direction is ignored if server does not support [constant FEATURE_BIDI_LAYOUT] feature (supported by [TextServerAdvanced]).  
-         *      
-         *  **Note:** Orientation is ignored if server does not support [constant FEATURE_VERTICAL_LAYOUT] feature (supported by [TextServerAdvanced]).  
-         */
-        create_shaped_text(direction?: TextServer.Direction /* = 0 */, orientation?: TextServer.Orientation /* = 0 */): RID
-        
-        /** Clears text buffer (removes text and inline objects). */
-        shaped_text_clear(rid: RID): void
-        
-        /** Duplicates shaped text buffer. */
-        shaped_text_duplicate(rid: RID): RID
-        
-        /** Sets desired text direction. If set to [constant DIRECTION_AUTO], direction will be detected based on the buffer contents and current locale.  
-         *      
-         *  **Note:** Direction is ignored if server does not support [constant FEATURE_BIDI_LAYOUT] feature (supported by [TextServerAdvanced]).  
-         */
-        shaped_text_set_direction(shaped: RID, direction?: TextServer.Direction /* = 0 */): void
-        
-        /** Returns direction of the text. */
-        shaped_text_get_direction(shaped: RID): TextServer.Direction
-        
-        /** Returns direction of the text, inferred by the BiDi algorithm. */
-        shaped_text_get_inferred_direction(shaped: RID): TextServer.Direction
-        
-        /** Overrides BiDi for the structured text.  
-         *  Override ranges should cover full source text without overlaps. BiDi algorithm will be used on each range separately.  
-         */
-        shaped_text_set_bidi_override(shaped: RID, override: GArray): void
-        
-        /** Sets custom punctuation character list, used for word breaking. If set to empty string, server defaults are used. */
-        shaped_text_set_custom_punctuation(shaped: RID, punct: string): void
-        
-        /** Returns custom punctuation character list, used for word breaking. If set to empty string, server defaults are used. */
-        shaped_text_get_custom_punctuation(shaped: RID): string
-        
-        /** Sets ellipsis character used for text clipping. */
-        shaped_text_set_custom_ellipsis(shaped: RID, char: int64): void
-        
-        /** Returns ellipsis character used for text clipping. */
-        shaped_text_get_custom_ellipsis(shaped: RID): int64
-        
-        /** Sets desired text orientation.  
-         *      
-         *  **Note:** Orientation is ignored if server does not support [constant FEATURE_VERTICAL_LAYOUT] feature (supported by [TextServerAdvanced]).  
-         */
-        shaped_text_set_orientation(shaped: RID, orientation?: TextServer.Orientation /* = 0 */): void
-        
-        /** Returns text orientation. */
-        shaped_text_get_orientation(shaped: RID): TextServer.Orientation
-        
-        /** If set to `true` text buffer will display invalid characters as hexadecimal codes, otherwise nothing is displayed. */
-        shaped_text_set_preserve_invalid(shaped: RID, enabled: boolean): void
-        
-        /** Returns `true` if text buffer is configured to display hexadecimal codes in place of invalid characters.  
-         *      
-         *  **Note:** If set to `false`, nothing is displayed in place of invalid characters.  
-         */
-        shaped_text_get_preserve_invalid(shaped: RID): boolean
-        
-        /** If set to `true` text buffer will display control characters. */
-        shaped_text_set_preserve_control(shaped: RID, enabled: boolean): void
-        
-        /** Returns `true` if text buffer is configured to display control characters. */
-        shaped_text_get_preserve_control(shaped: RID): boolean
-        
-        /** Sets extra spacing added between glyphs or lines in pixels. */
-        shaped_text_set_spacing(shaped: RID, spacing: TextServer.SpacingType, value: int64): void
-        
-        /** Returns extra spacing added between glyphs or lines in pixels. */
-        shaped_text_get_spacing(shaped: RID, spacing: TextServer.SpacingType): int64
-        
-        /** Adds text span and font to draw it to the text buffer. */
-        shaped_text_add_string(shaped: RID, text: string, fonts: GArray<RID>, size: int64, opentype_features?: GDictionary /* = new GDictionary() */, language?: string /* = '' */, meta?: any /* = {} */): boolean
-        
-        /** Adds inline object to the text buffer, [param key] must be unique. In the text, object is represented as [param length] object replacement characters. */
-        shaped_text_add_object(shaped: RID, key: any, size: Vector2, inline_align?: InlineAlignment /* = 5 */, length?: int64 /* = 1 */, baseline?: float64 /* = 0 */): boolean
-        
-        /** Sets new size and alignment of embedded object. */
-        shaped_text_resize_object(shaped: RID, key: any, size: Vector2, inline_align?: InlineAlignment /* = 5 */, baseline?: float64 /* = 0 */): boolean
-        
-        /** Returns `true` if an object with [param key] is embedded in this shaped text buffer. */
-        shaped_text_has_object(shaped: RID, key: any): boolean
-        
-        /** Returns the text buffer source text, including object replacement characters. */
-        shaped_get_text(shaped: RID): string
-        
-        /** Returns number of text spans added using [method shaped_text_add_string] or [method shaped_text_add_object]. */
-        shaped_get_span_count(shaped: RID): int64
-        
-        /** Returns text span metadata. */
-        shaped_get_span_meta(shaped: RID, index: int64): any
-        
-        /** Returns text embedded object key. */
-        shaped_get_span_embedded_object(shaped: RID, index: int64): any
-        
-        /** Returns the text span source text. */
-        shaped_get_span_text(shaped: RID, index: int64): string
-        
-        /** Returns the text span embedded object key. */
-        shaped_get_span_object(shaped: RID, index: int64): any
-        
-        /** Changes text span font, font size, and OpenType features, without changing the text. */
-        shaped_set_span_update_font(shaped: RID, index: int64, fonts: GArray<RID>, size: int64, opentype_features?: GDictionary /* = new GDictionary() */): void
-        
-        /** Returns the number of uniform text runs in the buffer. */
-        shaped_get_run_count(shaped: RID): int64
-        
-        /** Returns the source text of the [param index] text run (in visual order). */
-        shaped_get_run_text(shaped: RID, index: int64): string
-        
-        /** Returns the source text range of the [param index] text run (in visual order). */
-        shaped_get_run_range(shaped: RID, index: int64): Vector2i
-        
-        /** Returns the glyph range of the [param index] text run (in visual order). */
-        shaped_get_run_glyph_range(shaped: RID, index: int64): Vector2i
-        
-        /** Returns the font RID of the [param index] text run (in visual order). */
-        shaped_get_run_font_rid(shaped: RID, index: int64): RID
-        
-        /** Returns the font size of the [param index] text run (in visual order). */
-        shaped_get_run_font_size(shaped: RID, index: int64): int64
-        
-        /** Returns the language of the [param index] text run (in visual order). */
-        shaped_get_run_language(shaped: RID, index: int64): string
-        
-        /** Returns the direction of the [param index] text run (in visual order). */
-        shaped_get_run_direction(shaped: RID, index: int64): TextServer.Direction
-        
-        /** Returns the embedded object of the [param index] text run (in visual order). */
-        shaped_get_run_object(shaped: RID, index: int64): any
-        
-        /** Returns text buffer for the substring of the text in the [param shaped] text buffer (including inline objects). */
-        shaped_text_substr(shaped: RID, start: int64, length: int64): RID
-        
-        /** Returns the parent buffer from which the substring originates. */
-        shaped_text_get_parent(shaped: RID): RID
-        
-        /** Adjusts text width to fit to specified width, returns new text width. */
-        shaped_text_fit_to_width(shaped: RID, width: float64, justification_flags?: TextServer.JustificationFlag /* = 3 */): float64
-        
-        /** Aligns shaped text to the given tab-stops. */
-        shaped_text_tab_align(shaped: RID, tab_stops: PackedFloat32Array | float32[]): float64
-        
-        /** Shapes buffer if it's not shaped. Returns `true` if the string is shaped successfully.  
-         *      
-         *  **Note:** It is not necessary to call this function manually, buffer will be shaped automatically as soon as any of its output data is requested.  
-         */
-        shaped_text_shape(shaped: RID): boolean
-        
-        /** Returns `true` if buffer is successfully shaped. */
-        shaped_text_is_ready(shaped: RID): boolean
-        
-        /** Returns `true` if text buffer contains any visible characters. */
-        shaped_text_has_visible_chars(shaped: RID): boolean
-        
-        /** Returns an array of glyphs in the visual order. */
-        shaped_text_get_glyphs(shaped: RID): GArray<GDictionary>
-        
-        /** Returns text glyphs in the logical order. */
-        shaped_text_sort_logical(shaped: RID): GArray<GDictionary>
-        
-        /** Returns number of glyphs in the buffer. */
-        shaped_text_get_glyph_count(shaped: RID): int64
-        
-        /** Returns substring buffer character range in the parent buffer. */
-        shaped_text_get_range(shaped: RID): Vector2i
-        
-        /** Breaks text to the lines and columns. Returns character ranges for each segment. */
-        shaped_text_get_line_breaks_adv(shaped: RID, width: PackedFloat32Array | float32[], start?: int64 /* = 0 */, once?: boolean /* = true */, break_flags?: TextServer.LineBreakFlag /* = 3 */): PackedInt32Array
-        
-        /** Breaks text to the lines and returns character ranges for each line. */
-        shaped_text_get_line_breaks(shaped: RID, width: float64, start?: int64 /* = 0 */, break_flags?: TextServer.LineBreakFlag /* = 3 */): PackedInt32Array
-        
-        /** Breaks text into words and returns array of character ranges. Use [param grapheme_flags] to set what characters are used for breaking. */
-        shaped_text_get_word_breaks(shaped: RID, grapheme_flags?: TextServer.GraphemeFlag /* = 264 */, skip_grapheme_flags?: TextServer.GraphemeFlag /* = 4 */): PackedInt32Array
-        
-        /** Returns the position of the overrun trim. */
-        shaped_text_get_trim_pos(shaped: RID): int64
-        
-        /** Returns position of the ellipsis. */
-        shaped_text_get_ellipsis_pos(shaped: RID): int64
-        
-        /** Returns array of the glyphs in the ellipsis. */
-        shaped_text_get_ellipsis_glyphs(shaped: RID): GArray<GDictionary>
-        
-        /** Returns number of glyphs in the ellipsis. */
-        shaped_text_get_ellipsis_glyph_count(shaped: RID): int64
-        
-        /** Trims text if it exceeds the given width. */
-        shaped_text_overrun_trim_to_width(shaped: RID, width?: float64 /* = 0 */, overrun_trim_flags?: TextServer.TextOverrunFlag /* = 0 */): void
-        
-        /** Returns array of inline objects. */
-        shaped_text_get_objects(shaped: RID): GArray
-        
-        /** Returns bounding rectangle of the inline object. */
-        shaped_text_get_object_rect(shaped: RID, key: any): Rect2
-        
-        /** Returns the character range of the inline object. */
-        shaped_text_get_object_range(shaped: RID, key: any): Vector2i
-        
-        /** Returns the glyph index of the inline object. */
-        shaped_text_get_object_glyph(shaped: RID, key: any): int64
-        
-        /** Returns size of the text. */
-        shaped_text_get_size(shaped: RID): Vector2
-        
-        /** Returns the text ascent (number of pixels above the baseline for horizontal layout or to the left of baseline for vertical).  
-         *      
-         *  **Note:** Overall ascent can be higher than font ascent, if some glyphs are displaced from the baseline.  
-         */
-        shaped_text_get_ascent(shaped: RID): float64
-        
-        /** Returns the text descent (number of pixels below the baseline for horizontal layout or to the right of baseline for vertical).  
-         *      
-         *  **Note:** Overall descent can be higher than font descent, if some glyphs are displaced from the baseline.  
-         */
-        shaped_text_get_descent(shaped: RID): float64
-        
-        /** Returns width (for horizontal layout) or height (for vertical) of the text. */
-        shaped_text_get_width(shaped: RID): float64
-        
-        /** Returns pixel offset of the underline below the baseline. */
-        shaped_text_get_underline_position(shaped: RID): float64
-        
-        /** Returns thickness of the underline. */
-        shaped_text_get_underline_thickness(shaped: RID): float64
-        
-        /** Returns shapes of the carets corresponding to the character offset [param position] in the text. Returned caret shape is 1 pixel wide rectangle. */
-        shaped_text_get_carets(shaped: RID, position: int64): GDictionary
-        
-        /** Returns selection rectangles for the specified character range. */
-        shaped_text_get_selection(shaped: RID, start: int64, end: int64): PackedVector2Array
-        
-        /** Returns grapheme index at the specified pixel offset at the baseline, or `-1` if none is found. */
-        shaped_text_hit_test_grapheme(shaped: RID, coords: float64): int64
-        
-        /** Returns caret character offset at the specified pixel offset at the baseline. This function always returns a valid position. */
-        shaped_text_hit_test_position(shaped: RID, coords: float64): int64
-        
-        /** Returns composite character's bounds as offsets from the start of the line. */
-        shaped_text_get_grapheme_bounds(shaped: RID, pos: int64): Vector2
-        
-        /** Returns grapheme end position closest to the [param pos]. */
-        shaped_text_next_grapheme_pos(shaped: RID, pos: int64): int64
-        
-        /** Returns grapheme start position closest to the [param pos]. */
-        shaped_text_prev_grapheme_pos(shaped: RID, pos: int64): int64
-        
-        /** Returns array of the composite character boundaries. */
-        shaped_text_get_character_breaks(shaped: RID): PackedInt32Array
-        
-        /** Returns composite character end position closest to the [param pos]. */
-        shaped_text_next_character_pos(shaped: RID, pos: int64): int64
-        
-        /** Returns composite character start position closest to the [param pos]. */
-        shaped_text_prev_character_pos(shaped: RID, pos: int64): int64
-        
-        /** Returns composite character position closest to the [param pos]. */
-        shaped_text_closest_character_pos(shaped: RID, pos: int64): int64
-        
-        /** Draw shaped text into a canvas item at a given position, with [param color]. [param pos] specifies the leftmost point of the baseline (for horizontal layout) or topmost point of the baseline (for vertical layout). If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used.  
-         *  [param clip_l] and [param clip_r] are offsets relative to [param pos], going to the right in horizontal layout and downward in vertical layout. If [param clip_l] is not negative, glyphs starting before the offset are clipped. If [param clip_r] is not negative, glyphs ending after the offset are clipped.  
-         */
-        shaped_text_draw(shaped: RID, canvas: RID, pos: Vector2, clip_l?: float64 /* = -1 */, clip_r?: float64 /* = -1 */, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Draw the outline of the shaped text into a canvas item at a given position, with [param color]. [param pos] specifies the leftmost point of the baseline (for horizontal layout) or topmost point of the baseline (for vertical layout). If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used.  
-         *  [param clip_l] and [param clip_r] are offsets relative to [param pos], going to the right in horizontal layout and downward in vertical layout. If [param clip_l] is not negative, glyphs starting before the offset are clipped. If [param clip_r] is not negative, glyphs ending after the offset are clipped.  
-         */
-        shaped_text_draw_outline(shaped: RID, canvas: RID, pos: Vector2, clip_l?: float64 /* = -1 */, clip_r?: float64 /* = -1 */, outline_size?: int64 /* = 1 */, color?: Color /* = new Color(1, 1, 1, 1) */, oversampling?: float64 /* = 0 */): void
-        
-        /** Returns dominant direction of in the range of text. */
-        shaped_text_get_dominant_direction_in_range(shaped: RID, start: int64, end: int64): TextServer.Direction
-        
-        /** Converts a number from Western Arabic (0..9) to the numeral system used in the given [param language].  
-         *  If [param language] is an empty string, the active locale will be used.  
-         */
-        format_number(number: string, language?: string /* = '' */): string
-        
-        /** Converts [param number] from the numeral system used in the given [param language] to Western Arabic (0..9).  
-         *  If [param language] is an empty string, the active locale will be used.  
-         */
-        parse_number(number: string, language?: string /* = '' */): string
-        
-        /** Returns the percent sign used in the given [param language].  
-         *  If [param language] is an empty string, the active locale will be used.  
-         */
-        percent_sign(language?: string /* = '' */): string
-        
-        /** Returns an array of the word break boundaries. Elements in the returned array are the offsets of the start and end of words. Therefore the length of the array is always even.  
-         *  When [param chars_per_line] is greater than zero, line break boundaries are returned instead.  
-         *    
-         */
-        string_get_word_breaks(string_: string, language?: string /* = '' */, chars_per_line?: int64 /* = 0 */): PackedInt32Array
-        
-        /** Returns array of the composite character boundaries.  
-         *    
-         */
-        string_get_character_breaks(string_: string, language?: string /* = '' */): PackedInt32Array
-        
-        /** Returns index of the first string in [param dict] which is visually confusable with the [param string], or `-1` if none is found.  
-         *      
-         *  **Note:** This method doesn't detect invisible characters, for spoof detection use it in combination with [method spoof_check].  
-         *      
-         *  **Note:** Always returns `-1` if the server does not support the [constant FEATURE_UNICODE_SECURITY] feature.  
-         */
-        is_confusable(string_: string, dict: PackedStringArray | string[]): int64
-        
-        /** Returns `true` if [param string] is likely to be an attempt at confusing the reader.  
-         *      
-         *  **Note:** Always returns `false` if the server does not support the [constant FEATURE_UNICODE_SECURITY] feature.  
-         */
-        spoof_check(string_: string): boolean
-        
-        /** Strips diacritics from the string.  
-         *      
-         *  **Note:** The result may be longer or shorter than the original.  
-         */
-        strip_diacritics(string_: string): string
-        
-        /** Returns `true` if [param string] is a valid identifier.  
-         *  If the text server supports the [constant FEATURE_UNICODE_IDENTIFIERS] feature, a valid identifier must:  
-         *  - Conform to normalization form C.  
-         *  - Begin with a Unicode character of class XID_Start or `"_"`.  
-         *  - May contain Unicode characters of class XID_Continue in the other positions.  
-         *  - Use UAX #31 recommended scripts only (mixed scripts are allowed).  
-         *  If the [constant FEATURE_UNICODE_IDENTIFIERS] feature is not supported, a valid identifier must:  
-         *  - Begin with a Unicode character of class XID_Start or `"_"`.  
-         *  - May contain Unicode characters of class XID_Continue in the other positions.  
-         */
-        is_valid_identifier(string_: string): boolean
-        
-        /** Returns `true` if the given code point is a valid letter, i.e. it belongs to the Unicode category "L". */
-        is_valid_letter(unicode: int64): boolean
-        
-        /** Returns the string converted to `UPPERCASE`.  
-         *      
-         *  **Note:** Casing is locale dependent and context sensitive if server support [constant FEATURE_CONTEXT_SENSITIVE_CASE_CONVERSION] feature (supported by [TextServerAdvanced]).  
-         *      
-         *  **Note:** The result may be longer or shorter than the original.  
-         */
-        string_to_upper(string_: string, language?: string /* = '' */): string
-        
-        /** Returns the string converted to `lowercase`.  
-         *      
-         *  **Note:** Casing is locale dependent and context sensitive if server support [constant FEATURE_CONTEXT_SENSITIVE_CASE_CONVERSION] feature (supported by [TextServerAdvanced]).  
-         *      
-         *  **Note:** The result may be longer or shorter than the original.  
-         */
-        string_to_lower(string_: string, language?: string /* = '' */): string
-        
-        /** Returns the string converted to `Title Case`.  
-         *      
-         *  **Note:** Casing is locale dependent and context sensitive if server support [constant FEATURE_CONTEXT_SENSITIVE_CASE_CONVERSION] feature (supported by [TextServerAdvanced]).  
-         *      
-         *  **Note:** The result may be longer or shorter than the original.  
-         */
-        string_to_title(string_: string, language?: string /* = '' */): string
-        
-        /** Default implementation of the BiDi algorithm override function. */
-        parse_structured_text(parser_type: TextServer.StructuredTextParser, args: GArray, text: string): GArray<Vector3i>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextServer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextServer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextServerAdvanced extends __RPCMapTextServerExtension {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextServerAdvanced extends __NameMapTextServerExtension {
-    }
-    /** An advanced text server with support for BiDi, complex text layout, and contextual OpenType features. Used in Godot by default.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_textserveradvanced.html  
-     */
-    class TextServerAdvanced extends TextServerExtension {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextServerAdvanced;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextServerAdvanced;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextServerDummy extends __RPCMapTextServerExtension {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextServerDummy extends __NameMapTextServerExtension {
-    }
-    /** A dummy text server that can't render text or manage fonts.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_textserverdummy.html  
-     */
-    class TextServerDummy extends TextServerExtension {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextServerDummy;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextServerDummy;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextServerExtension extends __RPCMapTextServer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextServerExtension extends __NameMapTextServer {
-    }
-    /** Base class for custom [TextServer] implementations (plugins).  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_textserverextension.html  
-     */
-    class TextServerExtension extends TextServer {
-        constructor(identifier?: any)
-        /** Returns `true` if the server supports a feature. */
-        /* gdvirtual */ _has_feature(feature: TextServer.Feature): boolean
-        
-        /** Returns the name of the server interface. */
-        /* gdvirtual */ _get_name(): string
-        
-        /** Returns text server features, see [enum TextServer.Feature]. */
-        /* gdvirtual */ _get_features(): int64
-        
-        /** Frees an object created by this [TextServer]. */
-        /* gdvirtual */ _free_rid(rid: RID): void
-        
-        /** Returns `true` if [param rid] is valid resource owned by this text server. */
-        /* gdvirtual */ _has(rid: RID): boolean
-        
-        /** Loads optional TextServer database (e.g. ICU break iterators and dictionaries). */
-        /* gdvirtual */ _load_support_data(filename: string): boolean
-        
-        /** Returns default TextServer database (e.g. ICU break iterators and dictionaries) filename. */
-        /* gdvirtual */ _get_support_data_filename(): string
-        
-        /** Returns TextServer database (e.g. ICU break iterators and dictionaries) description. */
-        /* gdvirtual */ _get_support_data_info(): string
-        
-        /** Saves optional TextServer database (e.g. ICU break iterators and dictionaries) to the file. */
-        /* gdvirtual */ _save_support_data(filename: string): boolean
-        
-        /** Returns default TextServer database (e.g. ICU break iterators and dictionaries). */
-        /* gdvirtual */ _get_support_data(): PackedByteArray
-        
-        /** Returns `true` if the locale requires text server support data for line/word breaking. */
-        /* gdvirtual */ _is_locale_using_support_data(locale: string): boolean
-        
-        /** Returns `true` if locale is right-to-left. */
-        /* gdvirtual */ _is_locale_right_to_left(locale: string): boolean
-        
-        /** Converts the given readable name of a feature, variation, script, or language to an OpenType tag. */
-        /* gdvirtual */ _name_to_tag(name: string): int64
-        
-        /** Converts the given OpenType tag to the readable name of a feature, variation, script, or language. */
-        /* gdvirtual */ _tag_to_name(tag: int64): string
-        
-        /** Creates a new, empty font cache entry resource. */
-        /* gdvirtual */ _create_font(): RID
-        
-        /** Optional, implement if font supports extra spacing or baseline offset.  
-         *  Creates a new variation existing font which is reusing the same glyph cache and font data.  
-         */
-        /* gdvirtual */ _create_font_linked_variation(font_rid: RID): RID
-        
-        /** Sets font source data, e.g contents of the dynamic font source file. */
-        /* gdvirtual */ _font_set_data(font_rid: RID, data: PackedByteArray | byte[] | ArrayBuffer): void
-        
-        /** Sets pointer to the font source data, e.g contents of the dynamic font source file. */
-        /* gdvirtual */ _font_set_data_ptr(font_rid: RID, data_ptr: int64, data_size: int64): void
-        
-        /** Sets an active face index in the TrueType / OpenType collection. */
-        /* gdvirtual */ _font_set_face_index(font_rid: RID, face_index: int64): void
-        
-        /** Returns an active face index in the TrueType / OpenType collection. */
-        /* gdvirtual */ _font_get_face_index(font_rid: RID): int64
-        
-        /** Returns number of faces in the TrueType / OpenType collection. */
-        /* gdvirtual */ _font_get_face_count(font_rid: RID): int64
-        
-        /** Sets the font style flags. */
-        /* gdvirtual */ _font_set_style(font_rid: RID, style: TextServer.FontStyle): void
-        
-        /** Returns font style flags. */
-        /* gdvirtual */ _font_get_style(font_rid: RID): TextServer.FontStyle
-        
-        /** Sets the font family name. */
-        /* gdvirtual */ _font_set_name(font_rid: RID, name: string): void
-        
-        /** Returns font family name. */
-        /* gdvirtual */ _font_get_name(font_rid: RID): string
-        
-        /** Returns [Dictionary] with OpenType font name strings (localized font names, version, description, license information, sample text, etc.). */
-        /* gdvirtual */ _font_get_ot_name_strings(font_rid: RID): GDictionary
-        
-        /** Sets the font style name. */
-        /* gdvirtual */ _font_set_style_name(font_rid: RID, name_style: string): void
-        
-        /** Returns font style name. */
-        /* gdvirtual */ _font_get_style_name(font_rid: RID): string
-        
-        /** Sets weight (boldness) of the font. A value in the `100...999` range, normal font weight is `400`, bold font weight is `700`. */
-        /* gdvirtual */ _font_set_weight(font_rid: RID, weight: int64): void
-        
-        /** Returns weight (boldness) of the font. A value in the `100...999` range, normal font weight is `400`, bold font weight is `700`. */
-        /* gdvirtual */ _font_get_weight(font_rid: RID): int64
-        
-        /** Sets font stretch amount, compared to a normal width. A percentage value between `50%` and `200%`. */
-        /* gdvirtual */ _font_set_stretch(font_rid: RID, stretch: int64): void
-        
-        /** Returns font stretch amount, compared to a normal width. A percentage value between `50%` and `200%`. */
-        /* gdvirtual */ _font_get_stretch(font_rid: RID): int64
-        
-        /** Sets font anti-aliasing mode. */
-        /* gdvirtual */ _font_set_antialiasing(font_rid: RID, antialiasing: TextServer.FontAntialiasing): void
-        
-        /** Returns font anti-aliasing mode. */
-        /* gdvirtual */ _font_get_antialiasing(font_rid: RID): TextServer.FontAntialiasing
-        
-        /** If set to `true`, embedded font bitmap loading is disabled. */
-        /* gdvirtual */ _font_set_disable_embedded_bitmaps(font_rid: RID, disable_embedded_bitmaps: boolean): void
-        
-        /** Returns whether the font's embedded bitmap loading is disabled. */
-        /* gdvirtual */ _font_get_disable_embedded_bitmaps(font_rid: RID): boolean
-        
-        /** If set to `true` font texture mipmap generation is enabled. */
-        /* gdvirtual */ _font_set_generate_mipmaps(font_rid: RID, generate_mipmaps: boolean): void
-        
-        /** Returns `true` if font texture mipmap generation is enabled. */
-        /* gdvirtual */ _font_get_generate_mipmaps(font_rid: RID): boolean
-        
-        /** If set to `true`, glyphs of all sizes are rendered using single multichannel signed distance field generated from the dynamic font vector data. MSDF rendering allows displaying the font at any scaling factor without blurriness, and without incurring a CPU cost when the font size changes (since the font no longer needs to be rasterized on the CPU). As a downside, font hinting is not available with MSDF. The lack of font hinting may result in less crisp and less readable fonts at small sizes. */
-        /* gdvirtual */ _font_set_multichannel_signed_distance_field(font_rid: RID, msdf: boolean): void
-        
-        /** Returns `true` if glyphs of all sizes are rendered using single multichannel signed distance field generated from the dynamic font vector data. */
-        /* gdvirtual */ _font_is_multichannel_signed_distance_field(font_rid: RID): boolean
-        
-        /** Sets the width of the range around the shape between the minimum and maximum representable signed distance. */
-        /* gdvirtual */ _font_set_msdf_pixel_range(font_rid: RID, msdf_pixel_range: int64): void
-        
-        /** Returns the width of the range around the shape between the minimum and maximum representable signed distance. */
-        /* gdvirtual */ _font_get_msdf_pixel_range(font_rid: RID): int64
-        
-        /** Sets source font size used to generate MSDF textures. */
-        /* gdvirtual */ _font_set_msdf_size(font_rid: RID, msdf_size: int64): void
-        
-        /** Returns source font size used to generate MSDF textures. */
-        /* gdvirtual */ _font_get_msdf_size(font_rid: RID): int64
-        
-        /** Sets bitmap font fixed size. If set to value greater than zero, same cache entry will be used for all font sizes. */
-        /* gdvirtual */ _font_set_fixed_size(font_rid: RID, fixed_size: int64): void
-        
-        /** Returns bitmap font fixed size. */
-        /* gdvirtual */ _font_get_fixed_size(font_rid: RID): int64
-        
-        /** Sets bitmap font scaling mode. This property is used only if `fixed_size` is greater than zero. */
-        /* gdvirtual */ _font_set_fixed_size_scale_mode(font_rid: RID, fixed_size_scale_mode: TextServer.FixedSizeScaleMode): void
-        
-        /** Returns bitmap font scaling mode. */
-        /* gdvirtual */ _font_get_fixed_size_scale_mode(font_rid: RID): TextServer.FixedSizeScaleMode
-        
-        /** If set to `true`, system fonts can be automatically used as fallbacks. */
-        /* gdvirtual */ _font_set_allow_system_fallback(font_rid: RID, allow_system_fallback: boolean): void
-        
-        /** Returns `true` if system fonts can be automatically used as fallbacks. */
-        /* gdvirtual */ _font_is_allow_system_fallback(font_rid: RID): boolean
-        
-        /** Frees all automatically loaded system fonts. */
-        /* gdvirtual */ _font_clear_system_fallback_cache(): void
-        
-        /** If set to `true` auto-hinting is preferred over font built-in hinting. */
-        /* gdvirtual */ _font_set_force_autohinter(font_rid: RID, force_autohinter: boolean): void
-        
-        /** Returns `true` if auto-hinting is supported and preferred over font built-in hinting. */
-        /* gdvirtual */ _font_is_force_autohinter(font_rid: RID): boolean
-        
-        /** If set to `true`, color modulation is applied when drawing colored glyphs, otherwise it's applied to the monochrome glyphs only. */
-        /* gdvirtual */ _font_set_modulate_color_glyphs(font_rid: RID, modulate: boolean): void
-        
-        /** Returns `true` if color modulation is applied when drawing the font's colored glyphs. */
-        /* gdvirtual */ _font_is_modulate_color_glyphs(font_rid: RID): boolean
-        
-        /** Sets font hinting mode. Used by dynamic fonts only. */
-        /* gdvirtual */ _font_set_hinting(font_rid: RID, hinting: TextServer.Hinting): void
-        
-        /** Returns the font hinting mode. Used by dynamic fonts only. */
-        /* gdvirtual */ _font_get_hinting(font_rid: RID): TextServer.Hinting
-        
-        /** Sets font subpixel glyph positioning mode. */
-        /* gdvirtual */ _font_set_subpixel_positioning(font_rid: RID, subpixel_positioning: TextServer.SubpixelPositioning): void
-        
-        /** Returns font subpixel glyph positioning mode. */
-        /* gdvirtual */ _font_get_subpixel_positioning(font_rid: RID): TextServer.SubpixelPositioning
-        
-        /** Sets glyph position rounding behavior. If set to `true`, when aligning glyphs to the pixel boundaries rounding remainders are accumulated to ensure more uniform glyph distribution. This setting has no effect if subpixel positioning is enabled. */
-        /* gdvirtual */ _font_set_keep_rounding_remainders(font_rid: RID, keep_rounding_remainders: boolean): void
-        
-        /** Returns glyph position rounding behavior. If set to `true`, when aligning glyphs to the pixel boundaries rounding remainders are accumulated to ensure more uniform glyph distribution. This setting has no effect if subpixel positioning is enabled. */
-        /* gdvirtual */ _font_get_keep_rounding_remainders(font_rid: RID): boolean
-        
-        /** Sets font embolden strength. If [param strength] is not equal to zero, emboldens the font outlines. Negative values reduce the outline thickness. */
-        /* gdvirtual */ _font_set_embolden(font_rid: RID, strength: float64): void
-        
-        /** Returns font embolden strength. */
-        /* gdvirtual */ _font_get_embolden(font_rid: RID): float64
-        
-        /** Sets the spacing for [param spacing] to [param value] in pixels (not relative to the font size). */
-        /* gdvirtual */ _font_set_spacing(font_rid: RID, spacing: TextServer.SpacingType, value: int64): void
-        
-        /** Returns the spacing for [param spacing] in pixels (not relative to the font size). */
-        /* gdvirtual */ _font_get_spacing(font_rid: RID, spacing: TextServer.SpacingType): int64
-        
-        /** Sets extra baseline offset (as a fraction of font height). */
-        /* gdvirtual */ _font_set_baseline_offset(font_rid: RID, baseline_offset: float64): void
-        
-        /** Returns extra baseline offset (as a fraction of font height). */
-        /* gdvirtual */ _font_get_baseline_offset(font_rid: RID): float64
-        
-        /** Sets 2D transform, applied to the font outlines, can be used for slanting, flipping, and rotating glyphs. */
-        /* gdvirtual */ _font_set_transform(font_rid: RID, transform: Transform2D): void
-        
-        /** Returns 2D transform applied to the font outlines. */
-        /* gdvirtual */ _font_get_transform(font_rid: RID): Transform2D
-        
-        /** Sets variation coordinates for the specified font cache entry. */
-        /* gdvirtual */ _font_set_variation_coordinates(font_rid: RID, variation_coordinates: GDictionary): void
-        
-        /** Returns variation coordinates for the specified font cache entry. */
-        /* gdvirtual */ _font_get_variation_coordinates(font_rid: RID): GDictionary
-        
-        /** If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See [member Viewport.oversampling]. This value doesn't override the [code skip-lint]oversampling` parameter of [code skip-lint]draw_*` methods. Used by dynamic fonts only. */
-        /* gdvirtual */ _font_set_oversampling(font_rid: RID, oversampling: float64): void
-        
-        /** Returns oversampling factor override. If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See [member Viewport.oversampling]. This value doesn't override the [code skip-lint]oversampling` parameter of [code skip-lint]draw_*` methods. Used by dynamic fonts only. */
-        /* gdvirtual */ _font_get_oversampling(font_rid: RID): float64
-        
-        /** Returns list of the font sizes in the cache. Each size is [Vector2i] with font size and outline size. */
-        /* gdvirtual */ _font_get_size_cache_list(font_rid: RID): GArray<Vector2i>
-        
-        /** Removes all font sizes from the cache entry. */
-        /* gdvirtual */ _font_clear_size_cache(font_rid: RID): void
-        
-        /** Removes specified font size from the cache entry. */
-        /* gdvirtual */ _font_remove_size_cache(font_rid: RID, size: Vector2i): void
-        
-        /** Returns font cache information, each entry contains the following fields: `Vector2i size_px` - font size in pixels, `float viewport_oversampling` - viewport oversampling factor, `int glyphs` - number of rendered glyphs, `int textures` - number of used textures, `int textures_size` - size of texture data in bytes. */
-        /* gdvirtual */ _font_get_size_cache_info(font_rid: RID): GArray<GDictionary>
-        
-        /** Sets the font ascent (number of pixels above the baseline). */
-        /* gdvirtual */ _font_set_ascent(font_rid: RID, size: int64, ascent: float64): void
-        
-        /** Returns the font ascent (number of pixels above the baseline). */
-        /* gdvirtual */ _font_get_ascent(font_rid: RID, size: int64): float64
-        
-        /** Sets the font descent (number of pixels below the baseline). */
-        /* gdvirtual */ _font_set_descent(font_rid: RID, size: int64, descent: float64): void
-        
-        /** Returns the font descent (number of pixels below the baseline). */
-        /* gdvirtual */ _font_get_descent(font_rid: RID, size: int64): float64
-        
-        /** Sets pixel offset of the underline below the baseline. */
-        /* gdvirtual */ _font_set_underline_position(font_rid: RID, size: int64, underline_position: float64): void
-        
-        /** Returns pixel offset of the underline below the baseline. */
-        /* gdvirtual */ _font_get_underline_position(font_rid: RID, size: int64): float64
-        
-        /** Sets thickness of the underline in pixels. */
-        /* gdvirtual */ _font_set_underline_thickness(font_rid: RID, size: int64, underline_thickness: float64): void
-        
-        /** Returns thickness of the underline in pixels. */
-        /* gdvirtual */ _font_get_underline_thickness(font_rid: RID, size: int64): float64
-        
-        /** Sets scaling factor of the color bitmap font. */
-        /* gdvirtual */ _font_set_scale(font_rid: RID, size: int64, scale: float64): void
-        
-        /** Returns scaling factor of the color bitmap font. */
-        /* gdvirtual */ _font_get_scale(font_rid: RID, size: int64): float64
-        
-        /** Returns number of textures used by font cache entry. */
-        /* gdvirtual */ _font_get_texture_count(font_rid: RID, size: Vector2i): int64
-        
-        /** Removes all textures from font cache entry. */
-        /* gdvirtual */ _font_clear_textures(font_rid: RID, size: Vector2i): void
-        
-        /** Removes specified texture from the cache entry. */
-        /* gdvirtual */ _font_remove_texture(font_rid: RID, size: Vector2i, texture_index: int64): void
-        
-        /** Sets font cache texture image data. */
-        /* gdvirtual */ _font_set_texture_image(font_rid: RID, size: Vector2i, texture_index: int64, image: Image): void
-        
-        /** Returns font cache texture image data. */
-        /* gdvirtual */ _font_get_texture_image(font_rid: RID, size: Vector2i, texture_index: int64): null | Image
-        
-        /** Sets array containing glyph packing data. */
-        /* gdvirtual */ _font_set_texture_offsets(font_rid: RID, size: Vector2i, texture_index: int64, offset: PackedInt32Array | int32[]): void
-        
-        /** Returns array containing glyph packing data. */
-        /* gdvirtual */ _font_get_texture_offsets(font_rid: RID, size: Vector2i, texture_index: int64): PackedInt32Array
-        
-        /** Returns list of rendered glyphs in the cache entry. */
-        /* gdvirtual */ _font_get_glyph_list(font_rid: RID, size: Vector2i): PackedInt32Array
-        
-        /** Removes all rendered glyph information from the cache entry. */
-        /* gdvirtual */ _font_clear_glyphs(font_rid: RID, size: Vector2i): void
-        
-        /** Removes specified rendered glyph information from the cache entry. */
-        /* gdvirtual */ _font_remove_glyph(font_rid: RID, size: Vector2i, glyph: int64): void
-        
-        /** Returns glyph advance (offset of the next glyph). */
-        /* gdvirtual */ _font_get_glyph_advance(font_rid: RID, size: int64, glyph: int64): Vector2
-        
-        /** Sets glyph advance (offset of the next glyph). */
-        /* gdvirtual */ _font_set_glyph_advance(font_rid: RID, size: int64, glyph: int64, advance: Vector2): void
-        
-        /** Returns glyph offset from the baseline. */
-        /* gdvirtual */ _font_get_glyph_offset(font_rid: RID, size: Vector2i, glyph: int64): Vector2
-        
-        /** Sets glyph offset from the baseline. */
-        /* gdvirtual */ _font_set_glyph_offset(font_rid: RID, size: Vector2i, glyph: int64, offset: Vector2): void
-        
-        /** Returns size of the glyph. */
-        /* gdvirtual */ _font_get_glyph_size(font_rid: RID, size: Vector2i, glyph: int64): Vector2
-        
-        /** Sets size of the glyph. */
-        /* gdvirtual */ _font_set_glyph_size(font_rid: RID, size: Vector2i, glyph: int64, gl_size: Vector2): void
-        
-        /** Returns rectangle in the cache texture containing the glyph. */
-        /* gdvirtual */ _font_get_glyph_uv_rect(font_rid: RID, size: Vector2i, glyph: int64): Rect2
-        
-        /** Sets rectangle in the cache texture containing the glyph. */
-        /* gdvirtual */ _font_set_glyph_uv_rect(font_rid: RID, size: Vector2i, glyph: int64, uv_rect: Rect2): void
-        
-        /** Returns index of the cache texture containing the glyph. */
-        /* gdvirtual */ _font_get_glyph_texture_idx(font_rid: RID, size: Vector2i, glyph: int64): int64
-        
-        /** Sets index of the cache texture containing the glyph. */
-        /* gdvirtual */ _font_set_glyph_texture_idx(font_rid: RID, size: Vector2i, glyph: int64, texture_idx: int64): void
-        
-        /** Returns resource ID of the cache texture containing the glyph. */
-        /* gdvirtual */ _font_get_glyph_texture_rid(font_rid: RID, size: Vector2i, glyph: int64): RID
-        
-        /** Returns size of the cache texture containing the glyph. */
-        /* gdvirtual */ _font_get_glyph_texture_size(font_rid: RID, size: Vector2i, glyph: int64): Vector2
-        
-        /** Returns outline contours of the glyph. */
-        /* gdvirtual */ _font_get_glyph_contours(font_rid: RID, size: int64, index: int64): GDictionary
-        
-        /** Returns list of the kerning overrides. */
-        /* gdvirtual */ _font_get_kerning_list(font_rid: RID, size: int64): GArray<Vector2i>
-        
-        /** Removes all kerning overrides. */
-        /* gdvirtual */ _font_clear_kerning_map(font_rid: RID, size: int64): void
-        
-        /** Removes kerning override for the pair of glyphs. */
-        /* gdvirtual */ _font_remove_kerning(font_rid: RID, size: int64, glyph_pair: Vector2i): void
-        
-        /** Sets kerning for the pair of glyphs. */
-        /* gdvirtual */ _font_set_kerning(font_rid: RID, size: int64, glyph_pair: Vector2i, kerning: Vector2): void
-        
-        /** Returns kerning for the pair of glyphs. */
-        /* gdvirtual */ _font_get_kerning(font_rid: RID, size: int64, glyph_pair: Vector2i): Vector2
-        
-        /** Returns the glyph index of a [param char], optionally modified by the [param variation_selector]. */
-        /* gdvirtual */ _font_get_glyph_index(font_rid: RID, size: int64, char: int64, variation_selector: int64): int64
-        
-        /** Returns character code associated with [param glyph_index], or `0` if [param glyph_index] is invalid. */
-        /* gdvirtual */ _font_get_char_from_glyph_index(font_rid: RID, size: int64, glyph_index: int64): int64
-        
-        /** Returns `true` if a Unicode [param char] is available in the font. */
-        /* gdvirtual */ _font_has_char(font_rid: RID, char: int64): boolean
-        
-        /** Returns a string containing all the characters available in the font. */
-        /* gdvirtual */ _font_get_supported_chars(font_rid: RID): string
-        
-        /** Returns an array containing all glyph indices in the font. */
-        /* gdvirtual */ _font_get_supported_glyphs(font_rid: RID): PackedInt32Array
-        
-        /** Renders the range of characters to the font cache texture. */
-        /* gdvirtual */ _font_render_range(font_rid: RID, size: Vector2i, start: int64, end: int64): void
-        
-        /** Renders specified glyph to the font cache texture. */
-        /* gdvirtual */ _font_render_glyph(font_rid: RID, size: Vector2i, index: int64): void
-        
-        /** Draws single glyph into a canvas item at the position, using [param font_rid] at the size [param size]. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        /* gdvirtual */ _font_draw_glyph(font_rid: RID, canvas: RID, size: int64, pos: Vector2, index: int64, color: Color, oversampling: float64): void
-        
-        /** Draws single glyph outline of size [param outline_size] into a canvas item at the position, using [param font_rid] at the size [param size]. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        /* gdvirtual */ _font_draw_glyph_outline(font_rid: RID, canvas: RID, size: int64, outline_size: int64, pos: Vector2, index: int64, color: Color, oversampling: float64): void
-        
-        /** Returns `true` if the font supports the given language (as a [url=https://en.wikipedia.org/wiki/ISO_639-1]ISO 639[/url] code). */
-        /* gdvirtual */ _font_is_language_supported(font_rid: RID, language: string): boolean
-        
-        /** Adds override for [method _font_is_language_supported]. */
-        /* gdvirtual */ _font_set_language_support_override(font_rid: RID, language: string, supported: boolean): void
-        
-        /** Returns `true` if support override is enabled for the [param language]. */
-        /* gdvirtual */ _font_get_language_support_override(font_rid: RID, language: string): boolean
-        
-        /** Remove language support override. */
-        /* gdvirtual */ _font_remove_language_support_override(font_rid: RID, language: string): void
-        
-        /** Returns list of language support overrides. */
-        /* gdvirtual */ _font_get_language_support_overrides(font_rid: RID): PackedStringArray
-        
-        /** Returns `true` if the font supports the given script (as a [url=https://en.wikipedia.org/wiki/ISO_15924]ISO 15924[/url] code). */
-        /* gdvirtual */ _font_is_script_supported(font_rid: RID, script: string): boolean
-        
-        /** Adds override for [method _font_is_script_supported]. */
-        /* gdvirtual */ _font_set_script_support_override(font_rid: RID, script: string, supported: boolean): void
-        
-        /** Returns `true` if support override is enabled for the [param script]. */
-        /* gdvirtual */ _font_get_script_support_override(font_rid: RID, script: string): boolean
-        
-        /** Removes script support override. */
-        /* gdvirtual */ _font_remove_script_support_override(font_rid: RID, script: string): void
-        
-        /** Returns list of script support overrides. */
-        /* gdvirtual */ _font_get_script_support_overrides(font_rid: RID): PackedStringArray
-        
-        /** Sets font OpenType feature set override. */
-        /* gdvirtual */ _font_set_opentype_feature_overrides(font_rid: RID, overrides: GDictionary): void
-        
-        /** Returns font OpenType feature set override. */
-        /* gdvirtual */ _font_get_opentype_feature_overrides(font_rid: RID): GDictionary
-        
-        /** Returns the dictionary of the supported OpenType features. */
-        /* gdvirtual */ _font_supported_feature_list(font_rid: RID): GDictionary
-        
-        /** Returns the dictionary of the supported OpenType variation coordinates. */
-        /* gdvirtual */ _font_supported_variation_list(font_rid: RID): GDictionary
-        
-        /** Returns the font oversampling factor, shared by all fonts in the TextServer. */
-        /* gdvirtual */ _font_get_global_oversampling(): float64
-        
-        /** Sets oversampling factor, shared by all font in the TextServer. */
-        /* gdvirtual */ _font_set_global_oversampling(oversampling: float64): void
-        
-        /** Increases the reference count of the specified oversampling level. This method is called by [Viewport], and should not be used directly. */
-        /* gdvirtual */ _reference_oversampling_level(oversampling: float64): void
-        
-        /** Decreases the reference count of the specified oversampling level, and frees the font cache for oversampling level when the reference count reaches zero. This method is called by [Viewport], and should not be used directly. */
-        /* gdvirtual */ _unreference_oversampling_level(oversampling: float64): void
-        
-        /** Returns size of the replacement character (box with character hexadecimal code that is drawn in place of invalid characters). */
-        /* gdvirtual */ _get_hex_code_box_size(size: int64, index: int64): Vector2
-        
-        /** Draws box displaying character hexadecimal code. */
-        /* gdvirtual */ _draw_hex_code_box(canvas: RID, size: int64, pos: Vector2, index: int64, color: Color): void
-        
-        /** Creates a new buffer for complex text layout, with the given [param direction] and [param orientation]. */
-        /* gdvirtual */ _create_shaped_text(direction: TextServer.Direction, orientation: TextServer.Orientation): RID
-        
-        /** Clears text buffer (removes text and inline objects). */
-        /* gdvirtual */ _shaped_text_clear(shaped: RID): void
-        
-        /** Duplicates shaped text buffer. */
-        /* gdvirtual */ _shaped_text_duplicate(shaped: RID): RID
-        
-        /** Sets desired text direction. If set to [constant TextServer.DIRECTION_AUTO], direction will be detected based on the buffer contents and current locale. */
-        /* gdvirtual */ _shaped_text_set_direction(shaped: RID, direction: TextServer.Direction): void
-        
-        /** Returns direction of the text. */
-        /* gdvirtual */ _shaped_text_get_direction(shaped: RID): TextServer.Direction
-        
-        /** Returns direction of the text, inferred by the BiDi algorithm. */
-        /* gdvirtual */ _shaped_text_get_inferred_direction(shaped: RID): TextServer.Direction
-        
-        /** Overrides BiDi for the structured text. */
-        /* gdvirtual */ _shaped_text_set_bidi_override(shaped: RID, override: GArray): void
-        
-        /** Sets custom punctuation character list, used for word breaking. If set to empty string, server defaults are used. */
-        /* gdvirtual */ _shaped_text_set_custom_punctuation(shaped: RID, punct: string): void
-        
-        /** Returns custom punctuation character list, used for word breaking. If set to empty string, server defaults are used. */
-        /* gdvirtual */ _shaped_text_get_custom_punctuation(shaped: RID): string
-        
-        /** Sets ellipsis character used for text clipping. */
-        /* gdvirtual */ _shaped_text_set_custom_ellipsis(shaped: RID, char: int64): void
-        
-        /** Returns ellipsis character used for text clipping. */
-        /* gdvirtual */ _shaped_text_get_custom_ellipsis(shaped: RID): int64
-        
-        /** Sets desired text orientation. */
-        /* gdvirtual */ _shaped_text_set_orientation(shaped: RID, orientation: TextServer.Orientation): void
-        
-        /** Returns text orientation. */
-        /* gdvirtual */ _shaped_text_get_orientation(shaped: RID): TextServer.Orientation
-        
-        /** If set to `true` text buffer will display invalid characters as hexadecimal codes, otherwise nothing is displayed. */
-        /* gdvirtual */ _shaped_text_set_preserve_invalid(shaped: RID, enabled: boolean): void
-        
-        /** Returns `true` if text buffer is configured to display hexadecimal codes in place of invalid characters. */
-        /* gdvirtual */ _shaped_text_get_preserve_invalid(shaped: RID): boolean
-        
-        /** If set to `true` text buffer will display control characters. */
-        /* gdvirtual */ _shaped_text_set_preserve_control(shaped: RID, enabled: boolean): void
-        
-        /** Returns `true` if text buffer is configured to display control characters. */
-        /* gdvirtual */ _shaped_text_get_preserve_control(shaped: RID): boolean
-        
-        /** Sets extra spacing added between glyphs or lines in pixels. */
-        /* gdvirtual */ _shaped_text_set_spacing(shaped: RID, spacing: TextServer.SpacingType, value: int64): void
-        
-        /** Returns extra spacing added between glyphs or lines in pixels. */
-        /* gdvirtual */ _shaped_text_get_spacing(shaped: RID, spacing: TextServer.SpacingType): int64
-        
-        /** Adds text span and font to draw it to the text buffer. */
-        /* gdvirtual */ _shaped_text_add_string(shaped: RID, text: string, fonts: GArray<RID>, size: int64, opentype_features: GDictionary, language: string, meta: any): boolean
-        
-        /** Adds inline object to the text buffer, [param key] must be unique. In the text, object is represented as [param length] object replacement characters. */
-        /* gdvirtual */ _shaped_text_add_object(shaped: RID, key: any, size: Vector2, inline_align: InlineAlignment, length: int64, baseline: float64): boolean
-        
-        /** Sets new size and alignment of embedded object. */
-        /* gdvirtual */ _shaped_text_resize_object(shaped: RID, key: any, size: Vector2, inline_align: InlineAlignment, baseline: float64): boolean
-        
-        /** Returns `true` if an object with [param key] is embedded in this shaped text buffer. */
-        /* gdvirtual */ _shaped_text_has_object(shaped: RID, key: any): boolean
-        
-        /** Returns the text buffer source text, including object replacement characters. */
-        /* gdvirtual */ _shaped_get_text(shaped: RID): string
-        
-        /** Returns number of text spans added using [method _shaped_text_add_string] or [method _shaped_text_add_object]. */
-        /* gdvirtual */ _shaped_get_span_count(shaped: RID): int64
-        
-        /** Returns text span metadata. */
-        /* gdvirtual */ _shaped_get_span_meta(shaped: RID, index: int64): any
-        
-        /** Returns text embedded object key. */
-        /* gdvirtual */ _shaped_get_span_embedded_object(shaped: RID, index: int64): any
-        
-        /** Returns the text span source text. */
-        /* gdvirtual */ _shaped_get_span_text(shaped: RID, index: int64): string
-        
-        /** Returns the text span embedded object key. */
-        /* gdvirtual */ _shaped_get_span_object(shaped: RID, index: int64): any
-        
-        /** Changes text span font, font size, and OpenType features, without changing the text. */
-        /* gdvirtual */ _shaped_set_span_update_font(shaped: RID, index: int64, fonts: GArray<RID>, size: int64, opentype_features: GDictionary): void
-        
-        /** Returns the number of uniform text runs in the buffer. */
-        /* gdvirtual */ _shaped_get_run_count(shaped: RID): int64
-        
-        /** Returns the source text of the [param index] text run (in visual order). */
-        /* gdvirtual */ _shaped_get_run_text(shaped: RID, index: int64): string
-        
-        /** Returns the source text range of the [param index] text run (in visual order). */
-        /* gdvirtual */ _shaped_get_run_range(shaped: RID, index: int64): Vector2i
-        
-        /** Returns the glyph range of the [param index] text run (in visual order). */
-        /* gdvirtual */ _shaped_get_run_glyph_range(shaped: RID, index: int64): Vector2i
-        
-        /** Returns the font RID of the [param index] text run (in visual order). */
-        /* gdvirtual */ _shaped_get_run_font_rid(shaped: RID, index: int64): RID
-        
-        /** Returns the font size of the [param index] text run (in visual order). */
-        /* gdvirtual */ _shaped_get_run_font_size(shaped: RID, index: int64): int64
-        
-        /** Returns the language of the [param index] text run (in visual order). */
-        /* gdvirtual */ _shaped_get_run_language(shaped: RID, index: int64): string
-        
-        /** Returns the direction of the [param index] text run (in visual order). */
-        /* gdvirtual */ _shaped_get_run_direction(shaped: RID, index: int64): TextServer.Direction
-        
-        /** Returns the embedded object of the [param index] text run (in visual order). */
-        /* gdvirtual */ _shaped_get_run_object(shaped: RID, index: int64): any
-        
-        /** Returns text buffer for the substring of the text in the [param shaped] text buffer (including inline objects). */
-        /* gdvirtual */ _shaped_text_substr(shaped: RID, start: int64, length: int64): RID
-        
-        /** Returns the parent buffer from which the substring originates. */
-        /* gdvirtual */ _shaped_text_get_parent(shaped: RID): RID
-        
-        /** Adjusts text width to fit to specified width, returns new text width. */
-        /* gdvirtual */ _shaped_text_fit_to_width(shaped: RID, width: float64, justification_flags: TextServer.JustificationFlag): float64
-        
-        /** Aligns shaped text to the given tab-stops. */
-        /* gdvirtual */ _shaped_text_tab_align(shaped: RID, tab_stops: PackedFloat32Array | float32[]): float64
-        
-        /** Shapes buffer if it's not shaped. Returns `true` if the string is shaped successfully. */
-        /* gdvirtual */ _shaped_text_shape(shaped: RID): boolean
-        
-        /** Updates break points in the shaped text. This method is called by default implementation of text breaking functions. */
-        /* gdvirtual */ _shaped_text_update_breaks(shaped: RID): boolean
-        
-        /** Updates justification points in the shaped text. This method is called by default implementation of text justification functions. */
-        /* gdvirtual */ _shaped_text_update_justification_ops(shaped: RID): boolean
-        
-        /** Returns `true` if buffer is successfully shaped. */
-        /* gdvirtual */ _shaped_text_is_ready(shaped: RID): boolean
-        
-        /** Returns an array of glyphs in the visual order. */
-        /* gdvirtual */ _shaped_text_get_glyphs(shaped: RID): int64
-        
-        /** Returns text glyphs in the logical order. */
-        /* gdvirtual */ _shaped_text_sort_logical(shaped: RID): int64
-        
-        /** Returns number of glyphs in the buffer. */
-        /* gdvirtual */ _shaped_text_get_glyph_count(shaped: RID): int64
-        
-        /** Returns substring buffer character range in the parent buffer. */
-        /* gdvirtual */ _shaped_text_get_range(shaped: RID): Vector2i
-        
-        /** Breaks text to the lines and columns. Returns character ranges for each segment. */
-        /* gdvirtual */ _shaped_text_get_line_breaks_adv(shaped: RID, width: PackedFloat32Array | float32[], start: int64, once: boolean, break_flags: TextServer.LineBreakFlag): PackedInt32Array
-        
-        /** Breaks text to the lines and returns character ranges for each line. */
-        /* gdvirtual */ _shaped_text_get_line_breaks(shaped: RID, width: float64, start: int64, break_flags: TextServer.LineBreakFlag): PackedInt32Array
-        
-        /** Breaks text into words and returns array of character ranges. Use [param grapheme_flags] to set what characters are used for breaking. */
-        /* gdvirtual */ _shaped_text_get_word_breaks(shaped: RID, grapheme_flags: TextServer.GraphemeFlag, skip_grapheme_flags: TextServer.GraphemeFlag): PackedInt32Array
-        
-        /** Returns the position of the overrun trim. */
-        /* gdvirtual */ _shaped_text_get_trim_pos(shaped: RID): int64
-        
-        /** Returns position of the ellipsis. */
-        /* gdvirtual */ _shaped_text_get_ellipsis_pos(shaped: RID): int64
-        
-        /** Returns number of glyphs in the ellipsis. */
-        /* gdvirtual */ _shaped_text_get_ellipsis_glyph_count(shaped: RID): int64
-        
-        /** Returns array of the glyphs in the ellipsis. */
-        /* gdvirtual */ _shaped_text_get_ellipsis_glyphs(shaped: RID): int64
-        
-        /** Trims text if it exceeds the given width. */
-        /* gdvirtual */ _shaped_text_overrun_trim_to_width(shaped: RID, width: float64, trim_flags: TextServer.TextOverrunFlag): void
-        
-        /** Returns array of inline objects. */
-        /* gdvirtual */ _shaped_text_get_objects(shaped: RID): GArray
-        
-        /** Returns bounding rectangle of the inline object. */
-        /* gdvirtual */ _shaped_text_get_object_rect(shaped: RID, key: any): Rect2
-        
-        /** Returns the character range of the inline object. */
-        /* gdvirtual */ _shaped_text_get_object_range(shaped: RID, key: any): Vector2i
-        
-        /** Returns the glyph index of the inline object. */
-        /* gdvirtual */ _shaped_text_get_object_glyph(shaped: RID, key: any): int64
-        
-        /** Returns size of the text. */
-        /* gdvirtual */ _shaped_text_get_size(shaped: RID): Vector2
-        
-        /** Returns the text ascent (number of pixels above the baseline for horizontal layout or to the left of baseline for vertical). */
-        /* gdvirtual */ _shaped_text_get_ascent(shaped: RID): float64
-        
-        /** Returns the text descent (number of pixels below the baseline for horizontal layout or to the right of baseline for vertical). */
-        /* gdvirtual */ _shaped_text_get_descent(shaped: RID): float64
-        
-        /** Returns width (for horizontal layout) or height (for vertical) of the text. */
-        /* gdvirtual */ _shaped_text_get_width(shaped: RID): float64
-        
-        /** Returns pixel offset of the underline below the baseline. */
-        /* gdvirtual */ _shaped_text_get_underline_position(shaped: RID): float64
-        
-        /** Returns thickness of the underline. */
-        /* gdvirtual */ _shaped_text_get_underline_thickness(shaped: RID): float64
-        
-        /** Returns dominant direction of in the range of text. */
-        /* gdvirtual */ _shaped_text_get_dominant_direction_in_range(shaped: RID, start: int64, end: int64): int64
-        
-        /** Returns shapes of the carets corresponding to the character offset [param position] in the text. Returned caret shape is 1 pixel wide rectangle. */
-        /* gdvirtual */ _shaped_text_get_carets(shaped: RID, position: int64, caret: int64): void
-        
-        /** Returns selection rectangles for the specified character range. */
-        /* gdvirtual */ _shaped_text_get_selection(shaped: RID, start: int64, end: int64): PackedVector2Array
-        
-        /** Returns grapheme index at the specified pixel offset at the baseline, or `-1` if none is found. */
-        /* gdvirtual */ _shaped_text_hit_test_grapheme(shaped: RID, coord: float64): int64
-        
-        /** Returns caret character offset at the specified pixel offset at the baseline. This function always returns a valid position. */
-        /* gdvirtual */ _shaped_text_hit_test_position(shaped: RID, coord: float64): int64
-        
-        /** Draw shaped text into a canvas item at a given position, with [param color]. [param pos] specifies the leftmost point of the baseline (for horizontal layout) or topmost point of the baseline (for vertical layout). If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        /* gdvirtual */ _shaped_text_draw(shaped: RID, canvas: RID, pos: Vector2, clip_l: float64, clip_r: float64, color: Color, oversampling: float64): void
-        
-        /** Draw the outline of the shaped text into a canvas item at a given position, with [param color]. [param pos] specifies the leftmost point of the baseline (for horizontal layout) or topmost point of the baseline (for vertical layout). If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used. */
-        /* gdvirtual */ _shaped_text_draw_outline(shaped: RID, canvas: RID, pos: Vector2, clip_l: float64, clip_r: float64, outline_size: int64, color: Color, oversampling: float64): void
-        
-        /** Returns composite character's bounds as offsets from the start of the line. */
-        /* gdvirtual */ _shaped_text_get_grapheme_bounds(shaped: RID, pos: int64): Vector2
-        
-        /** Returns grapheme end position closest to the [param pos]. */
-        /* gdvirtual */ _shaped_text_next_grapheme_pos(shaped: RID, pos: int64): int64
-        
-        /** Returns grapheme start position closest to the [param pos]. */
-        /* gdvirtual */ _shaped_text_prev_grapheme_pos(shaped: RID, pos: int64): int64
-        
-        /** Returns array of the composite character boundaries. */
-        /* gdvirtual */ _shaped_text_get_character_breaks(shaped: RID): PackedInt32Array
-        
-        /** Returns composite character end position closest to the [param pos]. */
-        /* gdvirtual */ _shaped_text_next_character_pos(shaped: RID, pos: int64): int64
-        
-        /** Returns composite character start position closest to the [param pos]. */
-        /* gdvirtual */ _shaped_text_prev_character_pos(shaped: RID, pos: int64): int64
-        
-        /** Returns composite character position closest to the [param pos]. */
-        /* gdvirtual */ _shaped_text_closest_character_pos(shaped: RID, pos: int64): int64
-        
-        /** Converts a number from Western Arabic (0..9) to the numeral system used in the given [param language].  
-         *  If [param language] is an empty string, the active locale will be used.  
-         */
-        /* gdvirtual */ _format_number(number: string, language: string): string
-        
-        /** Converts [param number] from the numeral system used in the given [param language] to Western Arabic (0..9).  
-         *  If [param language] is an empty string, the active locale will be used.  
-         */
-        /* gdvirtual */ _parse_number(number: string, language: string): string
-        
-        /** Returns percent sign used in the given [param language]. */
-        /* gdvirtual */ _percent_sign(language: string): string
-        
-        /** Strips diacritics from the string. */
-        /* gdvirtual */ _strip_diacritics(string_: string): string
-        
-        /** Returns `true` if [param string] is a valid identifier. */
-        /* gdvirtual */ _is_valid_identifier(string_: string): boolean
-        /* gdvirtual */ _is_valid_letter(unicode: int64): boolean
-        
-        /** Returns an array of the word break boundaries. Elements in the returned array are the offsets of the start and end of words. Therefore the length of the array is always even. */
-        /* gdvirtual */ _string_get_word_breaks(string_: string, language: string, chars_per_line: int64): PackedInt32Array
-        
-        /** Returns array of the composite character boundaries. */
-        /* gdvirtual */ _string_get_character_breaks(string_: string, language: string): PackedInt32Array
-        
-        /** Returns index of the first string in [param dict] which is visually confusable with the [param string], or `-1` if none is found. */
-        /* gdvirtual */ _is_confusable(string_: string, dict: PackedStringArray | string[]): int64
-        
-        /** Returns `true` if [param string] is likely to be an attempt at confusing the reader. */
-        /* gdvirtual */ _spoof_check(string_: string): boolean
-        
-        /** Returns the string converted to `UPPERCASE`. */
-        /* gdvirtual */ _string_to_upper(string_: string, language: string): string
-        
-        /** Returns the string converted to `lowercase`. */
-        /* gdvirtual */ _string_to_lower(string_: string, language: string): string
-        
-        /** Returns the string converted to `Title Case`. */
-        /* gdvirtual */ _string_to_title(string_: string, language: string): string
-        
-        /** Default implementation of the BiDi algorithm override function. */
-        /* gdvirtual */ _parse_structured_text(parser_type: TextServer.StructuredTextParser, args: GArray, text: string): GArray<Vector3i>
-        
-        /** This method is called before text server is unregistered. */
-        /* gdvirtual */ _cleanup(): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextServerExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextServerExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTexture extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTexture extends __NameMapResource {
-    }
-    /** Base class for all texture types.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texture.html  
-     */
-    class Texture extends Resource {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTexture2D extends __RPCMapTexture {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTexture2D extends __NameMapTexture {
-    }
-    /** Texture for 2D and 3D.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texture2d.html  
-     */
-    class Texture2D extends Texture {
-        constructor(identifier?: any)
-        /** Called when the [Texture2D]'s width is queried. */
-        /* gdvirtual */ _get_width(): int64
-        
-        /** Called when the [Texture2D]'s height is queried. */
-        /* gdvirtual */ _get_height(): int64
-        
-        /** Called when a pixel's opaque state in the [Texture2D] is queried at the specified `(x, y)` position. */
-        /* gdvirtual */ _is_pixel_opaque(x: int64, y: int64): boolean
-        
-        /** Called when the presence of an alpha channel in the [Texture2D] is queried. */
-        /* gdvirtual */ _has_alpha(): boolean
-        
-        /** Called when the entire [Texture2D] is requested to be drawn over a [CanvasItem], with the top-left offset specified in [param pos]. [param modulate] specifies a multiplier for the colors being drawn, while [param transpose] specifies whether drawing should be performed in column-major order instead of row-major order (resulting in 90-degree clockwise rotation).  
-         *      
-         *  **Note:** This is only used in 2D rendering, not 3D.  
-         */
-        /* gdvirtual */ _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: boolean): void
-        
-        /** Called when the [Texture2D] is requested to be drawn onto [CanvasItem]'s specified [param rect]. [param modulate] specifies a multiplier for the colors being drawn, while [param transpose] specifies whether drawing should be performed in column-major order instead of row-major order (resulting in 90-degree clockwise rotation).  
-         *      
-         *  **Note:** This is only used in 2D rendering, not 3D.  
-         */
-        /* gdvirtual */ _draw_rect(to_canvas_item: RID, rect: Rect2, tile: boolean, modulate: Color, transpose: boolean): void
-        
-        /** Called when a part of the [Texture2D] specified by [param src_rect]'s coordinates is requested to be drawn onto [CanvasItem]'s specified [param rect]. [param modulate] specifies a multiplier for the colors being drawn, while [param transpose] specifies whether drawing should be performed in column-major order instead of row-major order (resulting in 90-degree clockwise rotation).  
-         *      
-         *  **Note:** This is only used in 2D rendering, not 3D.  
-         */
-        /* gdvirtual */ _draw_rect_region(to_canvas_item: RID, rect: Rect2, src_rect: Rect2, modulate: Color, transpose: boolean, clip_uv: boolean): void
-        
-        /** Returns the texture width in pixels. */
-        get_width(): int64
-        
-        /** Returns the texture height in pixels. */
-        get_height(): int64
-        
-        /** Returns the texture size in pixels. */
-        get_size(): Vector2
-        
-        /** Returns `true` if this [Texture2D] has an alpha channel. */
-        has_alpha(): boolean
-        
-        /** Draws the texture using a [CanvasItem] with the [RenderingServer] API at the specified [param position]. */
-        draw(canvas_item: RID, position: Vector2, modulate?: Color /* = new Color(1, 1, 1, 1) */, transpose?: boolean /* = false */): void
-        
-        /** Draws the texture using a [CanvasItem] with the [RenderingServer] API. */
-        draw_rect(canvas_item: RID, rect: Rect2, tile: boolean, modulate?: Color /* = new Color(1, 1, 1, 1) */, transpose?: boolean /* = false */): void
-        
-        /** Draws a part of the texture using a [CanvasItem] with the [RenderingServer] API. */
-        draw_rect_region(canvas_item: RID, rect: Rect2, src_rect: Rect2, modulate?: Color /* = new Color(1, 1, 1, 1) */, transpose?: boolean /* = false */, clip_uv?: boolean /* = true */): void
-        
-        /** Returns an [Image] that is a copy of data from this [Texture2D] (a new [Image] is created each time). [Image]s can be accessed and manipulated directly.  
-         *      
-         *  **Note:** This will return `null` if this [Texture2D] is invalid.  
-         *      
-         *  **Note:** This will fetch the texture data from the GPU, which might cause performance problems when overused. Avoid calling [method get_image] every frame, especially on large textures.  
-         */
-        get_image(): null | Image
-        
-        /** Creates a placeholder version of this resource ([PlaceholderTexture2D]). */
-        create_placeholder(): Resource
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTexture2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTexture2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTexture2DArray extends __RPCMapImageTextureLayered {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTexture2DArray extends __NameMapImageTextureLayered {
-    }
-    /** A single texture resource which consists of multiple, separate images. Each image has the same dimensions and number of mipmap levels.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texture2darray.html  
-     */
-    class Texture2DArray extends ImageTextureLayered {
-        constructor(identifier?: any)
-        /** Creates a placeholder version of this resource ([PlaceholderTexture2DArray]). */
-        create_placeholder(): Resource
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTexture2DArray;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTexture2DArray;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTexture2DArrayRD extends __RPCMapTextureLayeredRD {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTexture2DArrayRD extends __NameMapTextureLayeredRD {
-    }
-    /** Texture Array for 2D that is bound to a texture created on the [RenderingDevice].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texture2darrayrd.html  
-     */
-    class Texture2DArrayRD extends TextureLayeredRD {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTexture2DArrayRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTexture2DArrayRD;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTexture2DRD extends __RPCMapTexture2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTexture2DRD extends __NameMapTexture2D {
-    }
-    /** Texture for 2D that is bound to a texture created on the [RenderingDevice].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texture2drd.html  
-     */
-    class Texture2DRD extends Texture2D {
-        constructor(identifier?: any)
-        /** The RID of the texture object created on the [RenderingDevice]. */
-        get texture_rd_rid(): RID
-        set texture_rd_rid(value: RID)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTexture2DRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTexture2DRD;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTexture3D extends __RPCMapTexture {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTexture3D extends __NameMapTexture {
-    }
-    /** Base class for 3-dimensional textures.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texture3d.html  
-     */
-    class Texture3D extends Texture {
-        constructor(identifier?: any)
-        /** Called when the [Texture3D]'s format is queried. */
-        /* gdvirtual */ _get_format(): Image.Format
-        
-        /** Called when the [Texture3D]'s width is queried. */
-        /* gdvirtual */ _get_width(): int64
-        
-        /** Called when the [Texture3D]'s height is queried. */
-        /* gdvirtual */ _get_height(): int64
-        
-        /** Called when the [Texture3D]'s depth is queried. */
-        /* gdvirtual */ _get_depth(): int64
-        
-        /** Called when the presence of mipmaps in the [Texture3D] is queried. */
-        /* gdvirtual */ _has_mipmaps(): boolean
-        
-        /** Called when the [Texture3D]'s data is queried. */
-        /* gdvirtual */ _get_data(): GArray<Image>
-        
-        /** Returns the current format being used by this texture. */
-        get_format(): Image.Format
-        
-        /** Returns the [Texture3D]'s width in pixels. Width is typically represented by the X axis. */
-        get_width(): int64
-        
-        /** Returns the [Texture3D]'s height in pixels. Width is typically represented by the Y axis. */
-        get_height(): int64
-        
-        /** Returns the [Texture3D]'s depth in pixels. Depth is typically represented by the Z axis (a dimension not present in [Texture2D]). */
-        get_depth(): int64
-        
-        /** Returns `true` if the [Texture3D] has generated mipmaps. */
-        has_mipmaps(): boolean
-        
-        /** Returns the [Texture3D]'s data as an array of [Image]s. Each [Image] represents a  *slice*  of the [Texture3D], with different slices mapping to different depth (Z axis) levels. */
-        get_data(): GArray<Image>
-        
-        /** Creates a placeholder version of this resource ([PlaceholderTexture3D]). */
-        create_placeholder(): Resource
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTexture3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTexture3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTexture3DRD extends __RPCMapTexture3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTexture3DRD extends __NameMapTexture3D {
-    }
-    /** Texture for 3D that is bound to a texture created on the [RenderingDevice].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texture3drd.html  
-     */
-    class Texture3DRD extends Texture3D {
-        constructor(identifier?: any)
-        /** The RID of the texture object created on the [RenderingDevice]. */
-        get texture_rd_rid(): RID
-        set texture_rd_rid(value: RID)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTexture3DRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTexture3DRD;
-    }
-    namespace TextureButton {
-        enum StretchMode {
-            /** Scale to fit the node's bounding rectangle. */
-            STRETCH_SCALE = 0,
-            
-            /** Tile inside the node's bounding rectangle. */
-            STRETCH_TILE = 1,
-            
-            /** The texture keeps its original size and stays in the bounding rectangle's top-left corner. */
-            STRETCH_KEEP = 2,
-            
-            /** The texture keeps its original size and stays centered in the node's bounding rectangle. */
-            STRETCH_KEEP_CENTERED = 3,
-            
-            /** Scale the texture to fit the node's bounding rectangle, but maintain the texture's aspect ratio. */
-            STRETCH_KEEP_ASPECT = 4,
-            
-            /** Scale the texture to fit the node's bounding rectangle, center it, and maintain its aspect ratio. */
-            STRETCH_KEEP_ASPECT_CENTERED = 5,
-            
-            /** Scale the texture so that the shorter side fits the bounding rectangle. The other side clips to the node's limits. */
-            STRETCH_KEEP_ASPECT_COVERED = 6,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextureButton extends __RPCMapBaseButton {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextureButton extends __NameMapBaseButton {
-    }
-    /** Texture-based button. Supports Pressed, Hover, Disabled and Focused states.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texturebutton.html  
-     */
-    class TextureButton<Map extends NodePathMap = any> extends BaseButton<Map> {
-        constructor(identifier?: any)
-        /** Texture to display by default, when the node is **not** in the disabled, hover or pressed state. This texture is still displayed in the focused state, with [member texture_focused] drawn on top. */
-        get texture_normal(): null | Texture2D
-        set texture_normal(value: null | Texture2D)
-        
-        /** Texture to display on mouse down over the node, if the node has keyboard focus and the player presses the Enter key or if the player presses the [member BaseButton.shortcut] key. If not assigned, the [TextureButton] displays [member texture_hover] instead when pressed. */
-        get texture_pressed(): null | Texture2D
-        set texture_pressed(value: null | Texture2D)
-        
-        /** Texture to display when the mouse hovers over the node. If not assigned, the [TextureButton] displays [member texture_normal] instead when hovered over. */
-        get texture_hover(): null | Texture2D
-        set texture_hover(value: null | Texture2D)
-        
-        /** Texture to display when the node is disabled. See [member BaseButton.disabled]. If not assigned, the [TextureButton] displays [member texture_normal] instead. */
-        get texture_disabled(): null | Texture2D
-        set texture_disabled(value: null | Texture2D)
-        
-        /** Texture to  *overlay on the base texture*  when the node has mouse or keyboard focus. Because [member texture_focused] is displayed on top of the base texture, a partially transparent texture should be used to ensure the base texture remains visible. A texture that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a fully transparent texture of any size. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons. */
-        get texture_focused(): null | Texture2D
-        set texture_focused(value: null | Texture2D)
-        
-        /** Pure black and white [BitMap] image to use for click detection. On the mask, white pixels represent the button's clickable area. Use it to create buttons with curved shapes. */
-        get texture_click_mask(): null | BitMap
-        set texture_click_mask(value: null | BitMap)
-        
-        /** If `true`, the size of the texture won't be considered for minimum size calculation, so the [TextureButton] can be shrunk down past the texture size. */
-        get ignore_texture_size(): boolean
-        set ignore_texture_size(value: boolean)
-        
-        /** Controls the texture's behavior when you resize the node's bounding rectangle. See the [enum StretchMode] constants for available options. */
-        get stretch_mode(): int64
-        set stretch_mode(value: int64)
-        
-        /** If `true`, texture is flipped horizontally. */
-        get flip_h(): boolean
-        set flip_h(value: boolean)
-        
-        /** If `true`, texture is flipped vertically. */
-        get flip_v(): boolean
-        set flip_v(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextureButton;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextureButton;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextureCubemapArrayRD extends __RPCMapTextureLayeredRD {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextureCubemapArrayRD extends __NameMapTextureLayeredRD {
-    }
-    /** Texture Array for Cubemaps that is bound to a texture created on the [RenderingDevice].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texturecubemaparrayrd.html  
-     */
-    class TextureCubemapArrayRD extends TextureLayeredRD {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextureCubemapArrayRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextureCubemapArrayRD;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextureCubemapRD extends __RPCMapTextureLayeredRD {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextureCubemapRD extends __NameMapTextureLayeredRD {
-    }
-    /** Texture for Cubemap that is bound to a texture created on the [RenderingDevice].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texturecubemaprd.html  
-     */
-    class TextureCubemapRD extends TextureLayeredRD {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextureCubemapRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextureCubemapRD;
-    }
-    namespace TextureLayered {
-        enum LayeredType {
-            /** Texture is a generic [Texture2DArray]. */
-            LAYERED_TYPE_2D_ARRAY = 0,
-            
-            /** Texture is a [Cubemap], with each side in its own layer (6 in total). */
-            LAYERED_TYPE_CUBEMAP = 1,
-            
-            /** Texture is a [CubemapArray], with each cubemap being made of 6 layers. */
-            LAYERED_TYPE_CUBEMAP_ARRAY = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextureLayered extends __RPCMapTexture {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextureLayered extends __NameMapTexture {
-    }
-    /** Base class for texture types which contain the data of multiple [Image]s. Each image is of the same size and format.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texturelayered.html  
-     */
-    class TextureLayered extends Texture {
-        constructor(identifier?: any)
-        /** Called when the [TextureLayered]'s format is queried. */
-        /* gdvirtual */ _get_format(): Image.Format
-        
-        /** Called when the layers' type in the [TextureLayered] is queried. */
-        /* gdvirtual */ _get_layered_type(): int64
-        
-        /** Called when the [TextureLayered]'s width queried. */
-        /* gdvirtual */ _get_width(): int64
-        
-        /** Called when the [TextureLayered]'s height is queried. */
-        /* gdvirtual */ _get_height(): int64
-        
-        /** Called when the number of layers in the [TextureLayered] is queried. */
-        /* gdvirtual */ _get_layers(): int64
-        
-        /** Called when the presence of mipmaps in the [TextureLayered] is queried. */
-        /* gdvirtual */ _has_mipmaps(): boolean
-        
-        /** Called when the data for a layer in the [TextureLayered] is queried. */
-        /* gdvirtual */ _get_layer_data(layer_index: int64): null | Image
-        
-        /** Returns the current format being used by this texture. */
-        get_format(): Image.Format
-        
-        /** Returns the [TextureLayered]'s type. The type determines how the data is accessed, with cubemaps having special types. */
-        get_layered_type(): TextureLayered.LayeredType
-        
-        /** Returns the width of the texture in pixels. Width is typically represented by the X axis. */
-        get_width(): int64
-        
-        /** Returns the height of the texture in pixels. Height is typically represented by the Y axis. */
-        get_height(): int64
-        
-        /** Returns the number of referenced [Image]s. */
-        get_layers(): int64
-        
-        /** Returns `true` if the layers have generated mipmaps. */
-        has_mipmaps(): boolean
-        
-        /** Returns an [Image] resource with the data from specified [param layer]. */
-        get_layer_data(layer: int64): null | Image
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextureLayered;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextureLayered;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextureLayeredRD extends __RPCMapTextureLayered {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextureLayeredRD extends __NameMapTextureLayered {
-    }
-    /** Abstract base class for layered texture RD types.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texturelayeredrd.html  
-     */
-    class TextureLayeredRD extends TextureLayered {
-        constructor(identifier?: any)
-        /** The RID of the texture object created on the [RenderingDevice]. */
-        get texture_rd_rid(): RID
-        set texture_rd_rid(value: RID)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextureLayeredRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextureLayeredRD;
-    }
-    namespace TextureProgressBar {
-        enum FillMode {
-            /** The [member texture_progress] fills from left to right. */
-            FILL_LEFT_TO_RIGHT = 0,
-            
-            /** The [member texture_progress] fills from right to left. */
-            FILL_RIGHT_TO_LEFT = 1,
-            
-            /** The [member texture_progress] fills from top to bottom. */
-            FILL_TOP_TO_BOTTOM = 2,
-            
-            /** The [member texture_progress] fills from bottom to top. */
-            FILL_BOTTOM_TO_TOP = 3,
-            
-            /** Turns the node into a radial bar. The [member texture_progress] fills clockwise. See [member radial_center_offset], [member radial_initial_angle] and [member radial_fill_degrees] to control the way the bar fills up. */
-            FILL_CLOCKWISE = 4,
-            
-            /** Turns the node into a radial bar. The [member texture_progress] fills counterclockwise. See [member radial_center_offset], [member radial_initial_angle] and [member radial_fill_degrees] to control the way the bar fills up. */
-            FILL_COUNTER_CLOCKWISE = 5,
-            
-            /** The [member texture_progress] fills from the center, expanding both towards the left and the right. */
-            FILL_BILINEAR_LEFT_AND_RIGHT = 6,
-            
-            /** The [member texture_progress] fills from the center, expanding both towards the top and the bottom. */
-            FILL_BILINEAR_TOP_AND_BOTTOM = 7,
-            
-            /** Turns the node into a radial bar. The [member texture_progress] fills radially from the center, expanding both clockwise and counterclockwise. See [member radial_center_offset], [member radial_initial_angle] and [member radial_fill_degrees] to control the way the bar fills up. */
-            FILL_CLOCKWISE_AND_COUNTER_CLOCKWISE = 8,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextureProgressBar extends __RPCMapRange {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextureProgressBar extends __NameMapRange {
-    }
-    /** Texture-based progress bar. Useful for loading screens and life or stamina bars.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_textureprogressbar.html  
-     */
-    class TextureProgressBar<Map extends NodePathMap = any> extends Range<Map> {
-        constructor(identifier?: any)
-        /** Sets the stretch margin with the specified index. See [member stretch_margin_bottom] and related properties. */
-        set_stretch_margin(margin: Side, value: int64): void
-        
-        /** Returns the stretch margin with the specified index. See [member stretch_margin_bottom] and related properties. */
-        get_stretch_margin(margin: Side): int64
-        
-        /** The fill direction. See [enum FillMode] for possible values. */
-        get fill_mode(): int64
-        set fill_mode(value: int64)
-        
-        /** Starting angle for the fill of [member texture_progress] if [member fill_mode] is [constant FILL_CLOCKWISE], [constant FILL_COUNTER_CLOCKWISE], or [constant FILL_CLOCKWISE_AND_COUNTER_CLOCKWISE]. When the node's `value` is equal to its `min_value`, the texture doesn't show up at all. When the `value` increases, the texture fills and tends towards [member radial_fill_degrees].  
-         *      
-         *  **Note:** [member radial_initial_angle] is wrapped between `0` and `360` degrees (inclusive).  
-         */
-        get radial_initial_angle(): float64
-        set radial_initial_angle(value: float64)
-        
-        /** Upper limit for the fill of [member texture_progress] if [member fill_mode] is [constant FILL_CLOCKWISE], [constant FILL_COUNTER_CLOCKWISE], or [constant FILL_CLOCKWISE_AND_COUNTER_CLOCKWISE]. When the node's `value` is equal to its `max_value`, the texture fills up to this angle.  
-         *  See [member Range.value], [member Range.max_value].  
-         */
-        get radial_fill_degrees(): float64
-        set radial_fill_degrees(value: float64)
-        
-        /** Offsets [member texture_progress] if [member fill_mode] is [constant FILL_CLOCKWISE], [constant FILL_COUNTER_CLOCKWISE], or [constant FILL_CLOCKWISE_AND_COUNTER_CLOCKWISE].  
-         *      
-         *  **Note:** The effective radial center always stays within the [member texture_progress] bounds. If you need to move it outside the texture's bounds, modify the [member texture_progress] to contain additional empty space where needed.  
-         */
-        get radial_center_offset(): Vector2
-        set radial_center_offset(value: Vector2)
-        
-        /** If `true`, Godot treats the bar's textures like in [NinePatchRect]. Use the `stretch_margin_*` properties like [member stretch_margin_bottom] to set up the nine patch's 3×3 grid. When using a radial [member fill_mode], this setting will only enable stretching for [member texture_progress], while [member texture_under] and [member texture_over] will be treated like in [NinePatchRect]. */
-        get nine_patch_stretch(): boolean
-        set nine_patch_stretch(value: boolean)
-        
-        /** The width of the 9-patch's left column. Only effective if [member nine_patch_stretch] is `true`. */
-        get stretch_margin_left(): int64
-        set stretch_margin_left(value: int64)
-        
-        /** The height of the 9-patch's top row. Only effective if [member nine_patch_stretch] is `true`. */
-        get stretch_margin_top(): int64
-        set stretch_margin_top(value: int64)
-        
-        /** The width of the 9-patch's right column. Only effective if [member nine_patch_stretch] is `true`. */
-        get stretch_margin_right(): int64
-        set stretch_margin_right(value: int64)
-        
-        /** The height of the 9-patch's bottom row. A margin of 16 means the 9-slice's bottom corners and side will have a height of 16 pixels. You can set all 4 margin values individually to create panels with non-uniform borders. Only effective if [member nine_patch_stretch] is `true`. */
-        get stretch_margin_bottom(): int64
-        set stretch_margin_bottom(value: int64)
-        
-        /** [Texture2D] that draws under the progress bar. The bar's background. */
-        get texture_under(): null | Texture2D
-        set texture_under(value: null | Texture2D)
-        
-        /** [Texture2D] that draws over the progress bar. Use it to add highlights or an upper-frame that hides part of [member texture_progress]. */
-        get texture_over(): null | Texture2D
-        set texture_over(value: null | Texture2D)
-        
-        /** [Texture2D] that clips based on the node's `value` and [member fill_mode]. As `value` increased, the texture fills up. It shows entirely when `value` reaches `max_value`. It doesn't show at all if `value` is equal to `min_value`.  
-         *  The `value` property comes from [Range]. See [member Range.value], [member Range.min_value], [member Range.max_value].  
-         */
-        get texture_progress(): null | Texture2D
-        set texture_progress(value: null | Texture2D)
-        
-        /** The offset of [member texture_progress]. Useful for [member texture_over] and [member texture_under] with fancy borders, to avoid transparent margins in your progress texture. */
-        get texture_progress_offset(): Vector2
-        set texture_progress_offset(value: Vector2)
-        
-        /** Multiplies the color of the bar's [member texture_under] texture. */
-        get tint_under(): Color
-        set tint_under(value: Color)
-        
-        /** Multiplies the color of the bar's [member texture_over] texture. The effect is similar to [member CanvasItem.modulate], except it only affects this specific texture instead of the entire node. */
-        get tint_over(): Color
-        set tint_over(value: Color)
-        
-        /** Multiplies the color of the bar's [member texture_progress] texture. */
-        get tint_progress(): Color
-        set tint_progress(value: Color)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextureProgressBar;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextureProgressBar;
-    }
-    namespace TextureRect {
-        enum ExpandMode {
-            /** The minimum size will be equal to texture size, i.e. [TextureRect] can't be smaller than the texture. */
-            EXPAND_KEEP_SIZE = 0,
-            
-            /** The size of the texture won't be considered for minimum size calculation, so the [TextureRect] can be shrunk down past the texture size. */
-            EXPAND_IGNORE_SIZE = 1,
-            
-            /** The height of the texture will be ignored. Minimum width will be equal to the current height. Useful for horizontal layouts, e.g. inside [HBoxContainer]. */
-            EXPAND_FIT_WIDTH = 2,
-            
-            /** Same as [constant EXPAND_FIT_WIDTH], but keeps texture's aspect ratio. */
-            EXPAND_FIT_WIDTH_PROPORTIONAL = 3,
-            
-            /** The width of the texture will be ignored. Minimum height will be equal to the current width. Useful for vertical layouts, e.g. inside [VBoxContainer]. */
-            EXPAND_FIT_HEIGHT = 4,
-            
-            /** Same as [constant EXPAND_FIT_HEIGHT], but keeps texture's aspect ratio. */
-            EXPAND_FIT_HEIGHT_PROPORTIONAL = 5,
-        }
-        enum StretchMode {
-            /** Scale to fit the node's bounding rectangle. */
-            STRETCH_SCALE = 0,
-            
-            /** Tile inside the node's bounding rectangle. */
-            STRETCH_TILE = 1,
-            
-            /** The texture keeps its original size and stays in the bounding rectangle's top-left corner. */
-            STRETCH_KEEP = 2,
-            
-            /** The texture keeps its original size and stays centered in the node's bounding rectangle. */
-            STRETCH_KEEP_CENTERED = 3,
-            
-            /** Scale the texture to fit the node's bounding rectangle, but maintain the texture's aspect ratio. */
-            STRETCH_KEEP_ASPECT = 4,
-            
-            /** Scale the texture to fit the node's bounding rectangle, center it and maintain its aspect ratio. */
-            STRETCH_KEEP_ASPECT_CENTERED = 5,
-            
-            /** Scale the texture so that the shorter side fits the bounding rectangle. The other side clips to the node's limits. */
-            STRETCH_KEEP_ASPECT_COVERED = 6,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTextureRect extends __RPCMapControl {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTextureRect extends __NameMapControl {
-    }
-    /** A control that displays a texture.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_texturerect.html  
-     */
-    class TextureRect<Map extends NodePathMap = any> extends Control<Map> {
-        constructor(identifier?: any)
-        /** The node's [Texture2D] resource. */
-        get texture(): null | Texture2D
-        set texture(value: null | Texture2D)
-        
-        /** Defines how minimum size is determined based on the texture's size. */
-        get expand_mode(): int64
-        set expand_mode(value: int64)
-        
-        /** Controls the texture's behavior when resizing the node's bounding rectangle. */
-        get stretch_mode(): int64
-        set stretch_mode(value: int64)
-        
-        /** If `true`, texture is flipped horizontally. */
-        get flip_h(): boolean
-        set flip_h(value: boolean)
-        
-        /** If `true`, texture is flipped vertically. */
-        get flip_v(): boolean
-        set flip_v(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTextureRect;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTextureRect;
-    }
-    namespace Theme {
-        enum DataType {
-            /** Theme's [Color] item type. */
-            DATA_TYPE_COLOR = 0,
-            
-            /** Theme's constant item type. */
-            DATA_TYPE_CONSTANT = 1,
-            
-            /** Theme's [Font] item type. */
-            DATA_TYPE_FONT = 2,
-            
-            /** Theme's font size item type. */
-            DATA_TYPE_FONT_SIZE = 3,
-            
-            /** Theme's icon [Texture2D] item type. */
-            DATA_TYPE_ICON = 4,
-            
-            /** Theme's [StyleBox] item type. */
-            DATA_TYPE_STYLEBOX = 5,
-            
-            /** Maximum value for the DataType enum. */
-            DATA_TYPE_MAX = 6,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTheme extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTheme extends __NameMapResource {
-    }
-    /** A resource used for styling/skinning [Control]s and [Window]s.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_theme.html  
-     */
-    class Theme extends Resource {
-        constructor(identifier?: any)
-        /** Creates or changes the value of the icon property defined by [param name] and [param theme_type]. Use [method clear_icon] to remove the property. */
-        set_icon(name: StringName, theme_type: StringName, texture: Texture2D): void
-        
-        /** Returns the icon property defined by [param name] and [param theme_type], if it exists.  
-         *  Returns the engine fallback icon value if the property doesn't exist (see [member ThemeDB.fallback_icon]). Use [method has_icon] to check for existence.  
-         */
-        get_icon(name: StringName, theme_type: StringName): null | Texture2D
-        
-        /** Returns `true` if the icon property defined by [param name] and [param theme_type] exists.  
-         *  Returns `false` if it doesn't exist. Use [method set_icon] to define it.  
-         */
-        has_icon(name: StringName, theme_type: StringName): boolean
-        
-        /** Renames the icon property defined by [param old_name] and [param theme_type] to [param name], if it exists.  
-         *  Fails if it doesn't exist, or if a similar property with the new name already exists. Use [method has_icon] to check for existence, and [method clear_icon] to remove the existing property.  
-         */
-        rename_icon(old_name: StringName, name: StringName, theme_type: StringName): void
-        
-        /** Removes the icon property defined by [param name] and [param theme_type], if it exists.  
-         *  Fails if it doesn't exist. Use [method has_icon] to check for existence.  
-         */
-        clear_icon(name: StringName, theme_type: StringName): void
-        
-        /** Returns a list of names for icon properties defined with [param theme_type]. Use [method get_icon_type_list] to get a list of possible theme type names. */
-        get_icon_list(theme_type: string): PackedStringArray
-        
-        /** Returns a list of all unique theme type names for icon properties. Use [method get_type_list] to get a list of all unique theme types. */
-        get_icon_type_list(): PackedStringArray
-        
-        /** Creates or changes the value of the [StyleBox] property defined by [param name] and [param theme_type]. Use [method clear_stylebox] to remove the property. */
-        set_stylebox(name: StringName, theme_type: StringName, texture: StyleBox): void
-        
-        /** Returns the [StyleBox] property defined by [param name] and [param theme_type], if it exists.  
-         *  Returns the engine fallback stylebox value if the property doesn't exist (see [member ThemeDB.fallback_stylebox]). Use [method has_stylebox] to check for existence.  
-         */
-        get_stylebox(name: StringName, theme_type: StringName): null | StyleBox
-        
-        /** Returns `true` if the [StyleBox] property defined by [param name] and [param theme_type] exists.  
-         *  Returns `false` if it doesn't exist. Use [method set_stylebox] to define it.  
-         */
-        has_stylebox(name: StringName, theme_type: StringName): boolean
-        
-        /** Renames the [StyleBox] property defined by [param old_name] and [param theme_type] to [param name], if it exists.  
-         *  Fails if it doesn't exist, or if a similar property with the new name already exists. Use [method has_stylebox] to check for existence, and [method clear_stylebox] to remove the existing property.  
-         */
-        rename_stylebox(old_name: StringName, name: StringName, theme_type: StringName): void
-        
-        /** Removes the [StyleBox] property defined by [param name] and [param theme_type], if it exists.  
-         *  Fails if it doesn't exist. Use [method has_stylebox] to check for existence.  
-         */
-        clear_stylebox(name: StringName, theme_type: StringName): void
-        
-        /** Returns a list of names for [StyleBox] properties defined with [param theme_type]. Use [method get_stylebox_type_list] to get a list of possible theme type names. */
-        get_stylebox_list(theme_type: string): PackedStringArray
-        
-        /** Returns a list of all unique theme type names for [StyleBox] properties. Use [method get_type_list] to get a list of all unique theme types. */
-        get_stylebox_type_list(): PackedStringArray
-        
-        /** Creates or changes the value of the [Font] property defined by [param name] and [param theme_type]. Use [method clear_font] to remove the property. */
-        set_font(name: StringName, theme_type: StringName, font: Font): void
-        
-        /** Returns the [Font] property defined by [param name] and [param theme_type], if it exists.  
-         *  Returns the default theme font if the property doesn't exist and the default theme font is set up (see [member default_font]). Use [method has_font] to check for existence of the property and [method has_default_font] to check for existence of the default theme font.  
-         *  Returns the engine fallback font value, if neither exist (see [member ThemeDB.fallback_font]).  
-         */
-        get_font(name: StringName, theme_type: StringName): null | Font
-        
-        /** Returns `true` if the [Font] property defined by [param name] and [param theme_type] exists, or if the default theme font is set up (see [method has_default_font]).  
-         *  Returns `false` if neither exist. Use [method set_font] to define the property.  
-         */
-        has_font(name: StringName, theme_type: StringName): boolean
-        
-        /** Renames the [Font] property defined by [param old_name] and [param theme_type] to [param name], if it exists.  
-         *  Fails if it doesn't exist, or if a similar property with the new name already exists. Use [method has_font] to check for existence, and [method clear_font] to remove the existing property.  
-         */
-        rename_font(old_name: StringName, name: StringName, theme_type: StringName): void
-        
-        /** Removes the [Font] property defined by [param name] and [param theme_type], if it exists.  
-         *  Fails if it doesn't exist. Use [method has_font] to check for existence.  
-         */
-        clear_font(name: StringName, theme_type: StringName): void
-        
-        /** Returns a list of names for [Font] properties defined with [param theme_type]. Use [method get_font_type_list] to get a list of possible theme type names. */
-        get_font_list(theme_type: string): PackedStringArray
-        
-        /** Returns a list of all unique theme type names for [Font] properties. Use [method get_type_list] to get a list of all unique theme types. */
-        get_font_type_list(): PackedStringArray
-        
-        /** Creates or changes the value of the font size property defined by [param name] and [param theme_type]. Use [method clear_font_size] to remove the property. */
-        set_font_size(name: StringName, theme_type: StringName, font_size: int64): void
-        
-        /** Returns the font size property defined by [param name] and [param theme_type], if it exists.  
-         *  Returns the default theme font size if the property doesn't exist and the default theme font size is set up (see [member default_font_size]). Use [method has_font_size] to check for existence of the property and [method has_default_font_size] to check for existence of the default theme font.  
-         *  Returns the engine fallback font size value, if neither exist (see [member ThemeDB.fallback_font_size]).  
-         */
-        get_font_size(name: StringName, theme_type: StringName): int64
-        
-        /** Returns `true` if the font size property defined by [param name] and [param theme_type] exists, or if the default theme font size is set up (see [method has_default_font_size]).  
-         *  Returns `false` if neither exist. Use [method set_font_size] to define the property.  
-         */
-        has_font_size(name: StringName, theme_type: StringName): boolean
-        
-        /** Renames the font size property defined by [param old_name] and [param theme_type] to [param name], if it exists.  
-         *  Fails if it doesn't exist, or if a similar property with the new name already exists. Use [method has_font_size] to check for existence, and [method clear_font_size] to remove the existing property.  
-         */
-        rename_font_size(old_name: StringName, name: StringName, theme_type: StringName): void
-        
-        /** Removes the font size property defined by [param name] and [param theme_type], if it exists.  
-         *  Fails if it doesn't exist. Use [method has_font_size] to check for existence.  
-         */
-        clear_font_size(name: StringName, theme_type: StringName): void
-        
-        /** Returns a list of names for font size properties defined with [param theme_type]. Use [method get_font_size_type_list] to get a list of possible theme type names. */
-        get_font_size_list(theme_type: string): PackedStringArray
-        
-        /** Returns a list of all unique theme type names for font size properties. Use [method get_type_list] to get a list of all unique theme types. */
-        get_font_size_type_list(): PackedStringArray
-        
-        /** Creates or changes the value of the [Color] property defined by [param name] and [param theme_type]. Use [method clear_color] to remove the property. */
-        set_color(name: StringName, theme_type: StringName, color: Color): void
-        
-        /** Returns the [Color] property defined by [param name] and [param theme_type], if it exists.  
-         *  Returns the default color value if the property doesn't exist. Use [method has_color] to check for existence.  
-         */
-        get_color(name: StringName, theme_type: StringName): Color
-        
-        /** Returns `true` if the [Color] property defined by [param name] and [param theme_type] exists.  
-         *  Returns `false` if it doesn't exist. Use [method set_color] to define it.  
-         */
-        has_color(name: StringName, theme_type: StringName): boolean
-        
-        /** Renames the [Color] property defined by [param old_name] and [param theme_type] to [param name], if it exists.  
-         *  Fails if it doesn't exist, or if a similar property with the new name already exists. Use [method has_color] to check for existence, and [method clear_color] to remove the existing property.  
-         */
-        rename_color(old_name: StringName, name: StringName, theme_type: StringName): void
-        
-        /** Removes the [Color] property defined by [param name] and [param theme_type], if it exists.  
-         *  Fails if it doesn't exist. Use [method has_color] to check for existence.  
-         */
-        clear_color(name: StringName, theme_type: StringName): void
-        
-        /** Returns a list of names for [Color] properties defined with [param theme_type]. Use [method get_color_type_list] to get a list of possible theme type names. */
-        get_color_list(theme_type: string): PackedStringArray
-        
-        /** Returns a list of all unique theme type names for [Color] properties. Use [method get_type_list] to get a list of all unique theme types. */
-        get_color_type_list(): PackedStringArray
-        
-        /** Creates or changes the value of the constant property defined by [param name] and [param theme_type]. Use [method clear_constant] to remove the property. */
-        set_constant(name: StringName, theme_type: StringName, constant: int64): void
-        
-        /** Returns the constant property defined by [param name] and [param theme_type], if it exists.  
-         *  Returns `0` if the property doesn't exist. Use [method has_constant] to check for existence.  
-         */
-        get_constant(name: StringName, theme_type: StringName): int64
-        
-        /** Returns `true` if the constant property defined by [param name] and [param theme_type] exists.  
-         *  Returns `false` if it doesn't exist. Use [method set_constant] to define it.  
-         */
-        has_constant(name: StringName, theme_type: StringName): boolean
-        
-        /** Renames the constant property defined by [param old_name] and [param theme_type] to [param name], if it exists.  
-         *  Fails if it doesn't exist, or if a similar property with the new name already exists. Use [method has_constant] to check for existence, and [method clear_constant] to remove the existing property.  
-         */
-        rename_constant(old_name: StringName, name: StringName, theme_type: StringName): void
-        
-        /** Removes the constant property defined by [param name] and [param theme_type], if it exists.  
-         *  Fails if it doesn't exist. Use [method has_constant] to check for existence.  
-         */
-        clear_constant(name: StringName, theme_type: StringName): void
-        
-        /** Returns a list of names for constant properties defined with [param theme_type]. Use [method get_constant_type_list] to get a list of possible theme type names. */
-        get_constant_list(theme_type: string): PackedStringArray
-        
-        /** Returns a list of all unique theme type names for constant properties. Use [method get_type_list] to get a list of all unique theme types. */
-        get_constant_type_list(): PackedStringArray
-        
-        /** Returns `true` if [member default_base_scale] has a valid value.  
-         *  Returns `false` if it doesn't. The value must be greater than `0.0` to be considered valid.  
-         */
-        has_default_base_scale(): boolean
-        
-        /** Returns `true` if [member default_font] has a valid value.  
-         *  Returns `false` if it doesn't.  
-         */
-        has_default_font(): boolean
-        
-        /** Returns `true` if [member default_font_size] has a valid value.  
-         *  Returns `false` if it doesn't. The value must be greater than `0` to be considered valid.  
-         */
-        has_default_font_size(): boolean
-        
-        /** Creates or changes the value of the theme property of [param data_type] defined by [param name] and [param theme_type]. Use [method clear_theme_item] to remove the property.  
-         *  Fails if the [param value] type is not accepted by [param data_type].  
-         *      
-         *  **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.  
-         */
-        set_theme_item(data_type: Theme.DataType, name: StringName, theme_type: StringName, value: any): void
-        
-        /** Returns the theme property of [param data_type] defined by [param name] and [param theme_type], if it exists.  
-         *  Returns the engine fallback value if the property doesn't exist (see [ThemeDB]). Use [method has_theme_item] to check for existence.  
-         *      
-         *  **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.  
-         */
-        get_theme_item(data_type: Theme.DataType, name: StringName, theme_type: StringName): any
-        
-        /** Returns `true` if the theme property of [param data_type] defined by [param name] and [param theme_type] exists.  
-         *  Returns `false` if it doesn't exist. Use [method set_theme_item] to define it.  
-         *      
-         *  **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.  
-         */
-        has_theme_item(data_type: Theme.DataType, name: StringName, theme_type: StringName): boolean
-        
-        /** Renames the theme property of [param data_type] defined by [param old_name] and [param theme_type] to [param name], if it exists.  
-         *  Fails if it doesn't exist, or if a similar property with the new name already exists. Use [method has_theme_item] to check for existence, and [method clear_theme_item] to remove the existing property.  
-         *      
-         *  **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.  
-         */
-        rename_theme_item(data_type: Theme.DataType, old_name: StringName, name: StringName, theme_type: StringName): void
-        
-        /** Removes the theme property of [param data_type] defined by [param name] and [param theme_type], if it exists.  
-         *  Fails if it doesn't exist. Use [method has_theme_item] to check for existence.  
-         *      
-         *  **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.  
-         */
-        clear_theme_item(data_type: Theme.DataType, name: StringName, theme_type: StringName): void
-        
-        /** Returns a list of names for properties of [param data_type] defined with [param theme_type]. Use [method get_theme_item_type_list] to get a list of possible theme type names.  
-         *      
-         *  **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.  
-         */
-        get_theme_item_list(data_type: Theme.DataType, theme_type: string): PackedStringArray
-        
-        /** Returns a list of all unique theme type names for [param data_type] properties. Use [method get_type_list] to get a list of all unique theme types.  
-         *      
-         *  **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.  
-         */
-        get_theme_item_type_list(data_type: Theme.DataType): PackedStringArray
-        
-        /** Marks [param theme_type] as a variation of [param base_type].  
-         *  This adds [param theme_type] as a suggested option for [member Control.theme_type_variation] on a [Control] that is of the [param base_type] class.  
-         *  Variations can also be nested, i.e. [param base_type] can be another variation. If a chain of variations ends with a [param base_type] matching the class of the [Control], the whole chain is going to be suggested as options.  
-         *      
-         *  **Note:** Suggestions only show up if this theme resource is set as the project default theme. See [member ProjectSettings.gui/theme/custom].  
-         */
-        set_type_variation(theme_type: StringName, base_type: StringName): void
-        
-        /** Returns `true` if [param theme_type] is marked as a variation of [param base_type]. */
-        is_type_variation(theme_type: StringName, base_type: StringName): boolean
-        
-        /** Unmarks [param theme_type] as being a variation of another theme type. See [method set_type_variation]. */
-        clear_type_variation(theme_type: StringName): void
-        
-        /** Returns the name of the base theme type if [param theme_type] is a valid variation type. Returns an empty string otherwise. */
-        get_type_variation_base(theme_type: StringName): StringName
-        
-        /** Returns a list of all type variations for the given [param base_type]. */
-        get_type_variation_list(base_type: StringName): PackedStringArray
-        
-        /** Adds an empty theme type for every valid data type.  
-         *      
-         *  **Note:** Empty types are not saved with the theme. This method only exists to perform in-memory changes to the resource. Use available `set_*` methods to add theme items.  
-         */
-        add_type(theme_type: StringName): void
-        
-        /** Removes the theme type, gracefully discarding defined theme items. If the type is a variation, this information is also erased. If the type is a base for type variations, those variations lose their base. */
-        remove_type(theme_type: StringName): void
-        
-        /** Renames the theme type [param old_theme_type] to [param theme_type], if the old type exists and the new one doesn't exist.  
-         *      
-         *  **Note:** Renaming a theme type to an empty name or a variation to a type associated with a built-in class removes type variation connections in a way that cannot be undone by reversing the rename alone.  
-         */
-        rename_type(old_theme_type: StringName, theme_type: StringName): void
-        
-        /** Returns a list of all unique theme type names. Use the appropriate `get_*_type_list` method to get a list of unique theme types for a single data type. */
-        get_type_list(): PackedStringArray
-        
-        /** Adds missing and overrides existing definitions with values from the [param other] theme resource.  
-         *      
-         *  **Note:** This modifies the current theme. If you want to merge two themes together without modifying either one, create a new empty theme and merge the other two into it one after another.  
-         */
-        merge_with(other: Theme): void
-        
-        /** Removes all the theme properties defined on the theme resource. */
-        clear(): void
-        
-        /** The default base scale factor of this theme resource. Used by some controls to scale their visual properties based on the global scale factor. If this value is set to `0.0`, the global scale factor is used (see [member ThemeDB.fallback_base_scale]).  
-         *  Use [method has_default_base_scale] to check if this value is valid.  
-         */
-        get default_base_scale(): float64
-        set default_base_scale(value: float64)
-        
-        /** The default font of this theme resource. Used as the default value when trying to fetch a font resource that doesn't exist in this theme or is in invalid state. If the default font is also missing or invalid, the engine fallback value is used (see [member ThemeDB.fallback_font]).  
-         *  Use [method has_default_font] to check if this value is valid.  
-         */
-        get default_font(): null | Font
-        set default_font(value: null | Font)
-        
-        /** The default font size of this theme resource. Used as the default value when trying to fetch a font size value that doesn't exist in this theme or is in invalid state. If the default font size is also missing or invalid, the engine fallback value is used (see [member ThemeDB.fallback_font_size]).  
-         *  Values below `1` are invalid and can be used to unset the property. Use [method has_default_font_size] to check if this value is valid.  
-         */
-        get default_font_size(): int64
-        set default_font_size(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTheme;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTheme;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTileData extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTileData extends __NameMapObject {
-    }
-    /** Settings for a single tile in a [TileSet].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_tiledata.html  
-     */
-    class TileData extends Object {
-        constructor(identifier?: any)
-        /** Sets the occluder polygon count in the TileSet occlusion layer with index [param layer_id]. */
-        set_occluder_polygons_count(layer_id: int64, polygons_count: int64): void
-        
-        /** Returns the number of occluder polygons of the tile in the TileSet occlusion layer with index [param layer_id]. */
-        get_occluder_polygons_count(layer_id: int64): int64
-        
-        /** Adds an occlusion polygon to the tile on the TileSet occlusion layer with index [param layer_id]. */
-        add_occluder_polygon(layer_id: int64): void
-        
-        /** Removes the polygon at index [param polygon_index] for TileSet occlusion layer with index [param layer_id]. */
-        remove_occluder_polygon(layer_id: int64, polygon_index: int64): void
-        
-        /** Sets the occluder for polygon with index [param polygon_index] in the TileSet occlusion layer with index [param layer_id]. */
-        set_occluder_polygon(layer_id: int64, polygon_index: int64, polygon: OccluderPolygon2D): void
-        
-        /** Returns the occluder polygon at index [param polygon_index] from the TileSet occlusion layer with index [param layer_id].  
-         *  The [param flip_h], [param flip_v], and [param transpose] parameters can be `true` to transform the returned polygon.  
-         */
-        get_occluder_polygon(layer_id: int64, polygon_index: int64, flip_h?: boolean /* = false */, flip_v?: boolean /* = false */, transpose?: boolean /* = false */): null | OccluderPolygon2D
-        
-        /** Sets the occluder for the TileSet occlusion layer with index [param layer_id]. */
-        set_occluder(layer_id: int64, occluder_polygon: OccluderPolygon2D): void
-        
-        /** Returns the occluder polygon of the tile for the TileSet occlusion layer with index [param layer_id].  
-         *  [param flip_h], [param flip_v], and [param transpose] allow transforming the returned polygon.  
-         */
-        get_occluder(layer_id: int64, flip_h?: boolean /* = false */, flip_v?: boolean /* = false */, transpose?: boolean /* = false */): null | OccluderPolygon2D
-        
-        /** Sets the constant linear velocity. This does not move the tile. This linear velocity is applied to objects colliding with this tile. This is useful to create conveyor belts. */
-        set_constant_linear_velocity(layer_id: int64, velocity: Vector2): void
-        
-        /** Returns the constant linear velocity applied to objects colliding with this tile. */
-        get_constant_linear_velocity(layer_id: int64): Vector2
-        
-        /** Sets the constant angular velocity. This does not rotate the tile. This angular velocity is applied to objects colliding with this tile. */
-        set_constant_angular_velocity(layer_id: int64, velocity: float64): void
-        
-        /** Returns the constant angular velocity applied to objects colliding with this tile. */
-        get_constant_angular_velocity(layer_id: int64): float64
-        
-        /** Sets the polygons count for TileSet physics layer with index [param layer_id]. */
-        set_collision_polygons_count(layer_id: int64, polygons_count: int64): void
-        
-        /** Returns how many polygons the tile has for TileSet physics layer with index [param layer_id]. */
-        get_collision_polygons_count(layer_id: int64): int64
-        
-        /** Adds a collision polygon to the tile on the given TileSet physics layer. */
-        add_collision_polygon(layer_id: int64): void
-        
-        /** Removes the polygon at index [param polygon_index] for TileSet physics layer with index [param layer_id]. */
-        remove_collision_polygon(layer_id: int64, polygon_index: int64): void
-        
-        /** Sets the points of the polygon at index [param polygon_index] for TileSet physics layer with index [param layer_id]. */
-        set_collision_polygon_points(layer_id: int64, polygon_index: int64, polygon: PackedVector2Array | Vector2[]): void
-        
-        /** Returns the points of the polygon at index [param polygon_index] for TileSet physics layer with index [param layer_id]. */
-        get_collision_polygon_points(layer_id: int64, polygon_index: int64): PackedVector2Array
-        
-        /** Enables/disables one-way collisions on the polygon at index [param polygon_index] for TileSet physics layer with index [param layer_id]. */
-        set_collision_polygon_one_way(layer_id: int64, polygon_index: int64, one_way: boolean): void
-        
-        /** Returns whether one-way collisions are enabled for the polygon at index [param polygon_index] for TileSet physics layer with index [param layer_id]. */
-        is_collision_polygon_one_way(layer_id: int64, polygon_index: int64): boolean
-        
-        /** Sets the one-way margin (for one-way platforms) of the polygon at index [param polygon_index] for TileSet physics layer with index [param layer_id]. */
-        set_collision_polygon_one_way_margin(layer_id: int64, polygon_index: int64, one_way_margin: float64): void
-        
-        /** Returns the one-way margin (for one-way platforms) of the polygon at index [param polygon_index] for TileSet physics layer with index [param layer_id]. */
-        get_collision_polygon_one_way_margin(layer_id: int64, polygon_index: int64): float64
-        
-        /** Sets the tile's terrain bit for the given [param peering_bit] direction. To check that a direction is valid, use [method is_valid_terrain_peering_bit]. */
-        set_terrain_peering_bit(peering_bit: TileSet.CellNeighbor, terrain: int64): void
-        
-        /** Returns the tile's terrain bit for the given [param peering_bit] direction. To check that a direction is valid, use [method is_valid_terrain_peering_bit]. */
-        get_terrain_peering_bit(peering_bit: TileSet.CellNeighbor): int64
-        
-        /** Returns whether the given [param peering_bit] direction is valid for this tile. */
-        is_valid_terrain_peering_bit(peering_bit: TileSet.CellNeighbor): boolean
-        
-        /** Sets the navigation polygon for the TileSet navigation layer with index [param layer_id]. */
-        set_navigation_polygon(layer_id: int64, navigation_polygon: NavigationPolygon): void
-        
-        /** Returns the navigation polygon of the tile for the TileSet navigation layer with index [param layer_id].  
-         *  [param flip_h], [param flip_v], and [param transpose] allow transforming the returned polygon.  
-         */
-        get_navigation_polygon(layer_id: int64, flip_h?: boolean /* = false */, flip_v?: boolean /* = false */, transpose?: boolean /* = false */): null | NavigationPolygon
-        
-        /** Sets the tile's custom data value for the TileSet custom data layer with name [param layer_name]. */
-        set_custom_data(layer_name: string, value: any): void
-        
-        /** Returns the custom data value for custom data layer named [param layer_name]. To check if a custom data layer exists, use [method has_custom_data]. */
-        get_custom_data(layer_name: string): any
-        
-        /** Returns whether there exists a custom data layer named [param layer_name]. */
-        has_custom_data(layer_name: string): boolean
-        
-        /** Sets the tile's custom data value for the TileSet custom data layer with index [param layer_id]. */
-        set_custom_data_by_layer_id(layer_id: int64, value: any): void
-        
-        /** Returns the custom data value for custom data layer with index [param layer_id]. */
-        get_custom_data_by_layer_id(layer_id: int64): any
-        
-        /** If `true`, the tile will have its texture flipped horizontally. */
-        get flip_h(): boolean
-        set flip_h(value: boolean)
-        
-        /** If `true`, the tile will have its texture flipped vertically. */
-        get flip_v(): boolean
-        set flip_v(value: boolean)
-        
-        /** If `true`, the tile will display transposed, i.e. with horizontal and vertical texture UVs swapped. */
-        get transpose(): boolean
-        set transpose(value: boolean)
-        
-        /** Offsets the position of where the tile is drawn. */
-        get texture_origin(): Vector2i
-        set texture_origin(value: Vector2i)
-        
-        /** Color modulation of the tile. */
-        get modulate(): Color
-        set modulate(value: Color)
-        
-        /** The [Material] to use for this [TileData]. This can be a [CanvasItemMaterial] to use the default shader, or a [ShaderMaterial] to use a custom shader. */
-        get material(): null | CanvasItemMaterial | ShaderMaterial
-        set material(value: null | CanvasItemMaterial | ShaderMaterial)
-        
-        /** Ordering index of this tile, relative to [TileMapLayer]. */
-        get z_index(): int64
-        set z_index(value: int64)
-        
-        /** Vertical point of the tile used for determining y-sorted order. */
-        get y_sort_origin(): int64
-        set y_sort_origin(value: int64)
-        
-        /** ID of the terrain set that the tile uses. */
-        get terrain_set(): int64
-        set terrain_set(value: int64)
-        
-        /** ID of the terrain from the terrain set that the tile uses. */
-        get terrain(): int64
-        set terrain(value: int64)
-        
-        /** Relative probability of this tile being selected when drawing a pattern of random tiles. */
-        get probability(): float64
-        set probability(value: float64)
-        
-        /** Emitted when any of the properties are changed. */
-        readonly changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTileData;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTileData;
-    }
-    namespace TileMap {
-        enum VisibilityMode {
-            /** Use the debug settings to determine visibility. */
-            VISIBILITY_MODE_DEFAULT = 0,
-            
-            /** Always hide. */
-            VISIBILITY_MODE_FORCE_HIDE = 2,
-            
-            /** Always show. */
-            VISIBILITY_MODE_FORCE_SHOW = 1,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTileMap extends __RPCMapNode2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTileMap extends __NameMapNode2D {
-    }
-    /** Node for 2D tile-based maps.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_tilemap.html  
-     */
-    class TileMap<Map extends NodePathMap = any> extends Node2D<Map> {
-        constructor(identifier?: any)
-        /** Should return `true` if the tile at coordinates [param coords] on layer [param layer] requires a runtime update.  
-         *  **Warning:** Make sure this function only return `true` when needed. Any tile processed at runtime without a need for it will imply a significant performance penalty.  
-         *      
-         *  **Note:** If the result of this function should changed, use [method notify_runtime_tile_data_update] to notify the TileMap it needs an update.  
-         */
-        /* gdvirtual */ _use_tile_data_runtime_update(layer: int64, coords: Vector2i): boolean
-        
-        /** Called with a TileData object about to be used internally by the TileMap, allowing its modification at runtime.  
-         *  This method is only called if [method _use_tile_data_runtime_update] is implemented and returns `true` for the given tile [param coords] and [param layer].  
-         *  **Warning:** The [param tile_data] object's sub-resources are the same as the one in the TileSet. Modifying them might impact the whole TileSet. Instead, make sure to duplicate those resources.  
-         *      
-         *  **Note:** If the properties of [param tile_data] object should change over time, use [method notify_runtime_tile_data_update] to notify the TileMap it needs an update.  
-         */
-        /* gdvirtual */ _tile_data_runtime_update(layer: int64, coords: Vector2i, tile_data: TileData): void
-        
-        /** Assigns [param map] as a [NavigationServer2D] navigation map for the specified TileMap layer [param layer]. */
-        set_navigation_map(layer: int64, map: RID): void
-        
-        /** Returns the [RID] of the [NavigationServer2D] navigation map assigned to the specified TileMap layer [param layer]. */
-        get_navigation_map(layer: int64): RID
-        
-        /** Forces the TileMap and the layer [param layer] to update. */
-        force_update(layer?: int64 /* = -1 */): void
-        
-        /** Returns the number of layers in the TileMap. */
-        get_layers_count(): int64
-        
-        /** Adds a layer at the given position [param to_position] in the array. If [param to_position] is negative, the position is counted from the end, with `-1` adding the layer at the end of the array. */
-        add_layer(to_position: int64): void
-        
-        /** Moves the layer at index [param layer] to the given position [param to_position] in the array. */
-        move_layer(layer: int64, to_position: int64): void
-        
-        /** Removes the layer at index [param layer]. */
-        remove_layer(layer: int64): void
-        
-        /** Sets a layer's name. This is mostly useful in the editor.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        set_layer_name(layer: int64, name: string): void
-        
-        /** Returns a TileMap layer's name.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_layer_name(layer: int64): string
-        
-        /** Enables or disables the layer [param layer]. A disabled layer is not processed at all (no rendering, no physics, etc.).  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        set_layer_enabled(layer: int64, enabled: boolean): void
-        
-        /** Returns if a layer is enabled.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        is_layer_enabled(layer: int64): boolean
-        
-        /** Sets a layer's color. It will be multiplied by tile's color and TileMap's modulate.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        set_layer_modulate(layer: int64, modulate: Color): void
-        
-        /** Returns a TileMap layer's modulate.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_layer_modulate(layer: int64): Color
-        
-        /** Enables or disables a layer's Y-sorting. If a layer is Y-sorted, the layer will behave as a CanvasItem node where each of its tile gets Y-sorted.  
-         *  Y-sorted layers should usually be on different Z-index values than not Y-sorted layers, otherwise, each of those layer will be Y-sorted as whole with the Y-sorted one. This is usually an undesired behavior.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        set_layer_y_sort_enabled(layer: int64, y_sort_enabled: boolean): void
-        
-        /** Returns if a layer Y-sorts its tiles.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        is_layer_y_sort_enabled(layer: int64): boolean
-        
-        /** Sets a layer's Y-sort origin value. This Y-sort origin value is added to each tile's Y-sort origin value.  
-         *  This allows, for example, to fake a different height level on each layer. This can be useful for top-down view games.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        set_layer_y_sort_origin(layer: int64, y_sort_origin: int64): void
-        
-        /** Returns a TileMap layer's Y sort origin.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_layer_y_sort_origin(layer: int64): int64
-        
-        /** Sets a layers Z-index value. This Z-index is added to each tile's Z-index value.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        set_layer_z_index(layer: int64, z_index: int64): void
-        
-        /** Returns a TileMap layer's Z-index value.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_layer_z_index(layer: int64): int64
-        
-        /** Enables or disables a layer's built-in navigation regions generation. Disable this if you need to bake navigation regions from a TileMap using a [NavigationRegion2D] node. */
-        set_layer_navigation_enabled(layer: int64, enabled: boolean): void
-        
-        /** Returns if a layer's built-in navigation regions generation is enabled. */
-        is_layer_navigation_enabled(layer: int64): boolean
-        
-        /** Assigns [param map] as a [NavigationServer2D] navigation map for the specified TileMap layer [param layer].  
-         *  By default the TileMap uses the default [World2D] navigation map for the first TileMap layer. For each additional TileMap layer a new navigation map is created for the additional layer.  
-         *  In order to make [NavigationAgent2D] switch between TileMap layer navigation maps use [method NavigationAgent2D.set_navigation_map] with the navigation map received from [method get_layer_navigation_map].  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        set_layer_navigation_map(layer: int64, map: RID): void
-        
-        /** Returns the [RID] of the [NavigationServer2D] navigation map assigned to the specified TileMap layer [param layer].  
-         *  By default the TileMap uses the default [World2D] navigation map for the first TileMap layer. For each additional TileMap layer a new navigation map is created for the additional layer.  
-         *  In order to make [NavigationAgent2D] switch between TileMap layer navigation maps use [method NavigationAgent2D.set_navigation_map] with the navigation map received from [method get_layer_navigation_map].  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_layer_navigation_map(layer: int64): RID
-        
-        /** Sets the tile identifiers for the cell on layer [param layer] at coordinates [param coords]. Each tile of the [TileSet] is identified using three parts:  
-         *  - The source identifier [param source_id] identifies a [TileSetSource] identifier. See [method TileSet.set_source_id],  
-         *  - The atlas coordinates identifier [param atlas_coords] identifies a tile coordinates in the atlas (if the source is a [TileSetAtlasSource]). For [TileSetScenesCollectionSource] it should always be `Vector2i(0, 0)`),  
-         *  - The alternative tile identifier [param alternative_tile] identifies a tile alternative in the atlas (if the source is a [TileSetAtlasSource]), and the scene for a [TileSetScenesCollectionSource].  
-         *  If [param source_id] is set to `-1`, [param atlas_coords] to `Vector2i(-1, -1)` or [param alternative_tile] to `-1`, the cell will be erased. An erased cell gets **all** its identifiers automatically set to their respective invalid values, namely `-1`, `Vector2i(-1, -1)` and `-1`.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        set_cell(layer: int64, coords: Vector2i, source_id?: int64 /* = -1 */, atlas_coords?: Vector2i /* = new Vector2i(-1, -1) */, alternative_tile?: int64 /* = 0 */): void
-        
-        /** Erases the cell on layer [param layer] at coordinates [param coords].  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        erase_cell(layer: int64, coords: Vector2i): void
-        
-        /** Returns the tile source ID of the cell on layer [param layer] at coordinates [param coords]. Returns `-1` if the cell does not exist.  
-         *  If [param use_proxies] is `false`, ignores the [TileSet]'s tile proxies, returning the raw source identifier. See [method TileSet.map_tile_proxy].  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_cell_source_id(layer: int64, coords: Vector2i, use_proxies?: boolean /* = false */): int64
-        
-        /** Returns the tile atlas coordinates ID of the cell on layer [param layer] at coordinates [param coords]. Returns `Vector2i(-1, -1)` if the cell does not exist.  
-         *  If [param use_proxies] is `false`, ignores the [TileSet]'s tile proxies, returning the raw atlas coordinate identifier. See [method TileSet.map_tile_proxy].  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_cell_atlas_coords(layer: int64, coords: Vector2i, use_proxies?: boolean /* = false */): Vector2i
-        
-        /** Returns the tile alternative ID of the cell on layer [param layer] at [param coords].  
-         *  If [param use_proxies] is `false`, ignores the [TileSet]'s tile proxies, returning the raw alternative identifier. See [method TileSet.map_tile_proxy].  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_cell_alternative_tile(layer: int64, coords: Vector2i, use_proxies?: boolean /* = false */): int64
-        
-        /** Returns the [TileData] object associated with the given cell, or `null` if the cell does not exist or is not a [TileSetAtlasSource].  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         *    
-         *  If [param use_proxies] is `false`, ignores the [TileSet]'s tile proxies. See [method TileSet.map_tile_proxy].  
-         */
-        get_cell_tile_data(layer: int64, coords: Vector2i, use_proxies?: boolean /* = false */): null | TileData
-        
-        /** Returns `true` if the cell on layer [param layer] at coordinates [param coords] is flipped horizontally. The result is valid only for atlas sources. */
-        is_cell_flipped_h(layer: int64, coords: Vector2i, use_proxies?: boolean /* = false */): boolean
-        
-        /** Returns `true` if the cell on layer [param layer] at coordinates [param coords] is flipped vertically. The result is valid only for atlas sources. */
-        is_cell_flipped_v(layer: int64, coords: Vector2i, use_proxies?: boolean /* = false */): boolean
-        
-        /** Returns `true` if the cell on layer [param layer] at coordinates [param coords] is transposed. The result is valid only for atlas sources. */
-        is_cell_transposed(layer: int64, coords: Vector2i, use_proxies?: boolean /* = false */): boolean
-        
-        /** Returns the coordinates of the tile for given physics body RID. Such RID can be retrieved from [method KinematicCollision2D.get_collider_rid], when colliding with a tile. */
-        get_coords_for_body_rid(body: RID): Vector2i
-        
-        /** Returns the tilemap layer of the tile for given physics body RID. Such RID can be retrieved from [method KinematicCollision2D.get_collider_rid], when colliding with a tile. */
-        get_layer_for_body_rid(body: RID): int64
-        
-        /** Creates a new [TileMapPattern] from the given layer and set of cells.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_pattern(layer: int64, coords_array: GArray<Vector2i>): null | TileMapPattern
-        
-        /** Returns for the given coordinate [param coords_in_pattern] in a [TileMapPattern] the corresponding cell coordinates if the pattern was pasted at the [param position_in_tilemap] coordinates (see [method set_pattern]). This mapping is required as in half-offset tile shapes, the mapping might not work by calculating `position_in_tile_map + coords_in_pattern`. */
-        map_pattern(position_in_tilemap: Vector2i, coords_in_pattern: Vector2i, pattern: TileMapPattern): Vector2i
-        
-        /** Paste the given [TileMapPattern] at the given [param position] and [param layer] in the tile map.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        set_pattern(layer: int64, position: Vector2i, pattern: TileMapPattern): void
-        
-        /** Update all the cells in the [param cells] coordinates array so that they use the given [param terrain] for the given [param terrain_set]. If an updated cell has the same terrain as one of its neighboring cells, this function tries to join the two. This function might update neighboring tiles if needed to create correct terrain transitions.  
-         *  If [param ignore_empty_terrains] is `true`, empty terrains will be ignored when trying to find the best fitting tile for the given terrain constraints.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         *      
-         *  **Note:** To work correctly, this method requires the TileMap's TileSet to have terrains set up with all required terrain combinations. Otherwise, it may produce unexpected results.  
-         */
-        set_cells_terrain_connect(layer: int64, cells: GArray<Vector2i>, terrain_set: int64, terrain: int64, ignore_empty_terrains?: boolean /* = true */): void
-        
-        /** Update all the cells in the [param path] coordinates array so that they use the given [param terrain] for the given [param terrain_set]. The function will also connect two successive cell in the path with the same terrain. This function might update neighboring tiles if needed to create correct terrain transitions.  
-         *  If [param ignore_empty_terrains] is `true`, empty terrains will be ignored when trying to find the best fitting tile for the given terrain constraints.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         *      
-         *  **Note:** To work correctly, this method requires the TileMap's TileSet to have terrains set up with all required terrain combinations. Otherwise, it may produce unexpected results.  
-         */
-        set_cells_terrain_path(layer: int64, path: GArray<Vector2i>, terrain_set: int64, terrain: int64, ignore_empty_terrains?: boolean /* = true */): void
-        
-        /** Clears cells that do not exist in the tileset. */
-        fix_invalid_tiles(): void
-        
-        /** Clears all cells on the given layer.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        clear_layer(layer: int64): void
-        
-        /** Clears all cells. */
-        clear(): void
-        
-        /** Triggers a direct update of the TileMap. Usually, calling this function is not needed, as TileMap node updates automatically when one of its properties or cells is modified.  
-         *  However, for performance reasons, those updates are batched and delayed to the end of the frame. Calling this function will force the TileMap to update right away instead.  
-         *  **Warning:** Updating the TileMap is computationally expensive and may impact performance. Try to limit the number of updates and how many tiles they impact.  
-         */
-        update_internals(): void
-        
-        /** Notifies the TileMap node that calls to [method _use_tile_data_runtime_update] or [method _tile_data_runtime_update] will lead to different results. This will thus trigger a TileMap update.  
-         *  If [param layer] is provided, only notifies changes for the given layer. Providing the [param layer] argument (when applicable) is usually preferred for performance reasons.  
-         *  **Warning:** Updating the TileMap is computationally expensive and may impact performance. Try to limit the number of calls to this function to avoid unnecessary update.  
-         *      
-         *  **Note:** This does not trigger a direct update of the TileMap, the update will be done at the end of the frame as usual (unless you call [method update_internals]).  
-         */
-        notify_runtime_tile_data_update(layer?: int64 /* = -1 */): void
-        
-        /** Returns the list of all neighbourings cells to the one at [param coords]. */
-        get_surrounding_cells(coords: Vector2i): GArray<Vector2i>
-        
-        /** Returns a [Vector2i] array with the positions of all cells containing a tile in the given layer. A cell is considered empty if its source identifier equals -1, its atlas coordinates identifiers is `Vector2(-1, -1)` and its alternative identifier is -1.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_used_cells(layer: int64): GArray<Vector2i>
-        
-        /** Returns a [Vector2i] array with the positions of all cells containing a tile in the given layer. Tiles may be filtered according to their source ([param source_id]), their atlas coordinates ([param atlas_coords]) or alternative id ([param alternative_tile]).  
-         *  If a parameter has its value set to the default one, this parameter is not used to filter a cell. Thus, if all parameters have their respective default value, this method returns the same result as [method get_used_cells].  
-         *  A cell is considered empty if its source identifier equals -1, its atlas coordinates identifiers is `Vector2(-1, -1)` and its alternative identifier is -1.  
-         *  If [param layer] is negative, the layers are accessed from the last one.  
-         */
-        get_used_cells_by_id(layer: int64, source_id?: int64 /* = -1 */, atlas_coords?: Vector2i /* = new Vector2i(-1, -1) */, alternative_tile?: int64 /* = -1 */): GArray<Vector2i>
-        
-        /** Returns a rectangle enclosing the used (non-empty) tiles of the map, including all layers. */
-        get_used_rect(): Rect2i
-        
-        /** Returns the centered position of a cell in the TileMap's local coordinate space. To convert the returned value into global coordinates, use [method Node2D.to_global]. See also [method local_to_map].  
-         *      
-         *  **Note:** This may not correspond to the visual position of the tile, i.e. it ignores the [member TileData.texture_origin] property of individual tiles.  
-         */
-        map_to_local(map_position: Vector2i): Vector2
-        
-        /** Returns the map coordinates of the cell containing the given [param local_position]. If [param local_position] is in global coordinates, consider using [method Node2D.to_local] before passing it to this method. See also [method map_to_local]. */
-        local_to_map(local_position: Vector2): Vector2i
-        
-        /** Returns the neighboring cell to the one at coordinates [param coords], identified by the [param neighbor] direction. This method takes into account the different layouts a TileMap can take. */
-        get_neighbor_cell(coords: Vector2i, neighbor: TileSet.CellNeighbor): Vector2i
-        
-        /** The [TileSet] used by this [TileMap]. The textures, collisions, and additional behavior of all available tiles are stored here. */
-        get tile_set(): null | TileSet
-        set tile_set(value: null | TileSet)
-        
-        /** The TileMap's quadrant size. A quadrant is a group of tiles to be drawn together on a single canvas item, for optimization purposes. [member rendering_quadrant_size] defines the length of a square's side, in the map's coordinate system, that forms the quadrant. Thus, the default quadrant size groups together `16 * 16 = 256` tiles.  
-         *  The quadrant size does not apply on Y-sorted layers, as tiles are grouped by Y position instead in that case.  
-         *      
-         *  **Note:** As quadrants are created according to the map's coordinate system, the quadrant's "square shape" might not look like square in the TileMap's local coordinate system.  
-         */
-        get rendering_quadrant_size(): int64
-        set rendering_quadrant_size(value: int64)
-        
-        /** If enabled, the TileMap will see its collisions synced to the physics tick and change its collision type from static to kinematic. This is required to create TileMap-based moving platform.  
-         *      
-         *  **Note:** Enabling [member collision_animatable] may have a small performance impact, only do it if the TileMap is moving and has colliding tiles.  
-         */
-        get collision_animatable(): boolean
-        set collision_animatable(value: boolean)
-        
-        /** Show or hide the TileMap's collision shapes. If set to [constant VISIBILITY_MODE_DEFAULT], this depends on the show collision debug settings. */
-        get collision_visibility_mode(): int64
-        set collision_visibility_mode(value: int64)
-        
-        /** Show or hide the TileMap's navigation meshes. If set to [constant VISIBILITY_MODE_DEFAULT], this depends on the show navigation debug settings. */
-        get navigation_visibility_mode(): int64
-        set navigation_visibility_mode(value: int64)
-        
-        /** Emitted when the [TileSet] of this TileMap changes. */
-        readonly changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTileMap;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTileMap;
-    }
-    namespace TileMapLayer {
-        enum DebugVisibilityMode {
-            /** Hide the collisions or navigation debug shapes in the editor, and use the debug settings to determine their visibility in game (i.e. [member SceneTree.debug_collisions_hint] or [member SceneTree.debug_navigation_hint]). */
-            DEBUG_VISIBILITY_MODE_DEFAULT = 0,
-            
-            /** Always hide the collisions or navigation debug shapes. */
-            DEBUG_VISIBILITY_MODE_FORCE_HIDE = 2,
-            
-            /** Always show the collisions or navigation debug shapes. */
-            DEBUG_VISIBILITY_MODE_FORCE_SHOW = 1,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTileMapLayer extends __RPCMapNode2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTileMapLayer extends __NameMapNode2D {
-    }
-    /** Node for 2D tile-based maps.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_tilemaplayer.html  
-     */
-    class TileMapLayer<Map extends NodePathMap = any> extends Node2D<Map> {
-        constructor(identifier?: any)
-        /** Should return `true` if the tile at coordinates [param coords] requires a runtime update.  
-         *  **Warning:** Make sure this function only returns `true` when needed. Any tile processed at runtime without a need for it will imply a significant performance penalty.  
-         *      
-         *  **Note:** If the result of this function should change, use [method notify_runtime_tile_data_update] to notify the [TileMapLayer] it needs an update.  
-         */
-        /* gdvirtual */ _use_tile_data_runtime_update(coords: Vector2i): boolean
-        
-        /** Called with a [TileData] object about to be used internally by the [TileMapLayer], allowing its modification at runtime.  
-         *  This method is only called if [method _use_tile_data_runtime_update] is implemented and returns `true` for the given tile [param coords].  
-         *  **Warning:** The [param tile_data] object's sub-resources are the same as the one in the TileSet. Modifying them might impact the whole TileSet. Instead, make sure to duplicate those resources.  
-         *      
-         *  **Note:** If the properties of [param tile_data] object should change over time, use [method notify_runtime_tile_data_update] to notify the [TileMapLayer] it needs an update.  
-         */
-        /* gdvirtual */ _tile_data_runtime_update(coords: Vector2i, tile_data: TileData): void
-        
-        /** Called when this [TileMapLayer]'s cells need an internal update. This update may be caused from individual cells being modified or by a change in the [member tile_set] (causing all cells to be queued for an update). The first call to this function is always for initializing all the [TileMapLayer]'s cells. [param coords] contains the coordinates of all modified cells, roughly in the order they were modified. [param forced_cleanup] is `true` when the [TileMapLayer]'s internals should be fully cleaned up. This is the case when:  
-         *  - The layer is disabled;  
-         *  - The layer is not visible;  
-         *  - [member tile_set] is set to `null`;  
-         *  - The node is removed from the tree;  
-         *  - The node is freed.  
-         *  Note that any internal update happening while one of these conditions is verified is considered to be a "cleanup". See also [method update_internals].  
-         *  **Warning:** Implementing this method may degrade the [TileMapLayer]'s performance.  
-         */
-        /* gdvirtual */ _update_cells(coords: GArray<Vector2i>, forced_cleanup: boolean): void
-        
-        /** Sets the tile identifiers for the cell at coordinates [param coords]. Each tile of the [TileSet] is identified using three parts:  
-         *  - The source identifier [param source_id] identifies a [TileSetSource] identifier. See [method TileSet.set_source_id],  
-         *  - The atlas coordinate identifier [param atlas_coords] identifies a tile coordinates in the atlas (if the source is a [TileSetAtlasSource]). For [TileSetScenesCollectionSource] it should always be `Vector2i(0, 0)`,  
-         *  - The alternative tile identifier [param alternative_tile] identifies a tile alternative in the atlas (if the source is a [TileSetAtlasSource]), and the scene for a [TileSetScenesCollectionSource].  
-         *  If [param source_id] is set to `-1`, [param atlas_coords] to `Vector2i(-1, -1)`, or [param alternative_tile] to `-1`, the cell will be erased. An erased cell gets **all** its identifiers automatically set to their respective invalid values, namely `-1`, `Vector2i(-1, -1)` and `-1`.  
-         */
-        set_cell(coords: Vector2i, source_id?: int64 /* = -1 */, atlas_coords?: Vector2i /* = new Vector2i(-1, -1) */, alternative_tile?: int64 /* = 0 */): void
-        
-        /** Erases the cell at coordinates [param coords]. */
-        erase_cell(coords: Vector2i): void
-        
-        /** Clears cells containing tiles that do not exist in the [member tile_set]. */
-        fix_invalid_tiles(): void
-        
-        /** Clears all cells. */
-        clear(): void
-        
-        /** Returns the tile source ID of the cell at coordinates [param coords]. Returns `-1` if the cell does not exist. */
-        get_cell_source_id(coords: Vector2i): int64
-        
-        /** Returns the tile atlas coordinates ID of the cell at coordinates [param coords]. Returns `Vector2i(-1, -1)` if the cell does not exist. */
-        get_cell_atlas_coords(coords: Vector2i): Vector2i
-        
-        /** Returns the tile alternative ID of the cell at coordinates [param coords]. */
-        get_cell_alternative_tile(coords: Vector2i): int64
-        
-        /** Returns the [TileData] object associated with the given cell, or `null` if the cell does not exist or is not a [TileSetAtlasSource].  
-         *    
-         */
-        get_cell_tile_data(coords: Vector2i): null | TileData
-        
-        /** Returns `true` if the cell at coordinates [param coords] is flipped horizontally. The result is valid only for atlas sources. */
-        is_cell_flipped_h(coords: Vector2i): boolean
-        
-        /** Returns `true` if the cell at coordinates [param coords] is flipped vertically. The result is valid only for atlas sources. */
-        is_cell_flipped_v(coords: Vector2i): boolean
-        
-        /** Returns `true` if the cell at coordinates [param coords] is transposed. The result is valid only for atlas sources. */
-        is_cell_transposed(coords: Vector2i): boolean
-        
-        /** Returns a [Vector2i] array with the positions of all cells containing a tile. A cell is considered empty if its source identifier equals `-1`, its atlas coordinate identifier is `Vector2(-1, -1)` and its alternative identifier is `-1`. */
-        get_used_cells(): GArray<Vector2i>
-        
-        /** Returns a [Vector2i] array with the positions of all cells containing a tile. Tiles may be filtered according to their source ([param source_id]), their atlas coordinates ([param atlas_coords]), or alternative id ([param alternative_tile]).  
-         *  If a parameter has its value set to the default one, this parameter is not used to filter a cell. Thus, if all parameters have their respective default values, this method returns the same result as [method get_used_cells].  
-         *  A cell is considered empty if its source identifier equals `-1`, its atlas coordinate identifier is `Vector2(-1, -1)` and its alternative identifier is `-1`.  
-         */
-        get_used_cells_by_id(source_id?: int64 /* = -1 */, atlas_coords?: Vector2i /* = new Vector2i(-1, -1) */, alternative_tile?: int64 /* = -1 */): GArray<Vector2i>
-        
-        /** Returns a rectangle enclosing the used (non-empty) tiles of the map. */
-        get_used_rect(): Rect2i
-        
-        /** Creates and returns a new [TileMapPattern] from the given array of cells. See also [method set_pattern]. */
-        get_pattern(coords_array: GArray<Vector2i>): null | TileMapPattern
-        
-        /** Pastes the [TileMapPattern] at the given [param position] in the tile map. See also [method get_pattern]. */
-        set_pattern(position: Vector2i, pattern: TileMapPattern): void
-        
-        /** Update all the cells in the [param cells] coordinates array so that they use the given [param terrain] for the given [param terrain_set]. If an updated cell has the same terrain as one of its neighboring cells, this function tries to join the two. This function might update neighboring tiles if needed to create correct terrain transitions.  
-         *  If [param ignore_empty_terrains] is `true`, empty terrains will be ignored when trying to find the best fitting tile for the given terrain constraints.  
-         *      
-         *  **Note:** To work correctly, this method requires the [TileMapLayer]'s TileSet to have terrains set up with all required terrain combinations. Otherwise, it may produce unexpected results.  
-         */
-        set_cells_terrain_connect(cells: GArray<Vector2i>, terrain_set: int64, terrain: int64, ignore_empty_terrains?: boolean /* = true */): void
-        
-        /** Update all the cells in the [param path] coordinates array so that they use the given [param terrain] for the given [param terrain_set]. The function will also connect two successive cell in the path with the same terrain. This function might update neighboring tiles if needed to create correct terrain transitions.  
-         *  If [param ignore_empty_terrains] is `true`, empty terrains will be ignored when trying to find the best fitting tile for the given terrain constraints.  
-         *      
-         *  **Note:** To work correctly, this method requires the [TileMapLayer]'s TileSet to have terrains set up with all required terrain combinations. Otherwise, it may produce unexpected results.  
-         */
-        set_cells_terrain_path(path: GArray<Vector2i>, terrain_set: int64, terrain: int64, ignore_empty_terrains?: boolean /* = true */): void
-        
-        /** Returns whether the provided [param body] [RID] belongs to one of this [TileMapLayer]'s cells. */
-        has_body_rid(body: RID): boolean
-        
-        /** Returns the coordinates of the physics quadrant (see [member physics_quadrant_size]) for given physics body [RID]. Such an [RID] can be retrieved from [method KinematicCollision2D.get_collider_rid], when colliding with a tile.  
-         *      
-         *  **Note:** Higher values of [member physics_quadrant_size] will make this function less precise. To get the exact cell coordinates, you need to set [member physics_quadrant_size] to `1`, which disables physics chunking.  
-         */
-        get_coords_for_body_rid(body: RID): Vector2i
-        
-        /** Triggers a direct update of the [TileMapLayer]. Usually, calling this function is not needed, as [TileMapLayer] node updates automatically when one of its properties or cells is modified.  
-         *  However, for performance reasons, those updates are batched and delayed to the end of the frame. Calling this function will force the [TileMapLayer] to update right away instead.  
-         *  **Warning:** Updating the [TileMapLayer] is computationally expensive and may impact performance. Try to limit the number of updates and how many tiles they impact.  
-         */
-        update_internals(): void
-        
-        /** Notifies the [TileMapLayer] node that calls to [method _use_tile_data_runtime_update] or [method _tile_data_runtime_update] will lead to different results. This will thus trigger a [TileMapLayer] update.  
-         *  **Warning:** Updating the [TileMapLayer] is computationally expensive and may impact performance. Try to limit the number of calls to this function to avoid unnecessary update.  
-         *      
-         *  **Note:** This does not trigger a direct update of the [TileMapLayer], the update will be done at the end of the frame as usual (unless you call [method update_internals]).  
-         */
-        notify_runtime_tile_data_update(): void
-        
-        /** Returns for the given coordinates [param coords_in_pattern] in a [TileMapPattern] the corresponding cell coordinates if the pattern was pasted at the [param position_in_tilemap] coordinates (see [method set_pattern]). This mapping is required as in half-offset tile shapes, the mapping might not work by calculating `position_in_tile_map + coords_in_pattern`. */
-        map_pattern(position_in_tilemap: Vector2i, coords_in_pattern: Vector2i, pattern: TileMapPattern): Vector2i
-        
-        /** Returns the list of all neighboring cells to the one at [param coords]. Any neighboring cell is one that is touching edges, so for a square cell 4 cells would be returned, for a hexagon 6 cells are returned. */
-        get_surrounding_cells(coords: Vector2i): GArray<Vector2i>
-        
-        /** Returns the neighboring cell to the one at coordinates [param coords], identified by the [param neighbor] direction. This method takes into account the different layouts a TileMap can take. */
-        get_neighbor_cell(coords: Vector2i, neighbor: TileSet.CellNeighbor): Vector2i
-        
-        /** Returns the centered position of a cell in the [TileMapLayer]'s local coordinate space. To convert the returned value into global coordinates, use [method Node2D.to_global]. See also [method local_to_map].  
-         *      
-         *  **Note:** This may not correspond to the visual position of the tile, i.e. it ignores the [member TileData.texture_origin] property of individual tiles.  
-         */
-        map_to_local(map_position: Vector2i): Vector2
-        
-        /** Returns the map coordinates of the cell containing the given [param local_position]. If [param local_position] is in global coordinates, consider using [method Node2D.to_local] before passing it to this method. See also [method map_to_local]. */
-        local_to_map(local_position: Vector2): Vector2i
-        
-        /** Sets a custom [param map] as a [NavigationServer2D] navigation map. If not set, uses the default [World2D] navigation map instead. */
-        set_navigation_map(map: RID): void
-        
-        /** Returns the [RID] of the [NavigationServer2D] navigation used by this [TileMapLayer].  
-         *  By default this returns the default [World2D] navigation map, unless a custom map was provided using [method set_navigation_map].  
-         */
-        get_navigation_map(): RID
-        
-        /** The raw tile map data as a byte array. */
-        get tile_map_data(): PackedByteArray
-        set tile_map_data(value: PackedByteArray | byte[] | ArrayBuffer)
-        
-        /** If `false`, disables this [TileMapLayer] completely (rendering, collision, navigation, scene tiles, etc.) */
-        get enabled(): boolean
-        set enabled(value: boolean)
-        
-        /** The [TileSet] used by this layer. The textures, collisions, and additional behavior of all available tiles are stored here. */
-        get tile_set(): null | TileSet
-        set tile_set(value: null | TileSet)
-        
-        /** Enable or disable light occlusion. */
-        get occlusion_enabled(): boolean
-        set occlusion_enabled(value: boolean)
-        
-        /** This Y-sort origin value is added to each tile's Y-sort origin value. This allows, for example, to fake a different height level. This can be useful for top-down view games. */
-        get y_sort_origin(): int64
-        set y_sort_origin(value: int64)
-        
-        /** If [member CanvasItem.y_sort_enabled] is enabled, setting this to `true` will reverse the order the tiles are drawn on the X-axis. */
-        get x_draw_order_reversed(): boolean
-        set x_draw_order_reversed(value: boolean)
-        
-        /** The [TileMapLayer]'s rendering quadrant size. A quadrant is a group of tiles to be drawn together on a single canvas item, for optimization purposes. [member rendering_quadrant_size] defines the length of a square's side, in the map's coordinate system, that forms the quadrant. Thus, the default quadrant size groups together `16 * 16 = 256` tiles.  
-         *  The quadrant size does not apply on a Y-sorted [TileMapLayer], as tiles are grouped by Y position instead in that case.  
-         *      
-         *  **Note:** As quadrants are created according to the map's coordinate system, the quadrant's "square shape" might not look like square in the [TileMapLayer]'s local coordinate system.  
-         */
-        get rendering_quadrant_size(): int64
-        set rendering_quadrant_size(value: int64)
-        
-        /** Enable or disable collisions. */
-        get collision_enabled(): boolean
-        set collision_enabled(value: boolean)
-        
-        /** If `true`, this [TileMapLayer] collision shapes will be instantiated as kinematic bodies. This can be needed for moving [TileMapLayer] nodes (i.e. moving platforms). */
-        get use_kinematic_bodies(): boolean
-        set use_kinematic_bodies(value: boolean)
-        
-        /** Show or hide the [TileMapLayer]'s collision shapes. If set to [constant DEBUG_VISIBILITY_MODE_DEFAULT], this depends on the show collision debug settings. */
-        get collision_visibility_mode(): int64
-        set collision_visibility_mode(value: int64)
-        
-        /** The [TileMapLayer]'s physics quadrant size. Within a physics quadrant, cells with similar physics properties are grouped together and their collision shapes get merged. [member physics_quadrant_size] defines the length of a square's side, in the map's coordinate system, that forms the quadrant. Thus, the default quadrant size groups together `16 * 16 = 256` tiles.  
-         *      
-         *  **Note:** As quadrants are created according to the map's coordinate system, the quadrant's "square shape" might not look like square in the [TileMapLayer]'s local coordinate system.  
-         *      
-         *  **Note:** This impacts the value returned by [method get_coords_for_body_rid]. Higher values will make that function less precise. To get the exact cell coordinates, you need to set [member physics_quadrant_size] to `1`, which disables physics chunking.  
-         */
-        get physics_quadrant_size(): int64
-        set physics_quadrant_size(value: int64)
-        
-        /** If `true`, navigation regions are enabled. */
-        get navigation_enabled(): boolean
-        set navigation_enabled(value: boolean)
-        
-        /** Show or hide the [TileMapLayer]'s navigation meshes. If set to [constant DEBUG_VISIBILITY_MODE_DEFAULT], this depends on the show navigation debug settings. */
-        get navigation_visibility_mode(): int64
-        set navigation_visibility_mode(value: int64)
-        
-        /** Emitted when this [TileMapLayer]'s properties changes. This includes modified cells, properties, or changes made to its assigned [TileSet].  
-         *      
-         *  **Note:** This signal may be emitted very often when batch-modifying a [TileMapLayer]. Avoid executing complex processing in a connected function, and consider delaying it to the end of the frame instead (i.e. calling [method Object.call_deferred]).  
-         */
-        readonly changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTileMapLayer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTileMapLayer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTileMapPattern extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTileMapPattern extends __NameMapResource {
-    }
-    /** Holds a pattern to be copied from or pasted into [TileMap]s.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_tilemappattern.html  
-     */
-    class TileMapPattern extends Resource {
-        constructor(identifier?: any)
-        /** Sets the tile identifiers for the cell at coordinates [param coords]. See [method TileMap.set_cell]. */
-        set_cell(coords: Vector2i, source_id?: int64 /* = -1 */, atlas_coords?: Vector2i /* = new Vector2i(-1, -1) */, alternative_tile?: int64 /* = -1 */): void
-        
-        /** Returns whether the pattern has a tile at the given coordinates. */
-        has_cell(coords: Vector2i): boolean
-        
-        /** Remove the cell at the given coordinates. */
-        remove_cell(coords: Vector2i, update_size: boolean): void
-        
-        /** Returns the tile source ID of the cell at [param coords]. */
-        get_cell_source_id(coords: Vector2i): int64
-        
-        /** Returns the tile atlas coordinates ID of the cell at [param coords]. */
-        get_cell_atlas_coords(coords: Vector2i): Vector2i
-        
-        /** Returns the tile alternative ID of the cell at [param coords]. */
-        get_cell_alternative_tile(coords: Vector2i): int64
-        
-        /** Returns the list of used cell coordinates in the pattern. */
-        get_used_cells(): GArray<Vector2i>
-        
-        /** Returns the size, in cells, of the pattern. */
-        get_size(): Vector2i
-        
-        /** Sets the size of the pattern. */
-        set_size(size: Vector2i): void
-        
-        /** Returns whether the pattern is empty or not. */
-        is_empty(): boolean
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTileMapPattern;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTileMapPattern;
-    }
-    namespace TileSet {
-        enum TileShape {
-            /** Rectangular tile shape. */
-            TILE_SHAPE_SQUARE = 0,
-            
-            /** Diamond tile shape (for isometric look).  
-             *      
-             *  **Note:** Isometric [TileSet] works best if all sibling [TileMapLayer]s and their parent inheriting from [Node2D] have Y-sort enabled.  
-             */
-            TILE_SHAPE_ISOMETRIC = 1,
-            
-            /** Rectangular tile shape with one row/column out of two offset by half a tile. */
-            TILE_SHAPE_HALF_OFFSET_SQUARE = 2,
-            
-            /** Hexagonal tile shape. */
-            TILE_SHAPE_HEXAGON = 3,
-        }
-        enum TileLayout {
-            /** Tile coordinates layout where both axis stay consistent with their respective local horizontal and vertical axis. */
-            TILE_LAYOUT_STACKED = 0,
-            
-            /** Same as [constant TILE_LAYOUT_STACKED], but the first half-offset is negative instead of positive. */
-            TILE_LAYOUT_STACKED_OFFSET = 1,
-            
-            /** Tile coordinates layout where the horizontal axis stay horizontal, and the vertical one goes down-right. */
-            TILE_LAYOUT_STAIRS_RIGHT = 2,
-            
-            /** Tile coordinates layout where the vertical axis stay vertical, and the horizontal one goes down-right. */
-            TILE_LAYOUT_STAIRS_DOWN = 3,
-            
-            /** Tile coordinates layout where the horizontal axis goes up-right, and the vertical one goes down-right. */
-            TILE_LAYOUT_DIAMOND_RIGHT = 4,
-            
-            /** Tile coordinates layout where the horizontal axis goes down-right, and the vertical one goes down-left. */
-            TILE_LAYOUT_DIAMOND_DOWN = 5,
-        }
-        enum TileOffsetAxis {
-            /** Horizontal half-offset. */
-            TILE_OFFSET_AXIS_HORIZONTAL = 0,
-            
-            /** Vertical half-offset. */
-            TILE_OFFSET_AXIS_VERTICAL = 1,
-        }
-        enum CellNeighbor {
-            /** Neighbor on the right side. */
-            CELL_NEIGHBOR_RIGHT_SIDE = 0,
-            
-            /** Neighbor in the right corner. */
-            CELL_NEIGHBOR_RIGHT_CORNER = 1,
-            
-            /** Neighbor on the bottom right side. */
-            CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE = 2,
-            
-            /** Neighbor in the bottom right corner. */
-            CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER = 3,
-            
-            /** Neighbor on the bottom side. */
-            CELL_NEIGHBOR_BOTTOM_SIDE = 4,
-            
-            /** Neighbor in the bottom corner. */
-            CELL_NEIGHBOR_BOTTOM_CORNER = 5,
-            
-            /** Neighbor on the bottom left side. */
-            CELL_NEIGHBOR_BOTTOM_LEFT_SIDE = 6,
-            
-            /** Neighbor in the bottom left corner. */
-            CELL_NEIGHBOR_BOTTOM_LEFT_CORNER = 7,
-            
-            /** Neighbor on the left side. */
-            CELL_NEIGHBOR_LEFT_SIDE = 8,
-            
-            /** Neighbor in the left corner. */
-            CELL_NEIGHBOR_LEFT_CORNER = 9,
-            
-            /** Neighbor on the top left side. */
-            CELL_NEIGHBOR_TOP_LEFT_SIDE = 10,
-            
-            /** Neighbor in the top left corner. */
-            CELL_NEIGHBOR_TOP_LEFT_CORNER = 11,
-            
-            /** Neighbor on the top side. */
-            CELL_NEIGHBOR_TOP_SIDE = 12,
-            
-            /** Neighbor in the top corner. */
-            CELL_NEIGHBOR_TOP_CORNER = 13,
-            
-            /** Neighbor on the top right side. */
-            CELL_NEIGHBOR_TOP_RIGHT_SIDE = 14,
-            
-            /** Neighbor in the top right corner. */
-            CELL_NEIGHBOR_TOP_RIGHT_CORNER = 15,
-        }
-        enum TerrainMode {
-            /** Requires both corners and side to match with neighboring tiles' terrains. */
-            TERRAIN_MODE_MATCH_CORNERS_AND_SIDES = 0,
-            
-            /** Requires corners to match with neighboring tiles' terrains. */
-            TERRAIN_MODE_MATCH_CORNERS = 1,
-            
-            /** Requires sides to match with neighboring tiles' terrains. */
-            TERRAIN_MODE_MATCH_SIDES = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTileSet extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapTileSet extends __NameMapResource {
-    }
-    /** Tile library for tilemaps.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_tileset.html  
-     */
-    class TileSet extends Resource {
-        constructor(identifier?: any)
-        /** Returns a new unused source ID. This generated ID is the same that a call to [method add_source] would return. */
-        get_next_source_id(): int64
-        
-        /** Adds a [TileSetSource] to the TileSet. If [param atlas_source_id_override] is not -1, also set its source ID. Otherwise, a unique identifier is automatically generated.  
-         *  The function returns the added source ID or -1 if the source could not be added.  
-         *  **Warning:** A source cannot belong to two TileSets at the same time. If the added source was attached to another [TileSet], it will be removed from that one.  
-         */
-        add_source(source: TileSetSource, atlas_source_id_override?: int64 /* = -1 */): int64
-        
-        /** Removes the source with the given source ID. */
-        remove_source(source_id: int64): void
-        
-        /** Changes a source's ID. */
-        set_source_id(source_id: int64, new_source_id: int64): void
-        
-        /** Returns the number of [TileSetSource] in this TileSet. */
-        get_source_count(): int64
-        
-        /** Returns the source ID for source with index [param index]. */
-        get_source_id(index: int64): int64
-        
-        /** Returns if this TileSet has a source for the given source ID. */
-        has_source(source_id: int64): boolean
-        
-        /** Returns the [TileSetSource] with ID [param source_id]. */
-        get_source(source_id: int64): null | TileSetSource
-        
-        /** Returns the occlusion layers count. */
-        get_occlusion_layers_count(): int64
-        
-        /** Adds an occlusion layer to the TileSet at the given position [param to_position] in the array. If [param to_position] is -1, adds it at the end of the array.  
-         *  Occlusion layers allow assigning occlusion polygons to atlas tiles.  
-         */
-        add_occlusion_layer(to_position?: int64 /* = -1 */): void
-        
-        /** Moves the occlusion layer at index [param layer_index] to the given position [param to_position] in the array. Also updates the atlas tiles accordingly. */
-        move_occlusion_layer(layer_index: int64, to_position: int64): void
-        
-        /** Removes the occlusion layer at index [param layer_index]. Also updates the atlas tiles accordingly. */
-        remove_occlusion_layer(layer_index: int64): void
-        
-        /** Sets the occlusion layer (as in the rendering server) for occluders in the given TileSet occlusion layer. */
-        set_occlusion_layer_light_mask(layer_index: int64, light_mask: int64): void
-        
-        /** Returns the light mask of the occlusion layer. */
-        get_occlusion_layer_light_mask(layer_index: int64): int64
-        
-        /** Enables or disables SDF collision for occluders in the given TileSet occlusion layer. */
-        set_occlusion_layer_sdf_collision(layer_index: int64, sdf_collision: boolean): void
-        
-        /** Returns if the occluders from this layer use `sdf_collision`. */
-        get_occlusion_layer_sdf_collision(layer_index: int64): boolean
-        
-        /** Returns the physics layers count. */
-        get_physics_layers_count(): int64
-        
-        /** Adds a physics layer to the TileSet at the given position [param to_position] in the array. If [param to_position] is -1, adds it at the end of the array.  
-         *  Physics layers allow assigning collision polygons to atlas tiles.  
-         */
-        add_physics_layer(to_position?: int64 /* = -1 */): void
-        
-        /** Moves the physics layer at index [param layer_index] to the given position [param to_position] in the array. Also updates the atlas tiles accordingly. */
-        move_physics_layer(layer_index: int64, to_position: int64): void
-        
-        /** Removes the physics layer at index [param layer_index]. Also updates the atlas tiles accordingly. */
-        remove_physics_layer(layer_index: int64): void
-        
-        /** Sets the collision layer (as in the physics server) for bodies in the given TileSet physics layer. */
-        set_physics_layer_collision_layer(layer_index: int64, layer: int64): void
-        
-        /** Returns the collision layer (as in the physics server) bodies on the given TileSet's physics layer are in. */
-        get_physics_layer_collision_layer(layer_index: int64): int64
-        
-        /** Sets the collision mask for bodies in the given TileSet physics layer. */
-        set_physics_layer_collision_mask(layer_index: int64, mask: int64): void
-        
-        /** Returns the collision mask of bodies on the given TileSet's physics layer. */
-        get_physics_layer_collision_mask(layer_index: int64): int64
-        
-        /** Sets the collision priority for bodies in the given TileSet physics layer. */
-        set_physics_layer_collision_priority(layer_index: int64, priority: float64): void
-        
-        /** Returns the collision priority of bodies on the given TileSet's physics layer. */
-        get_physics_layer_collision_priority(layer_index: int64): float64
-        
-        /** Sets the physics material for bodies in the given TileSet physics layer. */
-        set_physics_layer_physics_material(layer_index: int64, physics_material: PhysicsMaterial): void
-        
-        /** Returns the physics material of bodies on the given TileSet's physics layer. */
-        get_physics_layer_physics_material(layer_index: int64): null | PhysicsMaterial
-        
-        /** Returns the terrain sets count. */
-        get_terrain_sets_count(): int64
-        
-        /** Adds a new terrain set at the given position [param to_position] in the array. If [param to_position] is -1, adds it at the end of the array. */
-        add_terrain_set(to_position?: int64 /* = -1 */): void
-        
-        /** Moves the terrain set at index [param terrain_set] to the given position [param to_position] in the array. Also updates the atlas tiles accordingly. */
-        move_terrain_set(terrain_set: int64, to_position: int64): void
-        
-        /** Removes the terrain set at index [param terrain_set]. Also updates the atlas tiles accordingly. */
-        remove_terrain_set(terrain_set: int64): void
-        
-        /** Sets a terrain mode. Each mode determines which bits of a tile shape is used to match the neighboring tiles' terrains. */
-        set_terrain_set_mode(terrain_set: int64, mode: TileSet.TerrainMode): void
-        
-        /** Returns a terrain set mode. */
-        get_terrain_set_mode(terrain_set: int64): TileSet.TerrainMode
-        
-        /** Returns the number of terrains in the given terrain set. */
-        get_terrains_count(terrain_set: int64): int64
-        
-        /** Adds a new terrain to the given terrain set [param terrain_set] at the given position [param to_position] in the array. If [param to_position] is -1, adds it at the end of the array. */
-        add_terrain(terrain_set: int64, to_position?: int64 /* = -1 */): void
-        
-        /** Moves the terrain at index [param terrain_index] for terrain set [param terrain_set] to the given position [param to_position] in the array. Also updates the atlas tiles accordingly. */
-        move_terrain(terrain_set: int64, terrain_index: int64, to_position: int64): void
-        
-        /** Removes the terrain at index [param terrain_index] in the given terrain set [param terrain_set]. Also updates the atlas tiles accordingly. */
-        remove_terrain(terrain_set: int64, terrain_index: int64): void
-        
-        /** Sets a terrain's name. */
-        set_terrain_name(terrain_set: int64, terrain_index: int64, name: string): void
-        
-        /** Returns a terrain's name. */
-        get_terrain_name(terrain_set: int64, terrain_index: int64): string
-        
-        /** Sets a terrain's color. This color is used for identifying the different terrains in the TileSet editor. */
-        set_terrain_color(terrain_set: int64, terrain_index: int64, color: Color): void
-        
-        /** Returns a terrain's color. */
-        get_terrain_color(terrain_set: int64, terrain_index: int64): Color
-        
-        /** Returns the navigation layers count. */
-        get_navigation_layers_count(): int64
-        
-        /** Adds a navigation layer to the TileSet at the given position [param to_position] in the array. If [param to_position] is -1, adds it at the end of the array.  
-         *  Navigation layers allow assigning a navigable area to atlas tiles.  
-         */
-        add_navigation_layer(to_position?: int64 /* = -1 */): void
-        
-        /** Moves the navigation layer at index [param layer_index] to the given position [param to_position] in the array. Also updates the atlas tiles accordingly. */
-        move_navigation_layer(layer_index: int64, to_position: int64): void
-        
-        /** Removes the navigation layer at index [param layer_index]. Also updates the atlas tiles accordingly. */
-        remove_navigation_layer(layer_index: int64): void
-        
-        /** Sets the navigation layers (as in the navigation server) for navigation regions in the given TileSet navigation layer. */
-        set_navigation_layer_layers(layer_index: int64, layers: int64): void
-        
-        /** Returns the navigation layers (as in the Navigation server) of the given TileSet navigation layer. */
-        get_navigation_layer_layers(layer_index: int64): int64
-        
-        /** Based on [param value], enables or disables the specified navigation layer of the TileSet navigation data layer identified by the given [param layer_index], given a navigation_layers [param layer_number] between 1 and 32. */
-        set_navigation_layer_layer_value(layer_index: int64, layer_number: int64, value: boolean): void
-        
-        /** Returns whether or not the specified navigation layer of the TileSet navigation data layer identified by the given [param layer_index] is enabled, given a navigation_layers [param layer_number] between 1 and 32. */
-        get_navigation_layer_layer_value(layer_index: int64, layer_number: int64): boolean
-        
-        /** Returns the custom data layers count. */
-        get_custom_data_layers_count(): int64
-        
-        /** Adds a custom data layer to the TileSet at the given position [param to_position] in the array. If [param to_position] is -1, adds it at the end of the array.  
-         *  Custom data layers allow assigning custom properties to atlas tiles.  
-         */
-        add_custom_data_layer(to_position?: int64 /* = -1 */): void
-        
-        /** Moves the custom data layer at index [param layer_index] to the given position [param to_position] in the array. Also updates the atlas tiles accordingly. */
-        move_custom_data_layer(layer_index: int64, to_position: int64): void
-        
-        /** Removes the custom data layer at index [param layer_index]. Also updates the atlas tiles accordingly. */
-        remove_custom_data_layer(layer_index: int64): void
-        
-        /** Returns the index of the custom data layer identified by the given name. */
-        get_custom_data_layer_by_name(layer_name: string): int64
-        
-        /** Sets the name of the custom data layer identified by the given index. Names are identifiers of the layer therefore if the name is already taken it will fail and raise an error. */
-        set_custom_data_layer_name(layer_index: int64, layer_name: string): void
-        
-        /** Returns if there is a custom data layer named [param layer_name]. */
-        has_custom_data_layer_by_name(layer_name: string): boolean
-        
-        /** Returns the name of the custom data layer identified by the given index. */
-        get_custom_data_layer_name(layer_index: int64): string
-        
-        /** Sets the type of the custom data layer identified by the given index. */
-        set_custom_data_layer_type(layer_index: int64, layer_type: Variant.Type): void
-        
-        /** Returns the type of the custom data layer identified by the given index. */
-        get_custom_data_layer_type(layer_index: int64): Variant.Type
-        
-        /** Creates a source-level proxy for the given source ID. A proxy will map set of tile identifiers to another set of identifiers. Both the atlas coordinates ID and the alternative tile ID are kept the same when using source-level proxies.  
-         *  Proxied tiles can be automatically replaced in TileMapLayer nodes using the editor.  
-         */
-        set_source_level_tile_proxy(source_from: int64, source_to: int64): void
-        
-        /** Returns the source-level proxy for the given source identifier.  
-         *  If the TileSet has no proxy for the given identifier, returns -1.  
-         */
-        get_source_level_tile_proxy(source_from: int64): int64
-        
-        /** Returns if there is a source-level proxy for the given source ID. */
-        has_source_level_tile_proxy(source_from: int64): boolean
-        
-        /** Removes a source-level tile proxy. */
-        remove_source_level_tile_proxy(source_from: int64): void
-        
-        /** Creates a coordinates-level proxy for the given identifiers. A proxy will map set of tile identifiers to another set of identifiers. The alternative tile ID is kept the same when using coordinates-level proxies.  
-         *  Proxied tiles can be automatically replaced in TileMapLayer nodes using the editor.  
-         */
-        set_coords_level_tile_proxy(p_source_from: int64, coords_from: Vector2i, source_to: int64, coords_to: Vector2i): void
-        
-        /** Returns the coordinate-level proxy for the given identifiers. The returned array contains the two target identifiers of the proxy (source ID and atlas coordinates ID).  
-         *  If the TileSet has no proxy for the given identifiers, returns an empty Array.  
-         */
-        get_coords_level_tile_proxy(source_from: int64, coords_from: Vector2i): GArray
-        
-        /** Returns if there is a coodinates-level proxy for the given identifiers. */
-        has_coords_level_tile_proxy(source_from: int64, coords_from: Vector2i): boolean
-        
-        /** Removes a coordinates-level proxy for the given identifiers. */
-        remove_coords_level_tile_proxy(source_from: int64, coords_from: Vector2i): void
-        
-        /** Create an alternative-level proxy for the given identifiers. A proxy will map set of tile identifiers to another set of identifiers.  
-         *  Proxied tiles can be automatically replaced in TileMapLayer nodes using the editor.  
-         */
-        set_alternative_level_tile_proxy(source_from: int64, coords_from: Vector2i, alternative_from: int64, source_to: int64, coords_to: Vector2i, alternative_to: int64): void
-        
-        /** Returns the alternative-level proxy for the given identifiers. The returned array contains the three proxie's target identifiers (source ID, atlas coords ID and alternative tile ID).  
-         *  If the TileSet has no proxy for the given identifiers, returns an empty Array.  
-         */
-        get_alternative_level_tile_proxy(source_from: int64, coords_from: Vector2i, alternative_from: int64): GArray
-        
-        /** Returns if there is an alternative-level proxy for the given identifiers. */
-        has_alternative_level_tile_proxy(source_from: int64, coords_from: Vector2i, alternative_from: int64): boolean
-        
-        /** Removes an alternative-level proxy for the given identifiers. */
-        remove_alternative_level_tile_proxy(source_from: int64, coords_from: Vector2i, alternative_from: int64): void
-        
-        /** According to the configured proxies, maps the provided identifiers to a new set of identifiers. The source ID, atlas coordinates ID and alternative tile ID are returned as a 3 elements Array.  
-         *  This function first look for matching alternative-level proxies, then coordinates-level proxies, then source-level proxies.  
-         *  If no proxy corresponding to provided identifiers are found, returns the same values the ones used as arguments.  
-         */
-        map_tile_proxy(source_from: int64, coords_from: Vector2i, alternative_from: int64): GArray
-        
-        /** Clears tile proxies pointing to invalid tiles. */
-        cleanup_invalid_tile_proxies(): void
-        
-        /** Clears all tile proxies. */
-        clear_tile_proxies(): void
-        
-        /** Adds a [TileMapPattern] to be stored in the TileSet resource. If provided, insert it at the given [param index]. */
-        add_pattern(pattern: TileMapPattern, index?: int64 /* = -1 */): int64
-        
-        /** Returns the [TileMapPattern] at the given [param index]. */
-        get_pattern(index?: int64 /* = -1 */): null | TileMapPattern
-        
-        /** Remove the [TileMapPattern] at the given index. */
-        remove_pattern(index: int64): void
-        
-        /** Returns the number of [TileMapPattern] this tile set handles. */
-        get_patterns_count(): int64
-        
-        /** The tile shape. */
-        get tile_shape(): int64
-        set tile_shape(value: int64)
-        
-        /** For all half-offset shapes (Isometric, Hexagonal and Half-Offset square), changes the way tiles are indexed in the [TileMapLayer] grid. */
-        get tile_layout(): int64
-        set tile_layout(value: int64)
-        
-        /** For all half-offset shapes (Isometric, Hexagonal and Half-Offset square), determines the offset axis. */
-        get tile_offset_axis(): int64
-        set tile_offset_axis(value: int64)
-        
-        /** The tile size, in pixels. For all tile shapes, this size corresponds to the encompassing rectangle of the tile shape. This is thus the minimal cell size required in an atlas. */
-        get tile_size(): Vector2i
-        set tile_size(value: Vector2i)
-        
-        /** Enables/Disable uv clipping when rendering the tiles. */
-        get uv_clipping(): boolean
-        set uv_clipping(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTileSet;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapTileSet;
-    }
     namespace TileSetAtlasSource {
         enum TileAnimationMode {
             /** Tile animations start at same time, looking identical. */
@@ -4585,9 +11,6 @@ declare module "godot" {
             /** Represents the size of the [enum TileAnimationMode] enum. */
             TILE_ANIMATION_MODE_MAX = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTileSetAtlasSource extends __RPCMapTileSetSource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTileSetAtlasSource extends __NameMapTileSetSource {
@@ -4739,12 +162,7 @@ declare module "godot" {
         get use_texture_padding(): boolean
         set use_texture_padding(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTileSetAtlasSource;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTileSetAtlasSource;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTileSetScenesCollectionSource extends __RPCMapTileSetSource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTileSetScenesCollectionSource extends __NameMapTileSetSource {
@@ -4790,12 +208,7 @@ declare module "godot" {
         /** Returns the scene ID a following call to [method create_scene_tile] would return. */
         get_next_scene_tile_id(): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTileSetScenesCollectionSource;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTileSetScenesCollectionSource;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTileSetSource extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTileSetSource extends __NameMapResource {
@@ -4827,8 +240,6 @@ declare module "godot" {
         /** Returns if the base tile at coordinates [param atlas_coords] has an alternative with ID [param alternative_tile]. */
         has_alternative_tile(atlas_coords: Vector2i, alternative_tile: int64): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTileSetSource;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTileSetSource;
     }
     namespace Timer {
@@ -4839,9 +250,6 @@ declare module "godot" {
             /** Update the timer every process (rendered) frame (see [constant Node.NOTIFICATION_INTERNAL_PROCESS]). */
             TIMER_PROCESS_IDLE = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTimer extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTimer extends __NameMapNode {
@@ -4908,12 +316,7 @@ declare module "godot" {
         /** Emitted when the timer reaches the end. */
         readonly timeout: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTimer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTimer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTorusMesh extends __RPCMapPrimitiveMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTorusMesh extends __NameMapPrimitiveMesh {
@@ -4940,8 +343,6 @@ declare module "godot" {
         get ring_segments(): int64
         set ring_segments(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTorusMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTorusMesh;
     }
     namespace TouchScreenButton {
@@ -4952,9 +353,6 @@ declare module "godot" {
             /** Visible on touch screens only. */
             VISIBILITY_TOUCHSCREEN_ONLY = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTouchScreenButton extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTouchScreenButton extends __NameMapNode2D {
@@ -5013,12 +411,7 @@ declare module "godot" {
         /** Emitted when the button is released (up). */
         readonly released: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTouchScreenButton;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTouchScreenButton;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTranslation extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTranslation extends __NameMapResource {
@@ -5083,12 +476,7 @@ declare module "godot" {
         get plural_rules_override(): string
         set plural_rules_override(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTranslation;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTranslation;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTranslationDomain extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTranslationDomain extends __NameMapRefCounted {
@@ -5211,8 +599,6 @@ declare module "godot" {
         get pseudolocalization_suffix(): string
         set pseudolocalization_suffix(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTranslationDomain;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTranslationDomain;
     }
     namespace Tree {
@@ -5264,9 +650,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTree extends __RPCMapControl {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTree extends __NameMapControl {
     }
     /** A control used to show a set of internal [TreeItem]s in a hierarchical structure.  
@@ -5282,7 +665,7 @@ declare module "godot" {
          *  If [param parent] is `null`, the root item will be the parent, or the new item will be the root itself if the tree is empty.  
          *  The new item will be the [param index]-th child of parent, or it will be the last child if there are not enough siblings.  
          */
-        create_item(parent?: TreeItem, index?: int64 /* = -1 */): TreeItem
+        create_item(parent?: TreeItem /* = undefined */, index?: int64 /* = -1 */): TreeItem
         
         /** Returns the tree's root item, or `null` if the tree is empty. */
         get_root(): null | TreeItem
@@ -5529,8 +912,6 @@ declare module "godot" {
         /** Emitted when a left mouse button click does not select any item. */
         readonly nothing_selected: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTree;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTree;
     }
     namespace TreeItem {
@@ -5554,9 +935,6 @@ declare module "godot" {
              */
             CELL_MODE_CUSTOM = 4,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTreeItem extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTreeItem extends __NameMapObject {
@@ -5967,12 +1345,7 @@ declare module "godot" {
         get custom_minimum_height(): int64
         set custom_minimum_height(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTreeItem;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTreeItem;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTriangleMesh extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTriangleMesh extends __NameMapRefCounted {
@@ -6011,12 +1384,7 @@ declare module "godot" {
          */
         intersect_ray(begin: Vector3, dir: Vector3): GDictionary
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTriangleMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTriangleMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTubeTrailMesh extends __RPCMapPrimitiveMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTubeTrailMesh extends __NameMapPrimitiveMesh {
@@ -6058,8 +1426,6 @@ declare module "godot" {
         /** Determines the radius of the tube along its length. The radius of a particular section ring is obtained by multiplying the baseline [member radius] by the value of this curve at the given distance. For values smaller than `0`, the faces will be inverted. Should be a unit [Curve]. */
         get curve(): null | Curve
         set curve(value: null | Curve)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTubeTrailMesh;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTubeTrailMesh;
     }
@@ -6131,9 +1497,6 @@ declare module "godot" {
             /** A combination of [constant EASE_IN] and [constant EASE_OUT]. The interpolation is fastest at both ends. */
             EASE_OUT_IN = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTween extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTween extends __NameMapRefCounted {
@@ -6305,12 +1668,7 @@ declare module "godot" {
         /** Emitted when the [Tween] has finished all tweening. Never emitted when the [Tween] is set to infinite looping (see [method set_loops]). */
         readonly finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTween;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTween;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTweener extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTweener extends __NameMapRefCounted {
@@ -6324,12 +1682,7 @@ declare module "godot" {
         /** Emitted when the [Tweener] has just finished its job or became invalid (e.g. due to a freed object). */
         readonly finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTweener;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTweener;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapTwoBoneIK3D extends __RPCMapIKModifier3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapTwoBoneIK3D extends __NameMapIKModifier3D {
@@ -6444,12 +1797,7 @@ declare module "godot" {
         get setting_count(): int64
         set setting_count(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapTwoBoneIK3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapTwoBoneIK3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapUDPServer extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapUDPServer extends __NameMapRefCounted {
@@ -6485,12 +1833,7 @@ declare module "godot" {
         get max_pending_connections(): int64
         set max_pending_connections(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapUDPServer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapUDPServer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapUDSServer extends __RPCMapSocketServer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapUDSServer extends __NameMapSocketServer {
@@ -6509,8 +1852,6 @@ declare module "godot" {
         
         /** If a connection is available, returns a StreamPeerUDS with the connection. */
         take_connection(): null | StreamPeerUDS
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapUDSServer;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapUDSServer;
     }
@@ -6605,9 +1946,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapUPNP extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapUPNP extends __NameMapRefCounted {
     }
     /** Universal Plug and Play (UPnP) functions for network device discovery, querying and port forwarding.  
@@ -6670,8 +2008,6 @@ declare module "godot" {
         get discover_ipv6(): boolean
         set discover_ipv6(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapUPNP;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapUPNP;
     }
     namespace UPNPDevice {
@@ -6706,9 +2042,6 @@ declare module "godot" {
             /** Unknown error. */
             IGD_STATUS_UNKNOWN_ERROR = 9,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapUPNPDevice extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapUPNPDevice extends __NameMapRefCounted {
@@ -6755,8 +2088,6 @@ declare module "godot" {
         get igd_status(): int64
         set igd_status(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapUPNPDevice;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapUPNPDevice;
     }
     namespace UndoRedo {
@@ -6770,9 +2101,6 @@ declare module "godot" {
             /** Merges this action with the previous one if they have the same name. */
             MERGE_ALL = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapUndoRedo extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapUndoRedo extends __NameMapObject {
@@ -6802,10 +2130,10 @@ declare module "godot" {
         add_undo_method(callable: Callable): void
         
         /** Register a [param property] that would change its value to [param value] when the action is committed. */
-        add_do_property<T extends Object, P extends GodotNames<T>>(object: T, property: P, value: ResolveGodotNameValue<T, P>): void
+        add_do_property<T extends GObject, P extends GodotNames<T>>(object: T, property: P, value: ResolveGodotNameValue<T, P>): void
         
         /** Register a [param property] that would change its value to [param value] when the action is undone. */
-        add_undo_property<T extends Object, P extends GodotNames<T>>(object: T, property: P, value: ResolveGodotNameValue<T, P>): void
+        add_undo_property<T extends GObject, P extends GodotNames<T>>(object: T, property: P, value: ResolveGodotNameValue<T, P>): void
         
         /** Register a reference to an object that will be erased if the "do" history is deleted. This is useful for objects added by the "do" action and removed by the "undo" action.  
          *  When the "do" history is deleted, if the object is a [RefCounted], it will be unreferenced. Otherwise, it will be freed. Do not use for resources.  
@@ -6866,12 +2194,7 @@ declare module "godot" {
         /** Called when [method undo] or [method redo] was called. */
         readonly version_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapUndoRedo;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapUndoRedo;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapUniformSetCacheRD extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapUniformSetCacheRD extends __NameMapObject {
@@ -6885,12 +2208,7 @@ declare module "godot" {
         /** Creates/returns a cached uniform set based on the provided uniforms for a given shader. */
         static get_cache(shader: RID, set: int64, uniforms: GArray<RDUniform>): RID
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapUniformSetCacheRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapUniformSetCacheRD;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVBoxContainer extends __RPCMapBoxContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVBoxContainer extends __NameMapBoxContainer {
@@ -6902,12 +2220,7 @@ declare module "godot" {
     class VBoxContainer<Map extends NodePathMap = any> extends BoxContainer<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVBoxContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVBoxContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVFlowContainer extends __RPCMapFlowContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVFlowContainer extends __NameMapFlowContainer {
@@ -6919,12 +2232,7 @@ declare module "godot" {
     class VFlowContainer<Map extends NodePathMap = any> extends FlowContainer<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVFlowContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVFlowContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVScrollBar extends __RPCMapScrollBar {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVScrollBar extends __NameMapScrollBar {
@@ -6936,12 +2244,7 @@ declare module "godot" {
     class VScrollBar<Map extends NodePathMap = any> extends ScrollBar<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVScrollBar;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVScrollBar;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVSeparator extends __RPCMapSeparator {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVSeparator extends __NameMapSeparator {
@@ -6953,12 +2256,7 @@ declare module "godot" {
     class VSeparator<Map extends NodePathMap = any> extends Separator<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVSeparator;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVSeparator;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVSlider extends __RPCMapSlider {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVSlider extends __NameMapSlider {
@@ -6970,12 +2268,7 @@ declare module "godot" {
     class VSlider<Map extends NodePathMap = any> extends Slider<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVSlider;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVSlider;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVSplitContainer extends __RPCMapSplitContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVSplitContainer extends __NameMapSplitContainer {
@@ -6987,12 +2280,7 @@ declare module "godot" {
     class VSplitContainer<Map extends NodePathMap = any> extends SplitContainer<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVSplitContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVSplitContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVehicleBody3D extends __RPCMapRigidBody3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVehicleBody3D extends __NameMapRigidBody3D {
@@ -7022,12 +2310,7 @@ declare module "godot" {
         get steering(): float64
         set steering(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVehicleBody3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVehicleBody3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVehicleWheel3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVehicleWheel3D extends __NameMapNode3D {
@@ -7120,12 +2403,7 @@ declare module "godot" {
         get damping_relaxation(): float64
         set damping_relaxation(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVehicleWheel3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVehicleWheel3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVideoStream extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVideoStream extends __NameMapResource {
@@ -7145,12 +2423,7 @@ declare module "godot" {
         get file(): string
         set file(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVideoStream;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVideoStream;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVideoStreamPlayback extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVideoStreamPlayback extends __NameMapResource {
@@ -7203,12 +2476,7 @@ declare module "godot" {
         /** Render [param num_frames] audio frames (of [method _get_channels] floats each) from [param buffer], starting from index [param offset] in the array. Returns the number of audio frames rendered, or -1 on error. */
         mix_audio(num_frames: int64, buffer?: PackedFloat32Array | float32[] /* = [] */, offset?: int64 /* = 0 */): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVideoStreamPlayback;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVideoStreamPlayback;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVideoStreamPlayer extends __RPCMapControl {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVideoStreamPlayer extends __NameMapControl {
@@ -7294,12 +2562,7 @@ declare module "godot" {
         /** Emitted when playback is finished. */
         readonly finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVideoStreamPlayer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVideoStreamPlayer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVideoStreamTheora extends __RPCMapVideoStream {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVideoStreamTheora extends __NameMapVideoStream {
@@ -7310,8 +2573,6 @@ declare module "godot" {
      */
     class VideoStreamTheora extends VideoStream {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVideoStreamTheora;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVideoStreamTheora;
     }
@@ -7687,9 +2948,6 @@ declare module "godot" {
             /** Represents the size of the [enum VRSUpdateMode] enum. */
             VRS_UPDATE_MAX = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapViewport extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapViewport extends __NameMapNode {
@@ -8164,12 +3422,7 @@ declare module "godot" {
          */
         readonly gui_focus_changed: Signal<(node: Control) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapViewport;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapViewport;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapViewportTexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapViewportTexture extends __NameMapTexture2D {
@@ -8187,8 +3440,6 @@ declare module "godot" {
         get viewport_path(): NodePath
         set viewport_path(value: NodePath | string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapViewportTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapViewportTexture;
     }
     namespace VisibleOnScreenEnabler2D {
@@ -8202,9 +3453,6 @@ declare module "godot" {
             /** Corresponds to [constant Node.PROCESS_MODE_WHEN_PAUSED]. */
             ENABLE_MODE_WHEN_PAUSED = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisibleOnScreenEnabler2D extends __RPCMapVisibleOnScreenNotifier2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisibleOnScreenEnabler2D extends __NameMapVisibleOnScreenNotifier2D {
@@ -8223,8 +3471,6 @@ declare module "godot" {
         get enable_node_path(): NodePath
         set enable_node_path(value: NodePath | string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisibleOnScreenEnabler2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisibleOnScreenEnabler2D;
     }
     namespace VisibleOnScreenEnabler3D {
@@ -8238,9 +3484,6 @@ declare module "godot" {
             /** Corresponds to [constant Node.PROCESS_MODE_WHEN_PAUSED]. */
             ENABLE_MODE_WHEN_PAUSED = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisibleOnScreenEnabler3D extends __RPCMapVisibleOnScreenNotifier3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisibleOnScreenEnabler3D extends __NameMapVisibleOnScreenNotifier3D {
@@ -8259,12 +3502,7 @@ declare module "godot" {
         get enable_node_path(): NodePath
         set enable_node_path(value: NodePath | string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisibleOnScreenEnabler3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisibleOnScreenEnabler3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisibleOnScreenNotifier2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisibleOnScreenNotifier2D extends __NameMapNode2D {
@@ -8295,12 +3533,7 @@ declare module "godot" {
         /** Emitted when the VisibleOnScreenNotifier2D exits the screen. */
         readonly screen_exited: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisibleOnScreenNotifier2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisibleOnScreenNotifier2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisibleOnScreenNotifier3D extends __RPCMapVisualInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisibleOnScreenNotifier3D extends __NameMapVisualInstance3D {
@@ -8327,12 +3560,7 @@ declare module "godot" {
         /** Emitted when the [VisibleOnScreenNotifier3D] exits the screen. */
         readonly screen_exited: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisibleOnScreenNotifier3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisibleOnScreenNotifier3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualInstance3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualInstance3D extends __NameMapNode3D {
@@ -8382,8 +3610,6 @@ declare module "godot" {
          */
         get sorting_use_aabb_center(): boolean
         set sorting_use_aabb_center(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualInstance3D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualInstance3D;
     }
@@ -8460,9 +3686,6 @@ declare module "godot" {
             /** Represents the size of the [enum VaryingType] enum. */
             VARYING_TYPE_MAX = 8,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShader extends __RPCMapShader {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShader extends __NameMapShader {
@@ -8547,8 +3770,6 @@ declare module "godot" {
         get graph_offset(): Vector2
         set graph_offset(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShader;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShader;
     }
     namespace VisualShaderNode {
@@ -8585,9 +3806,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNode extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNode extends __NameMapResource {
     }
     /** Base class for [VisualShader] nodes. Not related to scene nodes.  
@@ -8602,7 +3820,7 @@ declare module "godot" {
         _is_output_port_expanded(_unnamed_arg0: int64): boolean
         
         /** Sets the default [param value] for the selected input [param port]. */
-        set_input_port_default_value(port: int64, value: any, prev_value?: any /* = {} */): void
+        set_input_port_default_value(port: int64, value: any, prev_value?: any /* = <any> {} */): void
         
         /** Returns the default value of the input [param port]. */
         get_input_port_default_value(port: int64): any
@@ -8625,8 +3843,6 @@ declare module "godot" {
         get linked_parent_graph_frame(): int64
         set linked_parent_graph_frame(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNode;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNode;
     }
     namespace VisualShaderNodeBillboard {
@@ -8648,9 +3864,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeBillboard extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeBillboard extends __NameMapVisualShaderNode {
     }
     /** A node that controls how the object faces the camera to be used within the visual shader graph.  
@@ -8667,12 +3880,7 @@ declare module "godot" {
         get keep_scale(): boolean
         set keep_scale(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeBillboard;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeBillboard;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeBooleanConstant extends __RPCMapVisualShaderNodeConstant {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeBooleanConstant extends __NameMapVisualShaderNodeConstant {
@@ -8687,12 +3895,7 @@ declare module "godot" {
         get constant(): boolean
         set constant(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeBooleanConstant;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeBooleanConstant;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeBooleanParameter extends __RPCMapVisualShaderNodeParameter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeBooleanParameter extends __NameMapVisualShaderNodeParameter {
@@ -8710,8 +3913,6 @@ declare module "godot" {
         /** A default value to be assigned within the shader. */
         get default_value(): boolean
         set default_value(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeBooleanParameter;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeBooleanParameter;
     }
@@ -8740,9 +3941,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeClamp extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeClamp extends __NameMapVisualShaderNode {
     }
     /** Clamps a value within the visual shader graph.  
@@ -8755,12 +3953,7 @@ declare module "godot" {
         get op_type(): int64
         set op_type(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeClamp;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeClamp;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeColorConstant extends __RPCMapVisualShaderNodeConstant {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeColorConstant extends __NameMapVisualShaderNodeConstant {
@@ -8774,8 +3967,6 @@ declare module "godot" {
         /** A [Color] constant which represents a state of this node. */
         get constant(): Color
         set constant(value: Color)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeColorConstant;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeColorConstant;
     }
@@ -8816,9 +4007,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeColorFunc extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeColorFunc extends __NameMapVisualShaderNode {
     }
     /** A [Color] function to be used within the visual shader graph.  
@@ -8830,8 +4018,6 @@ declare module "godot" {
         /** A function to be applied to the input color. */
         get "function"(): int64
         set "function"(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeColorFunc;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeColorFunc;
     }
@@ -8887,9 +4073,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeColorOp extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeColorOp extends __NameMapVisualShaderNode {
     }
     /** A [Color] operator to be used within the visual shader graph.  
@@ -8902,12 +4085,7 @@ declare module "godot" {
         get operator(): int64
         set operator(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeColorOp;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeColorOp;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeColorParameter extends __RPCMapVisualShaderNodeParameter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeColorParameter extends __NameMapVisualShaderNodeParameter {
@@ -8926,12 +4104,7 @@ declare module "godot" {
         get default_value(): Color
         set default_value(value: Color)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeColorParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeColorParameter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeComment extends __RPCMapVisualShaderNodeFrame {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeComment extends __NameMapVisualShaderNodeFrame {
@@ -8945,8 +4118,6 @@ declare module "godot" {
         /** This property only exists to preserve data authored in earlier versions of Godot. It has currently no function. */
         get description(): string
         set description(value: string)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeComment;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeComment;
     }
@@ -9013,9 +4184,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeCompare extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeCompare extends __NameMapVisualShaderNode {
     }
     /** A comparison function for common types within the visual shader graph.  
@@ -9036,12 +4204,7 @@ declare module "godot" {
         get condition(): int64
         set condition(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeCompare;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeCompare;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeConstant extends __RPCMapVisualShaderNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeConstant extends __NameMapVisualShaderNode {
@@ -9052,8 +4215,6 @@ declare module "godot" {
      */
     class VisualShaderNodeConstant extends VisualShaderNode {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeConstant;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeConstant;
     }
@@ -9083,9 +4244,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeCubemap extends __RPCMapVisualShaderNode {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeCubemap extends __NameMapVisualShaderNode {
     }
     /** A [Cubemap] sampling node to be used within the visual shader graph.  
@@ -9106,12 +4264,7 @@ declare module "godot" {
         get texture_type(): int64
         set texture_type(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeCubemap;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeCubemap;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeCubemapParameter extends __RPCMapVisualShaderNodeTextureParameter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeCubemapParameter extends __NameMapVisualShaderNodeTextureParameter {
@@ -9123,12 +4276,7 @@ declare module "godot" {
     class VisualShaderNodeCubemapParameter extends VisualShaderNodeTextureParameter {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeCubemapParameter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeCubemapParameter;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeCurveTexture extends __RPCMapVisualShaderNodeResizableBase {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeCurveTexture extends __NameMapVisualShaderNodeResizableBase {
@@ -9143,12 +4291,7 @@ declare module "godot" {
         get texture(): null | CurveTexture
         set texture(value: null | CurveTexture)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeCurveTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeCurveTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeCurveXYZTexture extends __RPCMapVisualShaderNodeResizableBase {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeCurveXYZTexture extends __NameMapVisualShaderNodeResizableBase {
@@ -9163,12 +4306,7 @@ declare module "godot" {
         get texture(): null | CurveXYZTexture
         set texture(value: null | CurveXYZTexture)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeCurveXYZTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeCurveXYZTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapVisualShaderNodeCustom extends __RPCMapVisualShaderNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapVisualShaderNodeCustom extends __NameMapVisualShaderNode {
@@ -9300,8 +4438,5204 @@ declare module "godot" {
         get properties(): string
         set properties(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapVisualShaderNodeCustom;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapVisualShaderNodeCustom;
+    }
+    namespace VisualShaderNodeDerivativeFunc {
+        enum OpType {
+            /** A floating-point scalar. */
+            OP_TYPE_SCALAR = 0,
+            
+            /** A 2D vector type. */
+            OP_TYPE_VECTOR_2D = 1,
+            
+            /** A 3D vector type. */
+            OP_TYPE_VECTOR_3D = 2,
+            
+            /** A 4D vector type. */
+            OP_TYPE_VECTOR_4D = 3,
+            
+            /** Represents the size of the [enum OpType] enum. */
+            OP_TYPE_MAX = 4,
+        }
+        enum Function {
+            /** Sum of absolute derivative in `x` and `y`. */
+            FUNC_SUM = 0,
+            
+            /** Derivative in `x` using local differencing. */
+            FUNC_X = 1,
+            
+            /** Derivative in `y` using local differencing. */
+            FUNC_Y = 2,
+            
+            /** Represents the size of the [enum Function] enum. */
+            FUNC_MAX = 3,
+        }
+        enum Precision {
+            /** No precision is specified, the GPU driver is allowed to use whatever level of precision it chooses. This is the default option and is equivalent to using `dFdx()` or `dFdy()` in text shaders. */
+            PRECISION_NONE = 0,
+            
+            /** The derivative will be calculated using the current fragment's neighbors (which may not include the current fragment). This tends to be faster than using [constant PRECISION_FINE], but may not be suitable when more precision is needed. This is equivalent to using `dFdxCoarse()` or `dFdyCoarse()` in text shaders. */
+            PRECISION_COARSE = 1,
+            
+            /** The derivative will be calculated using the current fragment and its immediate neighbors. This tends to be slower than using [constant PRECISION_COARSE], but may be necessary when more precision is needed. This is equivalent to using `dFdxFine()` or `dFdyFine()` in text shaders. */
+            PRECISION_FINE = 2,
+            
+            /** Represents the size of the [enum Precision] enum. */
+            PRECISION_MAX = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeDerivativeFunc extends __NameMapVisualShaderNode {
+    }
+    /** Calculates a derivative within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodederivativefunc.html  
+     */
+    class VisualShaderNodeDerivativeFunc extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A type of operands and returned value. */
+        get op_type(): int64
+        set op_type(value: int64)
+        
+        /** A derivative function type. */
+        get "function"(): int64
+        set "function"(value: int64)
+        
+        /** Sets the level of precision to use for the derivative function. When using the Compatibility renderer, this setting has no effect. */
+        get precision(): int64
+        set precision(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeDerivativeFunc;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeDeterminant extends __NameMapVisualShaderNode {
+    }
+    /** Calculates the determinant of a [Transform3D] within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodedeterminant.html  
+     */
+    class VisualShaderNodeDeterminant extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeDeterminant;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeDistanceFade extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node representing distance fade effect.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodedistancefade.html  
+     */
+    class VisualShaderNodeDistanceFade extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeDistanceFade;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeDotProduct extends __NameMapVisualShaderNode {
+    }
+    /** Calculates a dot product of two vectors within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodedotproduct.html  
+     */
+    class VisualShaderNodeDotProduct extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeDotProduct;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeExpression extends __NameMapVisualShaderNodeGroupBase {
+    }
+    /** A custom visual shader graph expression written in Godot Shading Language.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeexpression.html  
+     */
+    class VisualShaderNodeExpression extends VisualShaderNodeGroupBase {
+        constructor(identifier?: any)
+        /** An expression in Godot Shading Language, which will be injected at the start of the graph's matching shader function (`vertex`, `fragment`, or `light`), and thus cannot be used to declare functions, varyings, uniforms, or global constants. */
+        get expression(): string
+        set expression(value: string)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeExpression;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeFaceForward extends __NameMapVisualShaderNodeVectorBase {
+    }
+    /** Returns the vector that points in the same direction as a reference vector within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefaceforward.html  
+     */
+    class VisualShaderNodeFaceForward extends VisualShaderNodeVectorBase {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeFaceForward;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeFloatConstant extends __NameMapVisualShaderNodeConstant {
+    }
+    /** A scalar floating-point constant to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefloatconstant.html  
+     */
+    class VisualShaderNodeFloatConstant extends VisualShaderNodeConstant {
+        constructor(identifier?: any)
+        /** A floating-point constant which represents a state of this node. */
+        get constant(): float64
+        set constant(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeFloatConstant;
+    }
+    namespace VisualShaderNodeFloatFunc {
+        enum Function {
+            /** Returns the sine of the parameter. Translates to `sin(x)` in the Godot Shader Language. */
+            FUNC_SIN = 0,
+            
+            /** Returns the cosine of the parameter. Translates to `cos(x)` in the Godot Shader Language. */
+            FUNC_COS = 1,
+            
+            /** Returns the tangent of the parameter. Translates to `tan(x)` in the Godot Shader Language. */
+            FUNC_TAN = 2,
+            
+            /** Returns the arc-sine of the parameter. Translates to `asin(x)` in the Godot Shader Language. */
+            FUNC_ASIN = 3,
+            
+            /** Returns the arc-cosine of the parameter. Translates to `acos(x)` in the Godot Shader Language. */
+            FUNC_ACOS = 4,
+            
+            /** Returns the arc-tangent of the parameter. Translates to `atan(x)` in the Godot Shader Language. */
+            FUNC_ATAN = 5,
+            
+            /** Returns the hyperbolic sine of the parameter. Translates to `sinh(x)` in the Godot Shader Language. */
+            FUNC_SINH = 6,
+            
+            /** Returns the hyperbolic cosine of the parameter. Translates to `cosh(x)` in the Godot Shader Language. */
+            FUNC_COSH = 7,
+            
+            /** Returns the hyperbolic tangent of the parameter. Translates to `tanh(x)` in the Godot Shader Language. */
+            FUNC_TANH = 8,
+            
+            /** Returns the natural logarithm of the parameter. Translates to `log(x)` in the Godot Shader Language. */
+            FUNC_LOG = 9,
+            
+            /** Returns the natural exponentiation of the parameter. Translates to `exp(x)` in the Godot Shader Language. */
+            FUNC_EXP = 10,
+            
+            /** Returns the square root of the parameter. Translates to `sqrt(x)` in the Godot Shader Language. */
+            FUNC_SQRT = 11,
+            
+            /** Returns the absolute value of the parameter. Translates to `abs(x)` in the Godot Shader Language. */
+            FUNC_ABS = 12,
+            
+            /** Extracts the sign of the parameter. Translates to `sign(x)` in the Godot Shader Language. */
+            FUNC_SIGN = 13,
+            
+            /** Finds the nearest integer less than or equal to the parameter. Translates to `floor(x)` in the Godot Shader Language. */
+            FUNC_FLOOR = 14,
+            
+            /** Finds the nearest integer to the parameter. Translates to `round(x)` in the Godot Shader Language. */
+            FUNC_ROUND = 15,
+            
+            /** Finds the nearest integer that is greater than or equal to the parameter. Translates to `ceil(x)` in the Godot Shader Language. */
+            FUNC_CEIL = 16,
+            
+            /** Computes the fractional part of the argument. Translates to `fract(x)` in the Godot Shader Language. */
+            FUNC_FRACT = 17,
+            
+            /** Clamps the value between `0.0` and `1.0` using `min(max(x, 0.0), 1.0)`. */
+            FUNC_SATURATE = 18,
+            
+            /** Negates the `x` using `-(x)`. */
+            FUNC_NEGATE = 19,
+            
+            /** Returns the arc-hyperbolic-cosine of the parameter. Translates to `acosh(x)` in the Godot Shader Language. */
+            FUNC_ACOSH = 20,
+            
+            /** Returns the arc-hyperbolic-sine of the parameter. Translates to `asinh(x)` in the Godot Shader Language. */
+            FUNC_ASINH = 21,
+            
+            /** Returns the arc-hyperbolic-tangent of the parameter. Translates to `atanh(x)` in the Godot Shader Language. */
+            FUNC_ATANH = 22,
+            
+            /** Convert a quantity in radians to degrees. Translates to `degrees(x)` in the Godot Shader Language. */
+            FUNC_DEGREES = 23,
+            
+            /** Returns 2 raised by the power of the parameter. Translates to `exp2(x)` in the Godot Shader Language. */
+            FUNC_EXP2 = 24,
+            
+            /** Returns the inverse of the square root of the parameter. Translates to `inversesqrt(x)` in the Godot Shader Language. */
+            FUNC_INVERSE_SQRT = 25,
+            
+            /** Returns the base 2 logarithm of the parameter. Translates to `log2(x)` in the Godot Shader Language. */
+            FUNC_LOG2 = 26,
+            
+            /** Convert a quantity in degrees to radians. Translates to `radians(x)` in the Godot Shader Language. */
+            FUNC_RADIANS = 27,
+            
+            /** Finds reciprocal value of dividing 1 by `x` (i.e. `1 / x`). */
+            FUNC_RECIPROCAL = 28,
+            
+            /** Finds the nearest even integer to the parameter. Translates to `roundEven(x)` in the Godot Shader Language. */
+            FUNC_ROUNDEVEN = 29,
+            
+            /** Returns a value equal to the nearest integer to `x` whose absolute value is not larger than the absolute value of `x`. Translates to `trunc(x)` in the Godot Shader Language. */
+            FUNC_TRUNC = 30,
+            
+            /** Subtracts scalar `x` from 1 (i.e. `1 - x`). */
+            FUNC_ONEMINUS = 31,
+            
+            /** Represents the size of the [enum Function] enum. */
+            FUNC_MAX = 32,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeFloatFunc extends __NameMapVisualShaderNode {
+    }
+    /** A scalar floating-point function to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefloatfunc.html  
+     */
+    class VisualShaderNodeFloatFunc extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A function to be applied to the scalar. */
+        get "function"(): int64
+        set "function"(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeFloatFunc;
+    }
+    namespace VisualShaderNodeFloatOp {
+        enum Operator {
+            /** Sums two numbers using `a + b`. */
+            OP_ADD = 0,
+            
+            /** Subtracts two numbers using `a - b`. */
+            OP_SUB = 1,
+            
+            /** Multiplies two numbers using `a * b`. */
+            OP_MUL = 2,
+            
+            /** Divides two numbers using `a / b`. */
+            OP_DIV = 3,
+            
+            /** Calculates the remainder of two numbers. Translates to `mod(a, b)` in the Godot Shader Language. */
+            OP_MOD = 4,
+            
+            /** Raises the `a` to the power of `b`. Translates to `pow(a, b)` in the Godot Shader Language. */
+            OP_POW = 5,
+            
+            /** Returns the greater of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
+            OP_MAX = 6,
+            
+            /** Returns the lesser of two numbers. Translates to `min(a, b)` in the Godot Shader Language. */
+            OP_MIN = 7,
+            
+            /** Returns the arc-tangent of the parameters. Translates to `atan(a, b)` in the Godot Shader Language. */
+            OP_ATAN2 = 8,
+            
+            /** Generates a step function by comparing `b`(x) to `a`(edge). Returns 0.0 if `x` is smaller than `edge` and otherwise 1.0. Translates to `step(a, b)` in the Godot Shader Language. */
+            OP_STEP = 9,
+            
+            /** Represents the size of the [enum Operator] enum. */
+            OP_ENUM_SIZE = 10,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeFloatOp extends __NameMapVisualShaderNode {
+    }
+    /** A floating-point scalar operator to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefloatop.html  
+     */
+    class VisualShaderNodeFloatOp extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** An operator to be applied to the inputs. */
+        get operator(): int64
+        set operator(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeFloatOp;
+    }
+    namespace VisualShaderNodeFloatParameter {
+        enum Hint {
+            /** No hint used. */
+            HINT_NONE = 0,
+            
+            /** A range hint for scalar value, which limits possible input values between [member min] and [member max]. Translated to `hint_range(min, max)` in shader code. */
+            HINT_RANGE = 1,
+            
+            /** A range hint for scalar value with step, which limits possible input values between [member min] and [member max], with a step (increment) of [member step]). Translated to `hint_range(min, max, step)` in shader code. */
+            HINT_RANGE_STEP = 2,
+            
+            /** Represents the size of the [enum Hint] enum. */
+            HINT_MAX = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeFloatParameter extends __NameMapVisualShaderNodeParameter {
+    }
+    /** A scalar float parameter to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefloatparameter.html  
+     */
+    class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter {
+        constructor(identifier?: any)
+        /** A hint applied to the uniform, which controls the values it can take when set through the Inspector. */
+        get hint(): int64
+        set hint(value: int64)
+        
+        /** Maximum value for range hints. Used if [member hint] is set to [constant HINT_RANGE] or [constant HINT_RANGE_STEP]. */
+        get min(): float64
+        set min(value: float64)
+        
+        /** Minimum value for range hints. Used if [member hint] is set to [constant HINT_RANGE] or [constant HINT_RANGE_STEP]. */
+        get max(): float64
+        set max(value: float64)
+        
+        /** Step (increment) value for the range hint with step. Used if [member hint] is set to [constant HINT_RANGE_STEP]. */
+        get step(): float64
+        set step(value: float64)
+        
+        /** Enables usage of the [member default_value]. */
+        get default_value_enabled(): boolean
+        set default_value_enabled(value: boolean)
+        
+        /** A default value to be assigned within the shader. */
+        get default_value(): float64
+        set default_value(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeFloatParameter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeFrame extends __NameMapVisualShaderNodeResizableBase {
+    }
+    /** A frame other visual shader nodes can be attached to for better organization.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeframe.html  
+     */
+    class VisualShaderNodeFrame extends VisualShaderNodeResizableBase {
+        constructor(identifier?: any)
+        /** Adds a node to the list of nodes attached to the frame. Should not be called directly, use the [method VisualShader.attach_node_to_frame] method instead. */
+        add_attached_node(node: int64): void
+        
+        /** Removes a node from the list of nodes attached to the frame. Should not be called directly, use the [method VisualShader.detach_node_from_frame] method instead. */
+        remove_attached_node(node: int64): void
+        
+        /** The title of the node. */
+        get title(): string
+        set title(value: string)
+        
+        /** If `true`, the frame will be tinted with the color specified in [member tint_color]. */
+        get tint_color_enabled(): boolean
+        set tint_color_enabled(value: boolean)
+        
+        /** The color of the frame when [member tint_color_enabled] is `true`. */
+        get tint_color(): Color
+        set tint_color(value: Color)
+        
+        /** If `true`, the frame will automatically resize to enclose all attached nodes. */
+        get autoshrink(): boolean
+        set autoshrink(value: boolean)
+        
+        /** The list of nodes attached to the frame. */
+        get attached_nodes(): PackedInt32Array
+        set attached_nodes(value: PackedInt32Array | int32[])
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeFrame;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeFresnel extends __NameMapVisualShaderNode {
+    }
+    /** A Fresnel effect to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodefresnel.html  
+     */
+    class VisualShaderNodeFresnel extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeFresnel;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeGlobalExpression extends __NameMapVisualShaderNodeExpression {
+    }
+    /** A custom global visual shader graph expression written in Godot Shading Language.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeglobalexpression.html  
+     */
+    class VisualShaderNodeGlobalExpression extends VisualShaderNodeExpression {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeGlobalExpression;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeGroupBase extends __NameMapVisualShaderNodeResizableBase {
+    }
+    /** Base class for a family of nodes with variable number of input and output ports within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodegroupbase.html  
+     */
+    class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase {
+        constructor(identifier?: any)
+        /** Defines all input ports using a [String] formatted as a colon-separated list: `id,type,name;` (see [method add_input_port]). */
+        set_inputs(inputs: string): void
+        
+        /** Returns a [String] description of the input ports as a colon-separated list using the format `id,type,name;` (see [method add_input_port]). */
+        get_inputs(): string
+        
+        /** Defines all output ports using a [String] formatted as a colon-separated list: `id,type,name;` (see [method add_output_port]). */
+        set_outputs(outputs: string): void
+        
+        /** Returns a [String] description of the output ports as a colon-separated list using the format `id,type,name;` (see [method add_output_port]). */
+        get_outputs(): string
+        
+        /** Returns `true` if the specified port name does not override an existed port name and is valid within the shader. */
+        is_valid_port_name(name: string): boolean
+        
+        /** Adds an input port with the specified [param type] (see [enum VisualShaderNode.PortType]) and [param name]. */
+        add_input_port(id: int64, type: int64, name: string): void
+        
+        /** Removes the specified input port. */
+        remove_input_port(id: int64): void
+        
+        /** Returns the number of input ports in use. Alternative for [method get_free_input_port_id]. */
+        get_input_port_count(): int64
+        
+        /** Returns `true` if the specified input port exists. */
+        has_input_port(id: int64): boolean
+        
+        /** Removes all previously specified input ports. */
+        clear_input_ports(): void
+        
+        /** Adds an output port with the specified [param type] (see [enum VisualShaderNode.PortType]) and [param name]. */
+        add_output_port(id: int64, type: int64, name: string): void
+        
+        /** Removes the specified output port. */
+        remove_output_port(id: int64): void
+        
+        /** Returns the number of output ports in use. Alternative for [method get_free_output_port_id]. */
+        get_output_port_count(): int64
+        
+        /** Returns `true` if the specified output port exists. */
+        has_output_port(id: int64): boolean
+        
+        /** Removes all previously specified output ports. */
+        clear_output_ports(): void
+        
+        /** Renames the specified input port. */
+        set_input_port_name(id: int64, name: string): void
+        
+        /** Sets the specified input port's type (see [enum VisualShaderNode.PortType]). */
+        set_input_port_type(id: int64, type: int64): void
+        
+        /** Renames the specified output port. */
+        set_output_port_name(id: int64, name: string): void
+        
+        /** Sets the specified output port's type (see [enum VisualShaderNode.PortType]). */
+        set_output_port_type(id: int64, type: int64): void
+        
+        /** Returns a free input port ID which can be used in [method add_input_port]. */
+        get_free_input_port_id(): int64
+        
+        /** Returns a free output port ID which can be used in [method add_output_port]. */
+        get_free_output_port_id(): int64
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeGroupBase;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeIf extends __NameMapVisualShaderNode {
+    }
+    /** Outputs a 3D vector based on the result of a floating-point comparison within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeif.html  
+     */
+    class VisualShaderNodeIf extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeIf;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeInput extends __NameMapVisualShaderNode {
+    }
+    /** Represents the input shader parameter within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeinput.html  
+     */
+    class VisualShaderNodeInput extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** Returns a translated name of the current constant in the Godot Shader Language. E.g. `"ALBEDO"` if the [member input_name] equal to `"albedo"`. */
+        get_input_real_name(): string
+        
+        /** One of the several input constants in lower-case style like: "vertex" (`VERTEX`) or "point_size" (`POINT_SIZE`). */
+        get input_name(): StringName
+        set input_name(value: StringName)
+        
+        /** Emitted when input is changed via [member input_name]. */
+        readonly input_type_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeInput;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeIntConstant extends __NameMapVisualShaderNodeConstant {
+    }
+    /** A scalar integer constant to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeintconstant.html  
+     */
+    class VisualShaderNodeIntConstant extends VisualShaderNodeConstant {
+        constructor(identifier?: any)
+        /** An integer constant which represents a state of this node. */
+        get constant(): int64
+        set constant(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeIntConstant;
+    }
+    namespace VisualShaderNodeIntFunc {
+        enum Function {
+            /** Returns the absolute value of the parameter. Translates to `abs(x)` in the Godot Shader Language. */
+            FUNC_ABS = 0,
+            
+            /** Negates the `x` using `-(x)`. */
+            FUNC_NEGATE = 1,
+            
+            /** Extracts the sign of the parameter. Translates to `sign(x)` in the Godot Shader Language. */
+            FUNC_SIGN = 2,
+            
+            /** Returns the result of bitwise `NOT` operation on the integer. Translates to `~a` in the Godot Shader Language. */
+            FUNC_BITWISE_NOT = 3,
+            
+            /** Represents the size of the [enum Function] enum. */
+            FUNC_MAX = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeIntFunc extends __NameMapVisualShaderNode {
+    }
+    /** A scalar integer function to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeintfunc.html  
+     */
+    class VisualShaderNodeIntFunc extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A function to be applied to the scalar. */
+        get "function"(): int64
+        set "function"(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeIntFunc;
+    }
+    namespace VisualShaderNodeIntOp {
+        enum Operator {
+            /** Sums two numbers using `a + b`. */
+            OP_ADD = 0,
+            
+            /** Subtracts two numbers using `a - b`. */
+            OP_SUB = 1,
+            
+            /** Multiplies two numbers using `a * b`. */
+            OP_MUL = 2,
+            
+            /** Divides two numbers using `a / b`. */
+            OP_DIV = 3,
+            
+            /** Calculates the remainder of two numbers using `a % b`. */
+            OP_MOD = 4,
+            
+            /** Returns the greater of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
+            OP_MAX = 5,
+            
+            /** Returns the lesser of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
+            OP_MIN = 6,
+            
+            /** Returns the result of bitwise `AND` operation on the integer. Translates to `a & b` in the Godot Shader Language. */
+            OP_BITWISE_AND = 7,
+            
+            /** Returns the result of bitwise `OR` operation for two integers. Translates to `a | b` in the Godot Shader Language. */
+            OP_BITWISE_OR = 8,
+            
+            /** Returns the result of bitwise `XOR` operation for two integers. Translates to `a ^ b` in the Godot Shader Language. */
+            OP_BITWISE_XOR = 9,
+            
+            /** Returns the result of bitwise left shift operation on the integer. Translates to `a << b` in the Godot Shader Language. */
+            OP_BITWISE_LEFT_SHIFT = 10,
+            
+            /** Returns the result of bitwise right shift operation on the integer. Translates to `a >> b` in the Godot Shader Language. */
+            OP_BITWISE_RIGHT_SHIFT = 11,
+            
+            /** Represents the size of the [enum Operator] enum. */
+            OP_ENUM_SIZE = 12,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeIntOp extends __NameMapVisualShaderNode {
+    }
+    /** An integer scalar operator to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeintop.html  
+     */
+    class VisualShaderNodeIntOp extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** An operator to be applied to the inputs. */
+        get operator(): int64
+        set operator(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeIntOp;
+    }
+    namespace VisualShaderNodeIntParameter {
+        enum Hint {
+            /** The parameter will not constrain its value. */
+            HINT_NONE = 0,
+            
+            /** The parameter's value must be within the specified [member min]/[member max] range. */
+            HINT_RANGE = 1,
+            
+            /** The parameter's value must be within the specified range, with the given [member step] between values. */
+            HINT_RANGE_STEP = 2,
+            
+            /** The parameter uses an enum to associate preset values to names in the editor. */
+            HINT_ENUM = 3,
+            
+            /** Represents the size of the [enum Hint] enum. */
+            HINT_MAX = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeIntParameter extends __NameMapVisualShaderNodeParameter {
+    }
+    /** A visual shader node for shader parameter (uniform) of type [int].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeintparameter.html  
+     */
+    class VisualShaderNodeIntParameter extends VisualShaderNodeParameter {
+        constructor(identifier?: any)
+        /** Range hint of this node. Use it to customize valid parameter range. */
+        get hint(): int64
+        set hint(value: int64)
+        
+        /** The minimum value this parameter can take. [member hint] must be either [constant HINT_RANGE] or [constant HINT_RANGE_STEP] for this to take effect. */
+        get min(): int64
+        set min(value: int64)
+        
+        /** The maximum value this parameter can take. [member hint] must be either [constant HINT_RANGE] or [constant HINT_RANGE_STEP] for this to take effect. */
+        get max(): int64
+        set max(value: int64)
+        
+        /** The step between parameter's values. Forces the parameter to be a multiple of the given value. [member hint] must be [constant HINT_RANGE_STEP] for this to take effect. */
+        get step(): int64
+        set step(value: int64)
+        
+        /** The names used for the enum select in the editor. [member hint] must be [constant HINT_ENUM] for this to take effect. */
+        get enum_names(): PackedStringArray
+        set enum_names(value: PackedStringArray | string[])
+        
+        /** If `true`, the node will have a custom default value. */
+        get default_value_enabled(): boolean
+        set default_value_enabled(value: boolean)
+        
+        /** Default value of this parameter, which will be used if not set externally. [member default_value_enabled] must be enabled; defaults to `0` otherwise. */
+        get default_value(): int64
+        set default_value(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeIntParameter;
+    }
+    namespace VisualShaderNodeIs {
+        enum Function {
+            /** Comparison with `INF` (Infinity). */
+            FUNC_IS_INF = 0,
+            
+            /** Comparison with `NaN` (Not a Number; indicates invalid numeric results, such as division by zero). */
+            FUNC_IS_NAN = 1,
+            
+            /** Represents the size of the [enum Function] enum. */
+            FUNC_MAX = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeIs extends __NameMapVisualShaderNode {
+    }
+    /** A boolean comparison operator to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeis.html  
+     */
+    class VisualShaderNodeIs extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** The comparison function. */
+        get "function"(): int64
+        set "function"(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeIs;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeLinearSceneDepth extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that returns the depth value of the DEPTH_TEXTURE node in a linear space.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodelinearscenedepth.html  
+     */
+    class VisualShaderNodeLinearSceneDepth extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeLinearSceneDepth;
+    }
+    namespace VisualShaderNodeMix {
+        enum OpType {
+            /** A floating-point scalar. */
+            OP_TYPE_SCALAR = 0,
+            
+            /** A 2D vector type. */
+            OP_TYPE_VECTOR_2D = 1,
+            
+            /** The `a` and `b` ports use a 2D vector type. The `weight` port uses a scalar type. */
+            OP_TYPE_VECTOR_2D_SCALAR = 2,
+            
+            /** A 3D vector type. */
+            OP_TYPE_VECTOR_3D = 3,
+            
+            /** The `a` and `b` ports use a 3D vector type. The `weight` port uses a scalar type. */
+            OP_TYPE_VECTOR_3D_SCALAR = 4,
+            
+            /** A 4D vector type. */
+            OP_TYPE_VECTOR_4D = 5,
+            
+            /** The `a` and `b` ports use a 4D vector type. The `weight` port uses a scalar type. */
+            OP_TYPE_VECTOR_4D_SCALAR = 6,
+            
+            /** Represents the size of the [enum OpType] enum. */
+            OP_TYPE_MAX = 7,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeMix extends __NameMapVisualShaderNode {
+    }
+    /** Linearly interpolates between two values within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodemix.html  
+     */
+    class VisualShaderNodeMix extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A type of operands and returned value. */
+        get op_type(): int64
+        set op_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeMix;
+    }
+    namespace VisualShaderNodeMultiplyAdd {
+        enum OpType {
+            /** A floating-point scalar type. */
+            OP_TYPE_SCALAR = 0,
+            
+            /** A 2D vector type. */
+            OP_TYPE_VECTOR_2D = 1,
+            
+            /** A 3D vector type. */
+            OP_TYPE_VECTOR_3D = 2,
+            
+            /** A 4D vector type. */
+            OP_TYPE_VECTOR_4D = 3,
+            
+            /** Represents the size of the [enum OpType] enum. */
+            OP_TYPE_MAX = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeMultiplyAdd extends __NameMapVisualShaderNode {
+    }
+    /** Performs a fused multiply-add operation within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodemultiplyadd.html  
+     */
+    class VisualShaderNodeMultiplyAdd extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A type of operands and returned value. */
+        get op_type(): int64
+        set op_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeMultiplyAdd;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeOuterProduct extends __NameMapVisualShaderNode {
+    }
+    /** Calculates an outer product of two vectors within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeouterproduct.html  
+     */
+    class VisualShaderNodeOuterProduct extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeOuterProduct;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeOutput extends __NameMapVisualShaderNode {
+    }
+    /** Represents the output shader parameters within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeoutput.html  
+     */
+    class VisualShaderNodeOutput extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeOutput;
+    }
+    namespace VisualShaderNodeParameter {
+        enum Qualifier {
+            /** The parameter will be tied to the [ShaderMaterial] using this shader. */
+            QUAL_NONE = 0,
+            
+            /** The parameter will use a global value, defined in Project Settings. */
+            QUAL_GLOBAL = 1,
+            
+            /** The parameter will be tied to the node with attached [ShaderMaterial] using this shader. */
+            QUAL_INSTANCE = 2,
+            
+            /** The parameter will be tied to the node with attached [ShaderMaterial] using this shader. Enables setting a [member instance_index] property. */
+            QUAL_INSTANCE_INDEX = 3,
+            
+            /** Represents the size of the [enum Qualifier] enum. */
+            QUAL_MAX = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParameter extends __NameMapVisualShaderNode {
+    }
+    /** A base type for the parameters within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparameter.html  
+     */
+    class VisualShaderNodeParameter extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** Name of the parameter, by which it can be accessed through the [ShaderMaterial] properties. */
+        get parameter_name(): StringName
+        set parameter_name(value: StringName)
+        
+        /** Defines the scope of the parameter. */
+        get qualifier(): int64
+        set qualifier(value: int64)
+        
+        /** The index within 0-15 range, which is used to avoid clashes when shader used on multiple materials. */
+        get instance_index(): int64
+        set instance_index(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParameter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParameterRef extends __NameMapVisualShaderNode {
+    }
+    /** A reference to an existing [VisualShaderNodeParameter].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparameterref.html  
+     */
+    class VisualShaderNodeParameterRef extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** The name of the parameter which this reference points to. */
+        get parameter_name(): StringName
+        set parameter_name(value: StringName)
+        get param_type(): int64
+        set param_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParameterRef;
+    }
+    namespace VisualShaderNodeParticleAccelerator {
+        enum Mode {
+            /** The particles will be accelerated based on their velocity. */
+            MODE_LINEAR = 0,
+            
+            /** The particles will be accelerated towards or away from the center. */
+            MODE_RADIAL = 1,
+            
+            /** The particles will be accelerated tangentially to the radius vector from center to their position. */
+            MODE_TANGENTIAL = 2,
+            
+            /** Represents the size of the [enum Mode] enum. */
+            MODE_MAX = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleAccelerator extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that accelerates particles.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleaccelerator.html  
+     */
+    class VisualShaderNodeParticleAccelerator extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** Defines in what manner the particles will be accelerated. */
+        get mode(): int64
+        set mode(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleAccelerator;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleBoxEmitter extends __NameMapVisualShaderNodeParticleEmitter {
+    }
+    /** A visual shader node that makes particles emitted in a box shape.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleboxemitter.html  
+     */
+    class VisualShaderNodeParticleBoxEmitter extends VisualShaderNodeParticleEmitter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleBoxEmitter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleConeVelocity extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that makes particles move in a cone shape.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleconevelocity.html  
+     */
+    class VisualShaderNodeParticleConeVelocity extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleConeVelocity;
+    }
+    namespace VisualShaderNodeParticleEmit {
+        enum EmitFlags {
+            /** If enabled, the particle starts with the position defined by this node. */
+            EMIT_FLAG_POSITION = 1,
+            
+            /** If enabled, the particle starts with the rotation and scale defined by this node. */
+            EMIT_FLAG_ROT_SCALE = 2,
+            
+            /** If enabled,the particle starts with the velocity defined by this node. */
+            EMIT_FLAG_VELOCITY = 4,
+            
+            /** If enabled, the particle starts with the color defined by this node. */
+            EMIT_FLAG_COLOR = 8,
+            
+            /** If enabled, the particle starts with the `CUSTOM` data defined by this node. */
+            EMIT_FLAG_CUSTOM = 16,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleEmit extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that forces to emit a particle from a sub-emitter.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleemit.html  
+     */
+    class VisualShaderNodeParticleEmit extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** Flags used to override the properties defined in the sub-emitter's process material. */
+        get flags(): int64
+        set flags(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleEmit;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleEmitter extends __NameMapVisualShaderNode {
+    }
+    /** A base class for particle emitters.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleemitter.html  
+     */
+    class VisualShaderNodeParticleEmitter extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** If `true`, the result of this emitter is projected to 2D space. By default it is `false` and meant for use in 3D space. */
+        get mode_2d(): boolean
+        set mode_2d(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleEmitter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleMeshEmitter extends __NameMapVisualShaderNodeParticleEmitter {
+    }
+    /** A visual shader node that makes particles emitted in a shape defined by a [Mesh].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticlemeshemitter.html  
+     */
+    class VisualShaderNodeParticleMeshEmitter extends VisualShaderNodeParticleEmitter {
+        constructor(identifier?: any)
+        /** The [Mesh] that defines emission shape. */
+        get mesh(): null | Mesh
+        set mesh(value: null | Mesh)
+        
+        /** If `true`, the particles will emit from all surfaces of the mesh. */
+        get use_all_surfaces(): boolean
+        set use_all_surfaces(value: boolean)
+        
+        /** Index of the surface that emits particles. [member use_all_surfaces] must be `false` for this to take effect. */
+        get surface_index(): int64
+        set surface_index(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleMeshEmitter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleMultiplyByAxisAngle extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader helper node for multiplying position and rotation of particles.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticlemultiplybyaxisangle.html  
+     */
+    class VisualShaderNodeParticleMultiplyByAxisAngle extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** If `true`, the angle will be interpreted in degrees instead of radians. */
+        get degrees_mode(): boolean
+        set degrees_mode(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleMultiplyByAxisAngle;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleOutput extends __NameMapVisualShaderNodeOutput {
+    }
+    /** Visual shader node that defines output values for particle emitting.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleoutput.html  
+     */
+    class VisualShaderNodeParticleOutput extends VisualShaderNodeOutput {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleOutput;
+    }
+    namespace VisualShaderNodeParticleRandomness {
+        enum OpType {
+            /** A floating-point scalar. */
+            OP_TYPE_SCALAR = 0,
+            
+            /** A 2D vector type. */
+            OP_TYPE_VECTOR_2D = 1,
+            
+            /** A 3D vector type. */
+            OP_TYPE_VECTOR_3D = 2,
+            
+            /** A 4D vector type. */
+            OP_TYPE_VECTOR_4D = 3,
+            
+            /** Represents the size of the [enum OpType] enum. */
+            OP_TYPE_MAX = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleRandomness extends __NameMapVisualShaderNode {
+    }
+    /** Visual shader node for randomizing particle values.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticlerandomness.html  
+     */
+    class VisualShaderNodeParticleRandomness extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A type of operands and returned value. */
+        get op_type(): int64
+        set op_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleRandomness;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleRingEmitter extends __NameMapVisualShaderNodeParticleEmitter {
+    }
+    /** A visual shader node that makes particles emitted in a ring shape.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticleringemitter.html  
+     */
+    class VisualShaderNodeParticleRingEmitter extends VisualShaderNodeParticleEmitter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleRingEmitter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeParticleSphereEmitter extends __NameMapVisualShaderNodeParticleEmitter {
+    }
+    /** A visual shader node that makes particles emitted in a sphere shape.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeparticlesphereemitter.html  
+     */
+    class VisualShaderNodeParticleSphereEmitter extends VisualShaderNodeParticleEmitter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeParticleSphereEmitter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeProximityFade extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node representing proximity fade effect.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeproximityfade.html  
+     */
+    class VisualShaderNodeProximityFade extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeProximityFade;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeRandomRange extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that generates a pseudo-random scalar.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernoderandomrange.html  
+     */
+    class VisualShaderNodeRandomRange extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeRandomRange;
+    }
+    namespace VisualShaderNodeRemap {
+        enum OpType {
+            /** A floating-point scalar type. */
+            OP_TYPE_SCALAR = 0,
+            
+            /** A 2D vector type. */
+            OP_TYPE_VECTOR_2D = 1,
+            
+            /** The `value` port uses a 2D vector type, while the `input min`, `input max`, `output min`, and `output max` ports use a floating-point scalar type. */
+            OP_TYPE_VECTOR_2D_SCALAR = 2,
+            
+            /** A 3D vector type. */
+            OP_TYPE_VECTOR_3D = 3,
+            
+            /** The `value` port uses a 3D vector type, while the `input min`, `input max`, `output min`, and `output max` ports use a floating-point scalar type. */
+            OP_TYPE_VECTOR_3D_SCALAR = 4,
+            
+            /** A 4D vector type. */
+            OP_TYPE_VECTOR_4D = 5,
+            
+            /** The `value` port uses a 4D vector type, while the `input min`, `input max`, `output min`, and `output max` ports use a floating-point scalar type. */
+            OP_TYPE_VECTOR_4D_SCALAR = 6,
+            
+            /** Represents the size of the [enum OpType] enum. */
+            OP_TYPE_MAX = 7,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeRemap extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node for remap function.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernoderemap.html  
+     */
+    class VisualShaderNodeRemap extends VisualShaderNode {
+        constructor(identifier?: any)
+        get op_type(): int64
+        set op_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeRemap;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeReroute extends __NameMapVisualShaderNode {
+    }
+    /** A node that allows rerouting a connection within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodereroute.html  
+     */
+    class VisualShaderNodeReroute extends VisualShaderNode {
+        constructor(identifier?: any)
+        get port_type(): int64
+        set port_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeReroute;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeResizableBase extends __NameMapVisualShaderNode {
+    }
+    /** Base class for resizable nodes in a visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernoderesizablebase.html  
+     */
+    class VisualShaderNodeResizableBase extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** The size of the node in the visual shader graph. */
+        get size(): Vector2
+        set size(value: Vector2)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeResizableBase;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeRotationByAxis extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that modifies the rotation of the object using a rotation matrix.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernoderotationbyaxis.html  
+     */
+    class VisualShaderNodeRotationByAxis extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeRotationByAxis;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeSDFRaymarch extends __NameMapVisualShaderNode {
+    }
+    /** SDF raymarching algorithm to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodesdfraymarch.html  
+     */
+    class VisualShaderNodeSDFRaymarch extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeSDFRaymarch;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeSDFToScreenUV extends __NameMapVisualShaderNode {
+    }
+    /** A function to convert an SDF (signed-distance field) to screen UV, to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodesdftoscreenuv.html  
+     */
+    class VisualShaderNodeSDFToScreenUV extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeSDFToScreenUV;
+    }
+    namespace VisualShaderNodeSample3D {
+        enum Source {
+            /** Creates internal uniform and provides a way to assign it within node. */
+            SOURCE_TEXTURE = 0,
+            
+            /** Use the uniform texture from sampler port. */
+            SOURCE_PORT = 1,
+            
+            /** Represents the size of the [enum Source] enum. */
+            SOURCE_MAX = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeSample3D extends __NameMapVisualShaderNode {
+    }
+    /** A base node for nodes which samples 3D textures in the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodesample3d.html  
+     */
+    class VisualShaderNodeSample3D extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** An input source type. */
+        get source(): int64
+        set source(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeSample3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeScreenNormalWorldSpace extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that unpacks the screen normal texture in World Space.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodescreennormalworldspace.html  
+     */
+    class VisualShaderNodeScreenNormalWorldSpace extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeScreenNormalWorldSpace;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeScreenUVToSDF extends __NameMapVisualShaderNode {
+    }
+    /** A function to convert screen UV to an SDF (signed-distance field), to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodescreenuvtosdf.html  
+     */
+    class VisualShaderNodeScreenUVToSDF extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeScreenUVToSDF;
+    }
+    namespace VisualShaderNodeSmoothStep {
+        enum OpType {
+            /** A floating-point scalar type. */
+            OP_TYPE_SCALAR = 0,
+            
+            /** A 2D vector type. */
+            OP_TYPE_VECTOR_2D = 1,
+            
+            /** The `x` port uses a 2D vector type. The first two ports use a floating-point scalar type. */
+            OP_TYPE_VECTOR_2D_SCALAR = 2,
+            
+            /** A 3D vector type. */
+            OP_TYPE_VECTOR_3D = 3,
+            
+            /** The `x` port uses a 3D vector type. The first two ports use a floating-point scalar type. */
+            OP_TYPE_VECTOR_3D_SCALAR = 4,
+            
+            /** A 4D vector type. */
+            OP_TYPE_VECTOR_4D = 5,
+            
+            /** The `a` and `b` ports use a 4D vector type. The `weight` port uses a scalar type. */
+            OP_TYPE_VECTOR_4D_SCALAR = 6,
+            
+            /** Represents the size of the [enum OpType] enum. */
+            OP_TYPE_MAX = 7,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeSmoothStep extends __NameMapVisualShaderNode {
+    }
+    /** Calculates a SmoothStep function within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodesmoothstep.html  
+     */
+    class VisualShaderNodeSmoothStep extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A type of operands and returned value. */
+        get op_type(): int64
+        set op_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeSmoothStep;
+    }
+    namespace VisualShaderNodeStep {
+        enum OpType {
+            /** A floating-point scalar type. */
+            OP_TYPE_SCALAR = 0,
+            
+            /** A 2D vector type. */
+            OP_TYPE_VECTOR_2D = 1,
+            
+            /** The `x` port uses a 2D vector type, while the `edge` port uses a floating-point scalar type. */
+            OP_TYPE_VECTOR_2D_SCALAR = 2,
+            
+            /** A 3D vector type. */
+            OP_TYPE_VECTOR_3D = 3,
+            
+            /** The `x` port uses a 3D vector type, while the `edge` port uses a floating-point scalar type. */
+            OP_TYPE_VECTOR_3D_SCALAR = 4,
+            
+            /** A 4D vector type. */
+            OP_TYPE_VECTOR_4D = 5,
+            
+            /** The `a` and `b` ports use a 4D vector type. The `weight` port uses a scalar type. */
+            OP_TYPE_VECTOR_4D_SCALAR = 6,
+            
+            /** Represents the size of the [enum OpType] enum. */
+            OP_TYPE_MAX = 7,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeStep extends __NameMapVisualShaderNode {
+    }
+    /** Calculates a Step function within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodestep.html  
+     */
+    class VisualShaderNodeStep extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A type of operands and returned value. */
+        get op_type(): int64
+        set op_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeStep;
+    }
+    namespace VisualShaderNodeSwitch {
+        enum OpType {
+            /** A floating-point scalar. */
+            OP_TYPE_FLOAT = 0,
+            
+            /** An integer scalar. */
+            OP_TYPE_INT = 1,
+            
+            /** An unsigned integer scalar. */
+            OP_TYPE_UINT = 2,
+            
+            /** A 2D vector type. */
+            OP_TYPE_VECTOR_2D = 3,
+            
+            /** A 3D vector type. */
+            OP_TYPE_VECTOR_3D = 4,
+            
+            /** A 4D vector type. */
+            OP_TYPE_VECTOR_4D = 5,
+            
+            /** A boolean type. */
+            OP_TYPE_BOOLEAN = 6,
+            
+            /** A transform type. */
+            OP_TYPE_TRANSFORM = 7,
+            
+            /** Represents the size of the [enum OpType] enum. */
+            OP_TYPE_MAX = 8,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeSwitch extends __NameMapVisualShaderNode {
+    }
+    /** A selector function for use within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeswitch.html  
+     */
+    class VisualShaderNodeSwitch extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A type of operands and returned value. */
+        get op_type(): int64
+        set op_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeSwitch;
+    }
+    namespace VisualShaderNodeTexture {
+        enum Source {
+            /** Use the texture given as an argument for this function. */
+            SOURCE_TEXTURE = 0,
+            
+            /** Use the current viewport's texture as the source. */
+            SOURCE_SCREEN = 1,
+            
+            /** Use the texture from this shader's texture built-in (e.g. a texture of a [Sprite2D]). */
+            SOURCE_2D_TEXTURE = 2,
+            
+            /** Use the texture from this shader's normal map built-in. */
+            SOURCE_2D_NORMAL = 3,
+            
+            /** Use the depth texture captured during the depth prepass. Only available when the depth prepass is used (i.e. in spatial shaders and in the forward_plus or gl_compatibility renderers). */
+            SOURCE_DEPTH = 4,
+            
+            /** Use the texture provided in the input port for this function. */
+            SOURCE_PORT = 5,
+            
+            /** Use the normal buffer captured during the depth prepass. Only available when the normal-roughness buffer is available (i.e. in spatial shaders and in the forward_plus renderer). */
+            SOURCE_3D_NORMAL = 6,
+            
+            /** Use the roughness buffer captured during the depth prepass. Only available when the normal-roughness buffer is available (i.e. in spatial shaders and in the forward_plus renderer). */
+            SOURCE_ROUGHNESS = 7,
+            
+            /** Represents the size of the [enum Source] enum. */
+            SOURCE_MAX = 8,
+        }
+        enum TextureType {
+            /** No hints are added to the uniform declaration. */
+            TYPE_DATA = 0,
+            
+            /** Adds `source_color` as hint to the uniform declaration for proper conversion from nonlinear sRGB encoding to linear encoding. */
+            TYPE_COLOR = 1,
+            
+            /** Adds `hint_normal` as hint to the uniform declaration, which internally converts the texture for proper usage as normal map. */
+            TYPE_NORMAL_MAP = 2,
+            
+            /** Represents the size of the [enum TextureType] enum. */
+            TYPE_MAX = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTexture extends __NameMapVisualShaderNode {
+    }
+    /** Performs a 2D texture lookup within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture.html  
+     */
+    class VisualShaderNodeTexture extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** Determines the source for the lookup. */
+        get source(): int64
+        set source(value: int64)
+        
+        /** The source texture, if needed for the selected [member source]. */
+        get texture(): null | Texture2D
+        set texture(value: null | Texture2D)
+        
+        /** Specifies the type of the texture if [member source] is set to [constant SOURCE_TEXTURE]. */
+        get texture_type(): int64
+        set texture_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTexture;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTexture2DArray extends __NameMapVisualShaderNodeSample3D {
+    }
+    /** A 2D texture uniform array to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture2darray.html  
+     */
+    class VisualShaderNodeTexture2DArray extends VisualShaderNodeSample3D {
+        constructor(identifier?: any)
+        /** A source texture array. Used if [member VisualShaderNodeSample3D.source] is set to [constant VisualShaderNodeSample3D.SOURCE_TEXTURE]. */
+        get texture_array(): null | Texture2DArray | CompressedTexture2DArray | PlaceholderTexture2DArray | Texture2DArrayRD
+        set texture_array(value: null | Texture2DArray | CompressedTexture2DArray | PlaceholderTexture2DArray | Texture2DArrayRD)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTexture2DArray;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTexture2DArrayParameter extends __NameMapVisualShaderNodeTextureParameter {
+    }
+    /** A visual shader node for shader parameter (uniform) of type [Texture2DArray].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture2darrayparameter.html  
+     */
+    class VisualShaderNodeTexture2DArrayParameter extends VisualShaderNodeTextureParameter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTexture2DArrayParameter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTexture2DParameter extends __NameMapVisualShaderNodeTextureParameter {
+    }
+    /** Provides a 2D texture parameter within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture2dparameter.html  
+     */
+    class VisualShaderNodeTexture2DParameter extends VisualShaderNodeTextureParameter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTexture2DParameter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTexture3D extends __NameMapVisualShaderNodeSample3D {
+    }
+    /** Performs a 3D texture lookup within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture3d.html  
+     */
+    class VisualShaderNodeTexture3D extends VisualShaderNodeSample3D {
+        constructor(identifier?: any)
+        /** A source texture. Used if [member VisualShaderNodeSample3D.source] is set to [constant VisualShaderNodeSample3D.SOURCE_TEXTURE]. */
+        get texture(): null | Texture3D
+        set texture(value: null | Texture3D)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTexture3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTexture3DParameter extends __NameMapVisualShaderNodeTextureParameter {
+    }
+    /** Provides a 3D texture parameter within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexture3dparameter.html  
+     */
+    class VisualShaderNodeTexture3DParameter extends VisualShaderNodeTextureParameter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTexture3DParameter;
+    }
+    namespace VisualShaderNodeTextureParameter {
+        enum TextureType {
+            /** No hints are added to the uniform declaration. */
+            TYPE_DATA = 0,
+            
+            /** Adds `source_color` as hint to the uniform declaration for proper conversion from nonlinear sRGB encoding to linear encoding. */
+            TYPE_COLOR = 1,
+            
+            /** Adds `hint_normal` as hint to the uniform declaration, which internally converts the texture for proper usage as normal map. */
+            TYPE_NORMAL_MAP = 2,
+            
+            /** Adds `hint_anisotropy` as hint to the uniform declaration to use for a flowmap. */
+            TYPE_ANISOTROPY = 3,
+            
+            /** Represents the size of the [enum TextureType] enum. */
+            TYPE_MAX = 4,
+        }
+        enum ColorDefault {
+            /** Defaults to fully opaque white color. */
+            COLOR_DEFAULT_WHITE = 0,
+            
+            /** Defaults to fully opaque black color. */
+            COLOR_DEFAULT_BLACK = 1,
+            
+            /** Defaults to fully transparent black color. */
+            COLOR_DEFAULT_TRANSPARENT = 2,
+            
+            /** Represents the size of the [enum ColorDefault] enum. */
+            COLOR_DEFAULT_MAX = 3,
+        }
+        enum TextureFilter {
+            /** Sample the texture using the filter determined by the node this shader is attached to. */
+            FILTER_DEFAULT = 0,
+            
+            /** The texture filter reads from the nearest pixel only. This makes the texture look pixelated from up close, and grainy from a distance (due to mipmaps not being sampled). */
+            FILTER_NEAREST = 1,
+            
+            /** The texture filter blends between the nearest 4 pixels. This makes the texture look smooth from up close, and grainy from a distance (due to mipmaps not being sampled). */
+            FILTER_LINEAR = 2,
+            
+            /** The texture filter reads from the nearest pixel and blends between the nearest 2 mipmaps (or uses the nearest mipmap if [member ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter] is `true`). This makes the texture look pixelated from up close, and smooth from a distance.  
+             *  Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to [Camera2D] zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.  
+             */
+            FILTER_NEAREST_MIPMAP = 3,
+            
+            /** The texture filter blends between the nearest 4 pixels and between the nearest 2 mipmaps (or uses the nearest mipmap if [member ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter] is `true`). This makes the texture look smooth from up close, and smooth from a distance.  
+             *  Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to [Camera2D] zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.  
+             */
+            FILTER_LINEAR_MIPMAP = 4,
+            
+            /** The texture filter reads from the nearest pixel and blends between 2 mipmaps (or uses the nearest mipmap if [member ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter] is `true`) based on the angle between the surface and the camera view. This makes the texture look pixelated from up close, and smooth from a distance. Anisotropic filtering improves texture quality on surfaces that are almost in line with the camera, but is slightly slower. The anisotropic filtering level can be changed by adjusting [member ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level].  
+             *      
+             *  **Note:** This texture filter is rarely useful in 2D projects. [constant FILTER_NEAREST_MIPMAP] is usually more appropriate in this case.  
+             */
+            FILTER_NEAREST_MIPMAP_ANISOTROPIC = 5,
+            
+            /** The texture filter blends between the nearest 4 pixels and blends between 2 mipmaps (or uses the nearest mipmap if [member ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter] is `true`) based on the angle between the surface and the camera view. This makes the texture look smooth from up close, and smooth from a distance. Anisotropic filtering improves texture quality on surfaces that are almost in line with the camera, but is slightly slower. The anisotropic filtering level can be changed by adjusting [member ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level].  
+             *      
+             *  **Note:** This texture filter is rarely useful in 2D projects. [constant FILTER_LINEAR_MIPMAP] is usually more appropriate in this case.  
+             */
+            FILTER_LINEAR_MIPMAP_ANISOTROPIC = 6,
+            
+            /** Represents the size of the [enum TextureFilter] enum. */
+            FILTER_MAX = 7,
+        }
+        enum TextureRepeat {
+            /** Sample the texture using the repeat mode determined by the node this shader is attached to. */
+            REPEAT_DEFAULT = 0,
+            
+            /** Texture will repeat normally. */
+            REPEAT_ENABLED = 1,
+            
+            /** Texture will not repeat. */
+            REPEAT_DISABLED = 2,
+            
+            /** Represents the size of the [enum TextureRepeat] enum. */
+            REPEAT_MAX = 3,
+        }
+        enum TextureSource {
+            /** The texture source is not specified in the shader. */
+            SOURCE_NONE = 0,
+            
+            /** The texture source is the screen texture which captures all opaque objects drawn this frame. */
+            SOURCE_SCREEN = 1,
+            
+            /** The texture source is the depth texture from the depth prepass. */
+            SOURCE_DEPTH = 2,
+            
+            /** The texture source is the normal-roughness buffer from the depth prepass. */
+            SOURCE_NORMAL_ROUGHNESS = 3,
+            
+            /** Represents the size of the [enum TextureSource] enum. */
+            SOURCE_MAX = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTextureParameter extends __NameMapVisualShaderNodeParameter {
+    }
+    /** Performs a uniform texture lookup within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetextureparameter.html  
+     */
+    class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter {
+        constructor(identifier?: any)
+        /** Defines the type of data provided by the source texture. */
+        get texture_type(): int64
+        set texture_type(value: int64)
+        
+        /** Sets the default color if no texture is assigned to the uniform. */
+        get color_default(): int64
+        set color_default(value: int64)
+        
+        /** Sets the texture filtering mode. */
+        get texture_filter(): int64
+        set texture_filter(value: int64)
+        
+        /** Sets the texture repeating mode. */
+        get texture_repeat(): int64
+        set texture_repeat(value: int64)
+        
+        /** Sets the texture source mode. Used for reading from the screen, depth, or normal_roughness texture. */
+        get texture_source(): int64
+        set texture_source(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTextureParameter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTextureParameterTriplanar extends __NameMapVisualShaderNodeTextureParameter {
+    }
+    /** Performs a uniform texture lookup with triplanar within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetextureparametertriplanar.html  
+     */
+    class VisualShaderNodeTextureParameterTriplanar extends VisualShaderNodeTextureParameter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTextureParameterTriplanar;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTextureSDF extends __NameMapVisualShaderNode {
+    }
+    /** Performs an SDF (signed-distance field) texture lookup within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexturesdf.html  
+     */
+    class VisualShaderNodeTextureSDF extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTextureSDF;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTextureSDFNormal extends __NameMapVisualShaderNode {
+    }
+    /** Performs an SDF (signed-distance field) normal texture lookup within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetexturesdfnormal.html  
+     */
+    class VisualShaderNodeTextureSDFNormal extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTextureSDFNormal;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTransformCompose extends __NameMapVisualShaderNode {
+    }
+    /** Composes a [Transform3D] from four [Vector3]s within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformcompose.html  
+     */
+    class VisualShaderNodeTransformCompose extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTransformCompose;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTransformConstant extends __NameMapVisualShaderNodeConstant {
+    }
+    /** A [Transform3D] constant for use within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformconstant.html  
+     */
+    class VisualShaderNodeTransformConstant extends VisualShaderNodeConstant {
+        constructor(identifier?: any)
+        /** A [Transform3D] constant which represents the state of this node. */
+        get constant(): Transform3D
+        set constant(value: Transform3D)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTransformConstant;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTransformDecompose extends __NameMapVisualShaderNode {
+    }
+    /** Decomposes a [Transform3D] into four [Vector3]s within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformdecompose.html  
+     */
+    class VisualShaderNodeTransformDecompose extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTransformDecompose;
+    }
+    namespace VisualShaderNodeTransformFunc {
+        enum Function {
+            /** Perform the inverse operation on the [Transform3D] matrix. */
+            FUNC_INVERSE = 0,
+            
+            /** Perform the transpose operation on the [Transform3D] matrix. */
+            FUNC_TRANSPOSE = 1,
+            
+            /** Represents the size of the [enum Function] enum. */
+            FUNC_MAX = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTransformFunc extends __NameMapVisualShaderNode {
+    }
+    /** Computes a [Transform3D] function within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformfunc.html  
+     */
+    class VisualShaderNodeTransformFunc extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** The function to be computed. */
+        get "function"(): int64
+        set "function"(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTransformFunc;
+    }
+    namespace VisualShaderNodeTransformOp {
+        enum Operator {
+            /** Multiplies transform `a` by the transform `b`. */
+            OP_AxB = 0,
+            
+            /** Multiplies transform `b` by the transform `a`. */
+            OP_BxA = 1,
+            
+            /** Performs a component-wise multiplication of transform `a` by the transform `b`. */
+            OP_AxB_COMP = 2,
+            
+            /** Performs a component-wise multiplication of transform `b` by the transform `a`. */
+            OP_BxA_COMP = 3,
+            
+            /** Adds two transforms. */
+            OP_ADD = 4,
+            
+            /** Subtracts the transform `a` from the transform `b`. */
+            OP_A_MINUS_B = 5,
+            
+            /** Subtracts the transform `b` from the transform `a`. */
+            OP_B_MINUS_A = 6,
+            
+            /** Divides the transform `a` by the transform `b`. */
+            OP_A_DIV_B = 7,
+            
+            /** Divides the transform `b` by the transform `a`. */
+            OP_B_DIV_A = 8,
+            
+            /** Represents the size of the [enum Operator] enum. */
+            OP_MAX = 9,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTransformOp extends __NameMapVisualShaderNode {
+    }
+    /** A [Transform3D] operator to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformop.html  
+     */
+    class VisualShaderNodeTransformOp extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** The type of the operation to be performed on the transforms. */
+        get operator(): int64
+        set operator(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTransformOp;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTransformParameter extends __NameMapVisualShaderNodeParameter {
+    }
+    /** A [Transform3D] parameter for use within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformparameter.html  
+     */
+    class VisualShaderNodeTransformParameter extends VisualShaderNodeParameter {
+        constructor(identifier?: any)
+        /** Enables usage of the [member default_value]. */
+        get default_value_enabled(): boolean
+        set default_value_enabled(value: boolean)
+        
+        /** A default value to be assigned within the shader. */
+        get default_value(): Transform3D
+        set default_value(value: Transform3D)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTransformParameter;
+    }
+    namespace VisualShaderNodeTransformVecMult {
+        enum Operator {
+            /** Multiplies transform `a` by the vector `b`. */
+            OP_AxB = 0,
+            
+            /** Multiplies vector `b` by the transform `a`. */
+            OP_BxA = 1,
+            
+            /** Multiplies transform `a` by the vector `b`, skipping the last row and column of the transform. */
+            OP_3x3_AxB = 2,
+            
+            /** Multiplies vector `b` by the transform `a`, skipping the last row and column of the transform. */
+            OP_3x3_BxA = 3,
+            
+            /** Represents the size of the [enum Operator] enum. */
+            OP_MAX = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeTransformVecMult extends __NameMapVisualShaderNode {
+    }
+    /** Multiplies a [Transform3D] and a [Vector3] within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodetransformvecmult.html  
+     */
+    class VisualShaderNodeTransformVecMult extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** The multiplication type to be performed. */
+        get operator(): int64
+        set operator(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeTransformVecMult;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeUIntConstant extends __NameMapVisualShaderNodeConstant {
+    }
+    /** An unsigned scalar integer constant to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuintconstant.html  
+     */
+    class VisualShaderNodeUIntConstant extends VisualShaderNodeConstant {
+        constructor(identifier?: any)
+        /** An unsigned integer constant which represents a state of this node. */
+        get constant(): int64
+        set constant(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeUIntConstant;
+    }
+    namespace VisualShaderNodeUIntFunc {
+        enum Function {
+            /** Negates the `x` using `-(x)`. */
+            FUNC_NEGATE = 0,
+            
+            /** Returns the result of bitwise `NOT` operation on the integer. Translates to `~a` in the Godot Shader Language. */
+            FUNC_BITWISE_NOT = 1,
+            
+            /** Represents the size of the [enum Function] enum. */
+            FUNC_MAX = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeUIntFunc extends __NameMapVisualShaderNode {
+    }
+    /** An unsigned scalar integer function to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuintfunc.html  
+     */
+    class VisualShaderNodeUIntFunc extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A function to be applied to the scalar. */
+        get "function"(): int64
+        set "function"(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeUIntFunc;
+    }
+    namespace VisualShaderNodeUIntOp {
+        enum Operator {
+            /** Sums two numbers using `a + b`. */
+            OP_ADD = 0,
+            
+            /** Subtracts two numbers using `a - b`. */
+            OP_SUB = 1,
+            
+            /** Multiplies two numbers using `a * b`. */
+            OP_MUL = 2,
+            
+            /** Divides two numbers using `a / b`. */
+            OP_DIV = 3,
+            
+            /** Calculates the remainder of two numbers using `a % b`. */
+            OP_MOD = 4,
+            
+            /** Returns the greater of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
+            OP_MAX = 5,
+            
+            /** Returns the lesser of two numbers. Translates to `max(a, b)` in the Godot Shader Language. */
+            OP_MIN = 6,
+            
+            /** Returns the result of bitwise `AND` operation on the integer. Translates to `a & b` in the Godot Shader Language. */
+            OP_BITWISE_AND = 7,
+            
+            /** Returns the result of bitwise `OR` operation for two integers. Translates to `a | b` in the Godot Shader Language. */
+            OP_BITWISE_OR = 8,
+            
+            /** Returns the result of bitwise `XOR` operation for two integers. Translates to `a ^ b` in the Godot Shader Language. */
+            OP_BITWISE_XOR = 9,
+            
+            /** Returns the result of bitwise left shift operation on the integer. Translates to `a << b` in the Godot Shader Language. */
+            OP_BITWISE_LEFT_SHIFT = 10,
+            
+            /** Returns the result of bitwise right shift operation on the integer. Translates to `a >> b` in the Godot Shader Language. */
+            OP_BITWISE_RIGHT_SHIFT = 11,
+            
+            /** Represents the size of the [enum Operator] enum. */
+            OP_ENUM_SIZE = 12,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeUIntOp extends __NameMapVisualShaderNode {
+    }
+    /** An unsigned integer scalar operator to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuintop.html  
+     */
+    class VisualShaderNodeUIntOp extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** An operator to be applied to the inputs. */
+        get operator(): int64
+        set operator(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeUIntOp;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeUIntParameter extends __NameMapVisualShaderNodeParameter {
+    }
+    /** A visual shader node for shader parameter (uniform) of type unsigned [int].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuintparameter.html  
+     */
+    class VisualShaderNodeUIntParameter extends VisualShaderNodeParameter {
+        constructor(identifier?: any)
+        /** If `true`, the node will have a custom default value. */
+        get default_value_enabled(): boolean
+        set default_value_enabled(value: boolean)
+        
+        /** Default value of this parameter, which will be used if not set externally. [member default_value_enabled] must be enabled; defaults to `0` otherwise. */
+        get default_value(): int64
+        set default_value(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeUIntParameter;
+    }
+    namespace VisualShaderNodeUVFunc {
+        enum Function {
+            /** Translates `uv` by using `scale` and `offset` values using the following formula: `uv = uv + offset * scale`. `uv` port is connected to `UV` built-in by default. */
+            FUNC_PANNING = 0,
+            
+            /** Scales `uv` by using `scale` and `pivot` values using the following formula: `uv = (uv - pivot) * scale + pivot`. `uv` port is connected to `UV` built-in by default. */
+            FUNC_SCALING = 1,
+            
+            /** Represents the size of the [enum Function] enum. */
+            FUNC_MAX = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeUVFunc extends __NameMapVisualShaderNode {
+    }
+    /** Contains functions to modify texture coordinates (`uv`) to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuvfunc.html  
+     */
+    class VisualShaderNodeUVFunc extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A function to be applied to the texture coordinates. */
+        get "function"(): int64
+        set "function"(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeUVFunc;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeUVPolarCoord extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that modifies the texture UV using polar coordinates.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeuvpolarcoord.html  
+     */
+    class VisualShaderNodeUVPolarCoord extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeUVPolarCoord;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVarying extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that represents a "varying" shader value.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevarying.html  
+     */
+    class VisualShaderNodeVarying extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** Name of the variable. Must be unique. */
+        get varying_name(): StringName
+        set varying_name(value: StringName)
+        
+        /** Type of the variable. Determines where the variable can be accessed. */
+        get varying_type(): int64
+        set varying_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVarying;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVaryingGetter extends __NameMapVisualShaderNodeVarying {
+    }
+    /** A visual shader node that gets a value of a varying.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevaryinggetter.html  
+     */
+    class VisualShaderNodeVaryingGetter extends VisualShaderNodeVarying {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVaryingGetter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVaryingSetter extends __NameMapVisualShaderNodeVarying {
+    }
+    /** A visual shader node that sets a value of a varying.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevaryingsetter.html  
+     */
+    class VisualShaderNodeVaryingSetter extends VisualShaderNodeVarying {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVaryingSetter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVec2Constant extends __NameMapVisualShaderNodeConstant {
+    }
+    /** A [Vector2] constant to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec2constant.html  
+     */
+    class VisualShaderNodeVec2Constant extends VisualShaderNodeConstant {
+        constructor(identifier?: any)
+        /** A [Vector2] constant which represents the state of this node. */
+        get constant(): Vector2
+        set constant(value: Vector2)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVec2Constant;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVec2Parameter extends __NameMapVisualShaderNodeParameter {
+    }
+    /** A [Vector2] parameter to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec2parameter.html  
+     */
+    class VisualShaderNodeVec2Parameter extends VisualShaderNodeParameter {
+        constructor(identifier?: any)
+        /** Enables usage of the [member default_value]. */
+        get default_value_enabled(): boolean
+        set default_value_enabled(value: boolean)
+        
+        /** A default value to be assigned within the shader. */
+        get default_value(): Vector2
+        set default_value(value: Vector2)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVec2Parameter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVec3Constant extends __NameMapVisualShaderNodeConstant {
+    }
+    /** A [Vector3] constant to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec3constant.html  
+     */
+    class VisualShaderNodeVec3Constant extends VisualShaderNodeConstant {
+        constructor(identifier?: any)
+        /** A [Vector3] constant which represents the state of this node. */
+        get constant(): Vector3
+        set constant(value: Vector3)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVec3Constant;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVec3Parameter extends __NameMapVisualShaderNodeParameter {
+    }
+    /** A [Vector3] parameter to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec3parameter.html  
+     */
+    class VisualShaderNodeVec3Parameter extends VisualShaderNodeParameter {
+        constructor(identifier?: any)
+        /** Enables usage of the [member default_value]. */
+        get default_value_enabled(): boolean
+        set default_value_enabled(value: boolean)
+        
+        /** A default value to be assigned within the shader. */
+        get default_value(): Vector3
+        set default_value(value: Vector3)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVec3Parameter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVec4Constant extends __NameMapVisualShaderNodeConstant {
+    }
+    /** A 4D vector constant to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec4constant.html  
+     */
+    class VisualShaderNodeVec4Constant extends VisualShaderNodeConstant {
+        constructor(identifier?: any)
+        /** A 4D vector (represented as a [Quaternion]) constant which represents the state of this node. */
+        get constant(): Quaternion
+        set constant(value: Quaternion)
+        get constant_v4(): Vector4
+        set constant_v4(value: Vector4)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVec4Constant;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVec4Parameter extends __NameMapVisualShaderNodeParameter {
+    }
+    /** A 4D vector parameter to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevec4parameter.html  
+     */
+    class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter {
+        constructor(identifier?: any)
+        /** Enables usage of the [member default_value]. */
+        get default_value_enabled(): boolean
+        set default_value_enabled(value: boolean)
+        
+        /** A default value to be assigned within the shader. */
+        get default_value(): Vector4
+        set default_value(value: Vector4)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVec4Parameter;
+    }
+    namespace VisualShaderNodeVectorBase {
+        enum OpType {
+            /** A 2D vector type. */
+            OP_TYPE_VECTOR_2D = 0,
+            
+            /** A 3D vector type. */
+            OP_TYPE_VECTOR_3D = 1,
+            
+            /** A 4D vector type. */
+            OP_TYPE_VECTOR_4D = 2,
+            
+            /** Represents the size of the [enum OpType] enum. */
+            OP_TYPE_MAX = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVectorBase extends __NameMapVisualShaderNode {
+    }
+    /** A base type for the nodes that perform vector operations within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorbase.html  
+     */
+    class VisualShaderNodeVectorBase extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** A vector type that this operation is performed on. */
+        get op_type(): int64
+        set op_type(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVectorBase;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVectorCompose extends __NameMapVisualShaderNodeVectorBase {
+    }
+    /** Composes a [Vector2], [Vector3] or 4D vector (represented as a [Quaternion]) from scalars within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorcompose.html  
+     */
+    class VisualShaderNodeVectorCompose extends VisualShaderNodeVectorBase {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVectorCompose;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVectorDecompose extends __NameMapVisualShaderNodeVectorBase {
+    }
+    /** Decomposes a [Vector2], [Vector3] or 4D vector (represented as a [Quaternion]) into scalars within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectordecompose.html  
+     */
+    class VisualShaderNodeVectorDecompose extends VisualShaderNodeVectorBase {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVectorDecompose;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVectorDistance extends __NameMapVisualShaderNodeVectorBase {
+    }
+    /** Returns the distance between two points. To be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectordistance.html  
+     */
+    class VisualShaderNodeVectorDistance extends VisualShaderNodeVectorBase {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVectorDistance;
+    }
+    namespace VisualShaderNodeVectorFunc {
+        enum Function {
+            /** Normalizes the vector so that it has a length of `1` but points in the same direction. */
+            FUNC_NORMALIZE = 0,
+            
+            /** Clamps the value between `0.0` and `1.0`. */
+            FUNC_SATURATE = 1,
+            
+            /** Returns the opposite value of the parameter. */
+            FUNC_NEGATE = 2,
+            
+            /** Returns `1/vector`. */
+            FUNC_RECIPROCAL = 3,
+            
+            /** Returns the absolute value of the parameter. */
+            FUNC_ABS = 4,
+            
+            /** Returns the arc-cosine of the parameter. */
+            FUNC_ACOS = 5,
+            
+            /** Returns the inverse hyperbolic cosine of the parameter. */
+            FUNC_ACOSH = 6,
+            
+            /** Returns the arc-sine of the parameter. */
+            FUNC_ASIN = 7,
+            
+            /** Returns the inverse hyperbolic sine of the parameter. */
+            FUNC_ASINH = 8,
+            
+            /** Returns the arc-tangent of the parameter. */
+            FUNC_ATAN = 9,
+            
+            /** Returns the inverse hyperbolic tangent of the parameter. */
+            FUNC_ATANH = 10,
+            
+            /** Finds the nearest integer that is greater than or equal to the parameter. */
+            FUNC_CEIL = 11,
+            
+            /** Returns the cosine of the parameter. */
+            FUNC_COS = 12,
+            
+            /** Returns the hyperbolic cosine of the parameter. */
+            FUNC_COSH = 13,
+            
+            /** Converts a quantity in radians to degrees. */
+            FUNC_DEGREES = 14,
+            
+            /** Base-e Exponential. */
+            FUNC_EXP = 15,
+            
+            /** Base-2 Exponential. */
+            FUNC_EXP2 = 16,
+            
+            /** Finds the nearest integer less than or equal to the parameter. */
+            FUNC_FLOOR = 17,
+            
+            /** Computes the fractional part of the argument. */
+            FUNC_FRACT = 18,
+            
+            /** Returns the inverse of the square root of the parameter. */
+            FUNC_INVERSE_SQRT = 19,
+            
+            /** Natural logarithm. */
+            FUNC_LOG = 20,
+            
+            /** Base-2 logarithm. */
+            FUNC_LOG2 = 21,
+            
+            /** Converts a quantity in degrees to radians. */
+            FUNC_RADIANS = 22,
+            
+            /** Finds the nearest integer to the parameter. */
+            FUNC_ROUND = 23,
+            
+            /** Finds the nearest even integer to the parameter. */
+            FUNC_ROUNDEVEN = 24,
+            
+            /** Extracts the sign of the parameter, i.e. returns `-1` if the parameter is negative, `1` if it's positive and `0` otherwise. */
+            FUNC_SIGN = 25,
+            
+            /** Returns the sine of the parameter. */
+            FUNC_SIN = 26,
+            
+            /** Returns the hyperbolic sine of the parameter. */
+            FUNC_SINH = 27,
+            
+            /** Returns the square root of the parameter. */
+            FUNC_SQRT = 28,
+            
+            /** Returns the tangent of the parameter. */
+            FUNC_TAN = 29,
+            
+            /** Returns the hyperbolic tangent of the parameter. */
+            FUNC_TANH = 30,
+            
+            /** Returns a value equal to the nearest integer to the parameter whose absolute value is not larger than the absolute value of the parameter. */
+            FUNC_TRUNC = 31,
+            
+            /** Returns `1.0 - vector`. */
+            FUNC_ONEMINUS = 32,
+            
+            /** Represents the size of the [enum Function] enum. */
+            FUNC_MAX = 33,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVectorFunc extends __NameMapVisualShaderNodeVectorBase {
+    }
+    /** A vector function to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorfunc.html  
+     */
+    class VisualShaderNodeVectorFunc extends VisualShaderNodeVectorBase {
+        constructor(identifier?: any)
+        /** The function to be performed. */
+        get "function"(): int64
+        set "function"(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVectorFunc;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVectorLen extends __NameMapVisualShaderNodeVectorBase {
+    }
+    /** Returns the length of a [Vector3] within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorlen.html  
+     */
+    class VisualShaderNodeVectorLen extends VisualShaderNodeVectorBase {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVectorLen;
+    }
+    namespace VisualShaderNodeVectorOp {
+        enum Operator {
+            /** Adds two vectors. */
+            OP_ADD = 0,
+            
+            /** Subtracts a vector from a vector. */
+            OP_SUB = 1,
+            
+            /** Multiplies two vectors. */
+            OP_MUL = 2,
+            
+            /** Divides vector by vector. */
+            OP_DIV = 3,
+            
+            /** Returns the remainder of the two vectors. */
+            OP_MOD = 4,
+            
+            /** Returns the value of the first parameter raised to the power of the second, for each component of the vectors. */
+            OP_POW = 5,
+            
+            /** Returns the greater of two values, for each component of the vectors. */
+            OP_MAX = 6,
+            
+            /** Returns the lesser of two values, for each component of the vectors. */
+            OP_MIN = 7,
+            
+            /** Calculates the cross product of two vectors. */
+            OP_CROSS = 8,
+            
+            /** Returns the arc-tangent of the parameters. */
+            OP_ATAN2 = 9,
+            
+            /** Returns the vector that points in the direction of reflection. `a` is incident vector and `b` is the normal vector. */
+            OP_REFLECT = 10,
+            
+            /** Vector step operator. Returns `0.0` if `a` is smaller than `b` and `1.0` otherwise. */
+            OP_STEP = 11,
+            
+            /** Represents the size of the [enum Operator] enum. */
+            OP_ENUM_SIZE = 12,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVectorOp extends __NameMapVisualShaderNodeVectorBase {
+    }
+    /** A vector operator to be used within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorop.html  
+     */
+    class VisualShaderNodeVectorOp extends VisualShaderNodeVectorBase {
+        constructor(identifier?: any)
+        /** The operator to be used. */
+        get operator(): int64
+        set operator(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVectorOp;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeVectorRefract extends __NameMapVisualShaderNodeVectorBase {
+    }
+    /** Returns the vector that points in the direction of refraction. For use within the visual shader graph.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodevectorrefract.html  
+     */
+    class VisualShaderNodeVectorRefract extends VisualShaderNodeVectorBase {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeVectorRefract;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVisualShaderNodeWorldPositionFromDepth extends __NameMapVisualShaderNode {
+    }
+    /** A visual shader node that calculates the position of the pixel in world space using the depth texture.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_visualshadernodeworldpositionfromdepth.html  
+     */
+    class VisualShaderNodeWorldPositionFromDepth extends VisualShaderNode {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVisualShaderNodeWorldPositionFromDepth;
+    }
+    namespace VoxelGI {
+        enum Subdiv {
+            /** Use 64 subdivisions. This is the lowest quality setting, but the fastest. Use it if you can, but especially use it on lower-end hardware. */
+            SUBDIV_64 = 0,
+            
+            /** Use 128 subdivisions. This is the default quality setting. */
+            SUBDIV_128 = 1,
+            
+            /** Use 256 subdivisions. */
+            SUBDIV_256 = 2,
+            
+            /** Use 512 subdivisions. This is the highest quality setting, but the slowest. On lower-end hardware, this could cause the GPU to stall. */
+            SUBDIV_512 = 3,
+            
+            /** Represents the size of the [enum Subdiv] enum. */
+            SUBDIV_MAX = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVoxelGI extends __NameMapVisualInstance3D {
+    }
+    /** Real-time global illumination (GI) probe.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_voxelgi.html  
+     */
+    class VoxelGI<Map extends NodePathMap = any> extends VisualInstance3D<Map> {
+        constructor(identifier?: any)
+        /** Bakes the effect from all [GeometryInstance3D]s marked with [constant GeometryInstance3D.GI_MODE_STATIC] and [Light3D]s marked with either [constant Light3D.BAKE_STATIC] or [constant Light3D.BAKE_DYNAMIC]. If [param create_visual_debug] is `true`, after baking the light, this will generate a [MultiMesh] that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the [VoxelGI]'s data and debug any issues that may be occurring.  
+         *      
+         *  **Note:** [method bake] works from the editor and in exported projects. This makes it suitable for procedurally generated or user-built levels. Baking a [VoxelGI] node generally takes from 5 to 20 seconds in most scenes. Reducing [member subdiv] can speed up baking.  
+         *      
+         *  **Note:** [GeometryInstance3D]s and [Light3D]s must be fully ready before [method bake] is called. If you are procedurally creating those and some meshes or lights are missing from your baked [VoxelGI], use `call_deferred("bake")` instead of calling [method bake] directly.  
+         */
+        bake(from_node?: Node /* = undefined */, create_visual_debug?: boolean /* = false */): void
+        
+        /** Calls [method bake] with `create_visual_debug` enabled. */
+        debug_bake(): void
+        
+        /** Number of times to subdivide the grid that the [VoxelGI] operates on. A higher number results in finer detail and thus higher visual quality, while lower numbers result in better performance. */
+        get subdiv(): int64
+        set subdiv(value: int64)
+        
+        /** The size of the area covered by the [VoxelGI]. This must be `1.0` or greater on each axis.  
+         *      
+         *  **Note:** If you make the size larger without increasing the number of subdivisions with [member subdiv], the size of each cell will increase and result in less detailed lighting.  
+         */
+        get size(): Vector3
+        set size(value: Vector3)
+        
+        /** The [CameraAttributes] resource that specifies exposure levels to bake at. Auto-exposure and non exposure properties will be ignored. Exposure settings should be used to reduce the dynamic range present when baking. If exposure is too high, the [VoxelGI] will have banding artifacts or may have over-exposure artifacts. */
+        get camera_attributes(): null | CameraAttributesPractical | CameraAttributesPhysical
+        set camera_attributes(value: null | CameraAttributesPractical | CameraAttributesPhysical)
+        
+        /** The [VoxelGIData] resource that holds the data for this [VoxelGI]. */
+        get data(): null | VoxelGIData
+        set data(value: null | VoxelGIData)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVoxelGI;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapVoxelGIData extends __NameMapResource {
+    }
+    /** Contains baked voxel global illumination data for use in a [VoxelGI] node.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_voxelgidata.html  
+     */
+    class VoxelGIData extends Resource {
+        constructor(identifier?: any)
+        allocate(to_cell_xform: Transform3D, aabb: AABB, octree_size: Vector3, octree_cells: PackedByteArray | byte[] | ArrayBuffer, data_cells: PackedByteArray | byte[] | ArrayBuffer, distance_field: PackedByteArray | byte[] | ArrayBuffer, level_counts: PackedInt32Array | int32[]): void
+        
+        /** Returns the bounds of the baked voxel data as an [AABB], which should match [member VoxelGI.size] after being baked (which only contains the size as a [Vector3]).  
+         *      
+         *  **Note:** If the size was modified without baking the VoxelGI data, then the value of [method get_bounds] and [member VoxelGI.size] will not match.  
+         */
+        get_bounds(): AABB
+        get_octree_size(): Vector3
+        get_to_cell_xform(): Transform3D
+        get_octree_cells(): PackedByteArray
+        get_data_cells(): PackedByteArray
+        get_level_counts(): PackedInt32Array
+        get _data(): GDictionary
+        set _data(value: GDictionary)
+        
+        /** The dynamic range to use (`1.0` represents a low dynamic range scene brightness). Higher values can be used to provide brighter indirect lighting, at the cost of more visible color banding in dark areas (both in indirect lighting and reflections). To avoid color banding, it's recommended to use the lowest value that does not result in visible light clipping. */
+        get dynamic_range(): float64
+        set dynamic_range(value: float64)
+        
+        /** The energy of the indirect lighting and reflections produced by the [VoxelGI] node. Higher values result in brighter indirect lighting. If indirect lighting looks too flat, try decreasing [member propagation] while increasing [member energy] at the same time. See also [member use_two_bounces] which influences the indirect lighting's effective brightness. */
+        get energy(): float64
+        set energy(value: float64)
+        
+        /** The normal bias to use for indirect lighting and reflections. Higher values reduce self-reflections visible in non-rough materials, at the cost of more visible light leaking and flatter-looking indirect lighting. To prioritize hiding self-reflections over lighting quality, set [member bias] to `0.0` and [member normal_bias] to a value between `1.0` and `2.0`. */
+        get bias(): float64
+        set bias(value: float64)
+        
+        /** The normal bias to use for indirect lighting and reflections. Higher values reduce self-reflections visible in non-rough materials, at the cost of more visible light leaking and flatter-looking indirect lighting. See also [member bias]. To prioritize hiding self-reflections over lighting quality, set [member bias] to `0.0` and [member normal_bias] to a value between `1.0` and `2.0`. */
+        get normal_bias(): float64
+        set normal_bias(value: float64)
+        
+        /** The multiplier to use when light bounces off a surface. Higher values result in brighter indirect lighting. If indirect lighting looks too flat, try decreasing [member propagation] while increasing [member energy] at the same time. See also [member use_two_bounces] which influences the indirect lighting's effective brightness. */
+        get propagation(): float64
+        set propagation(value: float64)
+        
+        /** If `true`, performs two bounces of indirect lighting instead of one. This makes indirect lighting look more natural and brighter at a small performance cost. The second bounce is also visible in reflections. If the scene appears too bright after enabling [member use_two_bounces], adjust [member propagation] and [member energy]. */
+        get use_two_bounces(): boolean
+        set use_two_bounces(value: boolean)
+        
+        /** If `true`, [Environment] lighting is ignored by the [VoxelGI] node. If `false`, [Environment] lighting is taken into account by the [VoxelGI] node. [Environment] lighting updates in real-time, which means it can be changed without having to bake the [VoxelGI] node again. */
+        get interior(): boolean
+        set interior(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapVoxelGIData;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWeakRef extends __NameMapRefCounted {
+    }
+    /** Holds an [Object]. If the object is [RefCounted], it doesn't update the reference count.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_weakref.html  
+     */
+    class WeakRef extends RefCounted {
+        constructor(identifier?: any)
+        /** Returns the [Object] this weakref is referring to. Returns `null` if that object no longer exists. */
+        get_ref(): any
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWeakRef;
+    }
+    namespace WebRTCDataChannel {
+        enum WriteMode {
+            /** Tells the channel to send data over this channel as text. An external peer (non-Godot) would receive this as a string. */
+            WRITE_MODE_TEXT = 0,
+            
+            /** Tells the channel to send data over this channel as binary. An external peer (non-Godot) would receive this as array buffer or blob. */
+            WRITE_MODE_BINARY = 1,
+        }
+        enum ChannelState {
+            /** The channel was created, but it's still trying to connect. */
+            STATE_CONNECTING = 0,
+            
+            /** The channel is currently open, and data can flow over it. */
+            STATE_OPEN = 1,
+            
+            /** The channel is being closed, no new messages will be accepted, but those already in queue will be flushed. */
+            STATE_CLOSING = 2,
+            
+            /** The channel was closed, or connection failed. */
+            STATE_CLOSED = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWebRTCDataChannel extends __NameMapPacketPeer {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_webrtcdatachannel.html */
+    class WebRTCDataChannel extends PacketPeer {
+        constructor(identifier?: any)
+        /** Reserved, but not used for now. */
+        poll(): Error
+        
+        /** Closes this data channel, notifying the other peer. */
+        close(): void
+        
+        /** Returns `true` if the last received packet was transferred as text. See [member write_mode]. */
+        was_string_packet(): boolean
+        
+        /** Returns the current state of this channel. */
+        get_ready_state(): WebRTCDataChannel.ChannelState
+        
+        /** Returns the label assigned to this channel during creation. */
+        get_label(): string
+        
+        /** Returns `true` if this channel was created with ordering enabled (default). */
+        is_ordered(): boolean
+        
+        /** Returns the ID assigned to this channel during creation (or auto-assigned during negotiation).  
+         *  If the channel is not negotiated out-of-band the ID will only be available after the connection is established (will return `65535` until then).  
+         */
+        get_id(): int64
+        
+        /** Returns the `maxPacketLifeTime` value assigned to this channel during creation.  
+         *  Will be `65535` if not specified.  
+         */
+        get_max_packet_life_time(): int64
+        
+        /** Returns the `maxRetransmits` value assigned to this channel during creation.  
+         *  Will be `65535` if not specified.  
+         */
+        get_max_retransmits(): int64
+        
+        /** Returns the sub-protocol assigned to this channel during creation. An empty string if not specified. */
+        get_protocol(): string
+        
+        /** Returns `true` if this channel was created with out-of-band configuration. */
+        is_negotiated(): boolean
+        
+        /** Returns the number of bytes currently queued to be sent over this channel. */
+        get_buffered_amount(): int64
+        
+        /** The transfer mode to use when sending outgoing packet. Either text or binary. */
+        get write_mode(): int64
+        set write_mode(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWebRTCDataChannel;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWebRTCDataChannelExtension extends __NameMapWebRTCDataChannel {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_webrtcdatachannelextension.html */
+    class WebRTCDataChannelExtension extends WebRTCDataChannel {
+        constructor(identifier?: any)
+        /* gdvirtual */ _get_packet(r_buffer: int64, r_buffer_size: int64): Error
+        /* gdvirtual */ _put_packet(p_buffer: int64, p_buffer_size: int64): Error
+        /* gdvirtual */ _get_available_packet_count(): int64
+        /* gdvirtual */ _get_max_packet_size(): int64
+        /* gdvirtual */ _poll(): Error
+        /* gdvirtual */ _close(): void
+        /* gdvirtual */ _set_write_mode(p_write_mode: WebRTCDataChannel.WriteMode): void
+        /* gdvirtual */ _get_write_mode(): WebRTCDataChannel.WriteMode
+        /* gdvirtual */ _was_string_packet(): boolean
+        /* gdvirtual */ _get_ready_state(): WebRTCDataChannel.ChannelState
+        /* gdvirtual */ _get_label(): string
+        /* gdvirtual */ _is_ordered(): boolean
+        /* gdvirtual */ _get_id(): int64
+        /* gdvirtual */ _get_max_packet_life_time(): int64
+        /* gdvirtual */ _get_max_retransmits(): int64
+        /* gdvirtual */ _get_protocol(): string
+        /* gdvirtual */ _is_negotiated(): boolean
+        /* gdvirtual */ _get_buffered_amount(): int64
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWebRTCDataChannelExtension;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWebRTCMultiplayerPeer extends __NameMapMultiplayerPeer {
+    }
+    /** A simple interface to create a peer-to-peer mesh network composed of [WebRTCPeerConnection] that is compatible with the [MultiplayerAPI].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_webrtcmultiplayerpeer.html  
+     */
+    class WebRTCMultiplayerPeer extends MultiplayerPeer {
+        constructor(identifier?: any)
+        /** Initialize the multiplayer peer as a server (with unique ID of `1`). This mode enables [method MultiplayerPeer.is_server_relay_supported], allowing the upper [MultiplayerAPI] layer to perform peer exchange and packet relaying.  
+         *  You can optionally specify a [param channels_config] array of [enum MultiplayerPeer.TransferMode] which will be used to create extra channels (WebRTC only supports one transfer mode per channel).  
+         */
+        create_server(channels_config?: GArray /* = [] */): Error
+        
+        /** Initialize the multiplayer peer as a client with the given [param peer_id] (must be between 2 and 2147483647). In this mode, you should only call [method add_peer] once and with [param peer_id] of `1`. This mode enables [method MultiplayerPeer.is_server_relay_supported], allowing the upper [MultiplayerAPI] layer to perform peer exchange and packet relaying.  
+         *  You can optionally specify a [param channels_config] array of [enum MultiplayerPeer.TransferMode] which will be used to create extra channels (WebRTC only supports one transfer mode per channel).  
+         */
+        create_client(peer_id: int64, channels_config?: GArray /* = [] */): Error
+        
+        /** Initialize the multiplayer peer as a mesh (i.e. all peers connect to each other) with the given [param peer_id] (must be between 1 and 2147483647). */
+        create_mesh(peer_id: int64, channels_config?: GArray /* = [] */): Error
+        
+        /** Add a new peer to the mesh with the given [param peer_id]. The [WebRTCPeerConnection] must be in state [constant WebRTCPeerConnection.STATE_NEW].  
+         *  Three channels will be created for reliable, unreliable, and ordered transport. The value of [param unreliable_lifetime] will be passed to the `"maxPacketLifetime"` option when creating unreliable and ordered channels (see [method WebRTCPeerConnection.create_data_channel]).  
+         */
+        add_peer(peer: WebRTCPeerConnection, peer_id: int64, unreliable_lifetime?: int64 /* = 1 */): Error
+        
+        /** Remove the peer with given [param peer_id] from the mesh. If the peer was connected, and [signal MultiplayerPeer.peer_connected] was emitted for it, then [signal MultiplayerPeer.peer_disconnected] will be emitted. */
+        remove_peer(peer_id: int64): void
+        
+        /** Returns `true` if the given [param peer_id] is in the peers map (it might not be connected though). */
+        has_peer(peer_id: int64): boolean
+        
+        /** Returns a dictionary representation of the peer with given [param peer_id] with three keys. `"connection"` containing the [WebRTCPeerConnection] to this peer, `"channels"` an array of three [WebRTCDataChannel], and `"connected"` a boolean representing if the peer connection is currently connected (all three channels are open). */
+        get_peer(peer_id: int64): GDictionary
+        
+        /** Returns a dictionary which keys are the peer ids and values the peer representation as in [method get_peer]. */
+        get_peers(): GDictionary
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWebRTCMultiplayerPeer;
+    }
+    namespace WebRTCPeerConnection {
+        enum ConnectionState {
+            /** The connection is new, data channels and an offer can be created in this state. */
+            STATE_NEW = 0,
+            
+            /** The peer is connecting, ICE is in progress, none of the transports has failed. */
+            STATE_CONNECTING = 1,
+            
+            /** The peer is connected, all ICE transports are connected. */
+            STATE_CONNECTED = 2,
+            
+            /** At least one ICE transport is disconnected. */
+            STATE_DISCONNECTED = 3,
+            
+            /** One or more of the ICE transports failed. */
+            STATE_FAILED = 4,
+            
+            /** The peer connection is closed (after calling [method close] for example). */
+            STATE_CLOSED = 5,
+        }
+        enum GatheringState {
+            /** The peer connection was just created and hasn't done any networking yet. */
+            GATHERING_STATE_NEW = 0,
+            
+            /** The ICE agent is in the process of gathering candidates for the connection. */
+            GATHERING_STATE_GATHERING = 1,
+            
+            /** The ICE agent has finished gathering candidates. If something happens that requires collecting new candidates, such as a new interface being added or the addition of a new ICE server, the state will revert to gathering to gather those candidates. */
+            GATHERING_STATE_COMPLETE = 2,
+        }
+        enum SignalingState {
+            /** There is no ongoing exchange of offer and answer underway. This may mean that the [WebRTCPeerConnection] is new ([constant STATE_NEW]) or that negotiation is complete and a connection has been established ([constant STATE_CONNECTED]). */
+            SIGNALING_STATE_STABLE = 0,
+            
+            /** The local peer has called [method set_local_description], passing in SDP representing an offer (usually created by calling [method create_offer]), and the offer has been applied successfully. */
+            SIGNALING_STATE_HAVE_LOCAL_OFFER = 1,
+            
+            /** The remote peer has created an offer and used the signaling server to deliver it to the local peer, which has set the offer as the remote description by calling [method set_remote_description]. */
+            SIGNALING_STATE_HAVE_REMOTE_OFFER = 2,
+            
+            /** The offer sent by the remote peer has been applied and an answer has been created and applied by calling [method set_local_description]. This provisional answer describes the supported media formats and so forth, but may not have a complete set of ICE candidates included. Further candidates will be delivered separately later. */
+            SIGNALING_STATE_HAVE_LOCAL_PRANSWER = 3,
+            
+            /** A provisional answer has been received and successfully applied in response to an offer previously sent and established by calling [method set_local_description]. */
+            SIGNALING_STATE_HAVE_REMOTE_PRANSWER = 4,
+            
+            /** The [WebRTCPeerConnection] has been closed. */
+            SIGNALING_STATE_CLOSED = 5,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWebRTCPeerConnection extends __NameMapRefCounted {
+    }
+    /** Interface to a WebRTC peer connection.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_webrtcpeerconnection.html  
+     */
+    class WebRTCPeerConnection extends RefCounted {
+        constructor(identifier?: any)
+        /** Sets the [param extension_class] as the default [WebRTCPeerConnectionExtension] returned when creating a new [WebRTCPeerConnection]. */
+        static set_default_extension(extension_class: StringName): void
+        
+        /** Re-initialize this peer connection, closing any previously active connection, and going back to state [constant STATE_NEW]. A dictionary of [param configuration] options can be passed to configure the peer connection.  
+         *  Valid [param configuration] options are:  
+         *    
+         */
+        initialize(configuration?: GDictionary /* = new GDictionary() */): Error
+        
+        /** Returns a new [WebRTCDataChannel] (or `null` on failure) with given [param label] and optionally configured via the [param options] dictionary. This method can only be called when the connection is in state [constant STATE_NEW].  
+         *  There are two ways to create a working data channel: either call [method create_data_channel] on only one of the peer and listen to [signal data_channel_received] on the other, or call [method create_data_channel] on both peers, with the same values, and the `"negotiated"` option set to `true`.  
+         *  Valid [param options] are:  
+         *    
+         *      
+         *  **Note:** You must keep a reference to channels created this way, or it will be closed.  
+         */
+        create_data_channel(label: string, options?: GDictionary /* = new GDictionary() */): WebRTCDataChannel
+        
+        /** Creates a new SDP offer to start a WebRTC connection with a remote peer. At least one [WebRTCDataChannel] must have been created before calling this method.  
+         *  If this functions returns [constant OK], [signal session_description_created] will be called when the session is ready to be sent.  
+         */
+        create_offer(): Error
+        
+        /** Sets the SDP description of the local peer. This should be called in response to [signal session_description_created].  
+         *  After calling this function the peer will start emitting [signal ice_candidate_created] (unless an [enum Error] different from [constant OK] is returned).  
+         */
+        set_local_description(type: string, sdp: string): Error
+        
+        /** Sets the SDP description of the remote peer. This should be called with the values generated by a remote peer and received over the signaling server.  
+         *  If [param type] is `"offer"` the peer will emit [signal session_description_created] with the appropriate answer.  
+         *  If [param type] is `"answer"` the peer will start emitting [signal ice_candidate_created].  
+         */
+        set_remote_description(type: string, sdp: string): Error
+        
+        /** Add an ice candidate generated by a remote peer (and received over the signaling server). See [signal ice_candidate_created]. */
+        add_ice_candidate(media: string, index: int64, name: string): Error
+        
+        /** Call this method frequently (e.g. in [method Node._process] or [method Node._physics_process]) to properly receive signals. */
+        poll(): Error
+        
+        /** Close the peer connection and all data channels associated with it.  
+         *      
+         *  **Note:** You cannot reuse this object for a new connection unless you call [method initialize].  
+         */
+        close(): void
+        
+        /** Returns the connection state. */
+        get_connection_state(): WebRTCPeerConnection.ConnectionState
+        
+        /** Returns the ICE [enum GatheringState] of the connection. This lets you detect, for example, when collection of ICE candidates has finished. */
+        get_gathering_state(): WebRTCPeerConnection.GatheringState
+        
+        /** Returns the signaling state on the local end of the connection while connecting or reconnecting to another peer. */
+        get_signaling_state(): WebRTCPeerConnection.SignalingState
+        
+        /** Emitted after a successful call to [method create_offer] or [method set_remote_description] (when it generates an answer). The parameters are meant to be passed to [method set_local_description] on this object, and sent to the remote peer over the signaling server. */
+        readonly session_description_created: Signal<(type: string, sdp: string) => void>
+        
+        /** Emitted when a new ICE candidate has been created. The three parameters are meant to be passed to the remote peer over the signaling server. */
+        readonly ice_candidate_created: Signal<(media: string, index: int64, name: string) => void>
+        
+        /** Emitted when a new in-band channel is received, i.e. when the channel was created with `negotiated: false` (default).  
+         *  The object will be an instance of [WebRTCDataChannel]. You must keep a reference of it or it will be closed automatically. See [method create_data_channel].  
+         */
+        readonly data_channel_received: Signal<(channel: WebRTCDataChannel) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWebRTCPeerConnection;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWebRTCPeerConnectionExtension extends __NameMapWebRTCPeerConnection {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_webrtcpeerconnectionextension.html */
+    class WebRTCPeerConnectionExtension extends WebRTCPeerConnection {
+        constructor(identifier?: any)
+        /* gdvirtual */ _get_connection_state(): WebRTCPeerConnection.ConnectionState
+        /* gdvirtual */ _get_gathering_state(): WebRTCPeerConnection.GatheringState
+        /* gdvirtual */ _get_signaling_state(): WebRTCPeerConnection.SignalingState
+        /* gdvirtual */ _initialize(p_config: GDictionary): Error
+        /* gdvirtual */ _create_data_channel(p_label: string, p_config: GDictionary): null | WebRTCDataChannel
+        /* gdvirtual */ _create_offer(): Error
+        /* gdvirtual */ _set_remote_description(p_type: string, p_sdp: string): Error
+        /* gdvirtual */ _set_local_description(p_type: string, p_sdp: string): Error
+        /* gdvirtual */ _add_ice_candidate(p_sdp_mid_name: string, p_sdp_mline_index: int64, p_sdp_name: string): Error
+        /* gdvirtual */ _poll(): Error
+        /* gdvirtual */ _close(): void
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWebRTCPeerConnectionExtension;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWebSocketMultiplayerPeer extends __NameMapMultiplayerPeer {
+    }
+    /** Base class for WebSocket server and client.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_websocketmultiplayerpeer.html  
+     */
+    class WebSocketMultiplayerPeer extends MultiplayerPeer {
+        constructor(identifier?: any)
+        /** Starts a new multiplayer client connecting to the given [param url]. TLS certificates will be verified against the hostname when connecting using the `wss://` protocol. You can pass the optional [param tls_client_options] parameter to customize the trusted certification authorities, or disable the common name verification. See [method TLSOptions.client] and [method TLSOptions.client_unsafe].  
+         *      
+         *  **Note:** It is recommended to specify the scheme part of the URL, i.e. the [param url] should start with either `ws://` or `wss://`.  
+         */
+        create_client(url: string, tls_client_options?: TLSOptions /* = undefined */): Error
+        
+        /** Starts a new multiplayer server listening on the given [param port]. You can optionally specify a [param bind_address], and provide valid [param tls_server_options] to use TLS. See [method TLSOptions.server]. */
+        create_server(port: int64, bind_address?: string /* = '*' */, tls_server_options?: TLSOptions /* = undefined */): Error
+        
+        /** Returns the [WebSocketPeer] associated to the given [param peer_id]. */
+        get_peer(peer_id: int64): null | WebSocketPeer
+        
+        /** Returns the IP address of the given peer. */
+        get_peer_address(id: int64): string
+        
+        /** Returns the remote port of the given peer. */
+        get_peer_port(id: int64): int64
+        
+        /** The supported WebSocket sub-protocols. See [member WebSocketPeer.supported_protocols] for more details. */
+        get supported_protocols(): PackedStringArray
+        set supported_protocols(value: PackedStringArray | string[])
+        
+        /** The extra headers to use during handshake. See [member WebSocketPeer.handshake_headers] for more details. */
+        get handshake_headers(): PackedStringArray
+        set handshake_headers(value: PackedStringArray | string[])
+        
+        /** The inbound buffer size for connected peers. See [member WebSocketPeer.inbound_buffer_size] for more details. */
+        get inbound_buffer_size(): int64
+        set inbound_buffer_size(value: int64)
+        
+        /** The outbound buffer size for connected peers. See [member WebSocketPeer.outbound_buffer_size] for more details. */
+        get outbound_buffer_size(): int64
+        set outbound_buffer_size(value: int64)
+        
+        /** The maximum time each peer can stay in a connecting state before being dropped. */
+        get handshake_timeout(): float64
+        set handshake_timeout(value: float64)
+        
+        /** The maximum number of queued packets for connected peers. See [member WebSocketPeer.max_queued_packets] for more details. */
+        get max_queued_packets(): int64
+        set max_queued_packets(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWebSocketMultiplayerPeer;
+    }
+    namespace WebSocketPeer {
+        enum WriteMode {
+            /** Specifies that WebSockets messages should be transferred as text payload (only valid UTF-8 is allowed). */
+            WRITE_MODE_TEXT = 0,
+            
+            /** Specifies that WebSockets messages should be transferred as binary payload (any byte combination is allowed). */
+            WRITE_MODE_BINARY = 1,
+        }
+        enum State {
+            /** Socket has been created. The connection is not yet open. */
+            STATE_CONNECTING = 0,
+            
+            /** The connection is open and ready to communicate. */
+            STATE_OPEN = 1,
+            
+            /** The connection is in the process of closing. This means a close request has been sent to the remote peer but confirmation has not been received. */
+            STATE_CLOSING = 2,
+            
+            /** The connection is closed or couldn't be opened. */
+            STATE_CLOSED = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWebSocketPeer extends __NameMapPacketPeer {
+    }
+    /** A WebSocket connection.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_websocketpeer.html  
+     */
+    class WebSocketPeer extends PacketPeer {
+        constructor(identifier?: any)
+        /** Connects to the given URL. TLS certificates will be verified against the hostname when connecting using the `wss://` protocol. You can pass the optional [param tls_client_options] parameter to customize the trusted certification authorities, or disable the common name verification. See [method TLSOptions.client] and [method TLSOptions.client_unsafe].  
+         *      
+         *  **Note:** This method is non-blocking, and will return [constant OK] before the connection is established as long as the provided parameters are valid and the peer is not in an invalid state (e.g. already connected). Regularly call [method poll] (e.g. during [Node] process) and check the result of [method get_ready_state] to know whether the connection succeeds or fails.  
+         *      
+         *  **Note:** To avoid mixed content warnings or errors in Web, you may have to use a [param url] that starts with `wss://` (secure) instead of `ws://`. When doing so, make sure to use the fully qualified domain name that matches the one defined in the server's TLS certificate. Do not connect directly via the IP address for `wss://` connections, as it won't match with the TLS certificate.  
+         */
+        connect_to_url(url: string, tls_client_options?: TLSOptions /* = undefined */): Error
+        
+        /** Accepts a peer connection performing the HTTP handshake as a WebSocket server. The [param stream] must be a valid TCP stream retrieved via [method TCPServer.take_connection], or a TLS stream accepted via [method StreamPeerTLS.accept_stream].  
+         *      
+         *  **Note:** Not supported in Web exports due to browsers' restrictions.  
+         */
+        accept_stream(stream: StreamPeer): Error
+        
+        /** Sends the given [param message] using the desired [param write_mode]. When sending a [String], prefer using [method send_text]. */
+        send(message: PackedByteArray | byte[] | ArrayBuffer, write_mode?: WebSocketPeer.WriteMode /* = 1 */): Error
+        
+        /** Sends the given [param message] using WebSocket text mode. Prefer this method over [method PacketPeer.put_packet] when interacting with third-party text-based API (e.g. when using [JSON] formatted messages). */
+        send_text(message: string): Error
+        
+        /** Returns `true` if the last received packet was sent as a text payload. See [enum WriteMode]. */
+        was_string_packet(): boolean
+        
+        /** Updates the connection state and receive incoming packets. Call this function regularly to keep it in a clean state. */
+        poll(): void
+        
+        /** Closes this WebSocket connection.  
+         *  [param code] is the status code for the closure (see [url=https://datatracker.ietf.org/doc/html/rfc6455#section-7.4.1]RFC 6455 section 7.4[/url] for a list of valid status codes). If [param code] is negative, the connection will be closed immediately without notifying the remote peer.  
+         *  [param reason] is the human-readable reason for closing the connection. It can be any UTF-8 string that's smaller than 123 bytes.  
+         *      
+         *  **Note:** To achieve a clean closure, you will need to keep polling until [constant STATE_CLOSED] is reached.  
+         *      
+         *  **Note:** The Web export might not support all status codes. Please refer to browser-specific documentation for more details.  
+         */
+        close(code?: int64 /* = 1000 */, reason?: string /* = '' */): void
+        
+        /** Returns the IP address of the connected peer.  
+         *      
+         *  **Note:** Not available in the Web export.  
+         */
+        get_connected_host(): string
+        
+        /** Returns the remote port of the connected peer.  
+         *      
+         *  **Note:** Not available in the Web export.  
+         */
+        get_connected_port(): int64
+        
+        /** Returns the selected WebSocket sub-protocol for this connection or an empty string if the sub-protocol has not been selected yet. */
+        get_selected_protocol(): string
+        
+        /** Returns the URL requested by this peer. The URL is derived from the `url` passed to [method connect_to_url] or from the HTTP headers when acting as server (i.e. when using [method accept_stream]). */
+        get_requested_url(): string
+        
+        /** Disable Nagle's algorithm on the underlying TCP socket (default). See [method StreamPeerTCP.set_no_delay] for more information.  
+         *      
+         *  **Note:** Not available in the Web export.  
+         */
+        set_no_delay(enabled: boolean): void
+        
+        /** Returns the current amount of data in the outbound websocket buffer.     
+         *  **Note:** Web exports use WebSocket.bufferedAmount, while other platforms use an internal buffer.  
+         */
+        get_current_outbound_buffered_amount(): int64
+        
+        /** Returns the ready state of the connection. */
+        get_ready_state(): WebSocketPeer.State
+        
+        /** Returns the received WebSocket close frame status code, or `-1` when the connection was not cleanly closed. Only call this method when [method get_ready_state] returns [constant STATE_CLOSED]. */
+        get_close_code(): int64
+        
+        /** Returns the received WebSocket close frame status reason string. Only call this method when [method get_ready_state] returns [constant STATE_CLOSED]. */
+        get_close_reason(): string
+        
+        /** The WebSocket sub-protocols allowed during the WebSocket handshake. */
+        get supported_protocols(): PackedStringArray
+        set supported_protocols(value: PackedStringArray | string[])
+        
+        /** The extra HTTP headers to be sent during the WebSocket handshake.  
+         *      
+         *  **Note:** Not supported in Web exports due to browsers' restrictions.  
+         */
+        get handshake_headers(): PackedStringArray
+        set handshake_headers(value: PackedStringArray | string[])
+        
+        /** The size of the input buffer in bytes (roughly the maximum amount of memory that will be allocated for the inbound packets). */
+        get inbound_buffer_size(): int64
+        set inbound_buffer_size(value: int64)
+        
+        /** The size of the input buffer in bytes (roughly the maximum amount of memory that will be allocated for the outbound packets). */
+        get outbound_buffer_size(): int64
+        set outbound_buffer_size(value: int64)
+        
+        /** The maximum amount of packets that will be allowed in the queues (both inbound and outbound). */
+        get max_queued_packets(): int64
+        set max_queued_packets(value: int64)
+        
+        /** The interval (in seconds) at which the peer will automatically send WebSocket "ping" control frames. When set to `0`, no "ping" control frames will be sent.  
+         *      
+         *  **Note:** Has no effect in Web exports due to browser restrictions.  
+         */
+        get heartbeat_interval(): int64
+        set heartbeat_interval(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWebSocketPeer;
+    }
+    namespace WebXRInterface {
+        enum TargetRayMode {
+            /** We don't know the target ray mode. */
+            TARGET_RAY_MODE_UNKNOWN = 0,
+            
+            /** Target ray originates at the viewer's eyes and points in the direction they are looking. */
+            TARGET_RAY_MODE_GAZE = 1,
+            
+            /** Target ray from a handheld pointer, most likely a VR touch controller. */
+            TARGET_RAY_MODE_TRACKED_POINTER = 2,
+            
+            /** Target ray from touch screen, mouse or other tactile input device. */
+            TARGET_RAY_MODE_SCREEN = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWebXRInterface extends __NameMapXRInterface {
+    }
+    /** XR interface using WebXR.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_webxrinterface.html  
+     */
+    class WebXRInterface extends XRInterface {
+        constructor(identifier?: any)
+        /** Checks if the given [param session_mode] is supported by the user's browser.  
+         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRSessionMode]WebXR's XRSessionMode[/url], including: `"immersive-vr"`, `"immersive-ar"`, and `"inline"`.  
+         *  This method returns nothing, instead it emits the [signal session_supported] signal with the result.  
+         */
+        is_session_supported(session_mode: string): void
+        
+        /** Returns `true` if there is an active input source with the given [param input_source_id]. */
+        is_input_source_active(input_source_id: int64): boolean
+        
+        /** Gets an [XRControllerTracker] for the given [param input_source_id].  
+         *  In the context of WebXR, an input source can be an advanced VR controller like the Oculus Touch or Index controllers, or even a tap on the screen, a spoken voice command or a button press on the device itself. When a non-traditional input source is used, interpret the position and orientation of the [XRPositionalTracker] as a ray pointing at the object the user wishes to interact with.  
+         *  Use this method to get information about the input source that triggered one of these signals:  
+         *  - [signal selectstart]  
+         *  - [signal select]  
+         *  - [signal selectend]  
+         *  - [signal squeezestart]  
+         *  - [signal squeeze]  
+         *  - [signal squeezestart]  
+         */
+        get_input_source_tracker(input_source_id: int64): null | XRControllerTracker
+        
+        /** Returns the target ray mode for the given [param input_source_id].  
+         *  This can help interpret the input coming from that input source. See [url=https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource/targetRayMode]XRInputSource.targetRayMode[/url] for more information.  
+         */
+        get_input_source_target_ray_mode(input_source_id: int64): WebXRInterface.TargetRayMode
+        
+        /** Returns the display refresh rate for the current HMD. Not supported on all HMDs and browsers. It may not report an accurate value until after using [method set_display_refresh_rate]. */
+        get_display_refresh_rate(): float64
+        
+        /** Sets the display refresh rate for the current HMD. Not supported on all HMDs and browsers. It won't take effect right away until after [signal display_refresh_rate_changed] is emitted. */
+        set_display_refresh_rate(refresh_rate: float64): void
+        
+        /** Returns display refresh rates supported by the current HMD. Only returned if this feature is supported by the web browser and after the interface has been initialized. */
+        get_available_display_refresh_rates(): GArray
+        
+        /** The session mode used by [method XRInterface.initialize] when setting up the WebXR session.  
+         *  This doesn't have any effect on the interface when already initialized.  
+         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRSessionMode]WebXR's XRSessionMode[/url], including: `"immersive-vr"`, `"immersive-ar"`, and `"inline"`.  
+         */
+        get session_mode(): string
+        set session_mode(value: string)
+        
+        /** A comma-seperated list of required features used by [method XRInterface.initialize] when setting up the WebXR session.  
+         *  If a user's browser or device doesn't support one of the given features, initialization will fail and [signal session_failed] will be emitted.  
+         *  This doesn't have any effect on the interface when already initialized.  
+         *  See the MDN documentation on [url=https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#session_features]WebXR's session features[/url] for a list of possible values.  
+         */
+        get required_features(): string
+        set required_features(value: string)
+        
+        /** A comma-seperated list of optional features used by [method XRInterface.initialize] when setting up the WebXR session.  
+         *  If a user's browser or device doesn't support one of the given features, initialization will continue, but you won't be able to use the requested feature.  
+         *  This doesn't have any effect on the interface when already initialized.  
+         *  See the MDN documentation on [url=https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#session_features]WebXR's session features[/url] for a list of possible values.  
+         */
+        get optional_features(): string
+        set optional_features(value: string)
+        
+        /** A comma-seperated list of reference space types used by [method XRInterface.initialize] when setting up the WebXR session.  
+         *  The reference space types are requested in order, and the first one supported by the user's device or browser will be used. The [member reference_space_type] property contains the reference space type that was ultimately selected.  
+         *  This doesn't have any effect on the interface when already initialized.  
+         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceType]WebXR's XRReferenceSpaceType[/url]. If you want to use a particular reference space type, it must be listed in either [member required_features] or [member optional_features].  
+         */
+        get requested_reference_space_types(): string
+        set requested_reference_space_types(value: string)
+        
+        /** The reference space type (from the list of requested types set in the [member requested_reference_space_types] property), that was ultimately used by [method XRInterface.initialize] when setting up the WebXR session.  
+         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceType]WebXR's XRReferenceSpaceType[/url]. If you want to use a particular reference space type, it must be listed in either [member required_features] or [member optional_features].  
+         */
+        get reference_space_type(): string
+        
+        /** A comma-separated list of features that were successfully enabled by [method XRInterface.initialize] when setting up the WebXR session.  
+         *  This may include features requested by setting [member required_features] and [member optional_features], and will only be available after [signal session_started] has been emitted.  
+         *      
+         *  **Note:** This may not be support by all web browsers, in which case it will be an empty string.  
+         */
+        get enabled_features(): string
+        
+        /** Indicates if the WebXR session's imagery is visible to the user.  
+         *  Possible values come from [url=https://developer.mozilla.org/en-US/docs/Web/API/XRVisibilityState]WebXR's XRVisibilityState[/url], including `"hidden"`, `"visible"`, and `"visible-blurred"`.  
+         */
+        get visibility_state(): string
+        
+        /** Emitted by [method is_session_supported] to indicate if the given [param session_mode] is supported or not. */
+        readonly session_supported: Signal<(session_mode: string, supported: boolean) => void>
+        
+        /** Emitted by [method XRInterface.initialize] if the session is successfully started.  
+         *  At this point, it's safe to do `get_viewport().use_xr = true` to instruct Godot to start rendering to the XR device.  
+         */
+        readonly session_started: Signal<() => void>
+        
+        /** Emitted when the user ends the WebXR session (which can be done using UI from the browser or device).  
+         *  At this point, you should do `get_viewport().use_xr = false` to instruct Godot to resume rendering to the screen.  
+         */
+        readonly session_ended: Signal<() => void>
+        
+        /** Emitted by [method XRInterface.initialize] if the session fails to start.  
+         *  [param message] may optionally contain an error message from WebXR, or an empty string if no message is available.  
+         */
+        readonly session_failed: Signal<(message: string) => void>
+        
+        /** Emitted when one of the input source has started its "primary action".  
+         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
+         */
+        readonly selectstart: Signal<(input_source_id: int64) => void>
+        
+        /** Emitted after one of the input sources has finished its "primary action".  
+         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
+         */
+        readonly select: Signal<(input_source_id: int64) => void>
+        
+        /** Emitted when one of the input sources has finished its "primary action".  
+         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
+         */
+        readonly selectend: Signal<(input_source_id: int64) => void>
+        
+        /** Emitted when one of the input sources has started its "primary squeeze action".  
+         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
+         */
+        readonly squeezestart: Signal<(input_source_id: int64) => void>
+        
+        /** Emitted after one of the input sources has finished its "primary squeeze action".  
+         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
+         */
+        readonly squeeze: Signal<(input_source_id: int64) => void>
+        
+        /** Emitted when one of the input sources has finished its "primary squeeze action".  
+         *  Use [method get_input_source_tracker] and [method get_input_source_target_ray_mode] to get more information about the input source.  
+         */
+        readonly squeezeend: Signal<(input_source_id: int64) => void>
+        
+        /** Emitted when [member visibility_state] has changed. */
+        readonly visibility_state_changed: Signal<() => void>
+        
+        /** Emitted to indicate that the reference space has been reset or reconfigured.  
+         *  When (or whether) this is emitted depends on the user's browser or device, but may include when the user has changed the dimensions of their play space (which you may be able to access via [method XRInterface.get_play_area]) or pressed/held a button to recenter their position.  
+         *  See [url=https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace/reset_event]WebXR's XRReferenceSpace reset event[/url] for more information.  
+         */
+        readonly reference_space_reset: Signal<() => void>
+        
+        /** Emitted after the display's refresh rate has changed. */
+        readonly display_refresh_rate_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWebXRInterface;
+    }
+    namespace Window {
+        enum Mode {
+            /** Windowed mode, i.e. [Window] doesn't occupy the whole screen (unless set to the size of the screen). */
+            MODE_WINDOWED = 0,
+            
+            /** Minimized window mode, i.e. [Window] is not visible and available on window manager's window list. Normally happens when the minimize button is pressed. */
+            MODE_MINIMIZED = 1,
+            
+            /** Maximized window mode, i.e. [Window] will occupy whole screen area except task bar and still display its borders. Normally happens when the maximize button is pressed. */
+            MODE_MAXIMIZED = 2,
+            
+            /** Full screen mode with full multi-window support.  
+             *  Full screen window covers the entire display area of a screen and has no decorations. The display's video mode is not changed.  
+             *  **On Android:** This enables immersive mode.  
+             *  **On macOS:** A new desktop is used to display the running project.  
+             *      
+             *  **Note:** Regardless of the platform, enabling full screen will change the window size to match the monitor's size. Therefore, make sure your project supports [url=https://docs.godotengine.org/en/4.6/tutorials/rendering/multiple_resolutions.html]multiple resolutions[/url] when enabling full screen mode.  
+             */
+            MODE_FULLSCREEN = 3,
+            
+            /** A single window full screen mode. This mode has less overhead, but only one window can be open on a given screen at a time (opening a child window or application switching will trigger a full screen transition).  
+             *  Full screen window covers the entire display area of a screen and has no border or decorations. The display's video mode is not changed.  
+             *      
+             *  **Note:** This mode might not work with screen recording software.  
+             *  **On Android:** This enables immersive mode.  
+             *  **On Windows:** Depending on video driver, full screen transition might cause screens to go black for a moment.  
+             *  **On macOS:** A new desktop is used to display the running project. Exclusive full screen mode prevents Dock and Menu from showing up when the mouse pointer is hovering the edge of the screen.  
+             *  **On Linux (X11):** Exclusive full screen mode bypasses compositor.  
+             *  **On Linux (Wayland):** Equivalent to [constant MODE_FULLSCREEN].  
+             *      
+             *  **Note:** Regardless of the platform, enabling full screen will change the window size to match the monitor's size. Therefore, make sure your project supports [url=https://docs.godotengine.org/en/4.6/tutorials/rendering/multiple_resolutions.html]multiple resolutions[/url] when enabling full screen mode.  
+             */
+            MODE_EXCLUSIVE_FULLSCREEN = 4,
+        }
+        enum Flags {
+            /** The window can't be resized by dragging its resize grip. It's still possible to resize the window using [member size]. This flag is ignored for full screen windows. Set with [member unresizable]. */
+            FLAG_RESIZE_DISABLED = 0,
+            
+            /** The window do not have native title bar and other decorations. This flag is ignored for full-screen windows. Set with [member borderless]. */
+            FLAG_BORDERLESS = 1,
+            
+            /** The window is floating on top of all other windows. This flag is ignored for full-screen windows. Set with [member always_on_top]. */
+            FLAG_ALWAYS_ON_TOP = 2,
+            
+            /** The window background can be transparent. Set with [member transparent].  
+             *      
+             *  **Note:** This flag has no effect if either [member ProjectSettings.display/window/per_pixel_transparency/allowed], or the window's [member Viewport.transparent_bg] is set to `false`.  
+             */
+            FLAG_TRANSPARENT = 3,
+            
+            /** The window can't be focused. No-focus window will ignore all input, except mouse clicks. Set with [member unfocusable]. */
+            FLAG_NO_FOCUS = 4,
+            
+            /** Window is part of menu or [OptionButton] dropdown. This flag can't be changed when the window is visible. An active popup window will exclusively receive all input, without stealing focus from its parent. Popup windows are automatically closed when uses click outside it, or when an application is switched. Popup window must have transient parent set (see [member transient]).  
+             *      
+             *  **Note:** This flag has no effect in embedded windows (unless said window is a [Popup]).  
+             */
+            FLAG_POPUP = 5,
+            
+            /** Window content is expanded to the full size of the window. Unlike borderless window, the frame is left intact and can be used to resize the window, title bar is transparent, but have minimize/maximize/close buttons. Set with [member extend_to_title].  
+             *      
+             *  **Note:** This flag is implemented only on macOS.  
+             *      
+             *  **Note:** This flag has no effect in embedded windows.  
+             */
+            FLAG_EXTEND_TO_TITLE = 6,
+            
+            /** All mouse events are passed to the underlying window of the same application.  
+             *      
+             *  **Note:** This flag has no effect in embedded windows.  
+             */
+            FLAG_MOUSE_PASSTHROUGH = 7,
+            
+            /** Window style is overridden, forcing sharp corners.  
+             *      
+             *  **Note:** This flag has no effect in embedded windows.  
+             *      
+             *  **Note:** This flag is implemented only on Windows (11).  
+             */
+            FLAG_SHARP_CORNERS = 8,
+            
+            /** Windows is excluded from screenshots taken by [method DisplayServer.screen_get_image], [method DisplayServer.screen_get_image_rect], and [method DisplayServer.screen_get_pixel].  
+             *      
+             *  **Note:** This flag has no effect in embedded windows.  
+             *      
+             *  **Note:** This flag is implemented on macOS and Windows (10, 20H1).  
+             *      
+             *  **Note:** Setting this flag will prevent standard screenshot methods from capturing a window image, but does **NOT** guarantee that other apps won't be able to capture an image. It should not be used as a DRM or security measure.  
+             */
+            FLAG_EXCLUDE_FROM_CAPTURE = 9,
+            
+            /** Signals the window manager that this window is supposed to be an implementation-defined "popup" (usually a floating, borderless, untileable and immovable child window). */
+            FLAG_POPUP_WM_HINT = 10,
+            
+            /** Window minimize button is disabled.  
+             *      
+             *  **Note:** This flag is implemented on macOS and Windows.  
+             */
+            FLAG_MINIMIZE_DISABLED = 11,
+            
+            /** Window maximize button is disabled.  
+             *      
+             *  **Note:** This flag is implemented on macOS and Windows.  
+             */
+            FLAG_MAXIMIZE_DISABLED = 12,
+            
+            /** Max value of the [enum Flags]. */
+            FLAG_MAX = 13,
+        }
+        enum ContentScaleMode {
+            /** The content will not be scaled to match the [Window]'s size ([member content_scale_size] is ignored). */
+            CONTENT_SCALE_MODE_DISABLED = 0,
+            
+            /** The content will be rendered at the target size. This is more performance-expensive than [constant CONTENT_SCALE_MODE_VIEWPORT], but provides better results. */
+            CONTENT_SCALE_MODE_CANVAS_ITEMS = 1,
+            
+            /** The content will be rendered at the base size and then scaled to the target size. More performant than [constant CONTENT_SCALE_MODE_CANVAS_ITEMS], but results in pixelated image. */
+            CONTENT_SCALE_MODE_VIEWPORT = 2,
+        }
+        enum ContentScaleAspect {
+            /** The aspect will be ignored. Scaling will simply stretch the content to fit the target size. */
+            CONTENT_SCALE_ASPECT_IGNORE = 0,
+            
+            /** The content's aspect will be preserved. If the target size has different aspect from the base one, the image will be centered and black bars will appear on left and right sides. */
+            CONTENT_SCALE_ASPECT_KEEP = 1,
+            
+            /** The content can be expanded vertically. Scaling horizontally will result in keeping the width ratio and then black bars on left and right sides. */
+            CONTENT_SCALE_ASPECT_KEEP_WIDTH = 2,
+            
+            /** The content can be expanded horizontally. Scaling vertically will result in keeping the height ratio and then black bars on top and bottom sides. */
+            CONTENT_SCALE_ASPECT_KEEP_HEIGHT = 3,
+            
+            /** The content's aspect will be preserved. If the target size has different aspect from the base one, the content will stay in the top-left corner and add an extra visible area in the stretched space. */
+            CONTENT_SCALE_ASPECT_EXPAND = 4,
+        }
+        enum ContentScaleStretch {
+            /** The content will be stretched according to a fractional factor. This fills all the space available in the window, but allows "pixel wobble" to occur due to uneven pixel scaling. */
+            CONTENT_SCALE_STRETCH_FRACTIONAL = 0,
+            
+            /** The content will be stretched only according to an integer factor, preserving sharp pixels. This may leave a black background visible on the window's edges depending on the window size. */
+            CONTENT_SCALE_STRETCH_INTEGER = 1,
+        }
+        enum LayoutDirection {
+            /** Automatic layout direction, determined from the parent window layout direction. */
+            LAYOUT_DIRECTION_INHERITED = 0,
+            
+            /** Automatic layout direction, determined from the current locale. */
+            LAYOUT_DIRECTION_APPLICATION_LOCALE = 1,
+            
+            /** Left-to-right layout direction. */
+            LAYOUT_DIRECTION_LTR = 2,
+            
+            /** Right-to-left layout direction. */
+            LAYOUT_DIRECTION_RTL = 3,
+            
+            /** Automatic layout direction, determined from the system locale. */
+            LAYOUT_DIRECTION_SYSTEM_LOCALE = 4,
+            
+            /** Represents the size of the [enum LayoutDirection] enum. */
+            LAYOUT_DIRECTION_MAX = 5,
+            LAYOUT_DIRECTION_LOCALE = 1,
+        }
+        enum WindowInitialPosition {
+            /** Initial window position is determined by [member position]. */
+            WINDOW_INITIAL_POSITION_ABSOLUTE = 0,
+            
+            /** Initial window position is the center of the primary screen. */
+            WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN = 1,
+            
+            /** Initial window position is the center of the main window screen. */
+            WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN = 2,
+            
+            /** Initial window position is the center of [member current_screen] screen. */
+            WINDOW_INITIAL_POSITION_CENTER_OTHER_SCREEN = 3,
+            
+            /** Initial window position is the center of the screen containing the mouse pointer. */
+            WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS = 4,
+            
+            /** Initial window position is the center of the screen containing the window with the keyboard focus. */
+            WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS = 5,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWindow extends __NameMapViewport {
+    }
+    /** Base class for all windows, dialogs, and popups.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_window.html  
+     */
+    class Window<Map extends NodePathMap = any> extends Viewport<Map> {
+        /** Emitted when [Window]'s visibility changes, right before [signal visibility_changed]. */
+        static readonly NOTIFICATION_VISIBILITY_CHANGED = 30
+        
+        /** Sent when the node needs to refresh its theme items. This happens in one of the following cases:  
+         *  - The [member theme] property is changed on this node or any of its ancestors.  
+         *  - The [member theme_type_variation] property is changed on this node.  
+         *  - The node enters the scene tree.  
+         *      
+         *  **Note:** As an optimization, this notification won't be sent from changes that occur while this node is outside of the scene tree. Instead, all of the theme item updates can be applied at once when the node enters the scene tree.  
+         */
+        static readonly NOTIFICATION_THEME_CHANGED = 32
+        constructor(identifier?: any)
+        
+        /** Virtual method to be implemented by the user. Overrides the value returned by [method get_contents_minimum_size]. */
+        /* gdvirtual */ _get_contents_minimum_size(): Vector2
+        
+        /** Centers the window in the current screen. If the window is embedded, it is centered in the embedder [Viewport] instead. */
+        move_to_center(): void
+        
+        /** Resets the size to the minimum size, which is the max of [member min_size] and (if [member wrap_controls] is enabled) [method get_contents_minimum_size]. This is equivalent to calling `set_size(Vector2i())` (or any size below the minimum). */
+        reset_size(): void
+        
+        /** Returns the window's position including its border.  
+         *      
+         *  **Note:** If [member visible] is `false`, this method returns the same value as [member position].  
+         */
+        get_position_with_decorations(): Vector2i
+        
+        /** Returns the window's size including its border.  
+         *      
+         *  **Note:** If [member visible] is `false`, this method returns the same value as [member size].  
+         */
+        get_size_with_decorations(): Vector2i
+        
+        /** Sets a specified window flag. */
+        set_flag(flag: Window.Flags, enabled: boolean): void
+        
+        /** Returns `true` if the [param flag] is set. */
+        get_flag(flag: Window.Flags): boolean
+        
+        /** Returns `true` if the window can be maximized (the maximize button is enabled). */
+        is_maximize_allowed(): boolean
+        
+        /** Tells the OS that the [Window] needs an attention. This makes the window stand out in some way depending on the system, e.g. it might blink on the task bar. */
+        request_attention(): void
+        
+        /** Causes the window to grab focus, allowing it to receive user input. */
+        move_to_foreground(): void
+        
+        /** Hides the window. This is not the same as minimized state. Hidden window can't be interacted with and needs to be made visible with [method show]. */
+        hide(): void
+        
+        /** Makes the [Window] appear. This enables interactions with the [Window] and doesn't change any of its property other than visibility (unlike e.g. [method popup]). */
+        show(): void
+        
+        /** If [param unparent] is `true`, the window is automatically unparented when going invisible.  
+         *      
+         *  **Note:** Make sure to keep a reference to the node, otherwise it will be orphaned. You also need to manually call [method Node.queue_free] to free the window if it's not parented.  
+         */
+        set_unparent_when_invisible(unparent: boolean): void
+        
+        /** Returns whether the window is being drawn to the screen. */
+        can_draw(): boolean
+        
+        /** Returns `true` if the window is focused. */
+        has_focus(): boolean
+        
+        /** Causes the window to grab focus, allowing it to receive user input. */
+        grab_focus(): void
+        
+        /** Starts an interactive drag operation on the window, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's title bar. Using this method allows the window to participate in space switching, tiling, and other system features. */
+        start_drag(): void
+        
+        /** Starts an interactive resize operation on the window, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's edge. */
+        start_resize(edge: DisplayServer.WindowResizeEdge): void
+        
+        /** If [param active] is `true`, enables system's native IME (Input Method Editor). */
+        set_ime_active(active: boolean): void
+        
+        /** Moves IME to the given position. */
+        set_ime_position(position: Vector2i): void
+        
+        /** Returns `true` if the window is currently embedded in another window. */
+        is_embedded(): boolean
+        
+        /** Returns the combined minimum size from the child [Control] nodes of the window. Use [method child_controls_changed] to update it when child nodes have changed.  
+         *  The value returned by this method can be overridden with [method _get_contents_minimum_size].  
+         */
+        get_contents_minimum_size(): Vector2
+        
+        /** Requests an update of the [Window] size to fit underlying [Control] nodes. */
+        child_controls_changed(): void
+        
+        /** Prevents `*_theme_*_override` methods from emitting [constant NOTIFICATION_THEME_CHANGED] until [method end_bulk_theme_override] is called. */
+        begin_bulk_theme_override(): void
+        
+        /** Ends a bulk theme override update. See [method begin_bulk_theme_override]. */
+        end_bulk_theme_override(): void
+        
+        /** Creates a local override for a theme icon with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_icon_override].  
+         *  See also [method get_theme_icon].  
+         */
+        add_theme_icon_override(name: StringName, texture: Texture2D): void
+        
+        /** Creates a local override for a theme [StyleBox] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_stylebox_override].  
+         *  See also [method get_theme_stylebox] and [method Control.add_theme_stylebox_override] for more details.  
+         */
+        add_theme_stylebox_override(name: StringName, stylebox: StyleBox): void
+        
+        /** Creates a local override for a theme [Font] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_font_override].  
+         *  See also [method get_theme_font].  
+         */
+        add_theme_font_override(name: StringName, font: Font): void
+        
+        /** Creates a local override for a theme font size with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_font_size_override].  
+         *  See also [method get_theme_font_size].  
+         */
+        add_theme_font_size_override(name: StringName, font_size: int64): void
+        
+        /** Creates a local override for a theme [Color] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_color_override].  
+         *  See also [method get_theme_color] and [method Control.add_theme_color_override] for more details.  
+         */
+        add_theme_color_override(name: StringName, color: Color): void
+        
+        /** Creates a local override for a theme constant with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_constant_override].  
+         *  See also [method get_theme_constant].  
+         */
+        add_theme_constant_override(name: StringName, constant: int64): void
+        
+        /** Removes a local override for a theme icon with the specified [param name] previously added by [method add_theme_icon_override] or via the Inspector dock. */
+        remove_theme_icon_override(name: StringName): void
+        
+        /** Removes a local override for a theme [StyleBox] with the specified [param name] previously added by [method add_theme_stylebox_override] or via the Inspector dock. */
+        remove_theme_stylebox_override(name: StringName): void
+        
+        /** Removes a local override for a theme [Font] with the specified [param name] previously added by [method add_theme_font_override] or via the Inspector dock. */
+        remove_theme_font_override(name: StringName): void
+        
+        /** Removes a local override for a theme font size with the specified [param name] previously added by [method add_theme_font_size_override] or via the Inspector dock. */
+        remove_theme_font_size_override(name: StringName): void
+        
+        /** Removes a local override for a theme [Color] with the specified [param name] previously added by [method add_theme_color_override] or via the Inspector dock. */
+        remove_theme_color_override(name: StringName): void
+        
+        /** Removes a local override for a theme constant with the specified [param name] previously added by [method add_theme_constant_override] or via the Inspector dock. */
+        remove_theme_constant_override(name: StringName): void
+        
+        /** Returns an icon from the first matching [Theme] in the tree if that [Theme] has an icon item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        get_theme_icon(name: StringName, theme_type?: StringName /* = '' */): null | Texture2D
+        
+        /** Returns a [StyleBox] from the first matching [Theme] in the tree if that [Theme] has a stylebox item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        get_theme_stylebox(name: StringName, theme_type?: StringName /* = '' */): null | StyleBox
+        
+        /** Returns a [Font] from the first matching [Theme] in the tree if that [Theme] has a font item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        get_theme_font(name: StringName, theme_type?: StringName /* = '' */): null | Font
+        
+        /** Returns a font size from the first matching [Theme] in the tree if that [Theme] has a font size item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        get_theme_font_size(name: StringName, theme_type?: StringName /* = '' */): int64
+        
+        /** Returns a [Color] from the first matching [Theme] in the tree if that [Theme] has a color item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for more details.  
+         */
+        get_theme_color(name: StringName, theme_type?: StringName /* = '' */): Color
+        
+        /** Returns a constant from the first matching [Theme] in the tree if that [Theme] has a constant item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for more details.  
+         */
+        get_theme_constant(name: StringName, theme_type?: StringName /* = '' */): int64
+        
+        /** Returns `true` if there is a local override for a theme icon with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_icon_override].  
+         */
+        has_theme_icon_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme [StyleBox] with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_stylebox_override].  
+         */
+        has_theme_stylebox_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme [Font] with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_font_override].  
+         */
+        has_theme_font_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme font size with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_font_size_override].  
+         */
+        has_theme_font_size_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme [Color] with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_color_override].  
+         */
+        has_theme_color_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme constant with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_constant_override].  
+         */
+        has_theme_constant_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has an icon item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        has_theme_icon(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a stylebox item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        has_theme_stylebox(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a font item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        has_theme_font(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a font size item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        has_theme_font_size(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a color item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        has_theme_color(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a constant item with the specified [param name] and [param theme_type].  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        has_theme_constant(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns the default base scale value from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_base_scale] value.  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        get_theme_default_base_scale(): float64
+        
+        /** Returns the default font from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_font] value.  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        get_theme_default_font(): null | Font
+        
+        /** Returns the default font size value from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_font_size] value.  
+         *  See [method Control.get_theme_color] for details.  
+         */
+        get_theme_default_font_size(): int64
+        
+        /** Returns the ID of the window. */
+        get_window_id(): int64
+        
+        /** Returns the focused window. */
+        static get_focused_window(): null | Window
+        
+        /** Sets layout direction and text writing direction. Right-to-left layouts are necessary for certain languages (e.g. Arabic and Hebrew). */
+        set_layout_direction(direction: Window.LayoutDirection): void
+        
+        /** Returns layout direction and text writing direction. */
+        get_layout_direction(): Window.LayoutDirection
+        
+        /** Returns `true` if the layout is right-to-left. */
+        is_layout_rtl(): boolean
+        
+        /** Enables font oversampling. This makes fonts look better when they are scaled up. */
+        set_use_font_oversampling(enable: boolean): void
+        
+        /** Returns `true` if font oversampling is enabled. See [method set_use_font_oversampling]. */
+        is_using_font_oversampling(): boolean
+        
+        /** Shows the [Window] and makes it transient (see [member transient]). If [param rect] is provided, it will be set as the [Window]'s size. Fails if called on the main window.  
+         *  If [member ProjectSettings.display/window/subwindows/embed_subwindows] is `true` (single-window mode), [param rect]'s coordinates are global and relative to the main window's top-left corner (excluding window decorations). If [param rect]'s position coordinates are negative, the window will be located outside the main window and may not be visible as a result.  
+         *  If [member ProjectSettings.display/window/subwindows/embed_subwindows] is `false` (multi-window mode), [param rect]'s coordinates are global and relative to the top-left corner of the leftmost screen. If [param rect]'s position coordinates are negative, the window will be placed at the top-left corner of the screen.  
+         *      
+         *  **Note:** [param rect] must be in global coordinates if specified.  
+         */
+        popup(rect?: Rect2i /* = new Rect2i(0, 0, 0, 0) */): void
+        
+        /** Popups the [Window] with a position shifted by parent [Window]'s position. If the [Window] is embedded, has the same effect as [method popup]. */
+        popup_on_parent(parent_rect: Rect2i): void
+        
+        /** Popups the [Window] at the center of the current screen, with optionally given minimum size. If the [Window] is embedded, it will be centered in the parent [Viewport] instead.  
+         *      
+         *  **Note:** Calling it with the default value of [param minsize] is equivalent to calling it with [member size].  
+         */
+        popup_centered(minsize?: Vector2i /* = Vector2i.ZERO */): void
+        
+        /** If [Window] is embedded, popups the [Window] centered inside its embedder and sets its size as a [param ratio] of embedder's size.  
+         *  If [Window] is a native window, popups the [Window] centered inside the screen of its parent [Window] and sets its size as a [param ratio] of the screen size.  
+         */
+        popup_centered_ratio(ratio?: float64 /* = 0.8 */): void
+        
+        /** Popups the [Window] centered inside its parent [Window]. [param fallback_ratio] determines the maximum size of the [Window], in relation to its parent.  
+         *      
+         *  **Note:** Calling it with the default value of [param minsize] is equivalent to calling it with [member size].  
+         */
+        popup_centered_clamped(minsize?: Vector2i /* = Vector2i.ZERO */, fallback_ratio?: float64 /* = 0.75 */): void
+        
+        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup] on it. The dialog must have no current parent, otherwise the method fails.  
+         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
+         */
+        popup_exclusive(from_node: Node, rect?: Rect2i /* = new Rect2i(0, 0, 0, 0) */): void
+        
+        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup_on_parent] on it. The dialog must have no current parent, otherwise the method fails.  
+         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
+         */
+        popup_exclusive_on_parent(from_node: Node, parent_rect: Rect2i): void
+        
+        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup_centered] on it. The dialog must have no current parent, otherwise the method fails.  
+         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
+         */
+        popup_exclusive_centered(from_node: Node, minsize?: Vector2i /* = Vector2i.ZERO */): void
+        
+        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup_centered_ratio] on it. The dialog must have no current parent, otherwise the method fails.  
+         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
+         */
+        popup_exclusive_centered_ratio(from_node: Node, ratio?: float64 /* = 0.8 */): void
+        
+        /** Attempts to parent this dialog to the last exclusive window relative to [param from_node], and then calls [method Window.popup_centered_clamped] on it. The dialog must have no current parent, otherwise the method fails.  
+         *  See also [method set_unparent_when_invisible] and [method Node.get_last_exclusive_window].  
+         */
+        popup_exclusive_centered_clamped(from_node: Node, minsize?: Vector2i /* = Vector2i.ZERO */, fallback_ratio?: float64 /* = 0.75 */): void
+        
+        /** Set's the window's current mode.  
+         *      
+         *  **Note:** Fullscreen mode is not exclusive full screen on Windows and Linux.  
+         *      
+         *  **Note:** This method only works with native windows, i.e. the main window and [Window]-derived nodes when [member Viewport.gui_embed_subwindows] is disabled in the main viewport.  
+         */
+        get mode(): int64
+        set mode(value: int64)
+        
+        /** The window's title. If the [Window] is native, title styles set in [Theme] will have no effect. */
+        get title(): string
+        set title(value: string)
+        
+        /** Specifies the initial type of position for the [Window]. */
+        get initial_position(): int64
+        set initial_position(value: int64)
+        
+        /** The window's position in pixels.  
+         *  If [member ProjectSettings.display/window/subwindows/embed_subwindows] is `false`, the position is in absolute screen coordinates. This typically applies to editor plugins. If the setting is `true`, the window's position is in the coordinates of its parent [Viewport].  
+         *      
+         *  **Note:** This property only works if [member initial_position] is set to [constant WINDOW_INITIAL_POSITION_ABSOLUTE].  
+         */
+        get position(): Vector2i
+        set position(value: Vector2i)
+        
+        /** The window's size in pixels. See also [member content_scale_size], which doesn't set the window's physical size but affects how scaling works relative to the current [member content_scale_mode]. */
+        get size(): Vector2i
+        set size(value: Vector2i)
+        
+        /** The screen the window is currently on. */
+        get current_screen(): int64
+        set current_screen(value: int64)
+        
+        /** If set, defines the window's custom decoration area which will receive mouse input, even if normal input to the window is blocked (such as when it has an exclusive child opened). See also [signal nonclient_window_input]. */
+        get nonclient_area(): Rect2i
+        set nonclient_area(value: Rect2i)
+        
+        /** Sets a polygonal region of the window which accepts mouse events. Mouse events outside the region will be passed through.  
+         *  Passing an empty array will disable passthrough support (all mouse events will be intercepted by the window, which is the default behavior).  
+         *    
+         *      
+         *  **Note:** This property is ignored if [member mouse_passthrough] is set to `true`.  
+         *      
+         *  **Note:** On Windows, the portion of a window that lies outside the region is not drawn, while on Linux (X11) and macOS it is.  
+         *      
+         *  **Note:** This property is implemented on Linux (X11), macOS and Windows.  
+         */
+        get mouse_passthrough_polygon(): PackedVector2Array
+        set mouse_passthrough_polygon(value: PackedVector2Array | Vector2[])
+        
+        /** If `true`, the window is visible. */
+        get visible(): boolean
+        set visible(value: boolean)
+        
+        /** If `true`, the window's size will automatically update when a child node is added or removed, ignoring [member min_size] if the new size is bigger.  
+         *  If `false`, you need to call [method child_controls_changed] manually.  
+         */
+        get wrap_controls(): boolean
+        set wrap_controls(value: boolean)
+        
+        /** If `true`, the [Window] is transient, i.e. it's considered a child of another [Window]. The transient window will be destroyed with its transient parent and will return focus to their parent when closed. The transient window is displayed on top of a non-exclusive full-screen parent window. Transient windows can't enter full-screen mode.  
+         *  Note that behavior might be different depending on the platform.  
+         */
+        get transient(): boolean
+        set transient(value: boolean)
+        
+        /** If `true`, and the [Window] is [member transient], this window will (at the time of becoming visible) become transient to the currently focused window instead of the immediate parent window in the hierarchy. Note that the transient parent is assigned at the time this window becomes visible, so changing it afterwards has no effect until re-shown. */
+        get transient_to_focused(): boolean
+        set transient_to_focused(value: boolean)
+        
+        /** If `true`, the [Window] will be in exclusive mode. Exclusive windows are always on top of their parent and will block all input going to the parent [Window].  
+         *  Needs [member transient] enabled to work.  
+         */
+        get exclusive(): boolean
+        set exclusive(value: boolean)
+        
+        /** If `true`, the window can't be resized. */
+        get unresizable(): boolean
+        set unresizable(value: boolean)
+        
+        /** If `true`, the window will have no borders. */
+        get borderless(): boolean
+        set borderless(value: boolean)
+        
+        /** If `true`, the window will be on top of all other windows. Does not work if [member transient] is enabled. */
+        get always_on_top(): boolean
+        set always_on_top(value: boolean)
+        
+        /** If `true`, the [Window]'s background can be transparent. This is best used with embedded windows.  
+         *      
+         *  **Note:** Transparency support is implemented on Linux, macOS and Windows, but availability might vary depending on GPU driver, display manager, and compositor capabilities.  
+         *      
+         *  **Note:** This property has no effect if [member ProjectSettings.display/window/per_pixel_transparency/allowed] is set to `false`.  
+         */
+        get transparent(): boolean
+        set transparent(value: boolean)
+        
+        /** If `true`, the [Window] can't be focused nor interacted with. It can still be visible. */
+        get unfocusable(): boolean
+        set unfocusable(value: boolean)
+        
+        /** If `true`, the [Window] will be considered a popup. Popups are sub-windows that don't show as separate windows in system's window manager's window list and will send close request when anything is clicked outside of them (unless [member exclusive] is enabled). */
+        get popup_window(): boolean
+        set popup_window(value: boolean)
+        
+        /** If `true`, the [Window] contents is expanded to the full size of the window, window title bar is transparent.  
+         *      
+         *  **Note:** This property is implemented only on macOS.  
+         *      
+         *  **Note:** This property only works with native windows.  
+         */
+        get extend_to_title(): boolean
+        set extend_to_title(value: boolean)
+        
+        /** If `true`, all mouse events will be passed to the underlying window of the same application. See also [member mouse_passthrough_polygon].  
+         *      
+         *  **Note:** This property is implemented on Linux (X11), macOS and Windows.  
+         *      
+         *  **Note:** This property only works with native windows.  
+         */
+        get mouse_passthrough(): boolean
+        set mouse_passthrough(value: boolean)
+        
+        /** If `true`, the [Window] will override the OS window style to display sharp corners.  
+         *      
+         *  **Note:** This property is implemented only on Windows (11).  
+         *      
+         *  **Note:** This property only works with native windows.  
+         */
+        get sharp_corners(): boolean
+        set sharp_corners(value: boolean)
+        
+        /** If `true`, the [Window] is excluded from screenshots taken by [method DisplayServer.screen_get_image], [method DisplayServer.screen_get_image_rect], and [method DisplayServer.screen_get_pixel].  
+         *      
+         *  **Note:** This property is implemented on macOS and Windows.  
+         *      
+         *  **Note:** Enabling this setting will prevent standard screenshot methods from capturing a window image, but does **NOT** guarantee that other apps won't be able to capture an image. It should not be used as a DRM or security measure.  
+         */
+        get exclude_from_capture(): boolean
+        set exclude_from_capture(value: boolean)
+        
+        /** If `true`, the [Window] will signal to the window manager that it is supposed to be an implementation-defined "popup" (usually a floating, borderless, untileable and immovable child window). */
+        get popup_wm_hint(): boolean
+        set popup_wm_hint(value: boolean)
+        
+        /** If `true`, the [Window]'s minimize button is disabled.  
+         *      
+         *  **Note:** If both minimize and maximize buttons are disabled, buttons are fully hidden, and only close button is visible.  
+         *      
+         *  **Note:** This property is implemented only on macOS and Windows.  
+         */
+        get minimize_disabled(): boolean
+        set minimize_disabled(value: boolean)
+        
+        /** If `true`, the [Window]'s maximize button is disabled.  
+         *      
+         *  **Note:** If both minimize and maximize buttons are disabled, buttons are fully hidden, and only close button is visible.  
+         *      
+         *  **Note:** This property is implemented only on macOS and Windows.  
+         */
+        get maximize_disabled(): boolean
+        set maximize_disabled(value: boolean)
+        
+        /** If `true`, native window will be used regardless of parent viewport and project settings. */
+        get force_native(): boolean
+        set force_native(value: boolean)
+        
+        /** If non-zero, the [Window] can't be resized to be smaller than this size.  
+         *      
+         *  **Note:** This property will be ignored in favor of [method get_contents_minimum_size] if [member wrap_controls] is enabled and if its size is bigger.  
+         */
+        get min_size(): Vector2i
+        set min_size(value: Vector2i)
+        
+        /** If non-zero, the [Window] can't be resized to be bigger than this size.  
+         *      
+         *  **Note:** This property will be ignored if the value is lower than [member min_size].  
+         */
+        get max_size(): Vector2i
+        set max_size(value: Vector2i)
+        
+        /** If `true`, the [Window] width is expanded to keep the title bar text fully visible. */
+        get keep_title_visible(): boolean
+        set keep_title_visible(value: boolean)
+        
+        /** The content's base size in "virtual" pixels. Not to be confused with [member size], which sets the actual window's physical size in pixels. If set to a value greater than `0` and [member content_scale_mode] is set to a value other than [constant CONTENT_SCALE_MODE_DISABLED], the [Window]'s content will be scaled when the window is resized to a different size. Higher values will make the content appear  *smaller* , as it will be able to fit more of the project in view. On the root [Window], this is set to match [member ProjectSettings.display/window/size/viewport_width] and [member ProjectSettings.display/window/size/viewport_height] by default.  
+         *  For example, when using [constant CONTENT_SCALE_MODE_CANVAS_ITEMS] and [member content_scale_size] set to `Vector2i(1280, 720)`, using a window size of `2560×1440` will make 2D elements appear at double their original size, as the content is scaled by a factor of `2.0` (`2560.0 / 1280.0 = 2.0`, `1440.0 / 720.0 = 2.0`).  
+         *  See [url=https://docs.godotengine.org/en/4.6/tutorials/rendering/multiple_resolutions.html#base-size]the Base size section of the Multiple resolutions documentation[/url] for details.  
+         */
+        get content_scale_size(): Vector2i
+        set content_scale_size(value: Vector2i)
+        
+        /** Specifies how the content is scaled when the [Window] is resized. */
+        get content_scale_mode(): int64
+        set content_scale_mode(value: int64)
+        
+        /** Specifies how the content's aspect behaves when the [Window] is resized. The base aspect is determined by [member content_scale_size]. */
+        get content_scale_aspect(): int64
+        set content_scale_aspect(value: int64)
+        
+        /** The policy to use to determine the final scale factor for 2D elements. This affects how [member content_scale_factor] is applied, in addition to the automatic scale factor determined by [member content_scale_size]. */
+        get content_scale_stretch(): int64
+        set content_scale_stretch(value: int64)
+        
+        /** Specifies the base scale of [Window]'s content when its [member size] is equal to [member content_scale_size]. See also [method Viewport.get_stretch_transform]. */
+        get content_scale_factor(): float64
+        set content_scale_factor(value: float64)
+        
+        /** Toggles if any text should automatically change to its translated version depending on the current locale. */
+        get auto_translate(): boolean
+        set auto_translate(value: boolean)
+        
+        /** The human-readable node name that is reported to assistive apps. */
+        get accessibility_name(): string
+        set accessibility_name(value: string)
+        
+        /** The human-readable node description that is reported to assistive apps. */
+        get accessibility_description(): string
+        set accessibility_description(value: string)
+        
+        /** The [Theme] resource this node and all its [Control] and [Window] children use. If a child node has its own [Theme] resource set, theme items are merged with child's definitions having higher priority.  
+         *      
+         *  **Note:** [Window] styles will have no effect unless the window is embedded.  
+         */
+        get theme(): null | Theme
+        set theme(value: null | Theme)
+        
+        /** The name of a theme type variation used by this [Window] to look up its own theme items. See [member Control.theme_type_variation] for more details. */
+        get theme_type_variation(): string
+        set theme_type_variation(value: string)
+        
+        /** Emitted when the [Window] is currently focused and receives any input, passing the received event as an argument. The event's position, if present, is in the embedder's coordinate system. */
+        readonly window_input: Signal<(event: InputEvent) => void>
+        
+        /** Emitted when the mouse event is received by the custom decoration area defined by [member nonclient_area], and normal input to the window is blocked (such as when it has an exclusive child opened). [param event]'s position is in the embedder's coordinate system. */
+        readonly nonclient_window_input: Signal<(event: InputEvent) => void>
+        
+        /** Emitted when files are dragged from the OS file manager and dropped in the game window. The argument is a list of file paths.  
+         *    
+         *      
+         *  **Note:** This signal only works with native windows, i.e. the main window and [Window]-derived nodes when [member Viewport.gui_embed_subwindows] is disabled in the main viewport.  
+         */
+        readonly files_dropped: Signal<(files: PackedStringArray) => void>
+        
+        /** Emitted when the mouse cursor enters the [Window]'s visible area, that is not occluded behind other [Control]s or windows, provided its [member Viewport.gui_disable_input] is `false` and regardless if it's currently focused or not. */
+        readonly mouse_entered: Signal<() => void>
+        
+        /** Emitted when the mouse cursor leaves the [Window]'s visible area, that is not occluded behind other [Control]s or windows, provided its [member Viewport.gui_disable_input] is `false` and regardless if it's currently focused or not. */
+        readonly mouse_exited: Signal<() => void>
+        
+        /** Emitted when the [Window] gains focus. */
+        readonly focus_entered: Signal<() => void>
+        
+        /** Emitted when the [Window] loses its focus. */
+        readonly focus_exited: Signal<() => void>
+        
+        /** Emitted when the [Window]'s close button is pressed or when [member popup_window] is enabled and user clicks outside the window.  
+         *  This signal can be used to handle window closing, e.g. by connecting it to [method hide].  
+         */
+        readonly close_requested: Signal<() => void>
+        
+        /** Emitted when a go back request is sent (e.g. pressing the "Back" button on Android), right after [constant Node.NOTIFICATION_WM_GO_BACK_REQUEST]. */
+        readonly go_back_requested: Signal<() => void>
+        
+        /** Emitted when [Window] is made visible or disappears. */
+        readonly visibility_changed: Signal<() => void>
+        
+        /** Emitted right after [method popup] call, before the [Window] appears or does anything. */
+        readonly about_to_popup: Signal<() => void>
+        
+        /** Emitted when the [constant NOTIFICATION_THEME_CHANGED] notification is sent. */
+        readonly theme_changed: Signal<() => void>
+        
+        /** Emitted when the [Window]'s DPI changes as a result of OS-level changes (e.g. moving the window from a Retina display to a lower resolution one).  
+         *      
+         *  **Note:** Only implemented on macOS and Linux (Wayland).  
+         */
+        readonly dpi_changed: Signal<() => void>
+        
+        /** Emitted when window title bar decorations are changed, e.g. macOS window enter/exit full screen mode, or extend-to-title flag is changed. */
+        readonly titlebar_changed: Signal<() => void>
+        
+        /** Emitted when window title bar text is changed. */
+        readonly title_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWindow;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWorld2D extends __NameMapResource {
+    }
+    /** A resource that holds all components of a 2D world, such as a canvas and a physics space.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_world2d.html  
+     */
+    class World2D extends Resource {
+        constructor(identifier?: any)
+        /** The [RID] of this world's canvas resource. Used by the [RenderingServer] for 2D drawing. */
+        get canvas(): RID
+        
+        /** The [RID] of this world's navigation map. Used by the [NavigationServer2D]. */
+        get navigation_map(): RID
+        
+        /** The [RID] of this world's physics space resource. Used by the [PhysicsServer2D] for 2D physics, treating it as both a space and an area. */
+        get space(): RID
+        
+        /** Direct access to the world's physics 2D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to [method Node._physics_process] in the main thread. */
+        get direct_space_state(): null | PhysicsDirectSpaceState2D
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWorld2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWorld3D extends __NameMapResource {
+    }
+    /** A resource that holds all components of a 3D world, such as a visual scenario and a physics space.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_world3d.html  
+     */
+    class World3D extends Resource {
+        constructor(identifier?: any)
+        /** The World3D's [Environment]. */
+        get environment(): null | Environment
+        set environment(value: null | Environment)
+        
+        /** The World3D's fallback environment will be used if [member environment] fails or is missing. */
+        get fallback_environment(): null | Environment
+        set fallback_environment(value: null | Environment)
+        
+        /** The default [CameraAttributes] resource to use if none set on the [Camera3D]. */
+        get camera_attributes(): null | CameraAttributesPractical | CameraAttributesPhysical
+        set camera_attributes(value: null | CameraAttributesPractical | CameraAttributesPhysical)
+        
+        /** The World3D's physics space. */
+        get space(): RID
+        
+        /** The [RID] of this world's navigation map. Used by the [NavigationServer3D]. */
+        get navigation_map(): RID
+        
+        /** The World3D's visual scenario. */
+        get scenario(): RID
+        
+        /** Direct access to the world's physics 3D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to [method Node._physics_process] in the main thread. */
+        get direct_space_state(): null | PhysicsDirectSpaceState3D
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWorld3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWorldBoundaryShape2D extends __NameMapShape2D {
+    }
+    /** A 2D world boundary (half-plane) shape used for physics collision.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_worldboundaryshape2d.html  
+     */
+    class WorldBoundaryShape2D extends Shape2D {
+        constructor(identifier?: any)
+        /** The line's normal, typically a unit vector. Its direction indicates the non-colliding half-plane. Can be of any length but zero. Defaults to [constant Vector2.UP]. */
+        get normal(): Vector2
+        set normal(value: Vector2)
+        
+        /** The distance from the origin to the line, expressed in terms of [member normal] (according to its direction and magnitude). Actual absolute distance from the origin to the line can be calculated as `abs(distance) / normal.length()`.  
+         *  In the scalar equation of the line `ax + by = d`, this is `d`, while the `(a, b)` coordinates are represented by the [member normal] property.  
+         */
+        get distance(): float64
+        set distance(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWorldBoundaryShape2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWorldBoundaryShape3D extends __NameMapShape3D {
+    }
+    /** A 3D world boundary (half-space) shape used for physics collision.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_worldboundaryshape3d.html  
+     */
+    class WorldBoundaryShape3D extends Shape3D {
+        constructor(identifier?: any)
+        /** The [Plane] used by the [WorldBoundaryShape3D] for collision. */
+        get plane(): Plane
+        set plane(value: Plane)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWorldBoundaryShape3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapWorldEnvironment extends __NameMapNode {
+    }
+    /** Default environment properties for the entire scene (post-processing effects, lighting and background settings).  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_worldenvironment.html  
+     */
+    class WorldEnvironment<Map extends NodePathMap = any> extends Node<Map> {
+        constructor(identifier?: any)
+        /** The [Environment] resource used by this [WorldEnvironment], defining the default properties. */
+        get environment(): null | Environment
+        set environment(value: null | Environment)
+        
+        /** The default [CameraAttributes] resource to use if none set on the [Camera3D]. */
+        get camera_attributes(): null | CameraAttributesPractical | CameraAttributesPhysical
+        set camera_attributes(value: null | CameraAttributesPractical | CameraAttributesPhysical)
+        
+        /** The default [Compositor] resource to use if none set on the [Camera3D]. */
+        get compositor(): null | Compositor
+        set compositor(value: null | Compositor)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapWorldEnvironment;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapX509Certificate extends __NameMapResource {
+    }
+    /** An X509 certificate (e.g. for TLS).  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_x509certificate.html  
+     */
+    class X509Certificate extends Resource {
+        constructor(identifier?: any)
+        /** Saves a certificate to the given [param path] (should be a "*.crt" file). */
+        save(path: string): Error
+        
+        /** Loads a certificate from [param path] ("*.crt" file). */
+        load(path: string): Error
+        
+        /** Returns a string representation of the certificate, or an empty string if the certificate is invalid. */
+        save_to_string(): string
+        
+        /** Loads a certificate from the given [param string]. */
+        load_from_string(string_: string): Error
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapX509Certificate;
+    }
+    namespace XMLParser {
+        enum NodeType {
+            /** There's no node (no file or buffer opened). */
+            NODE_NONE = 0,
+            
+            /** An element node type, also known as a tag, e.g. `<title>`. */
+            NODE_ELEMENT = 1,
+            
+            /** An end of element node type, e.g. `</title>`. */
+            NODE_ELEMENT_END = 2,
+            
+            /** A text node type, i.e. text that is not inside an element. This includes whitespace. */
+            NODE_TEXT = 3,
+            
+            /** A comment node type, e.g. `<!--A comment-->`. */
+            NODE_COMMENT = 4,
+            
+            /** A node type for CDATA (Character Data) sections, e.g. `<![CDATA[CDATA section]]>`. */
+            NODE_CDATA = 5,
+            
+            /** An unknown node type. */
+            NODE_UNKNOWN = 6,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapXMLParser extends __NameMapRefCounted {
+    }
+    /** Provides a low-level interface for creating parsers for XML files.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_xmlparser.html  
+     */
+    class XMLParser extends RefCounted {
+        constructor(identifier?: any)
+        /** Parses the next node in the file. This method returns an error code. */
+        read(): Error
+        
+        /** Returns the type of the current node. Compare with [enum NodeType] constants. */
+        get_node_type(): XMLParser.NodeType
+        
+        /** Returns the name of a node. This method will raise an error if the currently parsed node is a text node.  
+         *      
+         *  **Note:** The content of a [constant NODE_CDATA] node and the comment string of a [constant NODE_COMMENT] node are also considered names.  
+         */
+        get_node_name(): string
+        
+        /** Returns the contents of a text node. This method will raise an error if the current parsed node is of any other type. */
+        get_node_data(): string
+        
+        /** Returns the byte offset of the currently parsed node since the beginning of the file or buffer. This is usually equivalent to the number of characters before the read position. */
+        get_node_offset(): int64
+        
+        /** Returns the number of attributes in the currently parsed element.  
+         *      
+         *  **Note:** If this method is used while the currently parsed node is not [constant NODE_ELEMENT] or [constant NODE_ELEMENT_END], this count will not be updated and will still reflect the last element.  
+         */
+        get_attribute_count(): int64
+        
+        /** Returns the name of an attribute of the currently parsed element, specified by the [param idx] index. */
+        get_attribute_name(idx: int64): string
+        
+        /** Returns the value of an attribute of the currently parsed element, specified by the [param idx] index. */
+        get_attribute_value(idx: int64): string
+        
+        /** Returns `true` if the currently parsed element has an attribute with the [param name]. */
+        has_attribute(name: string): boolean
+        
+        /** Returns the value of an attribute of the currently parsed element, specified by its [param name]. This method will raise an error if the element has no such attribute. */
+        get_named_attribute_value(name: string): string
+        
+        /** Returns the value of an attribute of the currently parsed element, specified by its [param name]. This method will return an empty string if the element has no such attribute. */
+        get_named_attribute_value_safe(name: string): string
+        
+        /** Returns `true` if the currently parsed element is empty, e.g. `<element />`. */
+        is_empty(): boolean
+        
+        /** Returns the current line in the parsed file, counting from 0. */
+        get_current_line(): int64
+        
+        /** Skips the current section. If the currently parsed node contains more inner nodes, they will be ignored and the cursor will go to the closing of the current element. */
+        skip_section(): void
+        
+        /** Moves the buffer cursor to a certain offset (since the beginning) and reads the next node there. This method returns an error code. */
+        seek(position: int64): Error
+        
+        /** Opens an XML [param file] for parsing. This method returns an error code. */
+        open(file: string): Error
+        
+        /** Opens an XML raw [param buffer] for parsing. This method returns an error code. */
+        open_buffer(buffer: PackedByteArray | byte[] | ArrayBuffer): Error
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapXMLParser;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapXRAnchor3D extends __NameMapXRNode3D {
+    }
+    /** An anchor point in AR space.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_xranchor3d.html  
+     */
+    class XRAnchor3D<Map extends NodePathMap = any> extends XRNode3D<Map> {
+        constructor(identifier?: any)
+        /** Returns the estimated size of the plane that was detected. Say when the anchor relates to a table in the real world, this is the estimated size of the surface of that table. */
+        get_size(): Vector3
+        
+        /** Returns a plane aligned with our anchor; handy for intersection testing. */
+        get_plane(): Plane
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapXRAnchor3D;
+    }
+    namespace XRBodyModifier3D {
+        enum BodyUpdate {
+            /** The skeleton's upper body joints are updated. */
+            BODY_UPDATE_UPPER_BODY = 1,
+            
+            /** The skeleton's lower body joints are updated. */
+            BODY_UPDATE_LOWER_BODY = 2,
+            
+            /** The skeleton's hand joints are updated. */
+            BODY_UPDATE_HANDS = 4,
+        }
+        enum BoneUpdate {
+            /** The skeleton's bones are fully updated (both position and rotation) to match the tracked bones. */
+            BONE_UPDATE_FULL = 0,
+            
+            /** The skeleton's bones are only rotated to align with the tracked bones, preserving bone length. */
+            BONE_UPDATE_ROTATION_ONLY = 1,
+            
+            /** Represents the size of the [enum BoneUpdate] enum. */
+            BONE_UPDATE_MAX = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapXRBodyModifier3D extends __NameMapSkeletonModifier3D {
+    }
+    /** A node for driving body meshes from [XRBodyTracker] data.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrbodymodifier3d.html  
+     */
+    class XRBodyModifier3D<Map extends NodePathMap = any> extends SkeletonModifier3D<Map> {
+        constructor(identifier?: any)
+        /** The name of the [XRBodyTracker] registered with [XRServer] to obtain the body tracking data from. */
+        get body_tracker(): string
+        set body_tracker(value: string)
+        
+        /** Specifies the body parts to update. */
+        get body_update(): int64
+        set body_update(value: int64)
+        
+        /** Specifies the type of updates to perform on the bones. */
+        get bone_update(): int64
+        set bone_update(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapXRBodyModifier3D;
+    }
+    namespace XRBodyTracker {
+        enum BodyFlags {
+            /** Upper body tracking supported. */
+            BODY_FLAG_UPPER_BODY_SUPPORTED = 1,
+            
+            /** Lower body tracking supported. */
+            BODY_FLAG_LOWER_BODY_SUPPORTED = 2,
+            
+            /** Hand tracking supported. */
+            BODY_FLAG_HANDS_SUPPORTED = 4,
+        }
+        enum Joint {
+            /** Root joint. */
+            JOINT_ROOT = 0,
+            
+            /** Hips joint. */
+            JOINT_HIPS = 1,
+            
+            /** Spine joint. */
+            JOINT_SPINE = 2,
+            
+            /** Chest joint. */
+            JOINT_CHEST = 3,
+            
+            /** Upper chest joint. */
+            JOINT_UPPER_CHEST = 4,
+            
+            /** Neck joint. */
+            JOINT_NECK = 5,
+            
+            /** Head joint. */
+            JOINT_HEAD = 6,
+            
+            /** Head tip joint. */
+            JOINT_HEAD_TIP = 7,
+            
+            /** Left shoulder joint. */
+            JOINT_LEFT_SHOULDER = 8,
+            
+            /** Left upper arm joint. */
+            JOINT_LEFT_UPPER_ARM = 9,
+            
+            /** Left lower arm joint. */
+            JOINT_LEFT_LOWER_ARM = 10,
+            
+            /** Right shoulder joint. */
+            JOINT_RIGHT_SHOULDER = 11,
+            
+            /** Right upper arm joint. */
+            JOINT_RIGHT_UPPER_ARM = 12,
+            
+            /** Right lower arm joint. */
+            JOINT_RIGHT_LOWER_ARM = 13,
+            
+            /** Left upper leg joint. */
+            JOINT_LEFT_UPPER_LEG = 14,
+            
+            /** Left lower leg joint. */
+            JOINT_LEFT_LOWER_LEG = 15,
+            
+            /** Left foot joint. */
+            JOINT_LEFT_FOOT = 16,
+            
+            /** Left toes joint. */
+            JOINT_LEFT_TOES = 17,
+            
+            /** Right upper leg joint. */
+            JOINT_RIGHT_UPPER_LEG = 18,
+            
+            /** Right lower leg joint. */
+            JOINT_RIGHT_LOWER_LEG = 19,
+            
+            /** Right foot joint. */
+            JOINT_RIGHT_FOOT = 20,
+            
+            /** Right toes joint. */
+            JOINT_RIGHT_TOES = 21,
+            
+            /** Left hand joint. */
+            JOINT_LEFT_HAND = 22,
+            
+            /** Left palm joint. */
+            JOINT_LEFT_PALM = 23,
+            
+            /** Left wrist joint. */
+            JOINT_LEFT_WRIST = 24,
+            
+            /** Left thumb metacarpal joint. */
+            JOINT_LEFT_THUMB_METACARPAL = 25,
+            
+            /** Left thumb phalanx proximal joint. */
+            JOINT_LEFT_THUMB_PHALANX_PROXIMAL = 26,
+            
+            /** Left thumb phalanx distal joint. */
+            JOINT_LEFT_THUMB_PHALANX_DISTAL = 27,
+            
+            /** Left thumb tip joint. */
+            JOINT_LEFT_THUMB_TIP = 28,
+            
+            /** Left index finger metacarpal joint. */
+            JOINT_LEFT_INDEX_FINGER_METACARPAL = 29,
+            
+            /** Left index finger phalanx proximal joint. */
+            JOINT_LEFT_INDEX_FINGER_PHALANX_PROXIMAL = 30,
+            
+            /** Left index finger phalanx intermediate joint. */
+            JOINT_LEFT_INDEX_FINGER_PHALANX_INTERMEDIATE = 31,
+            
+            /** Left index finger phalanx distal joint. */
+            JOINT_LEFT_INDEX_FINGER_PHALANX_DISTAL = 32,
+            
+            /** Left index finger tip joint. */
+            JOINT_LEFT_INDEX_FINGER_TIP = 33,
+            
+            /** Left middle finger metacarpal joint. */
+            JOINT_LEFT_MIDDLE_FINGER_METACARPAL = 34,
+            
+            /** Left middle finger phalanx proximal joint. */
+            JOINT_LEFT_MIDDLE_FINGER_PHALANX_PROXIMAL = 35,
+            
+            /** Left middle finger phalanx intermediate joint. */
+            JOINT_LEFT_MIDDLE_FINGER_PHALANX_INTERMEDIATE = 36,
+            
+            /** Left middle finger phalanx distal joint. */
+            JOINT_LEFT_MIDDLE_FINGER_PHALANX_DISTAL = 37,
+            
+            /** Left middle finger tip joint. */
+            JOINT_LEFT_MIDDLE_FINGER_TIP = 38,
+            
+            /** Left ring finger metacarpal joint. */
+            JOINT_LEFT_RING_FINGER_METACARPAL = 39,
+            
+            /** Left ring finger phalanx proximal joint. */
+            JOINT_LEFT_RING_FINGER_PHALANX_PROXIMAL = 40,
+            
+            /** Left ring finger phalanx intermediate joint. */
+            JOINT_LEFT_RING_FINGER_PHALANX_INTERMEDIATE = 41,
+            
+            /** Left ring finger phalanx distal joint. */
+            JOINT_LEFT_RING_FINGER_PHALANX_DISTAL = 42,
+            
+            /** Left ring finger tip joint. */
+            JOINT_LEFT_RING_FINGER_TIP = 43,
+            
+            /** Left pinky finger metacarpal joint. */
+            JOINT_LEFT_PINKY_FINGER_METACARPAL = 44,
+            
+            /** Left pinky finger phalanx proximal joint. */
+            JOINT_LEFT_PINKY_FINGER_PHALANX_PROXIMAL = 45,
+            
+            /** Left pinky finger phalanx intermediate joint. */
+            JOINT_LEFT_PINKY_FINGER_PHALANX_INTERMEDIATE = 46,
+            
+            /** Left pinky finger phalanx distal joint. */
+            JOINT_LEFT_PINKY_FINGER_PHALANX_DISTAL = 47,
+            
+            /** Left pinky finger tip joint. */
+            JOINT_LEFT_PINKY_FINGER_TIP = 48,
+            
+            /** Right hand joint. */
+            JOINT_RIGHT_HAND = 49,
+            
+            /** Right palm joint. */
+            JOINT_RIGHT_PALM = 50,
+            
+            /** Right wrist joint. */
+            JOINT_RIGHT_WRIST = 51,
+            
+            /** Right thumb metacarpal joint. */
+            JOINT_RIGHT_THUMB_METACARPAL = 52,
+            
+            /** Right thumb phalanx proximal joint. */
+            JOINT_RIGHT_THUMB_PHALANX_PROXIMAL = 53,
+            
+            /** Right thumb phalanx distal joint. */
+            JOINT_RIGHT_THUMB_PHALANX_DISTAL = 54,
+            
+            /** Right thumb tip joint. */
+            JOINT_RIGHT_THUMB_TIP = 55,
+            
+            /** Right index finger metacarpal joint. */
+            JOINT_RIGHT_INDEX_FINGER_METACARPAL = 56,
+            
+            /** Right index finger phalanx proximal joint. */
+            JOINT_RIGHT_INDEX_FINGER_PHALANX_PROXIMAL = 57,
+            
+            /** Right index finger phalanx intermediate joint. */
+            JOINT_RIGHT_INDEX_FINGER_PHALANX_INTERMEDIATE = 58,
+            
+            /** Right index finger phalanx distal joint. */
+            JOINT_RIGHT_INDEX_FINGER_PHALANX_DISTAL = 59,
+            
+            /** Right index finger tip joint. */
+            JOINT_RIGHT_INDEX_FINGER_TIP = 60,
+            
+            /** Right middle finger metacarpal joint. */
+            JOINT_RIGHT_MIDDLE_FINGER_METACARPAL = 61,
+            
+            /** Right middle finger phalanx proximal joint. */
+            JOINT_RIGHT_MIDDLE_FINGER_PHALANX_PROXIMAL = 62,
+            
+            /** Right middle finger phalanx intermediate joint. */
+            JOINT_RIGHT_MIDDLE_FINGER_PHALANX_INTERMEDIATE = 63,
+            
+            /** Right middle finger phalanx distal joint. */
+            JOINT_RIGHT_MIDDLE_FINGER_PHALANX_DISTAL = 64,
+            
+            /** Right middle finger tip joint. */
+            JOINT_RIGHT_MIDDLE_FINGER_TIP = 65,
+            
+            /** Right ring finger metacarpal joint. */
+            JOINT_RIGHT_RING_FINGER_METACARPAL = 66,
+            
+            /** Right ring finger phalanx proximal joint. */
+            JOINT_RIGHT_RING_FINGER_PHALANX_PROXIMAL = 67,
+            
+            /** Right ring finger phalanx intermediate joint. */
+            JOINT_RIGHT_RING_FINGER_PHALANX_INTERMEDIATE = 68,
+            
+            /** Right ring finger phalanx distal joint. */
+            JOINT_RIGHT_RING_FINGER_PHALANX_DISTAL = 69,
+            
+            /** Right ring finger tip joint. */
+            JOINT_RIGHT_RING_FINGER_TIP = 70,
+            
+            /** Right pinky finger metacarpal joint. */
+            JOINT_RIGHT_PINKY_FINGER_METACARPAL = 71,
+            
+            /** Right pinky finger phalanx proximal joint. */
+            JOINT_RIGHT_PINKY_FINGER_PHALANX_PROXIMAL = 72,
+            
+            /** Right pinky finger phalanx intermediate joint. */
+            JOINT_RIGHT_PINKY_FINGER_PHALANX_INTERMEDIATE = 73,
+            
+            /** Right pinky finger phalanx distal joint. */
+            JOINT_RIGHT_PINKY_FINGER_PHALANX_DISTAL = 74,
+            
+            /** Right pinky finger tip joint. */
+            JOINT_RIGHT_PINKY_FINGER_TIP = 75,
+            
+            /** Lower chest joint. */
+            JOINT_LOWER_CHEST = 76,
+            
+            /** Left scapula joint. */
+            JOINT_LEFT_SCAPULA = 77,
+            
+            /** Left wrist twist joint. */
+            JOINT_LEFT_WRIST_TWIST = 78,
+            
+            /** Right scapula joint. */
+            JOINT_RIGHT_SCAPULA = 79,
+            
+            /** Right wrist twist joint. */
+            JOINT_RIGHT_WRIST_TWIST = 80,
+            
+            /** Left foot twist joint. */
+            JOINT_LEFT_FOOT_TWIST = 81,
+            
+            /** Left heel joint. */
+            JOINT_LEFT_HEEL = 82,
+            
+            /** Left middle foot joint. */
+            JOINT_LEFT_MIDDLE_FOOT = 83,
+            
+            /** Right foot twist joint. */
+            JOINT_RIGHT_FOOT_TWIST = 84,
+            
+            /** Right heel joint. */
+            JOINT_RIGHT_HEEL = 85,
+            
+            /** Right middle foot joint. */
+            JOINT_RIGHT_MIDDLE_FOOT = 86,
+            
+            /** Represents the size of the [enum Joint] enum. */
+            JOINT_MAX = 87,
+        }
+        enum JointFlags {
+            /** The joint's orientation data is valid. */
+            JOINT_FLAG_ORIENTATION_VALID = 1,
+            
+            /** The joint's orientation is actively tracked. May not be set if tracking has been temporarily lost. */
+            JOINT_FLAG_ORIENTATION_TRACKED = 2,
+            
+            /** The joint's position data is valid. */
+            JOINT_FLAG_POSITION_VALID = 4,
+            
+            /** The joint's position is actively tracked. May not be set if tracking has been temporarily lost. */
+            JOINT_FLAG_POSITION_TRACKED = 8,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapXRBodyTracker extends __NameMapXRPositionalTracker {
+    }
+    /** A tracked body in XR.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrbodytracker.html  
+     */
+    class XRBodyTracker extends XRPositionalTracker {
+        constructor(identifier?: any)
+        /** Sets flags about the validity of the tracking data for the given body joint. */
+        set_joint_flags(joint: XRBodyTracker.Joint, flags: XRBodyTracker.JointFlags): void
+        
+        /** Returns flags about the validity of the tracking data for the given body joint. */
+        get_joint_flags(joint: XRBodyTracker.Joint): XRBodyTracker.JointFlags
+        
+        /** Sets the transform for the given body joint. */
+        set_joint_transform(joint: XRBodyTracker.Joint, transform: Transform3D): void
+        
+        /** Returns the transform for the given body joint. */
+        get_joint_transform(joint: XRBodyTracker.Joint): Transform3D
+        
+        /** If `true`, the body tracking data is valid. */
+        get has_tracking_data(): boolean
+        set has_tracking_data(value: boolean)
+        
+        /** The type of body tracking data captured. */
+        get body_flags(): int64
+        set body_flags(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapXRBodyTracker;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapXRCamera3D extends __NameMapCamera3D {
+    }
+    /** A camera node with a few overrules for AR/VR applied, such as location tracking.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrcamera3d.html  
+     */
+    class XRCamera3D<Map extends NodePathMap = any> extends Camera3D<Map> {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapXRCamera3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapXRController3D extends __NameMapXRNode3D {
+    }
+    /** A 3D node representing a spatially-tracked controller.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrcontroller3d.html  
+     */
+    class XRController3D<Map extends NodePathMap = any> extends XRNode3D<Map> {
+        constructor(identifier?: any)
+        /** Returns `true` if the button with the given [param name] is pressed.  
+         *      
+         *  **Note:** The current [XRInterface] defines the [param name] for each input. In the case of OpenXR, these are the names of actions in the current action set.  
+         */
+        is_button_pressed(name: StringName): boolean
+        
+        /** Returns a [Variant] for the input with the given [param name]. This works for any input type, the variant will be typed according to the actions configuration.  
+         *      
+         *  **Note:** The current [XRInterface] defines the [param name] for each input. In the case of OpenXR, these are the names of actions in the current action set.  
+         */
+        get_input(name: StringName): any
+        
+        /** Returns a numeric value for the input with the given [param name]. This is used for triggers and grip sensors.  
+         *      
+         *  **Note:** The current [XRInterface] defines the [param name] for each input. In the case of OpenXR, these are the names of actions in the current action set.  
+         */
+        get_float(name: StringName): float64
+        
+        /** Returns a [Vector2] for the input with the given [param name]. This is used for thumbsticks and thumbpads found on many controllers.  
+         *      
+         *  **Note:** The current [XRInterface] defines the [param name] for each input. In the case of OpenXR, these are the names of actions in the current action set.  
+         */
+        get_vector2(name: StringName): Vector2
+        
+        /** Returns the hand holding this controller, if known. */
+        get_tracker_hand(): XRPositionalTracker.TrackerHand
+        
+        /** Emitted when a button on this controller is pressed. */
+        readonly button_pressed: Signal<(name: string) => void>
+        
+        /** Emitted when a button on this controller is released. */
+        readonly button_released: Signal<(name: string) => void>
+        
+        /** Emitted when a trigger or similar input on this controller changes value. */
+        readonly input_float_changed: Signal<(name: string, value: float64) => void>
+        
+        /** Emitted when a thumbstick or thumbpad on this controller is moved. */
+        readonly input_vector2_changed: Signal<(name: string, value: Vector2) => void>
+        
+        /** Emitted when the interaction profile on this controller is changed. */
+        readonly profile_changed: Signal<(role: string) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapXRController3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapXRControllerTracker extends __NameMapXRPositionalTracker {
+    }
+    /** A tracked controller.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrcontrollertracker.html  
+     */
+    class XRControllerTracker extends XRPositionalTracker {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapXRControllerTracker;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapXRFaceModifier3D extends __NameMapNode3D {
+    }
+    /** A node for driving standard face meshes from [XRFaceTracker] weights.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrfacemodifier3d.html  
+     */
+    class XRFaceModifier3D<Map extends NodePathMap = any> extends Node3D<Map> {
+        constructor(identifier?: any)
+        /** The [XRFaceTracker] path. */
+        get face_tracker(): string
+        set face_tracker(value: string)
+        
+        /** The [NodePath] of the face [MeshInstance3D]. */
+        get target(): NodePath
+        set target(value: NodePath | string)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapXRFaceModifier3D;
+    }
+    namespace XRFaceTracker {
+        enum BlendShapeEntry {
+            /** Right eye looks outwards. */
+            FT_EYE_LOOK_OUT_RIGHT = 0,
+            
+            /** Right eye looks inwards. */
+            FT_EYE_LOOK_IN_RIGHT = 1,
+            
+            /** Right eye looks upwards. */
+            FT_EYE_LOOK_UP_RIGHT = 2,
+            
+            /** Right eye looks downwards. */
+            FT_EYE_LOOK_DOWN_RIGHT = 3,
+            
+            /** Left eye looks outwards. */
+            FT_EYE_LOOK_OUT_LEFT = 4,
+            
+            /** Left eye looks inwards. */
+            FT_EYE_LOOK_IN_LEFT = 5,
+            
+            /** Left eye looks upwards. */
+            FT_EYE_LOOK_UP_LEFT = 6,
+            
+            /** Left eye looks downwards. */
+            FT_EYE_LOOK_DOWN_LEFT = 7,
+            
+            /** Closes the right eyelid. */
+            FT_EYE_CLOSED_RIGHT = 8,
+            
+            /** Closes the left eyelid. */
+            FT_EYE_CLOSED_LEFT = 9,
+            
+            /** Squeezes the right eye socket muscles. */
+            FT_EYE_SQUINT_RIGHT = 10,
+            
+            /** Squeezes the left eye socket muscles. */
+            FT_EYE_SQUINT_LEFT = 11,
+            
+            /** Right eyelid widens beyond relaxed. */
+            FT_EYE_WIDE_RIGHT = 12,
+            
+            /** Left eyelid widens beyond relaxed. */
+            FT_EYE_WIDE_LEFT = 13,
+            
+            /** Dilates the right eye pupil. */
+            FT_EYE_DILATION_RIGHT = 14,
+            
+            /** Dilates the left eye pupil. */
+            FT_EYE_DILATION_LEFT = 15,
+            
+            /** Constricts the right eye pupil. */
+            FT_EYE_CONSTRICT_RIGHT = 16,
+            
+            /** Constricts the left eye pupil. */
+            FT_EYE_CONSTRICT_LEFT = 17,
+            
+            /** Right eyebrow pinches in. */
+            FT_BROW_PINCH_RIGHT = 18,
+            
+            /** Left eyebrow pinches in. */
+            FT_BROW_PINCH_LEFT = 19,
+            
+            /** Outer right eyebrow pulls down. */
+            FT_BROW_LOWERER_RIGHT = 20,
+            
+            /** Outer left eyebrow pulls down. */
+            FT_BROW_LOWERER_LEFT = 21,
+            
+            /** Inner right eyebrow pulls up. */
+            FT_BROW_INNER_UP_RIGHT = 22,
+            
+            /** Inner left eyebrow pulls up. */
+            FT_BROW_INNER_UP_LEFT = 23,
+            
+            /** Outer right eyebrow pulls up. */
+            FT_BROW_OUTER_UP_RIGHT = 24,
+            
+            /** Outer left eyebrow pulls up. */
+            FT_BROW_OUTER_UP_LEFT = 25,
+            
+            /** Right side face sneers. */
+            FT_NOSE_SNEER_RIGHT = 26,
+            
+            /** Left side face sneers. */
+            FT_NOSE_SNEER_LEFT = 27,
+            
+            /** Right side nose canal dilates. */
+            FT_NASAL_DILATION_RIGHT = 28,
+            
+            /** Left side nose canal dilates. */
+            FT_NASAL_DILATION_LEFT = 29,
+            
+            /** Right side nose canal constricts. */
+            FT_NASAL_CONSTRICT_RIGHT = 30,
+            
+            /** Left side nose canal constricts. */
+            FT_NASAL_CONSTRICT_LEFT = 31,
+            
+            /** Raises the right side cheek. */
+            FT_CHEEK_SQUINT_RIGHT = 32,
+            
+            /** Raises the left side cheek. */
+            FT_CHEEK_SQUINT_LEFT = 33,
+            
+            /** Puffs the right side cheek. */
+            FT_CHEEK_PUFF_RIGHT = 34,
+            
+            /** Puffs the left side cheek. */
+            FT_CHEEK_PUFF_LEFT = 35,
+            
+            /** Sucks in the right side cheek. */
+            FT_CHEEK_SUCK_RIGHT = 36,
+            
+            /** Sucks in the left side cheek. */
+            FT_CHEEK_SUCK_LEFT = 37,
+            
+            /** Opens jawbone. */
+            FT_JAW_OPEN = 38,
+            
+            /** Closes the mouth. */
+            FT_MOUTH_CLOSED = 39,
+            
+            /** Pushes jawbone right. */
+            FT_JAW_RIGHT = 40,
+            
+            /** Pushes jawbone left. */
+            FT_JAW_LEFT = 41,
+            
+            /** Pushes jawbone forward. */
+            FT_JAW_FORWARD = 42,
+            
+            /** Pushes jawbone backward. */
+            FT_JAW_BACKWARD = 43,
+            
+            /** Flexes jaw muscles. */
+            FT_JAW_CLENCH = 44,
+            
+            /** Raises the jawbone. */
+            FT_JAW_MANDIBLE_RAISE = 45,
+            
+            /** Upper right lip part tucks in the mouth. */
+            FT_LIP_SUCK_UPPER_RIGHT = 46,
+            
+            /** Upper left lip part tucks in the mouth. */
+            FT_LIP_SUCK_UPPER_LEFT = 47,
+            
+            /** Lower right lip part tucks in the mouth. */
+            FT_LIP_SUCK_LOWER_RIGHT = 48,
+            
+            /** Lower left lip part tucks in the mouth. */
+            FT_LIP_SUCK_LOWER_LEFT = 49,
+            
+            /** Right lip corner folds into the mouth. */
+            FT_LIP_SUCK_CORNER_RIGHT = 50,
+            
+            /** Left lip corner folds into the mouth. */
+            FT_LIP_SUCK_CORNER_LEFT = 51,
+            
+            /** Upper right lip part pushes into a funnel. */
+            FT_LIP_FUNNEL_UPPER_RIGHT = 52,
+            
+            /** Upper left lip part pushes into a funnel. */
+            FT_LIP_FUNNEL_UPPER_LEFT = 53,
+            
+            /** Lower right lip part pushes into a funnel. */
+            FT_LIP_FUNNEL_LOWER_RIGHT = 54,
+            
+            /** Lower left lip part pushes into a funnel. */
+            FT_LIP_FUNNEL_LOWER_LEFT = 55,
+            
+            /** Upper right lip part pushes outwards. */
+            FT_LIP_PUCKER_UPPER_RIGHT = 56,
+            
+            /** Upper left lip part pushes outwards. */
+            FT_LIP_PUCKER_UPPER_LEFT = 57,
+            
+            /** Lower right lip part pushes outwards. */
+            FT_LIP_PUCKER_LOWER_RIGHT = 58,
+            
+            /** Lower left lip part pushes outwards. */
+            FT_LIP_PUCKER_LOWER_LEFT = 59,
+            
+            /** Upper right part of the lip pulls up. */
+            FT_MOUTH_UPPER_UP_RIGHT = 60,
+            
+            /** Upper left part of the lip pulls up. */
+            FT_MOUTH_UPPER_UP_LEFT = 61,
+            
+            /** Lower right part of the lip pulls up. */
+            FT_MOUTH_LOWER_DOWN_RIGHT = 62,
+            
+            /** Lower left part of the lip pulls up. */
+            FT_MOUTH_LOWER_DOWN_LEFT = 63,
+            
+            /** Upper right lip part pushes in the cheek. */
+            FT_MOUTH_UPPER_DEEPEN_RIGHT = 64,
+            
+            /** Upper left lip part pushes in the cheek. */
+            FT_MOUTH_UPPER_DEEPEN_LEFT = 65,
+            
+            /** Moves upper lip right. */
+            FT_MOUTH_UPPER_RIGHT = 66,
+            
+            /** Moves upper lip left. */
+            FT_MOUTH_UPPER_LEFT = 67,
+            
+            /** Moves lower lip right. */
+            FT_MOUTH_LOWER_RIGHT = 68,
+            
+            /** Moves lower lip left. */
+            FT_MOUTH_LOWER_LEFT = 69,
+            
+            /** Right lip corner pulls diagonally up and out. */
+            FT_MOUTH_CORNER_PULL_RIGHT = 70,
+            
+            /** Left lip corner pulls diagonally up and out. */
+            FT_MOUTH_CORNER_PULL_LEFT = 71,
+            
+            /** Right corner lip slants up. */
+            FT_MOUTH_CORNER_SLANT_RIGHT = 72,
+            
+            /** Left corner lip slants up. */
+            FT_MOUTH_CORNER_SLANT_LEFT = 73,
+            
+            /** Right corner lip pulls down. */
+            FT_MOUTH_FROWN_RIGHT = 74,
+            
+            /** Left corner lip pulls down. */
+            FT_MOUTH_FROWN_LEFT = 75,
+            
+            /** Mouth corner lip pulls out and down. */
+            FT_MOUTH_STRETCH_RIGHT = 76,
+            
+            /** Mouth corner lip pulls out and down. */
+            FT_MOUTH_STRETCH_LEFT = 77,
+            
+            /** Right lip corner is pushed backwards. */
+            FT_MOUTH_DIMPLE_RIGHT = 78,
+            
+            /** Left lip corner is pushed backwards. */
+            FT_MOUTH_DIMPLE_LEFT = 79,
+            
+            /** Raises and slightly pushes out the upper mouth. */
+            FT_MOUTH_RAISER_UPPER = 80,
+            
+            /** Raises and slightly pushes out the lower mouth. */
+            FT_MOUTH_RAISER_LOWER = 81,
+            
+            /** Right side lips press and flatten together vertically. */
+            FT_MOUTH_PRESS_RIGHT = 82,
+            
+            /** Left side lips press and flatten together vertically. */
+            FT_MOUTH_PRESS_LEFT = 83,
+            
+            /** Right side lips squeeze together horizontally. */
+            FT_MOUTH_TIGHTENER_RIGHT = 84,
+            
+            /** Left side lips squeeze together horizontally. */
+            FT_MOUTH_TIGHTENER_LEFT = 85,
+            
+            /** Tongue visibly sticks out of the mouth. */
+            FT_TONGUE_OUT = 86,
+            
+            /** Tongue points upwards. */
+            FT_TONGUE_UP = 87,
+            
+            /** Tongue points downwards. */
+            FT_TONGUE_DOWN = 88,
+            
+            /** Tongue points right. */
+            FT_TONGUE_RIGHT = 89,
+            
+            /** Tongue points left. */
+            FT_TONGUE_LEFT = 90,
+            
+            /** Sides of the tongue funnel, creating a roll. */
+            FT_TONGUE_ROLL = 91,
+            
+            /** Tongue arches up then down inside the mouth. */
+            FT_TONGUE_BLEND_DOWN = 92,
+            
+            /** Tongue arches down then up inside the mouth. */
+            FT_TONGUE_CURL_UP = 93,
+            
+            /** Tongue squishes together and thickens. */
+            FT_TONGUE_SQUISH = 94,
+            
+            /** Tongue flattens and thins out. */
+            FT_TONGUE_FLAT = 95,
+            
+            /** Tongue tip rotates clockwise, with the rest following gradually. */
+            FT_TONGUE_TWIST_RIGHT = 96,
+            
+            /** Tongue tip rotates counter-clockwise, with the rest following gradually. */
+            FT_TONGUE_TWIST_LEFT = 97,
+            
+            /** Inner mouth throat closes. */
+            FT_SOFT_PALATE_CLOSE = 98,
+            
+            /** The Adam's apple visibly swallows. */
+            FT_THROAT_SWALLOW = 99,
+            
+            /** Right side neck visibly flexes. */
+            FT_NECK_FLEX_RIGHT = 100,
+            
+            /** Left side neck visibly flexes. */
+            FT_NECK_FLEX_LEFT = 101,
+            
+            /** Closes both eye lids. */
+            FT_EYE_CLOSED = 102,
+            
+            /** Widens both eye lids. */
+            FT_EYE_WIDE = 103,
+            
+            /** Squints both eye lids. */
+            FT_EYE_SQUINT = 104,
+            
+            /** Dilates both pupils. */
+            FT_EYE_DILATION = 105,
+            
+            /** Constricts both pupils. */
+            FT_EYE_CONSTRICT = 106,
+            
+            /** Pulls the right eyebrow down and in. */
+            FT_BROW_DOWN_RIGHT = 107,
+            
+            /** Pulls the left eyebrow down and in. */
+            FT_BROW_DOWN_LEFT = 108,
+            
+            /** Pulls both eyebrows down and in. */
+            FT_BROW_DOWN = 109,
+            
+            /** Right brow appears worried. */
+            FT_BROW_UP_RIGHT = 110,
+            
+            /** Left brow appears worried. */
+            FT_BROW_UP_LEFT = 111,
+            
+            /** Both brows appear worried. */
+            FT_BROW_UP = 112,
+            
+            /** Entire face sneers. */
+            FT_NOSE_SNEER = 113,
+            
+            /** Both nose canals dilate. */
+            FT_NASAL_DILATION = 114,
+            
+            /** Both nose canals constrict. */
+            FT_NASAL_CONSTRICT = 115,
+            
+            /** Puffs both cheeks. */
+            FT_CHEEK_PUFF = 116,
+            
+            /** Sucks in both cheeks. */
+            FT_CHEEK_SUCK = 117,
+            
+            /** Raises both cheeks. */
+            FT_CHEEK_SQUINT = 118,
+            
+            /** Tucks in the upper lips. */
+            FT_LIP_SUCK_UPPER = 119,
+            
+            /** Tucks in the lower lips. */
+            FT_LIP_SUCK_LOWER = 120,
+            
+            /** Tucks in both lips. */
+            FT_LIP_SUCK = 121,
+            
+            /** Funnels in the upper lips. */
+            FT_LIP_FUNNEL_UPPER = 122,
+            
+            /** Funnels in the lower lips. */
+            FT_LIP_FUNNEL_LOWER = 123,
+            
+            /** Funnels in both lips. */
+            FT_LIP_FUNNEL = 124,
+            
+            /** Upper lip part pushes outwards. */
+            FT_LIP_PUCKER_UPPER = 125,
+            
+            /** Lower lip part pushes outwards. */
+            FT_LIP_PUCKER_LOWER = 126,
+            
+            /** Lips push outwards. */
+            FT_LIP_PUCKER = 127,
+            
+            /** Raises the upper lips. */
+            FT_MOUTH_UPPER_UP = 128,
+            
+            /** Lowers the lower lips. */
+            FT_MOUTH_LOWER_DOWN = 129,
+            
+            /** Mouth opens, revealing teeth. */
+            FT_MOUTH_OPEN = 130,
+            
+            /** Moves mouth right. */
+            FT_MOUTH_RIGHT = 131,
+            
+            /** Moves mouth left. */
+            FT_MOUTH_LEFT = 132,
+            
+            /** Right side of the mouth smiles. */
+            FT_MOUTH_SMILE_RIGHT = 133,
+            
+            /** Left side of the mouth smiles. */
+            FT_MOUTH_SMILE_LEFT = 134,
+            
+            /** Mouth expresses a smile. */
+            FT_MOUTH_SMILE = 135,
+            
+            /** Right side of the mouth expresses sadness. */
+            FT_MOUTH_SAD_RIGHT = 136,
+            
+            /** Left side of the mouth expresses sadness. */
+            FT_MOUTH_SAD_LEFT = 137,
+            
+            /** Mouth expresses sadness. */
+            FT_MOUTH_SAD = 138,
+            
+            /** Mouth stretches. */
+            FT_MOUTH_STRETCH = 139,
+            
+            /** Lip corners dimple. */
+            FT_MOUTH_DIMPLE = 140,
+            
+            /** Mouth tightens. */
+            FT_MOUTH_TIGHTENER = 141,
+            
+            /** Mouth presses together. */
+            FT_MOUTH_PRESS = 142,
+            
+            /** Represents the size of the [enum BlendShapeEntry] enum. */
+            FT_MAX = 143,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapXRFaceTracker extends __NameMapXRTracker {
+    }
+    /** A tracked face.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_xrfacetracker.html  
+     */
+    class XRFaceTracker extends XRTracker {
+        constructor(identifier?: any)
+        /** Returns the requested face blend shape weight. */
+        get_blend_shape(blend_shape: XRFaceTracker.BlendShapeEntry): float64
+        
+        /** Sets a face blend shape weight. */
+        set_blend_shape(blend_shape: XRFaceTracker.BlendShapeEntry, weight: float64): void
+        
+        /** The array of face blend shape weights with indices corresponding to the [enum BlendShapeEntry] enum. */
+        get blend_shapes(): PackedFloat32Array
+        set blend_shapes(value: PackedFloat32Array | float32[])
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapXRFaceTracker;
     }
 }

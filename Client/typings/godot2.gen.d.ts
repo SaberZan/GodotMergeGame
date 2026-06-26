@@ -1,848 +1,6 @@
 // AUTO-GENERATED
 declare module "godot" {
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioSample extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapAudioSample extends __NameMapRefCounted {
-    }
-    /** Base class for audio samples.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiosample.html  
-     */
-    class AudioSample extends RefCounted {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioSample;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapAudioSample;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioSamplePlayback extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapAudioSamplePlayback extends __NameMapRefCounted {
-    }
-    /** Meta class for playing back audio samples.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiosampleplayback.html  
-     */
-    class AudioSamplePlayback extends RefCounted {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioSamplePlayback;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapAudioSamplePlayback;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStream extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapAudioStream extends __NameMapResource {
-    }
-    /** Base class for audio streams.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiostream.html  
-     */
-    class AudioStream extends Resource {
-        constructor(identifier?: any)
-        /** Override this method to customize the returned value of [method instantiate_playback]. Should return a new [AudioStreamPlayback] created when the stream is played (such as by an [AudioStreamPlayer]). */
-        /* gdvirtual */ _instantiate_playback(): null | AudioStreamPlayback
-        
-        /** Override this method to customize the name assigned to this audio stream. Unused by the engine. */
-        /* gdvirtual */ _get_stream_name(): string
-        
-        /** Override this method to customize the returned value of [method get_length]. Should return the length of this audio stream, in seconds. */
-        /* gdvirtual */ _get_length(): float64
-        
-        /** Override this method to customize the returned value of [method is_monophonic]. Should return `true` if this audio stream only supports one channel. */
-        /* gdvirtual */ _is_monophonic(): boolean
-        
-        /** Overridable method. Should return the tempo of this audio stream, in beats per minute (BPM). Used by the engine to determine the position of every beat.  
-         *  Ideally, the returned value should be based off the stream's sample rate ([member AudioStreamWAV.mix_rate], for example).  
-         */
-        /* gdvirtual */ _get_bpm(): float64
-        
-        /** Overridable method. Should return the total number of beats of this audio stream. Used by the engine to determine the position of every beat.  
-         *  Ideally, the returned value should be based off the stream's sample rate ([member AudioStreamWAV.mix_rate], for example).  
-         */
-        /* gdvirtual */ _get_beat_count(): int64
-        
-        /** Override this method to customize the tags for this audio stream. Should return a [Dictionary] of strings with the tag as the key and its content as the value.  
-         *  Commonly used tags include `title`, `artist`, `album`, `tracknumber`, and `date`.  
-         */
-        /* gdvirtual */ _get_tags(): GDictionary
-        
-        /** Return the controllable parameters of this stream. This array contains dictionaries with a property info description format (see [method Object.get_property_list]). Additionally, the default value for this parameter must be added tho each dictionary in "default_value" field. */
-        /* gdvirtual */ _get_parameter_list(): GArray<GDictionary>
-        
-        /** Override this method to return `true` if this stream has a loop. */
-        /* gdvirtual */ _has_loop(): boolean
-        
-        /** Override this method to return the bar beats of this stream. */
-        /* gdvirtual */ _get_bar_beats(): int64
-        
-        /** Returns the length of the audio stream in seconds. If this stream is an [AudioStreamRandomizer], returns the length of the last played stream. If this stream has an indefinite length (such as for [AudioStreamGenerator] and [AudioStreamMicrophone]), returns `0.0`. */
-        get_length(): float64
-        
-        /** Returns `true` if this audio stream only supports one channel ( *monophony* ), or `false` if the audio stream supports two or more channels ( *polyphony* ). */
-        is_monophonic(): boolean
-        
-        /** Returns a newly created [AudioStreamPlayback] intended to play this audio stream. Useful for when you want to extend [method _instantiate_playback] but call [method instantiate_playback] from an internally held AudioStream subresource. An example of this can be found in the source code for `AudioStreamRandomPitch::instantiate_playback`. */
-        instantiate_playback(): null | AudioStreamPlayback
-        
-        /** Returns if the current [AudioStream] can be used as a sample. Only static streams can be sampled. */
-        can_be_sampled(): boolean
-        
-        /** Generates an [AudioSample] based on the current stream. */
-        generate_sample(): null | AudioSample
-        
-        /** Returns `true` if the stream is a collection of other streams, `false` otherwise. */
-        is_meta_stream(): boolean
-        
-        /** Signal to be emitted to notify when the parameter list changed. */
-        readonly parameter_list_changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStream;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapAudioStream;
-    }
-    namespace AudioStreamGenerator {
-        enum AudioStreamGeneratorMixRate {
-            /** Current [AudioServer] output mixing rate. */
-            MIX_RATE_OUTPUT = 0,
-            
-            /** Current [AudioServer] input mixing rate. */
-            MIX_RATE_INPUT = 1,
-            
-            /** Custom mixing rate, specified by [member mix_rate]. */
-            MIX_RATE_CUSTOM = 2,
-            
-            /** Maximum value for the mixing rate mode enum. */
-            MIX_RATE_MAX = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamGenerator extends __RPCMapAudioStream {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapAudioStreamGenerator extends __NameMapAudioStream {
-    }
-    /** An audio stream with utilities for procedural sound generation.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiostreamgenerator.html  
-     */
-    class AudioStreamGenerator extends AudioStream {
-        constructor(identifier?: any)
-        /** Mixing rate mode. If set to [constant MIX_RATE_CUSTOM], [member mix_rate] is used, otherwise current [AudioServer] mixing rate is used. */
-        get mix_rate_mode(): int64
-        set mix_rate_mode(value: int64)
-        
-        /** The sample rate to use (in Hz). Higher values are more demanding for the CPU to generate, but result in better quality.  
-         *  In games, common sample rates in use are `11025`, `16000`, `22050`, `32000`, `44100`, and `48000`.  
-         *  According to the [url=https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem]Nyquist-Shannon sampling theorem[/url], there is no quality difference to human hearing when going past 40,000 Hz (since most humans can only hear up to ~20,000 Hz, often less). If you are generating lower-pitched sounds such as voices, lower sample rates such as `32000` or `22050` may be usable with no loss in quality.  
-         *      
-         *  **Note:** [AudioStreamGenerator] is not automatically resampling input data, to produce expected result [member mix_rate_mode] should match the sampling rate of input data.  
-         *      
-         *  **Note:** If you are using [AudioEffectCapture] as the source of your data, set [member mix_rate_mode] to [constant MIX_RATE_INPUT] or [constant MIX_RATE_OUTPUT] to automatically match current [AudioServer] mixing rate.  
-         */
-        get mix_rate(): float64
-        set mix_rate(value: float64)
-        
-        /** The length of the buffer to generate (in seconds). Lower values result in less latency, but require the script to generate audio data faster, resulting in increased CPU usage and more risk for audio cracking if the CPU can't keep up. */
-        get buffer_length(): float64
-        set buffer_length(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamGenerator;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapAudioStreamGenerator;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamGeneratorPlayback extends __RPCMapAudioStreamPlaybackResampled {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapAudioStreamGeneratorPlayback extends __NameMapAudioStreamPlaybackResampled {
-    }
-    /** Plays back audio generated using [AudioStreamGenerator].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiostreamgeneratorplayback.html  
-     */
-    class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled {
-        constructor(identifier?: any)
-        /** Pushes a single audio data frame to the buffer. This is usually less efficient than [method push_buffer] in C# and compiled languages via GDExtension, but [method push_frame] may be  *more*  efficient in GDScript. */
-        push_frame(frame: Vector2): boolean
-        
-        /** Returns `true` if a buffer of the size [param amount] can be pushed to the audio sample data buffer without overflowing it, `false` otherwise. */
-        can_push_buffer(amount: int64): boolean
-        
-        /** Pushes several audio data frames to the buffer. This is usually more efficient than [method push_frame] in C# and compiled languages via GDExtension, but [method push_buffer] may be  *less*  efficient in GDScript. */
-        push_buffer(frames: PackedVector2Array | Vector2[]): boolean
-        
-        /** Returns the number of frames that can be pushed to the audio sample data buffer without overflowing it. If the result is `0`, the buffer is full. */
-        get_frames_available(): int64
-        
-        /** Returns the number of times the playback skipped due to a buffer underrun in the audio sample data. This value is reset at the start of the playback. */
-        get_skips(): int64
-        
-        /** Clears the audio sample data buffer. */
-        clear_buffer(): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamGeneratorPlayback;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapAudioStreamGeneratorPlayback;
-    }
-    namespace AudioStreamInteractive {
-        enum TransitionFromTime {
-            /** Start transition as soon as possible, don't wait for any specific time position. */
-            TRANSITION_FROM_TIME_IMMEDIATE = 0,
-            
-            /** Transition when the clip playback position reaches the next beat. */
-            TRANSITION_FROM_TIME_NEXT_BEAT = 1,
-            
-            /** Transition when the clip playback position reaches the next bar. */
-            TRANSITION_FROM_TIME_NEXT_BAR = 2,
-            
-            /** Transition when the current clip finished playing. */
-            TRANSITION_FROM_TIME_END = 3,
-        }
-        enum TransitionToTime {
-            /** Transition to the same position in the destination clip. This is useful when both clips have exactly the same length and the music should fade between them. */
-            TRANSITION_TO_TIME_SAME_POSITION = 0,
-            
-            /** Transition to the start of the destination clip. */
-            TRANSITION_TO_TIME_START = 1,
-        }
-        enum FadeMode {
-            /** Do not use fade for the transition. This is useful when transitioning from a clip-end to clip-beginning, and each clip has their begin/end. */
-            FADE_DISABLED = 0,
-            
-            /** Use a fade-in in the next clip, let the current clip finish. */
-            FADE_IN = 1,
-            
-            /** Use a fade-out in the current clip, the next clip will start by itself. */
-            FADE_OUT = 2,
-            
-            /** Use a cross-fade between clips. */
-            FADE_CROSS = 3,
-            
-            /** Use automatic fade logic depending on the transition from/to. It is recommended to use this by default. */
-            FADE_AUTOMATIC = 4,
-        }
-        enum AutoAdvanceMode {
-            /** Disable auto-advance (default). */
-            AUTO_ADVANCE_DISABLED = 0,
-            
-            /** Enable auto-advance, a clip must be specified. */
-            AUTO_ADVANCE_ENABLED = 1,
-            
-            /** Enable auto-advance, but instead of specifying a clip, the playback will return to hold (see [method add_transition]). */
-            AUTO_ADVANCE_RETURN_TO_HOLD = 2,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamInteractive extends __RPCMapAudioStream {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapAudioStreamInteractive extends __NameMapAudioStream {
-    }
-    /** Audio stream that can playback music interactively, combining clips and a transition table.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_audiostreaminteractive.html  
-     */
-    class AudioStreamInteractive extends AudioStream {
-        /** This constant describes that any clip is valid for a specific transition as either source or destination. */
-        static readonly CLIP_ANY = -1
-        constructor(identifier?: any)
-        _get_linked_undo_properties(for_property: string, for_value: any): PackedStringArray
-        _inspector_array_swap_clip(a: int64, b: int64): void
-        
-        /** Set the name of the current clip (for easier identification). */
-        set_clip_name(clip_index: int64, name: StringName): void
-        
-        /** Return the name of a clip. */
-        get_clip_name(clip_index: int64): StringName
-        
-        /** Set the [AudioStream] associated with the current clip. */
-        set_clip_stream(clip_index: int64, stream: AudioStream): void
-        
-        /** Return the [AudioStream] associated with a clip. */
-        get_clip_stream(clip_index: int64): null | AudioStream
-        
-        /** Set whether a clip will auto-advance by changing the auto-advance mode. */
-        set_clip_auto_advance(clip_index: int64, mode: AudioStreamInteractive.AutoAdvanceMode): void
-        
-        /** Return whether a clip has auto-advance enabled. See [method set_clip_auto_advance]. */
-        get_clip_auto_advance(clip_index: int64): AudioStreamInteractive.AutoAdvanceMode
-        
-        /** Set the index of the next clip towards which this clip will auto advance to when finished. If the clip being played loops, then auto-advance will be ignored. */
-        set_clip_auto_advance_next_clip(clip_index: int64, auto_advance_next_clip: int64): void
-        
-        /** Return the clip towards which the clip referenced by [param clip_index] will auto-advance to. */
-        get_clip_auto_advance_next_clip(clip_index: int64): int64
-        
-        /** Add a transition between two clips. Provide the indices of the source and destination clips, or use the [constant CLIP_ANY] constant to indicate that transition happens to/from any clip to this one.  
-         *  * [param from_time] indicates the moment in the current clip the transition will begin after triggered.  
-         *  * [param to_time] indicates the time in the next clip that the playback will start from.  
-         *  * [param fade_mode] indicates how the fade will happen between clips. If unsure, just use [constant FADE_AUTOMATIC] which uses the most common type of fade for each situation.  
-         *  * [param fade_beats] indicates how many beats the fade will take. Using decimals is allowed.  
-         *  * [param use_filler_clip] indicates that there will be a filler clip used between the source and destination clips.  
-         *  * [param filler_clip] the index of the filler clip.  
-         *  * If [param hold_previous] is used, then this clip will be remembered. This can be used together with [constant AUTO_ADVANCE_RETURN_TO_HOLD] to return to this clip after another is done playing.  
-         */
-        add_transition(from_clip: int64, to_clip: int64, from_time: AudioStreamInteractive.TransitionFromTime, to_time: AudioStreamInteractive.TransitionToTime, fade_mode: AudioStreamInteractive.FadeMode, fade_beats: float64, use_filler_clip?: boolean /* = false */, filler_clip?: int64 /* = -1 */, hold_previous?: boolean /* = false */): void
-        
-        /** Returns `true` if a given transition exists (was added via [method add_transition]). */
-        has_transition(from_clip: int64, to_clip: int64): boolean
-        
-        /** Erase a transition by providing [param from_clip] and [param to_clip] clip indices. [constant CLIP_ANY] can be used for either argument or both. */
-        erase_transition(from_clip: int64, to_clip: int64): void
-        
-        /** Return the list of transitions (from, to interleaved). */
-        get_transition_list(): PackedInt32Array
-        
-        /** Return the source time position for a transition (see [method add_transition]). */
-        get_transition_from_time(from_clip: int64, to_clip: int64): AudioStreamInteractive.TransitionFromTime
-        
-        /** Return the destination time position for a transition (see [method add_transition]). */
-        get_transition_to_time(from_clip: int64, to_clip: int64): AudioStreamInteractive.TransitionToTime
-        
-        /** Return the mode for a transition (see [method add_transition]). */
-        get_transition_fade_mode(from_clip: int64, to_clip: int64): AudioStreamInteractive.FadeMode
-        
-        /** Return the time (in beats) for a transition (see [method add_transition]). */
-        get_transition_fade_beats(from_clip: int64, to_clip: int64): float64
-        
-        /** Return whether a transition uses the  *filler clip*  functionality (see [method add_transition]). */
-        is_transition_using_filler_clip(from_clip: int64, to_clip: int64): boolean
-        
-        /** Return the filler clip for a transition (see [method add_transition]). */
-        get_transition_filler_clip(from_clip: int64, to_clip: int64): int64
-        
-        /** Return whether a transition uses the  *hold previous*  functionality (see [method add_transition]). */
-        is_transition_holding_previous(from_clip: int64, to_clip: int64): boolean
-        
-        /** Amount of clips contained in this interactive player. */
-        get clip_count(): int64
-        set clip_count(value: int64)
-        get "clip_0/name"(): StringName
-        set "clip_0/name"(value: StringName)
-        get "clip_0/stream"(): null | AudioStream
-        set "clip_0/stream"(value: null | AudioStream)
-        get "clip_0/auto_advance"(): int64
-        set "clip_0/auto_advance"(value: int64)
-        get "clip_0/next_clip"(): int64
-        set "clip_0/next_clip"(value: int64)
-        get "clip_1/name"(): StringName
-        set "clip_1/name"(value: StringName)
-        get "clip_1/stream"(): null | AudioStream
-        set "clip_1/stream"(value: null | AudioStream)
-        get "clip_1/auto_advance"(): int64
-        set "clip_1/auto_advance"(value: int64)
-        get "clip_1/next_clip"(): int64
-        set "clip_1/next_clip"(value: int64)
-        get "clip_2/name"(): StringName
-        set "clip_2/name"(value: StringName)
-        get "clip_2/stream"(): null | AudioStream
-        set "clip_2/stream"(value: null | AudioStream)
-        get "clip_2/auto_advance"(): int64
-        set "clip_2/auto_advance"(value: int64)
-        get "clip_2/next_clip"(): int64
-        set "clip_2/next_clip"(value: int64)
-        get "clip_3/name"(): StringName
-        set "clip_3/name"(value: StringName)
-        get "clip_3/stream"(): null | AudioStream
-        set "clip_3/stream"(value: null | AudioStream)
-        get "clip_3/auto_advance"(): int64
-        set "clip_3/auto_advance"(value: int64)
-        get "clip_3/next_clip"(): int64
-        set "clip_3/next_clip"(value: int64)
-        get "clip_4/name"(): StringName
-        set "clip_4/name"(value: StringName)
-        get "clip_4/stream"(): null | AudioStream
-        set "clip_4/stream"(value: null | AudioStream)
-        get "clip_4/auto_advance"(): int64
-        set "clip_4/auto_advance"(value: int64)
-        get "clip_4/next_clip"(): int64
-        set "clip_4/next_clip"(value: int64)
-        get "clip_5/name"(): StringName
-        set "clip_5/name"(value: StringName)
-        get "clip_5/stream"(): null | AudioStream
-        set "clip_5/stream"(value: null | AudioStream)
-        get "clip_5/auto_advance"(): int64
-        set "clip_5/auto_advance"(value: int64)
-        get "clip_5/next_clip"(): int64
-        set "clip_5/next_clip"(value: int64)
-        get "clip_6/name"(): StringName
-        set "clip_6/name"(value: StringName)
-        get "clip_6/stream"(): null | AudioStream
-        set "clip_6/stream"(value: null | AudioStream)
-        get "clip_6/auto_advance"(): int64
-        set "clip_6/auto_advance"(value: int64)
-        get "clip_6/next_clip"(): int64
-        set "clip_6/next_clip"(value: int64)
-        get "clip_7/name"(): StringName
-        set "clip_7/name"(value: StringName)
-        get "clip_7/stream"(): null | AudioStream
-        set "clip_7/stream"(value: null | AudioStream)
-        get "clip_7/auto_advance"(): int64
-        set "clip_7/auto_advance"(value: int64)
-        get "clip_7/next_clip"(): int64
-        set "clip_7/next_clip"(value: int64)
-        get "clip_8/name"(): StringName
-        set "clip_8/name"(value: StringName)
-        get "clip_8/stream"(): null | AudioStream
-        set "clip_8/stream"(value: null | AudioStream)
-        get "clip_8/auto_advance"(): int64
-        set "clip_8/auto_advance"(value: int64)
-        get "clip_8/next_clip"(): int64
-        set "clip_8/next_clip"(value: int64)
-        get "clip_9/name"(): StringName
-        set "clip_9/name"(value: StringName)
-        get "clip_9/stream"(): null | AudioStream
-        set "clip_9/stream"(value: null | AudioStream)
-        get "clip_9/auto_advance"(): int64
-        set "clip_9/auto_advance"(value: int64)
-        get "clip_9/next_clip"(): int64
-        set "clip_9/next_clip"(value: int64)
-        get "clip_10/name"(): StringName
-        set "clip_10/name"(value: StringName)
-        get "clip_10/stream"(): null | AudioStream
-        set "clip_10/stream"(value: null | AudioStream)
-        get "clip_10/auto_advance"(): int64
-        set "clip_10/auto_advance"(value: int64)
-        get "clip_10/next_clip"(): int64
-        set "clip_10/next_clip"(value: int64)
-        get "clip_11/name"(): StringName
-        set "clip_11/name"(value: StringName)
-        get "clip_11/stream"(): null | AudioStream
-        set "clip_11/stream"(value: null | AudioStream)
-        get "clip_11/auto_advance"(): int64
-        set "clip_11/auto_advance"(value: int64)
-        get "clip_11/next_clip"(): int64
-        set "clip_11/next_clip"(value: int64)
-        get "clip_12/name"(): StringName
-        set "clip_12/name"(value: StringName)
-        get "clip_12/stream"(): null | AudioStream
-        set "clip_12/stream"(value: null | AudioStream)
-        get "clip_12/auto_advance"(): int64
-        set "clip_12/auto_advance"(value: int64)
-        get "clip_12/next_clip"(): int64
-        set "clip_12/next_clip"(value: int64)
-        get "clip_13/name"(): StringName
-        set "clip_13/name"(value: StringName)
-        get "clip_13/stream"(): null | AudioStream
-        set "clip_13/stream"(value: null | AudioStream)
-        get "clip_13/auto_advance"(): int64
-        set "clip_13/auto_advance"(value: int64)
-        get "clip_13/next_clip"(): int64
-        set "clip_13/next_clip"(value: int64)
-        get "clip_14/name"(): StringName
-        set "clip_14/name"(value: StringName)
-        get "clip_14/stream"(): null | AudioStream
-        set "clip_14/stream"(value: null | AudioStream)
-        get "clip_14/auto_advance"(): int64
-        set "clip_14/auto_advance"(value: int64)
-        get "clip_14/next_clip"(): int64
-        set "clip_14/next_clip"(value: int64)
-        get "clip_15/name"(): StringName
-        set "clip_15/name"(value: StringName)
-        get "clip_15/stream"(): null | AudioStream
-        set "clip_15/stream"(value: null | AudioStream)
-        get "clip_15/auto_advance"(): int64
-        set "clip_15/auto_advance"(value: int64)
-        get "clip_15/next_clip"(): int64
-        set "clip_15/next_clip"(value: int64)
-        get "clip_16/name"(): StringName
-        set "clip_16/name"(value: StringName)
-        get "clip_16/stream"(): null | AudioStream
-        set "clip_16/stream"(value: null | AudioStream)
-        get "clip_16/auto_advance"(): int64
-        set "clip_16/auto_advance"(value: int64)
-        get "clip_16/next_clip"(): int64
-        set "clip_16/next_clip"(value: int64)
-        get "clip_17/name"(): StringName
-        set "clip_17/name"(value: StringName)
-        get "clip_17/stream"(): null | AudioStream
-        set "clip_17/stream"(value: null | AudioStream)
-        get "clip_17/auto_advance"(): int64
-        set "clip_17/auto_advance"(value: int64)
-        get "clip_17/next_clip"(): int64
-        set "clip_17/next_clip"(value: int64)
-        get "clip_18/name"(): StringName
-        set "clip_18/name"(value: StringName)
-        get "clip_18/stream"(): null | AudioStream
-        set "clip_18/stream"(value: null | AudioStream)
-        get "clip_18/auto_advance"(): int64
-        set "clip_18/auto_advance"(value: int64)
-        get "clip_18/next_clip"(): int64
-        set "clip_18/next_clip"(value: int64)
-        get "clip_19/name"(): StringName
-        set "clip_19/name"(value: StringName)
-        get "clip_19/stream"(): null | AudioStream
-        set "clip_19/stream"(value: null | AudioStream)
-        get "clip_19/auto_advance"(): int64
-        set "clip_19/auto_advance"(value: int64)
-        get "clip_19/next_clip"(): int64
-        set "clip_19/next_clip"(value: int64)
-        get "clip_20/name"(): StringName
-        set "clip_20/name"(value: StringName)
-        get "clip_20/stream"(): null | AudioStream
-        set "clip_20/stream"(value: null | AudioStream)
-        get "clip_20/auto_advance"(): int64
-        set "clip_20/auto_advance"(value: int64)
-        get "clip_20/next_clip"(): int64
-        set "clip_20/next_clip"(value: int64)
-        get "clip_21/name"(): StringName
-        set "clip_21/name"(value: StringName)
-        get "clip_21/stream"(): null | AudioStream
-        set "clip_21/stream"(value: null | AudioStream)
-        get "clip_21/auto_advance"(): int64
-        set "clip_21/auto_advance"(value: int64)
-        get "clip_21/next_clip"(): int64
-        set "clip_21/next_clip"(value: int64)
-        get "clip_22/name"(): StringName
-        set "clip_22/name"(value: StringName)
-        get "clip_22/stream"(): null | AudioStream
-        set "clip_22/stream"(value: null | AudioStream)
-        get "clip_22/auto_advance"(): int64
-        set "clip_22/auto_advance"(value: int64)
-        get "clip_22/next_clip"(): int64
-        set "clip_22/next_clip"(value: int64)
-        get "clip_23/name"(): StringName
-        set "clip_23/name"(value: StringName)
-        get "clip_23/stream"(): null | AudioStream
-        set "clip_23/stream"(value: null | AudioStream)
-        get "clip_23/auto_advance"(): int64
-        set "clip_23/auto_advance"(value: int64)
-        get "clip_23/next_clip"(): int64
-        set "clip_23/next_clip"(value: int64)
-        get "clip_24/name"(): StringName
-        set "clip_24/name"(value: StringName)
-        get "clip_24/stream"(): null | AudioStream
-        set "clip_24/stream"(value: null | AudioStream)
-        get "clip_24/auto_advance"(): int64
-        set "clip_24/auto_advance"(value: int64)
-        get "clip_24/next_clip"(): int64
-        set "clip_24/next_clip"(value: int64)
-        get "clip_25/name"(): StringName
-        set "clip_25/name"(value: StringName)
-        get "clip_25/stream"(): null | AudioStream
-        set "clip_25/stream"(value: null | AudioStream)
-        get "clip_25/auto_advance"(): int64
-        set "clip_25/auto_advance"(value: int64)
-        get "clip_25/next_clip"(): int64
-        set "clip_25/next_clip"(value: int64)
-        get "clip_26/name"(): StringName
-        set "clip_26/name"(value: StringName)
-        get "clip_26/stream"(): null | AudioStream
-        set "clip_26/stream"(value: null | AudioStream)
-        get "clip_26/auto_advance"(): int64
-        set "clip_26/auto_advance"(value: int64)
-        get "clip_26/next_clip"(): int64
-        set "clip_26/next_clip"(value: int64)
-        get "clip_27/name"(): StringName
-        set "clip_27/name"(value: StringName)
-        get "clip_27/stream"(): null | AudioStream
-        set "clip_27/stream"(value: null | AudioStream)
-        get "clip_27/auto_advance"(): int64
-        set "clip_27/auto_advance"(value: int64)
-        get "clip_27/next_clip"(): int64
-        set "clip_27/next_clip"(value: int64)
-        get "clip_28/name"(): StringName
-        set "clip_28/name"(value: StringName)
-        get "clip_28/stream"(): null | AudioStream
-        set "clip_28/stream"(value: null | AudioStream)
-        get "clip_28/auto_advance"(): int64
-        set "clip_28/auto_advance"(value: int64)
-        get "clip_28/next_clip"(): int64
-        set "clip_28/next_clip"(value: int64)
-        get "clip_29/name"(): StringName
-        set "clip_29/name"(value: StringName)
-        get "clip_29/stream"(): null | AudioStream
-        set "clip_29/stream"(value: null | AudioStream)
-        get "clip_29/auto_advance"(): int64
-        set "clip_29/auto_advance"(value: int64)
-        get "clip_29/next_clip"(): int64
-        set "clip_29/next_clip"(value: int64)
-        get "clip_30/name"(): StringName
-        set "clip_30/name"(value: StringName)
-        get "clip_30/stream"(): null | AudioStream
-        set "clip_30/stream"(value: null | AudioStream)
-        get "clip_30/auto_advance"(): int64
-        set "clip_30/auto_advance"(value: int64)
-        get "clip_30/next_clip"(): int64
-        set "clip_30/next_clip"(value: int64)
-        get "clip_31/name"(): StringName
-        set "clip_31/name"(value: StringName)
-        get "clip_31/stream"(): null | AudioStream
-        set "clip_31/stream"(value: null | AudioStream)
-        get "clip_31/auto_advance"(): int64
-        set "clip_31/auto_advance"(value: int64)
-        get "clip_31/next_clip"(): int64
-        set "clip_31/next_clip"(value: int64)
-        get "clip_32/name"(): StringName
-        set "clip_32/name"(value: StringName)
-        get "clip_32/stream"(): null | AudioStream
-        set "clip_32/stream"(value: null | AudioStream)
-        get "clip_32/auto_advance"(): int64
-        set "clip_32/auto_advance"(value: int64)
-        get "clip_32/next_clip"(): int64
-        set "clip_32/next_clip"(value: int64)
-        get "clip_33/name"(): StringName
-        set "clip_33/name"(value: StringName)
-        get "clip_33/stream"(): null | AudioStream
-        set "clip_33/stream"(value: null | AudioStream)
-        get "clip_33/auto_advance"(): int64
-        set "clip_33/auto_advance"(value: int64)
-        get "clip_33/next_clip"(): int64
-        set "clip_33/next_clip"(value: int64)
-        get "clip_34/name"(): StringName
-        set "clip_34/name"(value: StringName)
-        get "clip_34/stream"(): null | AudioStream
-        set "clip_34/stream"(value: null | AudioStream)
-        get "clip_34/auto_advance"(): int64
-        set "clip_34/auto_advance"(value: int64)
-        get "clip_34/next_clip"(): int64
-        set "clip_34/next_clip"(value: int64)
-        get "clip_35/name"(): StringName
-        set "clip_35/name"(value: StringName)
-        get "clip_35/stream"(): null | AudioStream
-        set "clip_35/stream"(value: null | AudioStream)
-        get "clip_35/auto_advance"(): int64
-        set "clip_35/auto_advance"(value: int64)
-        get "clip_35/next_clip"(): int64
-        set "clip_35/next_clip"(value: int64)
-        get "clip_36/name"(): StringName
-        set "clip_36/name"(value: StringName)
-        get "clip_36/stream"(): null | AudioStream
-        set "clip_36/stream"(value: null | AudioStream)
-        get "clip_36/auto_advance"(): int64
-        set "clip_36/auto_advance"(value: int64)
-        get "clip_36/next_clip"(): int64
-        set "clip_36/next_clip"(value: int64)
-        get "clip_37/name"(): StringName
-        set "clip_37/name"(value: StringName)
-        get "clip_37/stream"(): null | AudioStream
-        set "clip_37/stream"(value: null | AudioStream)
-        get "clip_37/auto_advance"(): int64
-        set "clip_37/auto_advance"(value: int64)
-        get "clip_37/next_clip"(): int64
-        set "clip_37/next_clip"(value: int64)
-        get "clip_38/name"(): StringName
-        set "clip_38/name"(value: StringName)
-        get "clip_38/stream"(): null | AudioStream
-        set "clip_38/stream"(value: null | AudioStream)
-        get "clip_38/auto_advance"(): int64
-        set "clip_38/auto_advance"(value: int64)
-        get "clip_38/next_clip"(): int64
-        set "clip_38/next_clip"(value: int64)
-        get "clip_39/name"(): StringName
-        set "clip_39/name"(value: StringName)
-        get "clip_39/stream"(): null | AudioStream
-        set "clip_39/stream"(value: null | AudioStream)
-        get "clip_39/auto_advance"(): int64
-        set "clip_39/auto_advance"(value: int64)
-        get "clip_39/next_clip"(): int64
-        set "clip_39/next_clip"(value: int64)
-        get "clip_40/name"(): StringName
-        set "clip_40/name"(value: StringName)
-        get "clip_40/stream"(): null | AudioStream
-        set "clip_40/stream"(value: null | AudioStream)
-        get "clip_40/auto_advance"(): int64
-        set "clip_40/auto_advance"(value: int64)
-        get "clip_40/next_clip"(): int64
-        set "clip_40/next_clip"(value: int64)
-        get "clip_41/name"(): StringName
-        set "clip_41/name"(value: StringName)
-        get "clip_41/stream"(): null | AudioStream
-        set "clip_41/stream"(value: null | AudioStream)
-        get "clip_41/auto_advance"(): int64
-        set "clip_41/auto_advance"(value: int64)
-        get "clip_41/next_clip"(): int64
-        set "clip_41/next_clip"(value: int64)
-        get "clip_42/name"(): StringName
-        set "clip_42/name"(value: StringName)
-        get "clip_42/stream"(): null | AudioStream
-        set "clip_42/stream"(value: null | AudioStream)
-        get "clip_42/auto_advance"(): int64
-        set "clip_42/auto_advance"(value: int64)
-        get "clip_42/next_clip"(): int64
-        set "clip_42/next_clip"(value: int64)
-        get "clip_43/name"(): StringName
-        set "clip_43/name"(value: StringName)
-        get "clip_43/stream"(): null | AudioStream
-        set "clip_43/stream"(value: null | AudioStream)
-        get "clip_43/auto_advance"(): int64
-        set "clip_43/auto_advance"(value: int64)
-        get "clip_43/next_clip"(): int64
-        set "clip_43/next_clip"(value: int64)
-        get "clip_44/name"(): StringName
-        set "clip_44/name"(value: StringName)
-        get "clip_44/stream"(): null | AudioStream
-        set "clip_44/stream"(value: null | AudioStream)
-        get "clip_44/auto_advance"(): int64
-        set "clip_44/auto_advance"(value: int64)
-        get "clip_44/next_clip"(): int64
-        set "clip_44/next_clip"(value: int64)
-        get "clip_45/name"(): StringName
-        set "clip_45/name"(value: StringName)
-        get "clip_45/stream"(): null | AudioStream
-        set "clip_45/stream"(value: null | AudioStream)
-        get "clip_45/auto_advance"(): int64
-        set "clip_45/auto_advance"(value: int64)
-        get "clip_45/next_clip"(): int64
-        set "clip_45/next_clip"(value: int64)
-        get "clip_46/name"(): StringName
-        set "clip_46/name"(value: StringName)
-        get "clip_46/stream"(): null | AudioStream
-        set "clip_46/stream"(value: null | AudioStream)
-        get "clip_46/auto_advance"(): int64
-        set "clip_46/auto_advance"(value: int64)
-        get "clip_46/next_clip"(): int64
-        set "clip_46/next_clip"(value: int64)
-        get "clip_47/name"(): StringName
-        set "clip_47/name"(value: StringName)
-        get "clip_47/stream"(): null | AudioStream
-        set "clip_47/stream"(value: null | AudioStream)
-        get "clip_47/auto_advance"(): int64
-        set "clip_47/auto_advance"(value: int64)
-        get "clip_47/next_clip"(): int64
-        set "clip_47/next_clip"(value: int64)
-        get "clip_48/name"(): StringName
-        set "clip_48/name"(value: StringName)
-        get "clip_48/stream"(): null | AudioStream
-        set "clip_48/stream"(value: null | AudioStream)
-        get "clip_48/auto_advance"(): int64
-        set "clip_48/auto_advance"(value: int64)
-        get "clip_48/next_clip"(): int64
-        set "clip_48/next_clip"(value: int64)
-        get "clip_49/name"(): StringName
-        set "clip_49/name"(value: StringName)
-        get "clip_49/stream"(): null | AudioStream
-        set "clip_49/stream"(value: null | AudioStream)
-        get "clip_49/auto_advance"(): int64
-        set "clip_49/auto_advance"(value: int64)
-        get "clip_49/next_clip"(): int64
-        set "clip_49/next_clip"(value: int64)
-        get "clip_50/name"(): StringName
-        set "clip_50/name"(value: StringName)
-        get "clip_50/stream"(): null | AudioStream
-        set "clip_50/stream"(value: null | AudioStream)
-        get "clip_50/auto_advance"(): int64
-        set "clip_50/auto_advance"(value: int64)
-        get "clip_50/next_clip"(): int64
-        set "clip_50/next_clip"(value: int64)
-        get "clip_51/name"(): StringName
-        set "clip_51/name"(value: StringName)
-        get "clip_51/stream"(): null | AudioStream
-        set "clip_51/stream"(value: null | AudioStream)
-        get "clip_51/auto_advance"(): int64
-        set "clip_51/auto_advance"(value: int64)
-        get "clip_51/next_clip"(): int64
-        set "clip_51/next_clip"(value: int64)
-        get "clip_52/name"(): StringName
-        set "clip_52/name"(value: StringName)
-        get "clip_52/stream"(): null | AudioStream
-        set "clip_52/stream"(value: null | AudioStream)
-        get "clip_52/auto_advance"(): int64
-        set "clip_52/auto_advance"(value: int64)
-        get "clip_52/next_clip"(): int64
-        set "clip_52/next_clip"(value: int64)
-        get "clip_53/name"(): StringName
-        set "clip_53/name"(value: StringName)
-        get "clip_53/stream"(): null | AudioStream
-        set "clip_53/stream"(value: null | AudioStream)
-        get "clip_53/auto_advance"(): int64
-        set "clip_53/auto_advance"(value: int64)
-        get "clip_53/next_clip"(): int64
-        set "clip_53/next_clip"(value: int64)
-        get "clip_54/name"(): StringName
-        set "clip_54/name"(value: StringName)
-        get "clip_54/stream"(): null | AudioStream
-        set "clip_54/stream"(value: null | AudioStream)
-        get "clip_54/auto_advance"(): int64
-        set "clip_54/auto_advance"(value: int64)
-        get "clip_54/next_clip"(): int64
-        set "clip_54/next_clip"(value: int64)
-        get "clip_55/name"(): StringName
-        set "clip_55/name"(value: StringName)
-        get "clip_55/stream"(): null | AudioStream
-        set "clip_55/stream"(value: null | AudioStream)
-        get "clip_55/auto_advance"(): int64
-        set "clip_55/auto_advance"(value: int64)
-        get "clip_55/next_clip"(): int64
-        set "clip_55/next_clip"(value: int64)
-        get "clip_56/name"(): StringName
-        set "clip_56/name"(value: StringName)
-        get "clip_56/stream"(): null | AudioStream
-        set "clip_56/stream"(value: null | AudioStream)
-        get "clip_56/auto_advance"(): int64
-        set "clip_56/auto_advance"(value: int64)
-        get "clip_56/next_clip"(): int64
-        set "clip_56/next_clip"(value: int64)
-        get "clip_57/name"(): StringName
-        set "clip_57/name"(value: StringName)
-        get "clip_57/stream"(): null | AudioStream
-        set "clip_57/stream"(value: null | AudioStream)
-        get "clip_57/auto_advance"(): int64
-        set "clip_57/auto_advance"(value: int64)
-        get "clip_57/next_clip"(): int64
-        set "clip_57/next_clip"(value: int64)
-        get "clip_58/name"(): StringName
-        set "clip_58/name"(value: StringName)
-        get "clip_58/stream"(): null | AudioStream
-        set "clip_58/stream"(value: null | AudioStream)
-        get "clip_58/auto_advance"(): int64
-        set "clip_58/auto_advance"(value: int64)
-        get "clip_58/next_clip"(): int64
-        set "clip_58/next_clip"(value: int64)
-        get "clip_59/name"(): StringName
-        set "clip_59/name"(value: StringName)
-        get "clip_59/stream"(): null | AudioStream
-        set "clip_59/stream"(value: null | AudioStream)
-        get "clip_59/auto_advance"(): int64
-        set "clip_59/auto_advance"(value: int64)
-        get "clip_59/next_clip"(): int64
-        set "clip_59/next_clip"(value: int64)
-        get "clip_60/name"(): StringName
-        set "clip_60/name"(value: StringName)
-        get "clip_60/stream"(): null | AudioStream
-        set "clip_60/stream"(value: null | AudioStream)
-        get "clip_60/auto_advance"(): int64
-        set "clip_60/auto_advance"(value: int64)
-        get "clip_60/next_clip"(): int64
-        set "clip_60/next_clip"(value: int64)
-        get "clip_61/name"(): StringName
-        set "clip_61/name"(value: StringName)
-        get "clip_61/stream"(): null | AudioStream
-        set "clip_61/stream"(value: null | AudioStream)
-        get "clip_61/auto_advance"(): int64
-        set "clip_61/auto_advance"(value: int64)
-        get "clip_61/next_clip"(): int64
-        set "clip_61/next_clip"(value: int64)
-        get "clip_62/name"(): StringName
-        set "clip_62/name"(value: StringName)
-        get "clip_62/stream"(): null | AudioStream
-        set "clip_62/stream"(value: null | AudioStream)
-        get "clip_62/auto_advance"(): int64
-        set "clip_62/auto_advance"(value: int64)
-        get "clip_62/next_clip"(): int64
-        set "clip_62/next_clip"(value: int64)
-        
-        /** Index of the initial clip, which will be played first when this stream is played. */
-        get initial_clip(): int64
-        set initial_clip(value: int64)
-        get _transitions(): GDictionary
-        set _transitions(value: GDictionary)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamInteractive;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapAudioStreamInteractive;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamMP3 extends __RPCMapAudioStream {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamMP3 extends __NameMapAudioStream {
     }
     /** MP3 audio stream driver.  
@@ -878,12 +36,7 @@ declare module "godot" {
         get loop_offset(): float64
         set loop_offset(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamMP3;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamMP3;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamMicrophone extends __RPCMapAudioStream {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamMicrophone extends __NameMapAudioStream {
@@ -895,12 +48,7 @@ declare module "godot" {
     class AudioStreamMicrophone extends AudioStream {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamMicrophone;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamMicrophone;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamOggVorbis extends __RPCMapAudioStream {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamOggVorbis extends __NameMapAudioStream {
@@ -943,12 +91,7 @@ declare module "godot" {
         get loop_offset(): float64
         set loop_offset(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamOggVorbis;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamOggVorbis;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlayback extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlayback extends __NameMapRefCounted {
@@ -1023,12 +166,7 @@ declare module "godot" {
         /** Returns `true` if the stream is playing. */
         is_playing(): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlayback;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlayback;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlaybackInteractive extends __RPCMapAudioStreamPlayback {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlaybackInteractive extends __NameMapAudioStreamPlayback {
@@ -1051,12 +189,7 @@ declare module "godot" {
          */
         get_current_clip_index(): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlaybackInteractive;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlaybackInteractive;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlaybackOggVorbis extends __RPCMapAudioStreamPlaybackResampled {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlaybackOggVorbis extends __NameMapAudioStreamPlaybackResampled {
@@ -1065,12 +198,7 @@ declare module "godot" {
     class AudioStreamPlaybackOggVorbis extends AudioStreamPlaybackResampled {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlaybackOggVorbis;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlaybackOggVorbis;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlaybackPlaylist extends __RPCMapAudioStreamPlayback {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlaybackPlaylist extends __NameMapAudioStreamPlayback {
@@ -1082,12 +210,7 @@ declare module "godot" {
     class AudioStreamPlaybackPlaylist extends AudioStreamPlayback {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlaybackPlaylist;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlaybackPlaylist;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlaybackPolyphonic extends __RPCMapAudioStreamPlayback {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlaybackPolyphonic extends __NameMapAudioStreamPlayback {
@@ -1120,12 +243,7 @@ declare module "godot" {
         /** Stop a stream. The [param stream] argument is an integer ID returned by [method play_stream], which becomes invalid after calling this function. */
         stop_stream(stream: int64): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlaybackPolyphonic;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlaybackPolyphonic;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlaybackResampled extends __RPCMapAudioStreamPlayback {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlaybackResampled extends __NameMapAudioStreamPlayback {
@@ -1137,12 +255,7 @@ declare module "godot" {
         /* gdvirtual */ _get_stream_sampling_rate(): float64
         begin_resample(): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlaybackResampled;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlaybackResampled;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlaybackSynchronized extends __RPCMapAudioStreamPlayback {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlaybackSynchronized extends __NameMapAudioStreamPlayback {
@@ -1150,8 +263,6 @@ declare module "godot" {
     /** @link https://docs.godotengine.org/en/4.6/classes/class_audiostreamplaybacksynchronized.html */
     class AudioStreamPlaybackSynchronized extends AudioStreamPlayback {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlaybackSynchronized;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlaybackSynchronized;
     }
@@ -1166,9 +277,6 @@ declare module "godot" {
             /** The audio will be played on the second channel, which is usually the center. */
             MIX_TARGET_CENTER = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlayer extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlayer extends __NameMapNode {
@@ -1261,12 +369,7 @@ declare module "godot" {
         /** Emitted when a sound finishes playing without interruptions. This signal is  *not*  emitted when calling [method stop], or when exiting the tree while sounds are playing. */
         readonly finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlayer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlayer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlayer2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlayer2D extends __NameMapNode2D {
@@ -1360,8 +463,6 @@ declare module "godot" {
         /** Emitted when the audio stops playing. */
         readonly finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlayer2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlayer2D;
     }
     namespace AudioStreamPlayer3D {
@@ -1388,9 +489,6 @@ declare module "godot" {
             /** Executes doppler tracking during physics frames (see [constant Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS]). */
             DOPPLER_TRACKING_PHYSICS_STEP = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlayer3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlayer3D extends __NameMapNode3D {
@@ -1522,12 +620,7 @@ declare module "godot" {
         /** Emitted when the audio stops playing. */
         readonly finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlayer3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlayer3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPlaylist extends __RPCMapAudioStream {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPlaylist extends __NameMapAudioStream {
@@ -1694,12 +787,7 @@ declare module "godot" {
         get stream_63(): null | AudioStream
         set stream_63(value: null | AudioStream)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPlaylist;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPlaylist;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamPolyphonic extends __RPCMapAudioStream {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamPolyphonic extends __NameMapAudioStream {
@@ -1714,8 +802,6 @@ declare module "godot" {
         get polyphony(): int64
         set polyphony(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamPolyphonic;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamPolyphonic;
     }
     namespace AudioStreamRandomizer {
@@ -1729,9 +815,6 @@ declare module "godot" {
             /** Play streams in the order they appear in the stream pool. If only 1 sound is present in the pool, the same sound will always play. */
             PLAYBACK_SEQUENTIAL = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamRandomizer extends __RPCMapAudioStream {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamRandomizer extends __NameMapAudioStream {
@@ -1789,12 +872,7 @@ declare module "godot" {
         get streams_count(): int64
         set streams_count(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamRandomizer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamRandomizer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamSynchronized extends __RPCMapAudioStream {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamSynchronized extends __NameMapAudioStream {
@@ -1952,8 +1030,6 @@ declare module "godot" {
         get "stream_31/volume"(): float64
         set "stream_31/volume"(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamSynchronized;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamSynchronized;
     }
     namespace AudioStreamWAV {
@@ -1983,9 +1059,6 @@ declare module "godot" {
             /** Audio loops the data between [member loop_begin] and [member loop_end], playing backward only. */
             LOOP_BACKWARD = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapAudioStreamWAV extends __RPCMapAudioStream {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapAudioStreamWAV extends __NameMapAudioStream {
@@ -2060,8 +1133,6 @@ declare module "godot" {
         get tags(): GDictionary
         set tags(value: GDictionary)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapAudioStreamWAV;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapAudioStreamWAV;
     }
     namespace BackBufferCopy {
@@ -2075,9 +1146,6 @@ declare module "godot" {
             /** [BackBufferCopy] buffers the entire screen. */
             COPY_MODE_VIEWPORT = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBackBufferCopy extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBackBufferCopy extends __NameMapNode2D {
@@ -2095,8 +1163,6 @@ declare module "godot" {
         /** The area covered by the [BackBufferCopy]. Only used if [member copy_mode] is [constant COPY_MODE_RECT]. */
         get rect(): Rect2
         set rect(value: Rect2)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBackBufferCopy;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBackBufferCopy;
     }
@@ -2124,9 +1190,6 @@ declare module "godot" {
             /** Require a press and a subsequent release before considering the button clicked. */
             ACTION_MODE_BUTTON_RELEASE = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBaseButton extends __RPCMapControl {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBaseButton extends __NameMapControl {
@@ -2225,8 +1288,6 @@ declare module "godot" {
         
         /** Emitted when the button was just toggled between pressed and normal states (only if [member toggle_mode] is active). The new state is contained in the [param toggled_on] argument. */
         readonly toggled: Signal<(toggled_on: boolean) => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBaseButton;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBaseButton;
     }
@@ -2664,9 +1725,6 @@ declare module "godot" {
             /** Passes the stencil test when the reference value is greater than or equal to the existing stencil value. */
             STENCIL_COMPARE_GREATER_OR_EQUAL = 6,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBaseMaterial3D extends __RPCMapMaterial {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBaseMaterial3D extends __NameMapMaterial {
@@ -3325,12 +2383,7 @@ declare module "godot" {
         get stencil_outline_thickness(): float64
         set stencil_outline_thickness(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBaseMaterial3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBaseMaterial3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBitMap extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBitMap extends __NameMapResource {
@@ -3386,12 +2439,7 @@ declare module "godot" {
         get data(): GDictionary
         set data(value: GDictionary)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBitMap;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBitMap;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBone2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBone2D extends __NameMapNode2D {
@@ -3439,12 +2487,7 @@ declare module "godot" {
         get rest(): Transform2D
         set rest(value: Transform2D)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBone2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBone2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBoneAttachment3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBoneAttachment3D extends __NameMapNode3D {
@@ -3484,8 +2527,6 @@ declare module "godot" {
         get external_skeleton(): NodePath
         set external_skeleton(value: NodePath | string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBoneAttachment3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBoneAttachment3D;
     }
     namespace BoneConstraint3D {
@@ -3498,9 +2539,6 @@ declare module "godot" {
              */
             REFERENCE_TYPE_NODE = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBoneConstraint3D extends __RPCMapSkeletonModifier3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBoneConstraint3D extends __NameMapSkeletonModifier3D {
@@ -3574,12 +2612,7 @@ declare module "godot" {
         /** Clear all settings. */
         clear_setting(): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBoneConstraint3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBoneConstraint3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBoneMap extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBoneMap extends __NameMapResource {
@@ -3615,8 +2648,6 @@ declare module "godot" {
         /** This signal is emitted when change the value in profile or change the reference of profile. This is used to update key names in the [BoneMap] and to redraw the [BoneMap] editor. */
         readonly profile_updated: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBoneMap;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBoneMap;
     }
     namespace BoneTwistDisperser3D {
@@ -3632,9 +2663,6 @@ declare module "godot" {
              */
             DISPERSE_MODE_CUSTOM = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBoneTwistDisperser3D extends __RPCMapSkeletonModifier3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBoneTwistDisperser3D extends __NameMapSkeletonModifier3D {
@@ -3760,8 +2788,6 @@ declare module "godot" {
         get setting_count(): int64
         set setting_count(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBoneTwistDisperser3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBoneTwistDisperser3D;
     }
     namespace BoxContainer {
@@ -3775,9 +2801,6 @@ declare module "godot" {
             /** The child controls will be arranged at the end of the container, i.e. bottom if orientation is vertical, right if orientation is horizontal (left for RTL layout). */
             ALIGNMENT_END = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBoxContainer extends __RPCMapContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBoxContainer extends __NameMapContainer {
@@ -3801,12 +2824,7 @@ declare module "godot" {
         get vertical(): boolean
         set vertical(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBoxContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBoxContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBoxMesh extends __RPCMapPrimitiveMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBoxMesh extends __NameMapPrimitiveMesh {
@@ -3833,12 +2851,7 @@ declare module "godot" {
         get subdivide_depth(): int64
         set subdivide_depth(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBoxMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBoxMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBoxOccluder3D extends __RPCMapOccluder3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBoxOccluder3D extends __NameMapOccluder3D {
@@ -3853,12 +2866,7 @@ declare module "godot" {
         get size(): Vector3
         set size(value: Vector3)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBoxOccluder3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBoxOccluder3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapBoxShape3D extends __RPCMapShape3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapBoxShape3D extends __NameMapShape3D {
@@ -3873,12 +2881,7 @@ declare module "godot" {
         get size(): Vector3
         set size(value: Vector3)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapBoxShape3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapBoxShape3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapButton extends __RPCMapBaseButton {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapButton extends __NameMapBaseButton {
@@ -3943,12 +2946,7 @@ declare module "godot" {
         get language(): string
         set language(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapButton;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapButton;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapButtonGroup extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapButtonGroup extends __NameMapResource {
@@ -3972,12 +2970,7 @@ declare module "godot" {
         /** Emitted when one of the buttons of the group is pressed. */
         readonly pressed: Signal<(button: BaseButton) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapButtonGroup;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapButtonGroup;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCCDIK3D extends __RPCMapIterateIK3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCCDIK3D extends __NameMapIterateIK3D {
@@ -3988,8 +2981,6 @@ declare module "godot" {
      */
     class CCDIK3D<Map extends NodePathMap = any> extends IterateIK3D<Map> {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCCDIK3D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCCDIK3D;
     }
@@ -4079,9 +3070,6 @@ declare module "godot" {
             /** Represents the size of the [enum EmissionShape] enum. */
             EMISSION_SHAPE_MAX = 7,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCPUParticles2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCPUParticles2D extends __NameMapNode2D {
@@ -4414,8 +3402,6 @@ declare module "godot" {
         /** Emitted when all active particles have finished processing. When [member one_shot] is disabled, particles will process continuously, so this is never emitted. */
         readonly finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCPUParticles2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCPUParticles2D;
     }
     namespace CPUParticles3D {
@@ -4507,9 +3493,6 @@ declare module "godot" {
             /** Represents the size of the [enum EmissionShape] enum. */
             EMISSION_SHAPE_MAX = 7,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCPUParticles3D extends __RPCMapGeometryInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCPUParticles3D extends __NameMapGeometryInstance3D {
@@ -4888,12 +3871,7 @@ declare module "godot" {
         /** Emitted when all active particles have finished processing. When [member one_shot] is disabled, particles will process continuously, so this is never emitted. */
         readonly finished: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCPUParticles3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCPUParticles3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCSGBox3D extends __RPCMapCSGPrimitive3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCSGBox3D extends __NameMapCSGPrimitive3D {
@@ -4912,12 +3890,7 @@ declare module "godot" {
         get material(): null | BaseMaterial3D | ShaderMaterial
         set material(value: null | BaseMaterial3D | ShaderMaterial)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCSGBox3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCSGBox3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCSGCombiner3D extends __RPCMapCSGShape3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCSGCombiner3D extends __NameMapCSGShape3D {
@@ -4929,12 +3902,7 @@ declare module "godot" {
     class CSGCombiner3D<Map extends NodePathMap = any> extends CSGShape3D<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCSGCombiner3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCSGCombiner3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCSGCylinder3D extends __RPCMapCSGPrimitive3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCSGCylinder3D extends __NameMapCSGPrimitive3D {
@@ -4969,12 +3937,7 @@ declare module "godot" {
         get material(): null | BaseMaterial3D | ShaderMaterial
         set material(value: null | BaseMaterial3D | ShaderMaterial)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCSGCylinder3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCSGCylinder3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCSGMesh3D extends __RPCMapCSGPrimitive3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCSGMesh3D extends __NameMapCSGPrimitive3D {
@@ -4998,8 +3961,6 @@ declare module "godot" {
         /** The [Material] used in drawing the CSG shape. */
         get material(): null | BaseMaterial3D | ShaderMaterial
         set material(value: null | BaseMaterial3D | ShaderMaterial)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCSGMesh3D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCSGMesh3D;
     }
@@ -5037,9 +3998,6 @@ declare module "godot" {
             /** When [member mode] is set to [constant MODE_PATH], [member path_interval] will subdivide the polygons along the path. */
             PATH_INTERVAL_SUBDIVIDE = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCSGPolygon3D extends __RPCMapCSGPrimitive3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCSGPolygon3D extends __NameMapCSGPrimitive3D {
@@ -5124,12 +4082,7 @@ declare module "godot" {
         get material(): null | BaseMaterial3D | ShaderMaterial
         set material(value: null | BaseMaterial3D | ShaderMaterial)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCSGPolygon3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCSGPolygon3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCSGPrimitive3D extends __RPCMapCSGShape3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCSGPrimitive3D extends __NameMapCSGShape3D {
@@ -5144,8 +4097,6 @@ declare module "godot" {
         get flip_faces(): boolean
         set flip_faces(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCSGPrimitive3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCSGPrimitive3D;
     }
     namespace CSGShape3D {
@@ -5159,9 +4110,6 @@ declare module "godot" {
             /** The second shape is subtracted from the first, leaving a dent with its shape. */
             OPERATION_SUBTRACTION = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCSGShape3D extends __RPCMapGeometryInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCSGShape3D extends __NameMapGeometryInstance3D {
@@ -5239,12 +4187,7 @@ declare module "godot" {
         get collision_priority(): float64
         set collision_priority(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCSGShape3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCSGShape3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCSGSphere3D extends __RPCMapCSGPrimitive3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCSGSphere3D extends __NameMapCSGPrimitive3D {
@@ -5275,12 +4218,7 @@ declare module "godot" {
         get material(): null | BaseMaterial3D | ShaderMaterial
         set material(value: null | BaseMaterial3D | ShaderMaterial)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCSGSphere3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCSGSphere3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCSGTorus3D extends __RPCMapCSGPrimitive3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCSGTorus3D extends __NameMapCSGPrimitive3D {
@@ -5315,12 +4253,7 @@ declare module "godot" {
         get material(): null | BaseMaterial3D | ShaderMaterial
         set material(value: null | BaseMaterial3D | ShaderMaterial)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCSGTorus3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCSGTorus3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCallbackTweener extends __RPCMapTweener {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCallbackTweener extends __NameMapTweener {
@@ -5336,8 +4269,6 @@ declare module "godot" {
          *    
          */
         set_delay(delay: float64): null | CallbackTweener
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCallbackTweener;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCallbackTweener;
     }
@@ -5356,9 +4287,6 @@ declare module "godot" {
             /** The camera updates during process frames (see [constant Node.NOTIFICATION_INTERNAL_PROCESS]). */
             CAMERA2D_PROCESS_IDLE = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCamera2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCamera2D extends __NameMapNode2D {
@@ -5553,8 +4481,6 @@ declare module "godot" {
         get editor_draw_drag_margin(): boolean
         set editor_draw_drag_margin(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCamera2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCamera2D;
     }
     namespace Camera3D {
@@ -5585,9 +4511,6 @@ declare module "godot" {
             /** Simulate [url=https://en.wikipedia.org/wiki/Doppler_effect]Doppler effect[/url] by tracking positions of objects that are changed in `_physics_process`. Changes in the relative velocity of this camera compared to those objects affect how audio is perceived (changing the audio's [member AudioStreamPlayer3D.pitch_scale]). */
             DOPPLER_TRACKING_PHYSICS_STEP = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCamera3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCamera3D extends __NameMapNode3D {
@@ -5744,12 +4667,7 @@ declare module "godot" {
         get far(): float64
         set far(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCamera3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCamera3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCameraAttributes extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCameraAttributes extends __NameMapResource {
@@ -5784,12 +4702,7 @@ declare module "godot" {
         get auto_exposure_speed(): float64
         set auto_exposure_speed(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCameraAttributes;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCameraAttributes;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCameraAttributesPhysical extends __RPCMapCameraAttributes {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCameraAttributesPhysical extends __NameMapCameraAttributes {
@@ -5839,12 +4752,7 @@ declare module "godot" {
         get auto_exposure_max_exposure_value(): float64
         set auto_exposure_max_exposure_value(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCameraAttributesPhysical;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCameraAttributesPhysical;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCameraAttributesPractical extends __RPCMapCameraAttributes {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCameraAttributesPractical extends __NameMapCameraAttributes {
@@ -5901,8 +4809,6 @@ declare module "godot" {
         get auto_exposure_max_sensitivity(): float64
         set auto_exposure_max_sensitivity(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCameraAttributesPractical;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCameraAttributesPractical;
     }
     namespace CameraFeed {
@@ -5932,9 +4838,6 @@ declare module "godot" {
             /** Camera is mounted at the back of the device. */
             FEED_BACK = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCameraFeed extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCameraFeed extends __NameMapRefCounted {
@@ -6020,12 +4923,7 @@ declare module "godot" {
         /** Emitted when the format has changed. */
         readonly format_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCameraFeed;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCameraFeed;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCameraTexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCameraTexture extends __NameMapTexture2D {
@@ -6048,12 +4946,7 @@ declare module "godot" {
         get camera_is_active(): boolean
         set camera_is_active(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCameraTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCameraTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCanvasGroup extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCanvasGroup extends __NameMapNode2D {
@@ -6075,8 +4968,6 @@ declare module "godot" {
         /** If `true`, calculates mipmaps for the backbuffer before drawing the [CanvasGroup] so that mipmaps can be used in a custom [ShaderMaterial] attached to the [CanvasGroup]. Generating mipmaps has a performance cost so this should not be enabled unless required. */
         get use_mipmaps(): boolean
         set use_mipmaps(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCanvasGroup;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCanvasGroup;
     }
@@ -6145,9 +5036,6 @@ declare module "godot" {
             /** Represents the size of the [enum ClipChildrenMode] enum. */
             CLIP_CHILDREN_MAX = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCanvasItem extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCanvasItem extends __NameMapNode {
@@ -6358,7 +5246,7 @@ declare module "godot" {
          *      
          *  **Note:** Styleboxes, textures, and meshes stored only inside local variables should **not** be used with this method in GDScript, because the drawing operation doesn't begin immediately once this method is called. In GDScript, when the function with the local variables ends, the local variables get destroyed before the rendering takes place.  
          */
-        draw_primitive(points: PackedVector2Array | Vector2[], colors: PackedColorArray | Color[], uvs: PackedVector2Array | Vector2[], texture?: Texture2D): void
+        draw_primitive(points: PackedVector2Array | Vector2[], colors: PackedColorArray | Color[], uvs: PackedVector2Array | Vector2[], texture?: Texture2D /* = undefined */): void
         
         /** Draws a solid polygon of any number of points, convex or concave. Unlike [method draw_colored_polygon], each point's color can be changed individually. The [param points] array is defined in local space. See also [method draw_polyline] and [method draw_polyline_colors]. If you need more flexibility (such as being able to use bones), use [method RenderingServer.canvas_item_add_triangle_array] instead.  
          *      
@@ -6366,7 +5254,7 @@ declare module "godot" {
          *      
          *  **Note:** Styleboxes, textures, and meshes stored only inside local variables should **not** be used with this method in GDScript, because the drawing operation doesn't begin immediately once this method is called. In GDScript, when the function with the local variables ends, the local variables get destroyed before the rendering takes place.  
          */
-        draw_polygon(points: PackedVector2Array | Vector2[], colors: PackedColorArray | Color[], uvs?: PackedVector2Array | Vector2[] /* = [] */, texture?: Texture2D): void
+        draw_polygon(points: PackedVector2Array | Vector2[], colors: PackedColorArray | Color[], uvs?: PackedVector2Array | Vector2[] /* = [] */, texture?: Texture2D /* = undefined */): void
         
         /** Draws a colored polygon of any number of points, convex or concave. The points in the [param points] array are defined in local space. Unlike [method draw_polygon], a single color must be specified for the whole polygon.  
          *      
@@ -6374,7 +5262,7 @@ declare module "godot" {
          *      
          *  **Note:** Styleboxes, textures, and meshes stored only inside local variables should **not** be used with this method in GDScript, because the drawing operation doesn't begin immediately once this method is called. In GDScript, when the function with the local variables ends, the local variables get destroyed before the rendering takes place.  
          */
-        draw_colored_polygon(points: PackedVector2Array | Vector2[], color: Color, uvs?: PackedVector2Array | Vector2[] /* = [] */, texture?: Texture2D): void
+        draw_colored_polygon(points: PackedVector2Array | Vector2[], color: Color, uvs?: PackedVector2Array | Vector2[] /* = [] */, texture?: Texture2D /* = undefined */): void
         
         /** Draws [param text] using the specified [param font] at the [param pos] in local space (bottom-left corner using the baseline of the font). The text will have its color multiplied by [param modulate]. If [param width] is greater than or equal to 0, the text will be clipped if it exceeds the specified width. If [param oversampling] is greater than zero, it is used as font oversampling factor, otherwise viewport oversampling settings are used.  
          *  **Example:** Draw "Hello world", using the project's default font:  
@@ -6618,8 +5506,6 @@ declare module "godot" {
         /** Emitted when the [CanvasItem]'s boundaries (position or size) change, or when an action took place that may have affected these boundaries (e.g. changing [member Sprite2D.texture]). */
         readonly item_rect_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCanvasItem;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCanvasItem;
     }
     namespace CanvasItemMaterial {
@@ -6649,9 +5535,6 @@ declare module "godot" {
             /** Render the material as if there were only light. */
             LIGHT_MODE_LIGHT_ONLY = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCanvasItemMaterial extends __RPCMapMaterial {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCanvasItemMaterial extends __NameMapMaterial {
@@ -6697,12 +5580,7 @@ declare module "godot" {
         get particles_anim_loop(): boolean
         set particles_anim_loop(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCanvasItemMaterial;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCanvasItemMaterial;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCanvasLayer extends __RPCMapNode {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCanvasLayer extends __NameMapNode {
@@ -6773,12 +5651,7 @@ declare module "godot" {
         /** Emitted when visibility of the layer is changed. See [member visible]. */
         readonly visibility_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCanvasLayer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCanvasLayer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCanvasModulate extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCanvasModulate extends __NameMapNode2D {
@@ -6793,12 +5666,7 @@ declare module "godot" {
         get color(): Color
         set color(value: Color)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCanvasModulate;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCanvasModulate;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCanvasTexture extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCanvasTexture extends __NameMapTexture2D {
@@ -6840,12 +5708,7 @@ declare module "godot" {
         get texture_repeat(): int64
         set texture_repeat(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCanvasTexture;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCanvasTexture;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCapsuleMesh extends __RPCMapPrimitiveMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCapsuleMesh extends __NameMapPrimitiveMesh {
@@ -6878,12 +5741,7 @@ declare module "godot" {
         get rings(): int64
         set rings(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCapsuleMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCapsuleMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCapsuleShape2D extends __RPCMapShape2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCapsuleShape2D extends __NameMapShape2D {
@@ -6912,12 +5770,7 @@ declare module "godot" {
         get mid_height(): float64
         set mid_height(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCapsuleShape2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCapsuleShape2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCapsuleShape3D extends __RPCMapShape3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCapsuleShape3D extends __NameMapShape3D {
@@ -6946,12 +5799,7 @@ declare module "godot" {
         get mid_height(): float64
         set mid_height(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCapsuleShape3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCapsuleShape3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCenterContainer extends __RPCMapContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCenterContainer extends __NameMapContainer {
@@ -6966,12 +5814,7 @@ declare module "godot" {
         get use_top_left(): boolean
         set use_top_left(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCenterContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCenterContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapChainIK3D extends __RPCMapIKModifier3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapChainIK3D extends __NameMapIKModifier3D {
@@ -7038,12 +5881,7 @@ declare module "godot" {
         /** Returns the joint count of the bone chain's joint list. */
         get_joint_count(index: int64): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapChainIK3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapChainIK3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCharFXTransform extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCharFXTransform extends __NameMapRefCounted {
@@ -7130,8 +5968,6 @@ declare module "godot" {
         get font(): RID
         set font(value: RID)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCharFXTransform;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCharFXTransform;
     }
     namespace CharacterBody2D {
@@ -7152,9 +5988,6 @@ declare module "godot" {
             /** Do nothing when leaving a platform. */
             PLATFORM_ON_LEAVE_DO_NOTHING = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCharacterBody2D extends __RPCMapPhysicsBody2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCharacterBody2D extends __NameMapPhysicsBody2D {
@@ -7305,8 +6138,6 @@ declare module "godot" {
         get safe_margin(): float64
         set safe_margin(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCharacterBody2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCharacterBody2D;
     }
     namespace CharacterBody3D {
@@ -7327,9 +6158,6 @@ declare module "godot" {
             /** Do nothing when leaving a platform. */
             PLATFORM_ON_LEAVE_DO_NOTHING = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCharacterBody3D extends __RPCMapPhysicsBody3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCharacterBody3D extends __NameMapPhysicsBody3D {
@@ -7479,12 +6307,7 @@ declare module "godot" {
         get safe_margin(): float64
         set safe_margin(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCharacterBody3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCharacterBody3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCheckBox extends __RPCMapButton {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCheckBox extends __NameMapButton {
@@ -7496,12 +6319,7 @@ declare module "godot" {
     class CheckBox<Map extends NodePathMap = any> extends Button<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCheckBox;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCheckBox;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCheckButton extends __RPCMapButton {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCheckButton extends __NameMapButton {
@@ -7513,12 +6331,7 @@ declare module "godot" {
     class CheckButton<Map extends NodePathMap = any> extends Button<Map> {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCheckButton;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCheckButton;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCircleShape2D extends __RPCMapShape2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCircleShape2D extends __NameMapShape2D {
@@ -7532,8 +6345,6 @@ declare module "godot" {
         /** The circle's radius. */
         get radius(): float64
         set radius(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCircleShape2D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCircleShape2D;
     }
@@ -7582,9 +6393,6 @@ declare module "godot" {
             /** The option is from other engine code, not covered by the other enum constants - e.g. built-in classes. */
             LOCATION_OTHER = 1024,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCodeEdit extends __RPCMapTextEdit {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCodeEdit extends __NameMapTextEdit {
@@ -7782,7 +6590,7 @@ declare module "godot" {
          *      
          *  **Note:** This list will replace all current candidates.  
          */
-        add_code_completion_option(type: CodeEdit.CodeCompletionKind, display_text: string, insert_text: string, text_color?: Color /* = new Color(1, 1, 1, 1) */, icon?: Resource, value?: any /* = {} */, location?: int64 /* = 1024 */): void
+        add_code_completion_option(type: CodeEdit.CodeCompletionKind, display_text: string, insert_text: string, text_color?: Color /* = new Color(1, 1, 1, 1) */, icon?: Resource /* = undefined */, value?: any /* = <any> {} */, location?: int64 /* = 1024 */): void
         
         /** Submits all completion options added with [method add_code_completion_option]. Will try to force the autocomplete menu to popup, if [param force] is `true`.  
          *      
@@ -7948,12 +6756,7 @@ declare module "godot" {
          */
         readonly symbol_hovered: Signal<(symbol: string, line: int64, column: int64) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCodeEdit;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCodeEdit;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCodeHighlighter extends __RPCMapSyntaxHighlighter {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCodeHighlighter extends __NameMapSyntaxHighlighter {
@@ -8041,8 +6844,6 @@ declare module "godot" {
         get color_regions(): GDictionary
         set color_regions(value: GDictionary)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCodeHighlighter;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCodeHighlighter;
     }
     namespace CollisionObject2D {
@@ -8060,9 +6861,6 @@ declare module "godot" {
             /** When [member Node.process_mode] is set to [constant Node.PROCESS_MODE_DISABLED], do not affect the physics simulation. */
             DISABLE_MODE_KEEP_ACTIVE = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCollisionObject2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCollisionObject2D extends __NameMapNode2D {
@@ -8210,8 +7008,6 @@ declare module "godot" {
         /** Emitted when the mouse pointer exits any of this object's shapes. [param shape_idx] is the child index of the exited [Shape2D]. Requires [member input_pickable] to be `true` and at least one [member collision_layer] bit to be set. */
         readonly mouse_shape_exited: Signal<(shape_idx: int64) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCollisionObject2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCollisionObject2D;
     }
     namespace CollisionObject3D {
@@ -8229,9 +7025,6 @@ declare module "godot" {
             /** When [member Node.process_mode] is set to [constant Node.PROCESS_MODE_DISABLED], do not affect the physics simulation. */
             DISABLE_MODE_KEEP_ACTIVE = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCollisionObject3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCollisionObject3D extends __NameMapNode3D {
@@ -8359,8 +7152,6 @@ declare module "godot" {
          */
         readonly mouse_exited: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCollisionObject3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCollisionObject3D;
     }
     namespace CollisionPolygon2D {
@@ -8371,9 +7162,6 @@ declare module "godot" {
             /** Collisions will only include the polygon edges. In this mode the node has the same effect as a single [ConcavePolygonShape2D] made of segments, with the restriction that each segment (after the first one) starts where the previous one ends, and the last one ends where the first one starts (forming a closed but hollow polygon). */
             BUILD_SEGMENTS = 1,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCollisionPolygon2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCollisionPolygon2D extends __NameMapNode2D {
@@ -8410,12 +7198,7 @@ declare module "godot" {
         get one_way_collision_margin(): float64
         set one_way_collision_margin(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCollisionPolygon2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCollisionPolygon2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCollisionPolygon3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCollisionPolygon3D extends __NameMapNode3D {
@@ -8455,12 +7238,7 @@ declare module "godot" {
         get debug_fill(): boolean
         set debug_fill(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCollisionPolygon3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCollisionPolygon3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCollisionShape2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCollisionShape2D extends __NameMapNode2D {
@@ -8497,12 +7275,7 @@ declare module "godot" {
         get debug_color(): Color
         set debug_color(value: Color)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCollisionShape2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCollisionShape2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCollisionShape3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCollisionShape3D extends __NameMapNode3D {
@@ -8538,12 +7311,7 @@ declare module "godot" {
         get debug_fill(): boolean
         set debug_fill(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCollisionShape3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCollisionShape3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapColorPalette extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapColorPalette extends __NameMapResource {
@@ -8557,8 +7325,6 @@ declare module "godot" {
         /** A [PackedColorArray] containing the colors in the palette. */
         get colors(): PackedColorArray
         set colors(value: PackedColorArray | Color[])
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapColorPalette;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapColorPalette;
     }
@@ -8602,9 +7368,6 @@ declare module "godot" {
             /** OKHSL Color Model rectangle with constant saturation. */
             SHAPE_OK_HL_RECTANGLE = 6,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapColorPicker extends __RPCMapVBoxContainer {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapColorPicker extends __NameMapVBoxContainer {
@@ -8696,12 +7459,7 @@ declare module "godot" {
         /** Emitted when a preset is removed. */
         readonly preset_removed: Signal<(color: Color) => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapColorPicker;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapColorPicker;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapColorPickerButton extends __RPCMapButton {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapColorPickerButton extends __NameMapButton {
@@ -8744,12 +7502,7 @@ declare module "godot" {
         /** Emitted when the [ColorPicker] is created (the button is pressed for the first time). */
         readonly picker_created: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapColorPickerButton;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapColorPickerButton;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapColorRect extends __RPCMapControl {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapColorRect extends __NameMapControl {
@@ -8764,12 +7517,7 @@ declare module "godot" {
         get color(): Color
         set color(value: Color)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapColorRect;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapColorRect;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCompositor extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCompositor extends __NameMapResource {
@@ -8783,8 +7531,6 @@ declare module "godot" {
         /** The custom [CompositorEffect]s that are applied during rendering of viewports using this compositor. */
         get compositor_effects(): GArray<CompositorEffect>
         set compositor_effects(value: GArray<CompositorEffect>)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCompositor;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCompositor;
     }
@@ -8808,9 +7554,6 @@ declare module "godot" {
             /** Represents the size of the [enum EffectCallbackType] enum. */
             EFFECT_CALLBACK_TYPE_MAX = 5,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCompositorEffect extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCompositorEffect extends __NameMapResource {
@@ -8870,12 +7613,7 @@ declare module "godot" {
         get needs_separate_specular(): boolean
         set needs_separate_specular(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCompositorEffect;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCompositorEffect;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCompressedCubemap extends __RPCMapCompressedTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCompressedCubemap extends __NameMapCompressedTextureLayered {
@@ -8887,12 +7625,7 @@ declare module "godot" {
     class CompressedCubemap extends CompressedTextureLayered {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCompressedCubemap;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCompressedCubemap;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCompressedCubemapArray extends __RPCMapCompressedTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCompressedCubemapArray extends __NameMapCompressedTextureLayered {
@@ -8904,12 +7637,7 @@ declare module "godot" {
     class CompressedCubemapArray extends CompressedTextureLayered {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCompressedCubemapArray;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCompressedCubemapArray;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCompressedTexture2D extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCompressedTexture2D extends __NameMapTexture2D {
@@ -8924,12 +7652,7 @@ declare module "godot" {
         get load_path(): string
         set load_path(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCompressedTexture2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCompressedTexture2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCompressedTexture2DArray extends __RPCMapCompressedTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCompressedTexture2DArray extends __NameMapCompressedTextureLayered {
@@ -8941,12 +7664,7 @@ declare module "godot" {
     class CompressedTexture2DArray extends CompressedTextureLayered {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCompressedTexture2DArray;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCompressedTexture2DArray;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCompressedTexture3D extends __RPCMapTexture3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCompressedTexture3D extends __NameMapTexture3D {
@@ -8961,12 +7679,7 @@ declare module "godot" {
         get load_path(): string
         set load_path(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCompressedTexture3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCompressedTexture3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapCompressedTextureLayered extends __RPCMapTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapCompressedTextureLayered extends __NameMapTextureLayered {
@@ -8981,12 +7694,7 @@ declare module "godot" {
         get load_path(): string
         set load_path(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapCompressedTextureLayered;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapCompressedTextureLayered;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapConcavePolygonShape2D extends __RPCMapShape2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapConcavePolygonShape2D extends __NameMapShape2D {
@@ -9001,12 +7709,7 @@ declare module "godot" {
         get segments(): PackedVector2Array
         set segments(value: PackedVector2Array | Vector2[])
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapConcavePolygonShape2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapConcavePolygonShape2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapConcavePolygonShape3D extends __RPCMapShape3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapConcavePolygonShape3D extends __NameMapShape3D {
@@ -9023,8 +7726,6 @@ declare module "godot" {
         /** If set to `true`, collisions occur on both sides of the concave shape faces. Otherwise they occur only along the face normals. */
         get backface_collision(): boolean
         set backface_collision(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapConcavePolygonShape3D;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapConcavePolygonShape3D;
     }
@@ -9056,9 +7757,6 @@ declare module "godot" {
             /** Represents the size of the [enum Param] enum. */
             PARAM_MAX = 5,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapConeTwistJoint3D extends __RPCMapJoint3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapConeTwistJoint3D extends __NameMapJoint3D {
@@ -9103,12 +7801,7 @@ declare module "godot" {
         get relaxation(): float64
         set relaxation(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapConeTwistJoint3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapConeTwistJoint3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapConfigFile extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapConfigFile extends __NameMapRefCounted {
@@ -9123,7 +7816,7 @@ declare module "godot" {
         set_value(section: string, key: string, value: any): void
         
         /** Returns the current value for the specified section and key. If either the section or the key do not exist, the method returns the fallback [param default] value. If [param default] is not specified or set to `null`, an error is also raised. */
-        get_value(section: string, key: string, default_?: any /* = {} */): any
+        get_value(section: string, key: string, default_?: any /* = <any> {} */): any
         
         /** Returns `true` if the specified section exists. */
         has_section(section: string): boolean
@@ -9184,12 +7877,7 @@ declare module "godot" {
         /** Removes the entire contents of the config. */
         clear(): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapConfigFile;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapConfigFile;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapConfirmationDialog extends __RPCMapAcceptDialog {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapConfirmationDialog extends __NameMapAcceptDialog {
@@ -9209,8 +7897,1375 @@ declare module "godot" {
         get cancel_button_text(): string
         set cancel_button_text(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapConfirmationDialog;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapConfirmationDialog;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapContainer extends __NameMapControl {
+    }
+    /** Base class for all GUI containers.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_container.html  
+     */
+    class Container<Map extends NodePathMap = any> extends Control<Map> {
+        /** Notification just before children are going to be sorted, in case there's something to process beforehand. */
+        static readonly NOTIFICATION_PRE_SORT_CHILDREN = 50
+        
+        /** Notification for when sorting the children, it must be obeyed immediately. */
+        static readonly NOTIFICATION_SORT_CHILDREN = 51
+        constructor(identifier?: any)
+        
+        /** Implement to return a list of allowed horizontal [enum Control.SizeFlags] for child nodes. This doesn't technically prevent the usages of any other size flags, if your implementation requires that. This only limits the options available to the user in the Inspector dock.  
+         *      
+         *  **Note:** Having no size flags is equal to having [constant Control.SIZE_SHRINK_BEGIN]. As such, this value is always implicitly allowed.  
+         */
+        /* gdvirtual */ _get_allowed_size_flags_horizontal(): PackedInt32Array
+        
+        /** Implement to return a list of allowed vertical [enum Control.SizeFlags] for child nodes. This doesn't technically prevent the usages of any other size flags, if your implementation requires that. This only limits the options available to the user in the Inspector dock.  
+         *      
+         *  **Note:** Having no size flags is equal to having [constant Control.SIZE_SHRINK_BEGIN]. As such, this value is always implicitly allowed.  
+         */
+        /* gdvirtual */ _get_allowed_size_flags_vertical(): PackedInt32Array
+        
+        /** Queue resort of the contained children. This is called automatically anyway, but can be called upon request. */
+        queue_sort(): void
+        
+        /** Fit a child control in a given rect. This is mainly a helper for creating custom container classes. */
+        fit_child_in_rect(child: Control, rect: Rect2): void
+        
+        /** Emitted when children are going to be sorted. */
+        readonly pre_sort_children: Signal<() => void>
+        
+        /** Emitted when sorting the children is needed. */
+        readonly sort_children: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapContainer;
+    }
+    namespace Control {
+        enum FocusMode {
+            /** The node cannot grab focus. Use with [member focus_mode]. */
+            FOCUS_NONE = 0,
+            
+            /** The node can only grab focus on mouse clicks. Use with [member focus_mode]. */
+            FOCUS_CLICK = 1,
+            
+            /** The node can grab focus on mouse click, using the arrows and the Tab keys on the keyboard, or using the D-pad buttons on a gamepad. Use with [member focus_mode]. */
+            FOCUS_ALL = 2,
+            
+            /** The node can grab focus only when screen reader is active. Use with [member focus_mode]. */
+            FOCUS_ACCESSIBILITY = 3,
+        }
+        enum FocusBehaviorRecursive {
+            /** Inherits the [member focus_behavior_recursive] from the parent control. If there is no parent control, this is the same as [constant FOCUS_BEHAVIOR_ENABLED]. */
+            FOCUS_BEHAVIOR_INHERITED = 0,
+            
+            /** Prevents the control from getting focused. [method get_focus_mode_with_override] will return [constant FOCUS_NONE]. */
+            FOCUS_BEHAVIOR_DISABLED = 1,
+            
+            /** Allows the control to be focused, depending on the [member focus_mode]. This can be used to ignore the parent's [member focus_behavior_recursive]. [method get_focus_mode_with_override] will return the [member focus_mode]. */
+            FOCUS_BEHAVIOR_ENABLED = 2,
+        }
+        enum MouseBehaviorRecursive {
+            /** Inherits the [member mouse_behavior_recursive] from the parent control. If there is no parent control, this is the same as [constant MOUSE_BEHAVIOR_ENABLED]. */
+            MOUSE_BEHAVIOR_INHERITED = 0,
+            
+            /** Prevents the control from receiving mouse input. [method get_mouse_filter_with_override] will return [constant MOUSE_FILTER_IGNORE]. */
+            MOUSE_BEHAVIOR_DISABLED = 1,
+            
+            /** Allows the control to receive mouse input, depending on the [member mouse_filter]. This can be used to ignore the parent's [member mouse_behavior_recursive]. [method get_mouse_filter_with_override] will return the [member mouse_filter]. */
+            MOUSE_BEHAVIOR_ENABLED = 2,
+        }
+        enum CursorShape {
+            /** Show the system's arrow mouse cursor when the user hovers the node. Use with [member mouse_default_cursor_shape]. */
+            CURSOR_ARROW = 0,
+            
+            /** Show the system's I-beam mouse cursor when the user hovers the node. The I-beam pointer has a shape similar to "I". It tells the user they can highlight or insert text. */
+            CURSOR_IBEAM = 1,
+            
+            /** Show the system's pointing hand mouse cursor when the user hovers the node. */
+            CURSOR_POINTING_HAND = 2,
+            
+            /** Show the system's cross mouse cursor when the user hovers the node. */
+            CURSOR_CROSS = 3,
+            
+            /** Show the system's wait mouse cursor when the user hovers the node. Often an hourglass. */
+            CURSOR_WAIT = 4,
+            
+            /** Show the system's busy mouse cursor when the user hovers the node. Often an arrow with a small hourglass. */
+            CURSOR_BUSY = 5,
+            
+            /** Show the system's drag mouse cursor, often a closed fist or a cross symbol, when the user hovers the node. It tells the user they're currently dragging an item, like a node in the Scene dock. */
+            CURSOR_DRAG = 6,
+            
+            /** Show the system's drop mouse cursor when the user hovers the node. It can be an open hand. It tells the user they can drop an item they're currently grabbing, like a node in the Scene dock. */
+            CURSOR_CAN_DROP = 7,
+            
+            /** Show the system's forbidden mouse cursor when the user hovers the node. Often a crossed circle. */
+            CURSOR_FORBIDDEN = 8,
+            
+            /** Show the system's vertical resize mouse cursor when the user hovers the node. A double-headed vertical arrow. It tells the user they can resize the window or the panel vertically. */
+            CURSOR_VSIZE = 9,
+            
+            /** Show the system's horizontal resize mouse cursor when the user hovers the node. A double-headed horizontal arrow. It tells the user they can resize the window or the panel horizontally. */
+            CURSOR_HSIZE = 10,
+            
+            /** Show the system's window resize mouse cursor when the user hovers the node. The cursor is a double-headed arrow that goes from the bottom left to the top right. It tells the user they can resize the window or the panel both horizontally and vertically. */
+            CURSOR_BDIAGSIZE = 11,
+            
+            /** Show the system's window resize mouse cursor when the user hovers the node. The cursor is a double-headed arrow that goes from the top left to the bottom right, the opposite of [constant CURSOR_BDIAGSIZE]. It tells the user they can resize the window or the panel both horizontally and vertically. */
+            CURSOR_FDIAGSIZE = 12,
+            
+            /** Show the system's move mouse cursor when the user hovers the node. It shows 2 double-headed arrows at a 90 degree angle. It tells the user they can move a UI element freely. */
+            CURSOR_MOVE = 13,
+            
+            /** Show the system's vertical split mouse cursor when the user hovers the node. On Windows, it's the same as [constant CURSOR_VSIZE]. */
+            CURSOR_VSPLIT = 14,
+            
+            /** Show the system's horizontal split mouse cursor when the user hovers the node. On Windows, it's the same as [constant CURSOR_HSIZE]. */
+            CURSOR_HSPLIT = 15,
+            
+            /** Show the system's help mouse cursor when the user hovers the node, a question mark. */
+            CURSOR_HELP = 16,
+        }
+        enum LayoutPreset {
+            /** Snap all 4 anchors to the top-left of the parent control's bounds. Use with [method set_anchors_preset]. */
+            PRESET_TOP_LEFT = 0,
+            
+            /** Snap all 4 anchors to the top-right of the parent control's bounds. Use with [method set_anchors_preset]. */
+            PRESET_TOP_RIGHT = 1,
+            
+            /** Snap all 4 anchors to the bottom-left of the parent control's bounds. Use with [method set_anchors_preset]. */
+            PRESET_BOTTOM_LEFT = 2,
+            
+            /** Snap all 4 anchors to the bottom-right of the parent control's bounds. Use with [method set_anchors_preset]. */
+            PRESET_BOTTOM_RIGHT = 3,
+            
+            /** Snap all 4 anchors to the center of the left edge of the parent control's bounds. Use with [method set_anchors_preset]. */
+            PRESET_CENTER_LEFT = 4,
+            
+            /** Snap all 4 anchors to the center of the top edge of the parent control's bounds. Use with [method set_anchors_preset]. */
+            PRESET_CENTER_TOP = 5,
+            
+            /** Snap all 4 anchors to the center of the right edge of the parent control's bounds. Use with [method set_anchors_preset]. */
+            PRESET_CENTER_RIGHT = 6,
+            
+            /** Snap all 4 anchors to the center of the bottom edge of the parent control's bounds. Use with [method set_anchors_preset]. */
+            PRESET_CENTER_BOTTOM = 7,
+            
+            /** Snap all 4 anchors to the center of the parent control's bounds. Use with [method set_anchors_preset]. */
+            PRESET_CENTER = 8,
+            
+            /** Snap all 4 anchors to the left edge of the parent control. The left offset becomes relative to the left edge and the top offset relative to the top left corner of the node's parent. Use with [method set_anchors_preset]. */
+            PRESET_LEFT_WIDE = 9,
+            
+            /** Snap all 4 anchors to the top edge of the parent control. The left offset becomes relative to the top left corner, the top offset relative to the top edge, and the right offset relative to the top right corner of the node's parent. Use with [method set_anchors_preset]. */
+            PRESET_TOP_WIDE = 10,
+            
+            /** Snap all 4 anchors to the right edge of the parent control. The right offset becomes relative to the right edge and the top offset relative to the top right corner of the node's parent. Use with [method set_anchors_preset]. */
+            PRESET_RIGHT_WIDE = 11,
+            
+            /** Snap all 4 anchors to the bottom edge of the parent control. The left offset becomes relative to the bottom left corner, the bottom offset relative to the bottom edge, and the right offset relative to the bottom right corner of the node's parent. Use with [method set_anchors_preset]. */
+            PRESET_BOTTOM_WIDE = 12,
+            
+            /** Snap all 4 anchors to a vertical line that cuts the parent control in half. Use with [method set_anchors_preset]. */
+            PRESET_VCENTER_WIDE = 13,
+            
+            /** Snap all 4 anchors to a horizontal line that cuts the parent control in half. Use with [method set_anchors_preset]. */
+            PRESET_HCENTER_WIDE = 14,
+            
+            /** Snap all 4 anchors to the respective corners of the parent control. Set all 4 offsets to 0 after you applied this preset and the [Control] will fit its parent control. Use with [method set_anchors_preset]. */
+            PRESET_FULL_RECT = 15,
+        }
+        enum LayoutPresetMode {
+            /** The control will be resized to its minimum size. */
+            PRESET_MODE_MINSIZE = 0,
+            
+            /** The control's width will not change. */
+            PRESET_MODE_KEEP_WIDTH = 1,
+            
+            /** The control's height will not change. */
+            PRESET_MODE_KEEP_HEIGHT = 2,
+            
+            /** The control's size will not change. */
+            PRESET_MODE_KEEP_SIZE = 3,
+        }
+        enum SizeFlags {
+            /** Tells the parent [Container] to align the node with its start, either the top or the left edge. It is mutually exclusive with [constant SIZE_FILL] and other shrink size flags, but can be used with [constant SIZE_EXPAND] in some containers. Use with [member size_flags_horizontal] and [member size_flags_vertical].  
+             *      
+             *  **Note:** Setting this flag is equal to not having any size flags.  
+             */
+            SIZE_SHRINK_BEGIN = 0,
+            
+            /** Tells the parent [Container] to expand the bounds of this node to fill all the available space without pushing any other node. It is mutually exclusive with shrink size flags. Use with [member size_flags_horizontal] and [member size_flags_vertical]. */
+            SIZE_FILL = 1,
+            
+            /** Tells the parent [Container] to let this node take all the available space on the axis you flag. If multiple neighboring nodes are set to expand, they'll share the space based on their stretch ratio. See [member size_flags_stretch_ratio]. Use with [member size_flags_horizontal] and [member size_flags_vertical]. */
+            SIZE_EXPAND = 2,
+            
+            /** Sets the node's size flags to both fill and expand. See [constant SIZE_FILL] and [constant SIZE_EXPAND] for more information. */
+            SIZE_EXPAND_FILL = 3,
+            
+            /** Tells the parent [Container] to center the node in the available space. It is mutually exclusive with [constant SIZE_FILL] and other shrink size flags, but can be used with [constant SIZE_EXPAND] in some containers. Use with [member size_flags_horizontal] and [member size_flags_vertical]. */
+            SIZE_SHRINK_CENTER = 4,
+            
+            /** Tells the parent [Container] to align the node with its end, either the bottom or the right edge. It is mutually exclusive with [constant SIZE_FILL] and other shrink size flags, but can be used with [constant SIZE_EXPAND] in some containers. Use with [member size_flags_horizontal] and [member size_flags_vertical]. */
+            SIZE_SHRINK_END = 8,
+        }
+        enum MouseFilter {
+            /** The control will receive mouse movement input events and mouse button input events if clicked on through [method _gui_input]. The control will also receive the [signal mouse_entered] and [signal mouse_exited] signals. These events are automatically marked as handled, and they will not propagate further to other controls. This also results in blocking signals in other controls. */
+            MOUSE_FILTER_STOP = 0,
+            
+            /** The control will receive mouse movement input events and mouse button input events if clicked on through [method _gui_input]. The control will also receive the [signal mouse_entered] and [signal mouse_exited] signals.  
+             *  If this control does not handle the event, the event will propagate up to its parent control if it has one. The event is bubbled up the node hierarchy until it reaches a non-[CanvasItem], a control with [constant MOUSE_FILTER_STOP], or a [CanvasItem] with [member CanvasItem.top_level] enabled. This will allow signals to fire in all controls it reaches. If no control handled it, the event will be passed to [method Node._shortcut_input] for further processing.  
+             */
+            MOUSE_FILTER_PASS = 1,
+            
+            /** The control will not receive any mouse movement input events nor mouse button input events through [method _gui_input]. The control will also not receive the [signal mouse_entered] nor [signal mouse_exited] signals. This will not block other controls from receiving these events or firing the signals. Ignored events will not be handled automatically. If a child has [constant MOUSE_FILTER_PASS] and an event was passed to this control, the event will further propagate up to the control's parent.  
+             *      
+             *  **Note:** If the control has received [signal mouse_entered] but not [signal mouse_exited], changing the [member mouse_filter] to [constant MOUSE_FILTER_IGNORE] will cause [signal mouse_exited] to be emitted.  
+             */
+            MOUSE_FILTER_IGNORE = 2,
+        }
+        enum GrowDirection {
+            /** The control will grow to the left or top to make up if its minimum size is changed to be greater than its current size on the respective axis. */
+            GROW_DIRECTION_BEGIN = 0,
+            
+            /** The control will grow to the right or bottom to make up if its minimum size is changed to be greater than its current size on the respective axis. */
+            GROW_DIRECTION_END = 1,
+            
+            /** The control will grow in both directions equally to make up if its minimum size is changed to be greater than its current size. */
+            GROW_DIRECTION_BOTH = 2,
+        }
+        enum Anchor {
+            /** Snaps one of the 4 anchor's sides to the origin of the node's `Rect`, in the top left. Use it with one of the `anchor_*` member variables, like [member anchor_left]. To change all 4 anchors at once, use [method set_anchors_preset]. */
+            ANCHOR_BEGIN = 0,
+            
+            /** Snaps one of the 4 anchor's sides to the end of the node's `Rect`, in the bottom right. Use it with one of the `anchor_*` member variables, like [member anchor_left]. To change all 4 anchors at once, use [method set_anchors_preset]. */
+            ANCHOR_END = 1,
+        }
+        enum LayoutDirection {
+            /** Automatic layout direction, determined from the parent control layout direction. */
+            LAYOUT_DIRECTION_INHERITED = 0,
+            
+            /** Automatic layout direction, determined from the current locale. Right-to-left layout direction is automatically used for languages that require it such as Arabic and Hebrew, but only if a valid translation file is loaded for the given language (unless said language is configured as a fallback in [member ProjectSettings.internationalization/locale/fallback]). For all other languages (or if no valid translation file is found by Godot), left-to-right layout direction is used. If using [TextServerFallback] ([member ProjectSettings.internationalization/rendering/text_driver]), left-to-right layout direction is always used regardless of the language. Right-to-left layout direction can also be forced using [member ProjectSettings.internationalization/rendering/force_right_to_left_layout_direction]. */
+            LAYOUT_DIRECTION_APPLICATION_LOCALE = 1,
+            
+            /** Left-to-right layout direction. */
+            LAYOUT_DIRECTION_LTR = 2,
+            
+            /** Right-to-left layout direction. */
+            LAYOUT_DIRECTION_RTL = 3,
+            
+            /** Automatic layout direction, determined from the system locale. Right-to-left layout direction is automatically used for languages that require it such as Arabic and Hebrew, but only if a valid translation file is loaded for the given language. For all other languages (or if no valid translation file is found by Godot), left-to-right layout direction is used. If using [TextServerFallback] ([member ProjectSettings.internationalization/rendering/text_driver]), left-to-right layout direction is always used regardless of the language. */
+            LAYOUT_DIRECTION_SYSTEM_LOCALE = 4,
+            
+            /** Represents the size of the [enum LayoutDirection] enum. */
+            LAYOUT_DIRECTION_MAX = 5,
+            LAYOUT_DIRECTION_LOCALE = 1,
+        }
+        enum TextDirection {
+            /** Text writing direction is the same as layout direction. */
+            TEXT_DIRECTION_INHERITED = 3,
+            
+            /** Automatic text writing direction, determined from the current locale and text content. */
+            TEXT_DIRECTION_AUTO = 0,
+            
+            /** Left-to-right text writing direction. */
+            TEXT_DIRECTION_LTR = 1,
+            
+            /** Right-to-left text writing direction. */
+            TEXT_DIRECTION_RTL = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapControl extends __NameMapCanvasItem {
+    }
+    /** Base class for all GUI controls. Adapts its position and size based on its parent control.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_control.html  
+     */
+    class Control<Map extends NodePathMap = any> extends CanvasItem<Map> {
+        /** Sent when the node changes size. Use [member size] to get the new size. */
+        static readonly NOTIFICATION_RESIZED = 40
+        
+        /** Sent when the mouse cursor enters the control's (or any child control's) visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
+         *      
+         *  **Note:** [member CanvasItem.z_index] doesn't affect which Control receives the notification.  
+         *  See also [constant NOTIFICATION_MOUSE_ENTER_SELF].  
+         */
+        static readonly NOTIFICATION_MOUSE_ENTER = 41
+        
+        /** Sent when the mouse cursor leaves the control's (and all child control's) visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
+         *      
+         *  **Note:** [member CanvasItem.z_index] doesn't affect which Control receives the notification.  
+         *  See also [constant NOTIFICATION_MOUSE_EXIT_SELF].  
+         */
+        static readonly NOTIFICATION_MOUSE_EXIT = 42
+        
+        /** Sent when the mouse cursor enters the control's visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
+         *      
+         *  **Note:** [member CanvasItem.z_index] doesn't affect which Control receives the notification.  
+         *  See also [constant NOTIFICATION_MOUSE_ENTER].  
+         */
+        static readonly NOTIFICATION_MOUSE_ENTER_SELF = 60
+        
+        /** Sent when the mouse cursor leaves the control's visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
+         *      
+         *  **Note:** [member CanvasItem.z_index] doesn't affect which Control receives the notification.  
+         *  See also [constant NOTIFICATION_MOUSE_EXIT].  
+         */
+        static readonly NOTIFICATION_MOUSE_EXIT_SELF = 61
+        
+        /** Sent when the node grabs focus. */
+        static readonly NOTIFICATION_FOCUS_ENTER = 43
+        
+        /** Sent when the node loses focus.  
+         *  This notification is sent in reversed order.  
+         */
+        static readonly NOTIFICATION_FOCUS_EXIT = 44
+        
+        /** Sent when the node needs to refresh its theme items. This happens in one of the following cases:  
+         *  - The [member theme] property is changed on this node or any of its ancestors.  
+         *  - The [member theme_type_variation] property is changed on this node.  
+         *  - One of the node's theme property overrides is changed.  
+         *  - The node enters the scene tree.  
+         *      
+         *  **Note:** As an optimization, this notification won't be sent from changes that occur while this node is outside of the scene tree. Instead, all of the theme item updates can be applied at once when the node enters the scene tree.  
+         *      
+         *  **Note:** This notification is received alongside [constant Node.NOTIFICATION_ENTER_TREE], so if you are instantiating a scene, the child nodes will not be initialized yet. You can use it to setup theming for this node, child nodes created from script, or if you want to access child nodes added in the editor, make sure the node is ready using [method Node.is_node_ready].  
+         *    
+         */
+        static readonly NOTIFICATION_THEME_CHANGED = 45
+        
+        /** Sent when this node is inside a [ScrollContainer] which has begun being scrolled when dragging the scrollable area  *with a touch event* . This notification is  *not*  sent when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.  
+         *      
+         *  **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when [member ProjectSettings.input_devices/pointing/emulate_touch_from_mouse] is enabled.  
+         */
+        static readonly NOTIFICATION_SCROLL_BEGIN = 47
+        
+        /** Sent when this node is inside a [ScrollContainer] which has stopped being scrolled when dragging the scrollable area  *with a touch event* . This notification is  *not*  sent when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.  
+         *      
+         *  **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when [member ProjectSettings.input_devices/pointing/emulate_touch_from_mouse] is enabled.  
+         */
+        static readonly NOTIFICATION_SCROLL_END = 48
+        
+        /** Sent when the control layout direction is changed from LTR or RTL or vice versa. This notification is propagated to child Control nodes as result of a change to [member layout_direction]. */
+        static readonly NOTIFICATION_LAYOUT_DIRECTION_CHANGED = 49
+        constructor(identifier?: any)
+        
+        /** Virtual method to be implemented by the user. Returns whether the given [param point] is inside this control.  
+         *  If not overridden, default behavior is checking if the point is within control's Rect.  
+         *      
+         *  **Note:** If you want to check if a point is inside the control, you can use `Rect2(Vector2.ZERO, size).has_point(point)`.  
+         */
+        /* gdvirtual */ _has_point(point: Vector2): boolean
+        
+        /** User defined BiDi algorithm override function.  
+         *  Returns an [Array] of [Vector3i] text ranges and text base directions, in the left-to-right order. Ranges should cover full source [param text] without overlaps. BiDi algorithm will be used on each range separately.  
+         */
+        /* gdvirtual */ _structured_text_parser(args: GArray, text: string): GArray<Vector3i>
+        
+        /** Virtual method to be implemented by the user. Returns the minimum size for this control. Alternative to [member custom_minimum_size] for controlling minimum size via code. The actual minimum size will be the max value of these two (in each axis separately).  
+         *  If not overridden, defaults to [constant Vector2.ZERO].  
+         *      
+         *  **Note:** This method will not be called when the script is attached to a [Control] node that already overrides its minimum size (e.g. [Label], [Button], [PanelContainer] etc.). It can only be used with most basic GUI nodes, like [Control], [Container], [Panel] etc.  
+         */
+        /* gdvirtual */ _get_minimum_size(): Vector2
+        
+        /** Virtual method to be implemented by the user. Returns the tooltip text for the position [param at_position] in control's local coordinates, which will typically appear when the cursor is resting over this control. See [method get_tooltip].  
+         *      
+         *  **Note:** If this method returns an empty [String] and [method _make_custom_tooltip] is not overridden, no tooltip is displayed.  
+         */
+        /* gdvirtual */ _get_tooltip(at_position: Vector2): string
+        
+        /** Godot calls this method to get data that can be dragged and dropped onto controls that expect drop data. Returns `null` if there is no data to drag. Controls that want to receive drop data should implement [method _can_drop_data] and [method _drop_data]. [param at_position] is local to this control. Drag may be forced with [method force_drag].  
+         *  A preview that will follow the mouse that should represent the data can be set with [method set_drag_preview]. A good time to set the preview is in this method.  
+         *      
+         *  **Note:** If the drag was initiated by a keyboard shortcut or [method accessibility_drag], [param at_position] is set to [constant Vector2.INF], and the currently selected item/text position should be used as the drag position.  
+         *    
+         */
+        /* gdvirtual */ _get_drag_data(at_position: Vector2): any
+        
+        /** Godot calls this method to test if [param data] from a control's [method _get_drag_data] can be dropped at [param at_position]. [param at_position] is local to this control.  
+         *  This method should only be used to test the data. Process the data in [method _drop_data].  
+         *      
+         *  **Note:** If the drag was initiated by a keyboard shortcut or [method accessibility_drag], [param at_position] is set to [constant Vector2.INF], and the currently selected item/text position should be used as the drop position.  
+         *    
+         */
+        /* gdvirtual */ _can_drop_data(at_position: Vector2, data: any): boolean
+        
+        /** Godot calls this method to pass you the [param data] from a control's [method _get_drag_data] result. Godot first calls [method _can_drop_data] to test if [param data] is allowed to drop at [param at_position] where [param at_position] is local to this control.  
+         *      
+         *  **Note:** If the drag was initiated by a keyboard shortcut or [method accessibility_drag], [param at_position] is set to [constant Vector2.INF], and the currently selected item/text position should be used as the drop position.  
+         *    
+         */
+        /* gdvirtual */ _drop_data(at_position: Vector2, data: any): void
+        
+        /** Virtual method to be implemented by the user. Returns a [Control] node that should be used as a tooltip instead of the default one. [param for_text] is the return value of [method get_tooltip].  
+         *  The returned node must be of type [Control] or Control-derived. It can have child nodes of any type. It is freed when the tooltip disappears, so make sure you always provide a new instance (if you want to use a pre-existing node from your scene tree, you can duplicate it and pass the duplicated instance). When `null` or a non-Control node is returned, the default tooltip will be used instead.  
+         *  The returned node will be added as child to a [PopupPanel], so you should only provide the contents of that panel. That [PopupPanel] can be themed using [method Theme.set_stylebox] for the type `"TooltipPanel"` (see [member tooltip_text] for an example).  
+         *      
+         *  **Note:** The tooltip is shrunk to minimal size. If you want to ensure it's fully visible, you might want to set its [member custom_minimum_size] to some non-zero value.  
+         *      
+         *  **Note:** The node (and any relevant children) should have their [member CanvasItem.visible] set to `true` when returned, otherwise, the viewport that instantiates it will not be able to calculate its minimum size reliably.  
+         *      
+         *  **Note:** If overridden, this method is called even if [method get_tooltip] returns an empty string. When this happens with the default tooltip, it is not displayed. To copy this behavior, return `null` in this method when [param for_text] is empty.  
+         *  **Example:** Use a constructed node as a tooltip:  
+         *    
+         *  **Example:** Use a scene instance as a tooltip:  
+         *    
+         */
+        /* gdvirtual */ _make_custom_tooltip(for_text: string): null | Object
+        
+        /** Return the description of the keyboard shortcuts and other contextual help for this control. */
+        /* gdvirtual */ _accessibility_get_contextual_info(): string
+        
+        /** Override this method to return a human-readable description of the position of the child [param node] in the custom container, added to the [member accessibility_name]. */
+        /* gdvirtual */ _get_accessibility_container_name(node: Node): string
+        
+        /** Virtual method to be implemented by the user. Override this method to handle and accept inputs on UI elements. See also [method accept_event].  
+         *  **Example:** Click on the control to print a message:  
+         *    
+         *  If the [param event] inherits [InputEventMouse], this method will **not** be called when:  
+         *  - the control's [member mouse_filter] is set to [constant MOUSE_FILTER_IGNORE];  
+         *  - the control is obstructed by another control on top, that doesn't have [member mouse_filter] set to [constant MOUSE_FILTER_IGNORE];  
+         *  - the control's parent has [member mouse_filter] set to [constant MOUSE_FILTER_STOP] or has accepted the event;  
+         *  - the control's parent has [member clip_contents] enabled and the [param event]'s position is outside the parent's rectangle;  
+         *  - the [param event]'s position is outside the control (see [method _has_point]).  
+         *      
+         *  **Note:** The [param event]'s position is relative to this control's origin.  
+         */
+        /* gdvirtual */ _gui_input(event: InputEvent): void
+        
+        /** Marks an input event as handled. Once you accept an input event, it stops propagating, even to nodes listening to [method Node._unhandled_input] or [method Node._unhandled_key_input].  
+         *      
+         *  **Note:** This does not affect the methods in [Input], only the way events are propagated.  
+         */
+        accept_event(): void
+        
+        /** Returns the minimum size for this control. See [member custom_minimum_size]. */
+        get_minimum_size(): Vector2
+        
+        /** Returns combined minimum size from [member custom_minimum_size] and [method get_minimum_size]. */
+        get_combined_minimum_size(): Vector2
+        
+        /** Sets the anchors to a [param preset] from [enum Control.LayoutPreset] enum. This is the code equivalent to using the Layout menu in the 2D editor.  
+         *  If [param keep_offsets] is `true`, control's position will also be updated.  
+         */
+        set_anchors_preset(preset: Control.LayoutPreset, keep_offsets?: boolean /* = false */): void
+        
+        /** Sets the offsets to a [param preset] from [enum Control.LayoutPreset] enum. This is the code equivalent to using the Layout menu in the 2D editor.  
+         *  Use parameter [param resize_mode] with constants from [enum Control.LayoutPresetMode] to better determine the resulting size of the [Control]. Constant size will be ignored if used with presets that change size, e.g. [constant PRESET_LEFT_WIDE].  
+         *  Use parameter [param margin] to determine the gap between the [Control] and the edges.  
+         */
+        set_offsets_preset(preset: Control.LayoutPreset, resize_mode?: Control.LayoutPresetMode /* = 0 */, margin?: int64 /* = 0 */): void
+        
+        /** Sets both anchor preset and offset preset. See [method set_anchors_preset] and [method set_offsets_preset]. */
+        set_anchors_and_offsets_preset(preset: Control.LayoutPreset, resize_mode?: Control.LayoutPresetMode /* = 0 */, margin?: int64 /* = 0 */): void
+        _set_anchor(side: Side, anchor: float64): void
+        
+        /** Sets the anchor for the specified [enum Side] to [param anchor]. A setter method for [member anchor_bottom], [member anchor_left], [member anchor_right] and [member anchor_top].  
+         *  If [param keep_offset] is `true`, offsets aren't updated after this operation.  
+         *  If [param push_opposite_anchor] is `true` and the opposite anchor overlaps this anchor, the opposite one will have its value overridden. For example, when setting left anchor to 1 and the right anchor has value of 0.5, the right anchor will also get value of 1. If [param push_opposite_anchor] was `false`, the left anchor would get value 0.5.  
+         */
+        set_anchor(side: Side, anchor: float64, keep_offset?: boolean /* = false */, push_opposite_anchor?: boolean /* = true */): void
+        
+        /** Returns the anchor for the specified [enum Side]. A getter method for [member anchor_bottom], [member anchor_left], [member anchor_right] and [member anchor_top]. */
+        get_anchor(side: Side): float64
+        
+        /** Sets the offset for the specified [enum Side] to [param offset]. A setter method for [member offset_bottom], [member offset_left], [member offset_right] and [member offset_top]. */
+        set_offset(side: Side, offset: float64): void
+        
+        /** Returns the offset for the specified [enum Side]. A getter method for [member offset_bottom], [member offset_left], [member offset_right] and [member offset_top]. */
+        get_offset(offset: Side): float64
+        
+        /** Works the same as [method set_anchor], but instead of `keep_offset` argument and automatic update of offset, it allows to set the offset yourself (see [method set_offset]). */
+        set_anchor_and_offset(side: Side, anchor: float64, offset: float64, push_opposite_anchor?: boolean /* = false */): void
+        
+        /** Sets [member offset_left] and [member offset_top] at the same time. Equivalent of changing [member position]. */
+        set_begin(position: Vector2): void
+        
+        /** Sets [member offset_right] and [member offset_bottom] at the same time. */
+        set_end(position: Vector2): void
+        
+        /** Sets the [member position] to given [param position].  
+         *  If [param keep_offsets] is `true`, control's anchors will be updated instead of offsets.  
+         */
+        set_position(position: Vector2, keep_offsets?: boolean /* = false */): void
+        
+        /** Sets the size (see [member size]).  
+         *  If [param keep_offsets] is `true`, control's anchors will be updated instead of offsets.  
+         */
+        set_size(size: Vector2, keep_offsets?: boolean /* = false */): void
+        
+        /** Resets the size to [method get_combined_minimum_size]. This is equivalent to calling `set_size(Vector2())` (or any size below the minimum). */
+        reset_size(): void
+        
+        /** Sets the [member global_position] to given [param position].  
+         *  If [param keep_offsets] is `true`, control's anchors will be updated instead of offsets.  
+         */
+        set_global_position(position: Vector2, keep_offsets?: boolean /* = false */): void
+        
+        /** Returns [member offset_left] and [member offset_top]. See also [member position]. */
+        get_begin(): Vector2
+        
+        /** Returns [member offset_right] and [member offset_bottom]. */
+        get_end(): Vector2
+        
+        /** Returns the combined value of [member pivot_offset] and [member pivot_offset_ratio], in pixels. The ratio is multiplied by the control's size. */
+        get_combined_pivot_offset(): Vector2
+        
+        /** Returns the width/height occupied in the parent control. */
+        get_parent_area_size(): Vector2
+        
+        /** Returns the position of this [Control] in global screen coordinates (i.e. taking window position into account). Mostly useful for editor plugins.  
+         *  Equivalent to `get_screen_transform().origin` (see [method CanvasItem.get_screen_transform]).  
+         *  **Example:** Show a popup at the mouse position:  
+         *    
+         */
+        get_screen_position(): Vector2
+        
+        /** Returns the position and size of the control in the coordinate system of the containing node. See [member position], [member scale] and [member size].  
+         *      
+         *  **Note:** If [member rotation] is not the default rotation, the resulting size is not meaningful.  
+         *      
+         *  **Note:** Setting [member Viewport.gui_snap_controls_to_pixels] to `true` can lead to rounding inaccuracies between the displayed control and the returned [Rect2].  
+         */
+        get_rect(): Rect2
+        
+        /** Returns the position and size of the control relative to the containing canvas. See [member global_position] and [member size].  
+         *      
+         *  **Note:** If the node itself or any parent [CanvasItem] between the node and the canvas have a non default rotation or skew, the resulting size is likely not meaningful.  
+         *      
+         *  **Note:** Setting [member Viewport.gui_snap_controls_to_pixels] to `true` can lead to rounding inaccuracies between the displayed control and the returned [Rect2].  
+         */
+        get_global_rect(): Rect2
+        
+        /** Returns the [member focus_mode], but takes the [member focus_behavior_recursive] into account. If [member focus_behavior_recursive] is set to [constant FOCUS_BEHAVIOR_DISABLED], or it is set to [constant FOCUS_BEHAVIOR_INHERITED] and its ancestor is set to [constant FOCUS_BEHAVIOR_DISABLED], then this returns [constant FOCUS_NONE]. */
+        get_focus_mode_with_override(): Control.FocusMode
+        
+        /** Returns `true` if this is the current focused control. See [member focus_mode].  
+         *  If [param ignore_hidden_focus] is `true`, controls that have their focus hidden will always return `false`. Hidden focus happens automatically when controls gain focus via mouse input, or manually using [method grab_focus] with `hide_focus` set to `true`.  
+         */
+        has_focus(ignore_hidden_focus?: boolean /* = false */): boolean
+        
+        /** Steal the focus from another control and become the focused control (see [member focus_mode]).  
+         *  If [param hide_focus] is `true`, the control will not visually show its focused state. Has no effect for [LineEdit] and [TextEdit] when [member ProjectSettings.gui/common/show_focus_state_on_pointer_event] is set to `Control Supports Keyboard Input`, or for any control when it is set to `Always`.  
+         *      
+         *  **Note:** Using this method together with [method Callable.call_deferred] makes it more reliable, especially when called inside [method Node._ready].  
+         */
+        grab_focus(hide_focus?: boolean /* = false */): void
+        
+        /** Give up the focus. No other control will be able to receive input. */
+        release_focus(): void
+        
+        /** Finds the previous (above in the tree) [Control] that can receive the focus. */
+        find_prev_valid_focus(): null | Control
+        
+        /** Finds the next (below in the tree) [Control] that can receive the focus. */
+        find_next_valid_focus(): null | Control
+        
+        /** Finds the next [Control] that can receive the focus on the specified [enum Side].  
+         *      
+         *  **Note:** This is different from [method get_focus_neighbor], which returns the path of a specified focus neighbor.  
+         */
+        find_valid_focus_neighbor(side: Side): null | Control
+        
+        /** Prevents `*_theme_*_override` methods from emitting [constant NOTIFICATION_THEME_CHANGED] until [method end_bulk_theme_override] is called. */
+        begin_bulk_theme_override(): void
+        
+        /** Ends a bulk theme override update. See [method begin_bulk_theme_override]. */
+        end_bulk_theme_override(): void
+        
+        /** Creates a local override for a theme icon with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_icon_override].  
+         *  See also [method get_theme_icon].  
+         */
+        add_theme_icon_override(name: StringName, texture: Texture2D): void
+        
+        /** Creates a local override for a theme [StyleBox] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_stylebox_override].  
+         *  See also [method get_theme_stylebox].  
+         *  **Example:** Modify a property in a [StyleBox] by duplicating it:  
+         *    
+         */
+        add_theme_stylebox_override(name: StringName, stylebox: StyleBox): void
+        
+        /** Creates a local override for a theme [Font] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_font_override].  
+         *  See also [method get_theme_font].  
+         */
+        add_theme_font_override(name: StringName, font: Font): void
+        
+        /** Creates a local override for a theme font size with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_font_size_override].  
+         *  See also [method get_theme_font_size].  
+         */
+        add_theme_font_size_override(name: StringName, font_size: int64): void
+        
+        /** Creates a local override for a theme [Color] with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_color_override].  
+         *  See also [method get_theme_color].  
+         *  **Example:** Override a [Label]'s color and reset it later:  
+         *    
+         */
+        add_theme_color_override(name: StringName, color: Color): void
+        
+        /** Creates a local override for a theme constant with the specified [param name]. Local overrides always take precedence when fetching theme items for the control. An override can be removed with [method remove_theme_constant_override].  
+         *  See also [method get_theme_constant].  
+         */
+        add_theme_constant_override(name: StringName, constant: int64): void
+        
+        /** Removes a local override for a theme icon with the specified [param name] previously added by [method add_theme_icon_override] or via the Inspector dock. */
+        remove_theme_icon_override(name: StringName): void
+        
+        /** Removes a local override for a theme [StyleBox] with the specified [param name] previously added by [method add_theme_stylebox_override] or via the Inspector dock. */
+        remove_theme_stylebox_override(name: StringName): void
+        
+        /** Removes a local override for a theme [Font] with the specified [param name] previously added by [method add_theme_font_override] or via the Inspector dock. */
+        remove_theme_font_override(name: StringName): void
+        
+        /** Removes a local override for a theme font size with the specified [param name] previously added by [method add_theme_font_size_override] or via the Inspector dock. */
+        remove_theme_font_size_override(name: StringName): void
+        
+        /** Removes a local override for a theme [Color] with the specified [param name] previously added by [method add_theme_color_override] or via the Inspector dock. */
+        remove_theme_color_override(name: StringName): void
+        
+        /** Removes a local override for a theme constant with the specified [param name] previously added by [method add_theme_constant_override] or via the Inspector dock. */
+        remove_theme_constant_override(name: StringName): void
+        
+        /** Returns an icon from the first matching [Theme] in the tree if that [Theme] has an icon item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        get_theme_icon(name: StringName, theme_type?: StringName /* = '' */): null | Texture2D
+        
+        /** Returns a [StyleBox] from the first matching [Theme] in the tree if that [Theme] has a stylebox item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        get_theme_stylebox(name: StringName, theme_type?: StringName /* = '' */): null | StyleBox
+        
+        /** Returns a [Font] from the first matching [Theme] in the tree if that [Theme] has a font item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        get_theme_font(name: StringName, theme_type?: StringName /* = '' */): null | Font
+        
+        /** Returns a font size from the first matching [Theme] in the tree if that [Theme] has a font size item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        get_theme_font_size(name: StringName, theme_type?: StringName /* = '' */): int64
+        
+        /** Returns a [Color] from the first matching [Theme] in the tree if that [Theme] has a color item with the specified [param name] and [param theme_type]. If [param theme_type] is omitted the class name of the current control is used as the type, or [member theme_type_variation] if it is defined. If the type is a class name its parent classes are also checked, in order of inheritance. If the type is a variation its base types are checked, in order of dependency, then the control's class name and its parent classes are checked.  
+         *  For the current control its local overrides are considered first (see [method add_theme_color_override]), then its assigned [member theme]. After the current control, each parent control and its assigned [member theme] are considered; controls without a [member theme] assigned are skipped. If no matching [Theme] is found in the tree, the custom project [Theme] (see [member ProjectSettings.gui/theme/custom]) and the default [Theme] are used (see [ThemeDB]).  
+         *    
+         */
+        get_theme_color(name: StringName, theme_type?: StringName /* = '' */): Color
+        
+        /** Returns a constant from the first matching [Theme] in the tree if that [Theme] has a constant item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        get_theme_constant(name: StringName, theme_type?: StringName /* = '' */): int64
+        
+        /** Returns `true` if there is a local override for a theme icon with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_icon_override].  
+         */
+        has_theme_icon_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme [StyleBox] with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_stylebox_override].  
+         */
+        has_theme_stylebox_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme [Font] with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_font_override].  
+         */
+        has_theme_font_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme font size with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_font_size_override].  
+         */
+        has_theme_font_size_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme [Color] with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_color_override].  
+         */
+        has_theme_color_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a local override for a theme constant with the specified [param name] in this [Control] node.  
+         *  See [method add_theme_constant_override].  
+         */
+        has_theme_constant_override(name: StringName): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has an icon item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        has_theme_icon(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a stylebox item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        has_theme_stylebox(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a font item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        has_theme_font(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a font size item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        has_theme_font_size(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a color item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        has_theme_color(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns `true` if there is a matching [Theme] in the tree that has a constant item with the specified [param name] and [param theme_type].  
+         *  See [method get_theme_color] for details.  
+         */
+        has_theme_constant(name: StringName, theme_type?: StringName /* = '' */): boolean
+        
+        /** Returns the default base scale value from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_base_scale] value.  
+         *  See [method get_theme_color] for details.  
+         */
+        get_theme_default_base_scale(): float64
+        
+        /** Returns the default font from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_font] value.  
+         *  See [method get_theme_color] for details.  
+         */
+        get_theme_default_font(): null | Font
+        
+        /** Returns the default font size value from the first matching [Theme] in the tree if that [Theme] has a valid [member Theme.default_font_size] value.  
+         *  See [method get_theme_color] for details.  
+         */
+        get_theme_default_font_size(): int64
+        
+        /** Returns the parent control node. */
+        get_parent_control(): null | Control
+        
+        /** Returns the tooltip text for the position [param at_position] in control's local coordinates, which will typically appear when the cursor is resting over this control. By default, it returns [member tooltip_text].  
+         *  This method can be overridden to customize its behavior. See [method _get_tooltip].  
+         *      
+         *  **Note:** If this method returns an empty [String] and [method _make_custom_tooltip] is not overridden, no tooltip is displayed.  
+         */
+        get_tooltip(at_position?: Vector2 /* = Vector2.ZERO */): string
+        
+        /** Returns the mouse cursor shape for this control when hovered over [param position] in local coordinates. For most controls, this is the same as [member mouse_default_cursor_shape], but some built-in controls implement more complex logic. */
+        get_cursor_shape(position?: Vector2 /* = Vector2.ZERO */): Control.CursorShape
+        
+        /** Sets the focus neighbor for the specified [enum Side] to the [Control] at [param neighbor] node path. A setter method for [member focus_neighbor_bottom], [member focus_neighbor_left], [member focus_neighbor_right] and [member focus_neighbor_top]. */
+        set_focus_neighbor(side: Side, neighbor: NodePath | string): void
+        
+        /** Returns the focus neighbor for the specified [enum Side]. A getter method for [member focus_neighbor_bottom], [member focus_neighbor_left], [member focus_neighbor_right] and [member focus_neighbor_top].  
+         *      
+         *  **Note:** To find the next [Control] on the specific [enum Side], even if a neighbor is not assigned, use [method find_valid_focus_neighbor].  
+         */
+        get_focus_neighbor(side: Side): NodePath
+        
+        /** Forces drag and bypasses [method _get_drag_data] and [method set_drag_preview] by passing [param data] and [param preview]. Drag will start even if the mouse is neither over nor pressed on this control.  
+         *  The methods [method _can_drop_data] and [method _drop_data] must be implemented on controls that want to receive drop data.  
+         */
+        force_drag(data: any, preview: Control): void
+        
+        /** Starts drag-and-drop operation without using a mouse. */
+        accessibility_drag(): void
+        
+        /** Ends drag-and-drop operation without using a mouse. */
+        accessibility_drop(): void
+        
+        /** Returns the [member mouse_filter], but takes the [member mouse_behavior_recursive] into account. If [member mouse_behavior_recursive] is set to [constant MOUSE_BEHAVIOR_DISABLED], or it is set to [constant MOUSE_BEHAVIOR_INHERITED] and its ancestor is set to [constant MOUSE_BEHAVIOR_DISABLED], then this returns [constant MOUSE_FILTER_IGNORE]. */
+        get_mouse_filter_with_override(): Control.MouseFilter
+        
+        /** Creates an [InputEventMouseButton] that attempts to click the control. If the event is received, the control gains focus.  
+         *    
+         */
+        grab_click_focus(): void
+        
+        /** Sets the given callables to be used instead of the control's own drag-and-drop virtual methods. If a callable is empty, its respective virtual method is used as normal.  
+         *  The arguments for each callable should be exactly the same as their respective virtual methods, which would be:  
+         *  - [param drag_func] corresponds to [method _get_drag_data] and requires a [Vector2];  
+         *  - [param can_drop_func] corresponds to [method _can_drop_data] and requires both a [Vector2] and a [Variant];  
+         *  - [param drop_func] corresponds to [method _drop_data] and requires both a [Vector2] and a [Variant].  
+         */
+        set_drag_forwarding(drag_func: Callable, can_drop_func: Callable, drop_func: Callable): void
+        
+        /** Shows the given control at the mouse pointer. A good time to call this method is in [method _get_drag_data]. The control must not be in the scene tree. You should not free the control, and you should not keep a reference to the control beyond the duration of the drag. It will be deleted automatically after the drag has ended.  
+         *    
+         */
+        set_drag_preview(control: Control): void
+        
+        /** Returns `true` if a drag operation is successful. Alternative to [method Viewport.gui_is_drag_successful].  
+         *  Best used with [constant Node.NOTIFICATION_DRAG_END].  
+         */
+        is_drag_successful(): boolean
+        
+        /** Moves the mouse cursor to [param position], relative to [member position] of this [Control].  
+         *      
+         *  **Note:** [method warp_mouse] is only supported on Windows, macOS and Linux. It has no effect on Android, iOS and Web.  
+         */
+        warp_mouse(position: Vector2): void
+        
+        /** Invalidates the size cache in this node and in parent nodes up to top level. Intended to be used with [method get_minimum_size] when the return value is changed. Setting [member custom_minimum_size] directly calls this method automatically. */
+        update_minimum_size(): void
+        
+        /** Returns `true` if the layout is right-to-left. See also [member layout_direction]. */
+        is_layout_rtl(): boolean
+        
+        /** Enables whether rendering of [CanvasItem] based children should be clipped to this control's rectangle. If `true`, parts of a child which would be visibly outside of this control's rectangle will not be rendered and won't receive input. */
+        get clip_contents(): boolean
+        set clip_contents(value: boolean)
+        
+        /** The minimum size of the node's bounding rectangle. If you set it to a value greater than `(0, 0)`, the node's bounding rectangle will always have at least this size. Note that [Control] nodes have their internal minimum size returned by [method get_minimum_size]. It depends on the control's contents, like text, textures, or style boxes. The actual minimum size is the maximum value of this property and the internal minimum size (see [method get_combined_minimum_size]). */
+        get custom_minimum_size(): Vector2
+        set custom_minimum_size(value: Vector2)
+        
+        /** Controls layout direction and text writing direction. Right-to-left layouts are necessary for certain languages (e.g. Arabic and Hebrew). See also [method is_layout_rtl]. */
+        get layout_direction(): int64
+        set layout_direction(value: int64)
+        get layout_mode(): int64
+        set layout_mode(value: int64)
+        get anchors_preset(): int64
+        set anchors_preset(value: int64)
+        
+        /** Anchors the left edge of the node to the origin, the center or the end of its parent control. It changes how the left offset updates when the node moves or changes size. You can use one of the [enum Anchor] constants for convenience. */
+        get anchor_left(): float64
+        set anchor_left(value: float64)
+        
+        /** Anchors the top edge of the node to the origin, the center or the end of its parent control. It changes how the top offset updates when the node moves or changes size. You can use one of the [enum Anchor] constants for convenience. */
+        get anchor_top(): float64
+        set anchor_top(value: float64)
+        
+        /** Anchors the right edge of the node to the origin, the center or the end of its parent control. It changes how the right offset updates when the node moves or changes size. You can use one of the [enum Anchor] constants for convenience. */
+        get anchor_right(): float64
+        set anchor_right(value: float64)
+        
+        /** Anchors the bottom edge of the node to the origin, the center, or the end of its parent control. It changes how the bottom offset updates when the node moves or changes size. You can use one of the [enum Anchor] constants for convenience. */
+        get anchor_bottom(): float64
+        set anchor_bottom(value: float64)
+        
+        /** Distance between the node's left edge and its parent control, based on [member anchor_left].  
+         *  Offsets are often controlled by one or multiple parent [Container] nodes, so you should not modify them manually if your node is a direct child of a [Container]. Offsets update automatically when you move or resize the node.  
+         */
+        get offset_left(): float64
+        set offset_left(value: float64)
+        
+        /** Distance between the node's top edge and its parent control, based on [member anchor_top].  
+         *  Offsets are often controlled by one or multiple parent [Container] nodes, so you should not modify them manually if your node is a direct child of a [Container]. Offsets update automatically when you move or resize the node.  
+         */
+        get offset_top(): float64
+        set offset_top(value: float64)
+        
+        /** Distance between the node's right edge and its parent control, based on [member anchor_right].  
+         *  Offsets are often controlled by one or multiple parent [Container] nodes, so you should not modify them manually if your node is a direct child of a [Container]. Offsets update automatically when you move or resize the node.  
+         */
+        get offset_right(): float64
+        set offset_right(value: float64)
+        
+        /** Distance between the node's bottom edge and its parent control, based on [member anchor_bottom].  
+         *  Offsets are often controlled by one or multiple parent [Container] nodes, so you should not modify them manually if your node is a direct child of a [Container]. Offsets update automatically when you move or resize the node.  
+         */
+        get offset_bottom(): float64
+        set offset_bottom(value: float64)
+        
+        /** Controls the direction on the horizontal axis in which the control should grow if its horizontal minimum size is changed to be greater than its current size, as the control always has to be at least the minimum size. */
+        get grow_horizontal(): int64
+        set grow_horizontal(value: int64)
+        
+        /** Controls the direction on the vertical axis in which the control should grow if its vertical minimum size is changed to be greater than its current size, as the control always has to be at least the minimum size. */
+        get grow_vertical(): int64
+        set grow_vertical(value: int64)
+        
+        /** The size of the node's bounding rectangle, in the node's coordinate system. [Container] nodes update this property automatically. */
+        get size(): Vector2
+        set size(value: Vector2)
+        
+        /** The node's position, relative to its containing node. It corresponds to the rectangle's top-left corner. The property is not affected by [member pivot_offset]. */
+        get position(): Vector2
+        set position(value: Vector2)
+        
+        /** The node's global position, relative to the world (usually to the [CanvasLayer]). */
+        get global_position(): Vector2
+        set global_position(value: Vector2)
+        
+        /** The node's rotation around its pivot, in radians. See [member pivot_offset] to change the pivot's position.  
+         *      
+         *  **Note:** This property is edited in the inspector in degrees. If you want to use degrees in a script, use [member rotation_degrees].  
+         */
+        get rotation(): float64
+        set rotation(value: float64)
+        
+        /** Helper property to access [member rotation] in degrees instead of radians. */
+        get rotation_degrees(): float64
+        set rotation_degrees(value: float64)
+        
+        /** The node's scale, relative to its [member size]. Change this property to scale the node around its [member pivot_offset]. The Control's tooltip will also scale according to this value.  
+         *      
+         *  **Note:** This property is mainly intended to be used for animation purposes. To support multiple resolutions in your project, use an appropriate viewport stretch mode as described in the [url=https://docs.godotengine.org/en/4.6/tutorials/rendering/multiple_resolutions.html]documentation[/url] instead of scaling Controls individually.  
+         *      
+         *  **Note:** [member FontFile.oversampling] does  *not*  take [Control] [member scale] into account. This means that scaling up/down will cause bitmap fonts and rasterized (non-MSDF) dynamic fonts to appear blurry or pixelated. To ensure text remains crisp regardless of scale, you can enable MSDF font rendering by enabling [member ProjectSettings.gui/theme/default_font_multichannel_signed_distance_field] (applies to the default project font only), or enabling **Multichannel Signed Distance Field** in the import options of a DynamicFont for custom fonts. On system fonts, [member SystemFont.multichannel_signed_distance_field] can be enabled in the inspector.  
+         *      
+         *  **Note:** If the Control node is a child of a [Container] node, the scale will be reset to `Vector2(1, 1)` when the scene is instantiated. To set the Control's scale when it's instantiated, wait for one frame using `await get_tree().process_frame` then set its [member scale] property.  
+         */
+        get scale(): Vector2
+        set scale(value: Vector2)
+        
+        /** By default, the node's pivot is its top-left corner. When you change its [member rotation] or [member scale], it will rotate or scale around this pivot.  
+         *  The actual offset is the combined value of this property and [member pivot_offset_ratio].  
+         */
+        get pivot_offset(): Vector2
+        set pivot_offset(value: Vector2)
+        
+        /** Same as [member pivot_offset], but expressed as uniform vector, where `Vector2(0, 0)` is the top-left corner of this control, and `Vector2(1, 1)` is its bottom-right corner. Set this property to `Vector2(0.5, 0.5)` to pivot around this control's center.  
+         *  The actual offset is the combined value of this property and [member pivot_offset].  
+         */
+        get pivot_offset_ratio(): Vector2
+        set pivot_offset_ratio(value: Vector2)
+        
+        /** Tells the parent [Container] nodes how they should resize and place the node on the X axis. Use a combination of the [enum SizeFlags] constants to change the flags. See the constants to learn what each does. */
+        get size_flags_horizontal(): int64
+        set size_flags_horizontal(value: int64)
+        
+        /** Tells the parent [Container] nodes how they should resize and place the node on the Y axis. Use a combination of the [enum SizeFlags] constants to change the flags. See the constants to learn what each does. */
+        get size_flags_vertical(): int64
+        set size_flags_vertical(value: int64)
+        
+        /** If the node and at least one of its neighbors uses the [constant SIZE_EXPAND] size flag, the parent [Container] will let it take more or less space depending on this property. If this node has a stretch ratio of 2 and its neighbor a ratio of 1, this node will take two thirds of the available space. */
+        get size_flags_stretch_ratio(): float64
+        set size_flags_stretch_ratio(value: float64)
+        
+        /** If `true`, automatically converts code line numbers, list indices, [SpinBox] and [ProgressBar] values from the Western Arabic (0..9) to the numeral systems used in current locale.  
+         *      
+         *  **Note:** Numbers within the text are not automatically converted, it can be done manually, using [method TextServer.format_number].  
+         */
+        get localize_numeral_system(): boolean
+        set localize_numeral_system(value: boolean)
+        
+        /** Toggles if any text should automatically change to its translated version depending on the current locale. */
+        get auto_translate(): boolean
+        set auto_translate(value: boolean)
+        
+        /** The default tooltip text. The tooltip appears when the user's mouse cursor stays idle over this control for a few moments, provided that the [member mouse_filter] property is not [constant MOUSE_FILTER_IGNORE]. The time required for the tooltip to appear can be changed with the [member ProjectSettings.gui/timers/tooltip_delay_sec] setting.  
+         *  This string is the default return value of [method get_tooltip]. Override [method _get_tooltip] to generate tooltip text dynamically. Override [method _make_custom_tooltip] to customize the tooltip interface and behavior.  
+         *  The tooltip popup will use either a default implementation, or a custom one that you can provide by overriding [method _make_custom_tooltip]. The default tooltip includes a [PopupPanel] and [Label] whose theme properties can be customized using [Theme] methods with the `"TooltipPanel"` and `"TooltipLabel"` respectively. For example:  
+         *    
+         */
+        get tooltip_text(): string
+        set tooltip_text(value: string)
+        
+        /** Defines if tooltip text should automatically change to its translated version depending on the current locale. Uses the same auto translate mode as this control when set to [constant Node.AUTO_TRANSLATE_MODE_INHERIT].  
+         *      
+         *  **Note:** Tooltips customized using [method _make_custom_tooltip] do not use this auto translate mode automatically.  
+         */
+        get tooltip_auto_translate_mode(): int64
+        set tooltip_auto_translate_mode(value: int64)
+        
+        /** Tells Godot which node it should give focus to if the user presses the left arrow on the keyboard or left on a gamepad by default. You can change the key by editing the [member ProjectSettings.input/ui_left] input action. The node must be a [Control]. If this property is not set, Godot will give focus to the closest [Control] to the left of this one. */
+        get focus_neighbor_left(): NodePath
+        set focus_neighbor_left(value: NodePath | string)
+        
+        /** Tells Godot which node it should give focus to if the user presses the top arrow on the keyboard or top on a gamepad by default. You can change the key by editing the [member ProjectSettings.input/ui_up] input action. The node must be a [Control]. If this property is not set, Godot will give focus to the closest [Control] to the top of this one. */
+        get focus_neighbor_top(): NodePath
+        set focus_neighbor_top(value: NodePath | string)
+        
+        /** Tells Godot which node it should give focus to if the user presses the right arrow on the keyboard or right on a gamepad by default. You can change the key by editing the [member ProjectSettings.input/ui_right] input action. The node must be a [Control]. If this property is not set, Godot will give focus to the closest [Control] to the right of this one. */
+        get focus_neighbor_right(): NodePath
+        set focus_neighbor_right(value: NodePath | string)
+        
+        /** Tells Godot which node it should give focus to if the user presses the down arrow on the keyboard or down on a gamepad by default. You can change the key by editing the [member ProjectSettings.input/ui_down] input action. The node must be a [Control]. If this property is not set, Godot will give focus to the closest [Control] to the bottom of this one. */
+        get focus_neighbor_bottom(): NodePath
+        set focus_neighbor_bottom(value: NodePath | string)
+        
+        /** Tells Godot which node it should give focus to if the user presses [kbd]Tab[/kbd] on a keyboard by default. You can change the key by editing the [member ProjectSettings.input/ui_focus_next] input action.  
+         *  If this property is not set, Godot will select a "best guess" based on surrounding nodes in the scene tree.  
+         */
+        get focus_next(): NodePath
+        set focus_next(value: NodePath | string)
+        
+        /** Tells Godot which node it should give focus to if the user presses [kbd]Shift + Tab[/kbd] on a keyboard by default. You can change the key by editing the [member ProjectSettings.input/ui_focus_prev] input action.  
+         *  If this property is not set, Godot will select a "best guess" based on surrounding nodes in the scene tree.  
+         */
+        get focus_previous(): NodePath
+        set focus_previous(value: NodePath | string)
+        
+        /** Determines which controls can be focused. Only one control can be focused at a time, and the focused control will receive keyboard, gamepad, and mouse events in [method _gui_input]. Use [method get_focus_mode_with_override] to determine if a control can grab focus, since [member focus_behavior_recursive] also affects it. See also [method grab_focus]. */
+        get focus_mode(): int64
+        set focus_mode(value: int64)
+        
+        /** Determines which controls can be focused together with [member focus_mode]. See [method get_focus_mode_with_override]. Since the default behavior is [constant FOCUS_BEHAVIOR_INHERITED], this can be used to prevent all children controls from getting focused. */
+        get focus_behavior_recursive(): int64
+        set focus_behavior_recursive(value: int64)
+        
+        /** Determines which controls will be able to receive mouse button input events through [method _gui_input] and the [signal mouse_entered], and [signal mouse_exited] signals. Also determines how these events should be propagated. See the constants to learn what each does. Use [method get_mouse_filter_with_override] to determine if a control can receive mouse input, since [member mouse_behavior_recursive] also affects it. */
+        get mouse_filter(): int64
+        set mouse_filter(value: int64)
+        
+        /** Determines which controls can receive mouse input together with [member mouse_filter]. See [method get_mouse_filter_with_override]. Since the default behavior is [constant MOUSE_BEHAVIOR_INHERITED], this can be used to prevent all children controls from receiving mouse input. */
+        get mouse_behavior_recursive(): int64
+        set mouse_behavior_recursive(value: int64)
+        
+        /** When enabled, scroll wheel events processed by [method _gui_input] will be passed to the parent control even if [member mouse_filter] is set to [constant MOUSE_FILTER_STOP].  
+         *  You should disable it on the root of your UI if you do not want scroll events to go to the [method Node._unhandled_input] processing.  
+         *      
+         *  **Note:** Because this property defaults to `true`, this allows nested scrollable containers to work out of the box.  
+         */
+        get mouse_force_pass_scroll_events(): boolean
+        set mouse_force_pass_scroll_events(value: boolean)
+        
+        /** The default cursor shape for this control. Useful for Godot plugins and applications or games that use the system's mouse cursors.  
+         *      
+         *  **Note:** On Linux, shapes may vary depending on the cursor theme of the system.  
+         */
+        get mouse_default_cursor_shape(): int64
+        set mouse_default_cursor_shape(value: int64)
+        
+        /** The [Node] which must be a parent of the focused [Control] for the shortcut to be activated. If `null`, the shortcut can be activated when any control is focused (a global shortcut). This allows shortcuts to be accepted only when the user has a certain area of the GUI focused. */
+        get shortcut_context(): null | Object
+        set shortcut_context(value: null | Object)
+        
+        /** The human-readable node name that is reported to assistive apps. */
+        get accessibility_name(): string
+        set accessibility_name(value: string)
+        
+        /** The human-readable node description that is reported to assistive apps. */
+        get accessibility_description(): string
+        set accessibility_description(value: string)
+        
+        /** The mode with which a live region updates. A live region is a [Node] that is updated as a result of an external event when the user's focus may be elsewhere. */
+        get accessibility_live(): int64
+        set accessibility_live(value: int64)
+        
+        /** The paths to the nodes which are controlled by this node. */
+        get accessibility_controls_nodes(): GArray<NodePath>
+        set accessibility_controls_nodes(value: GArray<NodePath>)
+        
+        /** The paths to the nodes which are describing this node. */
+        get accessibility_described_by_nodes(): GArray<NodePath>
+        set accessibility_described_by_nodes(value: GArray<NodePath>)
+        
+        /** The paths to the nodes which label this node. */
+        get accessibility_labeled_by_nodes(): GArray<NodePath>
+        set accessibility_labeled_by_nodes(value: GArray<NodePath>)
+        
+        /** The paths to the nodes which this node flows into. */
+        get accessibility_flow_to_nodes(): GArray<NodePath>
+        set accessibility_flow_to_nodes(value: GArray<NodePath>)
+        
+        /** The [Theme] resource this node and all its [Control] and [Window] children use. If a child node has its own [Theme] resource set, theme items are merged with child's definitions having higher priority.  
+         *      
+         *  **Note:** [Window] styles will have no effect unless the window is embedded.  
+         */
+        get theme(): null | Theme
+        set theme(value: null | Theme)
+        
+        /** The name of a theme type variation used by this [Control] to look up its own theme items. When empty, the class name of the node is used (e.g. [code skip-lint]Button` for the [Button] control), as well as the class names of all parent classes (in order of inheritance).  
+         *  When set, this property gives the highest priority to the type of the specified name. This type can in turn extend another type, forming a dependency chain. See [method Theme.set_type_variation]. If the theme item cannot be found using this type or its base types, lookup falls back on the class names.  
+         *      
+         *  **Note:** To look up [Control]'s own items use various `get_theme_*` methods without specifying `theme_type`.  
+         *      
+         *  **Note:** Theme items are looked for in the tree order, from branch to root, where each [Control] node is checked for its [member theme] property. The earliest match against any type/class name is returned. The project-level Theme and the default Theme are checked last.  
+         */
+        get theme_type_variation(): string
+        set theme_type_variation(value: string)
+        
+        /** Emitted when the control changes size. */
+        readonly resized: Signal<() => void>
+        
+        /** Emitted when the node receives an [InputEvent]. */
+        readonly gui_input: Signal<(event: InputEvent) => void>
+        
+        /** Emitted when the mouse cursor enters the control's (or any child control's) visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
+         *      
+         *  **Note:** [member CanvasItem.z_index] doesn't affect, which Control receives the signal.  
+         */
+        readonly mouse_entered: Signal<() => void>
+        
+        /** Emitted when the mouse cursor leaves the control's (and all child control's) visible area, that is not occluded behind other Controls or Windows, provided its [member mouse_filter] lets the event reach it and regardless if it's currently focused or not.  
+         *      
+         *  **Note:** [member CanvasItem.z_index] doesn't affect, which Control receives the signal.  
+         *      
+         *  **Note:** If you want to check whether the mouse truly left the area, ignoring any top nodes, you can use code like this:  
+         *    
+         */
+        readonly mouse_exited: Signal<() => void>
+        
+        /** Emitted when the node gains focus. */
+        readonly focus_entered: Signal<() => void>
+        
+        /** Emitted when the node loses focus. */
+        readonly focus_exited: Signal<() => void>
+        
+        /** Emitted when one of the size flags changes. See [member size_flags_horizontal] and [member size_flags_vertical]. */
+        readonly size_flags_changed: Signal<() => void>
+        
+        /** Emitted when the node's minimum size changes. */
+        readonly minimum_size_changed: Signal<() => void>
+        
+        /** Emitted when the [constant NOTIFICATION_THEME_CHANGED] notification is sent. */
+        readonly theme_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapControl;
+    }
+    namespace ConvertTransformModifier3D {
+        enum TransformMode {
+            /** Convert with position. Transfer the difference. */
+            TRANSFORM_MODE_POSITION = 0,
+            
+            /** Convert with rotation. The angle is the roll for the specified axis. */
+            TRANSFORM_MODE_ROTATION = 1,
+            
+            /** Convert with scale. Transfers the ratio, not the difference. */
+            TRANSFORM_MODE_SCALE = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapConvertTransformModifier3D extends __NameMapBoneConstraint3D {
+    }
+    /** A [SkeletonModifier3D] that apply transform to the bone which converted from reference.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_converttransformmodifier3d.html  
+     */
+    class ConvertTransformModifier3D<Map extends NodePathMap = any> extends BoneConstraint3D<Map> {
+        constructor(identifier?: any)
+        /** Sets the operation of the remapping destination transform. */
+        set_apply_transform_mode(index: int64, transform_mode: ConvertTransformModifier3D.TransformMode): void
+        
+        /** Returns the operation of the remapping destination transform. */
+        get_apply_transform_mode(index: int64): ConvertTransformModifier3D.TransformMode
+        
+        /** Sets the axis of the remapping destination transform. */
+        set_apply_axis(index: int64, axis: Vector3.Axis): void
+        
+        /** Returns the axis of the remapping destination transform. */
+        get_apply_axis(index: int64): Vector3.Axis
+        
+        /** Sets the minimum value of the remapping destination range. */
+        set_apply_range_min(index: int64, range_min: float64): void
+        
+        /** Returns the minimum value of the remapping destination range. */
+        get_apply_range_min(index: int64): float64
+        
+        /** Sets the maximum value of the remapping destination range. */
+        set_apply_range_max(index: int64, range_max: float64): void
+        
+        /** Returns the maximum value of the remapping destination range. */
+        get_apply_range_max(index: int64): float64
+        
+        /** Sets the operation of the remapping source transform. */
+        set_reference_transform_mode(index: int64, transform_mode: ConvertTransformModifier3D.TransformMode): void
+        
+        /** Returns the operation of the remapping source transform. */
+        get_reference_transform_mode(index: int64): ConvertTransformModifier3D.TransformMode
+        
+        /** Sets the axis of the remapping source transform. */
+        set_reference_axis(index: int64, axis: Vector3.Axis): void
+        
+        /** Returns the axis of the remapping source transform. */
+        get_reference_axis(index: int64): Vector3.Axis
+        
+        /** Sets the minimum value of the remapping source range. */
+        set_reference_range_min(index: int64, range_min: float64): void
+        
+        /** Returns the minimum value of the remapping source range. */
+        get_reference_range_min(index: int64): float64
+        
+        /** Sets the maximum value of the remapping source range. */
+        set_reference_range_max(index: int64, range_max: float64): void
+        
+        /** Returns the maximum value of the remapping source range. */
+        get_reference_range_max(index: int64): float64
+        
+        /** Sets relative option in the setting at [param index] to [param enabled].  
+         *  If sets [param enabled] to `true`, the extracted and applying transform is relative to the rest.  
+         *  If sets [param enabled] to `false`, the extracted transform is absolute.  
+         */
+        set_relative(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the relative option is enabled in the setting at [param index]. */
+        is_relative(index: int64): boolean
+        
+        /** Sets additive option in the setting at [param index] to [param enabled]. This mainly affects the process of applying transform to the [method BoneConstraint3D.set_apply_bone].  
+         *  If sets [param enabled] to `true`, the processed transform is added to the pose of the current apply bone.  
+         *  If sets [param enabled] to `false`, the pose of the current apply bone is replaced with the processed transform. However, if set [method set_relative] to `true`, the transform is relative to rest.  
+         */
+        set_additive(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the additive option is enabled in the setting at [param index]. */
+        is_additive(index: int64): boolean
+        
+        /** The number of settings in the modifier. */
+        get setting_count(): int64
+        set setting_count(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapConvertTransformModifier3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapConvexPolygonShape2D extends __NameMapShape2D {
+    }
+    /** A 2D convex polygon shape used for physics collision.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_convexpolygonshape2d.html  
+     */
+    class ConvexPolygonShape2D extends Shape2D {
+        constructor(identifier?: any)
+        /** Based on the set of points provided, this assigns the [member points] property using the convex hull algorithm, removing all unneeded points. See [method Geometry2D.convex_hull] for details. */
+        set_point_cloud(point_cloud: PackedVector2Array | Vector2[]): void
+        
+        /** The polygon's list of vertices that form a convex hull. Can be in either clockwise or counterclockwise order.  
+         *  **Warning:** Only set this property to a list of points that actually form a convex hull. Use [method set_point_cloud] to generate the convex hull of an arbitrary set of points.  
+         */
+        get points(): PackedVector2Array
+        set points(value: PackedVector2Array | Vector2[])
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapConvexPolygonShape2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapConvexPolygonShape3D extends __NameMapShape3D {
+    }
+    /** A 3D convex polyhedron shape used for physics collision.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_convexpolygonshape3d.html  
+     */
+    class ConvexPolygonShape3D extends Shape3D {
+        constructor(identifier?: any)
+        /** The list of 3D points forming the convex polygon shape. */
+        get points(): GArray
+        set points(value: GArray)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapConvexPolygonShape3D;
+    }
+    namespace CopyTransformModifier3D {
+        enum TransformFlag {
+            /** If set, allows to copy the position. */
+            TRANSFORM_FLAG_POSITION = 1,
+            
+            /** If set, allows to copy the rotation. */
+            TRANSFORM_FLAG_ROTATION = 2,
+            
+            /** If set, allows to copy the scale. */
+            TRANSFORM_FLAG_SCALE = 4,
+            
+            /** If set, allows to copy the position/rotation/scale. */
+            TRANSFORM_FLAG_ALL = 7,
+        }
+        enum AxisFlag {
+            /** If set, allows to process the X-axis. */
+            AXIS_FLAG_X = 1,
+            
+            /** If set, allows to process the Y-axis. */
+            AXIS_FLAG_Y = 2,
+            
+            /** If set, allows to process the Z-axis. */
+            AXIS_FLAG_Z = 4,
+            
+            /** If set, allows to process the all axes. */
+            AXIS_FLAG_ALL = 7,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapCopyTransformModifier3D extends __NameMapBoneConstraint3D {
+    }
+    /** A [SkeletonModifier3D] that apply transform to the bone which copied from reference.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_copytransformmodifier3d.html  
+     */
+    class CopyTransformModifier3D<Map extends NodePathMap = any> extends BoneConstraint3D<Map> {
+        constructor(identifier?: any)
+        /** Sets the flags to process the transform operations. If the flag is valid, the transform operation is processed.  
+         *      
+         *  **Note:** If the rotation is valid for only one axis, it respects the roll of the valid axis. If the rotation is valid for two axes, it discards the roll of the invalid axis.  
+         */
+        set_copy_flags(index: int64, copy_flags: CopyTransformModifier3D.TransformFlag): void
+        
+        /** Returns the copy flags of the setting at [param index]. */
+        get_copy_flags(index: int64): CopyTransformModifier3D.TransformFlag
+        
+        /** Sets the flags to copy axes. If the flag is valid, the axis is copied. */
+        set_axis_flags(index: int64, axis_flags: CopyTransformModifier3D.AxisFlag): void
+        
+        /** Returns the axis flags of the setting at [param index]. */
+        get_axis_flags(index: int64): CopyTransformModifier3D.AxisFlag
+        
+        /** Sets the flags to inverte axes. If the flag is valid, the axis is copied.  
+         *      
+         *  **Note:** An inverted scale means an inverse number, not a negative scale. For example, inverting `2.0` means `0.5`.  
+         *      
+         *  **Note:** An inverted rotation flips the elements of the quaternion. For example, a two-axis inversion will flip the roll of each axis, and a three-axis inversion will flip the final orientation. However, be aware that flipping only one axis may cause unintended rotation by the unflipped axes, due to the characteristics of the quaternion.  
+         */
+        set_invert_flags(index: int64, axis_flags: CopyTransformModifier3D.AxisFlag): void
+        
+        /** Returns the invert flags of the setting at [param index]. */
+        get_invert_flags(index: int64): CopyTransformModifier3D.AxisFlag
+        
+        /** If sets [param enabled] to `true`, the position will be copied. */
+        set_copy_position(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the copy flags has the flag for the position in the setting at [param index]. See also [method set_copy_flags]. */
+        is_position_copying(index: int64): boolean
+        
+        /** If sets [param enabled] to `true`, the rotation will be copied. */
+        set_copy_rotation(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the copy flags has the flag for the rotation in the setting at [param index]. See also [method set_copy_flags]. */
+        is_rotation_copying(index: int64): boolean
+        
+        /** If sets [param enabled] to `true`, the scale will be copied. */
+        set_copy_scale(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the copy flags has the flag for the scale in the setting at [param index]. See also [method set_copy_flags]. */
+        is_scale_copying(index: int64): boolean
+        
+        /** If sets [param enabled] to `true`, the X-axis will be copied. */
+        set_axis_x_enabled(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the enable flags has the flag for the X-axis in the setting at [param index]. See also [method set_axis_flags]. */
+        is_axis_x_enabled(index: int64): boolean
+        
+        /** If sets [param enabled] to `true`, the Y-axis will be copied. */
+        set_axis_y_enabled(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the enable flags has the flag for the Y-axis in the setting at [param index]. See also [method set_axis_flags]. */
+        is_axis_y_enabled(index: int64): boolean
+        
+        /** If sets [param enabled] to `true`, the Z-axis will be copied. */
+        set_axis_z_enabled(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the enable flags has the flag for the Z-axis in the setting at [param index]. See also [method set_axis_flags]. */
+        is_axis_z_enabled(index: int64): boolean
+        
+        /** If sets [param enabled] to `true`, the X-axis will be inverted. */
+        set_axis_x_inverted(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the invert flags has the flag for the X-axis in the setting at [param index]. See also [method set_invert_flags]. */
+        is_axis_x_inverted(index: int64): boolean
+        
+        /** If sets [param enabled] to `true`, the Y-axis will be inverted. */
+        set_axis_y_inverted(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the invert flags has the flag for the Y-axis in the setting at [param index]. See also [method set_invert_flags]. */
+        is_axis_y_inverted(index: int64): boolean
+        
+        /** If sets [param enabled] to `true`, the Z-axis will be inverted. */
+        set_axis_z_inverted(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the invert flags has the flag for the Z-axis in the setting at [param index]. See also [method set_invert_flags]. */
+        is_axis_z_inverted(index: int64): boolean
+        
+        /** Sets relative option in the setting at [param index] to [param enabled].  
+         *  If sets [param enabled] to `true`, the extracted and applying transform is relative to the rest.  
+         *  If sets [param enabled] to `false`, the extracted transform is absolute.  
+         */
+        set_relative(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the relative option is enabled in the setting at [param index]. */
+        is_relative(index: int64): boolean
+        
+        /** Sets additive option in the setting at [param index] to [param enabled]. This mainly affects the process of applying transform to the [method BoneConstraint3D.set_apply_bone].  
+         *  If sets [param enabled] to `true`, the processed transform is added to the pose of the current apply bone.  
+         *  If sets [param enabled] to `false`, the pose of the current apply bone is replaced with the processed transform. However, if set [method set_relative] to `true`, the transform is relative to rest.  
+         */
+        set_additive(index: int64, enabled: boolean): void
+        
+        /** Returns `true` if the additive option is enabled in the setting at [param index]. */
+        is_additive(index: int64): boolean
+        
+        /** The number of settings in the modifier. */
+        get setting_count(): int64
+        set setting_count(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapCopyTransformModifier3D;
     }
 }

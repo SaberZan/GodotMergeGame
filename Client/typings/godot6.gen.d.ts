@@ -1,3529 +1,6 @@
 // AUTO-GENERATED
 declare module "godot" {
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPCKPacker extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPCKPacker extends __NameMapRefCounted {
-    }
-    /** Creates packages that can be loaded into a running project.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_pckpacker.html  
-     */
-    class PCKPacker extends RefCounted {
-        constructor(identifier?: any)
-        /** Creates a new PCK file at the file path [param pck_path]. The `.pck` file extension isn't added automatically, so it should be part of [param pck_path] (even though it's not required). */
-        pck_start(pck_path: string, alignment?: int64 /* = 32 */, key?: string /* = '0000000000000000000000000000000000000000000000000000000000000000' */, encrypt_directory?: boolean /* = false */): Error
-        
-        /** Adds the [param source_path] file to the current PCK package at the [param target_path] internal path. The `res://` prefix for [param target_path] is optional and stripped internally. File content is immediately written to the PCK. */
-        add_file(target_path: string, source_path: string, encrypt?: boolean /* = false */): Error
-        
-        /** Registers a file removal of the [param target_path] internal path to the PCK. This is mainly used for patches. If the file at this path has been loaded from a previous PCK, it will be removed. The `res://` prefix for [param target_path] is optional and stripped internally. */
-        add_file_removal(target_path: string): Error
-        
-        /** Writes the file directory and closes the PCK. If [param verbose] is `true`, a list of files added will be printed to the console for easier debugging.  
-         *      
-         *  **Note:** [PCKPacker] will automatically flush when it's freed, which happens when it goes out of scope or when it gets assigned with `null`. In C# the reference must be disposed after use, either with the `using` statement or by calling the `Dispose` method directly.  
-         */
-        flush(verbose?: boolean /* = false */): Error
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPCKPacker;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPCKPacker;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPackedDataContainer extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPackedDataContainer extends __NameMapResource {
-    }
-    /** Efficiently packs and serializes [Array] or [Dictionary].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_packeddatacontainer.html  
-     */
-    class PackedDataContainer extends Resource {
-        constructor(identifier?: any)
-        _iter_init(_unnamed_arg0: GArray): any
-        _iter_get(_unnamed_arg0: any): any
-        _iter_next(_unnamed_arg0: GArray): any
-        
-        /** Packs the given container into a binary representation. The [param value] must be either [Array] or [Dictionary], any other type will result in invalid data error.  
-         *      
-         *  **Note:** Subsequent calls to this method will overwrite the existing data.  
-         */
-        pack(value: any): Error
-        
-        /** Returns the size of the packed container (see [method Array.size] and [method Dictionary.size]). */
-        size(): int64
-        get __data__(): PackedByteArray
-        set __data__(value: PackedByteArray | byte[] | ArrayBuffer)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPackedDataContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPackedDataContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPackedDataContainerRef extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPackedDataContainerRef extends __NameMapRefCounted {
-    }
-    /** An internal class used by [PackedDataContainer] to pack nested arrays and dictionaries.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_packeddatacontainerref.html  
-     */
-    class PackedDataContainerRef extends RefCounted {
-        constructor(identifier?: any)
-        /** Returns the size of the packed container (see [method Array.size] and [method Dictionary.size]). */
-        size(): int64
-        _iter_init(_unnamed_arg0: GArray): any
-        _iter_get(_unnamed_arg0: any): any
-        _iter_next(_unnamed_arg0: GArray): any
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPackedDataContainerRef;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPackedDataContainerRef;
-    }
-    namespace PackedScene {
-        enum GenEditState {
-            /** If passed to [method instantiate], blocks edits to the scene state. */
-            GEN_EDIT_STATE_DISABLED = 0,
-            
-            /** If passed to [method instantiate], provides local scene resources to the local scene.  
-             *      
-             *  **Note:** Only available in editor builds.  
-             */
-            GEN_EDIT_STATE_INSTANCE = 1,
-            
-            /** If passed to [method instantiate], provides local scene resources to the local scene. Only the main scene should receive the main edit state.  
-             *      
-             *  **Note:** Only available in editor builds.  
-             */
-            GEN_EDIT_STATE_MAIN = 2,
-            
-            /** It's similar to [constant GEN_EDIT_STATE_MAIN], but for the case where the scene is being instantiated to be the base of another one.  
-             *      
-             *  **Note:** Only available in editor builds.  
-             */
-            GEN_EDIT_STATE_MAIN_INHERITED = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPackedScene extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPackedScene extends __NameMapResource {
-    }
-    /** An abstraction of a serialized scene.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_packedscene.html  
-     */
-    class PackedScene<T extends Node = Node> extends Resource {
-        constructor(identifier?: any)
-        /** Packs the [param path] node, and all owned sub-nodes, into this [PackedScene]. Any existing data will be cleared. See [member Node.owner]. */
-        pack(path: T): Error
-        
-        /** Instantiates the scene's node hierarchy. Triggers child scene instantiation(s). Triggers a [constant Node.NOTIFICATION_SCENE_INSTANTIATED] notification on the root node. */
-        instantiate(edit_state?: PackedScene.GenEditState /* = 0 */): T
-        
-        /** Returns `true` if the scene file has nodes. */
-        can_instantiate(): boolean
-        
-        /** Returns the [SceneState] representing the scene file contents. */
-        get_state(): null | SceneState
-        get _bundled(): GDictionary
-        set _bundled(value: GDictionary)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPackedScene;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPackedScene;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPacketPeer extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPacketPeer extends __NameMapRefCounted {
-    }
-    /** Abstraction and base class for packet-based protocols.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_packetpeer.html  
-     */
-    class PacketPeer extends RefCounted {
-        constructor(identifier?: any)
-        /** Gets a Variant. If [param allow_objects] is `true`, decoding objects is allowed.  
-         *  Internally, this uses the same decoding mechanism as the [method @GlobalScope.bytes_to_var] method.  
-         *  **Warning:** Deserialized objects can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threats such as remote code execution.  
-         */
-        get_var(allow_objects?: boolean /* = false */): any
-        
-        /** Sends a [Variant] as a packet. If [param full_objects] is `true`, encoding objects is allowed (and can potentially include code).  
-         *  Internally, this uses the same encoding mechanism as the [method @GlobalScope.var_to_bytes] method.  
-         */
-        put_var(var_: any, full_objects?: boolean /* = false */): Error
-        
-        /** Gets a raw packet. */
-        get_packet(): PackedByteArray
-        
-        /** Sends a raw packet. */
-        put_packet(buffer: PackedByteArray | byte[] | ArrayBuffer): Error
-        
-        /** Returns the error state of the last packet received (via [method get_packet] and [method get_var]). */
-        get_packet_error(): Error
-        
-        /** Returns the number of packets currently available in the ring-buffer. */
-        get_available_packet_count(): int64
-        
-        /** Maximum buffer size allowed when encoding [Variant]s. Raise this value to support heavier memory allocations.  
-         *  The [method put_var] method allocates memory on the stack, and the buffer used will grow automatically to the closest power of two to match the size of the [Variant]. If the [Variant] is bigger than [member encode_buffer_max_size], the method will error out with [constant ERR_OUT_OF_MEMORY].  
-         */
-        get encode_buffer_max_size(): int64
-        set encode_buffer_max_size(value: int64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPacketPeer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPacketPeer;
-    }
-    namespace PacketPeerDTLS {
-        enum Status {
-            /** A status representing a [PacketPeerDTLS] that is disconnected. */
-            STATUS_DISCONNECTED = 0,
-            
-            /** A status representing a [PacketPeerDTLS] that is currently performing the handshake with a remote peer. */
-            STATUS_HANDSHAKING = 1,
-            
-            /** A status representing a [PacketPeerDTLS] that is connected to a remote peer. */
-            STATUS_CONNECTED = 2,
-            
-            /** A status representing a [PacketPeerDTLS] in a generic error state. */
-            STATUS_ERROR = 3,
-            
-            /** An error status that shows a mismatch in the DTLS certificate domain presented by the host and the domain requested for validation. */
-            STATUS_ERROR_HOSTNAME_MISMATCH = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPacketPeerDTLS extends __RPCMapPacketPeer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPacketPeerDTLS extends __NameMapPacketPeer {
-    }
-    /** DTLS packet peer.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_packetpeerdtls.html  
-     */
-    class PacketPeerDTLS extends PacketPeer {
-        constructor(identifier?: any)
-        /** Poll the connection to check for incoming packets. Call this frequently to update the status and keep the connection working. */
-        poll(): void
-        
-        /** Connects a [param packet_peer] beginning the DTLS handshake using the underlying [PacketPeerUDP] which must be connected (see [method PacketPeerUDP.connect_to_host]). You can optionally specify the [param client_options] to be used while verifying the TLS connections. See [method TLSOptions.client] and [method TLSOptions.client_unsafe]. */
-        connect_to_peer(packet_peer: PacketPeerUDP, hostname: string, client_options?: TLSOptions): Error
-        
-        /** Returns the status of the connection. */
-        get_status(): PacketPeerDTLS.Status
-        
-        /** Disconnects this peer, terminating the DTLS session. */
-        disconnect_from_peer(): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPacketPeerDTLS;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPacketPeerDTLS;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPacketPeerExtension extends __RPCMapPacketPeer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPacketPeerExtension extends __NameMapPacketPeer {
-    }
-    /** @link https://docs.godotengine.org/en/4.6/classes/class_packetpeerextension.html */
-    class PacketPeerExtension extends PacketPeer {
-        constructor(identifier?: any)
-        /* gdvirtual */ _get_packet(r_buffer: int64, r_buffer_size: int64): Error
-        /* gdvirtual */ _put_packet(p_buffer: int64, p_buffer_size: int64): Error
-        /* gdvirtual */ _get_available_packet_count(): int64
-        /* gdvirtual */ _get_max_packet_size(): int64
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPacketPeerExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPacketPeerExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPacketPeerStream extends __RPCMapPacketPeer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPacketPeerStream extends __NameMapPacketPeer {
-    }
-    /** Wrapper to use a PacketPeer over a StreamPeer.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_packetpeerstream.html  
-     */
-    class PacketPeerStream extends PacketPeer {
-        constructor(identifier?: any)
-        get input_buffer_max_size(): int64
-        set input_buffer_max_size(value: int64)
-        get output_buffer_max_size(): int64
-        set output_buffer_max_size(value: int64)
-        
-        /** The wrapped [StreamPeer] object. */
-        get stream_peer(): null | StreamPeer
-        set stream_peer(value: null | StreamPeer)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPacketPeerStream;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPacketPeerStream;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPacketPeerUDP extends __RPCMapPacketPeer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPacketPeerUDP extends __NameMapPacketPeer {
-    }
-    /** UDP packet peer.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_packetpeerudp.html  
-     */
-    class PacketPeerUDP extends PacketPeer {
-        constructor(identifier?: any)
-        /** Binds this [PacketPeerUDP] to the specified [param port] and [param bind_address] with a buffer size [param recv_buf_size], allowing it to receive incoming packets.  
-         *  If [param bind_address] is set to `"*"` (default), the peer will be bound on all available addresses (both IPv4 and IPv6).  
-         *  If [param bind_address] is set to `"0.0.0.0"` (for IPv4) or `"::"` (for IPv6), the peer will be bound to all available addresses matching that IP type.  
-         *  If [param bind_address] is set to any valid address (e.g. `"192.168.1.101"`, `"::1"`, etc.), the peer will only be bound to the interface with that address (or fail if no interface with the given address exists).  
-         */
-        bind(port: int64, bind_address?: string /* = '*' */, recv_buf_size?: int64 /* = 65536 */): Error
-        
-        /** Closes the [PacketPeerUDP]'s underlying UDP socket. */
-        close(): void
-        
-        /** Waits for a packet to arrive on the bound address. See [method bind].  
-         *      
-         *  **Note:** [method wait] can't be interrupted once it has been called. This can be worked around by allowing the other party to send a specific "death pill" packet like this:  
-         *    
-         */
-        wait(): Error
-        
-        /** Returns whether this [PacketPeerUDP] is bound to an address and can receive packets. */
-        is_bound(): boolean
-        
-        /** Calling this method connects this UDP peer to the given [param host]/[param port] pair. UDP is in reality connectionless, so this option only means that incoming packets from different addresses are automatically discarded, and that outgoing packets are always sent to the connected address (future calls to [method set_dest_address] are not allowed). This method does not send any data to the remote peer, to do that, use [method PacketPeer.put_var] or [method PacketPeer.put_packet] as usual. See also [UDPServer].  
-         *      
-         *  **Note:** Connecting to the remote peer does not help to protect from malicious attacks like IP spoofing, etc. Think about using an encryption technique like TLS or DTLS if you feel like your application is transferring sensitive information.  
-         */
-        connect_to_host(host: string, port: int64): Error
-        
-        /** Returns `true` if the UDP socket is open and has been connected to a remote address. See [method connect_to_host]. */
-        is_socket_connected(): boolean
-        
-        /** Returns the IP of the remote peer that sent the last packet(that was received with [method PacketPeer.get_packet] or [method PacketPeer.get_var]). */
-        get_packet_ip(): string
-        
-        /** Returns the port of the remote peer that sent the last packet(that was received with [method PacketPeer.get_packet] or [method PacketPeer.get_var]). */
-        get_packet_port(): int64
-        
-        /** Returns the local port to which this peer is bound. */
-        get_local_port(): int64
-        
-        /** Sets the destination address and port for sending packets and variables. A hostname will be resolved using DNS if needed.  
-         *      
-         *  **Note:** [method set_broadcast_enabled] must be enabled before sending packets to a broadcast address (e.g. `255.255.255.255`).  
-         */
-        set_dest_address(host: string, port: int64): Error
-        
-        /** Enable or disable sending of broadcast packets (e.g. `set_dest_address("255.255.255.255", 4343)`. This option is disabled by default.  
-         *      
-         *  **Note:** Some Android devices might require the `CHANGE_WIFI_MULTICAST_STATE` permission and this option to be enabled to receive broadcast packets too.  
-         */
-        set_broadcast_enabled(enabled: boolean): void
-        
-        /** Joins the multicast group specified by [param multicast_address] using the interface identified by [param interface_name].  
-         *  You can join the same multicast group with multiple interfaces. Use [method IP.get_local_interfaces] to know which are available.  
-         *      
-         *  **Note:** Some Android devices might require the `CHANGE_WIFI_MULTICAST_STATE` permission for multicast to work.  
-         */
-        join_multicast_group(multicast_address: string, interface_name: string): Error
-        
-        /** Removes the interface identified by [param interface_name] from the multicast group specified by [param multicast_address]. */
-        leave_multicast_group(multicast_address: string, interface_name: string): Error
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPacketPeerUDP;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPacketPeerUDP;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPanel extends __RPCMapControl {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPanel extends __NameMapControl {
-    }
-    /** A GUI control that displays a [StyleBox].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_panel.html  
-     */
-    class Panel<Map extends NodePathMap = any> extends Control<Map> {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPanel;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPanel;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPanelContainer extends __RPCMapContainer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPanelContainer extends __NameMapContainer {
-    }
-    /** A container that keeps its child controls within the area of a [StyleBox].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_panelcontainer.html  
-     */
-    class PanelContainer<Map extends NodePathMap = any> extends Container<Map> {
-        constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPanelContainer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPanelContainer;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPanoramaSkyMaterial extends __RPCMapMaterial {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPanoramaSkyMaterial extends __NameMapMaterial {
-    }
-    /** A material that provides a special texture to a [Sky], usually an HDR panorama.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_panoramaskymaterial.html  
-     */
-    class PanoramaSkyMaterial extends Material {
-        constructor(identifier?: any)
-        /** [Texture2D] to be applied to the [PanoramaSkyMaterial]. */
-        get panorama(): null | Texture2D
-        set panorama(value: null | Texture2D)
-        
-        /** A boolean value to determine if the background texture should be filtered or not. */
-        get filter(): boolean
-        set filter(value: boolean)
-        
-        /** The sky's overall brightness multiplier. Higher values result in a brighter sky. */
-        get energy_multiplier(): float64
-        set energy_multiplier(value: float64)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPanoramaSkyMaterial;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPanoramaSkyMaterial;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapParallax2D extends __RPCMapNode2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapParallax2D extends __NameMapNode2D {
-    }
-    /** A node used to create a parallax scrolling background.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_parallax2d.html  
-     */
-    class Parallax2D<Map extends NodePathMap = any> extends Node2D<Map> {
-        constructor(identifier?: any)
-        _camera_moved(transform: Transform2D, screen_offset: Vector2, adj_screen_offset: Vector2): void
-        
-        /** Multiplier to the final [Parallax2D]'s offset. Can be used to simulate distance from the camera.  
-         *  For example, a value of `1` scrolls at the same speed as the camera. A value greater than `1` scrolls faster, making objects appear closer. Less than `1` scrolls slower, making objects appear further, and a value of `0` stops the objects completely.  
-         */
-        get scroll_scale(): Vector2
-        set scroll_scale(value: Vector2)
-        
-        /** The [Parallax2D]'s offset. Similar to [member screen_offset] and [member Node2D.position], but will not be overridden.  
-         *      
-         *  **Note:** Values will loop if [member repeat_size] is set higher than `0`.  
-         */
-        get scroll_offset(): Vector2
-        set scroll_offset(value: Vector2)
-        
-        /** Repeats the [Texture2D] of each of this node's children and offsets them by this value. When scrolling, the node's position loops, giving the illusion of an infinite scrolling background if the values are larger than the screen size. If an axis is set to `0`, the [Texture2D] will not be repeated. */
-        get repeat_size(): Vector2
-        set repeat_size(value: Vector2)
-        
-        /** Velocity at which the offset scrolls automatically, in pixels per second. */
-        get autoscroll(): Vector2
-        set autoscroll(value: Vector2)
-        
-        /** Overrides the amount of times the texture repeats. Each texture copy spreads evenly from the original by [member repeat_size]. Useful for when zooming out with a camera. */
-        get repeat_times(): int64
-        set repeat_times(value: int64)
-        
-        /** Top-left limits for scrolling to begin. If the camera is outside of this limit, the [Parallax2D] stops scrolling. Must be lower than [member limit_end] minus the viewport size to work. */
-        get limit_begin(): Vector2
-        set limit_begin(value: Vector2)
-        
-        /** Bottom-right limits for scrolling to end. If the camera is outside of this limit, the [Parallax2D] will stop scrolling. Must be higher than [member limit_begin] and the viewport size combined to work. */
-        get limit_end(): Vector2
-        set limit_end(value: Vector2)
-        
-        /** If `true`, this [Parallax2D] is offset by the current camera's position. If the [Parallax2D] is in a [CanvasLayer] separate from the current camera, it may be desired to match the value with [member CanvasLayer.follow_viewport_enabled]. */
-        get follow_viewport(): boolean
-        set follow_viewport(value: boolean)
-        
-        /** If `true`, [Parallax2D]'s position is not affected by the position of the camera. */
-        get ignore_camera_scroll(): boolean
-        set ignore_camera_scroll(value: boolean)
-        
-        /** Offset used to scroll this [Parallax2D]. This value is updated automatically unless [member ignore_camera_scroll] is `true`. */
-        get screen_offset(): Vector2
-        set screen_offset(value: Vector2)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapParallax2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapParallax2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapParallaxBackground extends __RPCMapCanvasLayer {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapParallaxBackground extends __NameMapCanvasLayer {
-    }
-    /** A node used to create a parallax scrolling background.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_parallaxbackground.html  
-     */
-    class ParallaxBackground<Map extends NodePathMap = any> extends CanvasLayer<Map> {
-        constructor(identifier?: any)
-        _camera_moved(_unnamed_arg0: Transform2D, _unnamed_arg1: Vector2, _unnamed_arg2: Vector2): void
-        
-        /** The ParallaxBackground's scroll value. Calculated automatically when using a [Camera2D], but can be used to manually manage scrolling when no camera is present. */
-        get scroll_offset(): Vector2
-        set scroll_offset(value: Vector2)
-        
-        /** The base position offset for all [ParallaxLayer] children. */
-        get scroll_base_offset(): Vector2
-        set scroll_base_offset(value: Vector2)
-        
-        /** The base motion scale for all [ParallaxLayer] children. */
-        get scroll_base_scale(): Vector2
-        set scroll_base_scale(value: Vector2)
-        
-        /** Top-left limits for scrolling to begin. If the camera is outside of this limit, the background will stop scrolling. Must be lower than [member scroll_limit_end] to work. */
-        get scroll_limit_begin(): Vector2
-        set scroll_limit_begin(value: Vector2)
-        
-        /** Bottom-right limits for scrolling to end. If the camera is outside of this limit, the background will stop scrolling. Must be higher than [member scroll_limit_begin] to work. */
-        get scroll_limit_end(): Vector2
-        set scroll_limit_end(value: Vector2)
-        
-        /** If `true`, elements in [ParallaxLayer] child aren't affected by the zoom level of the camera. */
-        get scroll_ignore_camera_zoom(): boolean
-        set scroll_ignore_camera_zoom(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapParallaxBackground;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapParallaxBackground;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapParallaxLayer extends __RPCMapNode2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapParallaxLayer extends __NameMapNode2D {
-    }
-    /** A parallax scrolling layer to be used with [ParallaxBackground].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_parallaxlayer.html  
-     */
-    class ParallaxLayer<Map extends NodePathMap = any> extends Node2D<Map> {
-        constructor(identifier?: any)
-        /** Multiplies the ParallaxLayer's motion. If an axis is set to `0`, it will not scroll. */
-        get motion_scale(): Vector2
-        set motion_scale(value: Vector2)
-        
-        /** The ParallaxLayer's offset relative to the parent ParallaxBackground's [member ParallaxBackground.scroll_offset]. */
-        get motion_offset(): Vector2
-        set motion_offset(value: Vector2)
-        
-        /** The interval, in pixels, at which the [ParallaxLayer] is drawn repeatedly. Useful for creating an infinitely scrolling background. If an axis is set to `0`, the [ParallaxLayer] will be drawn only once along that direction.  
-         *      
-         *  **Note:** If you want the repetition to pixel-perfect match a [Texture2D] displayed by a child node, you should account for any scale applied to the texture when defining this interval. For example, if you use a child [Sprite2D] scaled to `0.5` to display a 600x600 texture, and want this sprite to be repeated continuously horizontally, you should set the mirroring to `Vector2(300, 0)`.  
-         *      
-         *  **Note:** If the length of the viewport axis is bigger than twice the repeated axis size, it will not repeat infinitely, as the parallax layer only draws 2 instances of the layer at any given time. The visibility window is calculated from the parent [ParallaxBackground]'s position, not the layer's own position. So, if you use mirroring, **do not** change the [ParallaxLayer] position relative to its parent. Instead, if you need to adjust the background's position, set the [member CanvasLayer.offset] property in the parent [ParallaxBackground].  
-         *      
-         *  **Note:** Despite the name, the layer will not be mirrored, it will only be repeated.  
-         */
-        get motion_mirroring(): Vector2
-        set motion_mirroring(value: Vector2)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapParallaxLayer;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapParallaxLayer;
-    }
-    namespace ParticleProcessMaterial {
-        enum Parameter {
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set initial velocity properties. */
-            PARAM_INITIAL_LINEAR_VELOCITY = 0,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set angular velocity properties. */
-            PARAM_ANGULAR_VELOCITY = 1,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set orbital velocity properties. */
-            PARAM_ORBIT_VELOCITY = 2,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set linear acceleration properties. */
-            PARAM_LINEAR_ACCEL = 3,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set radial acceleration properties. */
-            PARAM_RADIAL_ACCEL = 4,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set tangential acceleration properties. */
-            PARAM_TANGENTIAL_ACCEL = 5,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set damping properties. */
-            PARAM_DAMPING = 6,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set angle properties. */
-            PARAM_ANGLE = 7,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set scale properties. */
-            PARAM_SCALE = 8,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set hue variation properties. */
-            PARAM_HUE_VARIATION = 9,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set animation speed properties. */
-            PARAM_ANIM_SPEED = 10,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set animation offset properties. */
-            PARAM_ANIM_OFFSET = 11,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set radial velocity properties. */
-            PARAM_RADIAL_VELOCITY = 15,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set directional velocity properties. */
-            PARAM_DIRECTIONAL_VELOCITY = 16,
-            
-            /** Use with [method set_param_min], [method set_param_max], and [method set_param_texture] to set scale over velocity properties. */
-            PARAM_SCALE_OVER_VELOCITY = 17,
-            
-            /** Represents the size of the [enum Parameter] enum. */
-            PARAM_MAX = 18,
-            
-            /** Use with [method set_param_min] and [method set_param_max] to set the turbulence minimum und maximum influence on each particles velocity. */
-            PARAM_TURB_VEL_INFLUENCE = 13,
-            
-            /** Use with [method set_param_min] and [method set_param_max] to set the turbulence minimum and maximum displacement of the particles spawn position. */
-            PARAM_TURB_INIT_DISPLACEMENT = 14,
-            
-            /** Use with [method set_param_texture] to set the turbulence influence over the particles life time. */
-            PARAM_TURB_INFLUENCE_OVER_LIFE = 12,
-        }
-        enum ParticleFlags {
-            /** Use with [method set_particle_flag] to set [member particle_flag_align_y]. */
-            PARTICLE_FLAG_ALIGN_Y_TO_VELOCITY = 0,
-            
-            /** Use with [method set_particle_flag] to set [member particle_flag_rotate_y]. */
-            PARTICLE_FLAG_ROTATE_Y = 1,
-            
-            /** Use with [method set_particle_flag] to set [member particle_flag_disable_z]. */
-            PARTICLE_FLAG_DISABLE_Z = 2,
-            PARTICLE_FLAG_DAMPING_AS_FRICTION = 3,
-            
-            /** Represents the size of the [enum ParticleFlags] enum. */
-            PARTICLE_FLAG_MAX = 4,
-        }
-        enum EmissionShape {
-            /** All particles will be emitted from a single point. */
-            EMISSION_SHAPE_POINT = 0,
-            
-            /** Particles will be emitted in the volume of a sphere. */
-            EMISSION_SHAPE_SPHERE = 1,
-            
-            /** Particles will be emitted on the surface of a sphere. */
-            EMISSION_SHAPE_SPHERE_SURFACE = 2,
-            
-            /** Particles will be emitted in the volume of a box. */
-            EMISSION_SHAPE_BOX = 3,
-            
-            /** Particles will be emitted at a position determined by sampling a random point on the [member emission_point_texture]. Particle color will be modulated by [member emission_color_texture]. */
-            EMISSION_SHAPE_POINTS = 4,
-            
-            /** Particles will be emitted at a position determined by sampling a random point on the [member emission_point_texture]. Particle velocity and rotation will be set based on [member emission_normal_texture]. Particle color will be modulated by [member emission_color_texture]. */
-            EMISSION_SHAPE_DIRECTED_POINTS = 5,
-            
-            /** Particles will be emitted in a ring or cylinder. */
-            EMISSION_SHAPE_RING = 6,
-            
-            /** Represents the size of the [enum EmissionShape] enum. */
-            EMISSION_SHAPE_MAX = 7,
-        }
-        enum SubEmitterMode {
-            SUB_EMITTER_DISABLED = 0,
-            SUB_EMITTER_CONSTANT = 1,
-            SUB_EMITTER_AT_END = 2,
-            SUB_EMITTER_AT_COLLISION = 3,
-            SUB_EMITTER_AT_START = 4,
-            
-            /** Represents the size of the [enum SubEmitterMode] enum. */
-            SUB_EMITTER_MAX = 5,
-        }
-        enum CollisionMode {
-            /** No collision for particles. Particles will go through [GPUParticlesCollision3D] nodes. */
-            COLLISION_DISABLED = 0,
-            
-            /** [RigidBody3D]-style collision for particles using [GPUParticlesCollision3D] nodes. */
-            COLLISION_RIGID = 1,
-            
-            /** Hide particles instantly when colliding with a [GPUParticlesCollision3D] node. This can be combined with a subemitter that uses the [constant COLLISION_RIGID] collision mode to "replace" the parent particle with the subemitter on impact. */
-            COLLISION_HIDE_ON_CONTACT = 2,
-            
-            /** Represents the size of the [enum CollisionMode] enum. */
-            COLLISION_MAX = 3,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapParticleProcessMaterial extends __RPCMapMaterial {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapParticleProcessMaterial extends __NameMapMaterial {
-    }
-    /** Holds a particle configuration for [GPUParticles2D] or [GPUParticles3D] nodes.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_particleprocessmaterial.html  
-     */
-    class ParticleProcessMaterial extends Material {
-        constructor(identifier?: any)
-        /** Sets the minimum and maximum values of the given [param param].  
-         *  The `x` component of the argument vector corresponds to minimum and the `y` component corresponds to maximum.  
-         */
-        set_param(param: ParticleProcessMaterial.Parameter, value: Vector2): void
-        
-        /** Returns the minimum and maximum values of the given [param param] as a vector.  
-         *  The `x` component of the returned vector corresponds to minimum and the `y` component corresponds to maximum.  
-         */
-        get_param(param: ParticleProcessMaterial.Parameter): Vector2
-        
-        /** Sets the minimum value range for the given parameter. */
-        set_param_min(param: ParticleProcessMaterial.Parameter, value: float64): void
-        
-        /** Returns the minimum value range for the given parameter. */
-        get_param_min(param: ParticleProcessMaterial.Parameter): float64
-        
-        /** Sets the maximum value range for the given parameter. */
-        set_param_max(param: ParticleProcessMaterial.Parameter, value: float64): void
-        
-        /** Returns the maximum value range for the given parameter. */
-        get_param_max(param: ParticleProcessMaterial.Parameter): float64
-        
-        /** Sets the [Texture2D] for the specified [enum Parameter]. */
-        set_param_texture(param: ParticleProcessMaterial.Parameter, texture: Texture2D): void
-        
-        /** Returns the [Texture2D] used by the specified parameter. */
-        get_param_texture(param: ParticleProcessMaterial.Parameter): null | Texture2D
-        
-        /** Sets the [param particle_flag] to [param enable]. */
-        set_particle_flag(particle_flag: ParticleProcessMaterial.ParticleFlags, enable: boolean): void
-        
-        /** Returns `true` if the specified particle flag is enabled. */
-        get_particle_flag(particle_flag: ParticleProcessMaterial.ParticleFlags): boolean
-        
-        /** Particle lifetime randomness ratio. The equation for the lifetime of a particle is `lifetime * (1.0 - randf() * lifetime_randomness)`. For example, a [member lifetime_randomness] of `0.4` scales the lifetime between `0.6` to `1.0` of its original value. */
-        get lifetime_randomness(): float64
-        set lifetime_randomness(value: float64)
-        
-        /** Align Y axis of particle with the direction of its velocity. */
-        get particle_flag_align_y(): boolean
-        set particle_flag_align_y(value: boolean)
-        
-        /** If `true`, particles rotate around Y axis by [member angle_min]. */
-        get particle_flag_rotate_y(): boolean
-        set particle_flag_rotate_y(value: boolean)
-        
-        /** If `true`, particles will not move on the z axis. */
-        get particle_flag_disable_z(): boolean
-        set particle_flag_disable_z(value: boolean)
-        
-        /** Changes the behavior of the damping properties from a linear deceleration to a deceleration based on speed percentage. */
-        get particle_flag_damping_as_friction(): boolean
-        set particle_flag_damping_as_friction(value: boolean)
-        
-        /** The offset for the [member emission_shape], in local space. */
-        get emission_shape_offset(): Vector3
-        set emission_shape_offset(value: Vector3)
-        
-        /** The scale of the [member emission_shape], in local space. */
-        get emission_shape_scale(): Vector3
-        set emission_shape_scale(value: Vector3)
-        
-        /** Particles will be emitted inside this region. */
-        get emission_shape(): int64
-        set emission_shape(value: int64)
-        
-        /** The sphere's radius if [member emission_shape] is set to [constant EMISSION_SHAPE_SPHERE]. */
-        get emission_sphere_radius(): float64
-        set emission_sphere_radius(value: float64)
-        
-        /** The box's extents if [member emission_shape] is set to [constant EMISSION_SHAPE_BOX].  
-         *      
-         *  **Note:** [member emission_box_extents] starts from the center point and applies the X, Y, and Z values in both directions. The size is twice the area of the extents.  
-         */
-        get emission_box_extents(): Vector3
-        set emission_box_extents(value: Vector3)
-        
-        /** Particles will be emitted at positions determined by sampling this texture at a random position. Used with [constant EMISSION_SHAPE_POINTS] and [constant EMISSION_SHAPE_DIRECTED_POINTS]. Can be created automatically from mesh or node by selecting "Create Emission Points from Mesh/Node" under the "Particles" tool in the toolbar. */
-        get emission_point_texture(): null | Texture2D
-        set emission_point_texture(value: null | Texture2D)
-        
-        /** Particle velocity and rotation will be set by sampling this texture at the same point as the [member emission_point_texture]. Used only in [constant EMISSION_SHAPE_DIRECTED_POINTS]. Can be created automatically from mesh or node by selecting "Create Emission Points from Mesh/Node" under the "Particles" tool in the toolbar. */
-        get emission_normal_texture(): null | Texture2D
-        set emission_normal_texture(value: null | Texture2D)
-        
-        /** Particle color will be modulated by color determined by sampling this texture at the same point as the [member emission_point_texture].  
-         *      
-         *  **Note:** [member emission_color_texture] multiplies the particle mesh's vertex colors. To have a visible effect on a [BaseMaterial3D], [member BaseMaterial3D.vertex_color_use_as_albedo]  *must*  be `true`. For a [ShaderMaterial], `ALBEDO *= COLOR.rgb;` must be inserted in the shader's `fragment()` function. Otherwise, [member emission_color_texture] will have no visible effect.  
-         */
-        get emission_color_texture(): null | Texture2D
-        set emission_color_texture(value: null | Texture2D)
-        
-        /** The number of emission points if [member emission_shape] is set to [constant EMISSION_SHAPE_POINTS] or [constant EMISSION_SHAPE_DIRECTED_POINTS]. */
-        get emission_point_count(): int64
-        set emission_point_count(value: int64)
-        
-        /** The axis of the ring when using the emitter [constant EMISSION_SHAPE_RING]. */
-        get emission_ring_axis(): Vector3
-        set emission_ring_axis(value: Vector3)
-        
-        /** The height of the ring when using the emitter [constant EMISSION_SHAPE_RING]. */
-        get emission_ring_height(): float64
-        set emission_ring_height(value: float64)
-        
-        /** The radius of the ring when using the emitter [constant EMISSION_SHAPE_RING]. */
-        get emission_ring_radius(): float64
-        set emission_ring_radius(value: float64)
-        
-        /** The inner radius of the ring when using the emitter [constant EMISSION_SHAPE_RING]. */
-        get emission_ring_inner_radius(): float64
-        set emission_ring_inner_radius(value: float64)
-        
-        /** The angle of the cone when using the emitter [constant EMISSION_SHAPE_RING]. The default angle of 90 degrees results in a ring, while an angle of 0 degrees results in a cone. Intermediate values will result in a ring where one end is larger than the other.  
-         *      
-         *  **Note:** Depending on [member emission_ring_height], the angle may be clamped if the ring's end is reached to form a perfect cone.  
-         */
-        get emission_ring_cone_angle(): float64
-        set emission_ring_cone_angle(value: float64)
-        get angle(): Vector2
-        set angle(value: Vector2)
-        
-        /** Minimum equivalent of [member angle_max]. */
-        get angle_min(): float64
-        set angle_min(value: float64)
-        
-        /** Maximum initial rotation applied to each particle, in degrees.  
-         *  Only applied when [member particle_flag_disable_z] or [member particle_flag_rotate_y] are `true` or the [BaseMaterial3D] being used to draw the particle is using [constant BaseMaterial3D.BILLBOARD_PARTICLES].  
-         */
-        get angle_max(): float64
-        set angle_max(value: float64)
-        
-        /** Each particle's rotation will be animated along this [CurveTexture]. */
-        get angle_curve(): null | CurveTexture
-        set angle_curve(value: null | CurveTexture)
-        
-        /** Percentage of the velocity of the respective [GPUParticles2D] or [GPUParticles3D] inherited by each particle when spawning. */
-        get inherit_velocity_ratio(): float64
-        set inherit_velocity_ratio(value: float64)
-        
-        /** A pivot point used to calculate radial and orbital velocity of particles. */
-        get velocity_pivot(): Vector3
-        set velocity_pivot(value: Vector3)
-        
-        /** Unit vector specifying the particles' emission direction. */
-        get direction(): Vector3
-        set direction(value: Vector3)
-        
-        /** Each particle's initial direction range from `+spread` to `-spread` degrees. */
-        get spread(): float64
-        set spread(value: float64)
-        
-        /** Amount of [member spread] along the Y axis. */
-        get flatness(): float64
-        set flatness(value: float64)
-        get initial_velocity(): Vector2
-        set initial_velocity(value: Vector2)
-        
-        /** Minimum equivalent of [member initial_velocity_max]. */
-        get initial_velocity_min(): float64
-        set initial_velocity_min(value: float64)
-        
-        /** Maximum initial velocity magnitude for each particle. Direction comes from [member direction] and [member spread]. */
-        get initial_velocity_max(): float64
-        set initial_velocity_max(value: float64)
-        get angular_velocity(): Vector2
-        set angular_velocity(value: Vector2)
-        
-        /** Minimum equivalent of [member angular_velocity_max]. */
-        get angular_velocity_min(): float64
-        set angular_velocity_min(value: float64)
-        
-        /** Maximum initial angular velocity (rotation speed) applied to each particle in  *degrees*  per second.  
-         *  Only applied when [member particle_flag_disable_z] or [member particle_flag_rotate_y] are `true` or the [BaseMaterial3D] being used to draw the particle is using [constant BaseMaterial3D.BILLBOARD_PARTICLES].  
-         */
-        get angular_velocity_max(): float64
-        set angular_velocity_max(value: float64)
-        
-        /** Each particle's angular velocity (rotation speed) will vary along this [CurveTexture] over its lifetime. */
-        get angular_velocity_curve(): null | CurveTexture
-        set angular_velocity_curve(value: null | CurveTexture)
-        get directional_velocity(): Vector2
-        set directional_velocity(value: Vector2)
-        
-        /** Minimum directional velocity value, which is multiplied by [member directional_velocity_curve].  
-         *      
-         *  **Note:** Animated velocities will not be affected by damping, use [member velocity_limit_curve] instead.  
-         */
-        get directional_velocity_min(): float64
-        set directional_velocity_min(value: float64)
-        
-        /** Maximum directional velocity value, which is multiplied by [member directional_velocity_curve].  
-         *      
-         *  **Note:** Animated velocities will not be affected by damping, use [member velocity_limit_curve] instead.  
-         */
-        get directional_velocity_max(): float64
-        set directional_velocity_max(value: float64)
-        
-        /** A curve that specifies the velocity along each of the axes of the particle system along its lifetime.  
-         *      
-         *  **Note:** Animated velocities will not be affected by damping, use [member velocity_limit_curve] instead.  
-         */
-        get directional_velocity_curve(): null | CurveXYZTexture
-        set directional_velocity_curve(value: null | CurveXYZTexture)
-        get orbit_velocity(): Vector2
-        set orbit_velocity(value: Vector2)
-        
-        /** Minimum equivalent of [member orbit_velocity_max].  
-         *      
-         *  **Note:** Animated velocities will not be affected by damping, use [member velocity_limit_curve] instead.  
-         */
-        get orbit_velocity_min(): float64
-        set orbit_velocity_min(value: float64)
-        
-        /** Maximum orbital velocity applied to each particle. Makes the particles circle around origin. Specified in number of full rotations around origin per second.  
-         *      
-         *  **Note:** Animated velocities will not be affected by damping, use [member velocity_limit_curve] instead.  
-         */
-        get orbit_velocity_max(): float64
-        set orbit_velocity_max(value: float64)
-        
-        /** Each particle's orbital velocity will vary along this [CurveTexture].  
-         *      
-         *  **Note:** For 3D orbital velocity, use a [CurveXYZTexture].  
-         *      
-         *  **Note:** Animated velocities will not be affected by damping, use [member velocity_limit_curve] instead.  
-         */
-        get orbit_velocity_curve(): null | CurveTexture | CurveXYZTexture
-        set orbit_velocity_curve(value: null | CurveTexture | CurveXYZTexture)
-        get radial_velocity(): Vector2
-        set radial_velocity(value: Vector2)
-        
-        /** Minimum radial velocity applied to each particle. Makes particles move away from the [member velocity_pivot], or toward it if negative.  
-         *      
-         *  **Note:** Animated velocities will not be affected by damping, use [member velocity_limit_curve] instead.  
-         */
-        get radial_velocity_min(): float64
-        set radial_velocity_min(value: float64)
-        
-        /** Maximum radial velocity applied to each particle. Makes particles move away from the [member velocity_pivot], or toward it if negative.  
-         *      
-         *  **Note:** Animated velocities will not be affected by damping, use [member velocity_limit_curve] instead.  
-         */
-        get radial_velocity_max(): float64
-        set radial_velocity_max(value: float64)
-        
-        /** A [CurveTexture] that defines the velocity over the particle's lifetime away (or toward) the [member velocity_pivot].  
-         *      
-         *  **Note:** Animated velocities will not be affected by damping, use [member velocity_limit_curve] instead.  
-         */
-        get radial_velocity_curve(): null | CurveTexture
-        set radial_velocity_curve(value: null | CurveTexture)
-        
-        /** A [CurveTexture] that defines the maximum velocity of a particle during its lifetime. */
-        get velocity_limit_curve(): null | CurveTexture
-        set velocity_limit_curve(value: null | CurveTexture)
-        
-        /** Gravity applied to every particle. */
-        get gravity(): Vector3
-        set gravity(value: Vector3)
-        get linear_accel(): Vector2
-        set linear_accel(value: Vector2)
-        
-        /** Minimum equivalent of [member linear_accel_max]. */
-        get linear_accel_min(): float64
-        set linear_accel_min(value: float64)
-        
-        /** Maximum linear acceleration applied to each particle in the direction of motion. */
-        get linear_accel_max(): float64
-        set linear_accel_max(value: float64)
-        
-        /** Each particle's linear acceleration will vary along this [CurveTexture]. */
-        get linear_accel_curve(): null | CurveTexture
-        set linear_accel_curve(value: null | CurveTexture)
-        get radial_accel(): Vector2
-        set radial_accel(value: Vector2)
-        
-        /** Minimum equivalent of [member radial_accel_max]. */
-        get radial_accel_min(): float64
-        set radial_accel_min(value: float64)
-        
-        /** Maximum radial acceleration applied to each particle. Makes particle accelerate away from the origin or towards it if negative. */
-        get radial_accel_max(): float64
-        set radial_accel_max(value: float64)
-        
-        /** Each particle's radial acceleration will vary along this [CurveTexture]. */
-        get radial_accel_curve(): null | CurveTexture
-        set radial_accel_curve(value: null | CurveTexture)
-        get tangential_accel(): Vector2
-        set tangential_accel(value: Vector2)
-        
-        /** Minimum equivalent of [member tangential_accel_max]. */
-        get tangential_accel_min(): float64
-        set tangential_accel_min(value: float64)
-        
-        /** Maximum tangential acceleration applied to each particle. Tangential acceleration is perpendicular to the particle's velocity giving the particles a swirling motion. */
-        get tangential_accel_max(): float64
-        set tangential_accel_max(value: float64)
-        
-        /** Each particle's tangential acceleration will vary along this [CurveTexture]. */
-        get tangential_accel_curve(): null | CurveTexture
-        set tangential_accel_curve(value: null | CurveTexture)
-        get damping(): Vector2
-        set damping(value: Vector2)
-        
-        /** Minimum equivalent of [member damping_max]. */
-        get damping_min(): float64
-        set damping_min(value: float64)
-        
-        /** The maximum rate at which particles lose velocity. For example value of `100` means that the particle will go from `100` velocity to `0` in `1` second. */
-        get damping_max(): float64
-        set damping_max(value: float64)
-        
-        /** Damping will vary along this [CurveTexture]. */
-        get damping_curve(): null | CurveTexture
-        set damping_curve(value: null | CurveTexture)
-        
-        /** If `true`, interaction with particle attractors is enabled. In 3D, attraction only occurs within the area defined by the [GPUParticles3D] node's [member GPUParticles3D.visibility_aabb]. */
-        get attractor_interaction_enabled(): boolean
-        set attractor_interaction_enabled(value: boolean)
-        get scale(): Vector2
-        set scale(value: Vector2)
-        
-        /** Minimum equivalent of [member scale_max]. */
-        get scale_min(): float64
-        set scale_min(value: float64)
-        
-        /** Maximum initial scale applied to each particle. */
-        get scale_max(): float64
-        set scale_max(value: float64)
-        
-        /** Each particle's scale will vary along this [CurveTexture] over its lifetime. If a [CurveXYZTexture] is supplied instead, the scale will be separated per-axis. */
-        get scale_curve(): null | CurveTexture | CurveXYZTexture
-        set scale_curve(value: null | CurveTexture | CurveXYZTexture)
-        get scale_over_velocity(): Vector2
-        set scale_over_velocity(value: Vector2)
-        
-        /** Minimum velocity value reference for [member scale_over_velocity_curve].  
-         *  [member scale_over_velocity_curve] will be interpolated between [member scale_over_velocity_min] and [member scale_over_velocity_max].  
-         */
-        get scale_over_velocity_min(): float64
-        set scale_over_velocity_min(value: float64)
-        
-        /** Maximum velocity value reference for [member scale_over_velocity_curve].  
-         *  [member scale_over_velocity_curve] will be interpolated between [member scale_over_velocity_min] and [member scale_over_velocity_max].  
-         */
-        get scale_over_velocity_max(): float64
-        set scale_over_velocity_max(value: float64)
-        
-        /** Either a [CurveTexture] or a [CurveXYZTexture] that scales each particle based on its velocity. */
-        get scale_over_velocity_curve(): null | CurveTexture | CurveXYZTexture
-        set scale_over_velocity_curve(value: null | CurveTexture | CurveXYZTexture)
-        
-        /** Each particle's initial color. If the [GPUParticles2D]'s `texture` is defined, it will be multiplied by this color.  
-         *      
-         *  **Note:** [member color] multiplies the particle mesh's vertex colors. To have a visible effect on a [BaseMaterial3D], [member BaseMaterial3D.vertex_color_use_as_albedo]  *must*  be `true`. For a [ShaderMaterial], `ALBEDO *= COLOR.rgb;` must be inserted in the shader's `fragment()` function. Otherwise, [member color] will have no visible effect.  
-         */
-        get color(): Color
-        set color(value: Color)
-        
-        /** Each particle's color will vary along this [GradientTexture1D] over its lifetime (multiplied with [member color]).  
-         *      
-         *  **Note:** [member color_ramp] multiplies the particle mesh's vertex colors. To have a visible effect on a [BaseMaterial3D], [member BaseMaterial3D.vertex_color_use_as_albedo]  *must*  be `true`. For a [ShaderMaterial], `ALBEDO *= COLOR.rgb;` must be inserted in the shader's `fragment()` function. Otherwise, [member color_ramp] will have no visible effect.  
-         */
-        get color_ramp(): null | GradientTexture1D
-        set color_ramp(value: null | GradientTexture1D)
-        
-        /** Each particle's initial color will vary along this [GradientTexture1D] (multiplied with [member color]).  
-         *      
-         *  **Note:** [member color_initial_ramp] multiplies the particle mesh's vertex colors. To have a visible effect on a [BaseMaterial3D], [member BaseMaterial3D.vertex_color_use_as_albedo]  *must*  be `true`. For a [ShaderMaterial], `ALBEDO *= COLOR.rgb;` must be inserted in the shader's `fragment()` function. Otherwise, [member color_initial_ramp] will have no visible effect.  
-         */
-        get color_initial_ramp(): null | GradientTexture1D
-        set color_initial_ramp(value: null | GradientTexture1D)
-        
-        /** The alpha value of each particle's color will be multiplied by this [CurveTexture] over its lifetime.  
-         *      
-         *  **Note:** [member alpha_curve] multiplies the particle mesh's vertex colors. To have a visible effect on a [BaseMaterial3D], [member BaseMaterial3D.vertex_color_use_as_albedo]  *must*  be `true`. For a [ShaderMaterial], `ALPHA *= COLOR.a;` must be inserted in the shader's `fragment()` function. Otherwise, [member alpha_curve] will have no visible effect.  
-         */
-        get alpha_curve(): null | CurveTexture
-        set alpha_curve(value: null | CurveTexture)
-        
-        /** Each particle's color will be multiplied by this [CurveTexture] over its lifetime.  
-         *      
-         *  **Note:** [member emission_curve] multiplies the particle mesh's vertex colors. To have a visible effect on a [BaseMaterial3D], [member BaseMaterial3D.vertex_color_use_as_albedo]  *must*  be `true`. For a [ShaderMaterial], `ALBEDO *= COLOR.rgb;` must be inserted in the shader's `fragment()` function. Otherwise, [member emission_curve] will have no visible effect.  
-         */
-        get emission_curve(): null | CurveTexture
-        set emission_curve(value: null | CurveTexture)
-        get hue_variation(): Vector2
-        set hue_variation(value: Vector2)
-        
-        /** Minimum equivalent of [member hue_variation_max]. */
-        get hue_variation_min(): float64
-        set hue_variation_min(value: float64)
-        
-        /** Maximum initial hue variation applied to each particle. It will shift the particle color's hue. */
-        get hue_variation_max(): float64
-        set hue_variation_max(value: float64)
-        
-        /** Each particle's hue will vary along this [CurveTexture]. */
-        get hue_variation_curve(): null | CurveTexture
-        set hue_variation_curve(value: null | CurveTexture)
-        get anim_speed(): Vector2
-        set anim_speed(value: Vector2)
-        
-        /** Minimum equivalent of [member anim_speed_max]. */
-        get anim_speed_min(): float64
-        set anim_speed_min(value: float64)
-        
-        /** Maximum particle animation speed. Animation speed of `1` means that the particles will make full `0` to `1` offset cycle during lifetime, `2` means `2` cycles etc.  
-         *  With animation speed greater than `1`, remember to enable [member CanvasItemMaterial.particles_anim_loop] property if you want the animation to repeat.  
-         */
-        get anim_speed_max(): float64
-        set anim_speed_max(value: float64)
-        
-        /** Each particle's animation speed will vary along this [CurveTexture]. */
-        get anim_speed_curve(): null | CurveTexture
-        set anim_speed_curve(value: null | CurveTexture)
-        get anim_offset(): Vector2
-        set anim_offset(value: Vector2)
-        
-        /** Minimum equivalent of [member anim_offset_max]. */
-        get anim_offset_min(): float64
-        set anim_offset_min(value: float64)
-        
-        /** Maximum animation offset that corresponds to frame index in the texture. `0` is the first frame, `1` is the last one. See [member CanvasItemMaterial.particles_animation]. */
-        get anim_offset_max(): float64
-        set anim_offset_max(value: float64)
-        
-        /** Each particle's animation offset will vary along this [CurveTexture]. */
-        get anim_offset_curve(): null | CurveTexture
-        set anim_offset_curve(value: null | CurveTexture)
-        
-        /** If `true`, enables turbulence for the particle system. Turbulence can be used to vary particle movement according to its position (based on a 3D noise pattern). In 3D, [GPUParticlesAttractorVectorField3D] with [NoiseTexture3D] can be used as an alternative to turbulence that works in world space and with multiple particle systems reacting in the same way.  
-         *      
-         *  **Note:** Enabling turbulence has a high performance cost on the GPU. Only enable turbulence on a few particle systems at once at most, and consider disabling it when targeting mobile/web platforms.  
-         */
-        get turbulence_enabled(): boolean
-        set turbulence_enabled(value: boolean)
-        
-        /** The turbulence noise strength. Increasing this will result in a stronger, more contrasting, flow pattern. */
-        get turbulence_noise_strength(): float64
-        set turbulence_noise_strength(value: float64)
-        
-        /** This value controls the overall scale/frequency of the turbulence noise pattern.  
-         *  A small scale will result in smaller features with more detail while a high scale will result in smoother noise with larger features.  
-         */
-        get turbulence_noise_scale(): float64
-        set turbulence_noise_scale(value: float64)
-        
-        /** A scrolling velocity for the turbulence field. This sets a directional trend for the pattern to move in over time.  
-         *  The default value of `Vector3(0, 0, 0)` turns off the scrolling.  
-         */
-        get turbulence_noise_speed(): Vector3
-        set turbulence_noise_speed(value: Vector3)
-        
-        /** The in-place rate of change of the turbulence field. This defines how quickly the noise pattern varies over time.  
-         *  A value of 0.0 will result in a fixed pattern.  
-         */
-        get turbulence_noise_speed_random(): float64
-        set turbulence_noise_speed_random(value: float64)
-        get turbulence_influence(): Vector2
-        set turbulence_influence(value: Vector2)
-        
-        /** Minimum turbulence influence on each particle.  
-         *  The actual amount of turbulence influence on each particle is calculated as a random value between [member turbulence_influence_min] and [member turbulence_influence_max] and multiplied by the amount of turbulence influence from [member turbulence_influence_over_life].  
-         */
-        get turbulence_influence_min(): float64
-        set turbulence_influence_min(value: float64)
-        
-        /** Maximum turbulence influence on each particle.  
-         *  The actual amount of turbulence influence on each particle is calculated as a random value between [member turbulence_influence_min] and [member turbulence_influence_max] and multiplied by the amount of turbulence influence from [member turbulence_influence_over_life].  
-         */
-        get turbulence_influence_max(): float64
-        set turbulence_influence_max(value: float64)
-        get turbulence_initial_displacement(): Vector2
-        set turbulence_initial_displacement(value: Vector2)
-        
-        /** Minimum displacement of each particle's spawn position by the turbulence.  
-         *  The actual amount of displacement will be a factor of the underlying turbulence multiplied by a random value between [member turbulence_initial_displacement_min] and [member turbulence_initial_displacement_max].  
-         */
-        get turbulence_initial_displacement_min(): float64
-        set turbulence_initial_displacement_min(value: float64)
-        
-        /** Maximum displacement of each particle's spawn position by the turbulence.  
-         *  The actual amount of displacement will be a factor of the underlying turbulence multiplied by a random value between [member turbulence_initial_displacement_min] and [member turbulence_initial_displacement_max].  
-         */
-        get turbulence_initial_displacement_max(): float64
-        set turbulence_initial_displacement_max(value: float64)
-        
-        /** Each particle's amount of turbulence will be influenced along this [CurveTexture] over its life time. */
-        get turbulence_influence_over_life(): null | CurveTexture
-        set turbulence_influence_over_life(value: null | CurveTexture)
-        
-        /** The particles' collision mode.  
-         *      
-         *  **Note:** 3D Particles can only collide with [GPUParticlesCollision3D] nodes, not [PhysicsBody3D] nodes. To make particles collide with various objects, you can add [GPUParticlesCollision3D] nodes as children of [PhysicsBody3D] nodes. In 3D, collisions only occur within the area defined by the [GPUParticles3D] node's [member GPUParticles3D.visibility_aabb].  
-         *      
-         *  **Note:** 2D Particles can only collide with [LightOccluder2D] nodes, not [PhysicsBody2D] nodes.  
-         */
-        get collision_mode(): int64
-        set collision_mode(value: int64)
-        
-        /** The particles' friction. Values range from `0` (frictionless) to `1` (maximum friction). Only effective if [member collision_mode] is [constant COLLISION_RIGID]. */
-        get collision_friction(): float64
-        set collision_friction(value: float64)
-        
-        /** The particles' bounciness. Values range from `0` (no bounce) to `1` (full bounciness). Only effective if [member collision_mode] is [constant COLLISION_RIGID]. */
-        get collision_bounce(): float64
-        set collision_bounce(value: float64)
-        
-        /** If `true`, [member GPUParticles3D.collision_base_size] is multiplied by the particle's effective scale (see [member scale_min], [member scale_max], [member scale_curve], and [member scale_over_velocity_curve]). */
-        get collision_use_scale(): boolean
-        set collision_use_scale(value: boolean)
-        
-        /** The particle subemitter mode (see [member GPUParticles2D.sub_emitter] and [member GPUParticles3D.sub_emitter]). */
-        get sub_emitter_mode(): int64
-        set sub_emitter_mode(value: int64)
-        
-        /** The frequency at which particles should be emitted from the subemitter node. One particle will be spawned every [member sub_emitter_frequency] seconds.  
-         *      
-         *  **Note:** This value shouldn't exceed [member GPUParticles2D.amount] or [member GPUParticles3D.amount] defined on the  *subemitter node*  (not the main node), relative to the subemitter's particle lifetime. If the number of particles is exceeded, no new particles will spawn from the subemitter until enough particles have expired.  
-         */
-        get sub_emitter_frequency(): float64
-        set sub_emitter_frequency(value: float64)
-        
-        /** The amount of particles to spawn from the subemitter node when the particle expires.  
-         *      
-         *  **Note:** This value shouldn't exceed [member GPUParticles2D.amount] or [member GPUParticles3D.amount] defined on the  *subemitter node*  (not the main node), relative to the subemitter's particle lifetime. If the number of particles is exceeded, no new particles will spawn from the subemitter until enough particles have expired.  
-         */
-        get sub_emitter_amount_at_end(): int64
-        set sub_emitter_amount_at_end(value: int64)
-        
-        /** The amount of particles to spawn from the subemitter node when a collision occurs. When combined with [constant COLLISION_HIDE_ON_CONTACT] on the main particles material, this can be used to achieve effects such as raindrops hitting the ground.  
-         *      
-         *  **Note:** This value shouldn't exceed [member GPUParticles2D.amount] or [member GPUParticles3D.amount] defined on the  *subemitter node*  (not the main node), relative to the subemitter's particle lifetime. If the number of particles is exceeded, no new particles will spawn from the subemitter until enough particles have expired.  
-         */
-        get sub_emitter_amount_at_collision(): int64
-        set sub_emitter_amount_at_collision(value: int64)
-        
-        /** The amount of particles to spawn from the subemitter node when the particle spawns.  
-         *      
-         *  **Note:** This value shouldn't exceed [member GPUParticles2D.amount] or [member GPUParticles3D.amount] defined on the  *subemitter node*  (not the main node), relative to the subemitter's particle lifetime. If the number of particles is exceeded, no new particles will spawn from the subemitter until enough particles have expired.  
-         */
-        get sub_emitter_amount_at_start(): int64
-        set sub_emitter_amount_at_start(value: int64)
-        
-        /** If `true`, the subemitter inherits the parent particle's velocity when it spawns. */
-        get sub_emitter_keep_velocity(): boolean
-        set sub_emitter_keep_velocity(value: boolean)
-        
-        /** Emitted when this material's emission shape is changed in any way. This includes changes to [member emission_shape], [member emission_shape_scale], or [member emission_sphere_radius], and any other property that affects the emission shape's offset, size, scale, or orientation.  
-         *      
-         *  **Note:** This signal is only emitted inside the editor for performance reasons.  
-         */
-        readonly emission_shape_changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapParticleProcessMaterial;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapParticleProcessMaterial;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPath2D extends __RPCMapNode2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPath2D extends __NameMapNode2D {
-    }
-    /** Contains a [Curve2D] path for [PathFollow2D] nodes to follow.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_path2d.html  
-     */
-    class Path2D<Map extends NodePathMap = any> extends Node2D<Map> {
-        constructor(identifier?: any)
-        /** A [Curve2D] describing the path. */
-        get curve(): null | Curve2D
-        set curve(value: null | Curve2D)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPath2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPath2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPath3D extends __RPCMapNode3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPath3D extends __NameMapNode3D {
-    }
-    /** Contains a [Curve3D] path for [PathFollow3D] nodes to follow.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_path3d.html  
-     */
-    class Path3D<Map extends NodePathMap = any> extends Node3D<Map> {
-        constructor(identifier?: any)
-        /** A [Curve3D] describing the path. */
-        get curve(): null | Curve3D
-        set curve(value: null | Curve3D)
-        
-        /** The custom color used to draw the path in the editor. If set to [constant Color.BLACK] (as by default), the color set in [member ProjectSettings.debug/shapes/paths/geometry_color] is used. */
-        get debug_custom_color(): Color
-        set debug_custom_color(value: Color)
-        
-        /** Emitted when the [member curve] changes. */
-        readonly curve_changed: Signal<() => void>
-        
-        /** Emitted when the [member debug_custom_color] changes. */
-        readonly debug_color_changed: Signal<() => void>
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPath3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPath3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPathFollow2D extends __RPCMapNode2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPathFollow2D extends __NameMapNode2D {
-    }
-    /** Point sampler for a [Path2D].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_pathfollow2d.html  
-     */
-    class PathFollow2D<Map extends NodePathMap = any> extends Node2D<Map> {
-        constructor(identifier?: any)
-        /** The distance along the path, in pixels. Changing this value sets this node's position to a point within the path. */
-        get progress(): float64
-        set progress(value: float64)
-        
-        /** The distance along the path as a number in the range 0.0 (for the first vertex) to 1.0 (for the last). This is just another way of expressing the progress within the path, as the offset supplied is multiplied internally by the path's length.  
-         *  It can be set or get only if the [PathFollow2D] is the child of a [Path2D] which is part of the scene tree, and that this [Path2D] has a [Curve2D] with a non-zero length. Otherwise, trying to set this field will print an error, and getting this field will return `0.0`.  
-         */
-        get progress_ratio(): float64
-        set progress_ratio(value: float64)
-        
-        /** The node's offset along the curve. */
-        get h_offset(): float64
-        set h_offset(value: float64)
-        
-        /** The node's offset perpendicular to the curve. */
-        get v_offset(): float64
-        set v_offset(value: float64)
-        
-        /** If `true`, this node rotates to follow the path, with the +X direction facing forward on the path. */
-        get rotates(): boolean
-        set rotates(value: boolean)
-        
-        /** If `true`, the position between two cached points is interpolated cubically, and linearly otherwise.  
-         *  The points along the [Curve2D] of the [Path2D] are precomputed before use, for faster calculations. The point at the requested offset is then calculated interpolating between two adjacent cached points. This may present a problem if the curve makes sharp turns, as the cached points may not follow the curve closely enough.  
-         *  There are two answers to this problem: either increase the number of cached points and increase memory consumption, or make a cubic interpolation between two points at the cost of (slightly) slower calculations.  
-         */
-        get cubic_interp(): boolean
-        set cubic_interp(value: boolean)
-        
-        /** If `true`, any offset outside the path's length will wrap around, instead of stopping at the ends. Use it for cyclic paths. */
-        get loop(): boolean
-        set loop(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPathFollow2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPathFollow2D;
-    }
-    namespace PathFollow3D {
-        enum RotationMode {
-            /** Forbids the PathFollow3D to rotate. */
-            ROTATION_NONE = 0,
-            
-            /** Allows the PathFollow3D to rotate in the Y axis only. */
-            ROTATION_Y = 1,
-            
-            /** Allows the PathFollow3D to rotate in both the X, and Y axes. */
-            ROTATION_XY = 2,
-            
-            /** Allows the PathFollow3D to rotate in any axis. */
-            ROTATION_XYZ = 3,
-            
-            /** Uses the up vector information in a [Curve3D] to enforce orientation. This rotation mode requires the [Path3D]'s [member Curve3D.up_vector_enabled] property to be set to `true`. */
-            ROTATION_ORIENTED = 4,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPathFollow3D extends __RPCMapNode3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPathFollow3D extends __NameMapNode3D {
-    }
-    /** Point sampler for a [Path3D].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_pathfollow3d.html  
-     */
-    class PathFollow3D<Map extends NodePathMap = any> extends Node3D<Map> {
-        constructor(identifier?: any)
-        /** Correct the [param transform]. [param rotation_mode] implicitly specifies how posture (forward, up and sideway direction) is calculated. */
-        static correct_posture(transform: Transform3D, rotation_mode: PathFollow3D.RotationMode): Transform3D
-        
-        /** The distance from the first vertex, measured in 3D units along the path. Changing this value sets this node's position to a point within the path. */
-        get progress(): float64
-        set progress(value: float64)
-        
-        /** The distance from the first vertex, considering 0.0 as the first vertex and 1.0 as the last. This is just another way of expressing the progress within the path, as the progress supplied is multiplied internally by the path's length.  
-         *  It can be set or get only if the [PathFollow3D] is the child of a [Path3D] which is part of the scene tree, and that this [Path3D] has a [Curve3D] with a non-zero length. Otherwise, trying to set this field will print an error, and getting this field will return `0.0`.  
-         */
-        get progress_ratio(): float64
-        set progress_ratio(value: float64)
-        
-        /** The node's offset along the curve. */
-        get h_offset(): float64
-        set h_offset(value: float64)
-        
-        /** The node's offset perpendicular to the curve. */
-        get v_offset(): float64
-        set v_offset(value: float64)
-        
-        /** Allows or forbids rotation on one or more axes, depending on the [enum RotationMode] constants being used. */
-        get rotation_mode(): int64
-        set rotation_mode(value: int64)
-        
-        /** If `true`, the node moves on the travel path with orienting the +Z axis as forward. See also [constant Vector3.FORWARD] and [constant Vector3.MODEL_FRONT]. */
-        get use_model_front(): boolean
-        set use_model_front(value: boolean)
-        
-        /** If `true`, the position between two cached points is interpolated cubically, and linearly otherwise.  
-         *  The points along the [Curve3D] of the [Path3D] are precomputed before use, for faster calculations. The point at the requested offset is then calculated interpolating between two adjacent cached points. This may present a problem if the curve makes sharp turns, as the cached points may not follow the curve closely enough.  
-         *  There are two answers to this problem: either increase the number of cached points and increase memory consumption, or make a cubic interpolation between two points at the cost of (slightly) slower calculations.  
-         */
-        get cubic_interp(): boolean
-        set cubic_interp(value: boolean)
-        
-        /** If `true`, any offset outside the path's length will wrap around, instead of stopping at the ends. Use it for cyclic paths. */
-        get loop(): boolean
-        set loop(value: boolean)
-        
-        /** If `true`, the tilt property of [Curve3D] takes effect. */
-        get tilt_enabled(): boolean
-        set tilt_enabled(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPathFollow3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPathFollow3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicalBone2D extends __RPCMapRigidBody2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicalBone2D extends __NameMapRigidBody2D {
-    }
-    /** A [RigidBody2D]-derived node used to make [Bone2D]s in a [Skeleton2D] react to physics.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicalbone2d.html  
-     */
-    class PhysicalBone2D<Map extends NodePathMap = any> extends RigidBody2D<Map> {
-        constructor(identifier?: any)
-        /** Returns the first [Joint2D] child node, if one exists. This is mainly a helper function to make it easier to get the [Joint2D] that the [PhysicalBone2D] is autoconfiguring. */
-        get_joint(): null | Joint2D
-        
-        /** Returns a boolean that indicates whether the [PhysicalBone2D] is running and simulating using the Godot 2D physics engine. When `true`, the PhysicalBone2D node is using physics. */
-        is_simulating_physics(): boolean
-        
-        /** The [NodePath] to the [Bone2D] that this [PhysicalBone2D] should simulate. */
-        get bone2d_nodepath(): NodePath
-        set bone2d_nodepath(value: NodePath | string)
-        
-        /** The index of the [Bone2D] that this [PhysicalBone2D] should simulate. */
-        get bone2d_index(): int64
-        set bone2d_index(value: int64)
-        
-        /** If `true`, the [PhysicalBone2D] will automatically configure the first [Joint2D] child node. The automatic configuration is limited to setting up the node properties and positioning the [Joint2D]. */
-        get auto_configure_joint(): boolean
-        set auto_configure_joint(value: boolean)
-        
-        /** If `true`, the [PhysicalBone2D] will start simulating using physics. If `false`, the [PhysicalBone2D] will follow the transform of the [Bone2D] node.  
-         *      
-         *  **Note:** To have the [Bone2D]s visually follow the [PhysicalBone2D], use a [SkeletonModification2DPhysicalBones] modification on the [Skeleton2D] node with the [Bone2D] nodes.  
-         */
-        get simulate_physics(): boolean
-        set simulate_physics(value: boolean)
-        
-        /** If `true`, the [PhysicalBone2D] will keep the transform of the bone it is bound to when simulating physics. */
-        get follow_bone_when_simulating(): boolean
-        set follow_bone_when_simulating(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicalBone2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicalBone2D;
-    }
-    namespace PhysicalBone3D {
-        enum DampMode {
-            /** In this mode, the body's damping value is added to any value set in areas or the default value. */
-            DAMP_MODE_COMBINE = 0,
-            
-            /** In this mode, the body's damping value replaces any value set in areas or the default value. */
-            DAMP_MODE_REPLACE = 1,
-        }
-        enum JointType {
-            /** No joint is applied to the PhysicsBone3D. */
-            JOINT_TYPE_NONE = 0,
-            
-            /** A pin joint is applied to the PhysicsBone3D. */
-            JOINT_TYPE_PIN = 1,
-            
-            /** A cone joint is applied to the PhysicsBone3D. */
-            JOINT_TYPE_CONE = 2,
-            
-            /** A hinge joint is applied to the PhysicsBone3D. */
-            JOINT_TYPE_HINGE = 3,
-            
-            /** A slider joint is applied to the PhysicsBone3D. */
-            JOINT_TYPE_SLIDER = 4,
-            
-            /** A 6 degrees of freedom joint is applied to the PhysicsBone3D. */
-            JOINT_TYPE_6DOF = 5,
-        }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicalBone3D extends __RPCMapPhysicsBody3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicalBone3D extends __NameMapPhysicsBody3D {
-    }
-    /** A physics body used to make bones in a [Skeleton3D] react to physics.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicalbone3d.html  
-     */
-    class PhysicalBone3D<Map extends NodePathMap = any> extends PhysicsBody3D<Map> {
-        constructor(identifier?: any)
-        /** Called during physics processing, allowing you to read and safely modify the simulation state for the object. By default, it is called before the standard force integration, but the [member custom_integrator] property allows you to disable the standard force integration and do fully custom force integration for a body. */
-        /* gdvirtual */ _integrate_forces(state: PhysicsDirectBodyState3D): void
-        
-        /** Applies a directional impulse without affecting rotation.  
-         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_integrate_forces" functions otherwise).  
-         *  This is equivalent to using [method apply_impulse] at the body's center of mass.  
-         */
-        apply_central_impulse(impulse: Vector3): void
-        
-        /** Applies a positioned impulse to the PhysicsBone3D.  
-         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_integrate_forces" functions otherwise).  
-         *  [param position] is the offset from the PhysicsBone3D origin in global coordinates.  
-         */
-        apply_impulse(impulse: Vector3, position?: Vector3 /* = new Vector3(0, 0, 0) */): void
-        
-        /** Returns `true` if the PhysicsBone3D is allowed to simulate physics. */
-        get_simulate_physics(): boolean
-        
-        /** Returns `true` if the PhysicsBone3D is currently simulating physics. */
-        is_simulating_physics(): boolean
-        
-        /** Returns the unique identifier of the PhysicsBone3D. */
-        get_bone_id(): int64
-        
-        /** Sets the joint type. */
-        get joint_type(): int64
-        set joint_type(value: int64)
-        
-        /** Sets the joint's transform. */
-        get joint_offset(): Transform3D
-        set joint_offset(value: Transform3D)
-        
-        /** Sets the joint's rotation in radians. */
-        get joint_rotation(): Vector3
-        set joint_rotation(value: Vector3)
-        
-        /** Sets the body's transform. */
-        get body_offset(): Transform3D
-        set body_offset(value: Transform3D)
-        
-        /** The body's mass. */
-        get mass(): float64
-        set mass(value: float64)
-        
-        /** The body's friction, from `0` (frictionless) to `1` (max friction). */
-        get friction(): float64
-        set friction(value: float64)
-        
-        /** The body's bounciness. Values range from `0` (no bounce) to `1` (full bounciness).  
-         *      
-         *  **Note:** Even with [member bounce] set to `1.0`, some energy will be lost over time due to linear and angular damping. To have a [PhysicalBone3D] that preserves all its energy over time, set [member bounce] to `1.0`, [member linear_damp_mode] to [constant DAMP_MODE_REPLACE], [member linear_damp] to `0.0`, [member angular_damp_mode] to [constant DAMP_MODE_REPLACE], and [member angular_damp] to `0.0`.  
-         */
-        get bounce(): float64
-        set bounce(value: float64)
-        
-        /** This is multiplied by [member ProjectSettings.physics/3d/default_gravity] to produce this body's gravity. For example, a value of `1.0` will apply normal gravity, `2.0` will apply double the gravity, and `0.5` will apply half the gravity to this body. */
-        get gravity_scale(): float64
-        set gravity_scale(value: float64)
-        
-        /** If `true`, the standard force integration (like gravity or damping) will be disabled for this body. Other than collision response, the body will only move as determined by the [method _integrate_forces] method, if that virtual method is overridden.  
-         *  Setting this property will call the method [method PhysicsServer3D.body_set_omit_force_integration] internally.  
-         */
-        get custom_integrator(): boolean
-        set custom_integrator(value: boolean)
-        
-        /** Defines how [member linear_damp] is applied. */
-        get linear_damp_mode(): int64
-        set linear_damp_mode(value: int64)
-        
-        /** Damps the body's movement. By default, the body will use [member ProjectSettings.physics/3d/default_linear_damp] or any value override set by an [Area3D] the body is in. Depending on [member linear_damp_mode], [member linear_damp] may be added to or replace the body's damping value.  
-         *  See [member ProjectSettings.physics/3d/default_linear_damp] for more details about damping.  
-         */
-        get linear_damp(): float64
-        set linear_damp(value: float64)
-        
-        /** Defines how [member angular_damp] is applied. */
-        get angular_damp_mode(): int64
-        set angular_damp_mode(value: int64)
-        
-        /** Damps the body's rotation. By default, the body will use the [member ProjectSettings.physics/3d/default_angular_damp] project setting or any value override set by an [Area3D] the body is in. Depending on [member angular_damp_mode], you can set [member angular_damp] to be added to or to replace the body's damping value.  
-         *  See [member ProjectSettings.physics/3d/default_angular_damp] for more details about damping.  
-         */
-        get angular_damp(): float64
-        set angular_damp(value: float64)
-        
-        /** The body's linear velocity in units per second. Can be used sporadically, but **don't set this every frame**, because physics may run in another thread and runs at a different granularity. Use [method _integrate_forces] as your process loop for precise control of the body state. */
-        get linear_velocity(): Vector3
-        set linear_velocity(value: Vector3)
-        
-        /** The PhysicalBone3D's rotational velocity in  *radians*  per second. */
-        get angular_velocity(): Vector3
-        set angular_velocity(value: Vector3)
-        
-        /** If `true`, the body is deactivated when there is no movement, so it will not take part in the simulation until it is awakened by an external force. */
-        get can_sleep(): boolean
-        set can_sleep(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicalBone3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicalBone3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicalBoneSimulator3D extends __RPCMapSkeletonModifier3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicalBoneSimulator3D extends __NameMapSkeletonModifier3D {
-    }
-    /** Node that can be the parent of [PhysicalBone3D] and can apply the simulation results to [Skeleton3D].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicalbonesimulator3d.html  
-     */
-    class PhysicalBoneSimulator3D<Map extends NodePathMap = any> extends SkeletonModifier3D<Map> {
-        constructor(identifier?: any)
-        /** Returns a boolean that indicates whether the [PhysicalBoneSimulator3D] is running and simulating. */
-        is_simulating_physics(): boolean
-        
-        /** Tells the [PhysicalBone3D] nodes in the Skeleton to stop simulating. */
-        physical_bones_stop_simulation(): void
-        
-        /** Tells the [PhysicalBone3D] nodes in the Skeleton to start simulating and reacting to the physics world.  
-         *  Optionally, a list of bone names can be passed-in, allowing only the passed-in bones to be simulated.  
-         */
-        physical_bones_start_simulation(bones?: GArray<StringName>): void
-        
-        /** Adds a collision exception to the physical bone.  
-         *  Works just like the [RigidBody3D] node.  
-         */
-        physical_bones_add_collision_exception(exception: RID): void
-        
-        /** Removes a collision exception to the physical bone.  
-         *  Works just like the [RigidBody3D] node.  
-         */
-        physical_bones_remove_collision_exception(exception: RID): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicalBoneSimulator3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicalBoneSimulator3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicalSkyMaterial extends __RPCMapMaterial {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicalSkyMaterial extends __NameMapMaterial {
-    }
-    /** A material that defines a sky for a [Sky] resource by a set of physical properties.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicalskymaterial.html  
-     */
-    class PhysicalSkyMaterial extends Material {
-        constructor(identifier?: any)
-        /** Controls the strength of the [url=https://en.wikipedia.org/wiki/Rayleigh_scattering]Rayleigh scattering[/url]. Rayleigh scattering results from light colliding with small particles. It is responsible for the blue color of the sky. */
-        get rayleigh_coefficient(): float64
-        set rayleigh_coefficient(value: float64)
-        
-        /** Controls the [Color] of the [url=https://en.wikipedia.org/wiki/Rayleigh_scattering]Rayleigh scattering[/url]. While not physically accurate, this allows for the creation of alien-looking planets. For example, setting this to a red [Color] results in a Mars-looking atmosphere with a corresponding blue sunset. */
-        get rayleigh_color(): Color
-        set rayleigh_color(value: Color)
-        
-        /** Controls the strength of [url=https://en.wikipedia.org/wiki/Mie_scattering]Mie scattering[/url] for the sky. Mie scattering results from light colliding with larger particles (like water). On earth, Mie scattering results in a whitish color around the sun and horizon. */
-        get mie_coefficient(): float64
-        set mie_coefficient(value: float64)
-        
-        /** Controls the direction of the [url=https://en.wikipedia.org/wiki/Mie_scattering]Mie scattering[/url]. A value of `1` means that when light hits a particle it's passing through straight forward. A value of `-1` means that all light is scatter backwards. */
-        get mie_eccentricity(): float64
-        set mie_eccentricity(value: float64)
-        
-        /** Controls the [Color] of the [url=https://en.wikipedia.org/wiki/Mie_scattering]Mie scattering[/url] effect. While not physically accurate, this allows for the creation of alien-looking planets. */
-        get mie_color(): Color
-        set mie_color(value: Color)
-        
-        /** Sets the thickness of the atmosphere. High turbidity creates a foggy-looking atmosphere, while a low turbidity results in a clearer atmosphere. */
-        get turbidity(): float64
-        set turbidity(value: float64)
-        
-        /** Sets the size of the sun disk. Default value is based on Sol's perceived size from Earth. */
-        get sun_disk_scale(): float64
-        set sun_disk_scale(value: float64)
-        
-        /** Modulates the [Color] on the bottom half of the sky to represent the ground. */
-        get ground_color(): Color
-        set ground_color(value: Color)
-        
-        /** The sky's overall brightness multiplier. Higher values result in a brighter sky. */
-        get energy_multiplier(): float64
-        set energy_multiplier(value: float64)
-        
-        /** If `true`, enables debanding. Debanding adds a small amount of noise which helps reduce banding that appears from the smooth changes in color in the sky. */
-        get use_debanding(): boolean
-        set use_debanding(value: boolean)
-        
-        /** [Texture2D] for the night sky. This is added to the sky, so if it is bright enough, it may be visible during the day. */
-        get night_sky(): null | Texture2D
-        set night_sky(value: null | Texture2D)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicalSkyMaterial;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicalSkyMaterial;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsBody2D extends __RPCMapCollisionObject2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsBody2D extends __NameMapCollisionObject2D {
-    }
-    /** Abstract base class for 2D game objects affected by physics.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsbody2d.html  
-     */
-    class PhysicsBody2D<Map extends NodePathMap = any> extends CollisionObject2D<Map> {
-        constructor(identifier?: any)
-        /** Moves the body along the vector [param motion]. In order to be frame rate independent in [method Node._physics_process] or [method Node._process], [param motion] should be computed using `delta`.  
-         *  Returns a [KinematicCollision2D], which contains information about the collision when stopped, or when touching another body along the motion.  
-         *  If [param test_only] is `true`, the body does not move but the would-be collision information is given.  
-         *  [param safe_margin] is the extra margin used for collision recovery (see [member CharacterBody2D.safe_margin] for more details).  
-         *  If [param recovery_as_collision] is `true`, any depenetration from the recovery phase is also reported as a collision; this is used e.g. by [CharacterBody2D] for improving floor detection during floor snapping.  
-         */
-        move_and_collide(motion: Vector2, test_only?: boolean /* = false */, safe_margin?: float64 /* = 0.08 */, recovery_as_collision?: boolean /* = false */): null | KinematicCollision2D
-        
-        /** Checks for collisions without moving the body. In order to be frame rate independent in [method Node._physics_process] or [method Node._process], [param motion] should be computed using `delta`.  
-         *  Virtually sets the node's position, scale and rotation to that of the given [Transform2D], then tries to move the body along the vector [param motion]. Returns `true` if a collision would stop the body from moving along the whole path.  
-         *  [param collision] is an optional object of type [KinematicCollision2D], which contains additional information about the collision when stopped, or when touching another body along the motion.  
-         *  [param safe_margin] is the extra margin used for collision recovery (see [member CharacterBody2D.safe_margin] for more details).  
-         *  If [param recovery_as_collision] is `true`, any depenetration from the recovery phase is also reported as a collision; this is useful for checking whether the body would  *touch*  any other bodies.  
-         */
-        test_move(from: Transform2D, motion: Vector2, collision?: KinematicCollision2D, safe_margin?: float64 /* = 0.08 */, recovery_as_collision?: boolean /* = false */): boolean
-        
-        /** Returns the gravity vector computed from all sources that can affect the body, including all gravity overrides from [Area2D] nodes and the global world gravity. */
-        get_gravity(): Vector2
-        
-        /** Returns an array of nodes that were added as collision exceptions for this body. */
-        get_collision_exceptions(): GArray<PhysicsBody2D>
-        
-        /** Adds a body to the list of bodies that this body can't collide with. */
-        add_collision_exception_with(body: Node): void
-        
-        /** Removes a body from the list of bodies that this body can't collide with. */
-        remove_collision_exception_with(body: Node): void
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsBody2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsBody2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsBody3D extends __RPCMapCollisionObject3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsBody3D extends __NameMapCollisionObject3D {
-    }
-    /** Abstract base class for 3D game objects affected by physics.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsbody3d.html  
-     */
-    class PhysicsBody3D<Map extends NodePathMap = any> extends CollisionObject3D<Map> {
-        constructor(identifier?: any)
-        /** Moves the body along the vector [param motion]. In order to be frame rate independent in [method Node._physics_process] or [method Node._process], [param motion] should be computed using `delta`.  
-         *  The body will stop if it collides. Returns a [KinematicCollision3D], which contains information about the collision when stopped, or when touching another body along the motion.  
-         *  If [param test_only] is `true`, the body does not move but the would-be collision information is given.  
-         *  [param safe_margin] is the extra margin used for collision recovery (see [member CharacterBody3D.safe_margin] for more details).  
-         *  If [param recovery_as_collision] is `true`, any depenetration from the recovery phase is also reported as a collision; this is used e.g. by [CharacterBody3D] for improving floor detection during floor snapping.  
-         *  [param max_collisions] allows to retrieve more than one collision result.  
-         */
-        move_and_collide(motion: Vector3, test_only?: boolean /* = false */, safe_margin?: float64 /* = 0.001 */, recovery_as_collision?: boolean /* = false */, max_collisions?: int64 /* = 1 */): null | KinematicCollision3D
-        
-        /** Checks for collisions without moving the body. In order to be frame rate independent in [method Node._physics_process] or [method Node._process], [param motion] should be computed using `delta`.  
-         *  Virtually sets the node's position, scale and rotation to that of the given [Transform3D], then tries to move the body along the vector [param motion]. Returns `true` if a collision would stop the body from moving along the whole path.  
-         *  [param collision] is an optional object of type [KinematicCollision3D], which contains additional information about the collision when stopped, or when touching another body along the motion.  
-         *  [param safe_margin] is the extra margin used for collision recovery (see [member CharacterBody3D.safe_margin] for more details).  
-         *  If [param recovery_as_collision] is `true`, any depenetration from the recovery phase is also reported as a collision; this is useful for checking whether the body would  *touch*  any other bodies.  
-         *  [param max_collisions] allows to retrieve more than one collision result.  
-         */
-        test_move(from: Transform3D, motion: Vector3, collision?: KinematicCollision3D, safe_margin?: float64 /* = 0.001 */, recovery_as_collision?: boolean /* = false */, max_collisions?: int64 /* = 1 */): boolean
-        
-        /** Returns the gravity vector computed from all sources that can affect the body, including all gravity overrides from [Area3D] nodes and the global world gravity. */
-        get_gravity(): Vector3
-        
-        /** Locks or unlocks the specified linear or rotational [param axis] depending on the value of [param lock]. */
-        set_axis_lock(axis: PhysicsServer3D.BodyAxis, lock: boolean): void
-        
-        /** Returns `true` if the specified linear or rotational [param axis] is locked. */
-        get_axis_lock(axis: PhysicsServer3D.BodyAxis): boolean
-        
-        /** Returns an array of nodes that were added as collision exceptions for this body. */
-        get_collision_exceptions(): GArray<PhysicsBody3D>
-        
-        /** Adds a body to the list of bodies that this body can't collide with. */
-        add_collision_exception_with(body: Node): void
-        
-        /** Removes a body from the list of bodies that this body can't collide with. */
-        remove_collision_exception_with(body: Node): void
-        
-        /** Lock the body's linear movement in the X axis. */
-        get axis_lock_linear_x(): boolean
-        set axis_lock_linear_x(value: boolean)
-        
-        /** Lock the body's linear movement in the Y axis. */
-        get axis_lock_linear_y(): boolean
-        set axis_lock_linear_y(value: boolean)
-        
-        /** Lock the body's linear movement in the Z axis. */
-        get axis_lock_linear_z(): boolean
-        set axis_lock_linear_z(value: boolean)
-        
-        /** Lock the body's rotation in the X axis. */
-        get axis_lock_angular_x(): boolean
-        set axis_lock_angular_x(value: boolean)
-        
-        /** Lock the body's rotation in the Y axis. */
-        get axis_lock_angular_y(): boolean
-        set axis_lock_angular_y(value: boolean)
-        
-        /** Lock the body's rotation in the Z axis. */
-        get axis_lock_angular_z(): boolean
-        set axis_lock_angular_z(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsBody3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsBody3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsDirectBodyState2D extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsDirectBodyState2D extends __NameMapObject {
-    }
-    /** Provides direct access to a physics body in the [PhysicsServer2D].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsdirectbodystate2d.html  
-     */
-    class PhysicsDirectBodyState2D extends Object {
-        constructor(identifier?: any)
-        /** Returns the body's velocity at the given relative position, including both translation and rotation. */
-        get_velocity_at_local_position(local_position: Vector2): Vector2
-        
-        /** Applies a directional impulse without affecting rotation.  
-         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
-         *  This is equivalent to using [method apply_impulse] at the body's center of mass.  
-         */
-        apply_central_impulse(impulse: Vector2): void
-        
-        /** Applies a rotational impulse to the body without affecting the position.  
-         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
-         *      
-         *  **Note:** [member inverse_inertia] is required for this to work. To have [member inverse_inertia], an active [CollisionShape2D] must be a child of the node, or you can manually set [member inverse_inertia].  
-         */
-        apply_torque_impulse(impulse: float64): void
-        
-        /** Applies a positioned impulse to the body.  
-         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
-         *  [param position] is the offset from the body origin in global coordinates.  
-         */
-        apply_impulse(impulse: Vector2, position?: Vector2 /* = Vector2.ZERO */): void
-        
-        /** Applies a directional force without affecting rotation. A force is time dependent and meant to be applied every physics update.  
-         *  This is equivalent to using [method apply_force] at the body's center of mass.  
-         */
-        apply_central_force(force?: Vector2 /* = Vector2.ZERO */): void
-        
-        /** Applies a positioned force to the body. A force is time dependent and meant to be applied every physics update.  
-         *  [param position] is the offset from the body origin in global coordinates.  
-         */
-        apply_force(force: Vector2, position?: Vector2 /* = Vector2.ZERO */): void
-        
-        /** Applies a rotational force without affecting position. A force is time dependent and meant to be applied every physics update.  
-         *      
-         *  **Note:** [member inverse_inertia] is required for this to work. To have [member inverse_inertia], an active [CollisionShape2D] must be a child of the node, or you can manually set [member inverse_inertia].  
-         */
-        apply_torque(torque: float64): void
-        
-        /** Adds a constant directional force without affecting rotation that keeps being applied over time until cleared with `constant_force = Vector2(0, 0)`.  
-         *  This is equivalent to using [method add_constant_force] at the body's center of mass.  
-         */
-        add_constant_central_force(force?: Vector2 /* = Vector2.ZERO */): void
-        
-        /** Adds a constant positioned force to the body that keeps being applied over time until cleared with `constant_force = Vector2(0, 0)`.  
-         *  [param position] is the offset from the body origin in global coordinates.  
-         */
-        add_constant_force(force: Vector2, position?: Vector2 /* = Vector2.ZERO */): void
-        
-        /** Adds a constant rotational force without affecting position that keeps being applied over time until cleared with `constant_torque = 0`. */
-        add_constant_torque(torque: float64): void
-        
-        /** Sets the body's total constant positional forces applied during each physics update.  
-         *  See [method add_constant_force] and [method add_constant_central_force].  
-         */
-        set_constant_force(force: Vector2): void
-        
-        /** Returns the body's total constant positional forces applied during each physics update.  
-         *  See [method add_constant_force] and [method add_constant_central_force].  
-         */
-        get_constant_force(): Vector2
-        
-        /** Sets the body's total constant rotational forces applied during each physics update.  
-         *  See [method add_constant_torque].  
-         */
-        set_constant_torque(torque: float64): void
-        
-        /** Returns the body's total constant rotational forces applied during each physics update.  
-         *  See [method add_constant_torque].  
-         */
-        get_constant_torque(): float64
-        
-        /** Returns the number of contacts this body has with other bodies.  
-         *      
-         *  **Note:** By default, this returns 0 unless bodies are configured to monitor contacts. See [member RigidBody2D.contact_monitor].  
-         */
-        get_contact_count(): int64
-        
-        /** Returns the position of the contact point on the body in the global coordinate system. */
-        get_contact_local_position(contact_idx: int64): Vector2
-        
-        /** Returns the local normal at the contact point. */
-        get_contact_local_normal(contact_idx: int64): Vector2
-        
-        /** Returns the local shape index of the collision. */
-        get_contact_local_shape(contact_idx: int64): int64
-        
-        /** Returns the velocity vector at the body's contact point. */
-        get_contact_local_velocity_at_position(contact_idx: int64): Vector2
-        
-        /** Returns the collider's [RID]. */
-        get_contact_collider(contact_idx: int64): RID
-        
-        /** Returns the position of the contact point on the collider in the global coordinate system. */
-        get_contact_collider_position(contact_idx: int64): Vector2
-        
-        /** Returns the collider's object id. */
-        get_contact_collider_id(contact_idx: int64): int64
-        
-        /** Returns the collider object. This depends on how it was created (will return a scene node if such was used to create it). */
-        get_contact_collider_object(contact_idx: int64): null | Object
-        
-        /** Returns the collider's shape index. */
-        get_contact_collider_shape(contact_idx: int64): int64
-        
-        /** Returns the velocity vector at the collider's contact point. */
-        get_contact_collider_velocity_at_position(contact_idx: int64): Vector2
-        
-        /** Returns the impulse created by the contact. */
-        get_contact_impulse(contact_idx: int64): Vector2
-        
-        /** Updates the body's linear and angular velocity by applying gravity and damping for the equivalent of one physics tick. */
-        integrate_forces(): void
-        
-        /** Returns the current state of the space, useful for queries. */
-        get_space_state(): null | PhysicsDirectSpaceState2D
-        
-        /** The timestep (delta) used for the simulation. */
-        get step(): float64
-        
-        /** The inverse of the mass of the body. */
-        get inverse_mass(): float64
-        
-        /** The inverse of the inertia of the body. */
-        get inverse_inertia(): float64
-        
-        /** The rate at which the body stops rotating, if there are not any other forces moving it. */
-        get total_angular_damp(): float64
-        
-        /** The rate at which the body stops moving, if there are not any other forces moving it. */
-        get total_linear_damp(): float64
-        
-        /** The total gravity vector being currently applied to this body. */
-        get total_gravity(): Vector2
-        
-        /** The body's center of mass position relative to the body's center in the global coordinate system. */
-        get center_of_mass(): Vector2
-        
-        /** The body's center of mass position in the body's local coordinate system. */
-        get center_of_mass_local(): Vector2
-        
-        /** The body's rotational velocity in  *radians*  per second. */
-        get angular_velocity(): float64
-        set angular_velocity(value: float64)
-        
-        /** The body's linear velocity in pixels per second. */
-        get linear_velocity(): Vector2
-        set linear_velocity(value: Vector2)
-        
-        /** If `true`, this body is currently sleeping (not active). */
-        get sleeping(): boolean
-        set sleeping(value: boolean)
-        
-        /** The body's collision layer. */
-        get collision_layer(): int64
-        set collision_layer(value: int64)
-        
-        /** The body's collision mask. */
-        get collision_mask(): int64
-        set collision_mask(value: int64)
-        
-        /** The body's transformation matrix. */
-        get transform(): Transform2D
-        set transform(value: Transform2D)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsDirectBodyState2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsDirectBodyState2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsDirectBodyState2DExtension extends __RPCMapPhysicsDirectBodyState2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsDirectBodyState2DExtension extends __NameMapPhysicsDirectBodyState2D {
-    }
-    /** Provides virtual methods that can be overridden to create custom [PhysicsDirectBodyState2D] implementations.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsdirectbodystate2dextension.html  
-     */
-    class PhysicsDirectBodyState2DExtension extends PhysicsDirectBodyState2D {
-        constructor(identifier?: any)
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.total_gravity] and its respective getter. */
-        /* gdvirtual */ _get_total_gravity(): Vector2
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.total_linear_damp] and its respective getter. */
-        /* gdvirtual */ _get_total_linear_damp(): float64
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.total_angular_damp] and its respective getter. */
-        /* gdvirtual */ _get_total_angular_damp(): float64
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.center_of_mass] and its respective getter. */
-        /* gdvirtual */ _get_center_of_mass(): Vector2
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.center_of_mass_local] and its respective getter. */
-        /* gdvirtual */ _get_center_of_mass_local(): Vector2
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.inverse_mass] and its respective getter. */
-        /* gdvirtual */ _get_inverse_mass(): float64
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.inverse_inertia] and its respective getter. */
-        /* gdvirtual */ _get_inverse_inertia(): float64
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.linear_velocity] and its respective setter. */
-        /* gdvirtual */ _set_linear_velocity(velocity: Vector2): void
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.linear_velocity] and its respective getter. */
-        /* gdvirtual */ _get_linear_velocity(): Vector2
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.angular_velocity] and its respective setter. */
-        /* gdvirtual */ _set_angular_velocity(velocity: float64): void
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.angular_velocity] and its respective getter. */
-        /* gdvirtual */ _get_angular_velocity(): float64
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.transform] and its respective setter. */
-        /* gdvirtual */ _set_transform(transform: Transform2D): void
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.transform] and its respective getter. */
-        /* gdvirtual */ _get_transform(): Transform2D
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_velocity_at_local_position]. */
-        /* gdvirtual */ _get_velocity_at_local_position(local_position: Vector2): Vector2
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.apply_central_impulse]. */
-        /* gdvirtual */ _apply_central_impulse(impulse: Vector2): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.apply_impulse]. */
-        /* gdvirtual */ _apply_impulse(impulse: Vector2, position: Vector2): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.apply_torque_impulse]. */
-        /* gdvirtual */ _apply_torque_impulse(impulse: float64): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.apply_central_force]. */
-        /* gdvirtual */ _apply_central_force(force: Vector2): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.apply_force]. */
-        /* gdvirtual */ _apply_force(force: Vector2, position: Vector2): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.apply_torque]. */
-        /* gdvirtual */ _apply_torque(torque: float64): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.add_constant_central_force]. */
-        /* gdvirtual */ _add_constant_central_force(force: Vector2): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.add_constant_force]. */
-        /* gdvirtual */ _add_constant_force(force: Vector2, position: Vector2): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.add_constant_torque]. */
-        /* gdvirtual */ _add_constant_torque(torque: float64): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.set_constant_force]. */
-        /* gdvirtual */ _set_constant_force(force: Vector2): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_constant_force]. */
-        /* gdvirtual */ _get_constant_force(): Vector2
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.set_constant_torque]. */
-        /* gdvirtual */ _set_constant_torque(torque: float64): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_constant_torque]. */
-        /* gdvirtual */ _get_constant_torque(): float64
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.sleeping] and its respective setter. */
-        /* gdvirtual */ _set_sleep_state(enabled: boolean): void
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.sleeping] and its respective getter. */
-        /* gdvirtual */ _is_sleeping(): boolean
-        /* gdvirtual */ _set_collision_layer(layer: int64): void
-        /* gdvirtual */ _get_collision_layer(): int64
-        /* gdvirtual */ _set_collision_mask(mask: int64): void
-        /* gdvirtual */ _get_collision_mask(): int64
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_count]. */
-        /* gdvirtual */ _get_contact_count(): int64
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_local_position]. */
-        /* gdvirtual */ _get_contact_local_position(contact_idx: int64): Vector2
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_local_normal]. */
-        /* gdvirtual */ _get_contact_local_normal(contact_idx: int64): Vector2
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_local_shape]. */
-        /* gdvirtual */ _get_contact_local_shape(contact_idx: int64): int64
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_local_velocity_at_position]. */
-        /* gdvirtual */ _get_contact_local_velocity_at_position(contact_idx: int64): Vector2
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_collider]. */
-        /* gdvirtual */ _get_contact_collider(contact_idx: int64): RID
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_collider_position]. */
-        /* gdvirtual */ _get_contact_collider_position(contact_idx: int64): Vector2
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_collider_id]. */
-        /* gdvirtual */ _get_contact_collider_id(contact_idx: int64): int64
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_collider_object]. */
-        /* gdvirtual */ _get_contact_collider_object(contact_idx: int64): null | Object
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_collider_shape]. */
-        /* gdvirtual */ _get_contact_collider_shape(contact_idx: int64): int64
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_collider_velocity_at_position]. */
-        /* gdvirtual */ _get_contact_collider_velocity_at_position(contact_idx: int64): Vector2
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_contact_impulse]. */
-        /* gdvirtual */ _get_contact_impulse(contact_idx: int64): Vector2
-        
-        /** Implement to override the behavior of [member PhysicsDirectBodyState2D.step] and its respective getter. */
-        /* gdvirtual */ _get_step(): float64
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.integrate_forces]. */
-        /* gdvirtual */ _integrate_forces(): void
-        
-        /** Overridable version of [method PhysicsDirectBodyState2D.get_space_state]. */
-        /* gdvirtual */ _get_space_state(): null | PhysicsDirectSpaceState2D
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsDirectBodyState2DExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsDirectBodyState2DExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsDirectBodyState3D extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsDirectBodyState3D extends __NameMapObject {
-    }
-    /** Provides direct access to a physics body in the [PhysicsServer3D].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsdirectbodystate3d.html  
-     */
-    class PhysicsDirectBodyState3D extends Object {
-        constructor(identifier?: any)
-        /** Returns the body's velocity at the given relative position, including both translation and rotation. */
-        get_velocity_at_local_position(local_position: Vector3): Vector3
-        
-        /** Applies a directional impulse without affecting rotation.  
-         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
-         *  This is equivalent to using [method apply_impulse] at the body's center of mass.  
-         */
-        apply_central_impulse(impulse?: Vector3 /* = new Vector3(0, 0, 0) */): void
-        
-        /** Applies a positioned impulse to the body.  
-         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
-         *  [param position] is the offset from the body origin in global coordinates.  
-         */
-        apply_impulse(impulse: Vector3, position?: Vector3 /* = new Vector3(0, 0, 0) */): void
-        
-        /** Applies a rotational impulse to the body without affecting the position.  
-         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
-         *      
-         *  **Note:** [member inverse_inertia] is required for this to work. To have [member inverse_inertia], an active [CollisionShape3D] must be a child of the node, or you can manually set [member inverse_inertia].  
-         */
-        apply_torque_impulse(impulse: Vector3): void
-        
-        /** Applies a directional force without affecting rotation. A force is time dependent and meant to be applied every physics update.  
-         *  This is equivalent to using [method apply_force] at the body's center of mass.  
-         */
-        apply_central_force(force?: Vector3 /* = new Vector3(0, 0, 0) */): void
-        
-        /** Applies a positioned force to the body. A force is time dependent and meant to be applied every physics update.  
-         *  [param position] is the offset from the body origin in global coordinates.  
-         */
-        apply_force(force: Vector3, position?: Vector3 /* = new Vector3(0, 0, 0) */): void
-        
-        /** Applies a rotational force without affecting position. A force is time dependent and meant to be applied every physics update.  
-         *      
-         *  **Note:** [member inverse_inertia] is required for this to work. To have [member inverse_inertia], an active [CollisionShape3D] must be a child of the node, or you can manually set [member inverse_inertia].  
-         */
-        apply_torque(torque: Vector3): void
-        
-        /** Adds a constant directional force without affecting rotation that keeps being applied over time until cleared with `constant_force = Vector3(0, 0, 0)`.  
-         *  This is equivalent to using [method add_constant_force] at the body's center of mass.  
-         */
-        add_constant_central_force(force?: Vector3 /* = new Vector3(0, 0, 0) */): void
-        
-        /** Adds a constant positioned force to the body that keeps being applied over time until cleared with `constant_force = Vector3(0, 0, 0)`.  
-         *  [param position] is the offset from the body origin in global coordinates.  
-         */
-        add_constant_force(force: Vector3, position?: Vector3 /* = new Vector3(0, 0, 0) */): void
-        
-        /** Adds a constant rotational force without affecting position that keeps being applied over time until cleared with `constant_torque = Vector3(0, 0, 0)`. */
-        add_constant_torque(torque: Vector3): void
-        
-        /** Sets the body's total constant positional forces applied during each physics update.  
-         *  See [method add_constant_force] and [method add_constant_central_force].  
-         */
-        set_constant_force(force: Vector3): void
-        
-        /** Returns the body's total constant positional forces applied during each physics update.  
-         *  See [method add_constant_force] and [method add_constant_central_force].  
-         */
-        get_constant_force(): Vector3
-        
-        /** Sets the body's total constant rotational forces applied during each physics update.  
-         *  See [method add_constant_torque].  
-         */
-        set_constant_torque(torque: Vector3): void
-        
-        /** Returns the body's total constant rotational forces applied during each physics update.  
-         *  See [method add_constant_torque].  
-         */
-        get_constant_torque(): Vector3
-        
-        /** Returns the number of contacts this body has with other bodies.  
-         *      
-         *  **Note:** By default, this returns 0 unless bodies are configured to monitor contacts. See [member RigidBody3D.contact_monitor].  
-         */
-        get_contact_count(): int64
-        
-        /** Returns the position of the contact point on the body in the global coordinate system. */
-        get_contact_local_position(contact_idx: int64): Vector3
-        
-        /** Returns the local normal at the contact point. */
-        get_contact_local_normal(contact_idx: int64): Vector3
-        
-        /** Impulse created by the contact. */
-        get_contact_impulse(contact_idx: int64): Vector3
-        
-        /** Returns the local shape index of the collision. */
-        get_contact_local_shape(contact_idx: int64): int64
-        
-        /** Returns the linear velocity vector at the body's contact point. */
-        get_contact_local_velocity_at_position(contact_idx: int64): Vector3
-        
-        /** Returns the collider's [RID]. */
-        get_contact_collider(contact_idx: int64): RID
-        
-        /** Returns the position of the contact point on the collider in the global coordinate system. */
-        get_contact_collider_position(contact_idx: int64): Vector3
-        
-        /** Returns the collider's object id. */
-        get_contact_collider_id(contact_idx: int64): int64
-        
-        /** Returns the collider object. */
-        get_contact_collider_object(contact_idx: int64): null | Object
-        
-        /** Returns the collider's shape index. */
-        get_contact_collider_shape(contact_idx: int64): int64
-        
-        /** Returns the linear velocity vector at the collider's contact point. */
-        get_contact_collider_velocity_at_position(contact_idx: int64): Vector3
-        
-        /** Updates the body's linear and angular velocity by applying gravity and damping for the equivalent of one physics tick. */
-        integrate_forces(): void
-        
-        /** Returns the current state of the space, useful for queries. */
-        get_space_state(): null | PhysicsDirectSpaceState3D
-        
-        /** The timestep (delta) used for the simulation. */
-        get step(): float64
-        
-        /** The inverse of the mass of the body. */
-        get inverse_mass(): float64
-        
-        /** The rate at which the body stops rotating, if there are not any other forces moving it. */
-        get total_angular_damp(): float64
-        
-        /** The rate at which the body stops moving, if there are not any other forces moving it. */
-        get total_linear_damp(): float64
-        
-        /** The inverse of the inertia of the body. */
-        get inverse_inertia(): Vector3
-        
-        /** The inverse of the inertia tensor of the body. */
-        get inverse_inertia_tensor(): Basis
-        
-        /** The total gravity vector being currently applied to this body. */
-        get total_gravity(): Vector3
-        
-        /** The body's center of mass position relative to the body's center in the global coordinate system. */
-        get center_of_mass(): Vector3
-        
-        /** The body's center of mass position in the body's local coordinate system. */
-        get center_of_mass_local(): Vector3
-        get principal_inertia_axes(): Basis
-        
-        /** The body's rotational velocity in  *radians*  per second. */
-        get angular_velocity(): Vector3
-        set angular_velocity(value: Vector3)
-        
-        /** The body's linear velocity in units per second. */
-        get linear_velocity(): Vector3
-        set linear_velocity(value: Vector3)
-        
-        /** If `true`, this body is currently sleeping (not active). */
-        get sleeping(): boolean
-        set sleeping(value: boolean)
-        
-        /** The body's collision layer. */
-        get collision_layer(): int64
-        set collision_layer(value: int64)
-        
-        /** The body's collision mask. */
-        get collision_mask(): int64
-        set collision_mask(value: int64)
-        
-        /** The body's transformation matrix. */
-        get transform(): Transform3D
-        set transform(value: Transform3D)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsDirectBodyState3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsDirectBodyState3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsDirectBodyState3DExtension extends __RPCMapPhysicsDirectBodyState3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsDirectBodyState3DExtension extends __NameMapPhysicsDirectBodyState3D {
-    }
-    /** Provides virtual methods that can be overridden to create custom [PhysicsDirectBodyState3D] implementations.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsdirectbodystate3dextension.html  
-     */
-    class PhysicsDirectBodyState3DExtension extends PhysicsDirectBodyState3D {
-        constructor(identifier?: any)
-        /* gdvirtual */ _get_total_gravity(): Vector3
-        /* gdvirtual */ _get_total_linear_damp(): float64
-        /* gdvirtual */ _get_total_angular_damp(): float64
-        /* gdvirtual */ _get_center_of_mass(): Vector3
-        /* gdvirtual */ _get_center_of_mass_local(): Vector3
-        /* gdvirtual */ _get_principal_inertia_axes(): Basis
-        /* gdvirtual */ _get_inverse_mass(): float64
-        /* gdvirtual */ _get_inverse_inertia(): Vector3
-        /* gdvirtual */ _get_inverse_inertia_tensor(): Basis
-        /* gdvirtual */ _set_linear_velocity(velocity: Vector3): void
-        /* gdvirtual */ _get_linear_velocity(): Vector3
-        /* gdvirtual */ _set_angular_velocity(velocity: Vector3): void
-        /* gdvirtual */ _get_angular_velocity(): Vector3
-        /* gdvirtual */ _set_transform(transform: Transform3D): void
-        /* gdvirtual */ _get_transform(): Transform3D
-        /* gdvirtual */ _get_velocity_at_local_position(local_position: Vector3): Vector3
-        /* gdvirtual */ _apply_central_impulse(impulse: Vector3): void
-        /* gdvirtual */ _apply_impulse(impulse: Vector3, position: Vector3): void
-        /* gdvirtual */ _apply_torque_impulse(impulse: Vector3): void
-        /* gdvirtual */ _apply_central_force(force: Vector3): void
-        /* gdvirtual */ _apply_force(force: Vector3, position: Vector3): void
-        /* gdvirtual */ _apply_torque(torque: Vector3): void
-        /* gdvirtual */ _add_constant_central_force(force: Vector3): void
-        /* gdvirtual */ _add_constant_force(force: Vector3, position: Vector3): void
-        /* gdvirtual */ _add_constant_torque(torque: Vector3): void
-        /* gdvirtual */ _set_constant_force(force: Vector3): void
-        /* gdvirtual */ _get_constant_force(): Vector3
-        /* gdvirtual */ _set_constant_torque(torque: Vector3): void
-        /* gdvirtual */ _get_constant_torque(): Vector3
-        /* gdvirtual */ _set_sleep_state(enabled: boolean): void
-        /* gdvirtual */ _is_sleeping(): boolean
-        /* gdvirtual */ _set_collision_layer(layer: int64): void
-        /* gdvirtual */ _get_collision_layer(): int64
-        /* gdvirtual */ _set_collision_mask(mask: int64): void
-        /* gdvirtual */ _get_collision_mask(): int64
-        /* gdvirtual */ _get_contact_count(): int64
-        /* gdvirtual */ _get_contact_local_position(contact_idx: int64): Vector3
-        /* gdvirtual */ _get_contact_local_normal(contact_idx: int64): Vector3
-        /* gdvirtual */ _get_contact_impulse(contact_idx: int64): Vector3
-        /* gdvirtual */ _get_contact_local_shape(contact_idx: int64): int64
-        /* gdvirtual */ _get_contact_local_velocity_at_position(contact_idx: int64): Vector3
-        /* gdvirtual */ _get_contact_collider(contact_idx: int64): RID
-        /* gdvirtual */ _get_contact_collider_position(contact_idx: int64): Vector3
-        /* gdvirtual */ _get_contact_collider_id(contact_idx: int64): int64
-        /* gdvirtual */ _get_contact_collider_object(contact_idx: int64): null | Object
-        /* gdvirtual */ _get_contact_collider_shape(contact_idx: int64): int64
-        /* gdvirtual */ _get_contact_collider_velocity_at_position(contact_idx: int64): Vector3
-        /* gdvirtual */ _get_step(): float64
-        /* gdvirtual */ _integrate_forces(): void
-        /* gdvirtual */ _get_space_state(): null | PhysicsDirectSpaceState3D
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsDirectBodyState3DExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsDirectBodyState3DExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsDirectSpaceState2D extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsDirectSpaceState2D extends __NameMapObject {
-    }
-    /** Provides direct access to a physics space in the [PhysicsServer2D].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsdirectspacestate2d.html  
-     */
-    class PhysicsDirectSpaceState2D extends Object {
-        constructor(identifier?: any)
-        /** Checks whether a point is inside any solid shape. Position and other parameters are defined through [PhysicsPointQueryParameters2D]. The shapes the point is inside of are returned in an array containing dictionaries with the following fields:  
-         *  `collider`: The colliding object.  
-         *  `collider_id`: The colliding object's ID.  
-         *  `rid`: The intersecting object's [RID].  
-         *  `shape`: The shape index of the colliding shape.  
-         *  The number of intersections can be limited with the [param max_results] parameter, to reduce the processing time.  
-         *      
-         *  **Note:** [ConcavePolygonShape2D]s and [CollisionPolygon2D]s in `Segments` build mode are not solid shapes. Therefore, they will not be detected.  
-         */
-        intersect_point(parameters: PhysicsPointQueryParameters2D, max_results?: int64 /* = 32 */): GArray<GDictionary>
-        
-        /** Intersects a ray in a given space. Ray position and other parameters are defined through [PhysicsRayQueryParameters2D]. The returned object is a dictionary with the following fields:  
-         *  `collider`: The colliding object.  
-         *  `collider_id`: The colliding object's ID.  
-         *  `normal`: The object's surface normal at the intersection point, or `Vector2(0, 0)` if the ray starts inside the shape and [member PhysicsRayQueryParameters2D.hit_from_inside] is `true`.  
-         *  `position`: The intersection point.  
-         *  `rid`: The intersecting object's [RID].  
-         *  `shape`: The shape index of the colliding shape.  
-         *  If the ray did not intersect anything, then an empty dictionary is returned instead.  
-         */
-        intersect_ray(parameters: PhysicsRayQueryParameters2D): GDictionary
-        
-        /** Checks the intersections of a shape, given through a [PhysicsShapeQueryParameters2D] object, against the space. The intersected shapes are returned in an array containing dictionaries with the following fields:  
-         *  `collider`: The colliding object.  
-         *  `collider_id`: The colliding object's ID.  
-         *  `rid`: The intersecting object's [RID].  
-         *  `shape`: The shape index of the colliding shape.  
-         *  The number of intersections can be limited with the [param max_results] parameter, to reduce the processing time.  
-         */
-        intersect_shape(parameters: PhysicsShapeQueryParameters2D, max_results?: int64 /* = 32 */): GArray<GDictionary>
-        
-        /** Checks how far a [Shape2D] can move without colliding. All the parameters for the query, including the shape and the motion, are supplied through a [PhysicsShapeQueryParameters2D] object.  
-         *  Returns an array with the safe and unsafe proportions (between 0 and 1) of the motion. The safe proportion is the maximum fraction of the motion that can be made without a collision. The unsafe proportion is the minimum fraction of the distance that must be moved for a collision. If no collision is detected a result of `[1.0, 1.0]` will be returned.  
-         *      
-         *  **Note:** Any [Shape2D]s that the shape is already colliding with e.g. inside of, will be ignored. Use [method collide_shape] to determine the [Shape2D]s that the shape is already colliding with.  
-         */
-        cast_motion(parameters: PhysicsShapeQueryParameters2D): PackedFloat32Array
-        
-        /** Checks the intersections of a shape, given through a [PhysicsShapeQueryParameters2D] object, against the space. The resulting array contains a list of points where the shape intersects another. Like with [method intersect_shape], the number of returned results can be limited to save processing time.  
-         *  Returned points are a list of pairs of contact points. For each pair the first one is in the shape passed in [PhysicsShapeQueryParameters2D] object, second one is in the collided shape from the physics space.  
-         */
-        collide_shape(parameters: PhysicsShapeQueryParameters2D, max_results?: int64 /* = 32 */): GArray<Vector2>
-        
-        /** Checks the intersections of a shape, given through a [PhysicsShapeQueryParameters2D] object, against the space. If it collides with more than one shape, the nearest one is selected. The returned object is a dictionary containing the following fields:  
-         *  `collider_id`: The colliding object's ID.  
-         *  `linear_velocity`: The colliding object's velocity [Vector2]. If the object is an [Area2D], the result is `(0, 0)`.  
-         *  `normal`: The collision normal of the query shape at the intersection point, pointing away from the intersecting object.  
-         *  `point`: The intersection point.  
-         *  `rid`: The intersecting object's [RID].  
-         *  `shape`: The shape index of the colliding shape.  
-         *  If the shape did not intersect anything, then an empty dictionary is returned instead.  
-         */
-        get_rest_info(parameters: PhysicsShapeQueryParameters2D): GDictionary
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsDirectSpaceState2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsDirectSpaceState2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsDirectSpaceState2DExtension extends __RPCMapPhysicsDirectSpaceState2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsDirectSpaceState2DExtension extends __NameMapPhysicsDirectSpaceState2D {
-    }
-    /** Provides virtual methods that can be overridden to create custom [PhysicsDirectSpaceState2D] implementations.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsdirectspacestate2dextension.html  
-     */
-    class PhysicsDirectSpaceState2DExtension extends PhysicsDirectSpaceState2D {
-        constructor(identifier?: any)
-        /* gdvirtual */ _intersect_ray(from: Vector2, to: Vector2, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, hit_from_inside: boolean, result: int64): boolean
-        /* gdvirtual */ _intersect_point(position: Vector2, canvas_instance_id: int64, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, results: int64, max_results: int64): int64
-        /* gdvirtual */ _intersect_shape(shape_rid: RID, transform: Transform2D, motion: Vector2, margin: float64, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, result: int64, max_results: int64): int64
-        /* gdvirtual */ _cast_motion(shape_rid: RID, transform: Transform2D, motion: Vector2, margin: float64, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, closest_safe: int64, closest_unsafe: int64): boolean
-        /* gdvirtual */ _collide_shape(shape_rid: RID, transform: Transform2D, motion: Vector2, margin: float64, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, results: int64, max_results: int64, result_count: int64): boolean
-        /* gdvirtual */ _rest_info(shape_rid: RID, transform: Transform2D, motion: Vector2, margin: float64, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, rest_info: int64): boolean
-        is_body_excluded_from_query(body: RID): boolean
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsDirectSpaceState2DExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsDirectSpaceState2DExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsDirectSpaceState3D extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsDirectSpaceState3D extends __NameMapObject {
-    }
-    /** Provides direct access to a physics space in the [PhysicsServer3D].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsdirectspacestate3d.html  
-     */
-    class PhysicsDirectSpaceState3D extends Object {
-        constructor(identifier?: any)
-        /** Checks whether a point is inside any solid shape. Position and other parameters are defined through [PhysicsPointQueryParameters3D]. The shapes the point is inside of are returned in an array containing dictionaries with the following fields:  
-         *  `collider`: The colliding object.  
-         *  `collider_id`: The colliding object's ID.  
-         *  `rid`: The intersecting object's [RID].  
-         *  `shape`: The shape index of the colliding shape.  
-         *  The number of intersections can be limited with the [param max_results] parameter, to reduce the processing time.  
-         */
-        intersect_point(parameters: PhysicsPointQueryParameters3D, max_results?: int64 /* = 32 */): GArray<GDictionary>
-        
-        /** Intersects a ray in a given space. Ray position and other parameters are defined through [PhysicsRayQueryParameters3D]. The returned object is a dictionary with the following fields:  
-         *  `collider`: The colliding object.  
-         *  `collider_id`: The colliding object's ID.  
-         *  `normal`: The object's surface normal at the intersection point, or `Vector3(0, 0, 0)` if the ray starts inside the shape and [member PhysicsRayQueryParameters3D.hit_from_inside] is `true`.  
-         *  `position`: The intersection point.  
-         *  `face_index`: The face index at the intersection point.  
-         *      
-         *  **Note:** Returns a valid number only if the intersected shape is a [ConcavePolygonShape3D]. Otherwise, `-1` is returned.  
-         *  `rid`: The intersecting object's [RID].  
-         *  `shape`: The shape index of the colliding shape.  
-         *  If the ray did not intersect anything, then an empty dictionary is returned instead.  
-         */
-        intersect_ray(parameters: PhysicsRayQueryParameters3D): GDictionary
-        
-        /** Checks the intersections of a shape, given through a [PhysicsShapeQueryParameters3D] object, against the space. The intersected shapes are returned in an array containing dictionaries with the following fields:  
-         *  `collider`: The colliding object.  
-         *  `collider_id`: The colliding object's ID.  
-         *  `rid`: The intersecting object's [RID].  
-         *  `shape`: The shape index of the colliding shape.  
-         *  The number of intersections can be limited with the [param max_results] parameter, to reduce the processing time.  
-         *      
-         *  **Note:** This method does not take into account the `motion` property of the object.  
-         */
-        intersect_shape(parameters: PhysicsShapeQueryParameters3D, max_results?: int64 /* = 32 */): GArray<GDictionary>
-        
-        /** Checks how far a [Shape3D] can move without colliding. All the parameters for the query, including the shape and the motion, are supplied through a [PhysicsShapeQueryParameters3D] object.  
-         *  Returns an array with the safe and unsafe proportions (between 0 and 1) of the motion. The safe proportion is the maximum fraction of the motion that can be made without a collision. The unsafe proportion is the minimum fraction of the distance that must be moved for a collision. If no collision is detected a result of `[1.0, 1.0]` will be returned.  
-         *      
-         *  **Note:** Any [Shape3D]s that the shape is already colliding with e.g. inside of, will be ignored. Use [method collide_shape] to determine the [Shape3D]s that the shape is already colliding with.  
-         */
-        cast_motion(parameters: PhysicsShapeQueryParameters3D): PackedFloat32Array
-        
-        /** Checks the intersections of a shape, given through a [PhysicsShapeQueryParameters3D] object, against the space. The resulting array contains a list of points where the shape intersects another. Like with [method intersect_shape], the number of returned results can be limited to save processing time.  
-         *  Returned points are a list of pairs of contact points. For each pair the first one is in the shape passed in [PhysicsShapeQueryParameters3D] object, second one is in the collided shape from the physics space.  
-         *      
-         *  **Note:** This method does not take into account the `motion` property of the object.  
-         */
-        collide_shape(parameters: PhysicsShapeQueryParameters3D, max_results?: int64 /* = 32 */): GArray<Vector3>
-        
-        /** Checks the intersections of a shape, given through a [PhysicsShapeQueryParameters3D] object, against the space. If it collides with more than one shape, the nearest one is selected. The returned object is a dictionary containing the following fields:  
-         *  `collider_id`: The colliding object's ID.  
-         *  `linear_velocity`: The colliding object's velocity [Vector3]. If the object is an [Area3D], the result is `(0, 0, 0)`.  
-         *  `normal`: The collision normal of the query shape at the intersection point, pointing away from the intersecting object.  
-         *  `point`: The intersection point.  
-         *  `rid`: The intersecting object's [RID].  
-         *  `shape`: The shape index of the colliding shape.  
-         *  If the shape did not intersect anything, then an empty dictionary is returned instead.  
-         *      
-         *  **Note:** This method does not take into account the `motion` property of the object.  
-         */
-        get_rest_info(parameters: PhysicsShapeQueryParameters3D): GDictionary
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsDirectSpaceState3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsDirectSpaceState3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsDirectSpaceState3DExtension extends __RPCMapPhysicsDirectSpaceState3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsDirectSpaceState3DExtension extends __NameMapPhysicsDirectSpaceState3D {
-    }
-    /** Provides virtual methods that can be overridden to create custom [PhysicsDirectSpaceState3D] implementations.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsdirectspacestate3dextension.html  
-     */
-    class PhysicsDirectSpaceState3DExtension extends PhysicsDirectSpaceState3D {
-        constructor(identifier?: any)
-        /* gdvirtual */ _intersect_ray(from: Vector3, to: Vector3, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, hit_from_inside: boolean, hit_back_faces: boolean, pick_ray: boolean, result: int64): boolean
-        /* gdvirtual */ _intersect_point(position: Vector3, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, results: int64, max_results: int64): int64
-        /* gdvirtual */ _intersect_shape(shape_rid: RID, transform: Transform3D, motion: Vector3, margin: float64, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, result_count: int64, max_results: int64): int64
-        /* gdvirtual */ _cast_motion(shape_rid: RID, transform: Transform3D, motion: Vector3, margin: float64, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, closest_safe: int64, closest_unsafe: int64, info: int64): boolean
-        /* gdvirtual */ _collide_shape(shape_rid: RID, transform: Transform3D, motion: Vector3, margin: float64, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, results: int64, max_results: int64, result_count: int64): boolean
-        /* gdvirtual */ _rest_info(shape_rid: RID, transform: Transform3D, motion: Vector3, margin: float64, collision_mask: int64, collide_with_bodies: boolean, collide_with_areas: boolean, rest_info: int64): boolean
-        /* gdvirtual */ _get_closest_point_to_object_volume(object: RID, point: Vector3): Vector3
-        is_body_excluded_from_query(body: RID): boolean
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsDirectSpaceState3DExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsDirectSpaceState3DExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsMaterial extends __RPCMapResource {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsMaterial extends __NameMapResource {
-    }
-    /** Holds physics-related properties of a surface, namely its roughness and bounciness.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsmaterial.html  
-     */
-    class PhysicsMaterial extends Resource {
-        constructor(identifier?: any)
-        /** The body's friction. Values range from `0` (frictionless) to `1` (maximum friction). */
-        get friction(): float64
-        set friction(value: float64)
-        
-        /** If `true`, the physics engine will use the friction of the object marked as "rough" when two objects collide. If `false`, the physics engine will use the lowest friction of all colliding objects instead. If `true` for both colliding objects, the physics engine will use the highest friction. */
-        get rough(): boolean
-        set rough(value: boolean)
-        
-        /** The body's bounciness. Values range from `0` (no bounce) to `1` (full bounciness).  
-         *      
-         *  **Note:** Even with [member bounce] set to `1.0`, some energy will be lost over time due to linear and angular damping. To have a physics body that preserves all its energy over time, set [member bounce] to `1.0`, the body's linear damp mode to **Replace** (if applicable), its linear damp to `0.0`, its angular damp mode to **Replace** (if applicable), and its angular damp to `0.0`.  
-         */
-        get bounce(): float64
-        set bounce(value: float64)
-        
-        /** If `true`, subtracts the bounciness from the colliding object's bounciness instead of adding it. */
-        get absorbent(): boolean
-        set absorbent(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsMaterial;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsMaterial;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsPointQueryParameters2D extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsPointQueryParameters2D extends __NameMapRefCounted {
-    }
-    /** Provides parameters for [method PhysicsDirectSpaceState2D.intersect_point].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicspointqueryparameters2d.html  
-     */
-    class PhysicsPointQueryParameters2D extends RefCounted {
-        constructor(identifier?: any)
-        /** The position being queried for, in global coordinates. */
-        get position(): Vector2
-        set position(value: Vector2)
-        
-        /** If different from `0`, restricts the query to a specific canvas layer specified by its instance ID. See [method Object.get_instance_id].  
-         *  If `0`, restricts the query to the Viewport's default canvas layer.  
-         */
-        get canvas_instance_id(): int64
-        set canvas_instance_id(value: int64)
-        
-        /** The physics layers the query will detect (as a bitmask). By default, all collision layers are detected. See [url=https://docs.godotengine.org/en/4.6/tutorials/physics/physics_introduction.html#collision-layers-and-masks]Collision layers and masks[/url] in the documentation for more information. */
-        get collision_mask(): int64
-        set collision_mask(value: int64)
-        
-        /** The list of object [RID]s that will be excluded from collisions. Use [method CollisionObject2D.get_rid] to get the [RID] associated with a [CollisionObject2D]-derived node.  
-         *      
-         *  **Note:** The returned array is copied and any changes to it will not update the original property value. To update the value you need to modify the returned array, and then assign it to the property again.  
-         */
-        get exclude(): GArray<RID>
-        set exclude(value: GArray<RID>)
-        
-        /** If `true`, the query will take [PhysicsBody2D]s into account. */
-        get collide_with_bodies(): boolean
-        set collide_with_bodies(value: boolean)
-        
-        /** If `true`, the query will take [Area2D]s into account. */
-        get collide_with_areas(): boolean
-        set collide_with_areas(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsPointQueryParameters2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsPointQueryParameters2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsPointQueryParameters3D extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsPointQueryParameters3D extends __NameMapRefCounted {
-    }
-    /** Provides parameters for [method PhysicsDirectSpaceState3D.intersect_point].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicspointqueryparameters3d.html  
-     */
-    class PhysicsPointQueryParameters3D extends RefCounted {
-        constructor(identifier?: any)
-        /** The position being queried for, in global coordinates. */
-        get position(): Vector3
-        set position(value: Vector3)
-        
-        /** The physics layers the query will detect (as a bitmask). By default, all collision layers are detected. See [url=https://docs.godotengine.org/en/4.6/tutorials/physics/physics_introduction.html#collision-layers-and-masks]Collision layers and masks[/url] in the documentation for more information. */
-        get collision_mask(): int64
-        set collision_mask(value: int64)
-        
-        /** The list of object [RID]s that will be excluded from collisions. Use [method CollisionObject3D.get_rid] to get the [RID] associated with a [CollisionObject3D]-derived node.  
-         *      
-         *  **Note:** The returned array is copied and any changes to it will not update the original property value. To update the value you need to modify the returned array, and then assign it to the property again.  
-         */
-        get exclude(): GArray<RID>
-        set exclude(value: GArray<RID>)
-        
-        /** If `true`, the query will take [PhysicsBody3D]s into account. */
-        get collide_with_bodies(): boolean
-        set collide_with_bodies(value: boolean)
-        
-        /** If `true`, the query will take [Area3D]s into account. */
-        get collide_with_areas(): boolean
-        set collide_with_areas(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsPointQueryParameters3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsPointQueryParameters3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsRayQueryParameters2D extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsRayQueryParameters2D extends __NameMapRefCounted {
-    }
-    /** Provides parameters for [method PhysicsDirectSpaceState2D.intersect_ray].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsrayqueryparameters2d.html  
-     */
-    class PhysicsRayQueryParameters2D extends RefCounted {
-        constructor(identifier?: any)
-        /** Returns a new, pre-configured [PhysicsRayQueryParameters2D] object. Use it to quickly create query parameters using the most common options.  
-         *    
-         */
-        static create(from: Vector2, to: Vector2, collision_mask?: int64 /* = 4294967295 */, exclude?: GArray<RID>): PhysicsRayQueryParameters2D
-        
-        /** The starting point of the ray being queried for, in global coordinates. */
-        get from(): Vector2
-        set from(value: Vector2)
-        
-        /** The ending point of the ray being queried for, in global coordinates. */
-        get to(): Vector2
-        set to(value: Vector2)
-        
-        /** The physics layers the query will detect (as a bitmask). By default, all collision layers are detected. See [url=https://docs.godotengine.org/en/4.6/tutorials/physics/physics_introduction.html#collision-layers-and-masks]Collision layers and masks[/url] in the documentation for more information. */
-        get collision_mask(): int64
-        set collision_mask(value: int64)
-        
-        /** The list of object [RID]s that will be excluded from collisions. Use [method CollisionObject2D.get_rid] to get the [RID] associated with a [CollisionObject2D]-derived node.  
-         *      
-         *  **Note:** The returned array is copied and any changes to it will not update the original property value. To update the value you need to modify the returned array, and then assign it to the property again.  
-         */
-        get exclude(): GArray<RID>
-        set exclude(value: GArray<RID>)
-        
-        /** If `true`, the query will take [PhysicsBody2D]s into account. */
-        get collide_with_bodies(): boolean
-        set collide_with_bodies(value: boolean)
-        
-        /** If `true`, the query will take [Area2D]s into account. */
-        get collide_with_areas(): boolean
-        set collide_with_areas(value: boolean)
-        
-        /** If `true`, the query will detect a hit when starting inside shapes. In this case the collision normal will be `Vector2(0, 0)`. Does not affect concave polygon shapes. */
-        get hit_from_inside(): boolean
-        set hit_from_inside(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsRayQueryParameters2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsRayQueryParameters2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsRayQueryParameters3D extends __RPCMapRefCounted {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsRayQueryParameters3D extends __NameMapRefCounted {
-    }
-    /** Provides parameters for [method PhysicsDirectSpaceState3D.intersect_ray].  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsrayqueryparameters3d.html  
-     */
-    class PhysicsRayQueryParameters3D extends RefCounted {
-        constructor(identifier?: any)
-        /** Returns a new, pre-configured [PhysicsRayQueryParameters3D] object. Use it to quickly create query parameters using the most common options.  
-         *    
-         */
-        static create(from: Vector3, to: Vector3, collision_mask?: int64 /* = 4294967295 */, exclude?: GArray<RID>): PhysicsRayQueryParameters3D
-        
-        /** The starting point of the ray being queried for, in global coordinates. */
-        get from(): Vector3
-        set from(value: Vector3)
-        
-        /** The ending point of the ray being queried for, in global coordinates. */
-        get to(): Vector3
-        set to(value: Vector3)
-        
-        /** The physics layers the query will detect (as a bitmask). By default, all collision layers are detected. See [url=https://docs.godotengine.org/en/4.6/tutorials/physics/physics_introduction.html#collision-layers-and-masks]Collision layers and masks[/url] in the documentation for more information. */
-        get collision_mask(): int64
-        set collision_mask(value: int64)
-        
-        /** The list of object [RID]s that will be excluded from collisions. Use [method CollisionObject3D.get_rid] to get the [RID] associated with a [CollisionObject3D]-derived node.  
-         *      
-         *  **Note:** The returned array is copied and any changes to it will not update the original property value. To update the value you need to modify the returned array, and then assign it to the property again.  
-         */
-        get exclude(): GArray<RID>
-        set exclude(value: GArray<RID>)
-        
-        /** If `true`, the query will take [PhysicsBody3D]s into account. */
-        get collide_with_bodies(): boolean
-        set collide_with_bodies(value: boolean)
-        
-        /** If `true`, the query will take [Area3D]s into account. */
-        get collide_with_areas(): boolean
-        set collide_with_areas(value: boolean)
-        
-        /** If `true`, the query will detect a hit when starting inside shapes. In this case the collision normal will be `Vector3(0, 0, 0)`. Does not affect concave polygon shapes or heightmap shapes. */
-        get hit_from_inside(): boolean
-        set hit_from_inside(value: boolean)
-        
-        /** If `true`, the query will hit back faces with concave polygon shapes with back face enabled or heightmap shapes. */
-        get hit_back_faces(): boolean
-        set hit_back_faces(value: boolean)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsRayQueryParameters3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsRayQueryParameters3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsServer2DExtension extends __RPCMapPhysicsServer2D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsServer2DExtension extends __NameMapPhysicsServer2D {
-    }
-    /** Provides virtual methods that can be overridden to create custom [PhysicsServer2D] implementations.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsserver2dextension.html  
-     */
-    class PhysicsServer2DExtension extends PhysicsServer2D {
-        constructor(identifier?: any)
-        /** Overridable version of [method PhysicsServer2D.world_boundary_shape_create]. */
-        /* gdvirtual */ _world_boundary_shape_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.separation_ray_shape_create]. */
-        /* gdvirtual */ _separation_ray_shape_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.segment_shape_create]. */
-        /* gdvirtual */ _segment_shape_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.circle_shape_create]. */
-        /* gdvirtual */ _circle_shape_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.rectangle_shape_create]. */
-        /* gdvirtual */ _rectangle_shape_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.capsule_shape_create]. */
-        /* gdvirtual */ _capsule_shape_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.convex_polygon_shape_create]. */
-        /* gdvirtual */ _convex_polygon_shape_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.concave_polygon_shape_create]. */
-        /* gdvirtual */ _concave_polygon_shape_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.shape_set_data]. */
-        /* gdvirtual */ _shape_set_data(shape: RID, data: any): void
-        
-        /** Should set the custom solver bias for the given [param shape]. It defines how much bodies are forced to separate on contact.  
-         *  Overridable version of [PhysicsServer2D]'s internal `shape_get_custom_solver_bias` method. Corresponds to [member Shape2D.custom_solver_bias].  
-         */
-        /* gdvirtual */ _shape_set_custom_solver_bias(shape: RID, bias: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.shape_get_type]. */
-        /* gdvirtual */ _shape_get_type(shape: RID): PhysicsServer2D.ShapeType
-        
-        /** Overridable version of [method PhysicsServer2D.shape_get_data]. */
-        /* gdvirtual */ _shape_get_data(shape: RID): any
-        
-        /** Should return the custom solver bias of the given [param shape], which defines how much bodies are forced to separate on contact when this shape is involved.  
-         *  Overridable version of [PhysicsServer2D]'s internal `shape_get_custom_solver_bias` method. Corresponds to [member Shape2D.custom_solver_bias].  
-         */
-        /* gdvirtual */ _shape_get_custom_solver_bias(shape: RID): float64
-        
-        /** Given two shapes and their parameters, should return `true` if a collision between the two would occur, with additional details passed in [param results].  
-         *  Overridable version of [PhysicsServer2D]'s internal `shape_collide` method. Corresponds to [method PhysicsDirectSpaceState2D.collide_shape].  
-         */
-        /* gdvirtual */ _shape_collide(shape_A: RID, xform_A: Transform2D, motion_A: Vector2, shape_B: RID, xform_B: Transform2D, motion_B: Vector2, results: int64, result_max: int64, result_count: int64): boolean
-        
-        /** Overridable version of [method PhysicsServer2D.space_create]. */
-        /* gdvirtual */ _space_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.space_set_active]. */
-        /* gdvirtual */ _space_set_active(space: RID, active: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.space_is_active]. */
-        /* gdvirtual */ _space_is_active(space: RID): boolean
-        
-        /** Overridable version of [method PhysicsServer2D.space_set_param]. */
-        /* gdvirtual */ _space_set_param(space: RID, param: PhysicsServer2D.SpaceParameter, value: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.space_get_param]. */
-        /* gdvirtual */ _space_get_param(space: RID, param: PhysicsServer2D.SpaceParameter): float64
-        
-        /** Overridable version of [method PhysicsServer2D.space_get_direct_state]. */
-        /* gdvirtual */ _space_get_direct_state(space: RID): null | PhysicsDirectSpaceState2D
-        
-        /** Used internally to allow the given [param space] to store contact points, up to [param max_contacts]. This is automatically set for the main [World2D]'s space when [member SceneTree.debug_collisions_hint] is `true`, or by checking "Visible Collision Shapes" in the editor. Only works in debug builds.  
-         *  Overridable version of [PhysicsServer2D]'s internal `space_set_debug_contacts` method.  
-         */
-        /* gdvirtual */ _space_set_debug_contacts(space: RID, max_contacts: int64): void
-        
-        /** Should return the positions of all contacts that have occurred during the last physics step in the given [param space]. See also [method _space_get_contact_count] and [method _space_set_debug_contacts].  
-         *  Overridable version of [PhysicsServer2D]'s internal `space_get_contacts` method.  
-         */
-        /* gdvirtual */ _space_get_contacts(space: RID): PackedVector2Array
-        
-        /** Should return how many contacts have occurred during the last physics step in the given [param space]. See also [method _space_get_contacts] and [method _space_set_debug_contacts].  
-         *  Overridable version of [PhysicsServer2D]'s internal `space_get_contact_count` method.  
-         */
-        /* gdvirtual */ _space_get_contact_count(space: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.area_create]. */
-        /* gdvirtual */ _area_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_space]. */
-        /* gdvirtual */ _area_set_space(area: RID, space: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_space]. */
-        /* gdvirtual */ _area_get_space(area: RID): RID
-        
-        /** Overridable version of [method PhysicsServer2D.area_add_shape]. */
-        /* gdvirtual */ _area_add_shape(area: RID, shape: RID, transform: Transform2D, disabled: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_shape]. */
-        /* gdvirtual */ _area_set_shape(area: RID, shape_idx: int64, shape: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_shape_transform]. */
-        /* gdvirtual */ _area_set_shape_transform(area: RID, shape_idx: int64, transform: Transform2D): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_shape_disabled]. */
-        /* gdvirtual */ _area_set_shape_disabled(area: RID, shape_idx: int64, disabled: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_shape_count]. */
-        /* gdvirtual */ _area_get_shape_count(area: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_shape]. */
-        /* gdvirtual */ _area_get_shape(area: RID, shape_idx: int64): RID
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_shape_transform]. */
-        /* gdvirtual */ _area_get_shape_transform(area: RID, shape_idx: int64): Transform2D
-        
-        /** Overridable version of [method PhysicsServer2D.area_remove_shape]. */
-        /* gdvirtual */ _area_remove_shape(area: RID, shape_idx: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_clear_shapes]. */
-        /* gdvirtual */ _area_clear_shapes(area: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_attach_object_instance_id]. */
-        /* gdvirtual */ _area_attach_object_instance_id(area: RID, id: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_object_instance_id]. */
-        /* gdvirtual */ _area_get_object_instance_id(area: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.area_attach_canvas_instance_id]. */
-        /* gdvirtual */ _area_attach_canvas_instance_id(area: RID, id: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_canvas_instance_id]. */
-        /* gdvirtual */ _area_get_canvas_instance_id(area: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_param]. */
-        /* gdvirtual */ _area_set_param(area: RID, param: PhysicsServer2D.AreaParameter, value: any): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_transform]. */
-        /* gdvirtual */ _area_set_transform(area: RID, transform: Transform2D): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_param]. */
-        /* gdvirtual */ _area_get_param(area: RID, param: PhysicsServer2D.AreaParameter): any
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_transform]. */
-        /* gdvirtual */ _area_get_transform(area: RID): Transform2D
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_collision_layer]. */
-        /* gdvirtual */ _area_set_collision_layer(area: RID, layer: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_collision_layer]. */
-        /* gdvirtual */ _area_get_collision_layer(area: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_collision_mask]. */
-        /* gdvirtual */ _area_set_collision_mask(area: RID, mask: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_get_collision_mask]. */
-        /* gdvirtual */ _area_get_collision_mask(area: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_monitorable]. */
-        /* gdvirtual */ _area_set_monitorable(area: RID, monitorable: boolean): void
-        
-        /** If set to `true`, allows the area with the given [RID] to detect mouse inputs when the mouse cursor is hovering on it.  
-         *  Overridable version of [PhysicsServer2D]'s internal `area_set_pickable` method. Corresponds to [member CollisionObject2D.input_pickable].  
-         */
-        /* gdvirtual */ _area_set_pickable(area: RID, pickable: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_monitor_callback]. */
-        /* gdvirtual */ _area_set_monitor_callback(area: RID, callback: Callable): void
-        
-        /** Overridable version of [method PhysicsServer2D.area_set_area_monitor_callback]. */
-        /* gdvirtual */ _area_set_area_monitor_callback(area: RID, callback: Callable): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_create]. */
-        /* gdvirtual */ _body_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_space]. */
-        /* gdvirtual */ _body_set_space(body: RID, space: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_space]. */
-        /* gdvirtual */ _body_get_space(body: RID): RID
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_mode]. */
-        /* gdvirtual */ _body_set_mode(body: RID, mode: PhysicsServer2D.BodyMode): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_mode]. */
-        /* gdvirtual */ _body_get_mode(body: RID): PhysicsServer2D.BodyMode
-        
-        /** Overridable version of [method PhysicsServer2D.body_add_shape]. */
-        /* gdvirtual */ _body_add_shape(body: RID, shape: RID, transform: Transform2D, disabled: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_shape]. */
-        /* gdvirtual */ _body_set_shape(body: RID, shape_idx: int64, shape: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_shape_transform]. */
-        /* gdvirtual */ _body_set_shape_transform(body: RID, shape_idx: int64, transform: Transform2D): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_shape_count]. */
-        /* gdvirtual */ _body_get_shape_count(body: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_shape]. */
-        /* gdvirtual */ _body_get_shape(body: RID, shape_idx: int64): RID
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_shape_transform]. */
-        /* gdvirtual */ _body_get_shape_transform(body: RID, shape_idx: int64): Transform2D
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_shape_disabled]. */
-        /* gdvirtual */ _body_set_shape_disabled(body: RID, shape_idx: int64, disabled: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_shape_as_one_way_collision]. */
-        /* gdvirtual */ _body_set_shape_as_one_way_collision(body: RID, shape_idx: int64, enable: boolean, margin: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_remove_shape]. */
-        /* gdvirtual */ _body_remove_shape(body: RID, shape_idx: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_clear_shapes]. */
-        /* gdvirtual */ _body_clear_shapes(body: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_attach_object_instance_id]. */
-        /* gdvirtual */ _body_attach_object_instance_id(body: RID, id: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_object_instance_id]. */
-        /* gdvirtual */ _body_get_object_instance_id(body: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.body_attach_canvas_instance_id]. */
-        /* gdvirtual */ _body_attach_canvas_instance_id(body: RID, id: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_canvas_instance_id]. */
-        /* gdvirtual */ _body_get_canvas_instance_id(body: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_continuous_collision_detection_mode]. */
-        /* gdvirtual */ _body_set_continuous_collision_detection_mode(body: RID, mode: PhysicsServer2D.CCDMode): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_continuous_collision_detection_mode]. */
-        /* gdvirtual */ _body_get_continuous_collision_detection_mode(body: RID): PhysicsServer2D.CCDMode
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_collision_layer]. */
-        /* gdvirtual */ _body_set_collision_layer(body: RID, layer: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_collision_layer]. */
-        /* gdvirtual */ _body_get_collision_layer(body: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_collision_mask]. */
-        /* gdvirtual */ _body_set_collision_mask(body: RID, mask: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_collision_mask]. */
-        /* gdvirtual */ _body_get_collision_mask(body: RID): int64
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_collision_priority]. */
-        /* gdvirtual */ _body_set_collision_priority(body: RID, priority: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_collision_priority]. */
-        /* gdvirtual */ _body_get_collision_priority(body: RID): float64
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_param]. */
-        /* gdvirtual */ _body_set_param(body: RID, param: PhysicsServer2D.BodyParameter, value: any): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_param]. */
-        /* gdvirtual */ _body_get_param(body: RID, param: PhysicsServer2D.BodyParameter): any
-        
-        /** Overridable version of [method PhysicsServer2D.body_reset_mass_properties]. */
-        /* gdvirtual */ _body_reset_mass_properties(body: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_state]. */
-        /* gdvirtual */ _body_set_state(body: RID, state: PhysicsServer2D.BodyState, value: any): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_state]. */
-        /* gdvirtual */ _body_get_state(body: RID, state: PhysicsServer2D.BodyState): any
-        
-        /** Overridable version of [method PhysicsServer2D.body_apply_central_impulse]. */
-        /* gdvirtual */ _body_apply_central_impulse(body: RID, impulse: Vector2): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_apply_torque_impulse]. */
-        /* gdvirtual */ _body_apply_torque_impulse(body: RID, impulse: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_apply_impulse]. */
-        /* gdvirtual */ _body_apply_impulse(body: RID, impulse: Vector2, position: Vector2): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_apply_central_force]. */
-        /* gdvirtual */ _body_apply_central_force(body: RID, force: Vector2): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_apply_force]. */
-        /* gdvirtual */ _body_apply_force(body: RID, force: Vector2, position: Vector2): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_apply_torque]. */
-        /* gdvirtual */ _body_apply_torque(body: RID, torque: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_add_constant_central_force]. */
-        /* gdvirtual */ _body_add_constant_central_force(body: RID, force: Vector2): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_add_constant_force]. */
-        /* gdvirtual */ _body_add_constant_force(body: RID, force: Vector2, position: Vector2): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_add_constant_torque]. */
-        /* gdvirtual */ _body_add_constant_torque(body: RID, torque: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_constant_force]. */
-        /* gdvirtual */ _body_set_constant_force(body: RID, force: Vector2): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_constant_force]. */
-        /* gdvirtual */ _body_get_constant_force(body: RID): Vector2
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_constant_torque]. */
-        /* gdvirtual */ _body_set_constant_torque(body: RID, torque: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_constant_torque]. */
-        /* gdvirtual */ _body_get_constant_torque(body: RID): float64
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_axis_velocity]. */
-        /* gdvirtual */ _body_set_axis_velocity(body: RID, axis_velocity: Vector2): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_add_collision_exception]. */
-        /* gdvirtual */ _body_add_collision_exception(body: RID, excepted_body: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_remove_collision_exception]. */
-        /* gdvirtual */ _body_remove_collision_exception(body: RID, excepted_body: RID): void
-        
-        /** Returns the [RID]s of all bodies added as collision exceptions for the given [param body]. See also [method _body_add_collision_exception] and [method _body_remove_collision_exception].  
-         *  Overridable version of [PhysicsServer2D]'s internal `body_get_collision_exceptions` method. Corresponds to [method PhysicsBody2D.get_collision_exceptions].  
-         */
-        /* gdvirtual */ _body_get_collision_exceptions(body: RID): GArray<RID>
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_max_contacts_reported]. */
-        /* gdvirtual */ _body_set_max_contacts_reported(body: RID, amount: int64): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_max_contacts_reported]. */
-        /* gdvirtual */ _body_get_max_contacts_reported(body: RID): int64
-        
-        /** Overridable version of [PhysicsServer2D]'s internal `body_set_contacts_reported_depth_threshold` method.  
-         *      
-         *  **Note:** This method is currently unused by Godot's default physics implementation.  
-         */
-        /* gdvirtual */ _body_set_contacts_reported_depth_threshold(body: RID, threshold: float64): void
-        
-        /** Overridable version of [PhysicsServer2D]'s internal `body_get_contacts_reported_depth_threshold` method.  
-         *      
-         *  **Note:** This method is currently unused by Godot's default physics implementation.  
-         */
-        /* gdvirtual */ _body_get_contacts_reported_depth_threshold(body: RID): float64
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_omit_force_integration]. */
-        /* gdvirtual */ _body_set_omit_force_integration(body: RID, enable: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_is_omitting_force_integration]. */
-        /* gdvirtual */ _body_is_omitting_force_integration(body: RID): boolean
-        
-        /** Assigns the [param body] to call the given [param callable] during the synchronization phase of the loop, before [method _step] is called. See also [method _sync].  
-         *  Overridable version of [method PhysicsServer2D.body_set_state_sync_callback].  
-         */
-        /* gdvirtual */ _body_set_state_sync_callback(body: RID, callable: Callable): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_set_force_integration_callback]. */
-        /* gdvirtual */ _body_set_force_integration_callback(body: RID, callable: Callable, userdata: any): void
-        
-        /** Given a [param body], a [param shape], and their respective parameters, this method should return `true` if a collision between the two would occur, with additional details passed in [param results].  
-         *  Overridable version of [PhysicsServer2D]'s internal `shape_collide` method. Corresponds to [method PhysicsDirectSpaceState2D.collide_shape].  
-         */
-        /* gdvirtual */ _body_collide_shape(body: RID, body_shape: int64, shape: RID, shape_xform: Transform2D, motion: Vector2, results: int64, result_max: int64, result_count: int64): boolean
-        
-        /** If set to `true`, allows the body with the given [RID] to detect mouse inputs when the mouse cursor is hovering on it.  
-         *  Overridable version of [PhysicsServer2D]'s internal `body_set_pickable` method. Corresponds to [member CollisionObject2D.input_pickable].  
-         */
-        /* gdvirtual */ _body_set_pickable(body: RID, pickable: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.body_get_direct_state]. */
-        /* gdvirtual */ _body_get_direct_state(body: RID): null | PhysicsDirectBodyState2D
-        
-        /** Overridable version of [method PhysicsServer2D.body_test_motion]. Unlike the exposed implementation, this method does not receive all of the arguments inside a [PhysicsTestMotionParameters2D]. */
-        /* gdvirtual */ _body_test_motion(body: RID, from: Transform2D, motion: Vector2, margin: float64, collide_separation_ray: boolean, recovery_as_collision: boolean, result: int64): boolean
-        
-        /** Overridable version of [method PhysicsServer2D.joint_create]. */
-        /* gdvirtual */ _joint_create(): RID
-        
-        /** Overridable version of [method PhysicsServer2D.joint_clear]. */
-        /* gdvirtual */ _joint_clear(joint: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.joint_set_param]. */
-        /* gdvirtual */ _joint_set_param(joint: RID, param: PhysicsServer2D.JointParam, value: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.joint_get_param]. */
-        /* gdvirtual */ _joint_get_param(joint: RID, param: PhysicsServer2D.JointParam): float64
-        
-        /** Overridable version of [method PhysicsServer2D.joint_disable_collisions_between_bodies]. */
-        /* gdvirtual */ _joint_disable_collisions_between_bodies(joint: RID, disable: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.joint_is_disabled_collisions_between_bodies]. */
-        /* gdvirtual */ _joint_is_disabled_collisions_between_bodies(joint: RID): boolean
-        
-        /** Overridable version of [method PhysicsServer2D.joint_make_pin]. */
-        /* gdvirtual */ _joint_make_pin(joint: RID, anchor: Vector2, body_a: RID, body_b: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.joint_make_groove]. */
-        /* gdvirtual */ _joint_make_groove(joint: RID, a_groove1: Vector2, a_groove2: Vector2, b_anchor: Vector2, body_a: RID, body_b: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.joint_make_damped_spring]. */
-        /* gdvirtual */ _joint_make_damped_spring(joint: RID, anchor_a: Vector2, anchor_b: Vector2, body_a: RID, body_b: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.pin_joint_set_flag]. */
-        /* gdvirtual */ _pin_joint_set_flag(joint: RID, flag: PhysicsServer2D.PinJointFlag, enabled: boolean): void
-        
-        /** Overridable version of [method PhysicsServer2D.pin_joint_get_flag]. */
-        /* gdvirtual */ _pin_joint_get_flag(joint: RID, flag: PhysicsServer2D.PinJointFlag): boolean
-        
-        /** Overridable version of [method PhysicsServer2D.pin_joint_set_param]. */
-        /* gdvirtual */ _pin_joint_set_param(joint: RID, param: PhysicsServer2D.PinJointParam, value: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.pin_joint_get_param]. */
-        /* gdvirtual */ _pin_joint_get_param(joint: RID, param: PhysicsServer2D.PinJointParam): float64
-        
-        /** Overridable version of [method PhysicsServer2D.damped_spring_joint_set_param]. */
-        /* gdvirtual */ _damped_spring_joint_set_param(joint: RID, param: PhysicsServer2D.DampedSpringParam, value: float64): void
-        
-        /** Overridable version of [method PhysicsServer2D.damped_spring_joint_get_param]. */
-        /* gdvirtual */ _damped_spring_joint_get_param(joint: RID, param: PhysicsServer2D.DampedSpringParam): float64
-        
-        /** Overridable version of [method PhysicsServer2D.joint_get_type]. */
-        /* gdvirtual */ _joint_get_type(joint: RID): PhysicsServer2D.JointType
-        
-        /** Overridable version of [method PhysicsServer2D.free_rid]. */
-        /* gdvirtual */ _free_rid(rid: RID): void
-        
-        /** Overridable version of [method PhysicsServer2D.set_active]. */
-        /* gdvirtual */ _set_active(active: boolean): void
-        
-        /** Called when the main loop is initialized and creates a new instance of this physics server. See also [method MainLoop._initialize] and [method _finish].  
-         *  Overridable version of [PhysicsServer2D]'s internal `init` method.  
-         */
-        /* gdvirtual */ _init(): void
-        
-        /** Called every physics step to process the physics simulation. [param step] is the time elapsed since the last physics step, in seconds. It is usually the same as the value returned by [method Node.get_physics_process_delta_time].  
-         *  Overridable version of [PhysicsServer2D]'s internal [code skip-lint]step` method.  
-         */
-        /* gdvirtual */ _step(step: float64): void
-        
-        /** Called to indicate that the physics server is synchronizing and cannot access physics states if running on a separate thread. See also [method _end_sync].  
-         *  Overridable version of [PhysicsServer2D]'s internal `sync` method.  
-         */
-        /* gdvirtual */ _sync(): void
-        
-        /** Called every physics step before [method _step] to process all remaining queries.  
-         *  Overridable version of [PhysicsServer2D]'s internal `flush_queries` method.  
-         */
-        /* gdvirtual */ _flush_queries(): void
-        
-        /** Called to indicate that the physics server has stopped synchronizing. It is in the loop's iteration/physics phase, and can access physics objects even if running on a separate thread. See also [method _sync].  
-         *  Overridable version of [PhysicsServer2D]'s internal `end_sync` method.  
-         */
-        /* gdvirtual */ _end_sync(): void
-        
-        /** Called when the main loop finalizes to shut down the physics server. See also [method MainLoop._finalize] and [method _init].  
-         *  Overridable version of [PhysicsServer2D]'s internal `finish` method.  
-         */
-        /* gdvirtual */ _finish(): void
-        
-        /** Overridable method that should return `true` when the physics server is processing queries. See also [method _flush_queries].  
-         *  Overridable version of [PhysicsServer2D]'s internal `is_flushing_queries` method.  
-         */
-        /* gdvirtual */ _is_flushing_queries(): boolean
-        
-        /** Overridable version of [method PhysicsServer2D.get_process_info]. */
-        /* gdvirtual */ _get_process_info(process_info: PhysicsServer2D.ProcessInfo): int64
-        
-        /** Returns `true` if the body with the given [RID] is being excluded from [method _body_test_motion]. See also [method Object.get_instance_id]. */
-        body_test_motion_is_excluding_body(body: RID): boolean
-        
-        /** Returns `true` if the object with the given instance ID is being excluded from [method _body_test_motion]. See also [method Object.get_instance_id]. */
-        body_test_motion_is_excluding_object(object: int64): boolean
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsServer2DExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsServer2DExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsServer3DExtension extends __RPCMapPhysicsServer3D {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __NameMapPhysicsServer3DExtension extends __NameMapPhysicsServer3D {
-    }
-    /** Provides virtual methods that can be overridden to create custom [PhysicsServer3D] implementations.  
-     *  	  
-     *  @link https://docs.godotengine.org/en/4.6/classes/class_physicsserver3dextension.html  
-     */
-    class PhysicsServer3DExtension extends PhysicsServer3D {
-        constructor(identifier?: any)
-        /* gdvirtual */ _world_boundary_shape_create(): RID
-        /* gdvirtual */ _separation_ray_shape_create(): RID
-        /* gdvirtual */ _sphere_shape_create(): RID
-        /* gdvirtual */ _box_shape_create(): RID
-        /* gdvirtual */ _capsule_shape_create(): RID
-        /* gdvirtual */ _cylinder_shape_create(): RID
-        /* gdvirtual */ _convex_polygon_shape_create(): RID
-        /* gdvirtual */ _concave_polygon_shape_create(): RID
-        /* gdvirtual */ _heightmap_shape_create(): RID
-        /* gdvirtual */ _custom_shape_create(): RID
-        /* gdvirtual */ _shape_set_data(shape: RID, data: any): void
-        /* gdvirtual */ _shape_set_custom_solver_bias(shape: RID, bias: float64): void
-        /* gdvirtual */ _shape_set_margin(shape: RID, margin: float64): void
-        /* gdvirtual */ _shape_get_margin(shape: RID): float64
-        /* gdvirtual */ _shape_get_type(shape: RID): PhysicsServer3D.ShapeType
-        /* gdvirtual */ _shape_get_data(shape: RID): any
-        /* gdvirtual */ _shape_get_custom_solver_bias(shape: RID): float64
-        /* gdvirtual */ _space_create(): RID
-        /* gdvirtual */ _space_set_active(space: RID, active: boolean): void
-        /* gdvirtual */ _space_is_active(space: RID): boolean
-        /* gdvirtual */ _space_set_param(space: RID, param: PhysicsServer3D.SpaceParameter, value: float64): void
-        /* gdvirtual */ _space_get_param(space: RID, param: PhysicsServer3D.SpaceParameter): float64
-        /* gdvirtual */ _space_get_direct_state(space: RID): null | PhysicsDirectSpaceState3D
-        /* gdvirtual */ _space_set_debug_contacts(space: RID, max_contacts: int64): void
-        /* gdvirtual */ _space_get_contacts(space: RID): PackedVector3Array
-        /* gdvirtual */ _space_get_contact_count(space: RID): int64
-        /* gdvirtual */ _area_create(): RID
-        /* gdvirtual */ _area_set_space(area: RID, space: RID): void
-        /* gdvirtual */ _area_get_space(area: RID): RID
-        /* gdvirtual */ _area_add_shape(area: RID, shape: RID, transform: Transform3D, disabled: boolean): void
-        /* gdvirtual */ _area_set_shape(area: RID, shape_idx: int64, shape: RID): void
-        /* gdvirtual */ _area_set_shape_transform(area: RID, shape_idx: int64, transform: Transform3D): void
-        /* gdvirtual */ _area_set_shape_disabled(area: RID, shape_idx: int64, disabled: boolean): void
-        /* gdvirtual */ _area_get_shape_count(area: RID): int64
-        /* gdvirtual */ _area_get_shape(area: RID, shape_idx: int64): RID
-        /* gdvirtual */ _area_get_shape_transform(area: RID, shape_idx: int64): Transform3D
-        /* gdvirtual */ _area_remove_shape(area: RID, shape_idx: int64): void
-        /* gdvirtual */ _area_clear_shapes(area: RID): void
-        /* gdvirtual */ _area_attach_object_instance_id(area: RID, id: int64): void
-        /* gdvirtual */ _area_get_object_instance_id(area: RID): int64
-        /* gdvirtual */ _area_set_param(area: RID, param: PhysicsServer3D.AreaParameter, value: any): void
-        /* gdvirtual */ _area_set_transform(area: RID, transform: Transform3D): void
-        /* gdvirtual */ _area_get_param(area: RID, param: PhysicsServer3D.AreaParameter): any
-        /* gdvirtual */ _area_get_transform(area: RID): Transform3D
-        /* gdvirtual */ _area_set_collision_layer(area: RID, layer: int64): void
-        /* gdvirtual */ _area_get_collision_layer(area: RID): int64
-        /* gdvirtual */ _area_set_collision_mask(area: RID, mask: int64): void
-        /* gdvirtual */ _area_get_collision_mask(area: RID): int64
-        /* gdvirtual */ _area_set_monitorable(area: RID, monitorable: boolean): void
-        /* gdvirtual */ _area_set_ray_pickable(area: RID, enable: boolean): void
-        /* gdvirtual */ _area_set_monitor_callback(area: RID, callback: Callable): void
-        /* gdvirtual */ _area_set_area_monitor_callback(area: RID, callback: Callable): void
-        /* gdvirtual */ _body_create(): RID
-        /* gdvirtual */ _body_set_space(body: RID, space: RID): void
-        /* gdvirtual */ _body_get_space(body: RID): RID
-        /* gdvirtual */ _body_set_mode(body: RID, mode: PhysicsServer3D.BodyMode): void
-        /* gdvirtual */ _body_get_mode(body: RID): PhysicsServer3D.BodyMode
-        /* gdvirtual */ _body_add_shape(body: RID, shape: RID, transform: Transform3D, disabled: boolean): void
-        /* gdvirtual */ _body_set_shape(body: RID, shape_idx: int64, shape: RID): void
-        /* gdvirtual */ _body_set_shape_transform(body: RID, shape_idx: int64, transform: Transform3D): void
-        /* gdvirtual */ _body_set_shape_disabled(body: RID, shape_idx: int64, disabled: boolean): void
-        /* gdvirtual */ _body_get_shape_count(body: RID): int64
-        /* gdvirtual */ _body_get_shape(body: RID, shape_idx: int64): RID
-        /* gdvirtual */ _body_get_shape_transform(body: RID, shape_idx: int64): Transform3D
-        /* gdvirtual */ _body_remove_shape(body: RID, shape_idx: int64): void
-        /* gdvirtual */ _body_clear_shapes(body: RID): void
-        /* gdvirtual */ _body_attach_object_instance_id(body: RID, id: int64): void
-        /* gdvirtual */ _body_get_object_instance_id(body: RID): int64
-        /* gdvirtual */ _body_set_enable_continuous_collision_detection(body: RID, enable: boolean): void
-        /* gdvirtual */ _body_is_continuous_collision_detection_enabled(body: RID): boolean
-        /* gdvirtual */ _body_set_collision_layer(body: RID, layer: int64): void
-        /* gdvirtual */ _body_get_collision_layer(body: RID): int64
-        /* gdvirtual */ _body_set_collision_mask(body: RID, mask: int64): void
-        /* gdvirtual */ _body_get_collision_mask(body: RID): int64
-        /* gdvirtual */ _body_set_collision_priority(body: RID, priority: float64): void
-        /* gdvirtual */ _body_get_collision_priority(body: RID): float64
-        /* gdvirtual */ _body_set_user_flags(body: RID, flags: int64): void
-        /* gdvirtual */ _body_get_user_flags(body: RID): int64
-        /* gdvirtual */ _body_set_param(body: RID, param: PhysicsServer3D.BodyParameter, value: any): void
-        /* gdvirtual */ _body_get_param(body: RID, param: PhysicsServer3D.BodyParameter): any
-        /* gdvirtual */ _body_reset_mass_properties(body: RID): void
-        /* gdvirtual */ _body_set_state(body: RID, state: PhysicsServer3D.BodyState, value: any): void
-        /* gdvirtual */ _body_get_state(body: RID, state: PhysicsServer3D.BodyState): any
-        /* gdvirtual */ _body_apply_central_impulse(body: RID, impulse: Vector3): void
-        /* gdvirtual */ _body_apply_impulse(body: RID, impulse: Vector3, position: Vector3): void
-        /* gdvirtual */ _body_apply_torque_impulse(body: RID, impulse: Vector3): void
-        /* gdvirtual */ _body_apply_central_force(body: RID, force: Vector3): void
-        /* gdvirtual */ _body_apply_force(body: RID, force: Vector3, position: Vector3): void
-        /* gdvirtual */ _body_apply_torque(body: RID, torque: Vector3): void
-        /* gdvirtual */ _body_add_constant_central_force(body: RID, force: Vector3): void
-        /* gdvirtual */ _body_add_constant_force(body: RID, force: Vector3, position: Vector3): void
-        /* gdvirtual */ _body_add_constant_torque(body: RID, torque: Vector3): void
-        /* gdvirtual */ _body_set_constant_force(body: RID, force: Vector3): void
-        /* gdvirtual */ _body_get_constant_force(body: RID): Vector3
-        /* gdvirtual */ _body_set_constant_torque(body: RID, torque: Vector3): void
-        /* gdvirtual */ _body_get_constant_torque(body: RID): Vector3
-        /* gdvirtual */ _body_set_axis_velocity(body: RID, axis_velocity: Vector3): void
-        /* gdvirtual */ _body_set_axis_lock(body: RID, axis: PhysicsServer3D.BodyAxis, lock: boolean): void
-        /* gdvirtual */ _body_is_axis_locked(body: RID, axis: PhysicsServer3D.BodyAxis): boolean
-        /* gdvirtual */ _body_add_collision_exception(body: RID, excepted_body: RID): void
-        /* gdvirtual */ _body_remove_collision_exception(body: RID, excepted_body: RID): void
-        /* gdvirtual */ _body_get_collision_exceptions(body: RID): GArray<RID>
-        /* gdvirtual */ _body_set_max_contacts_reported(body: RID, amount: int64): void
-        /* gdvirtual */ _body_get_max_contacts_reported(body: RID): int64
-        /* gdvirtual */ _body_set_contacts_reported_depth_threshold(body: RID, threshold: float64): void
-        /* gdvirtual */ _body_get_contacts_reported_depth_threshold(body: RID): float64
-        /* gdvirtual */ _body_set_omit_force_integration(body: RID, enable: boolean): void
-        /* gdvirtual */ _body_is_omitting_force_integration(body: RID): boolean
-        /* gdvirtual */ _body_set_state_sync_callback(body: RID, callable: Callable): void
-        /* gdvirtual */ _body_set_force_integration_callback(body: RID, callable: Callable, userdata: any): void
-        /* gdvirtual */ _body_set_ray_pickable(body: RID, enable: boolean): void
-        /* gdvirtual */ _body_test_motion(body: RID, from: Transform3D, motion: Vector3, margin: float64, max_collisions: int64, collide_separation_ray: boolean, recovery_as_collision: boolean, result: int64): boolean
-        /* gdvirtual */ _body_get_direct_state(body: RID): null | PhysicsDirectBodyState3D
-        /* gdvirtual */ _soft_body_create(): RID
-        /* gdvirtual */ _soft_body_update_rendering_server(body: RID, rendering_server_handler: PhysicsServer3DRenderingServerHandler): void
-        /* gdvirtual */ _soft_body_set_space(body: RID, space: RID): void
-        /* gdvirtual */ _soft_body_get_space(body: RID): RID
-        /* gdvirtual */ _soft_body_set_ray_pickable(body: RID, enable: boolean): void
-        /* gdvirtual */ _soft_body_set_collision_layer(body: RID, layer: int64): void
-        /* gdvirtual */ _soft_body_get_collision_layer(body: RID): int64
-        /* gdvirtual */ _soft_body_set_collision_mask(body: RID, mask: int64): void
-        /* gdvirtual */ _soft_body_get_collision_mask(body: RID): int64
-        /* gdvirtual */ _soft_body_add_collision_exception(body: RID, body_b: RID): void
-        /* gdvirtual */ _soft_body_remove_collision_exception(body: RID, body_b: RID): void
-        /* gdvirtual */ _soft_body_get_collision_exceptions(body: RID): GArray<RID>
-        /* gdvirtual */ _soft_body_set_state(body: RID, state: PhysicsServer3D.BodyState, variant: any): void
-        /* gdvirtual */ _soft_body_get_state(body: RID, state: PhysicsServer3D.BodyState): any
-        /* gdvirtual */ _soft_body_set_transform(body: RID, transform: Transform3D): void
-        /* gdvirtual */ _soft_body_set_simulation_precision(body: RID, simulation_precision: int64): void
-        /* gdvirtual */ _soft_body_get_simulation_precision(body: RID): int64
-        /* gdvirtual */ _soft_body_set_total_mass(body: RID, total_mass: float64): void
-        /* gdvirtual */ _soft_body_get_total_mass(body: RID): float64
-        /* gdvirtual */ _soft_body_set_linear_stiffness(body: RID, linear_stiffness: float64): void
-        /* gdvirtual */ _soft_body_get_linear_stiffness(body: RID): float64
-        /* gdvirtual */ _soft_body_set_shrinking_factor(body: RID, shrinking_factor: float64): void
-        /* gdvirtual */ _soft_body_get_shrinking_factor(body: RID): float64
-        /* gdvirtual */ _soft_body_set_pressure_coefficient(body: RID, pressure_coefficient: float64): void
-        /* gdvirtual */ _soft_body_get_pressure_coefficient(body: RID): float64
-        /* gdvirtual */ _soft_body_set_damping_coefficient(body: RID, damping_coefficient: float64): void
-        /* gdvirtual */ _soft_body_get_damping_coefficient(body: RID): float64
-        /* gdvirtual */ _soft_body_set_drag_coefficient(body: RID, drag_coefficient: float64): void
-        /* gdvirtual */ _soft_body_get_drag_coefficient(body: RID): float64
-        /* gdvirtual */ _soft_body_set_mesh(body: RID, mesh: RID): void
-        /* gdvirtual */ _soft_body_get_bounds(body: RID): AABB
-        /* gdvirtual */ _soft_body_move_point(body: RID, point_index: int64, global_position: Vector3): void
-        /* gdvirtual */ _soft_body_get_point_global_position(body: RID, point_index: int64): Vector3
-        /* gdvirtual */ _soft_body_remove_all_pinned_points(body: RID): void
-        /* gdvirtual */ _soft_body_pin_point(body: RID, point_index: int64, pin: boolean): void
-        /* gdvirtual */ _soft_body_is_point_pinned(body: RID, point_index: int64): boolean
-        /* gdvirtual */ _soft_body_apply_point_impulse(body: RID, point_index: int64, impulse: Vector3): void
-        /* gdvirtual */ _soft_body_apply_point_force(body: RID, point_index: int64, force: Vector3): void
-        /* gdvirtual */ _soft_body_apply_central_impulse(body: RID, impulse: Vector3): void
-        /* gdvirtual */ _soft_body_apply_central_force(body: RID, force: Vector3): void
-        /* gdvirtual */ _joint_create(): RID
-        /* gdvirtual */ _joint_clear(joint: RID): void
-        /* gdvirtual */ _joint_make_pin(joint: RID, body_A: RID, local_A: Vector3, body_B: RID, local_B: Vector3): void
-        /* gdvirtual */ _pin_joint_set_param(joint: RID, param: PhysicsServer3D.PinJointParam, value: float64): void
-        /* gdvirtual */ _pin_joint_get_param(joint: RID, param: PhysicsServer3D.PinJointParam): float64
-        /* gdvirtual */ _pin_joint_set_local_a(joint: RID, local_A: Vector3): void
-        /* gdvirtual */ _pin_joint_get_local_a(joint: RID): Vector3
-        /* gdvirtual */ _pin_joint_set_local_b(joint: RID, local_B: Vector3): void
-        /* gdvirtual */ _pin_joint_get_local_b(joint: RID): Vector3
-        /* gdvirtual */ _joint_make_hinge(joint: RID, body_A: RID, hinge_A: Transform3D, body_B: RID, hinge_B: Transform3D): void
-        /* gdvirtual */ _joint_make_hinge_simple(joint: RID, body_A: RID, pivot_A: Vector3, axis_A: Vector3, body_B: RID, pivot_B: Vector3, axis_B: Vector3): void
-        /* gdvirtual */ _hinge_joint_set_param(joint: RID, param: PhysicsServer3D.HingeJointParam, value: float64): void
-        /* gdvirtual */ _hinge_joint_get_param(joint: RID, param: PhysicsServer3D.HingeJointParam): float64
-        /* gdvirtual */ _hinge_joint_set_flag(joint: RID, flag: PhysicsServer3D.HingeJointFlag, enabled: boolean): void
-        /* gdvirtual */ _hinge_joint_get_flag(joint: RID, flag: PhysicsServer3D.HingeJointFlag): boolean
-        /* gdvirtual */ _joint_make_slider(joint: RID, body_A: RID, local_ref_A: Transform3D, body_B: RID, local_ref_B: Transform3D): void
-        /* gdvirtual */ _slider_joint_set_param(joint: RID, param: PhysicsServer3D.SliderJointParam, value: float64): void
-        /* gdvirtual */ _slider_joint_get_param(joint: RID, param: PhysicsServer3D.SliderJointParam): float64
-        /* gdvirtual */ _joint_make_cone_twist(joint: RID, body_A: RID, local_ref_A: Transform3D, body_B: RID, local_ref_B: Transform3D): void
-        /* gdvirtual */ _cone_twist_joint_set_param(joint: RID, param: PhysicsServer3D.ConeTwistJointParam, value: float64): void
-        /* gdvirtual */ _cone_twist_joint_get_param(joint: RID, param: PhysicsServer3D.ConeTwistJointParam): float64
-        /* gdvirtual */ _joint_make_generic_6dof(joint: RID, body_A: RID, local_ref_A: Transform3D, body_B: RID, local_ref_B: Transform3D): void
-        /* gdvirtual */ _generic_6dof_joint_set_param(joint: RID, axis: Vector3.Axis, param: PhysicsServer3D.G6DOFJointAxisParam, value: float64): void
-        /* gdvirtual */ _generic_6dof_joint_get_param(joint: RID, axis: Vector3.Axis, param: PhysicsServer3D.G6DOFJointAxisParam): float64
-        /* gdvirtual */ _generic_6dof_joint_set_flag(joint: RID, axis: Vector3.Axis, flag: PhysicsServer3D.G6DOFJointAxisFlag, enable: boolean): void
-        /* gdvirtual */ _generic_6dof_joint_get_flag(joint: RID, axis: Vector3.Axis, flag: PhysicsServer3D.G6DOFJointAxisFlag): boolean
-        /* gdvirtual */ _joint_get_type(joint: RID): PhysicsServer3D.JointType
-        /* gdvirtual */ _joint_set_solver_priority(joint: RID, priority: int64): void
-        /* gdvirtual */ _joint_get_solver_priority(joint: RID): int64
-        /* gdvirtual */ _joint_disable_collisions_between_bodies(joint: RID, disable: boolean): void
-        /* gdvirtual */ _joint_is_disabled_collisions_between_bodies(joint: RID): boolean
-        /* gdvirtual */ _free_rid(rid: RID): void
-        /* gdvirtual */ _set_active(active: boolean): void
-        /* gdvirtual */ _init(): void
-        /* gdvirtual */ _step(step: float64): void
-        /* gdvirtual */ _sync(): void
-        /* gdvirtual */ _flush_queries(): void
-        /* gdvirtual */ _end_sync(): void
-        /* gdvirtual */ _finish(): void
-        /* gdvirtual */ _is_flushing_queries(): boolean
-        /* gdvirtual */ _get_process_info(process_info: PhysicsServer3D.ProcessInfo): int64
-        body_test_motion_is_excluding_body(body: RID): boolean
-        body_test_motion_is_excluding_object(object: int64): boolean
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsServer3DExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotNameMap: __NameMapPhysicsServer3DExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsServer3DRenderingServerHandler extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsServer3DRenderingServerHandler extends __NameMapObject {
     }
     /** A class used to provide [method PhysicsServer3DExtension._soft_body_update_rendering_server] with a rendering handler for soft bodies.  
@@ -3556,12 +33,7 @@ declare module "godot" {
         /** Sets the bounding box for the [SoftBody3D]. */
         set_aabb(aabb: AABB): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsServer3DRenderingServerHandler;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsServer3DRenderingServerHandler;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsShapeQueryParameters2D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsShapeQueryParameters2D extends __NameMapRefCounted {
@@ -3613,12 +85,7 @@ declare module "godot" {
         get collide_with_areas(): boolean
         set collide_with_areas(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsShapeQueryParameters2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsShapeQueryParameters2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsShapeQueryParameters3D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsShapeQueryParameters3D extends __NameMapRefCounted {
@@ -3670,12 +137,7 @@ declare module "godot" {
         get collide_with_areas(): boolean
         set collide_with_areas(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsShapeQueryParameters3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsShapeQueryParameters3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsTestMotionParameters2D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsTestMotionParameters2D extends __NameMapRefCounted {
@@ -3718,12 +180,7 @@ declare module "godot" {
         get recovery_as_collision(): boolean
         set recovery_as_collision(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsTestMotionParameters2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsTestMotionParameters2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsTestMotionParameters3D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsTestMotionParameters3D extends __NameMapRefCounted {
@@ -3770,12 +227,7 @@ declare module "godot" {
         get recovery_as_collision(): boolean
         set recovery_as_collision(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsTestMotionParameters3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsTestMotionParameters3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsTestMotionResult2D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsTestMotionResult2D extends __NameMapRefCounted {
@@ -3825,12 +277,7 @@ declare module "godot" {
         /** Returns the minimum fraction of the motion needed to collide, if a collision occurred, between `0` and `1`. */
         get_collision_unsafe_fraction(): float64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsTestMotionResult2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsTestMotionResult2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPhysicsTestMotionResult3D extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPhysicsTestMotionResult3D extends __NameMapRefCounted {
@@ -3883,12 +330,7 @@ declare module "godot" {
         /** Returns the length of overlap along the collision normal given a collision index (the deepest collision by default), if a collision occurred. */
         get_collision_depth(collision_index?: int64 /* = 0 */): float64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPhysicsTestMotionResult3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPhysicsTestMotionResult3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPinJoint2D extends __RPCMapJoint2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPinJoint2D extends __NameMapJoint2D {
@@ -3923,8 +365,6 @@ declare module "godot" {
         get motor_target_velocity(): float64
         set motor_target_velocity(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPinJoint2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPinJoint2D;
     }
     namespace PinJoint3D {
@@ -3938,9 +378,6 @@ declare module "godot" {
             /** If above 0, this value is the maximum value for an impulse that this Joint3D produces. */
             PARAM_IMPULSE_CLAMP = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPinJoint3D extends __RPCMapJoint3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPinJoint3D extends __NameMapJoint3D {
@@ -3969,12 +406,7 @@ declare module "godot" {
         get "params/impulse_clamp"(): float64
         set "params/impulse_clamp"(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPinJoint3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPinJoint3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPlaceholderCubemap extends __RPCMapPlaceholderTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPlaceholderCubemap extends __NameMapPlaceholderTextureLayered {
@@ -3986,12 +418,7 @@ declare module "godot" {
     class PlaceholderCubemap extends PlaceholderTextureLayered {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPlaceholderCubemap;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPlaceholderCubemap;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPlaceholderCubemapArray extends __RPCMapPlaceholderTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPlaceholderCubemapArray extends __NameMapPlaceholderTextureLayered {
@@ -4003,12 +430,7 @@ declare module "godot" {
     class PlaceholderCubemapArray extends PlaceholderTextureLayered {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPlaceholderCubemapArray;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPlaceholderCubemapArray;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPlaceholderMaterial extends __RPCMapMaterial {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPlaceholderMaterial extends __NameMapMaterial {
@@ -4020,12 +442,7 @@ declare module "godot" {
     class PlaceholderMaterial extends Material {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPlaceholderMaterial;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPlaceholderMaterial;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPlaceholderMesh extends __RPCMapMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPlaceholderMesh extends __NameMapMesh {
@@ -4040,12 +457,7 @@ declare module "godot" {
         get aabb(): AABB
         set aabb(value: AABB)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPlaceholderMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPlaceholderMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPlaceholderTexture2D extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPlaceholderTexture2D extends __NameMapTexture2D {
@@ -4060,12 +472,7 @@ declare module "godot" {
         get size(): Vector2
         set size(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPlaceholderTexture2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPlaceholderTexture2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPlaceholderTexture2DArray extends __RPCMapPlaceholderTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPlaceholderTexture2DArray extends __NameMapPlaceholderTextureLayered {
@@ -4077,12 +484,7 @@ declare module "godot" {
     class PlaceholderTexture2DArray extends PlaceholderTextureLayered {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPlaceholderTexture2DArray;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPlaceholderTexture2DArray;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPlaceholderTexture3D extends __RPCMapTexture3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPlaceholderTexture3D extends __NameMapTexture3D {
@@ -4097,12 +499,7 @@ declare module "godot" {
         get size(): Vector3i
         set size(value: Vector3i)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPlaceholderTexture3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPlaceholderTexture3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPlaceholderTextureLayered extends __RPCMapTextureLayered {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPlaceholderTextureLayered extends __NameMapTextureLayered {
@@ -4121,8 +518,6 @@ declare module "godot" {
         get layers(): int64
         set layers(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPlaceholderTextureLayered;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPlaceholderTextureLayered;
     }
     namespace PlaneMesh {
@@ -4136,9 +531,6 @@ declare module "godot" {
             /** [PlaneMesh] will face the positive Z-axis. This matches the behavior of the QuadMesh in Godot 3.x. */
             FACE_Z = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPlaneMesh extends __RPCMapPrimitiveMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPlaneMesh extends __NameMapPrimitiveMesh {
@@ -4169,12 +561,7 @@ declare module "godot" {
         get orientation(): int64
         set orientation(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPlaneMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPlaneMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPointLight2D extends __RPCMapLight2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPointLight2D extends __NameMapLight2D {
@@ -4201,12 +588,7 @@ declare module "godot" {
         get height(): float64
         set height(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPointLight2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPointLight2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPointMesh extends __RPCMapPrimitiveMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPointMesh extends __NameMapPrimitiveMesh {
@@ -4218,12 +600,7 @@ declare module "godot" {
     class PointMesh extends PrimitiveMesh {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPointMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPointMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPolygon2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPolygon2D extends __NameMapNode2D {
@@ -4320,12 +697,7 @@ declare module "godot" {
         get internal_vertex_count(): int64
         set internal_vertex_count(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPolygon2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPolygon2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPolygonOccluder3D extends __RPCMapOccluder3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPolygonOccluder3D extends __NameMapOccluder3D {
@@ -4344,12 +716,7 @@ declare module "godot" {
         get polygon(): PackedVector2Array
         set polygon(value: PackedVector2Array | Vector2[])
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPolygonOccluder3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPolygonOccluder3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPolygonPathFinder extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPolygonPathFinder extends __NameMapResource {
@@ -4376,12 +743,7 @@ declare module "godot" {
         get data(): GDictionary
         set data(value: GDictionary)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPolygonPathFinder;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPolygonPathFinder;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPopup extends __RPCMapWindow {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPopup extends __NameMapWindow {
@@ -4395,12 +757,7 @@ declare module "godot" {
         /** Emitted when the popup is hidden. */
         readonly popup_hide: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPopup;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPopup;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPopupMenu extends __RPCMapPopup {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPopupMenu extends __NameMapPopup {
@@ -4764,12 +1121,7 @@ declare module "godot" {
         /** Emitted when any item is added, modified or removed. */
         readonly menu_changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPopupMenu;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPopupMenu;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPopupPanel extends __RPCMapPopup {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPopupPanel extends __NameMapPopup {
@@ -4780,8 +1132,6 @@ declare module "godot" {
      */
     class PopupPanel<Map extends NodePathMap = any> extends Popup<Map> {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPopupPanel;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPopupPanel;
     }
@@ -4795,9 +1145,6 @@ declare module "godot" {
             COMPRESSION_MODE_BPTC = 5,
             COMPRESSION_MODE_ASTC = 6,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPortableCompressedTexture2D extends __RPCMapTexture2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPortableCompressedTexture2D extends __NameMapTexture2D {
@@ -4845,12 +1192,7 @@ declare module "godot" {
         get keep_compressed_buffer(): boolean
         set keep_compressed_buffer(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPortableCompressedTexture2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPortableCompressedTexture2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPrimitiveMesh extends __RPCMapMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPrimitiveMesh extends __NameMapMesh {
@@ -4897,12 +1239,7 @@ declare module "godot" {
         get uv2_padding(): float64
         set uv2_padding(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPrimitiveMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPrimitiveMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPrismMesh extends __RPCMapPrimitiveMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPrismMesh extends __NameMapPrimitiveMesh {
@@ -4933,12 +1270,7 @@ declare module "godot" {
         get subdivide_depth(): int64
         set subdivide_depth(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPrismMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPrismMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapProceduralSkyMaterial extends __RPCMapMaterial {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapProceduralSkyMaterial extends __NameMapMaterial {
@@ -5005,8 +1337,6 @@ declare module "godot" {
         get energy_multiplier(): float64
         set energy_multiplier(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapProceduralSkyMaterial;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapProceduralSkyMaterial;
     }
     namespace ProgressBar {
@@ -5023,9 +1353,6 @@ declare module "godot" {
             /** The progress fills from bottom to top. */
             FILL_BOTTOM_TO_TOP = 3,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapProgressBar extends __RPCMapRange {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapProgressBar extends __NameMapRange {
@@ -5052,12 +1379,7 @@ declare module "godot" {
         get editor_preview_indeterminate(): boolean
         set editor_preview_indeterminate(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapProgressBar;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapProgressBar;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapPropertyTweener extends __RPCMapTweener {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapPropertyTweener extends __NameMapTweener {
@@ -5099,12 +1421,7 @@ declare module "godot" {
         /** Sets the time in seconds after which the [PropertyTweener] will start interpolating. By default there's no delay. */
         set_delay(delay: float64): null | PropertyTweener
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapPropertyTweener;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapPropertyTweener;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapQuadMesh extends __RPCMapPlaneMesh {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapQuadMesh extends __NameMapPlaneMesh {
@@ -5116,12 +1433,7 @@ declare module "godot" {
     class QuadMesh extends PlaneMesh {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapQuadMesh;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapQuadMesh;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapQuadOccluder3D extends __RPCMapOccluder3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapQuadOccluder3D extends __NameMapOccluder3D {
@@ -5136,12 +1448,7 @@ declare module "godot" {
         get size(): Vector2
         set size(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapQuadOccluder3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapQuadOccluder3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDAttachmentFormat extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDAttachmentFormat extends __NameMapRefCounted {
@@ -5164,12 +1471,7 @@ declare module "godot" {
         get usage_flags(): int64
         set usage_flags(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDAttachmentFormat;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDAttachmentFormat;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDFramebufferPass extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDFramebufferPass extends __NameMapRefCounted {
@@ -5203,12 +1505,7 @@ declare module "godot" {
         get depth_attachment(): int64
         set depth_attachment(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDFramebufferPass;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDFramebufferPass;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDPipelineColorBlendState extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDPipelineColorBlendState extends __NameMapRefCounted {
@@ -5235,12 +1532,7 @@ declare module "godot" {
         get attachments(): GArray<RDPipelineColorBlendStateAttachment>
         set attachments(value: GArray<RDPipelineColorBlendStateAttachment>)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDPipelineColorBlendState;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDPipelineColorBlendState;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDPipelineColorBlendStateAttachment extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDPipelineColorBlendStateAttachment extends __NameMapRefCounted {
@@ -5298,12 +1590,7 @@ declare module "godot" {
         get write_a(): boolean
         set write_a(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDPipelineColorBlendStateAttachment;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDPipelineColorBlendStateAttachment;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDPipelineDepthStencilState extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDPipelineDepthStencilState extends __NameMapRefCounted {
@@ -5398,12 +1685,7 @@ declare module "godot" {
         get back_op_reference(): int64
         set back_op_reference(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDPipelineDepthStencilState;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDPipelineDepthStencilState;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDPipelineMultisampleState extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDPipelineMultisampleState extends __NameMapRefCounted {
@@ -5438,12 +1720,7 @@ declare module "godot" {
         get sample_masks(): GArray<int64>
         set sample_masks(value: GArray<int64>)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDPipelineMultisampleState;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDPipelineMultisampleState;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDPipelineRasterizationState extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDPipelineRasterizationState extends __NameMapRefCounted {
@@ -5498,12 +1775,7 @@ declare module "godot" {
         get patch_control_points(): int64
         set patch_control_points(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDPipelineRasterizationState;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDPipelineRasterizationState;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDPipelineSpecializationConstant extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDPipelineSpecializationConstant extends __NameMapRefCounted {
@@ -5522,12 +1794,7 @@ declare module "godot" {
         get constant_id(): int64
         set constant_id(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDPipelineSpecializationConstant;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDPipelineSpecializationConstant;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDSamplerState extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDSamplerState extends __NameMapRefCounted {
@@ -5600,12 +1867,7 @@ declare module "godot" {
         get unnormalized_uvw(): boolean
         set unnormalized_uvw(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDSamplerState;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDSamplerState;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDShaderFile extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDShaderFile extends __NameMapResource {
@@ -5631,12 +1893,7 @@ declare module "godot" {
         get base_error(): string
         set base_error(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDShaderFile;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDShaderFile;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDShaderSPIRV extends __RPCMapResource {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDShaderSPIRV extends __NameMapResource {
@@ -5699,12 +1956,7 @@ declare module "godot" {
         get compile_error_compute(): string
         set compile_error_compute(value: string)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDShaderSPIRV;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDShaderSPIRV;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDShaderSource extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDShaderSource extends __NameMapRefCounted {
@@ -5748,12 +2000,7 @@ declare module "godot" {
         get language(): int64
         set language(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDShaderSource;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDShaderSource;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDTextureFormat extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDTextureFormat extends __NameMapRefCounted {
@@ -5816,12 +2063,7 @@ declare module "godot" {
         get is_discardable(): boolean
         set is_discardable(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDTextureFormat;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDTextureFormat;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDTextureView extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDTextureView extends __NameMapRefCounted {
@@ -5852,12 +2094,7 @@ declare module "godot" {
         get swizzle_a(): int64
         set swizzle_a(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDTextureView;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDTextureView;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDUniform extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDUniform extends __NameMapRefCounted {
@@ -5884,12 +2121,7 @@ declare module "godot" {
         get _ids(): GArray
         set _ids(value: GArray)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDUniform;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDUniform;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRDVertexAttribute extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRDVertexAttribute extends __NameMapRefCounted {
@@ -5927,12 +2159,7 @@ declare module "godot" {
         get frequency(): int64
         set frequency(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRDVertexAttribute;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRDVertexAttribute;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRandomNumberGenerator extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRandomNumberGenerator extends __NameMapRefCounted {
@@ -5991,12 +2218,7 @@ declare module "godot" {
         get state(): int64
         set state(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRandomNumberGenerator;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRandomNumberGenerator;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRange extends __RPCMapControl {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRange extends __NameMapControl {
@@ -6068,12 +2290,7 @@ declare module "godot" {
         /** Emitted when [member min_value], [member max_value], [member page], or [member step] change. */
         readonly changed: Signal<() => void>
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRange;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRange;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRayCast2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRayCast2D extends __NameMapNode2D {
@@ -6169,12 +2386,7 @@ declare module "godot" {
         get collide_with_bodies(): boolean
         set collide_with_bodies(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRayCast2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRayCast2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRayCast3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRayCast3D extends __NameMapNode3D {
@@ -6287,12 +2499,7 @@ declare module "godot" {
         get debug_shape_thickness(): int64
         set debug_shape_thickness(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRayCast3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRayCast3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRectangleShape2D extends __RPCMapShape2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRectangleShape2D extends __NameMapShape2D {
@@ -6307,12 +2514,7 @@ declare module "godot" {
         get size(): Vector2
         set size(value: Vector2)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRectangleShape2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRectangleShape2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRefCounted extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRefCounted extends __NameMapObject {
@@ -6341,12 +2543,7 @@ declare module "godot" {
         /** Returns the current reference count. */
         get_reference_count(): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRefCounted;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRefCounted;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapReferenceRect extends __RPCMapControl {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapReferenceRect extends __NameMapControl {
@@ -6369,8 +2566,6 @@ declare module "godot" {
         get editor_only(): boolean
         set editor_only(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapReferenceRect;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapReferenceRect;
     }
     namespace ReflectionProbe {
@@ -6391,9 +2586,6 @@ declare module "godot" {
             /** Apply custom ambient lighting inside the [ReflectionProbe]'s box defined by its [member size]. See [member ambient_color] and [member ambient_color_energy]. */
             AMBIENT_COLOR = 2,
         }
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapReflectionProbe extends __RPCMapVisualInstance3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapReflectionProbe extends __NameMapVisualInstance3D {
@@ -6478,12 +2670,7 @@ declare module "godot" {
         get ambient_color_energy(): float64
         set ambient_color_energy(value: float64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapReflectionProbe;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapReflectionProbe;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRegEx extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRegEx extends __NameMapRefCounted {
@@ -6530,12 +2717,7 @@ declare module "godot" {
         /** Returns an array of names of named capturing groups in the compiled pattern. They are ordered by appearance. */
         get_names(): PackedStringArray
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRegEx;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRegEx;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRegExMatch extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRegExMatch extends __NameMapRefCounted {
@@ -6552,17 +2734,17 @@ declare module "godot" {
         /** Returns the substring of the match from the source string. Capturing groups can be retrieved by providing its group number as an integer or its string name (if it's a named group). The default value of 0 refers to the whole pattern.  
          *  Returns an empty string if the group did not match or doesn't exist.  
          */
-        get_string(name?: any /* = {} */): string
+        get_string(name?: any /* = <any> {} */): string
         
         /** Returns the starting position of the match within the source string. The starting position of capturing groups can be retrieved by providing its group number as an integer or its string name (if it's a named group). The default value of 0 refers to the whole pattern.  
          *  Returns -1 if the group did not match or doesn't exist.  
          */
-        get_start(name?: any /* = {} */): int64
+        get_start(name?: any /* = <any> {} */): int64
         
         /** Returns the end position of the match within the source string. The end position of capturing groups can be retrieved by providing its group number as an integer or its string name (if it's a named group). The default value of 0 refers to the whole pattern.  
          *  Returns -1 if the group did not match or doesn't exist.  
          */
-        get_end(name?: any /* = {} */): int64
+        get_end(name?: any /* = <any> {} */): int64
         
         /** The source string used with the search pattern to find this matching result. */
         get subject(): string
@@ -6573,12 +2755,7 @@ declare module "godot" {
         /** An [Array] of the match and its capturing groups. */
         get strings(): GArray
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRegExMatch;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRegExMatch;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRemoteTransform2D extends __RPCMapNode2D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRemoteTransform2D extends __NameMapNode2D {
@@ -6612,12 +2789,7 @@ declare module "godot" {
         get update_scale(): boolean
         set update_scale(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRemoteTransform2D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRemoteTransform2D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRemoteTransform3D extends __RPCMapNode3D {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRemoteTransform3D extends __NameMapNode3D {
@@ -6651,12 +2823,7 @@ declare module "godot" {
         get update_scale(): boolean
         set update_scale(value: boolean)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRemoteTransform3D;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRemoteTransform3D;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderData extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderData extends __NameMapObject {
@@ -6679,12 +2846,7 @@ declare module "godot" {
         /** Returns the [RID] of the camera attributes object in the [RenderingServer] being used to render this viewport. */
         get_camera_attributes(): RID
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderData;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderData;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderDataExtension extends __RPCMapRenderData {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderDataExtension extends __NameMapRenderData {
@@ -6707,12 +2869,7 @@ declare module "godot" {
         /** Implement this in GDExtension to return the [RID] for the implementation's camera attributes object. */
         /* gdvirtual */ _get_camera_attributes(): RID
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderDataExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderDataExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderDataRD extends __RPCMapRenderData {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderDataRD extends __NameMapRenderData {
@@ -6724,12 +2881,7 @@ declare module "godot" {
     class RenderDataRD extends RenderData {
         constructor(identifier?: any)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderDataRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderDataRD;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderSceneBuffers extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderSceneBuffers extends __NameMapRefCounted {
@@ -6743,12 +2895,7 @@ declare module "godot" {
         /** This method is called by the rendering server when the associated viewport's configuration is changed. It will discard the old buffers and recreate the internal buffers used. */
         configure(config: RenderSceneBuffersConfiguration): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderSceneBuffers;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderSceneBuffers;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderSceneBuffersConfiguration extends __RPCMapRefCounted {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderSceneBuffersConfiguration extends __NameMapRefCounted {
@@ -6799,12 +2946,7 @@ declare module "godot" {
         get anisotropic_filtering_level(): int64
         set anisotropic_filtering_level(value: int64)
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderSceneBuffersConfiguration;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderSceneBuffersConfiguration;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderSceneBuffersExtension extends __RPCMapRenderSceneBuffers {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderSceneBuffersExtension extends __NameMapRenderSceneBuffers {
@@ -6830,12 +2972,7 @@ declare module "godot" {
         /** Implement this in GDExtension to react to the debanding flag changing. */
         /* gdvirtual */ _set_use_debanding(use_debanding: boolean): void
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderSceneBuffersExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderSceneBuffersExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderSceneBuffersRD extends __RPCMapRenderSceneBuffers {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderSceneBuffersRD extends __NameMapRenderSceneBuffers {
@@ -6937,12 +3074,7 @@ declare module "godot" {
         /** Returns `true` if debanding is enabled. */
         get_use_debanding(): boolean
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderSceneBuffersRD;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderSceneBuffersRD;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderSceneData extends __RPCMapObject {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderSceneData extends __NameMapObject {
@@ -6980,12 +3112,7 @@ declare module "godot" {
         /** Return the [RID] of the uniform buffer containing the scene data as a UBO. */
         get_uniform_buffer(): RID
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderSceneData;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderSceneData;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderSceneDataExtension extends __RPCMapRenderSceneData {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderSceneDataExtension extends __NameMapRenderSceneData {
@@ -7014,12 +3141,7 @@ declare module "godot" {
         /** Implement this in GDExtension to return the [RID] of the uniform buffer containing the scene data as a UBO. */
         /* gdvirtual */ _get_uniform_buffer(): RID
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderSceneDataExtension;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderSceneDataExtension;
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderSceneDataRD extends __RPCMapRenderSceneData {
     }
     /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderSceneDataRD extends __NameMapRenderSceneData {
@@ -7030,8 +3152,6 @@ declare module "godot" {
      */
     class RenderSceneDataRD extends RenderSceneData {
         constructor(identifier?: any)
-        /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderSceneDataRD;
         /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderSceneDataRD;
     }
@@ -8697,9 +4817,6 @@ declare module "godot" {
         }
     }
     /** @deprecated Internal use. Does not exist at runtime. */
-    interface __RPCMapRenderingDevice extends __RPCMapObject {
-    }
-    /** @deprecated Internal use. Does not exist at runtime. */
     interface __NameMapRenderingDevice extends __NameMapObject {
     }
     /** Abstraction for working with modern low-level graphics APIs.  
@@ -8721,7 +4838,7 @@ declare module "godot" {
          *      
          *  **Note:** Not to be confused with [method RenderingServer.texture_2d_create], which creates the Godot-specific [Texture2D] resource as opposed to the graphics API's own texture type.  
          */
-        texture_create(format: RDTextureFormat, view: RDTextureView, data?: GArray<PackedByteArray>): RID
+        texture_create(format: RDTextureFormat, view: RDTextureView, data?: GArray<PackedByteArray> /* = [] */): RID
         
         /** Creates a shared texture using the specified [param view] and the texture information from [param with_texture].  
          *  This will be freed automatically when the [param with_texture] is freed.  
@@ -9003,7 +5120,7 @@ declare module "godot" {
          *  Once finished with your RID, you will want to free the RID using the RenderingDevice's [method free_rid] method.  
          *  This will be freed automatically when the [param shader] is freed.  
          */
-        render_pipeline_create(shader: RID, framebuffer_format: int64, vertex_format: int64, primitive: RenderingDevice.RenderPrimitive, rasterization_state: RDPipelineRasterizationState, multisample_state: RDPipelineMultisampleState, stencil_state: RDPipelineDepthStencilState, color_blend_state: RDPipelineColorBlendState, dynamic_state_flags?: RenderingDevice.PipelineDynamicStateFlags /* = 0 */, for_render_pass?: int64 /* = 0 */, specialization_constants?: GArray<RDPipelineSpecializationConstant>): RID
+        render_pipeline_create(shader: RID, framebuffer_format: int64, vertex_format: int64, primitive: RenderingDevice.RenderPrimitive, rasterization_state: RDPipelineRasterizationState, multisample_state: RDPipelineMultisampleState, stencil_state: RDPipelineDepthStencilState, color_blend_state: RDPipelineColorBlendState, dynamic_state_flags?: RenderingDevice.PipelineDynamicStateFlags /* = 0 */, for_render_pass?: int64 /* = 0 */, specialization_constants?: GArray<RDPipelineSpecializationConstant> /* = [] */): RID
         
         /** Returns `true` if the render pipeline specified by the [param render_pipeline] RID is valid, `false` otherwise. */
         render_pipeline_is_valid(render_pipeline: RID): boolean
@@ -9012,7 +5129,7 @@ declare module "godot" {
          *  Once finished with your RID, you will want to free the RID using the RenderingDevice's [method free_rid] method.  
          *  This will be freed automatically when the [param shader] is freed.  
          */
-        compute_pipeline_create(shader: RID, specialization_constants?: GArray<RDPipelineSpecializationConstant>): RID
+        compute_pipeline_create(shader: RID, specialization_constants?: GArray<RDPipelineSpecializationConstant> /* = [] */): RID
         
         /** Returns `true` if the compute pipeline specified by the [param compute_pipeline] RID is valid, `false` otherwise. */
         compute_pipeline_is_valid(compute_pipeline: RID): boolean
@@ -9053,7 +5170,7 @@ declare module "godot" {
         draw_list_begin(framebuffer: RID, draw_flags?: RenderingDevice.DrawFlags /* = 0 */, clear_color_values?: PackedColorArray | Color[] /* = [] */, clear_depth_value?: float64 /* = 1 */, clear_stencil_value?: int64 /* = 0 */, region?: Rect2 /* = new Rect2(0, 0, 0, 0) */, breadcrumb?: int64 /* = 0 */): int64
         
         /** This method does nothing and always returns an empty [PackedInt64Array]. */
-        draw_list_begin_split(framebuffer: RID, splits: int64, initial_color_action: RenderingDevice.InitialAction, final_color_action: RenderingDevice.FinalAction, initial_depth_action: RenderingDevice.InitialAction, final_depth_action: RenderingDevice.FinalAction, clear_color_values?: PackedColorArray | Color[] /* = [] */, clear_depth?: float64 /* = 1 */, clear_stencil?: int64 /* = 0 */, region?: Rect2 /* = new Rect2(0, 0, 0, 0) */, storage_textures?: GArray<RID>): PackedInt64Array
+        draw_list_begin_split(framebuffer: RID, splits: int64, initial_color_action: RenderingDevice.InitialAction, final_color_action: RenderingDevice.FinalAction, initial_depth_action: RenderingDevice.InitialAction, final_depth_action: RenderingDevice.FinalAction, clear_color_values?: PackedColorArray | Color[] /* = [] */, clear_depth?: float64 /* = 1 */, clear_stencil?: int64 /* = 0 */, region?: Rect2 /* = new Rect2(0, 0, 0, 0) */, storage_textures?: GArray<RID> /* = [] */): PackedInt64Array
         
         /** Sets blend constants for the specified [param draw_list] to [param color]. Blend constants are used only if the graphics pipeline is created with [constant DYNAMIC_STATE_BLEND_CONSTANTS] flag set. */
         draw_list_set_blend_constants(draw_list: int64, color: Color): void
@@ -9294,8 +5411,3836 @@ declare module "godot" {
          */
         get_device_allocs_by_object_type(type: int64): int64
         /** @deprecated Internal use. Does not exist at runtime. */
-        __godotRPCMap: __RPCMapRenderingDevice;
-        /** @deprecated Internal use. Does not exist at runtime. */
         __godotNameMap: __NameMapRenderingDevice;
+    }
+    namespace Resource {
+        enum DeepDuplicateMode {
+            /** No subresources at all are duplicated. This is useful even in a deep duplication to have all the arrays and dictionaries duplicated but still pointing to the original resources. */
+            DEEP_DUPLICATE_NONE = 0,
+            
+            /** Only subresources without a path or with a scene-local path will be duplicated. */
+            DEEP_DUPLICATE_INTERNAL = 1,
+            
+            /** Every subresource found will be duplicated, even if it has a non-local path. In other words, even potentially big resources stored separately will be duplicated. */
+            DEEP_DUPLICATE_ALL = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResource extends __NameMapRefCounted {
+    }
+    /** Base class for serializable objects.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resource.html  
+     */
+    class Resource extends RefCounted {
+        constructor(identifier?: any)
+        /** Override this method to customize the newly duplicated resource created from [method PackedScene.instantiate], if the original's [member resource_local_to_scene] is set to `true`.  
+         *  **Example:** Set a random `damage` value to every local resource from an instantiated scene:  
+         *    
+         */
+        /* gdvirtual */ _setup_local_to_scene(): void
+        
+        /** Override this method to return a custom [RID] when [method get_rid] is called. */
+        /* gdvirtual */ _get_rid(): RID
+        
+        /** For resources that store state in non-exported properties, such as via [method Object._validate_property] or [method Object._get_property_list], this method must be implemented to clear them. */
+        /* gdvirtual */ _reset_state(): void
+        
+        /** Override this method to execute additional logic after [method set_path_cache] is called on this object. */
+        /* gdvirtual */ _set_path_cache(path: string): void
+        
+        /** Sets the [member resource_path] to [param path], potentially overriding an existing cache entry for this path. Further attempts to load an overridden resource by path will instead return this resource. */
+        take_over_path(path: string): void
+        
+        /** Sets the resource's path to [param path] without involving the resource cache. Useful for handling [enum ResourceFormatLoader.CacheMode] values when implementing a custom resource format by extending [ResourceFormatLoader] and [ResourceFormatSaver]. */
+        set_path_cache(path: string): void
+        
+        /** Returns the [RID] of this resource (or an empty RID). Many resources (such as [Texture2D], [Mesh], and so on) are high-level abstractions of resources stored in a specialized server ([DisplayServer], [RenderingServer], etc.), so this function will return the original [RID]. */
+        get_rid(): RID
+        
+        /** If [member resource_local_to_scene] is set to `true` and the resource has been loaded from a [PackedScene] instantiation, returns the root [Node] of the scene where this resource is used. Otherwise, returns `null`. */
+        get_local_scene(): null | Node
+        
+        /** Calls [method _setup_local_to_scene]. If [member resource_local_to_scene] is set to `true`, this method is automatically called from [method PackedScene.instantiate] by the newly duplicated resource within the scene instance. */
+        setup_local_to_scene(): void
+        
+        /** Makes the resource clear its non-exported properties. See also [method _reset_state]. Useful when implementing a custom resource format by extending [ResourceFormatLoader] and [ResourceFormatSaver]. */
+        reset_state(): void
+        
+        /** In the internal cache for scene-unique IDs, sets the ID of this resource to [param id] for the scene at [param path]. If [param id] is empty, the cache entry for [param path] is cleared. Useful to keep scene-unique IDs the same when implementing a VCS-friendly custom resource format by extending [ResourceFormatLoader] and [ResourceFormatSaver].  
+         *      
+         *  **Note:** This method is only implemented when running in an editor context.  
+         */
+        set_id_for_path(path: string, id: string): void
+        
+        /** From the internal cache for scene-unique IDs, returns the ID of this resource for the scene at [param path]. If there is no entry, an empty string is returned. Useful to keep scene-unique IDs the same when implementing a VCS-friendly custom resource format by extending [ResourceFormatLoader] and [ResourceFormatSaver].  
+         *      
+         *  **Note:** This method is only implemented when running in an editor context. At runtime, it returns an empty string.  
+         */
+        get_id_for_path(path: string): string
+        
+        /** Returns `true` if the resource is saved on disk as a part of another resource's file. */
+        is_built_in(): boolean
+        
+        /** Generates a unique identifier for a resource to be contained inside a [PackedScene], based on the current date, time, and a random value. The returned string is only composed of letters (`a` to `y`) and numbers (`0` to `8`). See also [member resource_scene_unique_id]. */
+        static generate_scene_unique_id(): string
+        
+        /** Emits the [signal changed] signal. This method is called automatically for some built-in resources.  
+         *      
+         *  **Note:** For custom resources, it's recommended to call this method whenever a meaningful change occurs, such as a modified property. This ensures that custom [Object]s depending on the resource are properly updated.  
+         *    
+         */
+        emit_changed(): void
+        
+        /** Duplicates this resource, returning a new resource with its `export`ed or [constant PROPERTY_USAGE_STORAGE] properties copied from the original.  
+         *  If [param deep] is `false`, a **shallow** copy is returned: nested [Array], [Dictionary], and [Resource] properties are not duplicated and are shared with the original resource.  
+         *  If [param deep] is `true`, a **deep** copy is returned: all nested arrays, dictionaries, and packed arrays are also duplicated (recursively). Any [Resource] found inside will only be duplicated if it's local, like [constant DEEP_DUPLICATE_INTERNAL] used with [method duplicate_deep].  
+         *  The following exceptions apply:  
+         *  - Subresource properties with the [constant PROPERTY_USAGE_ALWAYS_DUPLICATE] flag are always duplicated (recursively or not, depending on [param deep]).  
+         *  - Subresource properties with the [constant PROPERTY_USAGE_NEVER_DUPLICATE] flag are never duplicated.  
+         *      
+         *  **Note:** For custom resources, this method will fail if [method Object._init] has been defined with required parameters.  
+         *      
+         *  **Note:** When duplicating with [param deep] set to `true`, each resource found, including the one on which this method is called, will be only duplicated once and referenced as many times as needed in the duplicate. For instance, if you are duplicating resource A that happens to have resource B referenced twice, you'll get a new resource A' referencing a new resource B' twice.  
+         */
+        duplicate(deep?: boolean /* = false */): this
+        
+        /** Duplicates this resource, deeply, like [method duplicate] when passing `true`, with extra control over how subresources are handled. */
+        duplicate_deep(deep_subresources_mode?: Resource.DeepDuplicateMode /* = 1 */): null | Resource
+        
+        /** If `true`, the resource is duplicated for each instance of all scenes using it. At run-time, the resource can be modified in one scene without affecting other instances (see [method PackedScene.instantiate]).  
+         *      
+         *  **Note:** Changing this property at run-time has no effect on already created duplicate resources.  
+         */
+        get resource_local_to_scene(): boolean
+        set resource_local_to_scene(value: boolean)
+        
+        /** The unique path to this resource. If it has been saved to disk, the value will be its filepath. If the resource is exclusively contained within a scene, the value will be the [PackedScene]'s filepath, followed by a unique identifier.  
+         *      
+         *  **Note:** Setting this property manually may fail if a resource with the same path has already been previously loaded. If necessary, use [method take_over_path].  
+         */
+        get resource_path(): string
+        set resource_path(value: string)
+        
+        /** An optional name for this resource. When defined, its value is displayed to represent the resource in the Inspector dock. For built-in scripts, the name is displayed as part of the tab name in the script editor.  
+         *      
+         *  **Note:** Some resource formats do not support resource names. You can still set the name in the editor or via code, but it will be lost when the resource is reloaded. For example, only built-in scripts can have a resource name, while scripts stored in separate files cannot.  
+         */
+        get resource_name(): string
+        set resource_name(value: string)
+        
+        /** A unique identifier relative to the this resource's scene. If left empty, the ID is automatically generated when this resource is saved inside a [PackedScene]. If the resource is not inside a scene, this property is empty by default.  
+         *      
+         *  **Note:** When the [PackedScene] is saved, if multiple resources in the same scene use the same ID, only the earliest resource in the scene hierarchy keeps the original ID. The other resources are assigned new IDs from [method generate_scene_unique_id].  
+         *      
+         *  **Note:** Setting this property does not emit the [signal changed] signal.  
+         *  **Warning:** When setting, the ID must only consist of letters, numbers, and underscores. Otherwise, it will fail and default to a randomly generated ID.  
+         */
+        get resource_scene_unique_id(): string
+        set resource_scene_unique_id(value: string)
+        
+        /** Emitted when the resource changes, usually when one of its properties is modified. See also [method emit_changed].  
+         *      
+         *  **Note:** This signal is not emitted automatically for properties of custom resources. If necessary, a setter needs to be created to emit the signal.  
+         */
+        readonly changed: Signal<() => void>
+        
+        /** Emitted by a newly duplicated resource with [member resource_local_to_scene] set to `true`. */
+        readonly setup_local_to_scene_requested: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResource;
+    }
+    namespace ResourceFormatLoader {
+        enum CacheMode {
+            /** Neither the main resource (the one requested to be loaded) nor any of its subresources are retrieved from cache nor stored into it. Dependencies (external resources) are loaded with [constant CACHE_MODE_REUSE]. */
+            CACHE_MODE_IGNORE = 0,
+            
+            /** The main resource (the one requested to be loaded), its subresources, and its dependencies (external resources) are retrieved from cache if present, instead of loaded. Those not cached are loaded and then stored into the cache. The same rules are propagated recursively down the tree of dependencies (external resources). */
+            CACHE_MODE_REUSE = 1,
+            
+            /** Like [constant CACHE_MODE_REUSE], but the cache is checked for the main resource (the one requested to be loaded) as well as for each of its subresources. Those already in the cache, as long as the loaded and cached types match, have their data refreshed from storage into the already existing instances. Otherwise, they are recreated as completely new objects. */
+            CACHE_MODE_REPLACE = 2,
+            
+            /** Like [constant CACHE_MODE_IGNORE], but propagated recursively down the tree of dependencies (external resources). */
+            CACHE_MODE_IGNORE_DEEP = 3,
+            
+            /** Like [constant CACHE_MODE_REPLACE], but propagated recursively down the tree of dependencies (external resources). */
+            CACHE_MODE_REPLACE_DEEP = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceFormatLoader extends __NameMapRefCounted {
+    }
+    /** Loads a specific resource type from a file.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceformatloader.html  
+     */
+    class ResourceFormatLoader extends RefCounted {
+        constructor(identifier?: any)
+        /** Gets the list of extensions for files this loader is able to read. */
+        /* gdvirtual */ _get_recognized_extensions(): PackedStringArray
+        
+        /** Tells whether or not this loader should load a resource from its resource path for a given type.  
+         *  If it is not implemented, the default behavior returns whether the path's extension is within the ones provided by [method _get_recognized_extensions], and if the type is within the ones provided by [method _get_resource_type].  
+         */
+        /* gdvirtual */ _recognize_path(path: string, type: StringName): boolean
+        
+        /** Tells which resource class this loader can load.  
+         *      
+         *  **Note:** Custom resource types defined by scripts aren't known by the [ClassDB], so you might just handle `"Resource"` for them.  
+         */
+        /* gdvirtual */ _handles_type(type: StringName): boolean
+        
+        /** Gets the class name of the resource associated with the given path. If the loader cannot handle it, it should return `""`.  
+         *      
+         *  **Note:** Custom resource types defined by scripts aren't known by the [ClassDB], so you might just return `"Resource"` for them.  
+         */
+        /* gdvirtual */ _get_resource_type(path: string): string
+        
+        /** Returns the script class name associated with the [Resource] under the given [param path]. If the resource has no script or the script isn't a named class, it should return `""`. */
+        /* gdvirtual */ _get_resource_script_class(path: string): string
+        
+        /** Should return the unique ID for the resource associated with the given path. If this method is not overridden, a `.uid` file is generated along with the resource file, containing the unique ID. */
+        /* gdvirtual */ _get_resource_uid(path: string): int64
+        
+        /** Should return the dependencies for the resource at the given [param path]. Each dependency is a string composed of one to three sections separated by `::`, with trailing empty sections omitted:  
+         *  - The first section should contain the UID if the resource has one. Otherwise, it should contain the file path.  
+         *  - The second section should contain the class name of the dependency if [param add_types] is `true`. Otherwise, it should be empty.  
+         *  - The third section should contain the fallback path if the resource has a UID. Otherwise, it should be empty.  
+         *    
+         *      
+         *  **Note:** Custom resource types defined by scripts aren't known by the [ClassDB], so `"Resource"` can be used for the class name.  
+         */
+        /* gdvirtual */ _get_dependencies(path: string, add_types: boolean): PackedStringArray
+        
+        /** If implemented, renames dependencies within the given resource and saves it. [param renames] is a dictionary `{ String => String }` mapping old dependency paths to new paths.  
+         *  Returns [constant OK] on success, or an [enum Error] constant in case of failure.  
+         */
+        /* gdvirtual */ _rename_dependencies(path: string, renames: GDictionary): Error
+        /* gdvirtual */ _exists(path: string): boolean
+        /* gdvirtual */ _get_classes_used(path: string): PackedStringArray
+        
+        /** Loads a resource when the engine finds this loader to be compatible. If the loaded resource is the result of an import, [param original_path] will target the source file. Returns a [Resource] object on success, or an [enum Error] constant in case of failure.  
+         *  The [param cache_mode] property defines whether and how the cache should be used or updated when loading the resource. See [enum CacheMode] for details.  
+         */
+        /* gdvirtual */ _load(path: string, original_path: string, use_sub_threads: boolean, cache_mode: int64): any
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceFormatLoader;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceFormatSaver extends __NameMapRefCounted {
+    }
+    /** Saves a specific resource type to a file.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceformatsaver.html  
+     */
+    class ResourceFormatSaver extends RefCounted {
+        constructor(identifier?: any)
+        /** Saves the given resource object to a file at the target [param path]. [param flags] is a bitmask composed with [enum ResourceSaver.SaverFlags] constants.  
+         *  Returns [constant OK] on success, or an [enum Error] constant in case of failure.  
+         */
+        /* gdvirtual */ _save(resource: Resource, path: string, flags: int64): Error
+        
+        /** Sets a new UID for the resource at the given [param path]. Returns [constant OK] on success, or an [enum Error] constant in case of failure. */
+        /* gdvirtual */ _set_uid(path: string, uid: int64): Error
+        
+        /** Returns whether the given resource object can be saved by this saver. */
+        /* gdvirtual */ _recognize(resource: Resource): boolean
+        
+        /** Returns the list of extensions available for saving the resource object, provided it is recognized (see [method _recognize]). */
+        /* gdvirtual */ _get_recognized_extensions(resource: Resource): PackedStringArray
+        
+        /** Returns `true` if this saver handles a given save path and `false` otherwise.  
+         *  If this method is not implemented, the default behavior returns whether the path's extension is within the ones provided by [method _get_recognized_extensions].  
+         */
+        /* gdvirtual */ _recognize_path(resource: Resource, path: string): boolean
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceFormatSaver;
+    }
+    namespace ResourceImporter {
+        enum ImportOrder {
+            /** The default import order. */
+            IMPORT_ORDER_DEFAULT = 0,
+            
+            /** The import order for scenes, which ensures scenes are imported  *after*  all other core resources such as textures. Custom importers should generally have an import order lower than `100` to avoid issues when importing scenes that rely on custom resources. */
+            IMPORT_ORDER_SCENE = 100,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporter extends __NameMapRefCounted {
+    }
+    /** Base class for resource importers.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporter.html  
+     */
+    class ResourceImporter extends RefCounted {
+        constructor(identifier?: any)
+        /** Called when the engine compilation profile editor wants to check what build options an imported resource needs. For example, [ResourceImporterDynamicFont] has a property called [member ResourceImporterDynamicFont.multichannel_signed_distance_field], that depends on the engine to be build with the "msdfgen" module. If that resource happened to be a custom one, it would be handled like this:  
+         *    
+         */
+        /* gdvirtual */ _get_build_dependencies(path: string): PackedStringArray
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporter;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterBMFont extends __NameMapResourceImporter {
+    }
+    /** Imports a bitmap font in the BMFont (`.fnt`) format.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporterbmfont.html  
+     */
+    class ResourceImporterBMFont extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterBMFont;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterBitMap extends __NameMapResourceImporter {
+    }
+    /** Imports a [BitMap] resource (2D array of boolean values).  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporterbitmap.html  
+     */
+    class ResourceImporterBitMap extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterBitMap;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterCSVTranslation extends __NameMapResourceImporter {
+    }
+    /** Imports comma-separated values as [Translation]s.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimportercsvtranslation.html  
+     */
+    class ResourceImporterCSVTranslation extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterCSVTranslation;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterDynamicFont extends __NameMapResourceImporter {
+    }
+    /** Imports a TTF, TTC, OTF, OTC, WOFF or WOFF2 font file for font rendering that adapts to any size.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporterdynamicfont.html  
+     */
+    class ResourceImporterDynamicFont extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterDynamicFont;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterImage extends __NameMapResourceImporter {
+    }
+    /** Imports an image for use in scripting, with no rendering capabilities.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporterimage.html  
+     */
+    class ResourceImporterImage extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterImage;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterImageFont extends __NameMapResourceImporter {
+    }
+    /** Imports a bitmap font where all glyphs have the same width and height.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporterimagefont.html  
+     */
+    class ResourceImporterImageFont extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterImageFont;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterLayeredTexture extends __NameMapResourceImporter {
+    }
+    /** Imports a 3-dimensional texture ([Texture3D]), a [Texture2DArray], a [Cubemap] or a [CubemapArray].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporterlayeredtexture.html  
+     */
+    class ResourceImporterLayeredTexture extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterLayeredTexture;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterMP3 extends __NameMapResourceImporter {
+    }
+    /** Imports an MP3 audio file for playback.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimportermp3.html  
+     */
+    class ResourceImporterMP3 extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterMP3;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterOBJ extends __NameMapResourceImporter {
+    }
+    /** Imports an OBJ 3D model as an independent [Mesh] or scene.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporterobj.html  
+     */
+    class ResourceImporterOBJ extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterOBJ;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterOggVorbis extends __NameMapResourceImporter {
+    }
+    /** Imports an Ogg Vorbis audio file for playback.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporteroggvorbis.html  
+     */
+    class ResourceImporterOggVorbis extends ResourceImporter {
+        constructor(identifier?: any)
+        /** Creates a new [AudioStreamOggVorbis] instance from the given buffer. The buffer must contain Ogg Vorbis data. */
+        static load_from_buffer(stream_data: PackedByteArray | byte[] | ArrayBuffer): null | AudioStreamOggVorbis
+        
+        /** Creates a new [AudioStreamOggVorbis] instance from the given file path. The file must be in Ogg Vorbis format. */
+        static load_from_file(path: string): null | AudioStreamOggVorbis
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterOggVorbis;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterSVG extends __NameMapResourceImporter {
+    }
+    /** Imports an SVG file as an automatically scalable texture for use in UI elements and 2D rendering.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimportersvg.html  
+     */
+    class ResourceImporterSVG extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterSVG;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterScene extends __NameMapResourceImporter {
+    }
+    /** Imports a glTF, FBX, COLLADA, or Blender 3D scene.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporterscene.html  
+     */
+    class ResourceImporterScene extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterScene;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterShaderFile extends __NameMapResourceImporter {
+    }
+    /** Imports native GLSL shaders (not Godot shaders) as an [RDShaderFile].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimportershaderfile.html  
+     */
+    class ResourceImporterShaderFile extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterShaderFile;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterTexture extends __NameMapResourceImporter {
+    }
+    /** Imports an image for use in 2D or 3D rendering.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimportertexture.html  
+     */
+    class ResourceImporterTexture extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterTexture;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterTextureAtlas extends __NameMapResourceImporter {
+    }
+    /** Imports a collection of textures from a PNG image into an optimized [AtlasTexture] for 2D rendering.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimportertextureatlas.html  
+     */
+    class ResourceImporterTextureAtlas extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterTextureAtlas;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourceImporterWAV extends __NameMapResourceImporter {
+    }
+    /** Imports a WAV audio file for playback.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourceimporterwav.html  
+     */
+    class ResourceImporterWAV extends ResourceImporter {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourceImporterWAV;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapResourcePreloader extends __NameMapNode {
+    }
+    /** A node used to preload sub-resources inside a scene.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_resourcepreloader.html  
+     */
+    class ResourcePreloader<Map extends NodePathMap = any> extends Node<Map> {
+        constructor(identifier?: any)
+        /** Adds a resource to the preloader with the given [param name]. If a resource with the given [param name] already exists, the new resource will be renamed to "[param name] N" where N is an incrementing number starting from 2. */
+        add_resource(name: StringName, resource: Resource): void
+        
+        /** Removes the resource associated to [param name] from the preloader. */
+        remove_resource(name: StringName): void
+        
+        /** Renames a resource inside the preloader from [param name] to [param newname]. */
+        rename_resource(name: StringName, newname: StringName): void
+        
+        /** Returns `true` if the preloader contains a resource associated to [param name]. */
+        has_resource(name: StringName): boolean
+        
+        /** Returns the resource associated to [param name]. */
+        get_resource(name: StringName): null | Resource
+        
+        /** Returns the list of resources inside the preloader. */
+        get_resource_list(): PackedStringArray
+        get resources(): GArray
+        set resources(value: GArray)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapResourcePreloader;
+    }
+    namespace RetargetModifier3D {
+        enum TransformFlag {
+            /** If set, allows to retarget the position. */
+            TRANSFORM_FLAG_POSITION = 1,
+            
+            /** If set, allows to retarget the rotation. */
+            TRANSFORM_FLAG_ROTATION = 2,
+            
+            /** If set, allows to retarget the scale. */
+            TRANSFORM_FLAG_SCALE = 4,
+            
+            /** If set, allows to retarget the position/rotation/scale. */
+            TRANSFORM_FLAG_ALL = 7,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapRetargetModifier3D extends __NameMapSkeletonModifier3D {
+    }
+    /** A modifier to transfer parent skeleton poses (or global poses) to child skeletons in model space with different rests.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_retargetmodifier3d.html  
+     */
+    class RetargetModifier3D<Map extends NodePathMap = any> extends SkeletonModifier3D<Map> {
+        constructor(identifier?: any)
+        /** Sets [constant TRANSFORM_FLAG_POSITION] into [member enable]. */
+        set_position_enabled(enabled: boolean): void
+        
+        /** Returns `true` if [member enable] has [constant TRANSFORM_FLAG_POSITION]. */
+        is_position_enabled(): boolean
+        
+        /** Sets [constant TRANSFORM_FLAG_ROTATION] into [member enable]. */
+        set_rotation_enabled(enabled: boolean): void
+        
+        /** Returns `true` if [member enable] has [constant TRANSFORM_FLAG_ROTATION]. */
+        is_rotation_enabled(): boolean
+        
+        /** Sets [constant TRANSFORM_FLAG_SCALE] into [member enable]. */
+        set_scale_enabled(enabled: boolean): void
+        
+        /** Returns `true` if [member enable] has [constant TRANSFORM_FLAG_SCALE]. */
+        is_scale_enabled(): boolean
+        
+        /** [SkeletonProfile] for retargeting bones with names matching the bone list. */
+        get profile(): null | SkeletonProfile
+        set profile(value: null | SkeletonProfile)
+        
+        /** If `false`, in case the target skeleton has fewer bones than the source skeleton, the source bone parent's transform will be ignored.  
+         *  Instead, it is possible to retarget between models with different body shapes, and position, rotation, and scale can be retargeted separately.  
+         *  If `true`, retargeting is performed taking into account global pose.  
+         *  In case the target skeleton has fewer bones than the source skeleton, the source bone parent's transform is taken into account. However, bone length between skeletons must match exactly, if not, the bones will be forced to expand or shrink.  
+         *  This is useful for using dummy bone with length `0` to match postures when retargeting between models with different number of bones.  
+         */
+        get use_global_pose(): boolean
+        set use_global_pose(value: boolean)
+        
+        /** Flags to control the process of the transform elements individually when [member use_global_pose] is disabled. */
+        get enable(): int64
+        set enable(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapRetargetModifier3D;
+    }
+    namespace RibbonTrailMesh {
+        enum Shape {
+            /** Gives the mesh a single flat face. */
+            SHAPE_FLAT = 0,
+            
+            /** Gives the mesh two perpendicular flat faces, making a cross shape. */
+            SHAPE_CROSS = 1,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapRibbonTrailMesh extends __NameMapPrimitiveMesh {
+    }
+    /** Represents a straight ribbon-shaped [PrimitiveMesh] with variable width.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_ribbontrailmesh.html  
+     */
+    class RibbonTrailMesh extends PrimitiveMesh {
+        constructor(identifier?: any)
+        /** Determines the shape of the ribbon. */
+        get shape(): int64
+        set shape(value: int64)
+        
+        /** The baseline size of the ribbon. The size of a particular section segment is obtained by multiplying this size by the value of the [member curve] at the given distance. */
+        get size(): float64
+        set size(value: float64)
+        
+        /** The total number of sections on the ribbon. */
+        get sections(): int64
+        set sections(value: int64)
+        
+        /** The length of a section of the ribbon. */
+        get section_length(): float64
+        set section_length(value: float64)
+        
+        /** The number of segments in a section. The [member curve] is sampled on each segment to determine its size. Higher values result in a more detailed ribbon at the cost of performance. */
+        get section_segments(): int64
+        set section_segments(value: int64)
+        
+        /** Determines the size of the ribbon along its length. The size of a particular section segment is obtained by multiplying the baseline [member size] by the value of this curve at the given distance. For values smaller than `0`, the faces will be inverted. Should be a unit [Curve]. */
+        get curve(): null | Curve
+        set curve(value: null | Curve)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapRibbonTrailMesh;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapRichTextEffect extends __NameMapResource {
+    }
+    /** A custom effect for a [RichTextLabel].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_richtexteffect.html  
+     */
+    class RichTextEffect extends Resource {
+        constructor(identifier?: any)
+        /** Override this method to modify properties in [param char_fx]. The method must return `true` if the character could be transformed successfully. If the method returns `false`, it will skip transformation to avoid displaying broken text. */
+        /* gdvirtual */ _process_custom_fx(char_fx: CharFXTransform): boolean
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapRichTextEffect;
+    }
+    namespace RichTextLabel {
+        enum ListType {
+            /** Each list item has a number marker. */
+            LIST_NUMBERS = 0,
+            
+            /** Each list item has a letter marker. */
+            LIST_LETTERS = 1,
+            
+            /** Each list item has a roman number marker. */
+            LIST_ROMAN = 2,
+            
+            /** Each list item has a filled circle marker. */
+            LIST_DOTS = 3,
+        }
+        enum MenuItems {
+            /** Copies the selected text. */
+            MENU_COPY = 0,
+            
+            /** Selects the whole [RichTextLabel] text. */
+            MENU_SELECT_ALL = 1,
+            
+            /** Represents the size of the [enum MenuItems] enum. */
+            MENU_MAX = 2,
+        }
+        enum MetaUnderline {
+            /** Meta tag does not display an underline, even if [member meta_underlined] is `true`. */
+            META_UNDERLINE_NEVER = 0,
+            
+            /** If [member meta_underlined] is `true`, meta tag always display an underline. */
+            META_UNDERLINE_ALWAYS = 1,
+            
+            /** If [member meta_underlined] is `true`, meta tag display an underline when the mouse cursor is over it. */
+            META_UNDERLINE_ON_HOVER = 2,
+        }
+        enum ImageUpdateMask {
+            /** If this bit is set, [method update_image] changes image texture. */
+            UPDATE_TEXTURE = 1,
+            
+            /** If this bit is set, [method update_image] changes image size. */
+            UPDATE_SIZE = 2,
+            
+            /** If this bit is set, [method update_image] changes image color. */
+            UPDATE_COLOR = 4,
+            
+            /** If this bit is set, [method update_image] changes image inline alignment. */
+            UPDATE_ALIGNMENT = 8,
+            
+            /** If this bit is set, [method update_image] changes image texture region. */
+            UPDATE_REGION = 16,
+            
+            /** If this bit is set, [method update_image] changes image padding. */
+            UPDATE_PAD = 32,
+            
+            /** If this bit is set, [method update_image] changes image tooltip. */
+            UPDATE_TOOLTIP = 64,
+            
+            /** If this bit is set, [method update_image] changes image width from/to percents. */
+            UPDATE_WIDTH_IN_PERCENT = 128,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapRichTextLabel extends __NameMapControl {
+    }
+    /** A control for displaying text that can contain different font styles, images, and basic formatting.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_richtextlabel.html  
+     */
+    class RichTextLabel<Map extends NodePathMap = any> extends Control<Map> {
+        constructor(identifier?: any)
+        /** Returns the text without BBCode mark-up. */
+        get_parsed_text(): string
+        
+        /** Adds raw non-BBCode-parsed text to the tag stack. */
+        add_text(text: string): void
+        
+        /** Adds a horizontal rule that can be used to separate content.  
+         *  If [param width_in_percent] is set, [param width] values are percentages of the control width instead of pixels.  
+         *  If [param height_in_percent] is set, [param height] values are percentages of the control width instead of pixels.  
+         */
+        add_hr(width?: int64 /* = 90 */, height?: int64 /* = 2 */, color?: Color /* = new Color(1, 1, 1, 1) */, alignment?: HorizontalAlignment /* = 1 */, width_in_percent?: boolean /* = true */, height_in_percent?: boolean /* = false */): void
+        
+        /** Adds an image's opening and closing tags to the tag stack, optionally providing a [param width] and [param height] to resize the image, a [param color] to tint the image and a [param region] to only use parts of the image.  
+         *  If [param width] or [param height] is set to 0, the image size will be adjusted in order to keep the original aspect ratio.  
+         *  If [param width] and [param height] are not set, but [param region] is, the region's rect will be used.  
+         *  [param key] is an optional identifier, that can be used to modify the image via [method update_image].  
+         *  If [param pad] is set, and the image is smaller than the size specified by [param width] and [param height], the image padding is added to match the size instead of upscaling.  
+         *  If [param width_in_percent] is set, [param width] values are percentages of the control width instead of pixels.  
+         *  If [param height_in_percent] is set, [param height] values are percentages of the control width instead of pixels.  
+         *  [param alt_text] is used as the image description for assistive apps.  
+         */
+        add_image(image: Texture2D, width?: int64 /* = 0 */, height?: int64 /* = 0 */, color?: Color /* = new Color(1, 1, 1, 1) */, inline_align?: InlineAlignment /* = 5 */, region?: Rect2 /* = new Rect2(0, 0, 0, 0) */, key?: any /* = <any> {} */, pad?: boolean /* = false */, tooltip?: string /* = '' */, width_in_percent?: boolean /* = false */, height_in_percent?: boolean /* = false */, alt_text?: string /* = '' */): void
+        
+        /** Updates the existing images with the key [param key]. Only properties specified by [param mask] bits are updated. See [method add_image]. */
+        update_image(key: any, mask: RichTextLabel.ImageUpdateMask, image: Texture2D, width?: int64 /* = 0 */, height?: int64 /* = 0 */, color?: Color /* = new Color(1, 1, 1, 1) */, inline_align?: InlineAlignment /* = 5 */, region?: Rect2 /* = new Rect2(0, 0, 0, 0) */, pad?: boolean /* = false */, tooltip?: string /* = '' */, width_in_percent?: boolean /* = false */, height_in_percent?: boolean /* = false */): void
+        
+        /** Adds a newline tag to the tag stack. */
+        newline(): void
+        
+        /** Removes a paragraph of content from the label. Returns `true` if the paragraph exists.  
+         *  The [param paragraph] argument is the index of the paragraph to remove, it can take values in the interval `[0, get_paragraph_count() - 1]`.  
+         *  If [param no_invalidate] is set to `true`, cache for the subsequent paragraphs is not invalidated. Use it for faster updates if deleted paragraph is fully self-contained (have no unclosed tags), or this call is part of the complex edit operation and [method invalidate_paragraph] will be called at the end of operation.  
+         */
+        remove_paragraph(paragraph: int64, no_invalidate?: boolean /* = false */): boolean
+        
+        /** Invalidates [param paragraph] and all subsequent paragraphs cache. */
+        invalidate_paragraph(paragraph: int64): boolean
+        
+        /** Adds a [code skip-lint][font]` tag to the tag stack. Overrides default fonts for its duration.  
+         *  Passing `0` to [param font_size] will use the existing default font size.  
+         */
+        push_font(font: Font, font_size?: int64 /* = 0 */): void
+        
+        /** Adds a [code skip-lint][font_size]` tag to the tag stack. Overrides default font size for its duration. */
+        push_font_size(font_size: int64): void
+        
+        /** Adds a [code skip-lint][font]` tag with a normal font to the tag stack. */
+        push_normal(): void
+        
+        /** Adds a [code skip-lint][font]` tag with a bold font to the tag stack. This is the same as adding a [code skip-lint]**` tag if not currently in a [code skip-lint] *` tag. */
+        push_bold(): void
+        
+        /** Adds a [code skip-lint][font]` tag with a bold italics font to the tag stack. */
+        push_bold_italics(): void
+        
+        /** Adds a [code skip-lint][font]` tag with an italics font to the tag stack. This is the same as adding an [code skip-lint] *` tag if not currently in a [code skip-lint]**` tag. */
+        push_italics(): void
+        
+        /** Adds a [code skip-lint][font]` tag with a monospace font to the tag stack. */
+        push_mono(): void
+        
+        /** Adds a [code skip-lint][color]` tag to the tag stack. */
+        push_color(color: Color): void
+        
+        /** Adds a [code skip-lint][outline_size]` tag to the tag stack. Overrides default text outline size for its duration. */
+        push_outline_size(outline_size: int64): void
+        
+        /** Adds a [code skip-lint][outline_color]` tag to the tag stack. Adds text outline for its duration. */
+        push_outline_color(color: Color): void
+        
+        /** Adds a [code skip-lint][p]` tag to the tag stack. */
+        push_paragraph(alignment: HorizontalAlignment, base_direction?: Control.TextDirection /* = 0 */, language?: string /* = '' */, st_parser?: TextServer.StructuredTextParser /* = 0 */, justification_flags?: TextServer.JustificationFlag /* = 163 */, tab_stops?: PackedFloat32Array | float32[] /* = [] */): void
+        
+        /** Adds an [code skip-lint][indent]` tag to the tag stack. Multiplies [param level] by current [member tab_size] to determine new margin length. */
+        push_indent(level: int64): void
+        
+        /** Adds [code skip-lint][ol]` or [code skip-lint][ul]` tag to the tag stack. Multiplies [param level] by current [member tab_size] to determine new margin length. */
+        push_list(level: int64, type: RichTextLabel.ListType, capitalize: boolean, bullet?: string /* = '•' */): void
+        
+        /** Adds a meta tag to the tag stack. Similar to the BBCode [code skip-lint][url=something]{text}[/url]`, but supports non-[String] metadata types.  
+         *  If [member meta_underlined] is `true`, meta tags display an underline. This behavior can be customized with [param underline_mode].  
+         *      
+         *  **Note:** Meta tags do nothing by default when clicked. To assign behavior when clicked, connect [signal meta_clicked] to a function that is called when the meta tag is clicked.  
+         */
+        push_meta(data: any, underline_mode?: RichTextLabel.MetaUnderline /* = 1 */, tooltip?: string /* = '' */): void
+        
+        /** Adds a [code skip-lint][hint]` tag to the tag stack. Same as BBCode [code skip-lint][hint=something]{text}[/hint]`. */
+        push_hint(description: string): void
+        
+        /** Adds language code used for text shaping algorithm and Open-Type font features. */
+        push_language(language: string): void
+        
+        /** Adds a [code skip-lint][u]` tag to the tag stack. If [param color]'s alpha value is `0.0`, the current font's color with its alpha multiplied by [theme_item underline_alpha] is used. */
+        push_underline(color?: Color /* = new Color(0, 0, 0, 0) */): void
+        
+        /** Adds a [code skip-lint][s]` tag to the tag stack. If [param color]'s alpha value is `0.0`, the current font's color with its alpha multiplied by [theme_item strikethrough_alpha] is used. */
+        push_strikethrough(color?: Color /* = new Color(0, 0, 0, 0) */): void
+        
+        /** Adds a [code skip-lint][table=columns,inline_align]` tag to the tag stack. Use [method set_table_column_expand] to set column expansion ratio. Use [method push_cell] to add cells. [param name] is used as the table name for assistive apps. */
+        push_table(columns: int64, inline_align?: InlineAlignment /* = 0 */, align_to_row?: int64 /* = -1 */, name?: string /* = '' */): void
+        
+        /** Adds a [code skip-lint][dropcap]` tag to the tag stack. Drop cap (dropped capital) is a decorative element at the beginning of a paragraph that is larger than the rest of the text. */
+        push_dropcap(string_: string, font: Font, size: int64, dropcap_margins?: Rect2 /* = new Rect2(0, 0, 0, 0) */, color?: Color /* = new Color(1, 1, 1, 1) */, outline_size?: int64 /* = 0 */, outline_color?: Color /* = new Color(0, 0, 0, 0) */): void
+        
+        /** Edits the selected column's expansion options. If [param expand] is `true`, the column expands in proportion to its expansion ratio versus the other columns' ratios.  
+         *  For example, 2 columns with ratios 3 and 4 plus 70 pixels in available width would expand 30 and 40 pixels, respectively.  
+         *  If [param expand] is `false`, the column will not contribute to the total ratio.  
+         */
+        set_table_column_expand(column: int64, expand: boolean, ratio?: int64 /* = 1 */, shrink?: boolean /* = true */): void
+        
+        /** Sets table column name for assistive apps. */
+        set_table_column_name(column: int64, name: string): void
+        
+        /** Sets color of a table cell. Separate colors for alternating rows can be specified. */
+        set_cell_row_background_color(odd_row_bg: Color, even_row_bg: Color): void
+        
+        /** Sets color of a table cell border. */
+        set_cell_border_color(color: Color): void
+        
+        /** Sets minimum and maximum size overrides for a table cell. */
+        set_cell_size_override(min_size: Vector2, max_size: Vector2): void
+        
+        /** Sets inner padding of a table cell. */
+        set_cell_padding(padding: Rect2): void
+        
+        /** Adds a [code skip-lint][cell]` tag to the tag stack. Must be inside a [code skip-lint][table]` tag. See [method push_table] for details. Use [method set_table_column_expand] to set column expansion ratio, [method set_cell_border_color] to set cell border, [method set_cell_row_background_color] to set cell background, [method set_cell_size_override] to override cell size, and [method set_cell_padding] to set padding. */
+        push_cell(): void
+        
+        /** Adds a [code skip-lint][fgcolor]` tag to the tag stack.  
+         *      
+         *  **Note:** The foreground color has padding applied by default, which is controlled using [theme_item text_highlight_h_padding] and [theme_item text_highlight_v_padding]. This can lead to overlapping highlights if foreground colors are placed on neighboring lines/columns, so consider setting those theme items to `0` if you want to avoid this.  
+         */
+        push_fgcolor(fgcolor: Color): void
+        
+        /** Adds a [code skip-lint][bgcolor]` tag to the tag stack.  
+         *      
+         *  **Note:** The background color has padding applied by default, which is controlled using [theme_item text_highlight_h_padding] and [theme_item text_highlight_v_padding]. This can lead to overlapping highlights if background colors are placed on neighboring lines/columns, so consider setting those theme items to `0` if you want to avoid this.  
+         */
+        push_bgcolor(bgcolor: Color): void
+        
+        /** Adds a custom effect tag to the tag stack. The effect does not need to be in [member custom_effects]. The environment is directly passed to the effect. */
+        push_customfx(effect: RichTextEffect, env: GDictionary): void
+        
+        /** Adds a context marker to the tag stack. See [method pop_context]. */
+        push_context(): void
+        
+        /** Terminates tags opened after the last [method push_context] call (including context marker), or all tags if there's no context marker on the stack. */
+        pop_context(): void
+        
+        /** Terminates the current tag. Use after `push_*` methods to close BBCodes manually. Does not need to follow `add_*` methods. */
+        pop(): void
+        
+        /** Terminates all tags opened by `push_*` methods. */
+        pop_all(): void
+        
+        /** Clears the tag stack, causing the label to display nothing.  
+         *      
+         *  **Note:** This method does not affect [member text], and its contents will show again if the label is redrawn. However, setting [member text] to an empty [String] also clears the stack.  
+         */
+        clear(): void
+        
+        /** Returns the vertical scrollbar.  
+         *  **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their [member CanvasItem.visible] property.  
+         */
+        get_v_scroll_bar(): null | VScrollBar
+        
+        /** Scrolls the window's top line to match [param line]. */
+        scroll_to_line(line: int64): void
+        
+        /** Scrolls the window's top line to match first line of the [param paragraph]. */
+        scroll_to_paragraph(paragraph: int64): void
+        
+        /** Scrolls to the beginning of the current selection. */
+        scroll_to_selection(): void
+        
+        /** Returns the current selection first character index if a selection is active, `-1` otherwise. Does not include BBCodes. */
+        get_selection_from(): int64
+        
+        /** Returns the current selection last character index if a selection is active, `-1` otherwise. Does not include BBCodes. */
+        get_selection_to(): int64
+        
+        /** Returns the current selection vertical line offset if a selection is active, `-1.0` otherwise. */
+        get_selection_line_offset(): float64
+        
+        /** Select all the text.  
+         *  If [member selection_enabled] is `false`, no selection will occur.  
+         */
+        select_all(): void
+        
+        /** Returns the current selection text. Does not include BBCodes. */
+        get_selected_text(): string
+        
+        /** Clears the current selection. */
+        deselect(): void
+        
+        /** The assignment version of [method append_text]. Clears the tag stack and inserts the new content. */
+        parse_bbcode(bbcode: string): void
+        
+        /** Parses [param bbcode] and adds tags to the tag stack as needed.  
+         *      
+         *  **Note:** Using this method, you can't close a tag that was opened in a previous [method append_text] call. This is done to improve performance, especially when updating large RichTextLabels since rebuilding the whole BBCode every time would be slower. If you absolutely need to close a tag in a future method call, append the [member text] instead of using [method append_text].  
+         */
+        append_text(bbcode: string): void
+        
+        /** If [member threaded] is enabled, returns `true` if the background thread has finished text processing, otherwise always return `true`. */
+        is_ready(): boolean
+        
+        /** If [member threaded] is enabled, returns `true` if the background thread has finished text processing, otherwise always return `true`. */
+        is_finished(): boolean
+        
+        /** Returns the line number of the character position provided. Line and character numbers are both zero-indexed.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_character_line(character: int64): int64
+        
+        /** Returns the paragraph number of the character position provided. Paragraph and character numbers are both zero-indexed.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_character_paragraph(character: int64): int64
+        
+        /** Returns the total number of characters from text tags. Does not include BBCodes. */
+        get_total_character_count(): int64
+        
+        /** Returns the total number of lines in the text. Wrapped text is counted as multiple lines.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_line_count(): int64
+        
+        /** Returns the indexes of the first and last visible characters for the given [param line], as a [Vector2i].  
+         *      
+         *  **Note:** If [member visible_characters_behavior] is set to [constant TextServer.VC_CHARS_BEFORE_SHAPING] only visible wrapped lines are counted.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_line_range(line: int64): Vector2i
+        
+        /** Returns the number of visible lines.  
+         *      
+         *  **Note:** This method returns a correct value only after the label has been drawn.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_visible_line_count(): int64
+        
+        /** Returns the total number of paragraphs (newlines or `p` tags in the tag stack's text tags). Considers wrapped text as one paragraph. */
+        get_paragraph_count(): int64
+        
+        /** Returns the number of visible paragraphs. A paragraph is considered visible if at least one of its lines is visible.  
+         *      
+         *  **Note:** This method returns a correct value only after the label has been drawn.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_visible_paragraph_count(): int64
+        
+        /** Returns the height of the content.  
+         *      
+         *  **Note:** This method always returns the full content size, and is not affected by [member visible_ratio] and [member visible_characters]. To get the visible content size, use [method get_visible_content_rect].  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_content_height(): int64
+        
+        /** Returns the width of the content.  
+         *      
+         *  **Note:** This method always returns the full content size, and is not affected by [member visible_ratio] and [member visible_characters]. To get the visible content size, use [method get_visible_content_rect].  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_content_width(): int64
+        
+        /** Returns the height of the line found at the provided index.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether the document is fully loaded.  
+         */
+        get_line_height(line: int64): int64
+        
+        /** Returns the width of the line found at the provided index.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether the document is fully loaded.  
+         */
+        get_line_width(line: int64): int64
+        
+        /** Returns the bounding rectangle of the visible content.  
+         *      
+         *  **Note:** This method returns a correct value only after the label has been drawn.  
+         *    
+         */
+        get_visible_content_rect(): Rect2i
+        
+        /** Returns the vertical offset of the line found at the provided index.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_line_offset(line: int64): float64
+        
+        /** Returns the vertical offset of the paragraph found at the provided index.  
+         *      
+         *  **Note:** If [member threaded] is enabled, this method returns a value for the loaded part of the document. Use [method is_finished] or [signal finished] to determine whether document is fully loaded.  
+         */
+        get_paragraph_offset(paragraph: int64): float64
+        
+        /** Parses BBCode parameter [param expressions] into a dictionary. */
+        parse_expressions_for_values(expressions: PackedStringArray | string[]): GDictionary
+        
+        /** Installs a custom effect. This can also be done in the Inspector through the [member custom_effects] property. [param effect] should be a valid [RichTextEffect].  
+         *  **Example:** With the following script extending from [RichTextEffect]:  
+         *    
+         *  The above effect can be installed in [RichTextLabel] from a script:  
+         *    
+         */
+        install_effect(effect: any): void
+        
+        /** Reloads custom effects. Useful when [member custom_effects] is modified manually. */
+        reload_effects(): void
+        
+        /** Returns the [PopupMenu] of this [RichTextLabel]. By default, this menu is displayed when right-clicking on the [RichTextLabel].  
+         *  You can add custom menu items or remove standard ones. Make sure your IDs don't conflict with the standard ones (see [enum MenuItems]). For example:  
+         *    
+         *  **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their [member Window.visible] property.  
+         */
+        get_menu(): null | PopupMenu
+        
+        /** Returns whether the menu is visible. Use this instead of `get_menu().visible` to improve performance (so the creation of the menu is avoided). */
+        is_menu_visible(): boolean
+        
+        /** Executes a given action as defined in the [enum MenuItems] enum. */
+        menu_option(option: int64): void
+        
+        /** If `true`, the label uses BBCode formatting.  
+         *      
+         *  **Note:** This only affects the contents of [member text], not the tag stack.  
+         */
+        get bbcode_enabled(): boolean
+        set bbcode_enabled(value: boolean)
+        
+        /** The label's text in BBCode format. Is not representative of manual modifications to the internal tag stack. Erases changes made by other methods when edited.  
+         *      
+         *  **Note:** If [member bbcode_enabled] is `true`, it is unadvised to use the `+=` operator with [member text] (e.g. `text += "some string"`) as it replaces the whole text and can cause slowdowns. It will also erase all BBCode that was added to stack using `push_*` methods. Use [method append_text] for adding text instead, unless you absolutely need to close a tag that was opened in an earlier method call.  
+         */
+        get text(): string
+        set text(value: string)
+        
+        /** If `true`, the label's minimum size will be automatically updated to fit its content, matching the behavior of [Label]. */
+        get fit_content(): boolean
+        set fit_content(value: boolean)
+        
+        /** If `true`, the scrollbar is visible. Setting this to `false` does not block scrolling completely. See [method scroll_to_line]. */
+        get scroll_active(): boolean
+        set scroll_active(value: boolean)
+        
+        /** If `true`, the window scrolls down to display new content automatically. */
+        get scroll_following(): boolean
+        set scroll_following(value: boolean)
+        
+        /** If `true`, the window scrolls to display the last visible line when [member visible_characters] or [member visible_ratio] is changed. */
+        get scroll_following_visible_characters(): boolean
+        set scroll_following_visible_characters(value: boolean)
+        
+        /** If set to something other than [constant TextServer.AUTOWRAP_OFF], the text gets wrapped inside the node's bounding rectangle. */
+        get autowrap_mode(): int64
+        set autowrap_mode(value: int64)
+        
+        /** Autowrap space trimming flags. See [constant TextServer.BREAK_TRIM_START_EDGE_SPACES] and [constant TextServer.BREAK_TRIM_END_EDGE_SPACES] for more info. */
+        get autowrap_trim_flags(): int64
+        set autowrap_trim_flags(value: int64)
+        
+        /** The number of spaces associated with a single tab length. Does not affect `\t` in text tags, only indent tags. */
+        get tab_size(): int64
+        set tab_size(value: int64)
+        
+        /** If `true`, a right-click displays the context menu. */
+        get context_menu_enabled(): boolean
+        set context_menu_enabled(value: boolean)
+        
+        /** If `true`, shortcut keys for context menu items are enabled, even if the context menu is disabled. */
+        get shortcut_keys_enabled(): boolean
+        set shortcut_keys_enabled(value: boolean)
+        
+        /** Controls the text's horizontal alignment. Supports left, center, right, and fill (also known as justify). */
+        get horizontal_alignment(): int64
+        set horizontal_alignment(value: int64)
+        
+        /** Controls the text's vertical alignment. Supports top, center, bottom, and fill. */
+        get vertical_alignment(): int64
+        set vertical_alignment(value: int64)
+        
+        /** Line fill alignment rules. */
+        get justification_flags(): int64
+        set justification_flags(value: int64)
+        
+        /** Aligns text to the given tab-stops. */
+        get tab_stops(): PackedFloat32Array
+        set tab_stops(value: PackedFloat32Array | float32[])
+        
+        /** The currently installed custom effects. This is an array of [RichTextEffect]s.  
+         *  To add a custom effect, it's more convenient to use [method install_effect].  
+         */
+        get custom_effects(): GArray<RichTextEffect>
+        set custom_effects(value: GArray<RichTextEffect>)
+        
+        /** If `true`, the label underlines meta tags such as [code skip-lint][url]{text}[/url]`. These tags can call a function when clicked if [signal meta_clicked] is connected to a function. */
+        get meta_underlined(): boolean
+        set meta_underlined(value: boolean)
+        
+        /** If `true`, the label underlines hint tags such as [code skip-lint][hint=description]{text}[/hint]`. */
+        get hint_underlined(): boolean
+        set hint_underlined(value: boolean)
+        
+        /** If `true`, text processing is done in a background thread. */
+        get threaded(): boolean
+        set threaded(value: boolean)
+        
+        /** The delay after which the loading progress bar is displayed, in milliseconds. Set to `-1` to disable progress bar entirely.  
+         *      
+         *  **Note:** Progress bar is displayed only if [member threaded] is enabled.  
+         */
+        get progress_bar_delay(): int64
+        set progress_bar_delay(value: int64)
+        
+        /** If `true`, the label allows text selection. */
+        get selection_enabled(): boolean
+        set selection_enabled(value: boolean)
+        
+        /** If `true`, the selected text will be deselected when focus is lost. */
+        get deselect_on_focus_loss_enabled(): boolean
+        set deselect_on_focus_loss_enabled(value: boolean)
+        
+        /** If `true`, allow drag and drop of selected text. */
+        get drag_and_drop_selection_enabled(): boolean
+        set drag_and_drop_selection_enabled(value: boolean)
+        
+        /** The number of characters to display. If set to `-1`, all characters are displayed. This can be useful when animating the text appearing in a dialog box.  
+         *      
+         *  **Note:** Setting this property updates [member visible_ratio] accordingly.  
+         *      
+         *  **Note:** Characters are counted as Unicode codepoints. A single visible grapheme may contain multiple codepoints (e.g. certain emoji use three codepoints). A single codepoint may contain two UTF-16 characters, which are used in C# strings.  
+         */
+        get visible_characters(): int64
+        set visible_characters(value: int64)
+        
+        /** The clipping behavior when [member visible_characters] or [member visible_ratio] is set. */
+        get visible_characters_behavior(): int64
+        set visible_characters_behavior(value: int64)
+        
+        /** The fraction of characters to display, relative to the total number of characters (see [method get_total_character_count]). If set to `1.0`, all characters are displayed. If set to `0.5`, only half of the characters will be displayed. This can be useful when animating the text appearing in a dialog box.  
+         *      
+         *  **Note:** Setting this property updates [member visible_characters] accordingly.  
+         */
+        get visible_ratio(): float64
+        set visible_ratio(value: float64)
+        
+        /** Base text writing direction. */
+        get text_direction(): int64
+        set text_direction(value: int64)
+        
+        /** Language code used for line-breaking and text shaping algorithms. If left empty, the current locale is used instead. */
+        get language(): string
+        set language(value: string)
+        
+        /** Set BiDi algorithm override for the structured text. */
+        get structured_text_bidi_override(): int64
+        set structured_text_bidi_override(value: int64)
+        
+        /** Set additional options for BiDi override. */
+        get structured_text_bidi_override_options(): GArray
+        set structured_text_bidi_override_options(value: GArray)
+        
+        /** Triggered when the user clicks on content between meta (URL) tags. If the meta is defined in BBCode, e.g. [code skip-lint][url={"key": "value"}]Text[/url]`, then the parameter for this signal will always be a [String] type. If a particular type or an object is desired, the [method push_meta] method must be used to manually insert the data into the tag stack. Alternatively, you can convert the [String] input to the desired type based on its contents (such as calling [method JSON.parse] on it).  
+         *  For example, the following method can be connected to [signal meta_clicked] to open clicked URLs using the user's default web browser:  
+         *    
+         */
+        readonly meta_clicked: Signal<(meta: any) => void>
+        
+        /** Triggers when the mouse enters a meta tag. */
+        readonly meta_hover_started: Signal<(meta: any) => void>
+        
+        /** Triggers when the mouse exits a meta tag. */
+        readonly meta_hover_ended: Signal<(meta: any) => void>
+        
+        /** Triggered when the document is fully loaded.  
+         *      
+         *  **Note:** This can happen before the text is processed for drawing. Scrolling values may not be valid until the document is drawn for the first time after this signal.  
+         */
+        readonly finished: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapRichTextLabel;
+    }
+    namespace RigidBody2D {
+        enum FreezeMode {
+            /** Static body freeze mode (default). The body is not affected by gravity and forces. It can be only moved by user code and doesn't collide with other bodies along its path. */
+            FREEZE_MODE_STATIC = 0,
+            
+            /** Kinematic body freeze mode. Similar to [constant FREEZE_MODE_STATIC], but collides with other bodies along its path when moved. Useful for a frozen body that needs to be animated. */
+            FREEZE_MODE_KINEMATIC = 1,
+        }
+        enum CenterOfMassMode {
+            /** In this mode, the body's center of mass is calculated automatically based on its shapes. This assumes that the shapes' origins are also their center of mass. */
+            CENTER_OF_MASS_MODE_AUTO = 0,
+            
+            /** In this mode, the body's center of mass is set through [member center_of_mass]. Defaults to the body's origin position. */
+            CENTER_OF_MASS_MODE_CUSTOM = 1,
+        }
+        enum DampMode {
+            /** In this mode, the body's damping value is added to any value set in areas or the default value. */
+            DAMP_MODE_COMBINE = 0,
+            
+            /** In this mode, the body's damping value replaces any value set in areas or the default value. */
+            DAMP_MODE_REPLACE = 1,
+        }
+        enum CCDMode {
+            /** Continuous collision detection disabled. This is the fastest way to detect body collisions, but can miss small, fast-moving objects. */
+            CCD_MODE_DISABLED = 0,
+            
+            /** Continuous collision detection enabled using raycasting. This is faster than shapecasting but less precise. */
+            CCD_MODE_CAST_RAY = 1,
+            
+            /** Continuous collision detection enabled using shapecasting. This is the slowest CCD method and the most precise. */
+            CCD_MODE_CAST_SHAPE = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapRigidBody2D extends __NameMapPhysicsBody2D {
+    }
+    /** A 2D physics body that is moved by a physics simulation.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_rigidbody2d.html  
+     */
+    class RigidBody2D<Map extends NodePathMap = any> extends PhysicsBody2D<Map> {
+        constructor(identifier?: any)
+        /** Called during physics processing, allowing you to read and safely modify the simulation state for the object. By default, it is called before the standard force integration, but the [member custom_integrator] property allows you to disable the standard force integration and do fully custom force integration for a body. */
+        /* gdvirtual */ _integrate_forces(state: PhysicsDirectBodyState2D): void
+        
+        /** Returns the number of contacts this body has with other bodies. By default, this returns 0 unless bodies are configured to monitor contacts (see [member contact_monitor]).  
+         *      
+         *  **Note:** To retrieve the colliding bodies, use [method get_colliding_bodies].  
+         */
+        get_contact_count(): int64
+        
+        /** Sets the body's velocity on the given axis. The velocity in the given vector axis will be set as the given vector length. This is useful for jumping behavior. */
+        set_axis_velocity(axis_velocity: Vector2): void
+        
+        /** Applies a directional impulse without affecting rotation.  
+         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
+         *  This is equivalent to using [method apply_impulse] at the body's center of mass.  
+         */
+        apply_central_impulse(impulse?: Vector2 /* = Vector2.ZERO */): void
+        
+        /** Applies a positioned impulse to the body.  
+         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
+         *  [param position] is the offset from the body origin in global coordinates.  
+         */
+        apply_impulse(impulse: Vector2, position?: Vector2 /* = Vector2.ZERO */): void
+        
+        /** Applies a rotational impulse to the body without affecting the position.  
+         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
+         *      
+         *  **Note:** [member inertia] is required for this to work. To have [member inertia], an active [CollisionShape2D] must be a child of the node, or you can manually set [member inertia].  
+         */
+        apply_torque_impulse(torque: float64): void
+        
+        /** Applies a directional force without affecting rotation. A force is time dependent and meant to be applied every physics update.  
+         *  This is equivalent to using [method apply_force] at the body's center of mass.  
+         */
+        apply_central_force(force: Vector2): void
+        
+        /** Applies a positioned force to the body. A force is time dependent and meant to be applied every physics update.  
+         *  [param position] is the offset from the body origin in global coordinates.  
+         */
+        apply_force(force: Vector2, position?: Vector2 /* = Vector2.ZERO */): void
+        
+        /** Applies a rotational force without affecting position. A force is time dependent and meant to be applied every physics update.  
+         *      
+         *  **Note:** [member inertia] is required for this to work. To have [member inertia], an active [CollisionShape2D] must be a child of the node, or you can manually set [member inertia].  
+         */
+        apply_torque(torque: float64): void
+        
+        /** Adds a constant directional force without affecting rotation that keeps being applied over time until cleared with `constant_force = Vector2(0, 0)`.  
+         *  This is equivalent to using [method add_constant_force] at the body's center of mass.  
+         */
+        add_constant_central_force(force: Vector2): void
+        
+        /** Adds a constant positioned force to the body that keeps being applied over time until cleared with `constant_force = Vector2(0, 0)`.  
+         *  [param position] is the offset from the body origin in global coordinates.  
+         */
+        add_constant_force(force: Vector2, position?: Vector2 /* = Vector2.ZERO */): void
+        
+        /** Adds a constant rotational force without affecting position that keeps being applied over time until cleared with `constant_torque = 0`. */
+        add_constant_torque(torque: float64): void
+        
+        /** Returns a list of the bodies colliding with this one. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions.  
+         *      
+         *  **Note:** The result of this test is not immediate after moving objects. For performance, list of collisions is updated once per frame and before the physics step. Consider using signals instead.  
+         */
+        get_colliding_bodies(): GArray<Node2D>
+        
+        /** The body's mass. */
+        get mass(): float64
+        set mass(value: float64)
+        
+        /** The physics material override for the body.  
+         *  If a material is assigned to this property, it will be used instead of any other physics material, such as an inherited one.  
+         */
+        get physics_material_override(): null | PhysicsMaterial
+        set physics_material_override(value: null | PhysicsMaterial)
+        
+        /** Multiplies the gravity applied to the body. The body's gravity is calculated from the [member ProjectSettings.physics/2d/default_gravity] project setting and/or any additional gravity vector applied by [Area2D]s. */
+        get gravity_scale(): float64
+        set gravity_scale(value: float64)
+        
+        /** Defines the way the body's center of mass is set. */
+        get center_of_mass_mode(): int64
+        set center_of_mass_mode(value: int64)
+        
+        /** The body's custom center of mass, relative to the body's origin position, when [member center_of_mass_mode] is set to [constant CENTER_OF_MASS_MODE_CUSTOM]. This is the balanced point of the body, where applied forces only cause linear acceleration. Applying forces outside of the center of mass causes angular acceleration.  
+         *  When [member center_of_mass_mode] is set to [constant CENTER_OF_MASS_MODE_AUTO] (default value), the center of mass is automatically determined, but this does not update the value of [member center_of_mass].  
+         */
+        get center_of_mass(): Vector2
+        set center_of_mass(value: Vector2)
+        
+        /** The body's moment of inertia. This is like mass, but for rotation: it determines how much torque it takes to rotate the body. The moment of inertia is usually computed automatically from the mass and the shapes, but this property allows you to set a custom value.  
+         *  If set to `0`, inertia is automatically computed (default value).  
+         *      
+         *  **Note:** This value does not change when inertia is automatically computed. Use [PhysicsServer2D] to get the computed inertia.  
+         *    
+         */
+        get inertia(): float64
+        set inertia(value: float64)
+        
+        /** If `true`, the body will not move and will not calculate forces until woken up by another body through, for example, a collision, or by using the [method apply_impulse] or [method apply_force] methods. */
+        get sleeping(): boolean
+        set sleeping(value: boolean)
+        
+        /** If `true`, the body can enter sleep mode when there is no movement. See [member sleeping]. */
+        get can_sleep(): boolean
+        set can_sleep(value: boolean)
+        
+        /** If `true`, the body cannot rotate. Gravity and forces only apply linear movement. */
+        get lock_rotation(): boolean
+        set lock_rotation(value: boolean)
+        
+        /** If `true`, the body is frozen. Gravity and forces are not applied anymore.  
+         *  See [member freeze_mode] to set the body's behavior when frozen.  
+         *      
+         *  **Note:** For a body that is always frozen, use [StaticBody2D] or [AnimatableBody2D] instead.  
+         */
+        get freeze(): boolean
+        set freeze(value: boolean)
+        
+        /** The body's freeze mode. Determines the body's behavior when [member freeze] is `true`.  
+         *      
+         *  **Note:** For a body that is always frozen, use [StaticBody2D] or [AnimatableBody2D] instead.  
+         */
+        get freeze_mode(): int64
+        set freeze_mode(value: int64)
+        
+        /** If `true`, the standard force integration (like gravity or damping) will be disabled for this body. Other than collision response, the body will only move as determined by the [method _integrate_forces] method, if that virtual method is overridden.  
+         *  Setting this property will call the method [method PhysicsServer2D.body_set_omit_force_integration] internally.  
+         */
+        get custom_integrator(): boolean
+        set custom_integrator(value: boolean)
+        
+        /** Continuous collision detection mode.  
+         *  Continuous collision detection tries to predict where a moving body will collide instead of moving it and correcting its movement after collision. Continuous collision detection is slower, but more precise and misses fewer collisions with small, fast-moving objects. Raycasting and shapecasting methods are available.  
+         */
+        get continuous_cd(): int64
+        set continuous_cd(value: int64)
+        
+        /** If `true`, the RigidBody2D will emit signals when it collides with another body.  
+         *      
+         *  **Note:** By default the maximum contacts reported is set to 0, meaning nothing will be recorded, see [member max_contacts_reported].  
+         */
+        get contact_monitor(): boolean
+        set contact_monitor(value: boolean)
+        
+        /** The maximum number of contacts that will be recorded. Requires a value greater than 0 and [member contact_monitor] to be set to `true` to start to register contacts. Use [method get_contact_count] to retrieve the count or [method get_colliding_bodies] to retrieve bodies that have been collided with.  
+         *      
+         *  **Note:** The number of contacts is different from the number of collisions. Collisions between parallel edges will result in two contacts (one at each end), and collisions between parallel faces will result in four contacts (one at each corner).  
+         */
+        get max_contacts_reported(): int64
+        set max_contacts_reported(value: int64)
+        
+        /** The body's linear velocity in pixels per second. Can be used sporadically, but **don't set this every frame**, because physics may run in another thread and runs at a different granularity. Use [method _integrate_forces] as your process loop for precise control of the body state. */
+        get linear_velocity(): Vector2
+        set linear_velocity(value: Vector2)
+        
+        /** Defines how [member linear_damp] is applied. */
+        get linear_damp_mode(): int64
+        set linear_damp_mode(value: int64)
+        
+        /** Damps the body's movement. By default, the body will use the [member ProjectSettings.physics/2d/default_linear_damp] setting or any value override set by an [Area2D] the body is in. Depending on [member linear_damp_mode], you can set [member linear_damp] to be added to or to replace the body's damping value.  
+         *  See [member ProjectSettings.physics/2d/default_linear_damp] for more details about damping.  
+         */
+        get linear_damp(): float64
+        set linear_damp(value: float64)
+        
+        /** The body's rotational velocity in  *radians*  per second. */
+        get angular_velocity(): float64
+        set angular_velocity(value: float64)
+        
+        /** Defines how [member angular_damp] is applied. */
+        get angular_damp_mode(): int64
+        set angular_damp_mode(value: int64)
+        
+        /** Damps the body's rotation. By default, the body will use the [member ProjectSettings.physics/2d/default_angular_damp] setting or any value override set by an [Area2D] the body is in. Depending on [member angular_damp_mode], you can set [member angular_damp] to be added to or to replace the body's damping value.  
+         *  See [member ProjectSettings.physics/2d/default_angular_damp] for more details about damping.  
+         */
+        get angular_damp(): float64
+        set angular_damp(value: float64)
+        
+        /** The body's total constant positional forces applied during each physics update.  
+         *  See [method add_constant_force] and [method add_constant_central_force].  
+         */
+        get constant_force(): Vector2
+        set constant_force(value: Vector2)
+        
+        /** The body's total constant rotational forces applied during each physics update.  
+         *  See [method add_constant_torque].  
+         */
+        get constant_torque(): float64
+        set constant_torque(value: float64)
+        
+        /** Emitted when one of this RigidBody2D's [Shape2D]s collides with another [PhysicsBody2D] or [TileMap]'s [Shape2D]s. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions. [TileMap]s are detected if the [TileSet] has Collision [Shape2D]s.  
+         *  [param body_rid] the [RID] of the other [PhysicsBody2D] or [TileSet]'s [CollisionObject2D] used by the [PhysicsServer2D].  
+         *  [param body] the [Node], if it exists in the tree, of the other [PhysicsBody2D] or [TileMap].  
+         *  [param body_shape_index] the index of the [Shape2D] of the other [PhysicsBody2D] or [TileMap] used by the [PhysicsServer2D]. Get the [CollisionShape2D] node with `body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))`.  
+         *  [param local_shape_index] the index of the [Shape2D] of this RigidBody2D used by the [PhysicsServer2D]. Get the [CollisionShape2D] node with `self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))`.  
+         */
+        readonly body_shape_entered: Signal<(body_rid: RID, body: Node, body_shape_index: int64, local_shape_index: int64) => void>
+        
+        /** Emitted when the collision between one of this RigidBody2D's [Shape2D]s and another [PhysicsBody2D] or [TileMap]'s [Shape2D]s ends. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions. [TileMap]s are detected if the [TileSet] has Collision [Shape2D]s.  
+         *  [param body_rid] the [RID] of the other [PhysicsBody2D] or [TileSet]'s [CollisionObject2D] used by the [PhysicsServer2D].  
+         *  [param body] the [Node], if it exists in the tree, of the other [PhysicsBody2D] or [TileMap].  
+         *  [param body_shape_index] the index of the [Shape2D] of the other [PhysicsBody2D] or [TileMap] used by the [PhysicsServer2D]. Get the [CollisionShape2D] node with `body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))`.  
+         *  [param local_shape_index] the index of the [Shape2D] of this RigidBody2D used by the [PhysicsServer2D]. Get the [CollisionShape2D] node with `self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))`.  
+         */
+        readonly body_shape_exited: Signal<(body_rid: RID, body: Node, body_shape_index: int64, local_shape_index: int64) => void>
+        
+        /** Emitted when a collision with another [PhysicsBody2D] or [TileMap] occurs. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions. [TileMap]s are detected if the [TileSet] has Collision [Shape2D]s.  
+         *  [param body] the [Node], if it exists in the tree, of the other [PhysicsBody2D] or [TileMap].  
+         */
+        readonly body_entered: Signal<(body: Node) => void>
+        
+        /** Emitted when the collision with another [PhysicsBody2D] or [TileMap] ends. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions. [TileMap]s are detected if the [TileSet] has Collision [Shape2D]s.  
+         *  [param body] the [Node], if it exists in the tree, of the other [PhysicsBody2D] or [TileMap].  
+         */
+        readonly body_exited: Signal<(body: Node) => void>
+        
+        /** Emitted when the physics engine changes the body's sleeping state.  
+         *      
+         *  **Note:** Changing the value [member sleeping] will not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine or `emit_signal("sleeping_state_changed")` is used.  
+         */
+        readonly sleeping_state_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapRigidBody2D;
+    }
+    namespace RigidBody3D {
+        enum FreezeMode {
+            /** Static body freeze mode (default). The body is not affected by gravity and forces. It can be only moved by user code and doesn't collide with other bodies along its path. */
+            FREEZE_MODE_STATIC = 0,
+            
+            /** Kinematic body freeze mode. Similar to [constant FREEZE_MODE_STATIC], but collides with other bodies along its path when moved. Useful for a frozen body that needs to be animated. */
+            FREEZE_MODE_KINEMATIC = 1,
+        }
+        enum CenterOfMassMode {
+            /** In this mode, the body's center of mass is calculated automatically based on its shapes. This assumes that the shapes' origins are also their center of mass. */
+            CENTER_OF_MASS_MODE_AUTO = 0,
+            
+            /** In this mode, the body's center of mass is set through [member center_of_mass]. Defaults to the body's origin position. */
+            CENTER_OF_MASS_MODE_CUSTOM = 1,
+        }
+        enum DampMode {
+            /** In this mode, the body's damping value is added to any value set in areas or the default value. */
+            DAMP_MODE_COMBINE = 0,
+            
+            /** In this mode, the body's damping value replaces any value set in areas or the default value. */
+            DAMP_MODE_REPLACE = 1,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapRigidBody3D extends __NameMapPhysicsBody3D {
+    }
+    /** A 3D physics body that is moved by a physics simulation.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_rigidbody3d.html  
+     */
+    class RigidBody3D<Map extends NodePathMap = any> extends PhysicsBody3D<Map> {
+        constructor(identifier?: any)
+        /** Called during physics processing, allowing you to read and safely modify the simulation state for the object. By default, it is called before the standard force integration, but the [member custom_integrator] property allows you to disable the standard force integration and do fully custom force integration for a body. */
+        /* gdvirtual */ _integrate_forces(state: PhysicsDirectBodyState3D): void
+        
+        /** Returns the inverse inertia tensor basis. This is used to calculate the angular acceleration resulting from a torque applied to the [RigidBody3D]. */
+        get_inverse_inertia_tensor(): Basis
+        
+        /** Returns the number of contacts this body has with other bodies. By default, this returns 0 unless bodies are configured to monitor contacts (see [member contact_monitor]).  
+         *      
+         *  **Note:** To retrieve the colliding bodies, use [method get_colliding_bodies].  
+         */
+        get_contact_count(): int64
+        
+        /** Sets an axis velocity. The velocity in the given vector axis will be set as the given vector length. This is useful for jumping behavior. */
+        set_axis_velocity(axis_velocity: Vector3): void
+        
+        /** Applies a directional impulse without affecting rotation.  
+         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
+         *  This is equivalent to using [method apply_impulse] at the body's center of mass.  
+         */
+        apply_central_impulse(impulse: Vector3): void
+        
+        /** Applies a positioned impulse to the body.  
+         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
+         *  [param position] is the offset from the body origin in global coordinates.  
+         */
+        apply_impulse(impulse: Vector3, position?: Vector3 /* = new Vector3(0, 0, 0) */): void
+        
+        /** Applies a rotational impulse to the body without affecting the position.  
+         *  An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).  
+         *      
+         *  **Note:** [member inertia] is required for this to work. To have [member inertia], an active [CollisionShape3D] must be a child of the node, or you can manually set [member inertia].  
+         */
+        apply_torque_impulse(impulse: Vector3): void
+        
+        /** Applies a directional force without affecting rotation. A force is time dependent and meant to be applied every physics update.  
+         *  This is equivalent to using [method apply_force] at the body's center of mass.  
+         */
+        apply_central_force(force: Vector3): void
+        
+        /** Applies a positioned force to the body. A force is time dependent and meant to be applied every physics update.  
+         *  [param position] is the offset from the body origin in global coordinates.  
+         */
+        apply_force(force: Vector3, position?: Vector3 /* = new Vector3(0, 0, 0) */): void
+        
+        /** Applies a rotational force without affecting position. A force is time dependent and meant to be applied every physics update.  
+         *      
+         *  **Note:** [member inertia] is required for this to work. To have [member inertia], an active [CollisionShape3D] must be a child of the node, or you can manually set [member inertia].  
+         */
+        apply_torque(torque: Vector3): void
+        
+        /** Adds a constant directional force without affecting rotation that keeps being applied over time until cleared with `constant_force = Vector3(0, 0, 0)`.  
+         *  This is equivalent to using [method add_constant_force] at the body's center of mass.  
+         */
+        add_constant_central_force(force: Vector3): void
+        
+        /** Adds a constant positioned force to the body that keeps being applied over time until cleared with `constant_force = Vector3(0, 0, 0)`.  
+         *  [param position] is the offset from the body origin in global coordinates.  
+         */
+        add_constant_force(force: Vector3, position?: Vector3 /* = new Vector3(0, 0, 0) */): void
+        
+        /** Adds a constant rotational force without affecting position that keeps being applied over time until cleared with `constant_torque = Vector3(0, 0, 0)`. */
+        add_constant_torque(torque: Vector3): void
+        
+        /** Returns a list of the bodies colliding with this one. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions.  
+         *      
+         *  **Note:** The result of this test is not immediate after moving objects. For performance, list of collisions is updated once per frame and before the physics step. Consider using signals instead.  
+         */
+        get_colliding_bodies(): GArray<Node3D>
+        
+        /** The body's mass. */
+        get mass(): float64
+        set mass(value: float64)
+        
+        /** The physics material override for the body.  
+         *  If a material is assigned to this property, it will be used instead of any other physics material, such as an inherited one.  
+         */
+        get physics_material_override(): null | PhysicsMaterial
+        set physics_material_override(value: null | PhysicsMaterial)
+        
+        /** This is multiplied by [member ProjectSettings.physics/3d/default_gravity] to produce this body's gravity. For example, a value of `1.0` will apply normal gravity, `2.0` will apply double the gravity, and `0.5` will apply half the gravity to this body. */
+        get gravity_scale(): float64
+        set gravity_scale(value: float64)
+        
+        /** Defines the way the body's center of mass is set. */
+        get center_of_mass_mode(): int64
+        set center_of_mass_mode(value: int64)
+        
+        /** The body's custom center of mass, relative to the body's origin position, when [member center_of_mass_mode] is set to [constant CENTER_OF_MASS_MODE_CUSTOM]. This is the balanced point of the body, where applied forces only cause linear acceleration. Applying forces outside of the center of mass causes angular acceleration.  
+         *  When [member center_of_mass_mode] is set to [constant CENTER_OF_MASS_MODE_AUTO] (default value), the center of mass is automatically determined, but this does not update the value of [member center_of_mass].  
+         */
+        get center_of_mass(): Vector3
+        set center_of_mass(value: Vector3)
+        
+        /** The body's moment of inertia. This is like mass, but for rotation: it determines how much torque it takes to rotate the body on each axis. The moment of inertia is usually computed automatically from the mass and the shapes, but this property allows you to set a custom value.  
+         *  If set to [constant Vector3.ZERO], inertia is automatically computed (default value).  
+         *      
+         *  **Note:** This value does not change when inertia is automatically computed. Use [PhysicsServer3D] to get the computed inertia.  
+         *    
+         */
+        get inertia(): Vector3
+        set inertia(value: Vector3)
+        
+        /** If `true`, the body will not move and will not calculate forces until woken up by another body through, for example, a collision, or by using the [method apply_impulse] or [method apply_force] methods. */
+        get sleeping(): boolean
+        set sleeping(value: boolean)
+        
+        /** If `true`, the body can enter sleep mode when there is no movement. See [member sleeping]. */
+        get can_sleep(): boolean
+        set can_sleep(value: boolean)
+        
+        /** If `true`, the body cannot rotate. Gravity and forces only apply linear movement. */
+        get lock_rotation(): boolean
+        set lock_rotation(value: boolean)
+        
+        /** If `true`, the body is frozen. Gravity and forces are not applied anymore.  
+         *  See [member freeze_mode] to set the body's behavior when frozen.  
+         *      
+         *  **Note:** For a body that is always frozen, use [StaticBody3D] or [AnimatableBody3D] instead.  
+         */
+        get freeze(): boolean
+        set freeze(value: boolean)
+        
+        /** The body's freeze mode. Determines the body's behavior when [member freeze] is `true`.  
+         *      
+         *  **Note:** For a body that is always frozen, use [StaticBody3D] or [AnimatableBody3D] instead.  
+         */
+        get freeze_mode(): int64
+        set freeze_mode(value: int64)
+        
+        /** If `true`, the standard force integration (like gravity or damping) will be disabled for this body. Other than collision response, the body will only move as determined by the [method _integrate_forces] method, if that virtual method is overridden.  
+         *  Setting this property will call the method [method PhysicsServer3D.body_set_omit_force_integration] internally.  
+         */
+        get custom_integrator(): boolean
+        set custom_integrator(value: boolean)
+        
+        /** If `true`, continuous collision detection is used.  
+         *  Continuous collision detection tries to predict where a moving body will collide, instead of moving it and correcting its movement if it collided. Continuous collision detection is more precise, and misses fewer impacts by small, fast-moving objects. Not using continuous collision detection is faster to compute, but can miss small, fast-moving objects.  
+         */
+        get continuous_cd(): boolean
+        set continuous_cd(value: boolean)
+        
+        /** If `true`, the RigidBody3D will emit signals when it collides with another body.  
+         *      
+         *  **Note:** By default the maximum contacts reported is set to 0, meaning nothing will be recorded, see [member max_contacts_reported].  
+         */
+        get contact_monitor(): boolean
+        set contact_monitor(value: boolean)
+        
+        /** The maximum number of contacts that will be recorded. Requires a value greater than 0 and [member contact_monitor] to be set to `true` to start to register contacts. Use [method get_contact_count] to retrieve the count or [method get_colliding_bodies] to retrieve bodies that have been collided with.  
+         *      
+         *  **Note:** The number of contacts is different from the number of collisions. Collisions between parallel edges will result in two contacts (one at each end), and collisions between parallel faces will result in four contacts (one at each corner).  
+         */
+        get max_contacts_reported(): int64
+        set max_contacts_reported(value: int64)
+        
+        /** The body's linear velocity in units per second. Can be used sporadically, but **don't set this every frame**, because physics may run in another thread and runs at a different granularity. Use [method _integrate_forces] as your process loop for precise control of the body state. */
+        get linear_velocity(): Vector3
+        set linear_velocity(value: Vector3)
+        
+        /** Defines how [member linear_damp] is applied. */
+        get linear_damp_mode(): int64
+        set linear_damp_mode(value: int64)
+        
+        /** Damps the body's movement. By default, the body will use the [member ProjectSettings.physics/3d/default_linear_damp] project setting or any value override set by an [Area3D] the body is in. Depending on [member linear_damp_mode], you can set [member linear_damp] to be added to or to replace the body's damping value.  
+         *  See [member ProjectSettings.physics/3d/default_linear_damp] for more details about damping.  
+         */
+        get linear_damp(): float64
+        set linear_damp(value: float64)
+        
+        /** The RigidBody3D's rotational velocity in  *radians*  per second. */
+        get angular_velocity(): Vector3
+        set angular_velocity(value: Vector3)
+        
+        /** Defines how [member angular_damp] is applied. */
+        get angular_damp_mode(): int64
+        set angular_damp_mode(value: int64)
+        
+        /** Damps the body's rotation. By default, the body will use the [member ProjectSettings.physics/3d/default_angular_damp] project setting or any value override set by an [Area3D] the body is in. Depending on [member angular_damp_mode], you can set [member angular_damp] to be added to or to replace the body's damping value.  
+         *  See [member ProjectSettings.physics/3d/default_angular_damp] for more details about damping.  
+         */
+        get angular_damp(): float64
+        set angular_damp(value: float64)
+        
+        /** The body's total constant positional forces applied during each physics update.  
+         *  See [method add_constant_force] and [method add_constant_central_force].  
+         */
+        get constant_force(): Vector3
+        set constant_force(value: Vector3)
+        
+        /** The body's total constant rotational forces applied during each physics update.  
+         *  See [method add_constant_torque].  
+         */
+        get constant_torque(): Vector3
+        set constant_torque(value: Vector3)
+        
+        /** Emitted when one of this RigidBody3D's [Shape3D]s collides with another [PhysicsBody3D] or [GridMap]'s [Shape3D]s. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions. [GridMap]s are detected if the [MeshLibrary] has Collision [Shape3D]s.  
+         *  [param body_rid] the [RID] of the other [PhysicsBody3D] or [MeshLibrary]'s [CollisionObject3D] used by the [PhysicsServer3D].  
+         *  [param body] the [Node], if it exists in the tree, of the other [PhysicsBody3D] or [GridMap].  
+         *  [param body_shape_index] the index of the [Shape3D] of the other [PhysicsBody3D] or [GridMap] used by the [PhysicsServer3D]. Get the [CollisionShape3D] node with `body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))`.  
+         *  [param local_shape_index] the index of the [Shape3D] of this RigidBody3D used by the [PhysicsServer3D]. Get the [CollisionShape3D] node with `self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))`.  
+         */
+        readonly body_shape_entered: Signal<(body_rid: RID, body: Node, body_shape_index: int64, local_shape_index: int64) => void>
+        
+        /** Emitted when the collision between one of this RigidBody3D's [Shape3D]s and another [PhysicsBody3D] or [GridMap]'s [Shape3D]s ends. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions. [GridMap]s are detected if the [MeshLibrary] has Collision [Shape3D]s.  
+         *  [param body_rid] the [RID] of the other [PhysicsBody3D] or [MeshLibrary]'s [CollisionObject3D] used by the [PhysicsServer3D]. [GridMap]s are detected if the Meshes have [Shape3D]s.  
+         *  [param body] the [Node], if it exists in the tree, of the other [PhysicsBody3D] or [GridMap].  
+         *  [param body_shape_index] the index of the [Shape3D] of the other [PhysicsBody3D] or [GridMap] used by the [PhysicsServer3D]. Get the [CollisionShape3D] node with `body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))`.  
+         *  [param local_shape_index] the index of the [Shape3D] of this RigidBody3D used by the [PhysicsServer3D]. Get the [CollisionShape3D] node with `self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))`.  
+         */
+        readonly body_shape_exited: Signal<(body_rid: RID, body: Node, body_shape_index: int64, local_shape_index: int64) => void>
+        
+        /** Emitted when a collision with another [PhysicsBody3D] or [GridMap] occurs. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions. [GridMap]s are detected if the [MeshLibrary] has Collision [Shape3D]s.  
+         *  [param body] the [Node], if it exists in the tree, of the other [PhysicsBody3D] or [GridMap].  
+         */
+        readonly body_entered: Signal<(body: Node) => void>
+        
+        /** Emitted when the collision with another [PhysicsBody3D] or [GridMap] ends. Requires [member contact_monitor] to be set to `true` and [member max_contacts_reported] to be set high enough to detect all the collisions. [GridMap]s are detected if the [MeshLibrary] has Collision [Shape3D]s.  
+         *  [param body] the [Node], if it exists in the tree, of the other [PhysicsBody3D] or [GridMap].  
+         */
+        readonly body_exited: Signal<(body: Node) => void>
+        
+        /** Emitted when the physics engine changes the body's sleeping state.  
+         *      
+         *  **Note:** Changing the value [member sleeping] will not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine or `emit_signal("sleeping_state_changed")` is used.  
+         */
+        readonly sleeping_state_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapRigidBody3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapRootMotionView extends __NameMapVisualInstance3D {
+    }
+    /** Editor-only helper for setting up root motion in [AnimationMixer].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_rootmotionview.html  
+     */
+    class RootMotionView<Map extends NodePathMap = any> extends VisualInstance3D<Map> {
+        constructor(identifier?: any)
+        /** Path to an [AnimationMixer] node to use as a basis for root motion. */
+        get animation_path(): NodePath
+        set animation_path(value: NodePath | string)
+        
+        /** The grid's color. */
+        get color(): Color
+        set color(value: Color)
+        
+        /** The grid's cell size in 3D units. */
+        get cell_size(): float64
+        set cell_size(value: float64)
+        
+        /** The grid's radius in 3D units. The grid's opacity will fade gradually as the distance from the origin increases until this [member radius] is reached. */
+        get radius(): float64
+        set radius(value: float64)
+        
+        /** If `true`, the grid's points will all be on the same Y coordinate ( *local*  Y = 0). If `false`, the points' original Y coordinate is preserved. */
+        get zero_y(): boolean
+        set zero_y(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapRootMotionView;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSceneMultiplayer extends __NameMapMultiplayerAPI {
+    }
+    /** High-level multiplayer API implementation.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scenemultiplayer.html  
+     */
+    class SceneMultiplayer extends MultiplayerAPI {
+        constructor(identifier?: any)
+        /** Clears the current SceneMultiplayer network state (you shouldn't call this unless you know what you are doing). */
+        clear(): void
+        
+        /** Disconnects the peer identified by [param id], removing it from the list of connected peers, and closing the underlying connection with it. */
+        disconnect_peer(id: int64): void
+        
+        /** Returns the IDs of the peers currently trying to authenticate with this [MultiplayerAPI]. */
+        get_authenticating_peers(): PackedInt32Array
+        
+        /** Sends the specified [param data] to the remote peer identified by [param id] as part of an authentication message. This can be used to authenticate peers, and control when [signal MultiplayerAPI.peer_connected] is emitted (and the remote peer accepted as one of the connected peers). */
+        send_auth(id: int64, data: PackedByteArray | byte[] | ArrayBuffer): Error
+        
+        /** Mark the authentication step as completed for the remote peer identified by [param id]. The [signal MultiplayerAPI.peer_connected] signal will be emitted for this peer once the remote side also completes the authentication. No further authentication messages are expected to be received from this peer.  
+         *  If a peer disconnects before completing authentication, either due to a network issue, the [member auth_timeout] expiring, or manually calling [method disconnect_peer], the [signal peer_authentication_failed] signal will be emitted instead of [signal MultiplayerAPI.peer_disconnected].  
+         */
+        complete_auth(id: int64): Error
+        
+        /** Sends the given raw [param bytes] to a specific peer identified by [param id] (see [method MultiplayerPeer.set_target_peer]). Default ID is `0`, i.e. broadcast to all peers. */
+        send_bytes(bytes: PackedByteArray | byte[] | ArrayBuffer, id?: int64 /* = 0 */, mode?: MultiplayerPeer.TransferMode /* = 2 */, channel?: int64 /* = 0 */): Error
+        
+        /** The root path to use for RPCs and replication. Instead of an absolute path, a relative path will be used to find the node upon which the RPC should be executed.  
+         *  This effectively allows to have different branches of the scene tree to be managed by different MultiplayerAPI, allowing for example to run both client and server in the same scene.  
+         */
+        get root_path(): NodePath
+        set root_path(value: NodePath | string)
+        
+        /** The callback to execute when receiving authentication data sent via [method send_auth]. If the [Callable] is empty (default), peers will be automatically accepted as soon as they connect. */
+        get auth_callback(): Callable
+        set auth_callback(value: Callable)
+        
+        /** If set to a value greater than `0.0`, the maximum duration in seconds peers can stay in the authenticating state, after which the authentication will automatically fail. See the [signal peer_authenticating] and [signal peer_authentication_failed] signals. */
+        get auth_timeout(): float64
+        set auth_timeout(value: float64)
+        
+        /** If `true`, the MultiplayerAPI will allow encoding and decoding of object during RPCs.  
+         *  **Warning:** Deserialized objects can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threat such as remote code execution.  
+         */
+        get allow_object_decoding(): boolean
+        set allow_object_decoding(value: boolean)
+        
+        /** If `true`, the MultiplayerAPI's [member MultiplayerAPI.multiplayer_peer] refuses new incoming connections. */
+        get refuse_new_connections(): boolean
+        set refuse_new_connections(value: boolean)
+        
+        /** Enable or disable the server feature that notifies clients of other peers' connection/disconnection, and relays messages between them. When this option is `false`, clients won't be automatically notified of other peers and won't be able to send them packets through the server.  
+         *      
+         *  **Note:** Changing this option while other peers are connected may lead to unexpected behaviors.  
+         *      
+         *  **Note:** Support for this feature may depend on the current [MultiplayerPeer] configuration. See [method MultiplayerPeer.is_server_relay_supported].  
+         */
+        get server_relay(): boolean
+        set server_relay(value: boolean)
+        
+        /** Maximum size of each synchronization packet. Higher values increase the chance of receiving full updates in a single frame, but also the chance of packet loss. See [MultiplayerSynchronizer]. */
+        get max_sync_packet_size(): int64
+        set max_sync_packet_size(value: int64)
+        
+        /** Maximum size of each delta packet. Higher values increase the chance of receiving full updates in a single frame, but also the chance of causing networking congestion (higher latency, disconnections). See [MultiplayerSynchronizer]. */
+        get max_delta_packet_size(): int64
+        set max_delta_packet_size(value: int64)
+        
+        /** Emitted when this MultiplayerAPI's [member MultiplayerAPI.multiplayer_peer] connects to a new peer and a valid [member auth_callback] is set. In this case, the [signal MultiplayerAPI.peer_connected] will not be emitted until [method complete_auth] is called with given peer [param id]. While in this state, the peer will not be included in the list returned by [method MultiplayerAPI.get_peers] (but in the one returned by [method get_authenticating_peers]), and only authentication data will be sent or received. See [method send_auth] for sending authentication data. */
+        readonly peer_authenticating: Signal<(id: int64) => void>
+        
+        /** Emitted when this MultiplayerAPI's [member MultiplayerAPI.multiplayer_peer] disconnects from a peer for which authentication had not yet completed. See [signal peer_authenticating]. */
+        readonly peer_authentication_failed: Signal<(id: int64) => void>
+        
+        /** Emitted when this MultiplayerAPI's [member MultiplayerAPI.multiplayer_peer] receives a [param packet] with custom data (see [method send_bytes]). ID is the peer ID of the peer that sent the packet. */
+        readonly peer_packet: Signal<(id: int64, packet: PackedByteArray) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSceneMultiplayer;
+    }
+    namespace SceneReplicationConfig {
+        enum ReplicationMode {
+            /** Do not keep the given property synchronized. */
+            REPLICATION_MODE_NEVER = 0,
+            
+            /** Replicate the given property on process by constantly sending updates using unreliable transfer mode. */
+            REPLICATION_MODE_ALWAYS = 1,
+            
+            /** Replicate the given property on process by sending updates using reliable transfer mode when its value changes. */
+            REPLICATION_MODE_ON_CHANGE = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSceneReplicationConfig extends __NameMapResource {
+    }
+    /** Configuration for properties to synchronize with a [MultiplayerSynchronizer].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scenereplicationconfig.html  
+     */
+    class SceneReplicationConfig extends Resource {
+        constructor(identifier?: any)
+        /** Returns a list of synchronized property [NodePath]s. */
+        get_properties(): GArray<NodePath>
+        
+        /** Adds the property identified by the given [param path] to the list of the properties being synchronized, optionally passing an [param index].  
+         *      
+         *  **Note:** For details on restrictions and limitations on property synchronization, see [MultiplayerSynchronizer].  
+         */
+        add_property(path: NodePath | string, index?: int64 /* = -1 */): void
+        
+        /** Returns `true` if the given [param path] is configured for synchronization. */
+        has_property(path: NodePath | string): boolean
+        
+        /** Removes the property identified by the given [param path] from the configuration. */
+        remove_property(path: NodePath | string): void
+        
+        /** Finds the index of the given [param path]. */
+        property_get_index(path: NodePath | string): int64
+        
+        /** Returns `true` if the property identified by the given [param path] is configured to be synchronized on spawn. */
+        property_get_spawn(path: NodePath | string): boolean
+        
+        /** Sets whether the property identified by the given [param path] is configured to be synchronized on spawn. */
+        property_set_spawn(path: NodePath | string, enabled: boolean): void
+        
+        /** Returns the replication mode for the property identified by the given [param path]. */
+        property_get_replication_mode(path: NodePath | string): SceneReplicationConfig.ReplicationMode
+        
+        /** Sets the synchronization mode for the property identified by the given [param path]. */
+        property_set_replication_mode(path: NodePath | string, mode: SceneReplicationConfig.ReplicationMode): void
+        
+        /** Returns `true` if the property identified by the given [param path] is configured to be synchronized on process. */
+        property_get_sync(path: NodePath | string): boolean
+        
+        /** Sets whether the property identified by the given [param path] is configured to be synchronized on process. */
+        property_set_sync(path: NodePath | string, enabled: boolean): void
+        
+        /** Returns `true` if the property identified by the given [param path] is configured to be reliably synchronized when changes are detected on process. */
+        property_get_watch(path: NodePath | string): boolean
+        
+        /** Sets whether the property identified by the given [param path] is configured to be reliably synchronized when changes are detected on process. */
+        property_set_watch(path: NodePath | string, enabled: boolean): void
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSceneReplicationConfig;
+    }
+    namespace SceneState {
+        enum GenEditState {
+            /** If passed to [method PackedScene.instantiate], blocks edits to the scene state. */
+            GEN_EDIT_STATE_DISABLED = 0,
+            
+            /** If passed to [method PackedScene.instantiate], provides inherited scene resources to the local scene.  
+             *      
+             *  **Note:** Only available in editor builds.  
+             */
+            GEN_EDIT_STATE_INSTANCE = 1,
+            
+            /** If passed to [method PackedScene.instantiate], provides local scene resources to the local scene. Only the main scene should receive the main edit state.  
+             *      
+             *  **Note:** Only available in editor builds.  
+             */
+            GEN_EDIT_STATE_MAIN = 2,
+            
+            /** If passed to [method PackedScene.instantiate], it's similar to [constant GEN_EDIT_STATE_MAIN], but for the case where the scene is being instantiated to be the base of another one.  
+             *      
+             *  **Note:** Only available in editor builds.  
+             */
+            GEN_EDIT_STATE_MAIN_INHERITED = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSceneState extends __NameMapRefCounted {
+    }
+    /** Provides access to a scene file's information.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scenestate.html  
+     */
+    class SceneState extends RefCounted {
+        constructor(identifier?: any)
+        /** Returns the resource path to the represented [PackedScene]. */
+        get_path(): string
+        
+        /** Returns the [SceneState] of the scene that this scene inherits from, or `null` if it doesn't inherit from any scene. */
+        get_base_scene_state(): null | SceneState
+        
+        /** Returns the number of nodes in the scene.  
+         *  The `idx` argument used to query node data in other `get_node_*` methods in the interval `[0, get_node_count() - 1]`.  
+         */
+        get_node_count(): int64
+        
+        /** Returns the type of the node at [param idx]. */
+        get_node_type(idx: int64): StringName
+        
+        /** Returns the name of the node at [param idx]. */
+        get_node_name(idx: int64): StringName
+        
+        /** Returns the path to the node at [param idx].  
+         *  If [param for_parent] is `true`, returns the path of the [param idx] node's parent instead.  
+         */
+        get_node_path(idx: int64, for_parent?: boolean /* = false */): NodePath
+        
+        /** Returns the path to the owner of the node at [param idx], relative to the root node. */
+        get_node_owner_path(idx: int64): NodePath
+        
+        /** Returns `true` if the node at [param idx] is an [InstancePlaceholder]. */
+        is_node_instance_placeholder(idx: int64): boolean
+        
+        /** Returns the path to the represented scene file if the node at [param idx] is an [InstancePlaceholder]. */
+        get_node_instance_placeholder(idx: int64): string
+        
+        /** Returns a [PackedScene] for the node at [param idx] (i.e. the whole branch starting at this node, with its child nodes and resources), or `null` if the node is not an instance. */
+        get_node_instance(idx: int64): null | PackedScene
+        
+        /** Returns the list of group names associated with the node at [param idx]. */
+        get_node_groups(idx: int64): PackedStringArray
+        
+        /** Returns the node's index, which is its position relative to its siblings. This is only relevant and saved in scenes for cases where new nodes are added to an instantiated or inherited scene among siblings from the base scene. Despite the name, this index is not related to the [param idx] argument used here and in other methods. */
+        get_node_index(idx: int64): int64
+        
+        /** Returns the number of exported or overridden properties for the node at [param idx].  
+         *  The `prop_idx` argument used to query node property data in other `get_node_property_*` methods in the interval `[0, get_node_property_count() - 1]`.  
+         */
+        get_node_property_count(idx: int64): int64
+        
+        /** Returns the name of the property at [param prop_idx] for the node at [param idx]. */
+        get_node_property_name(idx: int64, prop_idx: int64): StringName
+        
+        /** Returns the value of the property at [param prop_idx] for the node at [param idx]. */
+        get_node_property_value(idx: int64, prop_idx: int64): any
+        
+        /** Returns the number of signal connections in the scene.  
+         *  The `idx` argument used to query connection metadata in other `get_connection_*` methods in the interval `[0, get_connection_count() - 1]`.  
+         */
+        get_connection_count(): int64
+        
+        /** Returns the path to the node that owns the signal at [param idx], relative to the root node. */
+        get_connection_source(idx: int64): NodePath
+        
+        /** Returns the name of the signal at [param idx]. */
+        get_connection_signal(idx: int64): StringName
+        
+        /** Returns the path to the node that owns the method connected to the signal at [param idx], relative to the root node. */
+        get_connection_target(idx: int64): NodePath
+        
+        /** Returns the method connected to the signal at [param idx]. */
+        get_connection_method(idx: int64): StringName
+        
+        /** Returns the connection flags for the signal at [param idx]. See [enum Object.ConnectFlags] constants. */
+        get_connection_flags(idx: int64): int64
+        
+        /** Returns the list of bound parameters for the signal at [param idx]. */
+        get_connection_binds(idx: int64): GArray
+        
+        /** Returns the number of unbound parameters for the signal at [param idx]. */
+        get_connection_unbinds(idx: int64): int64
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSceneState;
+    }
+    namespace SceneTree {
+        enum GroupCallFlags {
+            /** Call nodes within a group with no special behavior (default). */
+            GROUP_CALL_DEFAULT = 0,
+            
+            /** Call nodes within a group in reverse tree hierarchy order (all nested children are called before their respective parent nodes). */
+            GROUP_CALL_REVERSE = 1,
+            
+            /** Call nodes within a group at the end of the current frame (can be either process or physics frame), similar to [method Object.call_deferred]. */
+            GROUP_CALL_DEFERRED = 2,
+            
+            /** Call nodes within a group only once, even if the call is executed many times in the same frame. Must be combined with [constant GROUP_CALL_DEFERRED] to work.  
+             *      
+             *  **Note:** Different arguments are not taken into account. Therefore, when the same call is executed with different arguments, only the first call will be performed.  
+             */
+            GROUP_CALL_UNIQUE = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSceneTree extends __NameMapMainLoop {
+    }
+    /** Manages the game loop via a hierarchy of nodes.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scenetree.html  
+     */
+    class SceneTree extends MainLoop {
+        constructor(identifier?: any)
+        /** Returns `true` if a node added to the given group [param name] exists in the tree. */
+        has_group(name: StringName): boolean
+        
+        /** Returns `true` if accessibility features are enabled, and accessibility information updates are actively processed. */
+        is_accessibility_enabled(): boolean
+        
+        /** Returns `true` if accessibility features are supported by the OS and enabled in project settings. */
+        is_accessibility_supported(): boolean
+        
+        /** Returns a new [SceneTreeTimer]. After [param time_sec] in seconds have passed, the timer will emit [signal SceneTreeTimer.timeout] and will be automatically freed.  
+         *  If [param process_always] is `false`, the timer will be paused when setting [member SceneTree.paused] to `true`.  
+         *  If [param process_in_physics] is `true`, the timer will update at the end of the physics frame, instead of the process frame.  
+         *  If [param ignore_time_scale] is `true`, the timer will ignore [member Engine.time_scale] and update with the real, elapsed time.  
+         *  This method is commonly used to create a one-shot delay timer, as in the following example:  
+         *    
+         *      
+         *  **Note:** The timer is always updated  *after*  all of the nodes in the tree. A node's [method Node._process] method would be called before the timer updates (or [method Node._physics_process] if [param process_in_physics] is set to `true`).  
+         */
+        create_timer(time_sec: float64, process_always?: boolean /* = true */, process_in_physics?: boolean /* = false */, ignore_time_scale?: boolean /* = false */): SceneTreeTimer
+        
+        /** Creates and returns a new [Tween] processed in this tree. The Tween will start automatically on the next process frame or physics frame (depending on its [enum Tween.TweenProcessMode]).  
+         *      
+         *  **Note:** A [Tween] created using this method is not bound to any [Node]. It may keep working until there is nothing left to animate. If you want the [Tween] to be automatically killed when the [Node] is freed, use [method Node.create_tween] or [method Tween.bind_node].  
+         */
+        create_tween(): Tween
+        
+        /** Returns an [Array] of currently existing [Tween]s in the tree, including paused tweens. */
+        get_processed_tweens(): GArray<Tween>
+        
+        /** Returns the number of nodes inside this tree. */
+        get_node_count(): int64
+        
+        /** Returns how many physics process steps have been processed, since the application started. This is  *not*  a measurement of elapsed time. See also [signal physics_frame]. For the number of frames rendered, see [method Engine.get_process_frames]. */
+        get_frame(): int64
+        
+        /** Quits the application at the end of the current iteration, with the given [param exit_code].  
+         *  By convention, an exit code of `0` indicates success, whereas any other exit code indicates an error. For portability reasons, it should be between `0` and `125` (inclusive).  
+         *      
+         *  **Note:** On iOS this method doesn't work. Instead, as recommended by the [url=https://developer.apple.com/library/archive/qa/qa1561/_index.html]iOS Human Interface Guidelines[/url], the user is expected to close apps via the Home button.  
+         */
+        quit(exit_code?: int64 /* = 0 */): void
+        
+        /** Queues the given [param obj] to be deleted, calling its [method Object.free] at the end of the current frame. This method is similar to [method Node.queue_free]. */
+        queue_delete(obj: Object): void
+        
+        /** Calls the given [param method] on each node inside this tree added to the given [param group]. Use [param flags] to customize this method's behavior (see [enum GroupCallFlags]). Additional arguments for [param method] can be passed at the end of this method. Nodes that cannot call [param method] (either because the method doesn't exist or the arguments do not match) are ignored.  
+         *    
+         *      
+         *  **Note:** In C#, [param method] must be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in the `MethodName` class to avoid allocating a new [StringName] on each call.  
+         */
+        call_group_flags(flags: int64, group: StringName, method: StringName, ...varargs: any[]): void
+        
+        /** Calls [method Object.notification] with the given [param notification] to all nodes inside this tree added to the [param group]. Use [param call_flags] to customize this method's behavior (see [enum GroupCallFlags]). */
+        notify_group_flags(call_flags: int64, group: StringName, notification: int64): void
+        
+        /** Sets the given [param property] to [param value] on all nodes inside this tree added to the given [param group]. Nodes that do not have the [param property] are ignored. Use [param call_flags] to customize this method's behavior (see [enum GroupCallFlags]).  
+         *      
+         *  **Note:** In C#, [param property] must be in snake_case when referring to built-in Godot properties. Prefer using the names exposed in the `PropertyName` class to avoid allocating a new [StringName] on each call.  
+         */
+        set_group_flags(call_flags: int64, group: StringName, property: string, value: any): void
+        
+        /** Calls [param method] on each node inside this tree added to the given [param group]. You can pass arguments to [param method] by specifying them at the end of this method call. Nodes that cannot call [param method] (either because the method doesn't exist or the arguments do not match) are ignored. See also [method set_group] and [method notify_group].  
+         *      
+         *  **Note:** This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.  
+         *      
+         *  **Note:** In C#, [param method] must be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in the `MethodName` class to avoid allocating a new [StringName] on each call.  
+         */
+        call_group(group: StringName, method: StringName, ...varargs: any[]): void
+        
+        /** Calls [method Object.notification] with the given [param notification] to all nodes inside this tree added to the [param group]. See also [url=https://docs.godotengine.org/en/4.6/tutorials/best_practices/godot_notifications.html]Godot notifications[/url] and [method call_group] and [method set_group].  
+         *      
+         *  **Note:** This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.  
+         */
+        notify_group(group: StringName, notification: int64): void
+        
+        /** Sets the given [param property] to [param value] on all nodes inside this tree added to the given [param group]. Nodes that do not have the [param property] are ignored. See also [method call_group] and [method notify_group].  
+         *      
+         *  **Note:** This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.  
+         *      
+         *  **Note:** In C#, [param property] must be in snake_case when referring to built-in Godot properties. Prefer using the names exposed in the `PropertyName` class to avoid allocating a new [StringName] on each call.  
+         */
+        set_group(group: StringName, property: string, value: any): void
+        
+        /** Returns an [Array] containing all nodes inside this tree, that have been added to the given [param group], in scene hierarchy order. */
+        get_nodes_in_group(group: StringName): GArray<Node>
+        
+        /** Returns the first [Node] found inside the tree, that has been added to the given [param group], in scene hierarchy order. Returns `null` if no match is found. See also [method get_nodes_in_group]. */
+        get_first_node_in_group(group: StringName): null | Node
+        
+        /** Returns the number of nodes assigned to the given group. */
+        get_node_count_in_group(group: StringName): int64
+        
+        /** Changes the running scene to the one at the given [param path], after loading it into a [PackedScene] and creating a new instance.  
+         *  Returns [constant OK] on success, [constant ERR_CANT_OPEN] if the [param path] cannot be loaded into a [PackedScene], or [constant ERR_CANT_CREATE] if that scene cannot be instantiated.  
+         *      
+         *  **Note:** See [method change_scene_to_node] for details on the order of operations.  
+         */
+        change_scene_to_file(path: string): Error
+        
+        /** Changes the running scene to a new instance of the given [PackedScene] (which must be valid).  
+         *  Returns [constant OK] on success, [constant ERR_CANT_CREATE] if the scene cannot be instantiated, or [constant ERR_INVALID_PARAMETER] if the scene is invalid.  
+         *      
+         *  **Note:** See [method change_scene_to_node] for details on the order of operations.  
+         */
+        change_scene_to_packed(packed_scene: PackedScene): Error
+        
+        /** Changes the running scene to the provided [Node]. Useful when you want to set up the new scene before changing.  
+         *  Returns [constant OK] on success, [constant ERR_INVALID_PARAMETER] if the [param node] is `null`, or [constant ERR_UNCONFIGURED] if the [param node] is already inside the scene tree.  
+         *      
+         *  **Note:** Operations happen in the following order when [method change_scene_to_node] is called:  
+         *  1. The current scene node is immediately removed from the tree. From that point, [method Node.get_tree] called on the current (outgoing) scene will return `null`. [member current_scene] will be `null` too, because the new scene is not available yet.  
+         *  2. At the end of the frame, the formerly current scene, already removed from the tree, will be deleted (freed from memory) and then the new scene node will be added to the tree. [method Node.get_tree] and [member current_scene] will be back to working as usual.  
+         *  This ensures that both scenes aren't running at the same time, while still freeing the previous scene in a safe way similar to [method Node.queue_free].  
+         *  If you want to reliably access the new scene, await the [signal scene_changed] signal.  
+         *  **Warning:** After using this method, the [SceneTree] will take ownership of the node and will free it automatically when changing scene again. Any references you had to that node will become invalid.  
+         */
+        change_scene_to_node(node: Node): Error
+        
+        /** Reloads the currently active scene, replacing [member current_scene] with a new instance of its original [PackedScene].  
+         *  Returns [constant OK] on success, [constant ERR_UNCONFIGURED] if no [member current_scene] is defined, [constant ERR_CANT_OPEN] if [member current_scene] cannot be loaded into a [PackedScene], or [constant ERR_CANT_CREATE] if the scene cannot be instantiated.  
+         */
+        reload_current_scene(): Error
+        
+        /** If a current scene is loaded, calling this method will unload it. */
+        unload_current_scene(): void
+        
+        /** Sets a custom [MultiplayerAPI] with the given [param root_path] (controlling also the relative subpaths), or override the default one if [param root_path] is empty.  
+         *      
+         *  **Note:** No [MultiplayerAPI] must be configured for the subpath containing [param root_path], nested custom multiplayers are not allowed. I.e. if one is configured for `"/root/Foo"` setting one for `"/root/Foo/Bar"` will cause an error.  
+         *      
+         *  **Note:** [method set_multiplayer] should be called  *before*  the child nodes are ready at the given [param root_path]. If multiplayer nodes like [MultiplayerSpawner] or [MultiplayerSynchronizer] are added to the tree before the custom multiplayer API is set, they will not work.  
+         */
+        set_multiplayer(multiplayer: MultiplayerAPI, root_path?: NodePath | string /* = '' */): void
+        
+        /** Searches for the [MultiplayerAPI] configured for the given path, if one does not exist it searches the parent paths until one is found. If the path is empty, or none is found, the default one is returned. See [method set_multiplayer]. */
+        get_multiplayer(for_path?: NodePath | string /* = '' */): null | MultiplayerAPI
+        
+        /** If `true`, the application automatically accepts quitting requests.  
+         *  For mobile platforms, see [member quit_on_go_back].  
+         */
+        get auto_accept_quit(): boolean
+        set auto_accept_quit(value: boolean)
+        
+        /** If `true`, the application quits automatically when navigating back (e.g. using the system "Back" button on Android).  
+         *  To handle 'Go Back' button when this option is disabled, use [constant DisplayServer.WINDOW_EVENT_GO_BACK_REQUEST].  
+         */
+        get quit_on_go_back(): boolean
+        set quit_on_go_back(value: boolean)
+        
+        /** If `true`, collision shapes will be visible when running the game from the editor for debugging purposes.  
+         *      
+         *  **Note:** This property is not designed to be changed at run-time. Changing the value of [member debug_collisions_hint] while the project is running will not have the desired effect.  
+         */
+        get debug_collisions_hint(): boolean
+        set debug_collisions_hint(value: boolean)
+        
+        /** If `true`, curves from [Path2D] and [Path3D] nodes will be visible when running the game from the editor for debugging purposes.  
+         *      
+         *  **Note:** This property is not designed to be changed at run-time. Changing the value of [member debug_paths_hint] while the project is running will not have the desired effect.  
+         */
+        get debug_paths_hint(): boolean
+        set debug_paths_hint(value: boolean)
+        
+        /** If `true`, navigation polygons will be visible when running the game from the editor for debugging purposes.  
+         *      
+         *  **Note:** This property is not designed to be changed at run-time. Changing the value of [member debug_navigation_hint] while the project is running will not have the desired effect.  
+         */
+        get debug_navigation_hint(): boolean
+        set debug_navigation_hint(value: boolean)
+        
+        /** If `true`, the scene tree is considered paused. This causes the following behavior:  
+         *  - 2D and 3D physics will be stopped, as well as collision detection and related signals.  
+         *  - Depending on each node's [member Node.process_mode], their [method Node._process], [method Node._physics_process] and [method Node._input] callback methods may not called anymore.  
+         */
+        get paused(): boolean
+        set paused(value: boolean)
+        
+        /** The root of the scene currently being edited in the editor. This is usually a direct child of [member root].  
+         *      
+         *  **Note:** This property does nothing in release builds.  
+         */
+        get edited_scene_root(): null | Node
+        set edited_scene_root(value: null | Node)
+        
+        /** The root node of the currently loaded main scene, usually as a direct child of [member root]. See also [method change_scene_to_file], [method change_scene_to_packed], and [method reload_current_scene].  
+         *  **Warning:** Setting this property directly may not work as expected, as it does  *not*  add or remove any nodes from this tree.  
+         */
+        get current_scene(): null | Node
+        set current_scene(value: null | Node)
+        
+        /** The tree's root [Window]. This is top-most [Node] of the scene tree, and is always present. An absolute [NodePath] always starts from this node. Children of the root node may include the loaded [member current_scene], as well as any [url=https://docs.godotengine.org/en/4.6/tutorials/scripting/singletons_autoload.html]AutoLoad[/url] configured in the Project Settings.  
+         *  **Warning:** Do not delete this node. This will result in unstable behavior, followed by a crash.  
+         */
+        get root(): null | Node
+        
+        /** If `true` (default value), enables automatic polling of the [MultiplayerAPI] for this SceneTree during [signal process_frame].  
+         *  If `false`, you need to manually call [method MultiplayerAPI.poll] to process network packets and deliver RPCs. This allows running RPCs in a different loop (e.g. physics, thread, specific time step) and for manual [Mutex] protection when accessing the [MultiplayerAPI] from threads.  
+         */
+        get multiplayer_poll(): boolean
+        set multiplayer_poll(value: boolean)
+        
+        /** If `true`, the renderer will interpolate the transforms of objects (both physics and non-physics) between the last two transforms, so that smooth motion is seen even when physics ticks do not coincide with rendered frames.  
+         *  The default value of this property is controlled by [member ProjectSettings.physics/common/physics_interpolation].  
+         *      
+         *  **Note:** Although this is a global setting, finer control of individual branches of the [SceneTree] is possible using [member Node.physics_interpolation_mode].  
+         */
+        get physics_interpolation(): boolean
+        set physics_interpolation(value: boolean)
+        
+        /** Emitted any time the tree's hierarchy changes (nodes being moved, renamed, etc.). */
+        readonly tree_changed: Signal<() => void>
+        
+        /** Emitted after the new scene is added to scene tree and initialized. Can be used to reliably access [member current_scene] when changing scenes.  
+         *    
+         */
+        readonly scene_changed: Signal<() => void>
+        
+        /** Emitted when the [member Node.process_mode] of any node inside the tree is changed. Only emitted in the editor, to update the visibility of disabled nodes. */
+        readonly tree_process_mode_changed: Signal<() => void>
+        
+        /** Emitted when the [param node] enters this tree. */
+        readonly node_added: Signal<(node: Node) => void>
+        
+        /** Emitted when the [param node] exits this tree. */
+        readonly node_removed: Signal<(node: Node) => void>
+        
+        /** Emitted when the [param node]'s [member Node.name] is changed. */
+        readonly node_renamed: Signal<(node: Node) => void>
+        
+        /** Emitted when the [param node]'s [method Node.update_configuration_warnings] is called. Only emitted in the editor. */
+        readonly node_configuration_warning_changed: Signal<(node: Node) => void>
+        
+        /** Emitted immediately before [method Node._process] is called on every node in this tree. */
+        readonly process_frame: Signal<() => void>
+        
+        /** Emitted immediately before [method Node._physics_process] is called on every node in this tree. */
+        readonly physics_frame: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSceneTree;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSceneTreeTimer extends __NameMapRefCounted {
+    }
+    /** One-shot timer.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scenetreetimer.html  
+     */
+    class SceneTreeTimer extends RefCounted {
+        constructor(identifier?: any)
+        /** The time remaining (in seconds). */
+        get time_left(): float64
+        set time_left(value: float64)
+        
+        /** Emitted when the timer reaches 0. */
+        readonly timeout: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSceneTreeTimer;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScript extends __NameMapResource {
+    }
+    /** A class stored as a resource.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_script.html  
+     */
+    class Script extends Resource {
+        constructor(identifier?: any)
+        /** Returns `true` if the script can be instantiated. */
+        can_instantiate(): boolean
+        
+        /** Returns `true` if [param base_object] is an instance of this script. */
+        instance_has(base_object: Object): boolean
+        
+        /** Returns `true` if the script contains non-empty source code.  
+         *      
+         *  **Note:** If a script does not have source code, this does not mean that it is invalid or unusable. For example, a [GDScript] that was exported with binary tokenization has no source code, but still behaves as expected and could be instantiated. This can be checked with [method can_instantiate].  
+         */
+        has_source_code(): boolean
+        
+        /** Reloads the script's class implementation. Returns an error code. */
+        reload(keep_state?: boolean /* = false */): Error
+        
+        /** Returns the script directly inherited by this script. */
+        get_base_script(): null | Script
+        
+        /** Returns the script's base type. */
+        get_instance_base_type(): StringName
+        
+        /** Returns the class name associated with the script, if there is one. Returns an empty string otherwise.  
+         *  To give the script a global name, you can use the `class_name` keyword in GDScript and the `[GlobalClass]` attribute in C#.  
+         *    
+         */
+        get_global_name(): StringName
+        
+        /** Returns `true` if the script, or a base class, defines a signal with the given name. */
+        has_script_signal(signal_name: StringName): boolean
+        
+        /** Returns the list of properties in this [Script].  
+         *      
+         *  **Note:** The dictionaries returned by this method are formatted identically to those returned by [method Object.get_property_list].  
+         */
+        get_script_property_list(): GArray<GDictionary>
+        
+        /** Returns the list of methods in this [Script].  
+         *      
+         *  **Note:** The dictionaries returned by this method are formatted identically to those returned by [method Object.get_method_list].  
+         */
+        get_script_method_list(): GArray<GDictionary>
+        
+        /** Returns the list of signals defined in this [Script].  
+         *      
+         *  **Note:** The dictionaries returned by this method are formatted identically to those returned by [method Object.get_signal_list].  
+         */
+        get_script_signal_list(): GArray<GDictionary>
+        
+        /** Returns a dictionary containing constant names and their values. */
+        get_script_constant_map(): GDictionary
+        
+        /** Returns the default value of the specified property. */
+        get_property_default_value(property: StringName): any
+        
+        /** Returns `true` if the script is a tool script. A tool script can run in the editor. */
+        is_tool(): boolean
+        
+        /** Returns `true` if the script is an abstract script. An abstract script does not have a constructor and cannot be instantiated. */
+        is_abstract(): boolean
+        
+        /** Returns a [Dictionary] mapping method names to their RPC configuration defined by this script. */
+        get_rpc_config(): any
+        
+        /** The script source code or an empty string if source code is not available. When set, does not reload the class implementation automatically. */
+        get source_code(): string
+        set source_code(value: string)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScript;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScriptBacktrace extends __NameMapRefCounted {
+    }
+    /** A captured backtrace of a specific script language.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scriptbacktrace.html  
+     */
+    class ScriptBacktrace extends RefCounted {
+        constructor(identifier?: any)
+        /** Returns the name of the script language that this backtrace was captured from. */
+        get_language_name(): string
+        
+        /** Returns `true` if the backtrace has no stack frames. */
+        is_empty(): boolean
+        
+        /** Returns the number of stack frames in the backtrace. */
+        get_frame_count(): int64
+        
+        /** Returns the name of the function called at the stack frame at the specified index. */
+        get_frame_function(index: int64): string
+        
+        /** Returns the file name of the call site represented by the stack frame at the specified index. */
+        get_frame_file(index: int64): string
+        
+        /** Returns the line number of the call site represented by the stack frame at the specified index. */
+        get_frame_line(index: int64): int64
+        
+        /** Returns the number of global variables (e.g. autoload singletons) in the backtrace.  
+         *      
+         *  **Note:** This will be non-zero only if the `include_variables` parameter was `true` when capturing the backtrace with [method Engine.capture_script_backtraces].  
+         */
+        get_global_variable_count(): int64
+        
+        /** Returns the name of the global variable at the specified index. */
+        get_global_variable_name(variable_index: int64): string
+        
+        /** Returns the value of the global variable at the specified index.  
+         *  **Warning:** With GDScript backtraces, the returned [Variant] will be the variable's actual value, including any object references. This means that storing the returned [Variant] will prevent any such object from being deallocated, so it's generally recommended not to do so.  
+         */
+        get_global_variable_value(variable_index: int64): any
+        
+        /** Returns the number of local variables in the stack frame at the specified index.  
+         *      
+         *  **Note:** This will be non-zero only if the `include_variables` parameter was `true` when capturing the backtrace with [method Engine.capture_script_backtraces].  
+         */
+        get_local_variable_count(frame_index: int64): int64
+        
+        /** Returns the name of the local variable at the specified [param variable_index] in the stack frame at the specified [param frame_index]. */
+        get_local_variable_name(frame_index: int64, variable_index: int64): string
+        
+        /** Returns the value of the local variable at the specified [param variable_index] in the stack frame at the specified [param frame_index].  
+         *  **Warning:** With GDScript backtraces, the returned [Variant] will be the variable's actual value, including any object references. This means that storing the returned [Variant] will prevent any such object from being deallocated, so it's generally recommended not to do so.  
+         */
+        get_local_variable_value(frame_index: int64, variable_index: int64): any
+        
+        /** Returns the number of member variables in the stack frame at the specified index.  
+         *      
+         *  **Note:** This will be non-zero only if the `include_variables` parameter was `true` when capturing the backtrace with [method Engine.capture_script_backtraces].  
+         */
+        get_member_variable_count(frame_index: int64): int64
+        
+        /** Returns the name of the member variable at the specified [param variable_index] in the stack frame at the specified [param frame_index]. */
+        get_member_variable_name(frame_index: int64, variable_index: int64): string
+        
+        /** Returns the value of the member variable at the specified [param variable_index] in the stack frame at the specified [param frame_index].  
+         *  **Warning:** With GDScript backtraces, the returned [Variant] will be the variable's actual value, including any object references. This means that storing the returned [Variant] will prevent any such object from being deallocated, so it's generally recommended not to do so.  
+         */
+        get_member_variable_value(frame_index: int64, variable_index: int64): any
+        
+        /** Converts the backtrace to a [String], where the entire string will be indented by [param indent_all] number of spaces, and the individual stack frames will be additionally indented by [param indent_frames] number of spaces.  
+         *      
+         *  **Note:** Calling [method Object.to_string] on a [ScriptBacktrace] will produce the same output as calling [method format] with all parameters left at their default values.  
+         */
+        format(indent_all?: int64 /* = 0 */, indent_frames?: int64 /* = 4 */): string
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScriptBacktrace;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScriptCreateDialog extends __NameMapConfirmationDialog {
+    }
+    /** Godot editor's popup dialog for creating new [Script] files.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scriptcreatedialog.html  
+     */
+    class ScriptCreateDialog<Map extends NodePathMap = any> extends ConfirmationDialog<Map> {
+        constructor(identifier?: any)
+        /** Prefills required fields to configure the ScriptCreateDialog for use. */
+        config(inherits: string, path: string, built_in_enabled?: boolean /* = true */, load_enabled?: boolean /* = true */): void
+        
+        /** Emitted when the user clicks the OK button. */
+        readonly script_created: Signal<(script: Script) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScriptCreateDialog;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScriptEditor extends __NameMapPanelContainer {
+    }
+    /** Godot editor's script editor.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scripteditor.html  
+     */
+    class ScriptEditor<Map extends NodePathMap = any> extends PanelContainer<Map> {
+        constructor(identifier?: any)
+        _help_tab_goto(_unnamed_arg0: string, _unnamed_arg1: string): boolean
+        
+        /** Returns the [ScriptEditorBase] object that the user is currently editing. */
+        get_current_editor(): null | ScriptEditorBase
+        
+        /** Returns an array with all [ScriptEditorBase] objects which are currently open in editor. */
+        get_open_script_editors(): GArray<ScriptEditorBase>
+        
+        /** Returns array of breakpoints. */
+        get_breakpoints(): PackedStringArray
+        
+        /** Registers the [EditorSyntaxHighlighter] to the editor, the [EditorSyntaxHighlighter] will be available on all open scripts.  
+         *      
+         *  **Note:** Does not apply to scripts that are already opened.  
+         */
+        register_syntax_highlighter(syntax_highlighter: EditorSyntaxHighlighter): void
+        
+        /** Unregisters the [EditorSyntaxHighlighter] from the editor.  
+         *      
+         *  **Note:** The [EditorSyntaxHighlighter] will still be applied to scripts that are already opened.  
+         */
+        unregister_syntax_highlighter(syntax_highlighter: EditorSyntaxHighlighter): void
+        
+        /** Goes to the specified line in the current script. */
+        goto_line(line_number: int64): void
+        
+        /** Returns a [Script] that is currently active in editor. */
+        get_current_script(): null | Script
+        
+        /** Returns an array with all [Script] objects which are currently open in editor. */
+        get_open_scripts(): GArray<Script>
+        
+        /** Opens the script create dialog. The script will extend [param base_name]. The file extension can be omitted from [param base_path]. It will be added based on the selected scripting language. */
+        open_script_create_dialog(base_name: string, base_path: string): void
+        
+        /** Opens help for the given topic. The [param topic] is an encoded string that controls which class, method, constant, signal, annotation, property, or theme item should be focused.  
+         *  The supported [param topic] formats include `class_name:class`, `class_method:class:method`, `class_constant:class:constant`, `class_signal:class:signal`, `class_annotation:class:@annotation`, `class_property:class:property`, and `class_theme_item:class:item`, where `class` is the class name, `method` is the method name, `constant` is the constant name, `signal` is the signal name, `annotation` is the annotation name, `property` is the property name, and `item` is the theme item.  
+         *    
+         */
+        goto_help(topic: string): void
+        
+        /** Updates the documentation for the given [param script].  
+         *      
+         *  **Note:** This should be called whenever the script is changed to keep the open documentation state up to date.  
+         */
+        update_docs_from_script(script: Script): void
+        
+        /** Removes the documentation for the given [param script].  
+         *      
+         *  **Note:** This should be called whenever the script is changed to keep the open documentation state up to date.  
+         */
+        clear_docs_from_script(script: Script): void
+        
+        /** Emitted when user changed active script. Argument is a freshly activated [Script]. */
+        readonly editor_script_changed: Signal<(script: Script) => void>
+        
+        /** Emitted when editor is about to close the active script. Argument is a [Script] that is going to be closed. */
+        readonly script_close: Signal<(script: Script) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScriptEditor;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScriptEditorBase extends __NameMapVBoxContainer {
+    }
+    /** Base editor for editing scripts in the [ScriptEditor].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scripteditorbase.html  
+     */
+    class ScriptEditorBase<Map extends NodePathMap = any> extends VBoxContainer<Map> {
+        constructor(identifier?: any)
+        /** Returns the underlying [Control] used for editing scripts. For text scripts, this is a [CodeEdit]. */
+        get_base_editor(): null | Control
+        
+        /** Adds an [EditorSyntaxHighlighter] to the open script. */
+        add_syntax_highlighter(highlighter: EditorSyntaxHighlighter): void
+        
+        /** Emitted after script validation or when the edited resource has changed. */
+        readonly name_changed: Signal<() => void>
+        
+        /** Emitted after script validation. */
+        readonly edited_script_changed: Signal<() => void>
+        
+        /** Emitted when the user requests contextual help. */
+        readonly request_help: Signal<(topic: string) => void>
+        
+        /** Emitted when the user requests to view a specific line of a script, similar to [signal go_to_method]. */
+        readonly request_open_script_at_line: Signal<(script: Object, line: int64) => void>
+        
+        /** Emitted when the user contextual goto and the item is in the same script. */
+        readonly request_save_history: Signal<() => void>
+        
+        /** Emitted when the user changes current script or moves caret by 10 or more columns within the same script. */
+        readonly request_save_previous_state: Signal<(state: GDictionary) => void>
+        
+        /** Emitted when the user requests a specific documentation page. */
+        readonly go_to_help: Signal<(what: string) => void>
+        
+        /** Emitted when the user request to search text in the file system. */
+        readonly search_in_files_requested: Signal<(text: string) => void>
+        
+        /** Emitted when the user request to find and replace text in the file system. */
+        readonly replace_in_files_requested: Signal<(text: string) => void>
+        
+        /** Emitted when the user requests to view a specific method of a script, similar to [signal request_open_script_at_line]. */
+        readonly go_to_method: Signal<(script: Object, method: string) => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScriptEditorBase;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScriptExtension extends __NameMapScript {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_scriptextension.html */
+    class ScriptExtension extends Script {
+        constructor(identifier?: any)
+        /* gdvirtual */ _editor_can_reload_from_file(): boolean
+        /* gdvirtual */ _placeholder_erased(placeholder: int64): void
+        /* gdvirtual */ _can_instantiate(): boolean
+        /* gdvirtual */ _get_base_script(): null | Script
+        /* gdvirtual */ _get_global_name(): StringName
+        /* gdvirtual */ _inherits_script(script: Script): boolean
+        /* gdvirtual */ _get_instance_base_type(): StringName
+        /* gdvirtual */ _instance_create(for_object: Object): int64
+        /* gdvirtual */ _placeholder_instance_create(for_object: Object): int64
+        /* gdvirtual */ _instance_has(object: Object): boolean
+        /* gdvirtual */ _has_source_code(): boolean
+        /* gdvirtual */ _get_source_code(): string
+        /* gdvirtual */ _set_source_code(code: string): void
+        /* gdvirtual */ _reload(keep_state: boolean): Error
+        /* gdvirtual */ _get_doc_class_name(): StringName
+        /* gdvirtual */ _get_documentation(): GArray<GDictionary>
+        /* gdvirtual */ _get_class_icon_path(): string
+        /* gdvirtual */ _has_method(method: StringName): boolean
+        /* gdvirtual */ _has_static_method(method: StringName): boolean
+        
+        /** Return the expected argument count for the given [param method], or `null` if it can't be determined (which will then fall back to the default behavior). */
+        /* gdvirtual */ _get_script_method_argument_count(method: StringName): any
+        /* gdvirtual */ _get_method_info(method: StringName): GDictionary
+        /* gdvirtual */ _is_tool(): boolean
+        /* gdvirtual */ _is_valid(): boolean
+        
+        /** Returns `true` if the script is an abstract script. Abstract scripts cannot be instantiated directly, instead other scripts should inherit them. Abstract scripts will be either unselectable or hidden in the Create New Node dialog (unselectable if there are non-abstract classes inheriting it, otherwise hidden). */
+        /* gdvirtual */ _is_abstract(): boolean
+        /* gdvirtual */ _get_language(): null | ScriptLanguage
+        /* gdvirtual */ _has_script_signal(signal: StringName): boolean
+        /* gdvirtual */ _get_script_signal_list(): GArray<GDictionary>
+        /* gdvirtual */ _has_property_default_value(property: StringName): boolean
+        /* gdvirtual */ _get_property_default_value(property: StringName): any
+        /* gdvirtual */ _update_exports(): void
+        /* gdvirtual */ _get_script_method_list(): GArray<GDictionary>
+        /* gdvirtual */ _get_script_property_list(): GArray<GDictionary>
+        /* gdvirtual */ _get_member_line(member: StringName): int64
+        /* gdvirtual */ _get_constants(): GDictionary
+        /* gdvirtual */ _get_members(): GArray<StringName>
+        /* gdvirtual */ _is_placeholder_fallback_enabled(): boolean
+        /* gdvirtual */ _get_rpc_config(): any
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScriptExtension;
+    }
+    namespace ScriptLanguage {
+        enum ScriptNameCasing {
+            SCRIPT_NAME_CASING_AUTO = 0,
+            SCRIPT_NAME_CASING_PASCAL_CASE = 1,
+            SCRIPT_NAME_CASING_SNAKE_CASE = 2,
+            SCRIPT_NAME_CASING_KEBAB_CASE = 3,
+            SCRIPT_NAME_CASING_CAMEL_CASE = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScriptLanguage extends __NameMapObject {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_scriptlanguage.html */
+    class ScriptLanguage extends Object {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScriptLanguage;
+    }
+    namespace ScriptLanguageExtension {
+        enum LookupResultType {
+            LOOKUP_RESULT_SCRIPT_LOCATION = 0,
+            LOOKUP_RESULT_CLASS = 1,
+            LOOKUP_RESULT_CLASS_CONSTANT = 2,
+            LOOKUP_RESULT_CLASS_PROPERTY = 3,
+            LOOKUP_RESULT_CLASS_METHOD = 4,
+            LOOKUP_RESULT_CLASS_SIGNAL = 5,
+            LOOKUP_RESULT_CLASS_ENUM = 6,
+            LOOKUP_RESULT_CLASS_TBD_GLOBALSCOPE = 7,
+            LOOKUP_RESULT_CLASS_ANNOTATION = 8,
+            LOOKUP_RESULT_LOCAL_CONSTANT = 9,
+            LOOKUP_RESULT_LOCAL_VARIABLE = 10,
+            LOOKUP_RESULT_MAX = 11,
+        }
+        enum CodeCompletionLocation {
+            /** The option is local to the location of the code completion query - e.g. a local variable. Subsequent value of location represent options from the outer class, the exact value represent how far they are (in terms of inner classes). */
+            LOCATION_LOCAL = 0,
+            
+            /** The option is from the containing class or a parent class, relative to the location of the code completion query. Perform a bitwise OR with the class depth (e.g. `0` for the local class, `1` for the parent, `2` for the grandparent, etc.) to store the depth of an option in the class or a parent class. */
+            LOCATION_PARENT_MASK = 256,
+            
+            /** The option is from user code which is not local and not in a derived class (e.g. Autoload Singletons). */
+            LOCATION_OTHER_USER_CODE = 512,
+            
+            /** The option is from other engine code, not covered by the other enum constants - e.g. built-in classes. */
+            LOCATION_OTHER = 1024,
+        }
+        enum CodeCompletionKind {
+            CODE_COMPLETION_KIND_CLASS = 0,
+            CODE_COMPLETION_KIND_FUNCTION = 1,
+            CODE_COMPLETION_KIND_SIGNAL = 2,
+            CODE_COMPLETION_KIND_VARIABLE = 3,
+            CODE_COMPLETION_KIND_MEMBER = 4,
+            CODE_COMPLETION_KIND_ENUM = 5,
+            CODE_COMPLETION_KIND_CONSTANT = 6,
+            CODE_COMPLETION_KIND_NODE_PATH = 7,
+            CODE_COMPLETION_KIND_FILE_PATH = 8,
+            CODE_COMPLETION_KIND_PLAIN_TEXT = 9,
+            CODE_COMPLETION_KIND_MAX = 10,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScriptLanguageExtension extends __NameMapScriptLanguage {
+    }
+    /** @link https://docs.godotengine.org/en/4.6/classes/class_scriptlanguageextension.html */
+    class ScriptLanguageExtension extends ScriptLanguage {
+        constructor(identifier?: any)
+        /* gdvirtual */ _get_name(): string
+        /* gdvirtual */ _init(): void
+        /* gdvirtual */ _get_type(): string
+        /* gdvirtual */ _get_extension(): string
+        /* gdvirtual */ _finish(): void
+        /* gdvirtual */ _get_reserved_words(): PackedStringArray
+        /* gdvirtual */ _is_control_flow_keyword(keyword: string): boolean
+        /* gdvirtual */ _get_comment_delimiters(): PackedStringArray
+        /* gdvirtual */ _get_doc_comment_delimiters(): PackedStringArray
+        /* gdvirtual */ _get_string_delimiters(): PackedStringArray
+        /* gdvirtual */ _make_template(template: string, class_name: string, base_class_name: string): null | Script
+        /* gdvirtual */ _get_built_in_templates(object: StringName): GArray<GDictionary>
+        /* gdvirtual */ _is_using_templates(): boolean
+        /* gdvirtual */ _validate(script: string, path: string, validate_functions: boolean, validate_errors: boolean, validate_warnings: boolean, validate_safe_lines: boolean): GDictionary
+        /* gdvirtual */ _validate_path(path: string): string
+        /* gdvirtual */ _create_script(): null | Object
+        /* gdvirtual */ _has_named_classes(): boolean
+        /* gdvirtual */ _supports_builtin_mode(): boolean
+        /* gdvirtual */ _supports_documentation(): boolean
+        /* gdvirtual */ _can_inherit_from_file(): boolean
+        
+        /** Returns the line where the function is defined in the code, or `-1` if the function is not present. */
+        /* gdvirtual */ _find_function(function_: string, code: string): int64
+        /* gdvirtual */ _make_function(class_name: string, function_name: string, function_args: PackedStringArray | string[]): string
+        /* gdvirtual */ _can_make_function(): boolean
+        /* gdvirtual */ _open_in_external_editor(script: Script, line: int64, column: int64): Error
+        /* gdvirtual */ _overrides_external_editor(): boolean
+        /* gdvirtual */ _preferred_file_name_casing(): ScriptLanguage.ScriptNameCasing
+        /* gdvirtual */ _complete_code(code: string, path: string, owner: Object): GDictionary
+        /* gdvirtual */ _lookup_code(code: string, symbol: string, path: string, owner: Object): GDictionary
+        /* gdvirtual */ _auto_indent_code(code: string, from_line: int64, to_line: int64): string
+        /* gdvirtual */ _add_global_constant(name: StringName, value: any): void
+        /* gdvirtual */ _add_named_global_constant(name: StringName, value: any): void
+        /* gdvirtual */ _remove_named_global_constant(name: StringName): void
+        /* gdvirtual */ _thread_enter(): void
+        /* gdvirtual */ _thread_exit(): void
+        /* gdvirtual */ _debug_get_error(): string
+        /* gdvirtual */ _debug_get_stack_level_count(): int64
+        /* gdvirtual */ _debug_get_stack_level_line(level: int64): int64
+        /* gdvirtual */ _debug_get_stack_level_function(level: int64): string
+        
+        /** Returns the source associated with a given debug stack position. */
+        /* gdvirtual */ _debug_get_stack_level_source(level: int64): string
+        /* gdvirtual */ _debug_get_stack_level_locals(level: int64, max_subitems: int64, max_depth: int64): GDictionary
+        /* gdvirtual */ _debug_get_stack_level_members(level: int64, max_subitems: int64, max_depth: int64): GDictionary
+        /* gdvirtual */ _debug_get_stack_level_instance(level: int64): int64
+        /* gdvirtual */ _debug_get_globals(max_subitems: int64, max_depth: int64): GDictionary
+        /* gdvirtual */ _debug_parse_stack_level_expression(level: int64, expression: string, max_subitems: int64, max_depth: int64): string
+        /* gdvirtual */ _debug_get_current_stack_info(): GArray<GDictionary>
+        /* gdvirtual */ _reload_all_scripts(): void
+        /* gdvirtual */ _reload_scripts(scripts: GArray, soft_reload: boolean): void
+        /* gdvirtual */ _reload_tool_script(script: Script, soft_reload: boolean): void
+        /* gdvirtual */ _get_recognized_extensions(): PackedStringArray
+        /* gdvirtual */ _get_public_functions(): GArray<GDictionary>
+        /* gdvirtual */ _get_public_constants(): GDictionary
+        /* gdvirtual */ _get_public_annotations(): GArray<GDictionary>
+        /* gdvirtual */ _profiling_start(): void
+        /* gdvirtual */ _profiling_stop(): void
+        /* gdvirtual */ _profiling_set_save_native_calls(enable: boolean): void
+        /* gdvirtual */ _profiling_get_accumulated_data(info_array: int64, info_max: int64): int64
+        /* gdvirtual */ _profiling_get_frame_data(info_array: int64, info_max: int64): int64
+        /* gdvirtual */ _frame(): void
+        /* gdvirtual */ _handles_global_class_type(type: string): boolean
+        /* gdvirtual */ _get_global_class_name(path: string): GDictionary
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScriptLanguageExtension;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScrollBar extends __NameMapRange {
+    }
+    /** Abstract base class for scrollbars.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scrollbar.html  
+     */
+    class ScrollBar<Map extends NodePathMap = any> extends Range<Map> {
+        constructor(identifier?: any)
+        /** Overrides the step used when clicking increment and decrement buttons or when using arrow keys when the [ScrollBar] is focused. */
+        get custom_step(): float64
+        set custom_step(value: float64)
+        
+        /** Emitted when the scrollbar is being scrolled. */
+        readonly scrolling: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScrollBar;
+    }
+    namespace ScrollContainer {
+        enum ScrollMode {
+            /** Scrolling disabled, scrollbar will be invisible. */
+            SCROLL_MODE_DISABLED = 0,
+            
+            /** Scrolling enabled, scrollbar will be visible only if necessary, i.e. container's content is bigger than the container. */
+            SCROLL_MODE_AUTO = 1,
+            
+            /** Scrolling enabled, scrollbar will be always visible. */
+            SCROLL_MODE_SHOW_ALWAYS = 2,
+            
+            /** Scrolling enabled, scrollbar will be hidden. */
+            SCROLL_MODE_SHOW_NEVER = 3,
+            
+            /** Combines [constant SCROLL_MODE_AUTO] and [constant SCROLL_MODE_SHOW_ALWAYS]. The scrollbar is only visible if necessary, but the content size is adjusted as if it was always visible. It's useful for ensuring that content size stays the same regardless if the scrollbar is visible. */
+            SCROLL_MODE_RESERVE = 4,
+        }
+        enum ScrollHintMode {
+            /** Scroll hints will never be shown. */
+            SCROLL_HINT_MODE_DISABLED = 0,
+            
+            /** Scroll hints will be shown at the top and bottom (if vertical), or left and right (if horizontal). */
+            SCROLL_HINT_MODE_ALL = 1,
+            
+            /** Scroll hints will be shown at the top (if vertical), or the left (if horizontal). */
+            SCROLL_HINT_MODE_TOP_AND_LEFT = 2,
+            
+            /** Scroll hints will be shown at the bottom (if horizontal), or the right (if horizontal). */
+            SCROLL_HINT_MODE_BOTTOM_AND_RIGHT = 3,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapScrollContainer extends __NameMapContainer {
+    }
+    /** A container used to provide scrollbars to a child control when needed.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_scrollcontainer.html  
+     */
+    class ScrollContainer<Map extends NodePathMap = any> extends Container<Map> {
+        constructor(identifier?: any)
+        /** Returns the horizontal scrollbar [HScrollBar] of this [ScrollContainer].  
+         *  **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to disable or hide a scrollbar, you can use [member horizontal_scroll_mode].  
+         */
+        get_h_scroll_bar(): null | HScrollBar
+        
+        /** Returns the vertical scrollbar [VScrollBar] of this [ScrollContainer].  
+         *  **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to disable or hide a scrollbar, you can use [member vertical_scroll_mode].  
+         */
+        get_v_scroll_bar(): null | VScrollBar
+        
+        /** Ensures the given [param control] is visible (must be a direct or indirect child of the ScrollContainer). Used by [member follow_focus].  
+         *      
+         *  **Note:** This will not work on a node that was just added during the same frame. If you want to scroll to a newly added child, you must wait until the next frame using [signal SceneTree.process_frame]:  
+         *    
+         */
+        ensure_control_visible(control: Control): void
+        
+        /** If `true`, the ScrollContainer will automatically scroll to focused children (including indirect children) to make sure they are fully visible. */
+        get follow_focus(): boolean
+        set follow_focus(value: boolean)
+        
+        /** If `true`, [theme_item focus] is drawn when the ScrollContainer or one of its descendant nodes is focused. */
+        get draw_focus_border(): boolean
+        set draw_focus_border(value: boolean)
+        
+        /** The current horizontal scroll value.  
+         *      
+         *  **Note:** If you are setting this value in the [method Node._ready] function or earlier, it needs to be wrapped with [method Object.set_deferred], since scroll bar's [member Range.max_value] is not initialized yet.  
+         *    
+         */
+        get scroll_horizontal(): int64
+        set scroll_horizontal(value: int64)
+        
+        /** The current vertical scroll value.  
+         *      
+         *  **Note:** Setting it early needs to be deferred, just like in [member scroll_horizontal].  
+         *    
+         */
+        get scroll_vertical(): int64
+        set scroll_vertical(value: int64)
+        
+        /** Overrides the [member ScrollBar.custom_step] used when clicking the internal scroll bar's horizontal increment and decrement buttons or when using arrow keys when the [ScrollBar] is focused. */
+        get scroll_horizontal_custom_step(): float64
+        set scroll_horizontal_custom_step(value: float64)
+        
+        /** Overrides the [member ScrollBar.custom_step] used when clicking the internal scroll bar's vertical increment and decrement buttons or when using arrow keys when the [ScrollBar] is focused. */
+        get scroll_vertical_custom_step(): float64
+        set scroll_vertical_custom_step(value: float64)
+        
+        /** Controls whether horizontal scrollbar can be used and when it should be visible. */
+        get horizontal_scroll_mode(): int64
+        set horizontal_scroll_mode(value: int64)
+        
+        /** Controls whether vertical scrollbar can be used and when it should be visible. */
+        get vertical_scroll_mode(): int64
+        set vertical_scroll_mode(value: int64)
+        
+        /** Deadzone for touch scrolling. Lower deadzone makes the scrolling more sensitive. */
+        get scroll_deadzone(): int64
+        set scroll_deadzone(value: int64)
+        
+        /** The way which scroll hints (indicators that show that the content can still be scrolled in a certain direction) will be shown.  
+         *      
+         *  **Note:** Hints won't be shown if the content can be scrolled both vertically and horizontally.  
+         */
+        get scroll_hint_mode(): int64
+        set scroll_hint_mode(value: int64)
+        
+        /** If `true`, the scroll hint texture will be tiled instead of stretched. See [member scroll_hint_mode]. */
+        get tile_scroll_hint(): boolean
+        set tile_scroll_hint(value: boolean)
+        
+        /** Emitted when scrolling starts when dragging the scrollable area w *ith a touch event* . This signal is  *not*  emitted when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.  
+         *      
+         *  **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when [member ProjectSettings.input_devices/pointing/emulate_touch_from_mouse] is enabled.  
+         */
+        readonly scroll_started: Signal<() => void>
+        
+        /** Emitted when scrolling stops when dragging the scrollable area  *with a touch event* . This signal is  *not*  emitted when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.  
+         *      
+         *  **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when [member ProjectSettings.input_devices/pointing/emulate_touch_from_mouse] is enabled.  
+         */
+        readonly scroll_ended: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapScrollContainer;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSegmentShape2D extends __NameMapShape2D {
+    }
+    /** A 2D line segment shape used for physics collision.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_segmentshape2d.html  
+     */
+    class SegmentShape2D extends Shape2D {
+        constructor(identifier?: any)
+        /** The segment's first point position. */
+        get a(): Vector2
+        set a(value: Vector2)
+        
+        /** The segment's second point position. */
+        get b(): Vector2
+        set b(value: Vector2)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSegmentShape2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSeparationRayShape2D extends __NameMapShape2D {
+    }
+    /** A 2D ray shape used for physics collision that tries to separate itself from any collider.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_separationrayshape2d.html  
+     */
+    class SeparationRayShape2D extends Shape2D {
+        constructor(identifier?: any)
+        /** The ray's length. */
+        get length(): float64
+        set length(value: float64)
+        
+        /** If `false` (default), the shape always separates and returns a normal along its own direction.  
+         *  If `true`, the shape can return the correct normal and separate in any direction, allowing sliding motion on slopes.  
+         */
+        get slide_on_slope(): boolean
+        set slide_on_slope(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSeparationRayShape2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSeparationRayShape3D extends __NameMapShape3D {
+    }
+    /** A 3D ray shape used for physics collision that tries to separate itself from any collider.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_separationrayshape3d.html  
+     */
+    class SeparationRayShape3D extends Shape3D {
+        constructor(identifier?: any)
+        /** The ray's length. */
+        get length(): float64
+        set length(value: float64)
+        
+        /** If `false` (default), the shape always separates and returns a normal along its own direction.  
+         *  If `true`, the shape can return the correct normal and separate in any direction, allowing sliding motion on slopes.  
+         */
+        get slide_on_slope(): boolean
+        set slide_on_slope(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSeparationRayShape3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSeparator extends __NameMapControl {
+    }
+    /** Abstract base class for separators.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_separator.html  
+     */
+    class Separator<Map extends NodePathMap = any> extends Control<Map> {
+        constructor(identifier?: any)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSeparator;
+    }
+    namespace Shader {
+        enum Mode {
+            /** Mode used to draw all 3D objects. */
+            MODE_SPATIAL = 0,
+            
+            /** Mode used to draw all 2D objects. */
+            MODE_CANVAS_ITEM = 1,
+            
+            /** Mode used to calculate particle information on a per-particle basis. Not used for drawing. */
+            MODE_PARTICLES = 2,
+            
+            /** Mode used for drawing skies. Only works with shaders attached to [Sky] objects. */
+            MODE_SKY = 3,
+            
+            /** Mode used for setting the color and density of volumetric fog effect. */
+            MODE_FOG = 4,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShader extends __NameMapResource {
+    }
+    /** A shader implemented in the Godot shading language.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shader.html  
+     */
+    class Shader extends Resource {
+        constructor(identifier?: any)
+        /** Returns the shader mode for the shader. */
+        get_mode(): Shader.Mode
+        
+        /** Sets the default texture to be used with a texture uniform. The default is used if a texture is not set in the [ShaderMaterial].  
+         *      
+         *  **Note:** [param name] must match the name of the uniform in the code exactly.  
+         *      
+         *  **Note:** If the sampler array is used use [param index] to access the specified texture.  
+         */
+        set_default_texture_parameter(name: StringName, texture: Texture, index?: int64 /* = 0 */): void
+        
+        /** Returns the texture that is set as default for the specified parameter.  
+         *      
+         *  **Note:** [param name] must match the name of the uniform in the code exactly.  
+         *      
+         *  **Note:** If the sampler array is used use [param index] to access the specified texture.  
+         */
+        get_default_texture_parameter(name: StringName, index?: int64 /* = 0 */): null | Texture
+        
+        /** Returns the list of shader uniforms that can be assigned to a [ShaderMaterial], for use with [method ShaderMaterial.set_shader_parameter] and [method ShaderMaterial.get_shader_parameter]. The parameters returned are contained in dictionaries in a similar format to the ones returned by [method Object.get_property_list].  
+         *  If argument [param get_groups] is `true`, parameter grouping hints are also included in the list.  
+         */
+        get_shader_uniform_list(get_groups?: boolean /* = false */): GArray
+        
+        /** Only available when running in the editor. Opens a popup that visualizes the generated shader code, including all variants and internal shader code. See also [method Material.inspect_native_shader_code]. */
+        inspect_native_shader_code(): void
+        
+        /** Returns the shader's code as the user has written it, not the full generated code used internally. */
+        get code(): string
+        set code(value: string)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShader;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShaderGlobalsOverride extends __NameMapNode {
+    }
+    /** A node used to override global shader parameters' values in a scene.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shaderglobalsoverride.html  
+     */
+    class ShaderGlobalsOverride<Map extends NodePathMap = any> extends Node<Map> {
+        constructor(identifier?: any)
+        _activate(): void
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShaderGlobalsOverride;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShaderInclude extends __NameMapResource {
+    }
+    /** A snippet of shader code to be included in a [Shader] with `#include`.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shaderinclude.html  
+     */
+    class ShaderInclude extends Resource {
+        constructor(identifier?: any)
+        /** Returns the code of the shader include file. The returned text is what the user has written, not the full generated code used internally. */
+        get code(): string
+        set code(value: string)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShaderInclude;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShaderIncludeDB extends __NameMapObject {
+    }
+    /** Internal database of built in shader include files.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shaderincludedb.html  
+     */
+    class ShaderIncludeDB extends Object {
+        constructor(identifier?: any)
+        /** Returns a list of built-in include files that are currently registered. */
+        static list_built_in_include_files(): PackedStringArray
+        
+        /** Returns `true` if an include file with this name exists. */
+        static has_built_in_include_file(filename: string): boolean
+        
+        /** Returns the code for the built-in shader fragment. You can also access this in your shader code through `#include "filename"`. */
+        static get_built_in_include_file(filename: string): string
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShaderIncludeDB;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShaderMaterial extends __NameMapMaterial {
+    }
+    /** A material defined by a custom [Shader] program and the values of its shader parameters.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shadermaterial.html  
+     */
+    class ShaderMaterial extends Material {
+        constructor(identifier?: any)
+        /** Changes the value set for this material of a uniform in the shader.  
+         *      
+         *  **Note:** [param param] is case-sensitive and must match the name of the uniform in the code exactly (not the capitalized name in the inspector).  
+         *      
+         *  **Note:** Changes to the shader uniform will be effective on all instances using this [ShaderMaterial]. To prevent this, use per-instance uniforms with [method CanvasItem.set_instance_shader_parameter], [method GeometryInstance3D.set_instance_shader_parameter] or duplicate the [ShaderMaterial] resource using [method Resource.duplicate]. Per-instance uniforms allow for better shader reuse and are therefore faster, so they should be preferred over duplicating the [ShaderMaterial] when possible.  
+         */
+        set_shader_parameter(param: StringName, value: any): void
+        
+        /** Returns the current value set for this material of a uniform in the shader. */
+        get_shader_parameter(param: StringName): any
+        
+        /** The [Shader] program used to render this material. */
+        get shader(): null | Shader
+        set shader(value: null | Shader)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShaderMaterial;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShape2D extends __NameMapResource {
+    }
+    /** Abstract base class for 2D shapes used for physics collision.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shape2d.html  
+     */
+    class Shape2D extends Resource {
+        constructor(identifier?: any)
+        /** Returns `true` if this shape is colliding with another.  
+         *  This method needs the transformation matrix for this shape ([param local_xform]), the shape to check collisions with ([param with_shape]), and the transformation matrix of that shape ([param shape_xform]).  
+         */
+        collide(local_xform: Transform2D, with_shape: Shape2D, shape_xform: Transform2D): boolean
+        
+        /** Returns whether this shape would collide with another, if a given movement was applied.  
+         *  This method needs the transformation matrix for this shape ([param local_xform]), the movement to test on this shape ([param local_motion]), the shape to check collisions with ([param with_shape]), the transformation matrix of that shape ([param shape_xform]), and the movement to test onto the other object ([param shape_motion]).  
+         */
+        collide_with_motion(local_xform: Transform2D, local_motion: Vector2, with_shape: Shape2D, shape_xform: Transform2D, shape_motion: Vector2): boolean
+        
+        /** Returns a list of contact point pairs where this shape touches another.  
+         *  If there are no collisions, the returned list is empty. Otherwise, the returned list contains contact points arranged in pairs, with entries alternating between points on the boundary of this shape and points on the boundary of [param with_shape].  
+         *  A collision pair A, B can be used to calculate the collision normal with `(B - A).normalized()`, and the collision depth with `(B - A).length()`. This information is typically used to separate shapes, particularly in collision solvers.  
+         *  This method needs the transformation matrix for this shape ([param local_xform]), the shape to check collisions with ([param with_shape]), and the transformation matrix of that shape ([param shape_xform]).  
+         */
+        collide_and_get_contacts(local_xform: Transform2D, with_shape: Shape2D, shape_xform: Transform2D): PackedVector2Array
+        
+        /** Returns a list of contact point pairs where this shape would touch another, if a given movement was applied.  
+         *  If there would be no collisions, the returned list is empty. Otherwise, the returned list contains contact points arranged in pairs, with entries alternating between points on the boundary of this shape and points on the boundary of [param with_shape].  
+         *  A collision pair A, B can be used to calculate the collision normal with `(B - A).normalized()`, and the collision depth with `(B - A).length()`. This information is typically used to separate shapes, particularly in collision solvers.  
+         *  This method needs the transformation matrix for this shape ([param local_xform]), the movement to test on this shape ([param local_motion]), the shape to check collisions with ([param with_shape]), the transformation matrix of that shape ([param shape_xform]), and the movement to test onto the other object ([param shape_motion]).  
+         */
+        collide_with_motion_and_get_contacts(local_xform: Transform2D, local_motion: Vector2, with_shape: Shape2D, shape_xform: Transform2D, shape_motion: Vector2): PackedVector2Array
+        
+        /** Draws a solid shape onto a [CanvasItem] with the [RenderingServer] API filled with the specified [param color]. The exact drawing method is specific for each shape and cannot be configured. */
+        draw(canvas_item: RID, color: Color): void
+        
+        /** Returns a [Rect2] representing the shapes boundary. */
+        get_rect(): Rect2
+        
+        /** The shape's custom solver bias. Defines how much bodies react to enforce contact separation when this shape is involved.  
+         *  When set to `0`, the default value from [member ProjectSettings.physics/2d/solver/default_contact_bias] is used.  
+         */
+        get custom_solver_bias(): float64
+        set custom_solver_bias(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShape2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShape3D extends __NameMapResource {
+    }
+    /** Abstract base class for 3D shapes used for physics collision.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shape3d.html  
+     */
+    class Shape3D extends Resource {
+        constructor(identifier?: any)
+        /** Returns the [ArrayMesh] used to draw the debug collision for this [Shape3D]. */
+        get_debug_mesh(): null | ArrayMesh
+        
+        /** The shape's custom solver bias. Defines how much bodies react to enforce contact separation when this shape is involved.  
+         *  When set to `0`, the default value from [member ProjectSettings.physics/3d/solver/default_contact_bias] is used.  
+         */
+        get custom_solver_bias(): float64
+        set custom_solver_bias(value: float64)
+        
+        /** The collision margin for the shape. This is not used in Godot Physics.  
+         *  Collision margins allow collision detection to be more efficient by adding an extra shell around shapes. Collision algorithms are more expensive when objects overlap by more than their margin, so a higher value for margins is better for performance, at the cost of accuracy around edges as it makes them less sharp.  
+         */
+        get margin(): float64
+        set margin(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShape3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShapeCast2D extends __NameMapNode2D {
+    }
+    /** A 2D shape that sweeps a region of space to detect [CollisionObject2D]s.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shapecast2d.html  
+     */
+    class ShapeCast2D<Map extends NodePathMap = any> extends Node2D<Map> {
+        constructor(identifier?: any)
+        /** Returns whether any object is intersecting with the shape's vector (considering the vector length). */
+        is_colliding(): boolean
+        
+        /** The number of collisions detected at the point of impact. Use this to iterate over multiple collisions as provided by [method get_collider], [method get_collider_shape], [method get_collision_point], and [method get_collision_normal] methods. */
+        get_collision_count(): int64
+        
+        /** Updates the collision information for the shape immediately, without waiting for the next `_physics_process` call. Use this method, for example, when the shape or its parent has changed state.  
+         *      
+         *  **Note:** Setting [member enabled] to `true` is not required for this to work.  
+         */
+        force_shapecast_update(): void
+        
+        /** Returns the collided [Object] of one of the multiple collisions at [param index], or `null` if no object is intersecting the shape (i.e. [method is_colliding] returns `false`). */
+        get_collider(index: int64): null | Object
+        
+        /** Returns the [RID] of the collided object of one of the multiple collisions at [param index]. */
+        get_collider_rid(index: int64): RID
+        
+        /** Returns the shape ID of the colliding shape of one of the multiple collisions at [param index], or `0` if no object is intersecting the shape (i.e. [method is_colliding] returns `false`). */
+        get_collider_shape(index: int64): int64
+        
+        /** Returns the collision point of one of the multiple collisions at [param index] where the shape intersects the colliding object.  
+         *      
+         *  **Note:** This point is in the **global** coordinate system.  
+         */
+        get_collision_point(index: int64): Vector2
+        
+        /** Returns the normal of one of the multiple collisions at [param index] of the intersecting object. */
+        get_collision_normal(index: int64): Vector2
+        
+        /** Returns the fraction from this cast's origin to its [member target_position] of how far the shape can move without triggering a collision, as a value between `0.0` and `1.0`. */
+        get_closest_collision_safe_fraction(): float64
+        
+        /** Returns the fraction from this cast's origin to its [member target_position] of how far the shape must move to trigger a collision, as a value between `0.0` and `1.0`.  
+         *  In ideal conditions this would be the same as [method get_closest_collision_safe_fraction], however shape casting is calculated in discrete steps, so the precise point of collision can occur between two calculated positions.  
+         */
+        get_closest_collision_unsafe_fraction(): float64
+        
+        /** Adds a collision exception so the shape does not report collisions with the specified [RID]. */
+        add_exception_rid(rid: RID): void
+        
+        /** Adds a collision exception so the shape does not report collisions with the specified node. */
+        add_exception(node: CollisionObject2D): void
+        
+        /** Removes a collision exception so the shape does report collisions with the specified [RID]. */
+        remove_exception_rid(rid: RID): void
+        
+        /** Removes a collision exception so the shape does report collisions with the specified node. */
+        remove_exception(node: CollisionObject2D): void
+        
+        /** Removes all collision exceptions for this shape. */
+        clear_exceptions(): void
+        
+        /** Based on [param value], enables or disables the specified layer in the [member collision_mask], given a [param layer_number] between 1 and 32. */
+        set_collision_mask_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member collision_mask] is enabled, given a [param layer_number] between 1 and 32. */
+        get_collision_mask_value(layer_number: int64): boolean
+        
+        /** If `true`, collisions will be reported. */
+        get enabled(): boolean
+        set enabled(value: boolean)
+        
+        /** The shape to be used for collision queries. */
+        get shape(): null | Shape2D
+        set shape(value: null | Shape2D)
+        
+        /** If `true`, the parent node will be excluded from collision detection. */
+        get exclude_parent(): boolean
+        set exclude_parent(value: boolean)
+        
+        /** The shape's destination point, relative to this node's [member Node2D.position]. */
+        get target_position(): Vector2
+        set target_position(value: Vector2)
+        
+        /** The collision margin for the shape. A larger margin helps detecting collisions more consistently, at the cost of precision. */
+        get margin(): float64
+        set margin(value: float64)
+        
+        /** The number of intersections can be limited with this parameter, to reduce the processing time. */
+        get max_results(): int64
+        set max_results(value: int64)
+        
+        /** The shape's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See [url=https://docs.godotengine.org/en/4.6/tutorials/physics/physics_introduction.html#collision-layers-and-masks]Collision layers and masks[/url] in the documentation for more information. */
+        get collision_mask(): int64
+        set collision_mask(value: int64)
+        
+        /** Returns the complete collision information from the collision sweep. The data returned is the same as in the [method PhysicsDirectSpaceState2D.get_rest_info] method. */
+        get collision_result(): GArray
+        
+        /** If `true`, collisions with [Area2D]s will be reported. */
+        get collide_with_areas(): boolean
+        set collide_with_areas(value: boolean)
+        
+        /** If `true`, collisions with [PhysicsBody2D]s will be reported. */
+        get collide_with_bodies(): boolean
+        set collide_with_bodies(value: boolean)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShapeCast2D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShapeCast3D extends __NameMapNode3D {
+    }
+    /** A 3D shape that sweeps a region of space to detect [CollisionObject3D]s.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shapecast3d.html  
+     */
+    class ShapeCast3D<Map extends NodePathMap = any> extends Node3D<Map> {
+        constructor(identifier?: any)
+        /** This method does nothing. */
+        resource_changed(resource: Resource): void
+        
+        /** Returns whether any object is intersecting with the shape's vector (considering the vector length). */
+        is_colliding(): boolean
+        
+        /** The number of collisions detected at the point of impact. Use this to iterate over multiple collisions as provided by [method get_collider], [method get_collider_shape], [method get_collision_point], and [method get_collision_normal] methods. */
+        get_collision_count(): int64
+        
+        /** Updates the collision information for the shape immediately, without waiting for the next `_physics_process` call. Use this method, for example, when the shape or its parent has changed state.  
+         *      
+         *  **Note:** Setting [member enabled] to `true` is not required for this to work.  
+         */
+        force_shapecast_update(): void
+        
+        /** Returns the collided [Object] of one of the multiple collisions at [param index], or `null` if no object is intersecting the shape (i.e. [method is_colliding] returns `false`). */
+        get_collider(index: int64): null | Object
+        
+        /** Returns the [RID] of the collided object of one of the multiple collisions at [param index]. */
+        get_collider_rid(index: int64): RID
+        
+        /** Returns the shape ID of the colliding shape of one of the multiple collisions at [param index], or `0` if no object is intersecting the shape (i.e. [method is_colliding] returns `false`). */
+        get_collider_shape(index: int64): int64
+        
+        /** Returns the collision point of one of the multiple collisions at [param index] where the shape intersects the colliding object.  
+         *      
+         *  **Note:** This point is in the **global** coordinate system.  
+         */
+        get_collision_point(index: int64): Vector3
+        
+        /** Returns the normal of one of the multiple collisions at [param index] of the intersecting object. */
+        get_collision_normal(index: int64): Vector3
+        
+        /** Returns the fraction from this cast's origin to its [member target_position] of how far the shape can move without triggering a collision, as a value between `0.0` and `1.0`. */
+        get_closest_collision_safe_fraction(): float64
+        
+        /** Returns the fraction from this cast's origin to its [member target_position] of how far the shape must move to trigger a collision, as a value between `0.0` and `1.0`.  
+         *  In ideal conditions this would be the same as [method get_closest_collision_safe_fraction], however shape casting is calculated in discrete steps, so the precise point of collision can occur between two calculated positions.  
+         */
+        get_closest_collision_unsafe_fraction(): float64
+        
+        /** Adds a collision exception so the shape does not report collisions with the specified [RID]. */
+        add_exception_rid(rid: RID): void
+        
+        /** Adds a collision exception so the shape does not report collisions with the specified node. */
+        add_exception(node: CollisionObject3D): void
+        
+        /** Removes a collision exception so the shape does report collisions with the specified [RID]. */
+        remove_exception_rid(rid: RID): void
+        
+        /** Removes a collision exception so the shape does report collisions with the specified node. */
+        remove_exception(node: CollisionObject3D): void
+        
+        /** Removes all collision exceptions for this shape. */
+        clear_exceptions(): void
+        
+        /** Based on [param value], enables or disables the specified layer in the [member collision_mask], given a [param layer_number] between 1 and 32. */
+        set_collision_mask_value(layer_number: int64, value: boolean): void
+        
+        /** Returns whether or not the specified layer of the [member collision_mask] is enabled, given a [param layer_number] between 1 and 32. */
+        get_collision_mask_value(layer_number: int64): boolean
+        
+        /** If `true`, collisions will be reported. */
+        get enabled(): boolean
+        set enabled(value: boolean)
+        
+        /** The shape to be used for collision queries. */
+        get shape(): null | Shape3D
+        set shape(value: null | Shape3D)
+        
+        /** If `true`, the parent node will be excluded from collision detection. */
+        get exclude_parent(): boolean
+        set exclude_parent(value: boolean)
+        
+        /** The shape's destination point, relative to this node's [member Node3D.position]. */
+        get target_position(): Vector3
+        set target_position(value: Vector3)
+        
+        /** The collision margin for the shape. A larger margin helps detecting collisions more consistently, at the cost of precision. */
+        get margin(): float64
+        set margin(value: float64)
+        
+        /** The number of intersections can be limited with this parameter, to reduce the processing time. */
+        get max_results(): int64
+        set max_results(value: int64)
+        
+        /** The shape's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See [url=https://docs.godotengine.org/en/4.6/tutorials/physics/physics_introduction.html#collision-layers-and-masks]Collision layers and masks[/url] in the documentation for more information. */
+        get collision_mask(): int64
+        set collision_mask(value: int64)
+        
+        /** Returns the complete collision information from the collision sweep. The data returned is the same as in the [method PhysicsDirectSpaceState3D.get_rest_info] method. */
+        get collision_result(): GArray
+        
+        /** If `true`, collisions with [Area3D]s will be reported. */
+        get collide_with_areas(): boolean
+        set collide_with_areas(value: boolean)
+        
+        /** If `true`, collisions with [PhysicsBody3D]s will be reported. */
+        get collide_with_bodies(): boolean
+        set collide_with_bodies(value: boolean)
+        
+        /** The custom color to use to draw the shape in the editor and at run-time if **Visible Collision Shapes** is enabled in the **Debug** menu. This color will be highlighted at run-time if the [ShapeCast3D] is colliding with something.  
+         *  If set to `Color(0.0, 0.0, 0.0)` (by default), the color set in [member ProjectSettings.debug/shapes/collision/shape_color] is used.  
+         */
+        get debug_shape_custom_color(): Color
+        set debug_shape_custom_color(value: Color)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShapeCast3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapShortcut extends __NameMapResource {
+    }
+    /** A shortcut for binding input.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_shortcut.html  
+     */
+    class Shortcut extends Resource {
+        constructor(identifier?: any)
+        /** Returns whether [member events] contains an [InputEvent] which is valid. */
+        has_valid_event(): boolean
+        
+        /** Returns whether any [InputEvent] in [member events] equals [param event]. This uses [method InputEvent.is_match] to compare events. */
+        matches_event(event: InputEvent): boolean
+        
+        /** Returns the shortcut's first valid [InputEvent] as a [String]. */
+        get_as_text(): string
+        
+        /** The shortcut's [InputEvent] array.  
+         *  Generally the [InputEvent] used is an [InputEventKey], though it can be any [InputEvent], including an [InputEventAction].  
+         */
+        get events(): GArray<InputEvent>
+        set events(value: GArray<InputEvent>)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapShortcut;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSkeleton2D extends __NameMapNode2D {
+    }
+    /** The parent of a hierarchy of [Bone2D]s, used to create a 2D skeletal animation.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_skeleton2d.html  
+     */
+    class Skeleton2D<Map extends NodePathMap = any> extends Node2D<Map> {
+        constructor(identifier?: any)
+        /** Returns the number of [Bone2D] nodes in the node hierarchy parented by Skeleton2D. */
+        get_bone_count(): int64
+        
+        /** Returns a [Bone2D] from the node hierarchy parented by Skeleton2D. The object to return is identified by the parameter [param idx]. Bones are indexed by descending the node hierarchy from top to bottom, adding the children of each branch before moving to the next sibling. */
+        get_bone(idx: int64): null | Bone2D
+        
+        /** Returns the [RID] of a Skeleton2D instance. */
+        get_skeleton(): RID
+        
+        /** Sets the [SkeletonModificationStack2D] attached to this skeleton. */
+        set_modification_stack(modification_stack: SkeletonModificationStack2D): void
+        
+        /** Returns the [SkeletonModificationStack2D] attached to this skeleton, if one exists. */
+        get_modification_stack(): null | SkeletonModificationStack2D
+        
+        /** Executes all the modifications on the [SkeletonModificationStack2D], if the Skeleton2D has one assigned. */
+        execute_modifications(delta: float64, execution_mode: int64): void
+        
+        /** Sets the local pose transform, [param override_pose], for the bone at [param bone_idx].  
+         *  [param strength] is the interpolation strength that will be used when applying the pose, and [param persistent] determines if the applied pose will remain.  
+         *      
+         *  **Note:** The pose transform needs to be a local transform relative to the [Bone2D] node at [param bone_idx]!  
+         */
+        set_bone_local_pose_override(bone_idx: int64, override_pose: Transform2D, strength: float64, persistent: boolean): void
+        
+        /** Returns the local pose override transform for [param bone_idx]. */
+        get_bone_local_pose_override(bone_idx: int64): Transform2D
+        
+        /** Emitted when the [Bone2D] setup attached to this skeletons changes. This is primarily used internally within the skeleton. */
+        readonly bone_setup_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSkeleton2D;
+    }
+    namespace Skeleton3D {
+        enum ModifierCallbackModeProcess {
+            /** Set a flag to process modification during physics frames (see [constant Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS]). */
+            MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS = 0,
+            
+            /** Set a flag to process modification during process frames (see [constant Node.NOTIFICATION_INTERNAL_PROCESS]). */
+            MODIFIER_CALLBACK_MODE_PROCESS_IDLE = 1,
+            
+            /** Do not process modification. Use [method advance] to process the modification manually. */
+            MODIFIER_CALLBACK_MODE_PROCESS_MANUAL = 2,
+        }
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSkeleton3D extends __NameMapNode3D {
+    }
+    /** A node containing a bone hierarchy, used to create a 3D skeletal animation.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_skeleton3d.html  
+     */
+    class Skeleton3D<Map extends NodePathMap = any> extends Node3D<Map> {
+        /** Notification received when this skeleton's pose needs to be updated. In that case, this is called only once per frame in a deferred process. */
+        static readonly NOTIFICATION_UPDATE_SKELETON = 50
+        constructor(identifier?: any)
+        
+        /** Adds a new bone with the given name. Returns the new bone's index, or `-1` if this method fails.  
+         *      
+         *  **Note:** Bone names should be unique, non empty, and cannot include the `:` and `/` characters.  
+         */
+        add_bone(name: string): int64
+        
+        /** Returns the bone index that matches [param name] as its name. Returns `-1` if no bone with this name exists. */
+        find_bone(name: string): int64
+        
+        /** Returns the name of the bone at index [param bone_idx]. */
+        get_bone_name(bone_idx: int64): string
+        
+        /** Sets the bone name, [param name], for the bone at [param bone_idx]. */
+        set_bone_name(bone_idx: int64, name: string): void
+        
+        /** Returns the metadata with the given [param key] for the bone at index [param bone_idx]. */
+        get_bone_meta(bone_idx: int64, key: StringName): any
+        
+        /** Returns the list of all metadata keys for the bone at index [param bone_idx]. */
+        get_bone_meta_list(bone_idx: int64): GArray<StringName>
+        
+        /** Returns `true` if the bone at index [param bone_idx] has metadata with the given [param key]. */
+        has_bone_meta(bone_idx: int64, key: StringName): boolean
+        
+        /** Sets the metadata with the given [param key] to [param value] for the bone at index [param bone_idx]. */
+        set_bone_meta(bone_idx: int64, key: StringName, value: any): void
+        
+        /** Returns all bone names concatenated with commas (`,`) as a single [StringName].  
+         *  It is useful to set it as a hint for the enum property.  
+         */
+        get_concatenated_bone_names(): StringName
+        
+        /** Returns the bone index which is the parent of the bone at [param bone_idx]. If -1, then bone has no parent.  
+         *      
+         *  **Note:** The parent bone returned will always be less than [param bone_idx].  
+         */
+        get_bone_parent(bone_idx: int64): int64
+        
+        /** Sets the bone index [param parent_idx] as the parent of the bone at [param bone_idx]. If -1, then bone has no parent.  
+         *      
+         *  **Note:** [param parent_idx] must be less than [param bone_idx].  
+         */
+        set_bone_parent(bone_idx: int64, parent_idx: int64): void
+        
+        /** Returns the number of bones in the skeleton. */
+        get_bone_count(): int64
+        
+        /** Returns the number of times the bone hierarchy has changed within this skeleton, including renames.  
+         *  The Skeleton version is not serialized: only use within a single instance of Skeleton3D.  
+         *  Use for invalidating caches in IK solvers and other nodes which process bones.  
+         */
+        get_version(): int64
+        
+        /** Unparents the bone at [param bone_idx] and sets its rest position to that of its parent prior to being reset. */
+        unparent_bone_and_rest(bone_idx: int64): void
+        
+        /** Returns an array containing the bone indexes of all the child node of the passed in bone, [param bone_idx]. */
+        get_bone_children(bone_idx: int64): PackedInt32Array
+        
+        /** Returns an array with all of the bones that are parentless. Another way to look at this is that it returns the indexes of all the bones that are not dependent or modified by other bones in the Skeleton. */
+        get_parentless_bones(): PackedInt32Array
+        
+        /** Returns the rest transform for a bone [param bone_idx]. */
+        get_bone_rest(bone_idx: int64): Transform3D
+        
+        /** Sets the rest transform for bone [param bone_idx]. */
+        set_bone_rest(bone_idx: int64, rest: Transform3D): void
+        
+        /** Returns the global rest transform for [param bone_idx]. */
+        get_bone_global_rest(bone_idx: int64): Transform3D
+        create_skin_from_rest_transforms(): Skin
+        
+        /** Binds the given Skin to the Skeleton. */
+        register_skin(skin: Skin): null | SkinReference
+        
+        /** Returns all bones in the skeleton to their rest poses. */
+        localize_rests(): void
+        
+        /** Clear all the bones in this skeleton. */
+        clear_bones(): void
+        
+        /** Returns the pose transform of the specified bone.  
+         *      
+         *  **Note:** This is the pose you set to the skeleton in the process, the final pose can get overridden by modifiers in the deferred process, if you want to access the final pose, use [signal SkeletonModifier3D.modification_processed].  
+         */
+        get_bone_pose(bone_idx: int64): Transform3D
+        
+        /** Sets the pose transform, [param pose], for the bone at [param bone_idx]. */
+        set_bone_pose(bone_idx: int64, pose: Transform3D): void
+        
+        /** Sets the pose position of the bone at [param bone_idx] to [param position]. [param position] is a [Vector3] describing a position local to the [Skeleton3D] node. */
+        set_bone_pose_position(bone_idx: int64, position: Vector3): void
+        
+        /** Sets the pose rotation of the bone at [param bone_idx] to [param rotation]. [param rotation] is a [Quaternion] describing a rotation in the bone's local coordinate space with respect to the rotation of any parent bones. */
+        set_bone_pose_rotation(bone_idx: int64, rotation: Quaternion): void
+        
+        /** Sets the pose scale of the bone at [param bone_idx] to [param scale]. */
+        set_bone_pose_scale(bone_idx: int64, scale: Vector3): void
+        
+        /** Returns the pose position of the bone at [param bone_idx]. The returned [Vector3] is in the local coordinate space of the [Skeleton3D] node. */
+        get_bone_pose_position(bone_idx: int64): Vector3
+        
+        /** Returns the pose rotation of the bone at [param bone_idx]. The returned [Quaternion] is local to the bone with respect to the rotation of any parent bones. */
+        get_bone_pose_rotation(bone_idx: int64): Quaternion
+        
+        /** Returns the pose scale of the bone at [param bone_idx]. */
+        get_bone_pose_scale(bone_idx: int64): Vector3
+        
+        /** Sets the bone pose to rest for [param bone_idx]. */
+        reset_bone_pose(bone_idx: int64): void
+        
+        /** Sets all bone poses to rests. */
+        reset_bone_poses(): void
+        
+        /** Returns whether the bone pose for the bone at [param bone_idx] is enabled. */
+        is_bone_enabled(bone_idx: int64): boolean
+        
+        /** Disables the pose for the bone at [param bone_idx] if `false`, enables the bone pose if `true`. */
+        set_bone_enabled(bone_idx: int64, enabled?: boolean /* = true */): void
+        
+        /** Returns the overall transform of the specified bone, with respect to the skeleton. Being relative to the skeleton frame, this is not the actual "global" transform of the bone.  
+         *      
+         *  **Note:** This is the global pose you set to the skeleton in the process, the final global pose can get overridden by modifiers in the deferred process, if you want to access the final global pose, use [signal SkeletonModifier3D.modification_processed].  
+         */
+        get_bone_global_pose(bone_idx: int64): Transform3D
+        
+        /** Sets the global pose transform, [param pose], for the bone at [param bone_idx].  
+         *      
+         *  **Note:** If other bone poses have been changed, this method executes a dirty poses recalculation and will cause performance to deteriorate. If you know that multiple global poses will be applied, consider using [method set_bone_pose] with precalculation.  
+         */
+        set_bone_global_pose(bone_idx: int64, pose: Transform3D): void
+        
+        /** Force updates the bone transforms/poses for all bones in the skeleton. */
+        force_update_all_bone_transforms(): void
+        
+        /** Force updates the bone transform for the bone at [param bone_idx] and all of its children. */
+        force_update_bone_child_transform(bone_idx: int64): void
+        
+        /** Manually advance the child [SkeletonModifier3D]s by the specified time (in seconds).  
+         *      
+         *  **Note:** The [param delta] is temporarily accumulated in the [Skeleton3D], and the deferred process uses the accumulated value to process the modification.  
+         */
+        advance(delta: float64): void
+        
+        /** Removes the global pose override on all bones in the skeleton. */
+        clear_bones_global_pose_override(): void
+        
+        /** Sets the global pose transform, [param pose], for the bone at [param bone_idx].  
+         *  [param amount] is the interpolation strength that will be used when applying the pose, and [param persistent] determines if the applied pose will remain.  
+         *      
+         *  **Note:** The pose transform needs to be a global pose! To convert a world transform from a [Node3D] to a global bone pose, multiply the [method Transform3D.affine_inverse] of the node's [member Node3D.global_transform] by the desired world transform.  
+         */
+        set_bone_global_pose_override(bone_idx: int64, pose: Transform3D, amount: float64, persistent?: boolean /* = false */): void
+        
+        /** Returns the global pose override transform for [param bone_idx]. */
+        get_bone_global_pose_override(bone_idx: int64): Transform3D
+        
+        /** Returns the overall transform of the specified bone, with respect to the skeleton, but without any global pose overrides. Being relative to the skeleton frame, this is not the actual "global" transform of the bone. */
+        get_bone_global_pose_no_override(bone_idx: int64): Transform3D
+        
+        /** Tells the [PhysicalBone3D] nodes in the Skeleton to stop simulating. */
+        physical_bones_stop_simulation(): void
+        
+        /** Tells the [PhysicalBone3D] nodes in the Skeleton to start simulating and reacting to the physics world.  
+         *  Optionally, a list of bone names can be passed-in, allowing only the passed-in bones to be simulated.  
+         */
+        physical_bones_start_simulation(bones?: GArray<StringName> /* = [] */): void
+        
+        /** Adds a collision exception to the physical bone.  
+         *  Works just like the [RigidBody3D] node.  
+         */
+        physical_bones_add_collision_exception(exception: RID): void
+        
+        /** Removes a collision exception to the physical bone.  
+         *  Works just like the [RigidBody3D] node.  
+         */
+        physical_bones_remove_collision_exception(exception: RID): void
+        
+        /** Multiplies the 3D position track animation.  
+         *      
+         *  **Note:** Unless this value is `1.0`, the key value in animation will not match the actual position value.  
+         */
+        get motion_scale(): float64
+        set motion_scale(value: float64)
+        
+        /** If `true`, forces the bones in their default rest pose, regardless of their values. In the editor, this also prevents the bones from being edited. */
+        get show_rest_only(): boolean
+        set show_rest_only(value: boolean)
+        
+        /** Sets the processing timing for the Modifier. */
+        get modifier_callback_mode_process(): int64
+        set modifier_callback_mode_process(value: int64)
+        
+        /** If you follow the recommended workflow and explicitly have [PhysicalBoneSimulator3D] as a child of [Skeleton3D], you can control whether it is affected by raycasting without running [method physical_bones_start_simulation], by its [member SkeletonModifier3D.active].  
+         *  However, for old (deprecated) configurations, [Skeleton3D] has an internal virtual [PhysicalBoneSimulator3D] for compatibility. This property controls the internal virtual [PhysicalBoneSimulator3D]'s [member SkeletonModifier3D.active].  
+         */
+        get animate_physical_bones(): boolean
+        set animate_physical_bones(value: boolean)
+        
+        /** Emitted when the rest is updated. */
+        readonly rest_updated: Signal<() => void>
+        
+        /** Emitted when the pose is updated.  
+         *      
+         *  **Note:** During the update process, this signal is not fired, so modification by [SkeletonModifier3D] is not detected.  
+         */
+        readonly pose_updated: Signal<() => void>
+        
+        /** Emitted when the final pose has been calculated will be applied to the skin in the update process.  
+         *  This means that all [SkeletonModifier3D] processing is complete. In order to detect the completion of the processing of each [SkeletonModifier3D], use [signal SkeletonModifier3D.modification_processed].  
+         */
+        readonly skeleton_updated: Signal<() => void>
+        
+        /** Emitted when the bone at [param bone_idx] is toggled with [method set_bone_enabled]. Use [method is_bone_enabled] to check the new value. */
+        readonly bone_enabled_changed: Signal<(bone_idx: int64) => void>
+        
+        /** Emitted when the list of bones changes, such as when calling [method add_bone], [method set_bone_parent], [method unparent_bone_and_rest], or [method clear_bones]. */
+        readonly bone_list_changed: Signal<() => void>
+        
+        /** Emitted when the value of [member show_rest_only] changes. */
+        readonly show_rest_only_changed: Signal<() => void>
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSkeleton3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSkeletonIK3D extends __NameMapSkeletonModifier3D {
+    }
+    /** A node used to rotate all bones of a [Skeleton3D] bone chain a way that places the end bone at a desired 3D position.  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_skeletonik3d.html  
+     */
+    class SkeletonIK3D<Map extends NodePathMap = any> extends SkeletonModifier3D<Map> {
+        constructor(identifier?: any)
+        /** Returns the parent [Skeleton3D] node that was present when SkeletonIK entered the scene tree. Returns `null` if the parent node was not a [Skeleton3D] node when SkeletonIK3D entered the scene tree. */
+        get_parent_skeleton(): null | Skeleton3D
+        
+        /** Returns `true` if SkeletonIK is applying IK effects on continues frames to the [Skeleton3D] bones. Returns `false` if SkeletonIK is stopped or [method start] was used with the `one_time` parameter set to `true`. */
+        is_running(): boolean
+        
+        /** Starts applying IK effects on each frame to the [Skeleton3D] bones but will only take effect starting on the next frame. If [param one_time] is `true`, this will take effect immediately but also reset on the next frame. */
+        start(one_time?: boolean /* = false */): void
+        
+        /** Stops applying IK effects on each frame to the [Skeleton3D] bones and also calls [method Skeleton3D.clear_bones_global_pose_override] to remove existing overrides on all bones. */
+        stop(): void
+        
+        /** The name of the current root bone, the first bone in the IK chain. */
+        get root_bone(): StringName
+        set root_bone(value: StringName)
+        
+        /** The name of the current tip bone, the last bone in the IK chain placed at the [member target] transform (or [member target_node] if defined). */
+        get tip_bone(): StringName
+        set tip_bone(value: StringName)
+        
+        /** First target of the IK chain where the tip bone is placed and, if [member override_tip_basis] is `true`, how the tip bone is rotated. If a [member target_node] path is available the nodes transform is used instead and this property is ignored. */
+        get target(): Transform3D
+        set target(value: Transform3D)
+        
+        /** If `true` overwrites the rotation of the tip bone with the rotation of the [member target] (or [member target_node] if defined). */
+        get override_tip_basis(): boolean
+        set override_tip_basis(value: boolean)
+        
+        /** If `true`, instructs the IK solver to consider the secondary magnet target (pole target) when calculating the bone chain. Use the magnet position (pole target) to control the bending of the IK chain. */
+        get use_magnet(): boolean
+        set use_magnet(value: boolean)
+        
+        /** Secondary target position (first is [member target] property or [member target_node]) for the IK chain. Use magnet position (pole target) to control the bending of the IK chain. Only works if the bone chain has more than 2 bones. The middle chain bone position will be linearly interpolated with the magnet position. */
+        get magnet(): Vector3
+        set magnet(value: Vector3)
+        
+        /** Target node [NodePath] for the IK chain. If available, the node's current [Transform3D] is used instead of the [member target] property. */
+        get target_node(): NodePath
+        set target_node(value: NodePath | string)
+        
+        /** The minimum distance between bone and goal target. If the distance is below this value, the IK solver stops further iterations. */
+        get min_distance(): float64
+        set min_distance(value: float64)
+        
+        /** Number of iteration loops used by the IK solver to produce more accurate (and elegant) bone chain results. */
+        get max_iterations(): int64
+        set max_iterations(value: int64)
+        
+        /** Interpolation value for how much the IK results are applied to the current skeleton bone chain. A value of `1.0` will overwrite all skeleton bone transforms completely while a value of `0.0` will visually disable the SkeletonIK. */
+        get interpolation(): float64
+        set interpolation(value: float64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSkeletonIK3D;
+    }
+    /** @deprecated Internal use. Does not exist at runtime. */
+    interface __NameMapSkeletonModification2D extends __NameMapResource {
+    }
+    /** Base class for resources that operate on [Bone2D]s in a [Skeleton2D].  
+     *  	  
+     *  @link https://docs.godotengine.org/en/4.6/classes/class_skeletonmodification2d.html  
+     */
+    class SkeletonModification2D extends Resource {
+        constructor(identifier?: any)
+        /** Executes the given modification. This is where the modification performs whatever function it is designed to do. */
+        /* gdvirtual */ _execute(delta: float64): void
+        
+        /** Called when the modification is setup. This is where the modification performs initialization. */
+        /* gdvirtual */ _setup_modification(modification_stack: SkeletonModificationStack2D): void
+        
+        /** Used for drawing **editor-only** modification gizmos. This function will only be called in the Godot editor and can be overridden to draw custom gizmos.  
+         *      
+         *  **Note:** You will need to use the Skeleton2D from [method SkeletonModificationStack2D.get_skeleton] and it's draw functions, as the [SkeletonModification2D] resource cannot draw on its own.  
+         */
+        /* gdvirtual */ _draw_editor_gizmo(): void
+        
+        /** Returns the [SkeletonModificationStack2D] that this modification is bound to. Through the modification stack, you can access the Skeleton2D the modification is operating on. */
+        get_modification_stack(): null | SkeletonModificationStack2D
+        
+        /** Manually allows you to set the setup state of the modification. This function should only rarely be used, as the [SkeletonModificationStack2D] the modification is bound to should handle setting the modification up. */
+        set_is_setup(is_setup: boolean): void
+        
+        /** Returns whether this modification has been successfully setup or not. */
+        get_is_setup(): boolean
+        
+        /** Takes an angle and clamps it so it is within the passed-in [param min] and [param max] range. [param invert] will inversely clamp the angle, clamping it to the range outside of the given bounds. */
+        clamp_angle(angle: float64, min: float64, max: float64, invert: boolean): float64
+        
+        /** Sets whether this modification will call [method _draw_editor_gizmo] in the Godot editor to draw modification-specific gizmos. */
+        set_editor_draw_gizmo(draw_gizmo: boolean): void
+        
+        /** Returns whether this modification will call [method _draw_editor_gizmo] in the Godot editor to draw modification-specific gizmos. */
+        get_editor_draw_gizmo(): boolean
+        
+        /** If `true`, the modification's [method _execute] function will be called by the [SkeletonModificationStack2D]. */
+        get enabled(): boolean
+        set enabled(value: boolean)
+        
+        /** The execution mode for the modification. This tells the modification stack when to execute the modification. Some modifications have settings that are only available in certain execution modes. */
+        get execution_mode(): int64
+        set execution_mode(value: int64)
+        /** @deprecated Internal use. Does not exist at runtime. */
+        __godotNameMap: __NameMapSkeletonModification2D;
     }
 }
