@@ -207,9 +207,15 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
         let typeRowIndex = this.FindTypeRowIndex(dataArr);
         let types = typeRowIndex >= 0 ? (dataArr[typeRowIndex] || []) : [];
         
-        // 处理@开头的数组模式列名
+        // 检测数组模式（第一列以@开头）
+        let isArrayMode = false;
+        let arrayKey = '';
+        let arrayKeyType = '';
         if (keys.length > 0 && keys[0] && keys[0].startsWith('@')) {
-            keys[0] = keys[0].substring(1);
+            isArrayMode = true;
+            arrayKey = keys[0].substring(1);
+            arrayKeyType = types[0] || 'int';
+            keys[0] = arrayKey;
         }
         let nestedMap: { [parent: string]: { fields: { [name: string]: string }; isArray: boolean; structName: string } } = {};
         let simpleKeys: { key: string; type: string }[] = [];
@@ -267,10 +273,21 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
             fi++;
         }
         content += ProtoDefine.messageEnd;
-        // Add wrapper message XXXData { repeated XXX data = 1; }
-        content += ProtoDefine.messageStart.replace("{0}", className + "Data");
-        content += ProtoDefine.fieldStr.replace("{0}", "repeated " + className).replace("{1}", "data").replace("{2}", "1");
-        content += ProtoDefine.messageEnd;
+        if (isArrayMode) {
+            let groupMsgName = className + arrayKey;
+            content += ProtoDefine.messageStart.replace("{0}", groupMsgName);
+            content += ProtoDefine.fieldStr.replace("{0}", "repeated " + className).replace("{1}", "data").replace("{2}", "1");
+            content += ProtoDefine.messageEnd;
+            content += ProtoDefine.messageStart.replace("{0}", className + "Data");
+            let mapType = "map<" + this.TransformType(arrayKeyType) + "," + groupMsgName + ">";
+            content += ProtoDefine.fieldStr.replace("{0}", mapType).replace("{1}", "data").replace("{2}", "1");
+            content += ProtoDefine.messageEnd;
+        } else {
+            // Add wrapper message XXXData { repeated XXX data = 1; }
+            content += ProtoDefine.messageStart.replace("{0}", className + "Data");
+            content += ProtoDefine.fieldStr.replace("{0}", "repeated " + className).replace("{1}", "data").replace("{2}", "1");
+            content += ProtoDefine.messageEnd;
+        }
         return content;
     }
 
@@ -283,7 +300,7 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
         }
 
         let dataArr = data;
-        let keys = dataArr[0] || [];
+        let keys = dataArr[0] ? dataArr[0].slice() : []; // 创建副本，避免修改共享数据
         let typeRowIndex = this.FindTypeRowIndex(dataArr);
         let types = typeRowIndex >= 0 ? (dataArr[typeRowIndex] || []) : [];
 
@@ -607,11 +624,37 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
         let jsonData = JSON.parse(jsonStr);
         // Build proto text for wrapper XXXData message containing all records
         let dataContent = "";
-        for (let key in jsonData) {
-            let record = jsonData[key];
-            dataContent += "data {\n";
-            dataContent += this.JsonToProtoText(record);
-            dataContent += "}\n";
+        // 检测数组模式：JSON值是否为数组
+        let firstValue = Object.values(jsonData)[0];
+        let isArrayMode = Array.isArray(firstValue);
+        if (isArrayMode) {
+            // 数组模式：map<key, group> 结构，每个key对应一个value包含repeated data
+            for (let key in jsonData) {
+                let records = jsonData[key];
+                dataContent += "data {\n";
+                dataContent += `  key: ${key}\n`;
+                dataContent += "  value {\n";
+                for (let record of records) {
+                    dataContent += "    data {\n";
+                    let textLines = this.JsonToProtoText(record).split("\n");
+                    for (let line of textLines) {
+                        if (line.trim()) {
+                            dataContent += "      " + line + "\n";
+                        }
+                    }
+                    dataContent += "    }\n";
+                }
+                dataContent += "  }\n";
+                dataContent += "}\n";
+            }
+        } else {
+            // 普通模式：repeated 结构
+            for (let key in jsonData) {
+                let record = jsonData[key];
+                dataContent += "data {\n";
+                dataContent += this.JsonToProtoText(record);
+                dataContent += "}\n";
+            }
         }
         if (dataContent.length > 0) {
             let txtPath = bytesPath + ".txt";
