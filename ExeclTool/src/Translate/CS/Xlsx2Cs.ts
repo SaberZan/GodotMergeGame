@@ -1,4 +1,4 @@
-import xlsx from 'node-xlsx';
+﻿import xlsx from 'node-xlsx';
 import DataParser from '../../DataParser';
 import path from 'path';
 import fs from "fs";
@@ -43,7 +43,7 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
         if (this.isDir) { 
             let files = await readdir(pathStr);
             for(let i in files) {
-                let data = DataParser.parse(path.join(pathStr, files[i]));
+                let data = DataParser.parse(path.join(pathStr, files[i]), params.format);
                 for (let j = 0; j < data.length; ++j) {
                     this.xlsxData[data[j].name] = data[j].data;
                 }
@@ -56,7 +56,7 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
             }
             await this.TransferTableCs();
         } else {
-            let data = DataParser.parseWithOptionalExtension(pathStr);
+            let data = DataParser.parseWithOptionalExtension(pathStr, params.format);
             for (let i = 0; i < data.length; ++i) {
                 this.xlsxData[data[i].name] = data[i].data;
             }
@@ -523,5 +523,6 @@ export default class Xlsx2Cs extends BaseTranslateConfig {
         await writeFile(filePath + ".cs", data, { flag: 'w', encoding: 'utf8' });
     }
 }
+
 
 

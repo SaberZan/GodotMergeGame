@@ -51,11 +51,26 @@ export default class BaseTranslateConfig {
         this.mergeName = translate.mergeName;
         this.toDir = translate.toDir;
         this.isDir = false;
-        console.log("-1- isDir " + this.isDir)
-        if (fs.existsSync(pathStr) && fs.statSync(pathStr).isDirectory()) { 
-            this.isDir = true;
-            console.log("-2- isDir " + this.isDir)
+
+        if(params.format == "xlsx") {
+            if (fs.existsSync(pathStr) && fs.statSync(pathStr).isDirectory()) { 
+                this.isDir = true;
+                console.log("-2- isDir " + this.isDir)
+            }
         }
+        else if(params.format == "csv") {
+            if (fs.existsSync(pathStr) && fs.statSync(pathStr).isDirectory()) { 
+                this.isDir = true;
+                let allFiles = fs.readdirSync(pathStr);
+                for(var file of allFiles) {
+                    if(fs.statSync( path.join(pathStr,file)).isFile()) {
+                        this.isDir = false;
+                        break;
+                    }
+                }
+            }
+        }
+        console.log("-1- isDir " + this.isDir)
 
         let enumPath = path.join(params.designPath, 'define', "Enum.xlsx");
         await this.enumHelper.TranslateExcel(enumPath);

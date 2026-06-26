@@ -18,11 +18,12 @@ export default class CsvParser {
         for (let i = 0; i < csvContent.length; i++) {
             const char = csvContent[i];
             
-            if (char === '"') {
+            if (char === '\x22') {
                 if (inQuotes && csvContent[i + 1] === '"') {
                     currentLine += '"';
                     i++;
                 } else {
+                    currentLine += '"';
                     inQuotes = !inQuotes;
                 }
             } else if (char === '\n' && !inQuotes) {
@@ -115,7 +116,6 @@ export default class CsvParser {
      */
     public static parseCsvDirectory(dirPath: string): CsvSheetData[] {
         const result: CsvSheetData[] = [];
-        
         if (!fs.existsSync(dirPath) || !fs.statSync(dirPath).isDirectory()) {
             return result;
         }
@@ -172,3 +172,5 @@ export default class CsvParser {
         return fs.existsSync(dirPath) && fs.statSync(dirPath).isDirectory();
     }
 }
+
+
