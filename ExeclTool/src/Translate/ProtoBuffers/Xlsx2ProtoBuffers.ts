@@ -283,6 +283,15 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
         // Default layerNum: first data layer may contain nested fields
         let layerNum = 1;
 
+        // 检查是否是数组模式（第一列以@开头）
+        let isArrayMode = false;
+        let arrayKey = '';
+        if (keys.length > 0 && keys[0] && keys[0].startsWith('@')) {
+            isArrayMode = true;
+            arrayKey = keys[0].substring(1);
+            keys[0] = arrayKey; // 去掉@前缀
+        }
+
         for (let rowIndex = 3; rowIndex < dataArr.length; ++rowIndex) {
             let _arrLine = dataArr[rowIndex];
 
@@ -302,7 +311,7 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
 
             for (let colIndex = 0; colIndex < keys.length; ++colIndex) {
                 let key = keys[colIndex];
-                if (_.isNil(key) || _.isEmpty(key)) {
+                if (_.isNil(key) || _.isEmpty(key) || key.startsWith('#')) {
                     continue;
                 }
                 let type = types[colIndex] || 'string';
@@ -329,7 +338,16 @@ export default class Xlsx2ProtoBuffers extends BaseTranslateConfig {
                 }
             }
 
-            tmp[_arrLine[layerNum - 1]] = subTmp;
+            if (isArrayMode) {
+                // 数组模式：按第一列的值分组，相同值的行放在数组中
+                let groupKey = _arrLine[layerNum - 1].toString();
+                if (!tmp[groupKey]) {
+                    tmp[groupKey] = [];
+                }
+                tmp[groupKey].push(subTmp);
+            } else {
+                tmp[_arrLine[layerNum - 1]] = subTmp;
+            }
         }
 
         return jsonOut;

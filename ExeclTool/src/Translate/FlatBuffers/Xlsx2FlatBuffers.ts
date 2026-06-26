@@ -1,4 +1,4 @@
-﻿import xlsx from 'node-xlsx';
+import xlsx from 'node-xlsx';
 import DataParser from '../../DataParser';
 import path from 'path';
 import fs from 'fs';
